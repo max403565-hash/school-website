@@ -1,0 +1,31 @@
+{
+  "overview": {
+    "title": {
+      "si": "පාසල් සංවර්ධන සමිතිය (SDS) සහ ආදි ශිෂ්‍ය සංගමය (PPA)",
+      "ta": "பாடசாலை அபிவிருத்திச் சங்கம் & பழைய மாணவர் சங்கம்",
+      "en": "School Development Society & Past Pupils' Association"
+    },
+    "desc": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ භෞතික සම්පත්, ශිෂ්‍ය සුබසාධනය හා අධ්‍යාපනික ප්‍රමිතිය නංවාලීම උදෙසා දෙමාපියන්, ගුරුවරුන් හා ආදි සිසුන් එක්ව ක්‍රියාත්මක වන ප්‍රධාන ව්‍යවස්ථාපිත ආයතන ද්විත්වයයි.",
+      "ta": "கல்லூரியின் பௌதிக வளங்கள், மாணவர் நலன்பேணல் மற்றும் கல்வித் தரத்தை உயர்த்த பெற்றோர், ஆசிரியர்கள் மற்றும் பழைய மாணவர்கள் ஒன்றிணைந்து செயலாற்றும் பிரதான அமைப்புகள்.",
+      "en": "The two vital collaborative bodies uniting parents, faculty, alumni, and community leaders to support educational infrastructure, student welfare, and scholastic honors."
+    }
+  },
+  "objectives": [
+    {
+      "si": "පාසලේ ඉගෙනුම් පරිසරය සහ තාක්ෂණික විද්‍යාගාර නඩත්තු කිරීම සඳහා අනුග්‍රහය දැක්වීම.",
+      "ta": "கற்றல் சூழல் மற்றும் தொழினுட்ப ஆய்வுகூட பராமரிப்புக்கு உதவுதல்.",
+      "en": "Supporting the upkeep of cutting-edge smart classrooms and laboratory facilities."
+    },
+    {
+      "si": "ආර්ථික අපහසුතා සහිත දක්ෂ සිසු දරුවන්ට පොත්පත් හා ශිෂ්‍යත්ව ආධාර සැපයීම.",
+      "ta": "பொருளாதார ரீதியில் பின்தங்கிய திறமையான மாணவர்களுக்கு கற்றல் உபகரண உதவி.",
+      "en": "Providing textbook grants and welfare bursaries to deserving students from rural localities."
+    },
+    {
+      "si": "වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙල, ත්‍යාග ප්‍රදානෝත්සවය හා විද්‍යා ප්‍රදර්ශන සංවිධානයට දායක වීම.",
+      "ta": "விளையாட்டு விழா, பரிசளிப்பு விழா போன்ற முக்கிய நிகழ்வுகளுக்கு அனுசரணை.",
+      "en": "Partnering with school management for the Sports Meet, Prize Giving, and Science Exhibitions."
+    }
+  ]
+}

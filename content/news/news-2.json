@@ -1,0 +1,28 @@
+{
+  "id": "news-2",
+  "date": "2026-03-10",
+  "category": "sports",
+  "image": "/images/sports-meet.jpg",
+  "title": {
+    "si": "වාර්ෂික නිවාසාන්තර මලල ක්‍රීඩා උළෙල සාර්ථකව නිමාවේ",
+    "ta": "வருடாந்த இல்ல விளையாட்டுப் போட்டி சிறப்பாக நிறைவடைந்தது",
+    "en": "Annual Inter-House Athletic Meet Concludes with Resounding Success"
+  },
+  "content": [
+    {
+      "si": "විද්‍යාලීය ක්‍රීඩාංගණයේදී අති උත්කර්ෂවත් අන්දමින් පැවති මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ 2026 වාර්ෂික නිවාසාන්තර මලල ක්‍රීඩා උළෙල සාර්ථකව නිමාවට පත්විය.",
+      "ta": "கல்லூரி விளையாட்டு மைதானத்தில் கோலாகலமாக நடைபெற்ற 2026 வருடாந்த இல்ல தடகளப் போட்டிகள் வெற்றிகரமாக நிறைவடைந்தது.",
+      "en": "The 2026 Annual Inter-House Athletic Meet of Mo/Pelwatta Navodya Secondary College concluded with great fanfare and spirited sportsmanship at the main college grounds."
+    },
+    {
+      "si": "ගැමුණු, තිස්ස, පරාක්‍රම සහ විජය යන සිව් නිවාස අතර දින තුනක් පුරා පැවති තියුණු මලල ක්‍රීඩා ඉසව් අවසානයේ ලකුණු 540ක් ලබාගත් ගැමුණු නිවාසය සමස්ත ශූරතාවය හිමිකරගන්නා ලදී.",
+      "ta": "கெமுனு, திஸ்ஸ, பராக்கிரம, விஜய ஆகிய நான்கு இல்லங்களுக்கிடையில் நடைபெற்ற விறுவிறுப்பான போட்டிகளின் முடிவில் 540 புள்ளிகளைப் பெற்று கெமுனு இல்லம் சம்பியன் கோப்பையை சுவீகரித்தது.",
+      "en": "After three days of spirited competition across track, field, and relay events, Gemunu House clinched the coveted Overall Championship Trophy with 540 aggregate points."
+    },
+    {
+      "si": "ඌව පළාත් අධ්‍යාපන දෙපාර්තමේන්තුවේ සහ මොනරාගල කලාප අධ්‍යාපන කාර්යාලයේ උසස් නිලධාරීන්ගේ ප්‍රධානත්වයෙන් ජයග්‍රාහී ක්‍රීඩක ක්‍රීඩිකාවන්ට කුසලාන සහ සහතිකපත් ප්‍රදානය කෙරිණි.",
+      "ta": "ஊவா மாகாண மற்றும் மொணராகலை வலயக் கல்வி அதிகாரிகள் முன்னிலையில் வெற்றியாளர்களுக்கு சான்றிதழ்களும் வெற்றிக்கிண்ணங்களும் வழங்கி வைக்கப்பட்டன.",
+      "en": "Dignitaries from the Uva Provincial Education Department and Monaragala Zonal Education Office graced the prize distribution ceremony to honor the young athletes."
+    }
+  ]
+}

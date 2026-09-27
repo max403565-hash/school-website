@@ -1,0 +1,82 @@
+{
+  "albums": [
+    {
+      "id": "campus",
+      "name": {
+        "si": "විද්‍යාල පරිශ්‍රය සහ යටිතල පහසුකම්",
+        "ta": "வளாகமும் கட்டடங்களும்",
+        "en": "Campus & Infrastructure"
+      }
+    },
+    {
+      "id": "academics",
+      "name": {
+        "si": "අධ්‍යයන හා විද්‍යාගාර",
+        "ta": "கல்வி & ஆய்வுகூடங்கள்",
+        "en": "Academics & Laboratories"
+      }
+    },
+    {
+      "id": "sports",
+      "name": {
+        "si": "ක්‍රීඩා සහ මලල ක්‍රීඩා",
+        "ta": "விளையாட்டு & போட்டிகள்",
+        "en": "Sports & Athletics"
+      }
+    },
+    {
+      "id": "cultural",
+      "name": {
+        "si": "සංස්කෘතික හා ආගමික උත්සව",
+        "ta": "கலாசார நிகழ்வுகள்",
+        "en": "Cultural & Religious Celebrations"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "g-1",
+      "albumId": "campus",
+      "image": "/images/campus-hero.jpg",
+      "caption": {
+        "si": "පැල්වත්ත හරිත සොඳුරු වටපිටාවේ පිහිටි ද්විතීයික විද්‍යාලීය ප්‍රධාන පරිශ්‍රය",
+        "ta": "பசுமையான இயற்கை சூழலில் அமைந்துள்ள பிரதான கல்லூரி வளாகம்",
+        "en": "The main secondary academic campus set amid scenic greenery in Pelwatta"
+      },
+      "date": "2026-02-15"
+    },
+    {
+      "id": "g-2",
+      "albumId": "academics",
+      "image": "/images/science-lab.jpg",
+      "caption": {
+        "si": "ද්විතීයික විද්‍යාගාරයේ ප්‍රායෝගික පරීක්ෂණ වල නිරත උසස් පෙළ සිසුන්",
+        "ta": "உயர்தர விஞ்ஞான ஆய்வுகூடத்தில் செய்முறை பயிற்சியில் ஈடுபடும் மாணவர்கள்",
+        "en": "Collegiate students conducting experiments in the secondary science laboratory"
+      },
+      "date": "2026-03-01"
+    },
+    {
+      "id": "g-3",
+      "albumId": "sports",
+      "image": "/images/sports-meet.jpg",
+      "caption": {
+        "si": "වාර්ෂික නිවාසාන්තර මලල ක්‍රීඩා උළෙලේ ධාවන පථය සහ උණුසුම් තරග අවස්ථා",
+        "ta": "வருடாந்த இல்ல விளையாட்டுப் போட்டிகளின் தடகளத் தருணங்கள்",
+        "en": "Athletes in action on the running track during the Inter-House Sports Meet"
+      },
+      "date": "2026-02-28"
+    },
+    {
+      "id": "g-4",
+      "albumId": "cultural",
+      "image": "/images/cultural-ceremony.jpg",
+      "caption": {
+        "si": "වාර්ෂික ත්‍යාග ප්‍රදානෝත්සවය සහ සාම්ප්‍රදායික පහන් දැල්වීමේ මංගල්‍යය",
+        "ta": "வருடாந்த பரிசளிப்பு விழா மற்றும் பாரம்பரிய மங்கல விளக்கேற்றல் நிகழ்வு",
+        "en": "Annual Prize Giving and traditional oil lamp illumination ceremony"
+      },
+      "date": "2026-01-20"
+    }
+  ]
+}

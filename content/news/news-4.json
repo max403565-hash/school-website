@@ -1,0 +1,28 @@
+{
+  "id": "news-4",
+  "date": "2026-01-25",
+  "category": "circulars",
+  "image": "/images/cultural-ceremony.jpg",
+  "title": {
+    "si": "1 ශ්‍රේණිය සහ අතරමැදි ශ්‍රේණි සඳහා අයදුම්පත් කැඳවීම පිළිබඳ දැනුම්දීම",
+    "ta": "தரம் 1 மற்றும் இடைநிலை சேர்க்கை விண்ணப்பங்கள் கோரல் அறிவிப்பு",
+    "en": "Notice on Grade 1 & Intermediate Transfer Admission Procedures"
+  },
+  "content": [
+    {
+      "si": "ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජයේ අධ්‍යාපන අමාත්‍යාංශය මගින් නිකුත් කරන ලද නිල චක්‍රලේඛ අනුව 1 ශ්‍රේණිය හා අතරමැදි ශ්‍රේණි සඳහා සිසුන් ඇතුළත් කරගැනීමේ මාර්ගෝපදේශ නිකුත් කර ඇත.",
+      "ta": "இலங்கை கல்வி அமைச்சின் உத்தியோகபூர்வ சுற்றறிக்கைக்கு அமைவாக தரம் 1 மற்றும் இடைநிலை சேர்க்கை வழிகாட்டல்கள் நடைமுறைப்படுத்தப்படுகின்றன.",
+      "en": "Guidelines governing Grade 1 admissions and intermediate grade transfers strictly correspond to the circular guidelines formulated by the Ministry of Education, Sri Lanka."
+    },
+    {
+      "si": "වැදගත් නිවේදනයයි: අප විද්‍යාලය පූර්ණ වශයෙන් රජයේ ප්‍රතිපාදන මත ක්‍රියාත්මක වන නොමිලේ අධ්‍යාපනය ලබාදෙන පාසලකි. කිසිදු ශිෂ්‍යයෙකු ඇතුළත් කරගැනීම සඳහා කිසිදු මුදලක් හෝ ද්‍රව්‍යමය පරිත්‍යාගයක් කිසිවෙකුටත් ලබා නොදිය යුතුය.",
+      "ta": "முக்கிய அறிவித்தல்: எமது பாடசாலை பூரணமாக அரச நிதியில் இயங்கும் இலவச கல்வி நிலையமாகும். மாணவர் சேர்க்கைக்காக எந்தவொரு நபருக்கும் எவ்வித கட்டணமோ அன்பளிப்போ வழங்கப்படலாகாது.",
+      "en": "Crucial Public Notice: Mo/Pelwatta Navodya Secondary College is a strictly non-fee-charging government institution. No admission fee, donation, or monetary contribution is ever required or permitted."
+    },
+    {
+      "si": "අප වෙබ් අඩවියේ ඇති අයදුම්පත් පෝරමය හුදෙක් පරිපාලනමය ලුහුබැඳීම සඳහා පමණක් වන අතර, අවසාන තීරණ ගනු ලබන්නේ නිල ඇතුළත් කිරීමේ කමිටුව සහ අධ්‍යාපන අමාත්‍යාංශ චක්‍රලේඛ අනුව සම්මුඛ පරීක්ෂණ පැවැත්වීමෙන් පසුව පමණි.",
+      "ta": "இணையதளத்திலுள்ள விண்ணப்பப் படிவம் நிர்வாக கண்காணிப்புக்கு மாத்திரமே. இறுதித் தீர்மானங்கள் அமைச்சு சுற்றறிக்கைகளின் படி நேர்முகப் பரீட்சை ஊடாகவே உத்தியோகபூர்வமாக எடுக்கப்படும்.",
+      "en": "The online submission portal on this website serves solely for administrative tracking and pre-interview registration. Final admission determinations rest exclusively with the official School Admissions Committee and Ministry of Education procedures."
+    }
+  ]
+}

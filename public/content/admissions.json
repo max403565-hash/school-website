@@ -1,0 +1,146 @@
+{
+  "freeEducationNotice": {
+    "title": {
+      "si": "නොමිලේ අධ්‍යාපනය ලබාදෙන රජයේ පාසලක් පිළිබඳ නිල ප්‍රකාශය",
+      "ta": "இலவச அரச பாடசாலை பற்றிய உத்தியோகபூர்வ பிரகடனம்",
+      "en": "Official Declaration of Free Government Education"
+    },
+    "text": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජයේ අධ්‍යාපන අමාත්‍යාංශය මගින් පාලනය වන නිදහස් රජයේ පාසලකි. කිසිදු ශ්‍රේණියකට සිසුන් ඇතුළත් කරගැනීම සඳහා හෝ ඉගෙනුම් කටයුතු සඳහා කිසිදු ආකාරයක ඇතුළත් වීමේ ගාස්තු, මාසික ගාස්තු හෝ ද්‍රව්‍යමය අල්ලස් අය නොකෙරේ. එවැනි යෝජනා පිළිබඳව කිසිවෙකුට නොරැවටෙන්න.",
+      "ta": "மொ/பெல்வத்த நவோத்யா இரண்டாம் நிலை கல்லூரி கல்வி அமைச்சின் கீழ் இயங்கும் முழுமையான இலவச அரச பாடசாலையாகும். எவ்வித சேர்க்கைக் கட்டணங்களோ மாதாந்த கட்டணங்களோ அல்லது நன்கொடைகளோ அறவிடப்பட மாட்டாது. எவரேனும் நிதி கோரினால் ஏமாற வேண்டாம்.",
+      "en": "Mo/Pelwatta Navodya Secondary College is a state-funded institution governed under the Ministry of Education of Sri Lanka. We strictly do not charge any admission fees, tuition charges, or capital donations. Any demand for payment from any third party is illegal and contrary to Sri Lankan state education laws."
+    }
+  },
+  "administrativeTrackingDisclaimer": {
+    "title": {
+      "si": "පරිපාලනමය ලුහුබැඳීමේ දැනුම්දීම (Administrative Tracking Notice)",
+      "ta": "நிர்வாக கண்காணிப்பு அறிவித்தல்",
+      "en": "Notice on Administrative Tracking Only"
+    },
+    "text": {
+      "si": "මෙම වෙබ් අඩවියේ ඇති ඩිජිටල් අයදුම්පත සම්පූර්ණ කර ඉදිරිපත් කිරීම හුදෙක් විදුහල්පති කාර්යාලයේ පරිපාලනමය ලුහුබැඳීම සහ සම්මුඛ පරීක්ෂණ සූදානම සඳහා පමණක් උපකාරී වේ. මෙම වෙබ් අඩවිය මගින් කිසිදු ආකාරයක ස්වයංක්‍රීය ඇතුළත් කිරීමේ තීරණයක් ලබා නොදේ. අවසාන ඇතුළත් කිරීම් තීරණ ගනු ලබන්නේ ශ්‍රී ලංකා අධ්‍යාපන අමාත්‍යාංශයේ නිල චක්‍රලේඛ විධිවිධාන වලට අනුකූලව පාසල් ඇතුළත් කිරීමේ කමිටුව මගින් ලිපිලේඛන මුල් පිටපත් පරීක්ෂා කර සම්මුඛ පරීක්ෂණ පැවැත්වීමෙන් අනතුරුව පමණි.",
+      "ta": "இவ்வலைத்தளத்தில் விண்ணப்பத்தை சமர்ப்பிப்பது அதிபர் அலுவலகத்தின் நிர்வாக கண்காணிப்பு மற்றும் நேர்முக ஏற்பாடுகளுக்கு மட்டுமே உதவும். இவ்வலைத்தளம் எவ்வித தானியங்கி சேர்க்கை முடிவுகளையும் தீர்மானிக்காது. கல்வி அமைச்சின் உத்தியோகபூர்வ சுற்றறிக்கைக்கு அமைய, சேர்க்கைக் குழுவால் ஆவணங்கள் சரிபார்க்கப்பட்டு நேர்முகப் பரீட்சை ஊடாகவே இறுதித் தீர்மானம் எட்டப்படும்.",
+      "en": "Submitting the online application through this portal serves solely as an administrative tracking and pre-interview registration aid for the Principal’s Office. The website makes no automated admission decision or guarantee of placement. Final selections are determined exclusively by the official School Admissions Committee following physical original document verification and interviews conducted strictly in accordance with Ministry of Education circulars."
+    }
+  },
+  "processes": [
+    {
+      "id": "grade1",
+      "title": {
+        "si": "1 ශ්‍රේණිය සඳහා ඇතුළත් වීමේ ක්‍රියාවලිය",
+        "ta": "தரம் 1 சேர்க்கை நடைமுறைகள்",
+        "en": "Grade 1 Admission Process"
+      },
+      "desc": {
+        "si": "අධ්‍යාපන අමාත්‍යාංශයේ වාර්ෂික 1 ශ්‍රේණිය චක්‍රලේඛය ප්‍රකාරව පහත කාණ්ඩ යටතේ අයදුම්පත් සලකා බලනු ලැබේ:",
+        "ta": "கல்வி அமைச்சின் வருடாந்த தரம் 1 சுற்றறிக்கைக்கு அமைய பின்வரும் பிரிவுகளின் கீழ் விண்ணப்பங்கள் பரிசீலிக்கப்படும்:",
+        "en": "In accordance with the Ministry of Education’s annual Grade 1 circular, applications are evaluated under authorized categories:"
+      },
+      "categories": [
+        {
+          "si": "පාසල ආසන්නයේ ස්ථිර පදිංචිකරුවන්ගේ දරුවන් (ප්‍රධාන කාණ්ඩය)",
+          "ta": "அருகிலுள்ள நிரந்தர வதிவிடப் பிள்ளைகள் (பிரதான பிரிவு)",
+          "en": "Children of permanent residents within school feeder proximity (Primary Category)"
+        },
+        {
+          "si": "ආදි ශිෂ්‍ය ශිෂ්‍යාවන්ගේ දරුවන්",
+          "ta": "பழைய மாணவர்களின் பிள்ளைகள்",
+          "en": "Children of verified Past Pupils"
+        },
+        {
+          "si": "විද්‍යාලයේ දැනට ඉගෙනුම ලබන සිසුන්ගේ සහෝදර සහෝදරියන්",
+          "ta": "தற்போது கற்கும் மாணவர்களின் உடன்பிறப்புகள்",
+          "en": "Brothers and sisters of currently enrolled students"
+        },
+        {
+          "si": "අධ්‍යාපන සේවයේ හෝ රාජ්‍ය සේවයේ නිලධාරීන්ගේ දරුවන් (ස්ථාන මාරු මත)",
+          "ta": "அரசு மற்றும் கல்விச் சேவை உத்தியோகத்தர்களின் பிள்ளைகள்",
+          "en": "Children of public/educational service officers transferred on duty"
+        },
+        {
+          "si": "විදේශගතව සිට පැමිණි ශ්‍රී ලාංකිකයින්ගේ දරුවන්",
+          "ta": "வெளிநாட்டிலிருந்து நாடு திரும்பியவர்களின் பிள்ளைகள்",
+          "en": "Children of Sri Lankan citizens returning from abroad"
+        }
+      ]
+    },
+    {
+      "id": "transfers",
+      "title": {
+        "si": "අතරමැදි ශ්‍රේණි සහ උසස් පෙළ ඇතුළත් කිරීම්",
+        "ta": "இடைநிலை மற்றும் உயர்தர சேர்க்கைகள்",
+        "en": "Intermediate Grades & Collegiate (A/L) Transfers"
+      },
+      "desc": {
+        "si": "6 ශ්‍රේණිය (5 ශ්‍රේණිය ශිෂ්‍යත්ව කඩඉම් ලකුණු මත) සහ 12 ශ්‍රේණිය (සාමාන්‍ය පෙළ සමත් කුසලතාව මත) පුරප්පාඩු පවතින විට පමණක් අයදුම්පත් සලකා බැලේ. කලාප අධ්‍යාපන අධ්‍යක්ෂගේ අනුමැතිය අනිවාර්ය වේ.",
+        "ta": "தரம் 6 (புலமைப்பரிசில் வெட்டுப்புள்ளி அடிப்படையில்) மற்றும் தரம் 12 (சாதாரண தர சித்தி அடிப்படையில்) வெற்றிடங்கள் உள்ளபோது மாத்திரமே விண்ணப்பங்கள் ஏற்கப்படும். வலயக் கல்விப் பணிப்பாளரின் அனுமதி கட்டாயமாகும்.",
+        "en": "Grade 6 (based on Grade 5 Scholarship cutoff marks) and Grade 12 Advanced Level entry (based on G.C.E. O/L achievements) are considered subject to approved vacancy ceilings and Zonal Director endorsements."
+      }
+    }
+  ],
+  "requiredDocuments": [
+    {
+      "si": "දරුවාගේ උපත් සහතිකයේ මුල් පිටපත සහ සහතික කළ ඡායා පිටපතක්",
+      "ta": "பிள்ளையின் பிறப்புச் சான்றிதழின் மூலமும் உறுதிப்படுத்தப்பட்ட பிரதியும்",
+      "en": "Child’s Original Birth Certificate and certified photocopy"
+    },
+    {
+      "si": "දෙමව්පියන්ගේ / භාරකරුවන්ගේ ජාතික හැඳුනුම්පත් (NIC)",
+      "ta": "பெற்றோர் / பாதுகாவலரின் தேசிய அடையாள அட்டை",
+      "en": "Parents’ / Legal Guardians’ National Identity Cards (NIC)"
+    },
+    {
+      "si": "පදිංචිය තහවුරු කෙරෙන ග්‍රාම නිලධාරී සහතිකය (ප්‍රාදේශීය ලේකම් සහතික කළ)",
+      "ta": "கிராம நிலதாரி வதிவிடச் சான்றிதழ் (பிரதேச செயலாளர் உறுதிப்படுத்திய)",
+      "en": "Grama Niladhari Residential Certificate countersigned by the Divisional Secretary"
+    },
+    {
+      "si": "පදිංචිය සනාථ කරන ඔප්පු, බදු ගිවිසුම්, විදුලි/ජල බිල්පත් හෝ ඡන්ද නාමලේඛන උපුටා ගැනීම්",
+      "ta": "காணி உறுதிப்பத்திரம், மின்/நீர் கட்டணப் பட்டியல் அல்லது வாக்காளர் இடாப்பு",
+      "en": "Title deeds, lease agreements, utility receipts, or electoral register certified extracts"
+    },
+    {
+      "si": "අදාළ වන විට: ශිෂ්‍යත්ව ප්‍රතිඵල සටහන, O/L ප්‍රතිඵල ලේඛනය හෝ ආදි ශිෂ්‍ය සාමාජික අංකය",
+      "ta": "பொருத்தமான இடங்களில்: புலமைப்பரிசில் / சாதா.தர பெறுபேற்றுப் பத்திரம்",
+      "en": "When applicable: Scholarship/OL result sheet or Past Pupils’ membership credential"
+    }
+  ],
+  "faqs": [
+    {
+      "q": {
+        "si": "පාසලට ඇතුළත් වීමට කිසියම් මුදලක් ගෙවිය යුතුද?",
+        "ta": "பாடசாலை சேர்க்கைக்கு ஏதேனும் கட்டணம் செலுத்த வேண்டுமா?",
+        "en": "Is there any fee charged for admission or schooling?"
+      },
+      "a": {
+        "si": "නැත. මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය සම්පූර්ණයෙන්ම රජයේ නිදහස් අධ්‍යාපන ප්‍රතිපත්තිය යටතේ ක්‍රියාත්මක වේ. ඇතුළත් වීමේ හෝ අධ්‍යයන කටයුතු සඳහා කිසිදු ගාස්තුවක් අය නොකෙරේ.",
+        "ta": "இல்லை. இது முற்றுமுழுதாக அரசின் இலவச கல்விக் கொள்கையின் கீழ் இயங்கும் பாடசாலையாகும். எவ்வித சேர்க்கைக் கட்டணமும் அறவிடப்பட மாட்டாது.",
+        "en": "Absolutely not. Mo/Pelwatta Navodya Secondary College operates strictly under Sri Lanka’s free state education policy. Tuition, admission, and standard facilities are entirely free."
+      }
+    },
+    {
+      "q": {
+        "si": "මෙම වෙබ් අඩවියේ ඇති අයදුම්පත පිරවීමෙන් දරුවාට පාසල හිමිවේද?",
+        "ta": "இணையதளத்தில் விண்ணப்பம் நிரப்பினால் இடம் கிடைத்துவிடுமா?",
+        "en": "Does submitting the web application guarantee enrollment?"
+      },
+      "a": {
+        "si": "නැත. වෙබ් අයදුම්පත හුදෙක් කාර්යාලයීය ලුහුබැඳීම සඳහා පමණි. අධ්‍යාපන අමාත්‍යාංශ චක්‍රලේඛයේ නිර්ණායක සපුරා, මුල් ලිපිලේඛන පරීක්ෂා කර සම්මුඛ පරීක්ෂණයෙන් සමත්වන සිසුන් පමණක් කමිටුව විසින් තෝරාගනු ලැබේ.",
+        "ta": "இல்லை. இது நிர்வாக பதிவுக்கு மட்டுமே. அமைச்சு விதிமுறைகளின் படி ஆவணங்கள் நேரில் சரிபார்க்கப்பட்டு நேர்முகப் பரீட்சை முடிவிலேயே சேர்க்கை உறுதி செய்யப்படும்.",
+        "en": "No. Online submission is exclusively an administrative registration tool. Qualified applicants are called for physical verification of original documents and interviewed by the authorized committee."
+      }
+    },
+    {
+      "q": {
+        "si": "අයදුම්පත් භාරගන්නා කාලසීමාව කවදාද?",
+        "ta": "விண்ணப்பங்கள் ஏற்றுக்கொள்ளப்படும் காலம் எது?",
+        "en": "When is the official application window open?"
+      },
+      "a": {
+        "si": "අධ්‍යාපන අමාත්‍යාංශය විසින් ගැසට් පත්‍රය හා ජාතික පුවත්පත් මගින් චක්‍රලේඛය ප්‍රකාශයට පත් කළ දින සිට නියමිත දින වකවානු තුළ පමණක් අයදුම්පත් භාරගනු ලැබේ.",
+        "ta": "கல்வி அமைச்சு உத்தியோகபூர்வ வர்த்தமானி மற்றும் தேசிய பத்திரிகைகளில் அறிவிக்கும் குறிப்பிட்ட கால எல்லைக்குள் மட்டுமே விண்ணப்பங்கள் ஏற்றுக்கொள்ளப்படும்.",
+        "en": "Official physical applications are accepted strictly within the calendar dates proclaimed by the Ministry of Education in the government gazette and national press."
+      }
+    }
+  ]
+}

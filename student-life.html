@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Life | ශිෂ්‍ය ජීවිතය | மாணவர் வாழ்க்கை - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Explore clubs, societies, sports, prefects guild, and student counselling at Mo/Pelwatta Navodya Secondary College, Monaragala." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Student Life - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Explore clubs, societies, sports, prefects guild, and student leadership at Mo/Pelwatta Navodya Secondary College." />
+  <meta property="og:image" content="/images/sports-meet.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="/images/crest.svg" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <span>/</span>
+        <span data-i18n="nav.studentLife">Student Life</span>
+      </div>
+      <h1 class="page-banner-title" data-i18n="pages.studentLife.title">ශිෂ්‍ය ජීවිතය සහ සමිති (Student Life)</h1>
+      <p class="page-banner-desc" data-i18n="pages.studentLife.desc">
+        පන්ති කාමරයෙන් ඔබ්බට විහිදෙන සමිති සමාගම්, ක්‍රීඩා, ශිෂ්‍ය නායකත්වය සහ මනෝවිද්‍යා උපදේශනය
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+    <!-- Tabs -->
+    <div class="tab-group" role="tablist" aria-label="Student Life Sections">
+      <button class="tab-btn active" data-tab="tab-clubs" role="tab" aria-selected="true" data-i18n="pages.studentLife.tabClubs">
+        සමිති සහ සංගම් (Clubs & Societies)
+      </button>
+      <button class="tab-btn" data-tab="tab-sports" role="tab" aria-selected="false" data-i18n="pages.studentLife.tabSports">
+        ක්‍රීඩා සහ මලල ක්‍රීඩා (Sports & Athletics)
+      </button>
+      <button class="tab-btn" data-tab="tab-prefects" role="tab" aria-selected="false" data-i18n="pages.studentLife.tabPrefects">
+        ශිෂ්‍ය නායක මණ්ඩලය (Prefects' Guild)
+      </button>
+      <button class="tab-btn" data-tab="tab-counselling" role="tab" aria-selected="false" data-i18n="pages.studentLife.tabCounselling">
+        වෘත්තීය හා මනෝ උපදේශනය (Counselling)
+      </button>
+    </div>
+
+    <!-- Tab 1: Clubs & Societies -->
+    <div class="tab-content active" id="tab-clubs" role="tabpanel">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;" data-i18n="pages.studentLife.clubsTitle">
+          විද්‍යාලීය සමිති සහ සංගම්
+        </h2>
+        <p style="font-size: 1rem; color: var(--text-muted);" data-i18n="pages.studentLife.clubsSub">
+          ශිෂ්‍යයින්ගේ සහජ නිර්මාණශීලීත්වය, නායකත්වය සහ සමාජ කුසලතා ඔප්නැංවීම සඳහා ක්‍රියාත්මක වන ප්‍රධාන සමිති සංගම්
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;" id="clubs-grid" class="cards-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Tab 2: Sports -->
+    <div class="tab-content" id="tab-sports" role="tabpanel">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;" data-i18n="pages.studentLife.sportsTitle">
+          ක්‍රීඩා සහ ශාරීරික අධ්‍යාපනය
+        </h2>
+        <p style="font-size: 1rem; color: var(--text-muted);" data-i18n="pages.studentLife.sportsSub">
+          සමබර පෞරුෂයක් හා කණ්ඩායම් හැඟීමක් ගොඩනංවන දිස්ත්‍රික් හා සමස්ත ලංකා ජයග්‍රහණ දිනූ පාසල් ක්‍රීඩා
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;" id="sports-grid" class="cards-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Tab 3: Prefects' Guild -->
+    <div class="tab-content" id="tab-prefects" role="tabpanel">
+      <div class="form-card" style="margin-bottom: 2rem;">
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="background: var(--navy); color: #FFFFFF; width: 64px; height: 64px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">
+            🎖️
+          </div>
+          <div style="flex-grow: 1;">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem;" id="prefects-title">
+              ශිෂ්‍ය නායක මණ්ඩලය (Prefects’ Guild)
+            </h2>
+            <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--text-main); margin-bottom: 1.5rem;" id="prefects-desc">
+              <!-- Populated by JS -->
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+              <div style="background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <h4 style="font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem;" data-i18n="pages.studentLife.prefectCard1Title">
+                  විනය සහ නායකත්වය
+                </h4>
+                <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;" data-i18n="pages.studentLife.prefectCard1Desc">
+                  පාසල් දෛනික විනය, උදෑසන රැස්වීම් සහ ශිෂ්‍ය සුබසාධන කටයුතු අධීක්ෂණය කිරීම.
+                </p>
+              </div>
+              <div style="background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <h4 style="font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem;" data-i18n="pages.studentLife.prefectCard2Title">
+                  උත්සව කළමනාකරණය
+                </h4>
+                <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;" data-i18n="pages.studentLife.prefectCard2Desc">
+                  වාර්ෂික ත්‍යාග ප්‍රදානෝත්සවය, ක්‍රීඩා උළෙල සහ ජාතික උත්සව නියෝජනය කිරීම.
+                </p>
+              </div>
+              <div style="background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <h4 style="font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem;" data-i18n="pages.studentLife.prefectCard3Title">
+                  සහෝදරත්ව මගපෙන්වීම
+                </h4>
+                <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;" data-i18n="pages.studentLife.prefectCard3Desc">
+                  කනිෂ්ඨ ශිෂ්‍ය ශිෂ්‍යාවන්ට ආදර්ශවත් හැසිරීම සහ අධ්‍යයන දිරිගැන්වීම් සැපයීම.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Counselling & Career Guidance -->
+    <div class="tab-content" id="tab-counselling" role="tabpanel">
+      <div class="form-card" style="margin-bottom: 2rem;">
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="background: var(--gold); color: #FFFFFF; width: 64px; height: 64px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">
+            🧭
+          </div>
+          <div style="flex-grow: 1;">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem;" id="counselling-title">
+              වෘත්තීය මාර්ගෝපදේශන හා මනෝවිද්‍යා උපදේශන ඒකකය
+            </h2>
+            <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--text-main); margin-bottom: 1.5rem;" id="counselling-desc">
+              <!-- Populated by JS -->
+            </p>
+
+            <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-sm); padding: 1.25rem; margin-top: 1rem;">
+              <h4 style="font-size: 0.9375rem; font-weight: 700; color: #1E40AF; margin-bottom: 0.25rem;" data-i18n="pages.studentLife.counsellingBoxTitle">
+                පූර්ණ රහස්‍යභාවය සහ සුරක්ෂිතභාවය
+              </h4>
+              <p style="font-size: 0.875rem; color: #1E3A8A; line-height: 1.6;" data-i18n="pages.studentLife.counsellingBoxDesc">
+                උපදේශන සැසිවාරයන් අමාත්‍යාංශ පුහුණුව ලත් ගුරුභවතුන් විසින් පූර්ණ රහස්‍යභාවය සුරකිමින් මෙහෙයවනු ලැබේ. විභාග ආතතිය හෝ පෞද්ගලික ගැටලු සඳහා ඕනෑම සිසුවෙකුට හෝ දෙමව්පියෙකුට කාර්යාල වේලාවන්හිදී හමුවිය හැක.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    @media (min-width: 640px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+  </style>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/common.js"></script>
+  <script>
+    (function () {
+      let slData = null;
+
+      async function loadData() {
+        if (window.i18n && window.i18n.fetchJSON) {
+          slData = await window.i18n.fetchJSON('content/student-life.json');
+        } else {
+          try {
+            const res = await fetch('/content/student-life.json');
+            slData = await res.json();
+          } catch (e) {}
+        }
+        renderContent();
+        if (window.i18n && window.i18n.triggerRender) {
+          window.i18n.triggerRender();
+        }
+      }
+
+      function renderContent(forcedLang) {
+        if (!slData) return;
+        const lang = window.i18n ? window.i18n.resolveLang(forcedLang) : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        // Clubs
+        const clubsGrid = document.getElementById('clubs-grid');
+        clubsGrid.innerHTML = slData.clubs.map(club => `
+          <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.5rem; border-top:3px solid var(--navy);">
+            <h3 style="font-size:1.15rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">
+              ${pick(club.name, lang)}
+            </h3>
+            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
+              ${pick(club.desc, lang)}
+            </p>
+          </div>
+        `).join('');
+
+        // Sports
+        const sportsGrid = document.getElementById('sports-grid');
+        sportsGrid.innerHTML = slData.sports.map(sport => `
+          <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.5rem; border-top:3px solid var(--gold);">
+            <h3 style="font-size:1.15rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">
+              ${pick(sport.name, lang)}
+            </h3>
+            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
+              ${pick(sport.desc, lang)}
+            </p>
+          </div>
+        `).join('');
+
+        // Prefects
+        document.getElementById('prefects-title').textContent = pick(slData.prefects.title, lang);
+        document.getElementById('prefects-desc').textContent = pick(slData.prefects.desc, lang);
+
+        // Counselling
+        document.getElementById('counselling-title').textContent = pick(slData.counselling.title, lang);
+        document.getElementById('counselling-desc').textContent = pick(slData.counselling.desc, lang);
+      }
+
+      // Tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          const target = document.getElementById(btn.getAttribute('data-tab'));
+          if (target) target.classList.add('active');
+        });
+      });
+
+      if (window.i18n && window.i18n.registerPageRenderer) {
+        window.i18n.registerPageRenderer(renderContent);
+      }
+      window.addEventListener('languageChanged', (e) => renderContent(e.detail && e.detail.lang));
+      if (window.i18n && window.i18n.whenReady) {
+        window.i18n.whenReady().then(() => renderContent());
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadData);
+      } else {
+        loadData();
+      }
+    })();
+  </script>
+</body>
+</html>

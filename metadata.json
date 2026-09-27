@@ -1,0 +1,7 @@
+{
+  "name": "Mo/Pelwatta Navodya Secondary College",
+  "description": "Official multilingual website for Mo/Pelwatta Navodya Secondary College, Monaragala — a Sri Lankan free government school designated as a National School. Complete trilingual support in Sinhala, Tamil, and English.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

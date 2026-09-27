@@ -1,0 +1,106 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "label": {
+        "si": "සියලු ලේඛන",
+        "ta": "அனைத்து ஆவணங்கள்",
+        "en": "All Documents"
+      }
+    },
+    {
+      "id": "calendar",
+      "label": {
+        "si": "අධ්‍යයන දින දර්ශන",
+        "ta": "கல்வி நாட்காட்டிகள்",
+        "en": "Academic Calendars"
+      }
+    },
+    {
+      "id": "timetable",
+      "label": {
+        "si": "විභාග කාලසටහන්",
+        "ta": "பரீட்சை அட்டவணைகள்",
+        "en": "Exam Timetables"
+      }
+    },
+    {
+      "id": "circular",
+      "label": {
+        "si": "අමාත්‍යාංශ චක්‍රලේඛ",
+        "ta": "அமைச்சு சுற்றறிக்கைகள்",
+        "en": "Ministry Circulars"
+      }
+    },
+    {
+      "id": "forms",
+      "label": {
+        "si": "අයදුම්පත් ආකෘති",
+        "ta": "விண்ணப்ப படிவங்கள்",
+        "en": "Application Forms"
+      }
+    }
+  ],
+  "files": [
+    {
+      "id": "doc-1",
+      "filename": "academic-calendar-2026.pdf",
+      "category": "calendar",
+      "size": "245 KB",
+      "date": "2026-01-10",
+      "title": {
+        "si": "2026 පාසල් අධ්‍යයන දින දර්ශනය සහ නිවාඩු කාලසටහන",
+        "ta": "2026 பாடசாலை கல்வி நாட்காட்டி மற்றும் விடுமுறை விபரம்",
+        "en": "Official Academic Calendar & Term Vacations Schedule 2026"
+      }
+    },
+    {
+      "id": "doc-2",
+      "filename": "al-exam-timetable-2026.pdf",
+      "category": "timetable",
+      "size": "380 KB",
+      "date": "2026-03-15",
+      "title": {
+        "si": "අ.පො.ස. උසස් පෙළ පළමු වාර පරීක්ෂණ කාලසටහන",
+        "ta": "க.பொ.த உயர்தர முதலாம் தவணை பரீட்சை அட்டவணை",
+        "en": "G.C.E. Advanced Level 1st Term Examination Schedule 2026"
+      }
+    },
+    {
+      "id": "doc-3",
+      "filename": "ol-exam-timetable-2026.pdf",
+      "category": "timetable",
+      "size": "340 KB",
+      "date": "2026-03-15",
+      "title": {
+        "si": "අ.පො.ස. සාමාන්‍ය පෙළ පළමු වාර පරීක්ෂණ කාලසටහන (10 - 11 ශ්‍රේණි)",
+        "ta": "க.பொ.த சாதாரண தர முதலாம் தவணை பரீட்சை அட்டவணை (தரம் 10-11)",
+        "en": "G.C.E. Ordinary Level 1st Term Examination Schedule (Grades 10–11)"
+      }
+    },
+    {
+      "id": "doc-4",
+      "filename": "grade-1-application-guide-2026.pdf",
+      "category": "forms",
+      "size": "512 KB",
+      "date": "2026-01-20",
+      "title": {
+        "si": "1 ශ්‍රේණිය සඳහා නිල අයදුම්පත්‍ර ආකෘතිය සහ ලේඛන මාර්ගෝපදේශය",
+        "ta": "தரம் 1 சேர்க்கை மாதிரி விண்ணப்பப் படிவமும் வழிகாட்டலும்",
+        "en": "Official Grade 1 Application Form & Verification Guidelines"
+      }
+    },
+    {
+      "id": "doc-5",
+      "filename": "school-circular-01-2026.pdf",
+      "category": "circular",
+      "size": "410 KB",
+      "date": "2026-02-01",
+      "title": {
+        "si": "අධ්‍යාපන අමාත්‍යාංශ චක්‍රලේඛ අංක 01/2026 — පාසල් පැමිණීම හා විනය",
+        "ta": "கல்வி அமைச்சு சுற்றறிக்கை 01/2026 — வருகையும் ஒழுக்கமும்",
+        "en": "Ministry of Education Circular No. 01/2026 — Attendance & Discipline"
+      }
+    }
+  ]
+}

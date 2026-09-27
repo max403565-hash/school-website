@@ -1,0 +1,183 @@
+{
+  "hero": {
+    "badge": {
+      "si": "රජයේ නිදහස් අධ්‍යාපන ආයතනයකි",
+      "ta": "இலவச அரச கல்வி நிறுவனம்",
+      "en": "Government Free Education Institution"
+    },
+    "title": {
+      "si": "නැණ ගුණ සපිරි අනාගත පරපුරක් දැයට දායාද කරන",
+      "ta": "அறிவும் நற்பண்பும் கொண்ட நாளைய தலைமுறையை உருவாக்கும்",
+      "en": "Nurturing Disciplined, Wise & Enlightened Citizens for the Nation"
+    },
+    "motto": {
+      "si": "විද්‍යා දදාති විනයං (විද්‍යාවෙන් විනය උදා කරයි)",
+      "ta": "ஒழுக்கம் தரும் கல்வி",
+      "en": "Knowledge Imparts True Discipline"
+    },
+    "designationNote": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා රජය මගින් ජාතික පාසලක් ලෙස නම් කර ඇති අතර, එය නිල ක්‍රියාපටිපාටීන්ට අනුකූලව ඉදිරියට ගමන් කරමින් පවතී. පාසල පූර්ණ වශයෙන් නොමිලේ ක්‍රියාත්මක වන රජයේ අධ්‍යාපන ආයතනයකි.",
+      "ta": "மொ/பெல்வத்த நவோத்யா இரண்டாம் நிலை கல்லூரி இலங்கை அரசாங்கத்தால் தேசிய பாடசாலையாக அறிவிக்கப்பட்டுள்ளது. இது கல்வி அமைச்சின் கீழ் முழுமையான இலவச கல்வி வழங்கும் நிறுவனமாகும்.",
+      "en": "Mo/Pelwatta Navodya Secondary College is currently designated as a National School (with official gazette completion underway). It operates strictly as a free, non-fee-charging government institution under the Ministry of Education."
+    },
+    "ctaAdmissions": {
+      "si": "ඇතුළත් කිරීම් තොරතුරු",
+      "ta": "சேர்க்கை தகவல்கள்",
+      "en": "Admissions Overview"
+    },
+    "ctaExplore": {
+      "si": "පාසල පිළිබඳ ගවේෂණය",
+      "ta": "எமது விபரம்",
+      "en": "Explore College"
+    }
+  },
+  "carousel": [
+    {
+      "image": "/images/campus-hero.jpg",
+      "caption": {
+        "si": "පැල්වත්ත හරිත සොඳුරු පරිසරයේ පිහිටි විද්‍යාලීය ප්‍රධාන ගොඩනැඟිලි සංකීර්ණය",
+        "ta": "பசுமையான பெல்வத்த சூழலில் அமைந்துள்ள கல்லூரியின் பிரதான கட்டடத் தொகுதி",
+        "en": "Main academic campus nestled in the verdant, peaceful surroundings of Pelwatta"
+      }
+    },
+    {
+      "image": "/images/science-lab.jpg",
+      "caption": {
+        "si": "නවීන උපකරණවලින් සපිරි ද්විතීයික විද්‍යාගාරයේ ප්‍රායෝගික පරීක්ෂණ වල නිරත සිසුන්",
+        "ta": "நவீன வசதிகள் கொண்ட விஞ்ஞான ஆய்வுகூடத்தில் செய்முறை பயிற்சியில் மாணவர்கள்",
+        "en": "Secondary students engaged in practical experiments at the modernized Science Laboratory"
+      }
+    },
+    {
+      "image": "/images/sports-meet.jpg",
+      "caption": {
+        "si": "විද්‍යාලීය වාර්ෂික නිවාසාන්තර මලල ක්‍රීඩා උළෙලේ උද්යෝගිමත් අවස්ථාවක්",
+        "ta": "கல்லூரியின் வருடாந்த இல்ல விளையாட்டுப் போட்டியின் சிறப்புக் கணம்",
+        "en": "Electrifying track highlights from the Annual Inter-House Athletics Meet"
+      }
+    },
+    {
+      "image": "/images/cultural-ceremony.jpg",
+      "caption": {
+        "si": "සාම්ප්‍රදායික සංස්කෘතික හා දහම් සැමරුම් මගින් සදාචාරාත්මක අගයන් ඔප්නැංවීම",
+        "ta": "பாரம்பரிய கலாசார நிகழ்வுகள் மூலம் நற்பண்புகளை வளர்த்தெடுத்தல்",
+        "en": "Fostering moral values and cultural heritage during the College Assembly ceremony"
+      }
+    }
+  ],
+  "quickTiles": [
+    {
+      "id": "admissions",
+      "title": {
+        "si": "ඇතුළත් කිරීම්",
+        "ta": "சேர்க்கைகள்",
+        "en": "Admissions"
+      },
+      "desc": {
+        "si": "1 ශ්‍රේණිය සහ අතරමැදි ශ්‍රේණි සඳහා රජයේ චක්‍රලේඛ මාර්ගෝපදේශ සහ අයදුම්පත් ලුහුබැඳීම.",
+        "ta": "தரம் 1 மற்றும் இடைநிலை சேர்க்கைக்கான அரச சுற்றறிக்கைகள் மற்றும் வழிகாட்டல்.",
+        "en": "Grade 1 and transfer admissions guidelines, criteria, and administrative tracking."
+      },
+      "link": "admissions.html",
+      "icon": "clipboard-check"
+    },
+    {
+      "id": "calendar",
+      "title": {
+        "si": "අධ්‍යයන දින දර්ශනය",
+        "ta": "கல்வி நாட்காட்டி",
+        "en": "Academic Calendar"
+      },
+      "desc": {
+        "si": "වාර විභාග, නිවාඩු දින සහ පාසල් ක්‍රියාකාරකම් කාලසටහන නිල වශයෙන් බාගත කරගන්න.",
+        "ta": "தவணைப் பரீட்சைகள், விடுமுறைகள் மற்றும் நிகழ்வுகளின் உத்தியோகபூர்வ கால அட்டவணை.",
+        "en": "Official downloadable schedules for school terms, exams, and co-curricular programs."
+      },
+      "link": "academic.html#calendar",
+      "icon": "calendar"
+    },
+    {
+      "id": "news",
+      "title": {
+        "si": "පුවත් සහ නිවේදන",
+        "ta": "செய்திகள் & சுற்றறிக்கை",
+        "en": "News & Notices"
+      },
+      "desc": {
+        "si": "විභාග ප්‍රතිඵල, සමිති ක්‍රියාකාරකම් සහ නවතම නිල දැනුම්දීම් එසැණින් දැනගන්න.",
+        "ta": "பரீட்சை முடிவுகள், விளையாட்டு வெற்றிகள் மற்றும் முக்கிய அறிவிப்புகள்.",
+        "en": "Latest achievements, academic notices, and student society milestones."
+      },
+      "link": "news.html",
+      "icon": "newspaper"
+    },
+    {
+      "id": "contact",
+      "title": {
+        "si": "විමසීම් සහ සහාය",
+        "ta": "தொடர்புகள் & தகவல்",
+        "en": "Contact & Inquiries"
+      },
+      "desc": {
+        "si": "ලිපිනය, සෘජු දුරකථන අංක, ගමන් මාර්ගය සහ තොරතුරු දැනගැනීමේ නිලධාරී විස්තර.",
+        "ta": "முகவரி, தொலைபேசி, பாதை வரைபடம் மற்றும் தகவல் அறியும் உரிமை அதிகாரி விபரங்கள்.",
+        "en": "Campus address, telephone directory, location map, and official RTI desk."
+      },
+      "link": "contact.html",
+      "icon": "map-pin"
+    }
+  ],
+  "stats": [
+    {
+      "value": "1,850+",
+      "label": {
+        "si": "ඉගෙනුම ලබන සිසු දරුවන්",
+        "ta": "கல்வி கற்கும் மாணவர்கள்",
+        "en": "Enrolled Students"
+      }
+    },
+    {
+      "value": "92",
+      "label": {
+        "si": "සුදුසුකම්ලත් ආචාර්ය මණ්ඩලය",
+        "ta": "தகைமை வாய்ந்த ஆசிரியர்கள்",
+        "en": "Qualified Educators"
+      }
+    },
+    {
+      "value": "1 - 13",
+      "label": {
+        "si": "ප්‍රාථමික සිට උසස් පෙළ දක්වා",
+        "ta": "தரம் 1 முதல் உயர்தரம் வரை",
+        "en": "Grades 1 to 13"
+      }
+    },
+    {
+      "value": "1978",
+      "label": {
+        "si": "ආරම්භක වර්ෂය",
+        "ta": "நிறுவப்பட்ட ஆண்டு",
+        "en": "Established Year"
+      }
+    }
+  ],
+  "principalSnippet": {
+    "name": {
+      "si": "කේ. එම්. සුනිල් ශාන්ත මහතා (SLEAS)",
+      "ta": "திரு. கே. எம். சுனில் சாந்த (SLEAS)",
+      "en": "Mr. K. M. Sunil Shantha (SLEAS)"
+    },
+    "role": {
+      "si": "විදුහල්පති, මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය",
+      "ta": "அதிபர், மொ/பெல்வத்த நவோத்யா இரண்டாம் நிலை கல்லூரி",
+      "en": "Principal, Mo/Pelwatta Navodya Secondary College"
+    },
+    "photo": "/images/principal.jpg",
+    "quote": {
+      "si": "“අප පාසලේ අරමුණ හුදෙක් විභාග සමතුන් බිහිකිරීම නොව, විනයගරුක, මානව හිතවාදී හා ගෝලීය අභියෝගයන්ට මුහුණ දිය හැකි පිරිපුන් දැයක් දේශයට දායාද කිරීමයි. රජයේ නොමිලේ අධ්‍යාපන වරප්‍රසාදය උපරිමයෙන් ප්‍රයෝජනයට ගනිමින් අප දූ දරුවන්ට විශිෂ්ටතම අනාගතයක් ගොඩනැගීමට අපි කැපවී සිටිමු.”",
+      "ta": "“எமது பாடசாலையின் நோக்கம் வெறும் பரீட்சை தேர்ச்சிகளை உருவாக்குவது மட்டுமல்ல; ஒழுக்கமும், சமூகப் பொறுப்பும், சவால்களை எதிர்கொள்ளும் திறனும் கொண்ட பண்பான குடிமக்களை தேசத்திற்கு வழங்குவதாகும். இலவச கல்வியின் உன்னத பயனை மாணவர்களுக்கு கொண்டு சேர்ப்பதில் நாம் உறுதியாக உள்ளோம்.”",
+      "en": "“Our paramount objective is not merely producing examination success, but shaping disciplined, empathetic, and resilient citizens equipped to thrive in an evolving world. Benefiting from Sri Lanka’s free education heritage, we are steadfast in unlocking the highest potential of every child entrusted to our care.”"
+    },
+    "link": "about.html#principal"
+  }
+}

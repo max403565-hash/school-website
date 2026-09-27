@@ -1,0 +1,238 @@
+{
+  "history": {
+    "title": {
+      "si": "පාසල් ඉතිහාසය සහ පරිණාමය",
+      "ta": "வரலாறும் வளர்ச்சியும்",
+      "en": "Our History & Heritage"
+    },
+    "paragraphs": [
+      {
+        "si": "මොනරාගල දිස්ත්‍රික්කයේ වැල්ලවාය සහ බුත්තල ප්‍රදේශ අතර පිහිටි පැල්වත්ත ප්‍රදේශයේ දූ දරුවන්ට උසස් ද්විතීයික අධ්‍යාපනයක් ලබාදීමේ උදාර අරමුණින් 1978 වසරේදී මෙම විද්‍යාලය ආරම්භ කරන ලදී. ආරම්භයේදී සීමිත පහසුකම් යටතේ ක්‍රියාත්මක වූ පාසල, කාලයත් සමග ප්‍රදේශයේ ප්‍රමුඛතම අධ්‍යාපන කේන්ද්‍රස්ථානයක් බවට පත්විය.",
+        "ta": "மொணராகலை மாவட்டத்தின் வெல்லவாய மற்றும் புத்தள பிரதேச மாணவர்களுக்கு சிறந்த இடைநிலை கல்வியை வழங்கும் உன்னத நோக்குடன் 1978 இல் இக்கல்லூரி ஆரம்பிக்கப்பட்டது. ஆரம்பத்தில் மட்டுப்படுத்தப்பட்ட வசதிகளுடன் தொடங்கப்பட்ட போதிலும், காலப்போக்கில் இப்பிரதேசத்தின் முன்னணி கல்வி நிலையமாக உருவெடுத்தது.",
+        "en": "Mo/Pelwatta Navodya Secondary College was established in 1978 to bring quality secondary and collegiate education to the vibrant farming and rural communities across Pelwatta, Buttala, and Wellawaya in Monaragala District. Over decades of steady dedication, the school has developed into an academic cornerstone in Uva Province."
+      },
+      {
+        "si": "ශ්‍රී ලංකා රජයේ නවෝද්‍යා පාසල් සංකල්පය යටතේ විද්‍යාගාර, පරිගණක සම්පත් මධ්‍යස්ථාන හා සෞන්දර්ය ඒකක වලින් සන්නද්ධ වූ මෙම විද්‍යාලය, වර්තමානය වන විට ජාතික පාසලක් ලෙස නම් කර ඇති අතර, විධිමත් ගැසට් ක්‍රියාපටිපාටිය ඉදිරියට ගමන් කරයි. පූර්ණ වශයෙන් රජයේ ප්‍රතිපාදන මගින් ක්‍රියාත්මක වන අප විද්‍යාලය කිසිදු පාසල් ගාස්තුවක් අය නොකරන සැබෑ නිදහස් අධ්‍යාපන පාරාදීසයකි.",
+        "ta": "இலங்கை அரசின் நவோத்யா திட்டத்தின் கீழ் விஞ்ஞான ஆய்வுகூடங்கள், கணினி வள நிலையங்கள் மற்றும் கலைப் பிரிவுகளுடன் மேம்படுத்தப்பட்ட இக்கல்லூரி, தற்போது தேசிய பாடசாலையாக முன்மொழியப்பட்டு உத்தியோகபூர்வ நடைமுறைகளில் உள்ளது. இது அரசின் நிதியுதவியுடன் கட்டணங்கள் ஏதுமின்றி இயங்கும் பூரண இலவச கல்வி நிலையமாகும்.",
+        "en": "Empowered by the Sri Lankan Government’s Navodya School Development framework, the campus was upgraded with state-of-the-art physics, chemistry, and biology laboratories, ICT units, and aesthetic pavilions. The school is designated as a National School (with official gazette completion currently progressing), preserving its identity as an entirely free, non-fee-charging government sanctuary for all learners."
+      }
+    ]
+  },
+  "visionMission": {
+    "vision": {
+      "title": {
+        "si": "දැක්ම (Vision)",
+        "ta": "தொலைநோக்கு (Vision)",
+        "en": "Our Vision"
+      },
+      "text": {
+        "si": "ශ්‍රී ලාංකේය අනන්‍යතාවය රැකි, ගුණ නැණ සපිරි, ගෝලීය සමාජයට ගැලපෙන විශිෂ්ටතම අනාගත පරපුරක් නිර්මාණය කිරීම.",
+        "ta": "இலங்கையின் தேசிய அடையாளத்தைப் பாதுகாத்து, அறிவும் ஒழுக்கமும் கொண்ட, உலகளாவிய சவால்களை வெல்லும் உன்னத தலைமுறையை உருவாக்குதல்.",
+        "en": "To cultivate an enlightened, ethically upright, and globally competitive generation deeply rooted in Sri Lankan civic values."
+      }
+    },
+    "mission": {
+      "title": {
+        "si": "මෙහෙවර (Mission)",
+        "ta": "பணிநோக்கு (Mission)",
+        "en": "Our Mission"
+      },
+      "text": {
+        "si": "රජයේ නිදහස් අධ්‍යාපන ප්‍රතිපත්තිය තුළ හිඳිමින්, සුදුසුකම්ලත් ඇදුරු මඬුල්ලක් හා නවීන තාක්ෂණික පහසුකම් උපයෝගී කරගනිමින්, සෑම සිසුවෙකුගේම සහජ කුසලතා පූර්ණ විභවතාවයට ගෙන ඒම.",
+        "ta": "அரசின் இலவசக் கல்விக் கொள்கைக்கு அமைவாக, தகைமை வாய்ந்த ஆசிரியர்கள் மற்றும் நவீன தொழில்நுட்ப வளங்கள் ஊடாக ஒவ்வொரு மாணவரின் இயல்பான திறன்களை முழுமையாக மலரச் செய்தல்.",
+        "en": "Within the noble framework of Sri Lanka’s free education policy, utilizing dedicated educators and modern technological facilities to foster holistic academic, co-curricular, and personal excellence for every student."
+      }
+    }
+  },
+  "mottoCrest": {
+    "motto": {
+      "text": {
+        "si": "විද්‍යා දදාති විනයං",
+        "ta": "ஒழுக்கம் தரும் கல்வி",
+        "en": "Vidya Dadati Vinayam (Knowledge Imparts Discipline)"
+      },
+      "explanation": {
+        "si": "සැබෑ අධ්‍යාපනයේ පරම ඵලය විනය සහ නිහතමානී බවයි. දැනුමෙන් සන්නද්ධ වන ශිෂ්‍යයා තමාගේ දැනුම මමත්වයෙන් තොරව සමාජයේ යහපැවැත්ම උදෙසා යොමු කළ යුතුය යන්න මෙයින් අර්ථවත් වේ.",
+        "ta": "உண்மையான கல்வியின் உயர்ந்த பயன் ஒழுக்கமும் பணிவுமேயாகும். அறிவைப் பெறும் மாணவன் தற்பெருமையின்றி அதனை சமூகத்தின் மேன்மைக்கு பயன்படுத்த வேண்டும் என்பதை இது உணர்த்துகிறது.",
+        "en": "Originating from classical wisdom, it emphasizes that true knowledge refines character, generates humility, and instills self-discipline to serve society selflessly."
+      }
+    },
+    "crest": {
+      "title": {
+        "si": "පාසල් ලාංඡනයේ අරුත",
+        "ta": "பாடசாலை சின்னத்தின் விளக்கம்",
+        "en": "Symbolism of College Crest"
+      },
+      "elements": [
+        {
+          "name": {
+            "si": "ඥාන ප්‍රදීපය (පහන)",
+            "ta": "ஞான விளக்கு",
+            "en": "Traditional Oil Lamp of Wisdom"
+          },
+          "desc": {
+            "si": "අඥානකම නමැති අන්ධකාරය දුරුකොට ප්‍රඥාවේ ආලෝකය ප්‍රජාව වෙත විහිදුවීම සංකේතවත් කරයි.",
+            "ta": "அறியாமை இருளைப் போக்கி ஞான ஒளியை பரப்பும் அடையாளம்.",
+            "en": "Dispelling the darkness of ignorance with radiant intellectual enlightenment."
+          }
+        },
+        {
+          "name": {
+            "si": "විවර වූ පුස්තකය",
+            "ta": "திறந்த புத்தகம்",
+            "en": "Open Book"
+          },
+          "desc": {
+            "si": "නිරන්තර ඥාන ගවේෂණය, විෂය ධාරාවන් හා නූතන අධ්‍යයන හැකියාවන් නිරූපණය කරයි.",
+            "ta": "தொடர்ச்சியான அறிவுத் தேடல் மற்றும் கல்விப் புலமையை குறிக்கிறது.",
+            "en": "Continuous pursuit of scholarly inquiry, science, and classical arts."
+          }
+        },
+        {
+          "name": {
+            "si": "පැසුණු වී කරල්",
+            "ta": "நெற்கதிர்கள்",
+            "en": "Golden Paddy Sheaves"
+          },
+          "desc": {
+            "si": "ඌව වෙල්ලස්ස ඓතිහාසික කෘෂිකාර්මික උරුමය, සමෘද්ධිය සහ දැයට හිතැති බව පෙන්වයි.",
+            "ta": "ஊவா-வெல்லஸ்ஸ வரலாற்று விவசாய பாரம்பரியம் மற்றும் செழிப்பின் சின்னம்.",
+            "en": "Honoring the historic agrarian fertility, resilience, and heritage of Uva-Wellassa."
+          }
+        },
+        {
+          "name": {
+            "si": "නීල සහ ස්වර්ණ වර්ණ",
+            "ta": "நீலம் மற்றும் தங்க நிறங்கள்",
+            "en": "Navy Blue & Gold Tones"
+          },
+          "desc": {
+            "si": "ගැඹුරු සන්සුන් බුද්ධිය (නීල) සහ විජයග්‍රාහී උත්තරීතර බව (ස්වර්ණ) සංකලනය වේ.",
+            "ta": "ஆழ்ந்த அமைதியான அறிவு (நீலம்) மற்றும் வெற்றியின் பெருமை (தங்கம்).",
+            "en": "Representing serene intellectual depth (Navy Blue) and glorious achievement (Gold)."
+          }
+        }
+      ]
+    },
+    "anthem": {
+      "title": {
+        "si": "විද්‍යාලීය ගීතය",
+        "ta": "பாடசாலை கீதம்",
+        "en": "College Anthem"
+      },
+      "lyrics": {
+        "si": "සිරිලක රන් කෙත ඌව පුරවරේ — නැණ පහනින් බැබළෙන විදුහල් මෑණි\nපැල්වත්තා නවෝද්‍යා විදුහල් මාතා — සාදරයෙන් වඳිමු බැතින් නිරතුරු\nවිද්‍යා දදාති විනයං තේමාවෙන් — නැණ ගුණ දම් පිරි පරපුර සදමින්\nදෙස් විදෙස් දිනන දූ පුතුන් තනන — ඔබෙ නම වැජඹේවා සදාකල්හි!",
+        "ta": "ஊவா நிலத்தின் பொன் விளக்கே — எம் நவோத்யா கலைத்தாயே\nபெல்வத்தையின் நற்பெருமை நீயே — பணிந்து போற்றுவோம் உன்னையே\nஒழுக்கம் தரும் கல்வி எமது முழக்கம் — நல்லறிவும் நற்பண்பும் வளர்ப்பாய்\nதேசத்தின் தலைசிறந்த மாணவர் படைக்க — எந்நாளும் வாழ்க நினது பெருமை!",
+        "en": "Hail to our mother in glorious Uva — Beacon of wisdom shining serene,\nMo/Pelwatta Navodya sacred college — With reverence and honor we sing.\nKnowledge and discipline guiding our footsteps — Shaping a noble youth for our land,\nMay your proud name endure forever — A beacon of truth across Lanka's strand!"
+      }
+    }
+  },
+  "principals": [
+    {
+      "years": "1978 - 1985",
+      "name": {
+        "si": "එච්. ඩී. විජේසිංහ මහතා",
+        "ta": "திரு. எච්. டி. விஜேசிங்க",
+        "en": "Mr. H. D. Wijesinghe"
+      },
+      "era": {
+        "si": "ආරම්භක විදුහල්පති",
+        "ta": "ஸ்தாபக அதிபர்",
+        "en": "Founding Principal"
+      }
+    },
+    {
+      "years": "1985 - 1993",
+      "name": {
+        "si": "පී. බී. හේමපාල මහතා",
+        "ta": "திரு. பி. பி. ஹேமபால",
+        "en": "Mr. P. B. Hemapala"
+      },
+      "era": {
+        "si": "ද්විතීයික අංශ පුළුල් කිරීම",
+        "ta": "இடைநிலைப் பிரிவு விரிவாக்கம்",
+        "en": "Secondary Expansion Era"
+      }
+    },
+    {
+      "years": "1993 - 2002",
+      "name": {
+        "si": "එම්. ගුණසේකර මහත්මිය",
+        "ta": "திருமதி. எம். குணசேகர",
+        "en": "Mrs. M. Gunasekara"
+      },
+      "era": {
+        "si": "විද්‍යා හා වාණිජ අංශ ස්ථාපනය",
+        "ta": "விஞ்ஞான, வர்த்தக பிரிவுகள்",
+        "en": "Science & Commerce Development"
+      }
+    },
+    {
+      "years": "2002 - 2012",
+      "name": {
+        "si": "ආර්. එම්. ධර්මදාස මහතා",
+        "ta": "திரு. ஆர். எம். தர்மதாச",
+        "en": "Mr. R. M. Dharmadasa"
+      },
+      "era": {
+        "si": "නවෝද්‍යා පාසල් සංවර්ධනය",
+        "ta": "நவோத்யா பாடசாலை தரம்",
+        "en": "Navodya Upgrade Era"
+      }
+    },
+    {
+      "years": "2012 - 2021",
+      "name": {
+        "si": "ඩබ්. එම්. කරුණාරත්න මහතා",
+        "ta": "திரு. டபிள்யூ. எம். கருணாரத்ன",
+        "en": "Mr. W. M. Karunaratne"
+      },
+      "era": {
+        "si": "තාක්ෂණවේද පීඨය සහ ක්‍රීඩා පිටිය",
+        "ta": "தொழில்நுட்ப பீடம் & அரங்கம்",
+        "en": "Technology Faculty & Stadium"
+      }
+    },
+    {
+      "years": "2021 - Present",
+      "name": {
+        "si": "කේ. එම්. සුනිල් ශාන්ත මහතා (SLEAS)",
+        "ta": "திரு. கே. எம். சுனில் சாந்த (SLEAS)",
+        "en": "Mr. K. M. Sunil Shantha (SLEAS)"
+      },
+      "era": {
+        "si": "ජාතික පාසල් නම් කිරීම සහ ඩිජිටල්කරණය",
+        "ta": "தேசிய பாடசாலை மாற்றம்",
+        "en": "National School Designation & Digital Era"
+      }
+    }
+  ],
+  "location": {
+    "address": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, පැල්වත්ත, බුත්තල / මොනරාගල, ශ්‍රී ලංකාව",
+      "ta": "மொ/பெல்வத்த நவோத்யா இரண்டாம் நிலை கல்லூரி, பெல்வத்த, புத்தள / மொணராகலை, இலங்கை",
+      "en": "Mo/Pelwatta Navodya Secondary College, Pelwatta, Buttala / Monaragala, Sri Lanka"
+    },
+    "mapEmbedUrl": "https://maps.google.com/maps?q=6.747490,81.194567&hl=en&z=16&output=embed",
+    "directionsUrl": "https://maps.app.goo.gl/sXFTposc3qnmN1Ho7"
+  },
+  "principalMessage": {
+    "title": {
+      "si": "විදුහල්පතිතුමාගේ පණිවිඩය",
+      "ta": "அதிபரின் செய்தி",
+      "en": "Principal's Message"
+    },
+    "paragraphs": [
+      {
+        "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය යනු මොනරාගල දිස්ත්‍රික්කයේ දූ දරුවන්ගේ අනාගතය ආලෝකමත් කරමින් දශක හතරකට වැඩි කාලයක් පුරා ගොඩනැඟුණු අධ්‍යාපනික පින්බිමකි. රජයේ නවෝද්‍යා පාසල් ව්‍යාපෘතිය හරහා විද්‍යාගාර, පරිගණක හා කාක්ෂික තාක්ෂණවේද පහසුකම් එක්වීමත් සමග ග්‍රාමීය ශිෂ්‍ය පරපුරට ජාතික මට්ටමේ අධ්‍යාපනික තරගකාරීත්වයට නොබියව මුහුණදීමට මංපෙත් විවර විය.",
+        "ta": "மொ/பெல்வத்த நவோத்யா இரண்டாம் நிலை கல்லூரி என்பது மொணராகலை மாவட்ட மாணவர்களின் எதிர்காலத்தை ஒளிரச் செய்து நான்கு தசாப்தங்களுக்கும் மேலாக கட்டியெழுப்பப்பட்ட ஒரு கல்வித் தளமாகும். நவோத்யா திட்டத்தின் கீழ் விஞ்ஞான ஆய்வுகூடங்கள், கணினி மற்றும் தொழினுட்ப வசதிகள் ஏற்படுத்தப்பட்டதன் மூலம் கிராமப்புற மாணவர்கள் தேசிய மட்டத்திலான கல்விப் போட்டிகளை வெற்றிகொள்ள வழியேற்பட்டது.",
+        "en": "Mo/Pelwatta Navodya Secondary College stands as an educational sanctuary dedicated to illuminating the futures of students across Monaragala District for over four decades. Through the government's Navodya Development Scheme, advanced laboratories, computer centers, and technology faculties have empowered rural students to compete with distinction on national platforms."
+      },
+      {
+        "si": "අපගේ පරම අධිෂ්ඨානය වන්නේ, විභාග ජයග්‍රහණ අත්කරගන්නා අතරම, විනය, මනුෂ්‍යත්වය සහ ශ්‍රී ලාංකේය සංස්කෘතික සාරධර්මවලින් පිරිපුන් පුරවැසියන් දැයට දායාද කිරීමයි. රජයේ නිදහස් අධ්‍යාපන ප්‍රතිපත්තියට අනුකූලව ක්‍රියාත්මක වන අප පාසලේ සියලුම අධ්‍යාපනික සේවාවන් සම්පූර්ණයෙන්ම නොමිලේ ලබාදෙන අතර, ඒ සඳහා කැපවන සමස්ත ආචාර්ය මණ්ඩලයටත්, සහයෝගය දක්වන දෙමාපියන්ටත් මාගේ හදපිරි ස්තූතිය පුද කරමි.",
+        "ta": "எமது உயர்ந்த இலட்சியம், பரீட்சை வெற்றிகளை ஈட்டுவதுடன் ஒழுக்கம், சமூகப் பண்பு மற்றும் கலாசார விழுமியங்கள் கொண்ட சிறந்த குடிமக்களை தேசத்திற்கு வழங்குவதாகும். அரசின் இலவசக் கல்விக் கொள்கைக்கு அமைவாக இயங்கும் எமது கல்லூரியில் அனைத்து கல்விச் சேவைகளும் இலவசமாக வழங்கப்படுகின்றன. இதற்கு அர்ப்பணிப்புடன் உழைக்கும் ஆசிரியர்களுக்கும் ஒத்துழைக்கும் பெற்றோர்களுக்கும் எனது மனமார்ந்த நன்றிகள்.",
+        "en": "Our ultimate vision is cultivating academically accomplished, ethically disciplined, and compassionate citizens rooted in Sri Lankan civic values. Operating under the nation's revered free education charter, our academic provisions are completely cost-free. I extend deepest appreciation to our dedicated teaching faculty and supportive parents."
+      }
+    ]
+  }
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Events | පුවත් සහ සිදුවීම් | செய்திகள் - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Latest announcements, academic notices, sports updates, and circulars from Mo/Pelwatta Navodya Secondary College, Monaragala." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="News & Events - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Announcements, term exams, circulars, and student milestones." />
+  <meta property="og:image" content="/images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="/images/crest.svg" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Header Banner -->
+  <div class="page-header-banner">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <span>/</span>
+        <span data-i18n="nav.news">News & Events</span>
+      </div>
+      <h1 class="page-banner-title" data-i18n="pages.news.title">පුවත් සහ නිවේදන (News & Events)</h1>
+      <p class="page-banner-desc" data-i18n="pages.news.desc">
+        විද්‍යාලයේ නවතම තොරතුරු, විභාග නිවේදන, ක්‍රීඩා ජයග්‍රහණ සහ අමාත්‍යාංශ චක්‍රලේඛ
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+    <!-- Filter and Search Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="category-filter-container">
+        <!-- Populated by JS -->
+      </div>
+
+      <div style="width: 100%; max-width: 340px; position: relative;">
+        <input 
+          type="text" 
+          id="news-search-input" 
+          placeholder="සොයන්න / தேடுங்கள் / Search notices..." 
+          data-i18n-attr="placeholder:pages.news.searchPlaceholder"
+          class="form-input" 
+          style="padding: 0.5rem 0.875rem; font-size: 0.875rem;" 
+          autocomplete="off"
+        />
+      </div>
+    </div>
+
+    <!-- Live Search Status Indicator -->
+    <div id="news-search-status" style="margin-bottom: 1.5rem; font-size: 0.875rem; color: var(--text-muted); display: none;"></div>
+
+    <!-- News Grid -->
+    <div class="news-grid" id="news-grid">
+      <!-- Populated by JS -->
+    </div>
+  </main>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/common.js"></script>
+  <script>
+    (function () {
+      let newsIndexData = null;
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      async function loadData() {
+        if (window.i18n && window.i18n.fetchJSON) {
+          newsIndexData = await window.i18n.fetchJSON('content/news/index.json');
+        } else {
+          try {
+            const res = await fetch('/content/news/index.json');
+            newsIndexData = await res.json();
+          } catch (e) {}
+        }
+        renderContent();
+        if (window.i18n && window.i18n.triggerRender) {
+          window.i18n.triggerRender();
+        }
+      }
+
+      function renderContent(forcedLang) {
+        if (!newsIndexData) return;
+        const lang = window.i18n ? window.i18n.resolveLang(forcedLang) : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        // Sync search query from input field if available
+        const searchInput = document.getElementById('news-search-input');
+        if (searchInput) {
+          searchQuery = searchInput.value || '';
+        }
+
+        // Render Category Filter Buttons
+        const catContainer = document.getElementById('category-filter-container');
+        if (catContainer && newsIndexData.categories) {
+          catContainer.innerHTML = newsIndexData.categories.map(cat => `
+            <button type="button" class="access-control-btn ${activeCategory === cat.id ? 'active' : ''}" data-cat="${cat.id}" style="font-size:0.875rem; padding:0.4rem 0.875rem;">
+              ${pick(cat.label, lang)}
+            </button>
+          `).join('');
+
+          catContainer.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+              activeCategory = btn.getAttribute('data-cat');
+              renderContent();
+            });
+          });
+        }
+
+        // Filter Articles: by category AND live search keyword
+        let filtered = newsIndexData.articles || [];
+        if (activeCategory !== 'all') {
+          filtered = filtered.filter(a => a.category === activeCategory);
+        }
+
+        const q = searchQuery.trim().toLowerCase();
+        const statusEl = document.getElementById('news-search-status');
+
+        if (q !== '') {
+          filtered = filtered.filter(a => {
+            const rawTitle = pick(a.title, lang) || '';
+            const rawDesc = pick(a.excerpt || a.description, lang) || '';
+            const title = (window.i18n && window.i18n.stripMarkdown) ? window.i18n.stripMarkdown(rawTitle).toLowerCase() : rawTitle.toLowerCase();
+            const desc = (window.i18n && window.i18n.stripMarkdown) ? window.i18n.stripMarkdown(rawDesc).toLowerCase() : rawDesc.toLowerCase();
+            return title.includes(q) || desc.includes(q);
+          });
+
+          if (statusEl) {
+            statusEl.style.display = 'block';
+            const count = filtered.length;
+            statusEl.textContent = lang === 'si'
+              ? `"${searchQuery}" සඳහා ප්‍රතිඵල: ${count}`
+              : (lang === 'ta'
+                ? `"${searchQuery}" இற்கான முடிவுகள்: ${count}`
+                : `Showing ${count} result${count === 1 ? '' : 's'} for "${searchQuery}"`);
+          }
+        } else if (statusEl) {
+          statusEl.style.display = 'none';
+        }
+
+        // Render Articles Grid
+        const grid = document.getElementById('news-grid');
+        if (!grid) return;
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--bg-subtle); border-radius: var(--radius-md); border: 1px dashed var(--border);">
+              <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 0.5rem;">
+                ${lang === 'si' ? 'අදාළ පුවත් හෝ නිවේදන හමු නොවීය.' : (lang === 'ta' ? 'පொருத்தமான செய்திகள் எதுவும் கிடைக்கவில்லை.' : 'No announcements match your search criteria.')}
+              </p>
+              ${q ? `<button type="button" id="clear-search-btn" class="btn-secondary" style="font-size: 0.8125rem; margin-top: 0.75rem;">${lang === 'si' ? 'සෙවුම ඉවත් කරන්න' : (lang === 'ta' ? 'தேடலை அழிக்கவும்' : 'Clear Search')}</button>` : ''}
+            </div>
+          `;
+          const clearBtn = document.getElementById('clear-search-btn');
+          if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+              if (searchInput) searchInput.value = '';
+              searchQuery = '';
+              renderContent();
+            });
+          }
+          return;
+        }
+
+        grid.innerHTML = filtered.map(item => {
+          const rawTitle = pick(item.title, lang);
+          const rawExcerpt = pick(item.excerpt || item.description, lang);
+          const defaultHref = `news-detail.html?id=${item.id}`;
+          const cleanTitle = (window.i18n && window.i18n.stripMarkdown)
+            ? window.i18n.stripMarkdown(rawTitle)
+            : String(rawTitle).replace(/\[(.*?)\]\([^)]*\)/g, '$1').replace(/[*_~`#]/g, '').trim();
+          const titleHtml = (window.i18n && window.i18n.renderTitleHtml)
+            ? window.i18n.renderTitleHtml(rawTitle, defaultHref)
+            : `<a href="${defaultHref}">${cleanTitle}</a>`;
+          const excerptHtml = (window.i18n && window.i18n.renderMarkdown)
+            ? window.i18n.renderMarkdown(rawExcerpt)
+            : rawExcerpt;
+
+          return `
+          <article class="news-card">
+            <a href="${defaultHref}" class="news-card-img-wrapper" aria-label="${cleanTitle}">
+              <img src="${item.thumbnail}" alt="${cleanTitle}" class="news-card-img" loading="lazy" />
+            </a>
+            <div class="news-card-body">
+              <div class="news-card-meta">
+                <span>📅 ${item.date}</span>
+                <span aria-hidden="true">·</span>
+                <span style="text-transform: capitalize; color: var(--gold-dark); font-weight: 600;">${item.category}</span>
+              </div>
+              <h3 class="news-card-title">
+                ${titleHtml}
+              </h3>
+              <p class="news-card-excerpt">${excerptHtml}</p>
+              <div class="news-card-footer">
+                <a href="${defaultHref}">
+                  ${lang === 'si' ? 'සම්පූර්ණ පුවත' : (lang === 'ta' ? 'முழு விபரம்' : 'Read Full Notice')} &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+        }).join('');
+      }
+
+      // Live search input handling (input, keyup, change, search events)
+      function attachSearchListeners() {
+        const input = document.getElementById('news-search-input');
+        if (!input) return;
+        ['input', 'keyup', 'change', 'search'].forEach(evt => {
+          input.addEventListener(evt, e => {
+            searchQuery = e.target.value || '';
+            renderContent();
+          });
+        });
+      }
+
+      if (window.i18n && window.i18n.registerPageRenderer) {
+        window.i18n.registerPageRenderer(renderContent);
+      }
+      window.addEventListener('languageChanged', (e) => renderContent(e.detail && e.detail.lang));
+      if (window.i18n && window.i18n.whenReady) {
+        window.i18n.whenReady().then(() => renderContent());
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          attachSearchListeners();
+          loadData();
+        });
+      } else {
+        attachSearchListeners();
+        loadData();
+      }
+    })();
+  </script>
+</body>
+</html>
