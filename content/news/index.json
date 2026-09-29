@@ -43,6 +43,22 @@
   ],
   "articles": [
     {
+      "id": "news-1202",
+      "date": "2026-09-29",
+      "category": "academic",
+      "title": {
+        "si": "S.A.Chanuk",
+        "ta": "",
+        "en": ""
+      },
+      "excerpt": {
+        "si": "",
+        "ta": "",
+        "en": ""
+      },
+      "thumbnail": "/images/campus-hero.jpg"
+    },
+    {
       "id": "news-1",
       "date": "2026-03-20",
       "category": "academic",
