@@ -1,10 +1,45 @@
 {
   "categories": [
-    { "id": "all", "title": { "si": "සියල්ල", "ta": "அனைத்தும்", "en": "All News" } },
-    { "id": "academic", "title": { "si": "ශාස්ත්‍රීය", "ta": "கல்வி", "en": "Academic" } },
-    { "id": "sports", "title": { "si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports" } },
-    { "id": "events", "title": { "si": "විශේෂ උත්සව", "ta": "நிகழ்வுகள்", "en": "Events" } },
-    { "id": "circulars", "title": { "si": "නිල චක්‍රලේඛ", "ta": "சுற்றறிக்கைகள்", "en": "Official Circulars" } }
+    {
+      "id": "all",
+      "title": {
+        "si": "සියල්ල",
+        "ta": "அனைத்தும்",
+        "en": "All News"
+      }
+    },
+    {
+      "id": "academic",
+      "title": {
+        "si": "ශාස්ත්‍රීය",
+        "ta": "கல்வி",
+        "en": "Academic"
+      }
+    },
+    {
+      "id": "sports",
+      "title": {
+        "si": "ක්‍රීඩා",
+        "ta": "விளையாட்டு",
+        "en": "Sports"
+      }
+    },
+    {
+      "id": "events",
+      "title": {
+        "si": "විශේෂ උත්සව",
+        "ta": "நிகழ்வுகள்",
+        "en": "Events"
+      }
+    },
+    {
+      "id": "circulars",
+      "title": {
+        "si": "නිල චක්‍රලේඛ",
+        "ta": "சுற்றறிக்கைகள்",
+        "en": "Official Circulars"
+      }
+    }
   ],
   "articles": [
     {
@@ -12,7 +47,7 @@
       "date": "2026-09-29",
       "category": "academic",
       "title": {
-        "si": "S.A. චනුක් ශිෂ්‍යයාගේ අධ්‍යයන ඇගයීම",
+        "si": "Test 1",
         "ta": "மாணவர் எஸ். ஏ. சானுக்கின் கல்வி மதிப்பீடு",
         "en": "Academic Commendation for Student S.A. Chanuk"
       },
