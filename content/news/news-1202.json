@@ -4,20 +4,15 @@
   "category": "academic",
   "image": "images/campus-hero.jpg",
   "title": {
-    "si": "S.A. චනුක් ශිෂ්‍යයාගේ අධ්‍යයන ඇගයීම",
+    "si": "Test 1",
     "ta": "மாணவர் எஸ். ஏ. சானுக்கின் கல்வி மதிப்பீடு",
     "en": "Academic Commendation for Student S.A. Chanuk"
   },
   "content": [
     {
-      "si": "විද්‍යාලීය අධ්‍යයන අංශය මගින් සිසුන්ගේ කුසලතා ඇගයීම යටතේ එස්. ඒ. චනුක් දරුවාගේ විශිෂ්ට ප්‍රගතිය අගය කරනු ලැබේ.",
-      "ta": "கல்லூரியின் கல்விப் பிரிவின் ஊடாக மாணவர் எஸ். ஏ. சானுக்கின் சிறப்பான கல்வி முன்னேற்றம் பாராட்டப்படுகிறது.",
-      "en": "Under the College Academic Section commendation program, student S.A. Chanuk is recognized for exemplary academic progress."
-    },
-    {
-      "si": "අධ්‍යාපන හා විනය ක්ෂේත්‍රයන්හි දැක්වූ උනන්දුව සහ කැපවීම අගයමින් විදුහල්පතිතුමා ඇතුළු ආචාර්ය මණ්ඩලය සිය උණුසුම් සුබපැතුම් එක් කරති.",
-      "ta": "கல்வி மற்றும் ஒழுக்கத்தில் காட்டிய ஆர்வத்தை பாராட்டி அதிபர் உள்ளிட்ட ஆசிரியர் குழாம் வாழ்த்துக்களைத் தெரிவித்துக் கொள்கிறது.",
-      "en": "The Principal and Academic Staff extend congratulations for demonstrating high enthusiasm, diligence, and upright character."
+      "si": "විද්‍යාලීය අධ්‍යයන අංශය මගින් සිසුන්ගේ කුසලතා ඇගයීම යටතේ එස්. ඒ. චනුක් දරුවාගේ විශිෂ්ට ප්‍රගතිය අගය කරනු ලැබේ.\n\nඅධ්‍යාපන හා විනය ක්ෂේත්‍රයන්හි දැක්වූ උනන්දුව සහ කැපවීම අගයමින් විදුහල්පතිතුමා ඇතුළු ආචාර්ය මණ්ඩලය සිය උණුසුම් සුබපැතුම් එක් කරති.",
+      "ta": "கல்லூரியின் கல்விப் பிரிவின் ஊடாக மாணவர் எஸ். ஏ. சானுக்கின் சிறப்பான கல்வி முன்னேற்றம் பாராட்டப்படுகிறது.\n\nகல்வி மற்றும் ஒழுக்கத்தில் காட்டிய ஆர்வத்தை பாராட்டி அதிபர் உள்ளிட்ட ஆசிரியர் குழாம் வாழ்த்துக்களைத் தெரிவித்துக் கொள்கிறது.",
+      "en": "Under the College Academic Section commendation program, student S.A. Chanuk is recognized for exemplary academic progress.\n\nThe Principal and Academic Staff extend congratulations for demonstrating high enthusiasm, diligence, and upright character."
     }
   ]
 }
