@@ -1,0 +1,23 @@
+{
+  "id": "news-2",
+  "date": "2026-03-10",
+  "category": "sports",
+  "image": "images/sports-meet.jpg",
+  "title": {
+    "si": "වාර්ෂික ක්‍රීඩා උළෙල සාර්ථකව නිමාවේ",
+    "ta": "வருடாந்த விளையாட்டுப் போட்டி சிறப்பாக நிறைவடைந்தது",
+    "en": "Annual Athletic Sports Meet 2026 Concludes with Colorful Ceremony"
+  },
+  "content": [
+    {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ වාර්ෂික ක්‍රීඩා උළෙල විද්‍යාලීය ක්‍රීඩාංගණයේදී උත්කර්ෂවත් අන්දමින් පැවැත්විණි. මොනරාගල කලාප අධ්‍යාපන අධ්‍යක්ෂතුමා සහ ප්‍රදේශයේ සම්භාවනීය අමුත්තන් රැසක් මේ අවස්ථාවට එක්වූහ.",
+      "ta": "வருடாந்த விளையாட்டுப் போட்டி கல்லூரி மைதானத்தில் மிகச் சிறப்பாக நடைபெற்றது. வலயக் கல்விப் பணிப்பாளர் உள்ளிட்ட பல முக்கியஸ்தர்கள் கலந்து சிறப்பித்தனர்.",
+      "en": "The Annual Athletic Sports Meet of Mo/Pelwatta Navodya Secondary College concluded successfully at the college sports grounds, graced by the Zonal Director of Education."
+    },
+    {
+      "si": "මලල ක්‍රීඩා ඉසව් ගණනාවකින් නව පාසල් වාර්තා පිහිටුවීමට දක්ෂ ක්‍රීඩක ක්‍රීඩිකාවන් සමත් වූ අතර, ජයග්‍රාහී සිසුන්ට කුසලාන සහ සහතිකපත් පිරිනමන ලදී.",
+      "ta": "பல புதிய தடகள சாதனைகள் நிகழ்த்தப்பட்டதுடன் வெற்றிபெற்ற மாணவர்களுக்கு வெற்றிக்கிண்ணங்களும் சான்றிதழ்களும் வழங்கி கௌரவிக்கப்பட்டன.",
+      "en": "Multiple track and field records were renewed in sprints, relays, and long jump. Trophies, medals, and certificates were awarded to the winning students."
+    }
+  ]
+}

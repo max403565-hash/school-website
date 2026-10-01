@@ -1,0 +1,91 @@
+{
+  "categories": [
+    { "id": "all", "title": { "si": "සියල්ල", "ta": "அனைத்தும்", "en": "All News" } },
+    { "id": "academic", "title": { "si": "ශාස්ත්‍රීය", "ta": "கல்வி", "en": "Academic" } },
+    { "id": "sports", "title": { "si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports" } },
+    { "id": "events", "title": { "si": "විශේෂ උත්සව", "ta": "நிகழ்வுகள்", "en": "Events" } },
+    { "id": "circulars", "title": { "si": "නිල චක්‍රලේඛ", "ta": "சுற்றறிக்கைகள்", "en": "Official Circulars" } }
+  ],
+  "articles": [
+    {
+      "id": "news-1202",
+      "date": "2026-09-29",
+      "category": "academic",
+      "title": {
+        "si": "S.A. චනුක් ශිෂ්‍යයාගේ අධ්‍යයන ඇගයීම",
+        "ta": "மாணவர் எஸ். ஏ. சானுக்கின் கல்வி மதிப்பீடு",
+        "en": "Academic Commendation for Student S.A. Chanuk"
+      },
+      "excerpt": {
+        "si": "විද්‍යාලීය අධ්‍යයන අංශය මගින් සිසුන්ගේ කුසලතා ඇගයීම යටතේ එස්. ඒ. චනුක් දරුවාගේ විශිෂ්ට ප්‍රගතිය අගය කරනු ලැබේ.",
+        "ta": "கல்லூரியின் கல்விப் பிரிவின் ஊடாக மாணவர் எஸ். ஏ. சானுக்கின் சிறப்பான கல்வி முன்னேற்றம் பாராட்டப்படுகிறது.",
+        "en": "Under the College Academic Section commendation program, student S.A. Chanuk is recognized for exemplary academic progress."
+      },
+      "thumbnail": "images/campus-hero.jpg"
+    },
+    {
+      "id": "news-1",
+      "date": "2026-03-20",
+      "category": "academic",
+      "title": {
+        "si": "2026 පළමු පාසල් වාර විභාග කාලසටහන ප්‍රකාශයට පත් කෙරේ",
+        "ta": "2026 முதலாம் தவணை பரீட்சை கால அட்டவணை வெளியிடப்பட்டது",
+        "en": "First Term Examination Timetables 2026 Released for All Grades"
+      },
+      "excerpt": {
+        "si": "6 ශ්‍රේණියේ සිට 13 ශ්‍රේණිය දක්වා සියලුම ශ්‍රේණි සඳහා පළමු පාසල් වාර විභාග අප්‍රේල් මස මුල් සතියේදී ආරම්භ වේ. විභාග කාලසටහන් බාගත කරගත හැක.",
+        "ta": "தரம் 6 முதல் 13 வரையான சகல மாணவர்களுக்கான முதலாம் தவணை பரீட்சை ஏப்ரல் முதல் வாரத்தில் தொடங்கும். முழு அட்டவணை பதிவிறக்கம் செய்யக் கிடைக்கிறது.",
+        "en": "The First Term Examinations for Grades 6 through 13 will commence in the first week of April. Detailed subject schedules are now available for download."
+      },
+      "thumbnail": "images/campus-hero.jpg"
+    },
+    {
+      "id": "news-2",
+      "date": "2026-03-10",
+      "category": "sports",
+      "title": {
+        "si": "වාර්ෂික ක්‍රීඩා උළෙල සාර්ථකව නිමාවේ",
+        "ta": "வருடாந்த விளையாட்டுப் போட்டி சிறப்பாக நிறைவடைந்தது",
+        "en": "Annual Athletic Sports Meet 2026 Concludes with Colorful Ceremony"
+      },
+      "excerpt": {
+        "si": "විදුහල්පතිතුමාගේ ප්‍රධානත්වයෙන් සහ කලාප අධ්‍යාපන නිලධාරීන්ගේ සහභාගීත්වයෙන් පැවති ක්‍රීඩා උළෙලේදී නව තරග වාර්තා රැසක් බිහිවිය.",
+        "ta": "அதிபரின் தலைமையில் நடைபெற்ற விளையாட்டுப் போட்டியில் பல புதிய சாதனைகள் நிலைநாட்டப்பட்டன.",
+        "en": "The Annual Sports Meet concluded with new track records set by collegiate athletes, attended by regional education directors."
+      },
+      "thumbnail": "images/sports-meet.jpg"
+    },
+    {
+      "id": "news-3",
+      "date": "2026-02-18",
+      "category": "academic",
+      "title": {
+        "si": "උසස් පෙළ තාක්ෂණවේදය සහ විද්‍යා අංශයේ විශිෂ්ට ප්‍රතිඵල",
+        "ta": "உயர்தர தொழில்நுட்பம் மற்றும் விஞ்ஞான பிரிவுகளில் அமோக சாதனை",
+        "en": "Outstanding Results Recorded in A/L Science and Technology Streams"
+      },
+      "excerpt": {
+        "si": "අ.පො.ස. උසස් පෙළ විභාගයෙන් ඉංජිනේරු තාක්ෂණවේදය සහ ජීව විද්‍යා අංශවලින් සිසුන් රැසක් විශ්වවිද්‍යාල ප්‍රවේශය සඳහා සුදුසුකම් ලබා ඇත.",
+        "ta": "க.பொ.த. உயர்தரப் பரீட்சையில் மாணவர்கள் பலர் பல்கலைக்கழக பிரவேசத்திற்கு தகுதி பெற்று கல்லூரியை பெருமைப்படுத்தியுள்ளனர்.",
+        "en": "Numerous students qualified for direct state university admissions from Engineering Technology and Biosystems streams."
+      },
+      "thumbnail": "images/science-lab.jpg"
+    },
+    {
+      "id": "news-4",
+      "date": "2026-01-25",
+      "category": "circulars",
+      "title": {
+        "si": "අතරමැදි ශ්‍රේණි සඳහා අයදුම්පත් කැඳවීම පිළිබඳ දැනුම්දීම",
+        "ta": "இடைநிலை சேர்க்கை விண்ணப்பங்கள் கோரல் அறிவிப்பு",
+        "en": "Notice on Intermediate Grade Admission Applications 2026"
+      },
+      "excerpt": {
+        "si": "අධ්‍යාපන අමාත්‍යාංශයේ අනුමැතියට යටත්ව අතරමැදි ශ්‍රේණිවල පවතින පුරප්පාඩු සඳහා අයදුම්පත් භාරගැනීම ආරම්භ කර ඇත.",
+        "ta": "கல்வி அமைச்சின் வழிகாட்டலின் கீழ் இடைநிலை தரங்களுக்கான வெற்றிடங்களுக்கு விண்ணப்பங்கள் ஏற்றுக்கொள்ளப்படுகின்றன.",
+        "en": "Applications for existing vacancies in intermediate grades are accepted in strict compliance with Ministry of Education regulations."
+      },
+      "thumbnail": "images/cultural-ceremony.jpg"
+    }
+  ]
+}

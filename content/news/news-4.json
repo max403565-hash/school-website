@@ -1,0 +1,23 @@
+{
+  "id": "news-4",
+  "date": "2026-01-25",
+  "category": "circulars",
+  "image": "images/cultural-ceremony.jpg",
+  "title": {
+    "si": "අතරමැදි ශ්‍රේණි සඳහා අයදුම්පත් කැඳවීම පිළිබඳ දැනුම්දීම",
+    "ta": "இடைநிலை சேர்க்கை விண்ணப்பங்கள் கோரல் அறிவிப்பு",
+    "en": "Notice on Intermediate Grade Admission Applications 2026"
+  },
+  "content": [
+    {
+      "si": "අධ්‍යාපන අමාත්‍යාංශයේ පාසල් චක්‍රලේඛ අංක 01/2026 ට අනුව, 7, 8 සහ 10 අතරමැදි ශ්‍රේණිවල පවතින සීමිත පුරප්පාඩු සඳහා අයදුම්පත් කැඳවීම ආරම්භ කර ඇත.",
+      "ta": "கல்வி அமைச்சின் 01/2026 ஆம் இலக்க சுற்றறிக்கைக்கு இணங்க தரம் 7, 8 மற்றும் 10 இடைநிலை வகுப்புகளுக்கான விண்ணப்பங்கள் கோரப்படுகின்றன.",
+      "en": "In accordance with Ministry of Education Circular No. 01/2026, applications for verified vacancies in intermediate grades (Grades 7, 8, and 10) are now open."
+    },
+    {
+      "si": "සුදුසුකම්ලත් දෙමාපියන් නියමිත ආකෘති පත්‍රය සම්පූර්ණ කර අවශ්‍ය සහතිකපත් සමග පාසල් ප්‍රධාන කාර්යාලය වෙත භාරදිය යුතුය. කිසිදු ගාස්තුවක් අය නොකෙරේ.",
+      "ta": "தகுதியான பெற்றோர்கள் பூர்த்தி செய்யப்பட்ட விண்ணப்பப் படிவங்களை தேவையான ஆவணங்களுடன் கல்லூரி அலுவலகத்தில் சமர்ப்பிக்கவும். கட்டணங்கள் எதுவும் அறவிடப்படாது.",
+      "en": "Eligible guardians must submit certified documentation to the Principal's Administrative Office. As a free government institution, no fees or payments are required."
+    }
+  ]
+}

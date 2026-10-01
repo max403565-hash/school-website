@@ -1,0 +1,103 @@
+{
+  "heroBadge": {
+    "si": "රජයේ නිදහස් අධ්‍යාපන ආයතනයකි",
+    "ta": "இலவச அரச கல்வி நிறுவனம்",
+    "en": "Free Government Educational Institution"
+  },
+  "heroTitle": {
+    "si": "නැණ ගුණ සපිරි අනාගත පරපුරක් දැයට දායාද කරන",
+    "ta": "அறிவும் நற்பண்பும் மிக்க எதிர்கால சந்ததியை உருவாக்கும்",
+    "en": "Inspiring Academic Excellence and Character for the Nation"
+  },
+  "heroDesc": {
+    "si": "මොනරාගල දිස්ත්‍රික්කයේ පැල්වත්ත හරිත සොඳුරු පරිසරයක පිහිටි මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය 6 ශ්‍රේණියේ සිට 13 ශ්‍රේණිය (උසස් පෙළ) දක්වා ශ්‍රී ලාංකික දූ දරුවන්ට පූර්ණ නිදහස් අධ්‍යාපනය සලසයි.",
+    "ta": "மொணராகலை மாவட்டத்தின் பெல்வத்தை பசுமை சூழலில் அமைந்துள்ள மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி தரம் 6 முதல் 13 வரை மாணவர்களுக்கு முழுமையான இலவச கல்வியை வழங்குகிறது.",
+    "en": "Situated in scenic Pelwatta, Monaragala, Mo/Pelwatta Navodya Secondary College offers complete free education from Grade 6 to Grade 13 across Science, Arts, Commerce, and Technology streams."
+  },
+  "heroSlides": [
+    {
+      "image": "images/campus-hero.jpg",
+      "caption": {
+        "si": "විද්‍යාලීය ප්‍රධාන පරිශ්‍රය හා ශාස්ත්‍රීය ගොඩනැගිලි සංකීර්ණය",
+        "ta": "பிரதான கல்லூரி வளாகம் மற்றும் கல்வி கட்டிடத் தொகுதி",
+        "en": "Main College Campus and Academic Complex"
+      }
+    },
+    {
+      "image": "images/science-lab.jpg",
+      "caption": {
+        "si": "නවීන පහසුකම් සපිරි ද්විතීයික විද්‍යාගාරය",
+        "ta": "நவீன வசதிகள் கொண்ட இரண்டாம் நிலை விஞ்ஞான ஆய்வுகூடம்",
+        "en": "Modern Secondary Science & Technology Laboratory"
+      }
+    },
+    {
+      "image": "images/sports-meet.jpg",
+      "caption": {
+        "si": "වාර්ෂික මලල ක්‍රීඩා උළෙල හා ක්‍රීඩා කුසලතා",
+        "ta": "வருடாந்த தடகள விளையாட்டுப் போட்டி மற்றும் விளையாட்டுத் திறன்கள்",
+        "en": "Annual Athletic Meet and Sporting Milestones"
+      }
+    }
+  ],
+  "quickTiles": [
+    {
+      "icon": "🎓",
+      "title": { "si": "අධ්‍යයන අංශය", "ta": "கல்விப் பிரிவுகள்", "en": "Academic Streams" },
+      "desc": {
+        "si": "සාමාන්‍ය පෙළ සහ උසස් පෙළ විද්‍යා, ගණිත, වාණිජ, කලා සහ තාක්ෂණවේදී විෂය ධාරාවන්.",
+        "ta": "சா/த மற்றும் உயர்தர விஞ்ஞான, கணித, வர்த்தக, கலை, தொழில்நுட்ப பிரிவுகள்.",
+        "en": "G.C.E. O/L and A/L Science, Mathematics, Commerce, Arts, and Technology streams."
+      },
+      "link": "academic.html"
+    },
+    {
+      "icon": "🏆",
+      "title": { "si": "ශිෂ්‍ය ජීවිතය", "ta": "மாணவர் வாழ்க்கை", "en": "Student Life" },
+      "desc": {
+        "si": "ක්‍රීඩා, පරිසර නියමු, තාරකා විද්‍යා සහ විවාද සංගම් ඇතුළු විෂය සමගාමී ක්‍රියාකාරකම්.",
+        "ta": "விளையாட்டு, சுற்றாடல் முன்னோடி, வானியல், விவாத சங்கம் உள்ளிட்ட இணைப்பாடவிதான செயற்பாடுகள்.",
+        "en": "Sports, environmental pioneer corps, astronomy, debating, and co-curricular societies."
+      },
+      "link": "student-life.html"
+    },
+    {
+      "icon": "📋",
+      "title": { "si": "ඇතුළත් වීම්", "ta": "சேர்க்கை வழிகாட்டல்", "en": "Admissions" },
+      "desc": {
+        "si": "රජයේ චක්‍රලේඛ අනුව 6 ශ්‍රේණිය සහ උසස් පෙළ සඳහා සිසුන් ඇතුළත් කරගැනීමේ මාර්ගෝපදේශ.",
+        "ta": "அரச சுற்றறிக்கைகளுக்கு அமைய தரம் 6 மற்றும் உயர்தர சேர்க்கை வழிகாட்டல்கள்.",
+        "en": "Official government circular criteria for Grade 6 and Advanced Level admissions."
+      },
+      "link": "admissions.html"
+    },
+    {
+      "icon": "📄",
+      "title": { "si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads" },
+      "desc": {
+        "si": "වාර විභාග කාලසටහන්, පාසල් දින දර්ශන, ආදර්ශ ප්‍රශ්න පත්‍ර සහ නිල චක්‍රලේඛ.",
+        "ta": "பரீட்சை அட்டவணைகள், பாடசாலை நாட்காட்டி மற்றும் உத்தியோகபூர்வ சுற்றறிக்கைகள்.",
+        "en": "Exam timetables, academic calendars, model question papers, and official circulars."
+      },
+      "link": "downloads.html"
+    }
+  ],
+  "principalSnippet": {
+    "photo": "images/principal.jpg",
+    "name": {
+      "si": "කේ. එම්. සුනිල් ශාන්ත මහතා",
+      "ta": "திரு. கே. எம். சுனில் சாந்த",
+      "en": "Mr. K. M. Sunil Shantha"
+    },
+    "role": {
+      "si": "විදුහල්පති (ශ්‍රී ලංකා අධ්‍යාපන පරිපාලන සේවය - SLEAS)",
+      "ta": "அதிபர் (இலங்கை கல்வி நிர்வாக சேவை - SLEAS)",
+      "en": "Principal (Sri Lanka Education Administrative Service - SLEAS)"
+    },
+    "quote": {
+      "si": "\"දැනුම පමණක් නොව විනය, සාරධර්ම සහ මානව ගුණාංගවලින් සන්නද්ධ පිරිපුන් පුරවැසියන් බිහිකිරීම අප පාසලේ ඒකායන අරමුණයි.\"",
+      "ta": "\"அறிவை மட்டுமல்லாது ஒழுக்கம், நற்பண்புகள் மற்றும் மனிதநேய விழுமியங்களைக் கொண்ட முன்மாதிரி பிரஜைகளை உருவாக்குவதே எமது நோக்கம்.\"",
+      "en": "\"Our mission is to empower rural and secondary youth with balanced knowledge, strong discipline, and civic values to serve the nation with honor.\""
+    }
+  }
+}

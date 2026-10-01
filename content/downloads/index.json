@@ -1,0 +1,64 @@
+{
+  "documents": [
+    {
+      "id": "doc-1",
+      "filename": "academic-calendar-2026.pdf",
+      "size": "240 KB",
+      "category": "academic",
+      "date": "2026-01-10",
+      "title": {
+        "si": "2026 වාර්ෂික පාසල් අධ්‍යයන දින දර්ශනය",
+        "ta": "2026 வருடாந்த பாடசாலை கல்வி நாட்காட்டி",
+        "en": "Annual School Academic Calendar 2026"
+      }
+    },
+    {
+      "id": "doc-2",
+      "filename": "grade-1-application-guide-2026.pdf",
+      "size": "320 KB",
+      "category": "circular",
+      "date": "2026-02-01",
+      "title": {
+        "si": "පාසල් ඇතුළත් වීමේ සහ අතරමැදි ශ්‍රේණි මාර්ගෝපදේශය",
+        "ta": "பாடசாலை சேர்க்கை மற்றும் இடைநிலை வழிகாட்டல்",
+        "en": "School Admissions & Intermediate Grade Guidelines"
+      }
+    },
+    {
+      "id": "doc-3",
+      "filename": "al-exam-timetable-2026.pdf",
+      "size": "180 KB",
+      "category": "exam",
+      "date": "2026-03-05",
+      "title": {
+        "si": "උසස් පෙළ පළමු වාර විභාග කාලසටහන 2026",
+        "ta": "உயர்தர முதலாம் தவணை பரீட்சை கால அட்டவணை 2026",
+        "en": "A/L First Term Examination Timetable 2026"
+      }
+    },
+    {
+      "id": "doc-4",
+      "filename": "ol-exam-timetable-2026.pdf",
+      "size": "175 KB",
+      "category": "exam",
+      "date": "2026-03-05",
+      "title": {
+        "si": "සාමාන්‍ය පෙළ පළමු වාර විභාග කාලසටහන 2026",
+        "ta": "சாதாரண தர முதலாம் தவணை பரீட்சை கால அட்டவணை 2026",
+        "en": "O/L First Term Examination Timetable 2026"
+      }
+    },
+    {
+      "id": "doc-5",
+      "filename": "school-circular-01-2026.pdf",
+      "size": "145 KB",
+      "category": "circular",
+      "date": "2026-01-15",
+      "title": {
+        "si": "අධ්‍යාපන අමාත්‍යාංශ චක්‍රලේඛ අංක 01/2026",
+        "ta": "கல்வி அமைச்சு சுற்றறிக்கை இல 01/2026",
+        "en": "Ministry of Education Circular No. 01/2026"
+      }
+    }
+  ]
+}

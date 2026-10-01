@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academics | අධ්‍යයන අංශය - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Academic streams, G.C.E. O/L and A/L achievements, syllabus, downloadable calendars and timetables." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Academic Programs - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Academic streams, G.C.E. O/L and A/L achievements, syllabus, downloadable calendars and timetables." />
+  <meta property="og:image" content="images/science-lab.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <h1 class="page-title" data-i18n="nav.academics">අධ්‍යයන අංශය</h1>
+      <p class="page-subtitle">කනිෂ්ඨ, සාමාන්‍ය පෙළ සහ උසස් පෙළ විෂය ධාරාවන්</p>
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.academics">Academics</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 3.5rem 1rem;">
+    <!-- Junior Section -->
+    <div style="margin-bottom: 3rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge">6 - 9 ශ්‍රේණි</span>
+        <h2 class="section-title" id="junior-title">කනිෂ්ඨ ද්විතීයික අංශය</h2>
+      </div>
+      <div class="form-card">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--navy);" id="junior-desc"></p>
+      </div>
+    </div>
+
+    <!-- O/L Section -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge">10 - 11 ශ්‍රේණි</span>
+        <h2 class="section-title" id="ol-title">අ.පො.ස. සාමාන්‍ය පෙළ (O/L) අංශය</h2>
+      </div>
+      <div class="form-card">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--navy); margin-bottom: 1rem;" id="ol-desc"></p>
+      </div>
+    </div>
+
+    <!-- A/L Section -->
+    <div style="margin-bottom: 4rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge">12 - 13 ශ්‍රේණි</span>
+        <h2 class="section-title" id="al-title">අ.පො.ස. උසස් පෙළ (A/L) විෂය ධාරාවන්</h2>
+        <p class="section-subtitle" style="margin-left: 0;">විද්‍යා, වාණිජ, තාක්ෂණ සහ කලා විෂය ධාරා 5ක් යටතේ සම්පූර්ණ පහසුකම් සහිත විද්‍යාගාර හා ප්‍රවීණ ගුරු මණ්ඩලය.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;" id="al-streams-grid"></div>
+    </div>
+
+    <!-- Academic Downloads -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge" data-i18n="nav.downloads">බාගත කිරීම්</span>
+        <h2 class="section-title">අධ්‍යයන කාලසටහන් හා දින දර්ශන</h2>
+      </div>
+      <div id="academic-docs-list" style="display:flex; flex-direction:column; gap:1rem;"></div>
+    </div>
+  </main>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      let academicData = null;
+      let downloadsData = null;
+
+      async function loadData() {
+        if (window.i18n && window.i18n.fetchJSON) {
+          [academicData, downloadsData] = await Promise.all([
+            window.i18n.fetchJSON('content/academic.json'),
+            window.i18n.fetchJSON('content/downloads/index.json')
+          ]);
+        } else {
+          try {
+            const [aRes, dRes] = await Promise.all([
+              fetch('content/academic.json'),
+              fetch('content/downloads/index.json')
+            ]);
+            academicData = await aRes.json();
+            downloadsData = await dRes.json();
+          } catch (e) {}
+        }
+        renderContent();
+      }
+
+      function renderContent() {
+        if (!academicData) return;
+        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        const j = academicData.grades.junior;
+        document.getElementById('junior-title').textContent = pick(j.title, lang);
+        document.getElementById('junior-desc').textContent = pick(j.desc, lang);
+
+        const ol = academicData.grades.ol;
+        document.getElementById('ol-title').textContent = pick(ol.title, lang);
+        document.getElementById('ol-desc').textContent = pick(ol.desc, lang);
+
+        const al = academicData.grades.al;
+        document.getElementById('al-title').textContent = pick(al.title, lang);
+
+        const streamGrid = document.getElementById('al-streams-grid');
+        streamGrid.innerHTML = (al.streams || []).map((st, i) => `
+          <div class="form-card" style="border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
+            <div style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">
+              ${pick(st.name, lang)}
+            </div>
+            <div style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-top: auto;">
+              <strong>විෂයයන්:</strong> ${pick(st.subjects, lang)}
+            </div>
+          </div>
+        `).join('');
+
+        // Render download files
+        if (downloadsData && downloadsData.documents) {
+          const listEl = document.getElementById('academic-docs-list');
+          listEl.innerHTML = downloadsData.documents.map(file => {
+            const cleanTitle = pick(file.title, lang);
+            return `
+              <div class="form-card" style="padding: 1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <div style="display:flex; align-items:center; gap:0.875rem;">
+                  <span style="font-size:1.75rem;">📄</span>
+                  <div>
+                    <h4 style="font-size:1.05rem; font-weight:700; color:var(--navy);">${cleanTitle}</h4>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">
+                      <span>📅 ${file.date}</span> · <span>💾 ${file.size}</span>
+                    </div>
+                  </div>
+                </div>
+                <a href="downloads/${file.filename}" download class="btn-primary" style="padding:0.5rem 1rem; font-size:0.8125rem;">
+                  <span>⬇️</span>
+                  <span>${lang === 'si' ? 'බාගත කරන්න' : (lang === 'ta' ? 'பதிவிறக்குக' : 'Download PDF')}</span>
+                </a>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(renderContent);
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>

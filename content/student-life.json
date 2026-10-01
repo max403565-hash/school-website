@@ -1,0 +1,38 @@
+{
+  "sports": [
+    {
+      "name": { "si": "මලල ක්‍රීඩා (Athletics)", "ta": "தடகள விளையாட்டு", "en": "Athletics & Track and Field" },
+      "desc": { "si": "කලාප සහ පළාත් මට්ටමින් පදක්කම් දිනූ දක්ෂ ධාවකයින් හා ක්‍රීඩක ක්‍රීඩිකාවන්.", "ta": "வலய மற்றும் மாகாண மட்டங்களில் பதக்கங்களை வென்ற தடகள வீரர்கள்.", "en": "Zone and provincial champions in track and field sprints, middle distance, and field events." }
+    },
+    {
+      "name": { "si": "ක්‍රිකට් (Cricket)", "ta": "துடுப்பாட்டம் (கிரிக்கெட்)", "en": "Cricket (Under 15, 17, 19)" },
+      "desc": { "si": "පාසල් ක්‍රිකට් තරගාවලි නියෝජනය කරන අවුරුදු 15, 17, 19 න් පහළ කණ්ඩායම්.", "ta": "பாடசாலைகளுக்கிடையிலான கிரிக்கெட் போட்டிகளில் பங்கேற்கும் அணிகள்.", "en": "Inter-school tournament squads across Under 15, Under 17, and Under 19 categories." }
+    },
+    {
+      "name": { "si": "වොලිබෝල් (Volleyball)", "ta": "கைப்பந்து (வொலிபோல்)", "en": "Volleyball (National Game)" },
+      "desc": { "si": "ශ්‍රී ලංකා ජාතික ක්‍රීඩාව වන වොලිබෝල් සඳහා විශේෂ පුහුණුව හා තරග ජයග්‍රහණ.", "ta": "தேசிய விளையாட்டான கைப்பந்துக்கான விசேட பயிற்சிகளும் வெற்றிகளும்.", "en": "Dedicated training and regional championship titles in Sri Lanka's national sport." }
+    },
+    {
+      "name": { "si": "නෙට්බෝල් (Netball)", "ta": "வலைப்பந்து (நெட்போல்)", "en": "Girls' Netball" },
+      "desc": { "si": "බාලිකා නෙට්බෝල් කණ්ඩායම දිස්ත්‍රික් මට්ටමේ කුසලාන රැසක් හිමිකරගෙන ඇත.", "ta": "மாவட்ட மட்டத்தில் பல வெற்றிகளை ஈட்டிய மாணவிகள் வலைப்பந்தாட்ட அணி.", "en": "District title holders in secondary girls' inter-school netball tournaments." }
+    }
+  ],
+  "clubs": [
+    {
+      "name": { "si": "ගණිත හා තාරකා විද්‍යා සංගමය", "ta": "கணித மற்றும் வானியல் சங்கம்", "en": "Mathematics & Astronomy Society" },
+      "desc": { "si": "තර්කානුකූල චින්තනය, ගැටලු විසඳීම සහ තාරකා විද්‍යාත්මක නිරීක්ෂණ කුසලතා සංවර්ධනය.", "ta": "தர்க்கரீதியான சிந்தனை, கணித பிரச்சினைகளை தீர்க்கும் ஆற்றல் மற்றும் வானியல் அவதானிப்பு திறன்களை வளர்த்தல்.", "en": "Fostering analytical logic, Olympiad problem-solving, and observational astronomical sciences." }
+    },
+    {
+      "name": { "si": "පරිසර නියමු බලකාය (Environmental Pioneers)", "ta": "சுற்றாடல் முன்னோடிப் படை", "en": "Environmental Pioneer Corps" },
+      "desc": { "si": "පාසල් පරිශ්‍රය සහ පැල්වත්ත අවට ජෛව විවිධත්වය රැකගැනීමේ හරිත ව්‍යාපෘති.", "ta": "பாடசாலை வளாகம் மற்றும் சுற்றாடல் பல்லுயிர் பாதுகாப்பிற்கான பசுமை திட்டங்கள்.", "en": "Green campaigns, reforestation, and ecological preservation across Monaragala." }
+    },
+    {
+      "name": { "si": "විද්‍යා හා නව නිපැයුම් සංගමය", "ta": "விஞ்ஞான மற்றும் புத்தாக்க சங்கம்", "en": "Science & Innovation Society" },
+      "desc": { "si": "පාසල් විද්‍යා ප්‍රදර්ශන සහ නව නිපැයුම් තරග සඳහා සිසුන් මෙහෙයවීම.", "ta": "விஞ்ஞான கண்காட்சிகள் மற்றும் புத்தாக்க போட்டிகளில் மாணவர்களை வழிநடத்துதல்.", "en": "STEM exploration, robotics, science fairs, and national innovation competitions." }
+    },
+    {
+      "name": { "si": "සිංහල, දෙමළ හා ඉංග්‍රීසි සාහිත්‍ය සංගම්", "ta": "சிங்கள, தமிழ் மற்றும் ஆங்கில இலக்கிய சங்கங்கள்", "en": "Literary & Debating Societies" },
+      "desc": { "si": "භාෂා කුසලතා, කථික, විවාද සහ සාහිත්‍ය නිර්මාණශීලිත්වය වර්ධනය.", "ta": "மொழித்திறன், பேச்சு, விவாதம் மற்றும் படைப்பாற்றலை வளர்க்கும் தளங்கள்.", "en": "Oratory, trilingual debating, creative writing, and drama workshops." }
+    }
+  ]
+}

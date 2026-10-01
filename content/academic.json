@@ -1,0 +1,45 @@
+{
+  "grades": {
+    "junior": {
+      "title": { "si": "කනිෂ්ඨ ද්විතීයික අංශය (6 - 9 ශ්‍රේණි)", "ta": "இளநிலை இரண்டாம் நிலை (தரம் 6 - 9)", "en": "Junior Secondary Section (Grades 6 - 9)" },
+      "desc": {
+        "si": "ජාතික අධ්‍යාපන ආයතනයේ (NIE) විෂය නිර්දේශයට අනුව මවුබස, ගණිතය, විද්‍යාව, ඉංග්‍රීසි, ඉතිහාසය සහ තොරතුරු තාක්ෂණය ඇතුළු මූලික විෂයයන් ආවරණය කෙරේ.",
+        "ta": "தேசிய கல்வி நிறுவகத்தின் (NIE) பாடத்திட்டத்திற்கு அமைய தாய்மொழி, கணிதம், விஞ்ஞானம், ஆங்கிலம், வரலாறு மற்றும் தகவல் தொழில்நுட்பம் உள்ளிட்ட பாடங்கள்.",
+        "en": "Follows the National Institute of Education curriculum covering foundational languages, mathematics, integrated science, English, history, and ICT."
+      }
+    },
+    "ol": {
+      "title": { "si": "සාමාන්‍ය පෙළ අංශය (10 - 11 ශ්‍රේණි)", "ta": "சாதாரண தர பிரிவு (தரம் 10 - 11)", "en": "Senior Secondary O/L (Grades 10 - 11)" },
+      "desc": {
+        "si": "අ.පො.ස. සාමාන්‍ය පෙළ විභාගය සඳහා මූලික විෂයයන් 6ක් සහ කාණ්ඩ විෂයයන් 3ක් යටතේ සිසුන් සූදානම් කෙරේ. සෞන්දර්ය සහ වෘත්තීය විෂයයන්ට මුල්තැන.",
+        "ta": "க.பொ.த. சாதாரண தரப் பரீட்சைக்கான பிரதான 6 பாடங்கள் மற்றும் 3 தொகுதிப் பாடங்கள். அழகியல் மற்றும் தொழினுட்ப பாடங்கள் உள்ளடக்கம்.",
+        "en": "Rigorous preparation for G.C.E. Ordinary Level examinations across core disciplines and optional baskets including aesthetics, commerce, and practical technology."
+      }
+    },
+    "al": {
+      "title": { "si": "උසස් පෙළ අංශය (12 - 13 ශ්‍රේණි)", "ta": "உயர்தர பிரிவு (தரம் 12 - 13)", "en": "Collegiate A/L Section (Grades 12 - 13)" },
+      "streams": [
+        {
+          "name": { "si": "භෞතික විද්‍යා ධාරාව (ගණිත අංශය)", "ta": "பௌதிக விஞ்ஞான பிரிவு (கணிதம்)", "en": "Physical Science (Combined Mathematics)" },
+          "subjects": { "si": "සංයුක්ත ගණිතය, භෞතික විද්‍යාව, රසායන විද්‍යාව හෝ තොරතුරු තාක්ෂණය (ICT)", "ta": "இணைந்த கணிதம், பௌதிகவியல், இரசாயனவியல் / ICT", "en": "Combined Mathematics, Physics, Chemistry or ICT" }
+        },
+        {
+          "name": { "si": "ජීව විද්‍යා ධාරාව", "ta": "உயிரியல் விஞ்ஞான பிரிவு", "en": "Biological Science" },
+          "subjects": { "si": "ජීව විද්‍යාව, රසායන විද්‍යාව, භෞතික විද්‍යාව හෝ කෘෂි විද්‍යාව", "ta": "உயிரியல், இரசாயனவியல், பௌதிகவியல் / விவசாய விஞ்ஞானம்", "en": "Biology, Chemistry, Physics or Agricultural Science" }
+        },
+        {
+          "name": { "si": "වාණිජ ධාරාව", "ta": "வர்த்தக பிரிவு", "en": "Commerce Stream" },
+          "subjects": { "si": "ගිණුම්කරණය, ව්‍යාපාර අධ්‍යයනය, ආර්ථික විද්‍යාව හෝ තොරතුරු තාක්ෂණය", "ta": "கணக்கியல், வணிகக் கல்வி, பொருளியல் / ICT", "en": "Accounting, Business Studies, Economics or ICT" }
+        },
+        {
+          "name": { "si": "කලා ධාරාව", "ta": "கலை பிரிவு", "en": "Arts Stream" },
+          "subjects": { "si": "සිංහල/දෙමළ සාහිත්‍යය, දේශපාලන විද්‍යාව, බෞද්ධ/හින්දු ශිෂ්ටාචාරය, භූගෝල විද්‍යාව, සෞන්දර්ය", "ta": "மொழி இலக்கியம், அரசறிவியல், நாகரிகம், புவியியல், அழகியல்", "en": "Languages, Political Science, Civilizations, Geography, and Aesthetics" }
+        },
+        {
+          "name": { "si": "තාක්ෂණවේදය ධාරාව", "ta": "தொழில்நுட்ப பிரிவு", "en": "Technology Stream" },
+          "subjects": { "si": "ඉංජිනේරු තාක්ෂණවේදය (ET), ජෛව පද්ධති තාක්ෂණවේදය (BST), තාක්ෂණය සඳහා විද්‍යාව (SFT)", "ta": "பொறியியல் தொழில்நுட்பம், உயிர்முறைமைகள் தொழில்நுட்பம், தொழில்நுட்பத்திற்கான விஞ்ஞானம்", "en": "Engineering Technology (ET), Biosystems Technology (BST), and Science for Technology (SFT)" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "news-3",
+  "date": "2026-02-18",
+  "category": "academic",
+  "image": "images/science-lab.jpg",
+  "title": {
+    "si": "උසස් පෙළ තාක්ෂණවේදය සහ විද්‍යා අංශයේ විශිෂ්ට ප්‍රතිඵල",
+    "ta": "உயர்தர தொழில்நுட்பம் மற்றும் விஞ்ஞான பிரிவுகளில் அமோக சாதனை",
+    "en": "Outstanding Results Recorded in A/L Science and Technology Streams"
+  },
+  "content": [
+    {
+      "si": "පසුගිය අ.පො.ස. උසස් පෙළ විභාගයෙන් මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ ඉංජිනේරු තාක්ෂණවේදය, ජෛව පද්ධති තාක්ෂණවේදය සහ ජීව විද්‍යා අංශවලින් විශිෂ්ට ප්‍රතිඵල වාර්තා වී ඇත.",
+      "ta": "கடந்த க.பொ.த. உயர்தரப் பரீட்சையில் எமது கல்லூரியின் பொறியியல் தொழில்நுட்பம் மற்றும் உயிரியல் பிரிவுகளில் மாணவர்கள் அமோக சாதனைகளைப் படைத்துள்ளனர்.",
+      "en": "Remarkable academic achievements were registered in the G.C.E. Advanced Level examinations, with exceptional passes in Engineering Technology, Biosystems Technology, and Biological Science."
+    },
+    {
+      "si": "මොරටුව, පේරාදෙණිය සහ රුහුණ විශ්වවිද්‍යාල ඇතුළු රාජ්‍ය විශ්වවිද්‍යාල සඳහා සෘජුවම තේරී පත්වීමට සමත් වූ සියලුම ආදරණීය දූ දරුවන්ට සහ කැපවූ ගුරු මණ්ඩලයට අපගේ උණුසුම් සුබපැතුම්!",
+      "ta": "அரச பல்கலைக்கழகங்களுக்கு நேரடியாக தெரிவு செய்யப்பட்ட அனைத்து மாணவச் செல்வங்களுக்கும், அவர்களை நெறிப்படுத்திய ஆசிரியர்களுக்கும் மனமார்ந்த பாராட்டுக்கள்!",
+      "en": "Heartfelt congratulations to the students qualifying for admission to national universities including Moratuwa, Peradeniya, and Ruhuna, and to the faculty for their tireless mentorship."
+    }
+  ]
+}

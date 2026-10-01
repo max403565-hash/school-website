@@ -1,0 +1,18 @@
+{
+  "privacyPolicy": {
+    "title": { "si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியුரிமைக் கொள்கை", "en": "Privacy Policy" },
+    "body": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයීය නිල වෙබ් අඩවිය ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනත (PDPA No. 9 of 2022) ට පූර්ණ වශයෙන් අනුකූල වේ. මෙම වෙබ් අඩවිය මගින් පරිශීලකයින්ගේ කිසිදු පෞද්ගලික තොරතුරක් අනවශ්‍ය ලෙස එක්රැස් නොකරන අතර, සන්නිවේදන අවශ්‍යතා සඳහා පමණක් නිල සබඳතා භාවිත කෙරේ.",
+      "ta": "இலங்கை தனிநபர் தரவுப் பாதுகாப்பு சட்டத்திற்கு (PDPA No. 9 of 2022) அமைவாக எமது இணையத்தளம் இயங்குகிறது. எவ்வித தனிப்பட்ட தகவல்களும் முறையற்ற வகையில் சேகரிக்கப்பட மாட்டாது.",
+      "en": "Mo/Pelwatta Navodya Secondary College respects visitor privacy in full compliance with the Sri Lanka Personal Data Protection Act (PDPA No. 9 of 2022). This website does not deploy invasive tracking or unauthorized user telemetry."
+    }
+  },
+  "termsOfUse": {
+    "title": { "si": "භාවිත නියමයන්", "ta": "பயன்பாட்டு விதிமுறைகள்", "en": "Terms of Use" },
+    "body": {
+      "si": "මෙම වෙබ් අඩවියේ පළවන සියලුම තොරතුරු, නිල චක්‍රලේඛ, පාසල් ලාංඡනය සහ ඡායාරූප මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය සතු වේ. අධ්‍යාපනික හා තොරතුරු ලබාගැනීමේ අරමුණින් පමණක් මේවා පරිශීලනය කළ හැකි අතර අවසරයකින් තොරව වාණිජ අරමුණු සඳහා භාවිත කිරීම තහනම්ය.",
+      "ta": "இந்த இணையத்தளத்தில் உள்ள அனைத்து தகவல்கள், உத்தியோகபூர்வ ஆவணங்கள், இலச்சினை மற்றும் புகைப்படங்கள் கல்லூரிக்கே சொந்தமானவை. கல்வி நோக்கங்களுக்காக மாத்திரமே பயன்படுத்த முடியும்.",
+      "en": "All official school notices, crest emblems, examination schedules, and media published here belong to Mo/Pelwatta Navodya Secondary College under state educational jurisdiction. Content may be downloaded for personal academic reference only."
+    }
+  }
+}

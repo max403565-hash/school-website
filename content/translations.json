@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": { "si": "මුල් පිටුව", "ta": "முகப்பு", "en": "Home" },
+    "about": { "si": "පාසල පිළිබඳව", "ta": "எங்களைப் பற்றி", "en": "About Us" },
+    "academics": { "si": "අධ්‍යයන අංශය", "ta": "கல்விப் பிரிவு", "en": "Academics" },
+    "studentLife": { "si": "ශිෂ්‍ය ජීවිතය", "ta": "மாணவர் வாழ்க்கை", "en": "Student Life" },
+    "gallery": { "si": "ඡායාරූප", "ta": "படத்தொகுப்பு", "en": "Gallery" },
+    "news": { "si": "පුවත් සහ නිවේදන", "ta": "செய்திகள் & நிகழ்வுகள்", "en": "News & Events" },
+    "admissions": { "si": "ඇතුළත් වීම්", "ta": "சேர்க்கை", "en": "Admissions" },
+    "downloads": { "si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads" },
+    "sds": { "si": "සංවර්ධන සමිතිය", "ta": "அபிவிருத்தி சங்கம்", "en": "SDS & Parents" },
+    "contact": { "si": "සම්බන්ධ කර ගැනීමට", "ta": "தொடர்புகளுக்கு", "en": "Contact Us" }
+  },
+  "topBar": {
+    "location": {
+      "si": "පැල්වත්ත, මොනරාගල, ශ්‍රී ලංකා",
+      "ta": "பெல்வத்தை, மொணராகலை, இலங்கை",
+      "en": "Pelwatta, Monaragala, Sri Lanka"
+    }
+  },
+  "school": {
+    "name": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය",
+      "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி",
+      "en": "Mo/Pelwatta Navodya Secondary College"
+    },
+    "type": {
+      "si": "රජයේ ජාතික පාසලකි · මොනරාගල දිස්ත්‍රික්කය",
+      "ta": "அரச தேசிய பாடசாலை · மொணராகலை மாவட்டம்",
+      "en": "Sri Lankan Free Government Secondary National School"
+    },
+    "motto": {
+      "si": "විද්‍යා දදාති විනයං",
+      "ta": "வித்யா ததாதி வினயம்",
+      "en": "Knowledge Imparts Discipline"
+    }
+  },
+  "footer": {
+    "aboutText": {
+      "si": "ඌව පළාත් මොනරාගල අධ්‍යාපන කලාපයේ ප්‍රමුඛතම රජයේ පාසලක් වන මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය දරුවන්ගේ අධ්‍යාපන, ක්‍රීඩා හා සාරධර්ම සංවර්ධනය උදෙසා කැපවී ක්‍රියා කරයි.",
+      "ta": "ஊவா மாகாண மொணராகலை கல்வி வலயத்தின் முன்னணி அரச பாடசாலையான மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி மாணவர்களின் கல்வி, விளையாட்டு மற்றும் ஒழுக்க மேம்பாட்டிற்காக அர்ப்பணிப்புடன் செயலாற்றுகிறது.",
+      "en": "A premier government secondary school in Monaragala, Uva Province, nurturing academic excellence, sportsmanship, and civic integrity under free education."
+    },
+    "linksTitle": { "si": "ක්ෂණික සබැඳි", "ta": "விரைவு இணைப்புகள்", "en": "Quick Links" },
+    "servicesTitle": { "si": "සේවාවන්", "ta": "சேவைகள்", "en": "Services" },
+    "contactTitle": { "si": "ලිපිනය හා සබඳතා", "ta": "தொடர்பு விபரம்", "en": "Contact & Location" },
+    "privacy": { "si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியுரிமைக் கொள்கை", "en": "Privacy Policy" },
+    "terms": { "si": "භාවිත නියමයන්", "ta": "விதிமுறைகள்", "en": "Terms of Use" },
+    "freeEdu": {
+      "si": "ශ්‍රී ලංකා රජයේ නිදහස් අධ්‍යාපන සේවාවකි",
+      "ta": "இலங்கை அரச இலவச கல்வி சேவை",
+      "en": "Sri Lankan Free Government Education System"
+    }
+  }
+}

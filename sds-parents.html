@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDS & Parents | පාසල් සංවර්ධන සමිතිය - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Parent and alumni engagement in educational excellence and student welfare." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="School Development Society & Parents - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Parent and alumni engagement in educational excellence and student welfare." />
+  <meta property="og:image" content="images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <h1 class="page-title" data-i18n="nav.sds">පාසල් සංවර්ධන සමිතිය</h1>
+      <p class="page-subtitle">දෙමාපිය, ගුරු සහ ආදි ශිෂ්‍ය සහයෝගීතාවය</p>
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.sds">SDS & Parents</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 3.5rem 1rem;">
+    <!-- Overview -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge">ප්‍රජා සහභාගීත්වය</span>
+        <h2 class="section-title" id="sds-title">පාසල් සංවර්ධන සමිතිය සහ ආදි ශිෂ්‍ය සංගමය</h2>
+      </div>
+      <div class="form-card" style="border-left: 4px solid var(--primary);">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--navy);" id="sds-intro"></p>
+      </div>
+    </div>
+
+    <!-- Initiatives -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="section-header" style="text-align: left;">
+        <span class="section-badge">සංවර්ධන ව්‍යාපෘති</span>
+        <h2 class="section-title">ප්‍රමුඛ සංවර්ධන වැඩසටහන්</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;" id="sds-initiatives-grid"></div>
+    </div>
+
+    <!-- Meetings Notice -->
+    <div class="form-card" style="background: var(--bg-subtle);">
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">
+        වාර්ෂික මහා සභා රැස්වීම සහ දෙමාපිය හමු
+      </h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">
+        සෑම පාසල් වාරයක් අවසානයේම ශිෂ්‍ය ප්‍රගති වාර්තා සාකච්ඡා කිරීම සඳහා පන්තිභාර ගුරු භවතුන්ගේ ප්‍රධානත්වයෙන් දෙමාපිය හමු පැවැත්වේ. නිල දැන්වීම් පත්‍රිකා ශිෂ්‍යයින් මගින් දෙමාපියන් වෙත යොමු කරනු ලැබේ.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      let sdsData = null;
+
+      async function loadData() {
+        try {
+          if (window.i18n && window.i18n.fetchJSON) {
+            sdsData = await window.i18n.fetchJSON('content/sds.json');
+          } else {
+            const res = await fetch('content/sds.json');
+            sdsData = await res.json();
+          }
+          renderContent();
+        } catch (e) {
+          console.error("Failed to load sds data:", e);
+        }
+      }
+
+      function renderContent() {
+        if (!sdsData) return;
+        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        document.getElementById('sds-title').textContent = pick(sdsData.title, lang);
+        document.getElementById('sds-intro').textContent = pick(sdsData.intro, lang);
+
+        const initGrid = document.getElementById('sds-initiatives-grid');
+        initGrid.innerHTML = (sdsData.initiatives || []).map(init => `
+          <div class="form-card" style="border-top: 3px solid var(--gold);">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">
+              ${pick(init.name, lang)}
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+              ${pick(init.desc, lang)}
+            </p>
+          </div>
+        `).join('');
+      }
+
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(renderContent);
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>

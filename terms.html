@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use | භාවිත නියමයන් - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Terms of use and disclaimer for the official school website." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Terms of Use - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Terms of use and disclaimer for the official school website." />
+  <meta property="og:image" content="images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <h1 class="page-title" data-i18n="footer.terms">භාවිත නියමයන්</h1>
+      <p class="page-subtitle">වෙබ් අඩවිය පරිශීලනය කිරීමේ නීතිමය කොන්දේසි</p>
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="footer.terms">Terms of Use</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 3.5rem 1rem; max-width: 860px;">
+    <div class="form-card" style="padding: 2.5rem 2rem; font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
+      <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy);" id="terms-title">
+        භාවිත නියමයන්
+      </h2>
+      <p id="terms-body" style="margin-bottom: 2rem;"></p>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy);">
+        බුද්ධිමය දේපළ අයිතිය
+      </h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">
+        මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ ලාංඡනය, නිල ලේඛන සහ ප්‍රකාශන අධ්‍යාපන අමාත්‍යාංශයේ සහ විද්‍යාලයේ පූර්ණ අනුමැතියකින් තොරව අනවසරයෙන් වාණිජමය කටයුතු සඳහා භාවිත කිරීමෙන් වළකින්න.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      let legalData = null;
+
+      async function loadData() {
+        try {
+          if (window.i18n && window.i18n.fetchJSON) {
+            legalData = await window.i18n.fetchJSON('content/legal.json');
+          } else {
+            const res = await fetch('content/legal.json');
+            legalData = await res.json();
+          }
+          renderContent();
+        } catch (e) {}
+      }
+
+      function renderContent() {
+        if (!legalData || !legalData.termsOfUse) return;
+        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        document.getElementById('terms-title').textContent = pick(legalData.termsOfUse.title, lang);
+        document.getElementById('terms-body').textContent = pick(legalData.termsOfUse.body, lang);
+      }
+
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(renderContent);
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>

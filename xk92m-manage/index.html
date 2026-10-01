@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+       HIDDEN CONTENT EDITOR
+       Access URL: https://<domain-or-subfolder>/xk92m-manage/
+       This path is omitted from robots.txt and sitemap.xml to prevent search engine indexing.
+  -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Content Editor | Mo/Pelwatta Navodya Secondary College</title>
+  <link rel="icon" type="image/svg+xml" href="../images/crest.svg" />
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper { max-width: 1200px; width: 100%; margin: 0 auto; padding: 1.5rem; flex-grow: 1; }
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 1.25rem; border-bottom: 1px solid #1e293b; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .header h1 { font-size: 1.35rem; color: #f8fafc; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
+    .header p { font-size: 0.8125rem; color: #94a3b8; }
+    .token-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;
+    }
+    .token-ok { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid #22c55e; }
+    .token-missing { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #ef4444; }
+
+    .test-toolbar {
+      background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .test-links { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .test-pill {
+      background: #0f172a; color: #cbd5e1; border: 1px solid #475569; padding: 0.25rem 0.6rem;
+      border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.25rem;
+    }
+    .test-pill:hover { border-color: #38bdf8; color: #38bdf8; }
+    .test-pill-primary { background: #0369a1; color: #fff; border-color: #0284c7; }
+
+    .nav-tabs { display: flex; gap: 0.5rem; border-bottom: 1px solid #1e293b; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab-btn {
+      background: transparent; border: none; color: #94a3b8; padding: 0.65rem 1.1rem;
+      font-size: 0.875rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .tab-btn:hover { color: #f8fafc; }
+    .tab-btn.active { color: #38bdf8; border-bottom-color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card-desc { font-size: 0.8125rem; color: #94a3b8; margin-bottom: 1.25rem; line-height: 1.5; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 1rem; }
+    .label { display: block; font-size: 0.8125rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.35rem; }
+    .input, .select, .textarea {
+      width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 6px;
+      padding: 0.6rem 0.75rem; color: #f8fafc; font-family: inherit; font-size: 0.875rem;
+    }
+    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: #38bdf8; }
+    .textarea { resize: vertical; min-height: 80px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.55rem 1.1rem; border-radius: 6px; font-size: 0.8125rem; font-weight: 600;
+      cursor: pointer; border: 1px solid transparent; transition: all 0.15s; text-decoration: none;
+    }
+    .btn-primary { background: #0284c7; color: #fff; }
+    .btn-primary:hover { background: #0369a1; }
+    .btn-secondary { background: #334155; color: #f8fafc; }
+    .btn-secondary:hover { background: #475569; }
+    .btn-danger { background: #dc2626; color: #fff; }
+    .btn-danger:hover { background: #b91c1c; }
+
+    .trilingual-box {
+      border: 1px solid #334155; background: #0b1329; border-radius: 6px; padding: 1rem; margin-bottom: 1rem;
+    }
+    .trilingual-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 900px) { .trilingual-grid { grid-template-columns: 1fr; } }
+
+    .table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    .table th, .table td { padding: 0.65rem 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
+    .table th { background: #0f172a; color: #94a3b8; font-weight: 600; }
+
+    .floating-toast {
+      position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+      padding: 0.85rem 1.25rem; border-radius: 6px; font-size: 0.875rem; font-weight: 600;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); display: flex; align-items: center; gap: 0.5rem;
+    }
+    .toast-success { background: #15803d; color: #fff; border: 1px solid #22c55e; }
+    .toast-error { background: #b91c1c; color: #fff; border: 1px solid #ef4444; }
+    .toast-info { background: #0284c7; color: #fff; border: 1px solid #38bdf8; }
+  </style>
+</head>
+<body>
+
+<div id="floating-toast" class="floating-toast" style="display: none;"></div>
+
+<div class="wrapper">
+  <!-- Header -->
+  <div class="header">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <img src="../images/crest.svg" alt="" style="width: 38px; height: 38px;" />
+      <div>
+        <h1>Mo/Pelwatta Navodya Secondary College — Content Editor</h1>
+        <p>Static GitHub Contents API Management · Multilingual (Sinhala / Tamil / English)</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+      <span class="token-badge token-missing" id="token-status-badge">GitHub Token: Not Configured</span>
+    </div>
+  </div>
+
+  <!-- Testing & Quick Preview Toolbar -->
+  <div class="test-toolbar">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #22c55e;"></span>
+      <strong>Direct GitHub Contents API Integration</strong>
+      <span style="color: #94a3b8; font-size: 0.75rem;">(Saves directly to repository via GitHub API)</span>
+    </div>
+    <div class="test-links">
+      <span style="color: #94a3b8; font-size: 0.75rem;">Quick Previews:</span>
+      <a href="../news.html" target="_blank" class="test-pill test-pill-primary">📰 News Page</a>
+      <a href="../index.html" target="_blank" class="test-pill">🏠 Homepage</a>
+      <a href="../gallery.html" target="_blank" class="test-pill">🖼️ Gallery</a>
+      <a href="../downloads.html" target="_blank" class="test-pill">📄 Downloads</a>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" data-target="panel-news">📰 News & Announcements</button>
+    <button class="tab-btn" data-target="panel-home">🏠 Homepage & Principal</button>
+    <button class="tab-btn" data-target="panel-gallery">🖼️ Gallery</button>
+    <button class="tab-btn" data-target="panel-downloads">📄 Downloads</button>
+    <button class="tab-btn" data-target="panel-settings">⚙️ GitHub Settings</button>
+  </div>
+
+  <!-- ==================== PANEL: NEWS ==================== -->
+  <div class="panel active" id="panel-news">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <div>
+          <h2 class="card-title">News & Announcements Management</h2>
+          <p class="card-desc">Publish or update school notices in Sinhala, Tamil, and English.</p>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="window.resetNewsForm()">➕ New Article</button>
+      </div>
+
+      <form id="news-editor-form" onsubmit="window.saveNewsForm(event)">
+        <input type="hidden" id="news-edit-id" value="" />
+        
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="label">Article ID (e.g. news-1202, news-5)</label>
+            <input type="text" id="news-field-id" class="input" required />
+          </div>
+          <div class="form-group">
+            <label class="label">Publish Date (YYYY-MM-DD)</label>
+            <input type="date" id="news-field-date" class="input" required />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="label">Category</label>
+            <select id="news-field-cat" class="select">
+              <option value="academic">Academic & Exams</option>
+              <option value="sports">Sports & Athletics</option>
+              <option value="events">Events & Societies</option>
+              <option value="circulars">Official Circulars</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="label">Thumbnail Image Path</label>
+            <input type="text" id="news-field-thumb" class="input" value="images/campus-hero.jpg" />
+          </div>
+        </div>
+
+        <div class="trilingual-box">
+          <label class="label">Article Title (All 3 Languages Required)</label>
+          <div class="trilingual-grid">
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b; display: block; margin-bottom: 0.25rem;">සිංහල (Sinhala):</span>
+              <input type="text" id="news-title-si" class="input" placeholder="සිංහල මාතෘකාව" />
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b; display: block; margin-bottom: 0.25rem;">தமிழ் (Tamil):</span>
+              <input type="text" id="news-title-ta" class="input" placeholder="தமிழ் தலைப்பு" />
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b; display: block; margin-bottom: 0.25rem;">English:</span>
+              <input type="text" id="news-title-en" class="input" placeholder="English Title" />
+            </div>
+          </div>
+        </div>
+
+        <div class="trilingual-box">
+          <label class="label">Brief Excerpt (for Homepage & Cards)</label>
+          <div class="trilingual-grid">
+            <textarea id="news-excerpt-si" class="textarea" placeholder="කෙටි හැඳින්වීම"></textarea>
+            <textarea id="news-excerpt-ta" class="textarea" placeholder="சுருக்கம்"></textarea>
+            <textarea id="news-excerpt-en" class="textarea" placeholder="Short excerpt"></textarea>
+          </div>
+        </div>
+
+        <div class="trilingual-box">
+          <label class="label">Full Article Content (Paragraphs)</label>
+          <div class="trilingual-grid">
+            <textarea id="news-body-si" class="textarea" style="min-height:120px;" placeholder="සම්පූර්ණ විස්තරය"></textarea>
+            <textarea id="news-body-ta" class="textarea" style="min-height:120px;" placeholder="முழு விவரம்"></textarea>
+            <textarea id="news-body-en" class="textarea" style="min-height:120px;" placeholder="Full article body"></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+          <a id="news-preview-btn" href="#" target="_blank" class="btn btn-secondary" style="display:none;">👁️ View Article</a>
+          <button type="submit" class="btn btn-primary" id="btn-save-news">💾 Save & Commit to GitHub</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Existing Articles Table -->
+    <div class="card">
+      <h3 class="card-title">Published Articles in Repository</h3>
+      <div style="overflow-x:auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Title (English)</th>
+              <th>Title (Sinhala)</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="news-list-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: HOMEPAGE ==================== -->
+  <div class="panel" id="panel-home">
+    <div class="card">
+      <h2 class="card-title">Homepage & Principal Information</h2>
+      <p class="card-desc">Edit hero title, principal quote, and principal details in <code>content/home.json</code>.</p>
+      
+      <form id="home-editor-form" onsubmit="window.saveHomeForm(event)">
+        <div class="trilingual-box">
+          <label class="label">Principal Quote</label>
+          <div class="trilingual-grid">
+            <textarea id="home-quote-si" class="textarea"></textarea>
+            <textarea id="home-quote-ta" class="textarea"></textarea>
+            <textarea id="home-quote-en" class="textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="label">Principal Photo Path</label>
+            <input type="text" id="home-principal-photo" class="input" value="images/principal.jpg" />
+          </div>
+          <div class="form-group">
+            <label class="label">Principal Name (English)</label>
+            <input type="text" id="home-principal-name-en" class="input" />
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <button type="submit" class="btn btn-primary" id="btn-save-home">💾 Save Homepage Content</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: GALLERY ==================== -->
+  <div class="panel" id="panel-gallery">
+    <div class="card">
+      <h2 class="card-title">Photo Gallery Management</h2>
+      <p class="card-desc">Add or remove campus and sports photos from <code>content/gallery/index.json</code>.</p>
+
+      <form id="gallery-form" onsubmit="window.addGalleryItem(event)">
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="label">Image Path</label>
+            <input type="text" id="gal-image-path" class="input" placeholder="images/campus-hero.jpg" required />
+          </div>
+          <div class="form-group">
+            <label class="label">Album</label>
+            <select id="gal-album-select" class="select">
+              <option value="campus">Campus</option>
+              <option value="academics">Academics</option>
+              <option value="sports">Sports</option>
+              <option value="cultural">Cultural</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="trilingual-box">
+          <label class="label">Caption (Trilingual)</label>
+          <div class="trilingual-grid">
+            <input type="text" id="gal-caption-si" class="input" placeholder="සිංහල විස්තරය" required />
+            <input type="text" id="gal-caption-ta" class="input" placeholder="தமிழ் தலைப்பு" required />
+            <input type="text" id="gal-caption-en" class="input" placeholder="English caption" required />
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <button type="submit" class="btn btn-primary">➕ Add Photo to Gallery</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: DOWNLOADS ==================== -->
+  <div class="panel" id="panel-downloads">
+    <div class="card">
+      <h2 class="card-title">Document Downloads</h2>
+      <p class="card-desc">Manage circulars and exam schedules in <code>content/downloads/index.json</code>.</p>
+
+      <div style="overflow-x:auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>Category</th>
+              <th>Title (English)</th>
+              <th>Date</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody id="downloads-list-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: SETTINGS ==================== -->
+  <div class="panel" id="panel-settings">
+    <div class="card">
+      <h2 class="card-title">GitHub Repository Settings</h2>
+      <p class="card-desc">Configure your GitHub repository and Personal Access Token (PAT) for direct commit saving.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="label">Repository Owner (Username or Organization)</label>
+          <input type="text" id="gh-owner" class="input" placeholder="e.g. max403565-hash" />
+        </div>
+        <div class="form-group">
+          <label class="label">Repository Name</label>
+          <input type="text" id="gh-repo" class="input" placeholder="e.g. school-website" />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="label">Branch</label>
+          <input type="text" id="gh-branch" class="input" value="main" />
+        </div>
+        <div class="form-group">
+          <label class="label">Personal Access Token (Fine-grained with Contents: Read & Write)</label>
+          <input type="password" id="gh-token" class="input" placeholder="github_pat_..." />
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <button type="button" class="btn btn-secondary" onclick="window.testGitHubConnection()">🔌 Test Connection</button>
+        <button type="button" class="btn btn-primary" onclick="window.saveSettings()">💾 Save Credentials in Browser</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const SETTINGS_KEY = 'pelwatta_gh_settings';
+
+  function getCleanSettings() {
+    try {
+      const saved = localStorage.getItem(SETTINGS_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return {
+      owner: 'max403565-hash',
+      repo: 'school-website',
+      branch: 'main',
+      token: ''
+    };
+  }
+
+  function showStatus(msg, type = 'info') {
+    const toast = document.getElementById('floating-toast');
+    toast.className = `floating-toast toast-${type}`;
+    toast.textContent = msg;
+    toast.style.display = 'flex';
+    setTimeout(() => { toast.style.display = 'none'; }, 4000);
+  }
+
+  function updateTokenBadge() {
+    const s = getCleanSettings();
+    const badge = document.getElementById('token-status-badge');
+    if (s.token && s.token.trim().length > 10) {
+      badge.className = 'token-badge token-ok';
+      badge.textContent = `GitHub Token: Configured (${s.owner}/${s.repo})`;
+    } else {
+      badge.className = 'token-badge token-missing';
+      badge.textContent = 'GitHub Token: Not Configured';
+    }
+  }
+
+  // GitHub Contents API helper
+  async function ghRequest(endpoint, options = {}) {
+    const s = getCleanSettings();
+    if (!s.token) throw new Error("GitHub Personal Access Token is required.");
+    if (!s.owner || !s.repo) throw new Error("Repository Owner and Name must be set in Settings.");
+
+    const cleanEndpoint = endpoint.replace(/^\/+/, '');
+    const url = cleanEndpoint.startsWith('http')
+      ? cleanEndpoint
+      : `https://api.github.com/repos/${encodeURIComponent(s.owner)}/${encodeURIComponent(s.repo)}${cleanEndpoint ? '/' + cleanEndpoint : ''}`;
+
+    const headers = {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `Bearer ${s.token}`,
+      ...(options.headers || {})
+    };
+
+    const res = await fetch(url, { ...options, headers });
+    if (!res.ok) {
+      let errText = res.statusText;
+      try {
+        const errJson = await res.json();
+        errText = errJson.message || errText;
+      } catch (e) {}
+      throw new Error(`GitHub API (${res.status}): ${errText}`);
+    }
+    return await res.json();
+  }
+
+  function utf8ToBase64(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+      return String.fromCharCode('0x' + p1);
+    }));
+  }
+
+  async function getFile(path) {
+    const cleanPath = path.replace(/^\/+/, '');
+    const s = getCleanSettings();
+    const endpoint = `contents/${cleanPath}?ref=${encodeURIComponent(s.branch || 'main')}`;
+    return await ghRequest(endpoint);
+  }
+
+  async function putFile(path, contentStr, commitMessage) {
+    const cleanPath = path.replace(/^\/+/, '');
+    const s = getCleanSettings();
+    let sha = null;
+
+    try {
+      const existing = await getFile(cleanPath);
+      sha = existing.sha;
+    } catch (e) {
+      // file might be new
+    }
+
+    const payload = {
+      message: commitMessage || `Update ${cleanPath} via Content Editor`,
+      content: utf8ToBase64(contentStr),
+      branch: s.branch || 'main'
+    };
+    if (sha) payload.sha = sha;
+
+    return await ghRequest(`contents/${cleanPath}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }
+
+  // Fetch helper with relative candidate paths
+  async function fetchLocalJSON(path) {
+    const clean = path.replace(/^\/+/, '');
+    const candidates = ['../' + clean, './' + clean, clean];
+    for (const c of candidates) {
+      try {
+        const res = await fetch(c + '?_t=' + Date.now());
+        if (res.ok) return await res.json();
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const target = document.getElementById(btn.getAttribute('data-target'));
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Settings
+  window.saveSettings = function () {
+    const s = {
+      owner: document.getElementById('gh-owner').value.trim(),
+      repo: document.getElementById('gh-repo').value.trim(),
+      branch: document.getElementById('gh-branch').value.trim() || 'main',
+      token: document.getElementById('gh-token').value.trim()
+    };
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+    updateTokenBadge();
+    showStatus("GitHub settings saved!", "success");
+  };
+
+  window.testGitHubConnection = async function () {
+    try {
+      showStatus("Testing GitHub API connection...", "info");
+      const res = await ghRequest('');
+      showStatus(`Connected to repository: ${res.full_name} (${res.default_branch})`, "success");
+    } catch (e) {
+      showStatus(`Connection failed: ${e.message}`, "error");
+    }
+  };
+
+  // Load News List
+  async function loadNewsList() {
+    const data = await fetchLocalJSON('content/news/index.json');
+    if (!data || !data.articles) return;
+    const tbody = document.getElementById('news-list-tbody');
+    tbody.innerHTML = data.articles.map(a => `
+      <tr>
+        <td><strong>${a.id}</strong></td>
+        <td>${a.date}</td>
+        <td><span style="text-transform:capitalize;">${a.category}</span></td>
+        <td>${(a.title && a.title.en) || ''}</td>
+        <td>${(a.title && a.title.si) || ''}</td>
+        <td>
+          <div style="display:flex; gap:4px; align-items:center;">
+            <button type="button" class="btn btn-secondary" style="padding:2px 8px; font-size:0.75rem;" onclick="window.editNewsArticle('${a.id}')">Edit</button>
+            <a href="../news-detail.html?id=${encodeURIComponent(a.id)}" target="_blank" class="btn btn-secondary" style="padding:2px 8px; font-size:0.75rem; text-decoration:none;">👁️ View</a>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  window.resetNewsForm = function () {
+    document.getElementById('news-edit-id').value = '';
+    const idInput = document.getElementById('news-field-id');
+    idInput.value = `news-${Date.now().toString().slice(-4)}`;
+    idInput.readOnly = false;
+    document.getElementById('news-field-date').value = new Date().toISOString().slice(0, 10);
+    document.getElementById('news-field-cat').value = 'academic';
+    document.getElementById('news-field-thumb').value = 'images/campus-hero.jpg';
+    document.getElementById('news-title-si').value = '';
+    document.getElementById('news-title-ta').value = '';
+    document.getElementById('news-title-en').value = '';
+    document.getElementById('news-excerpt-si').value = '';
+    document.getElementById('news-excerpt-ta').value = '';
+    document.getElementById('news-excerpt-en').value = '';
+    document.getElementById('news-body-si').value = '';
+    document.getElementById('news-body-ta').value = '';
+    document.getElementById('news-body-en').value = '';
+    const pBtn = document.getElementById('news-preview-btn');
+    if (pBtn) pBtn.style.display = 'none';
+  };
+
+  window.editNewsArticle = async function (id) {
+    const art = await fetchLocalJSON(`content/news/${id}.json`);
+    if (!art) {
+      showStatus(`Could not load article ${id}`, "error");
+      return;
+    }
+    document.getElementById('news-edit-id').value = id;
+    const idInput = document.getElementById('news-field-id');
+    idInput.value = id;
+    idInput.readOnly = true;
+
+    document.getElementById('news-field-date').value = art.date || '';
+    document.getElementById('news-field-cat').value = art.category || 'academic';
+    document.getElementById('news-field-thumb').value = (art.image || 'images/campus-hero.jpg').replace(/^\/+/, '');
+
+    const t = art.title || {};
+    document.getElementById('news-title-si').value = t.si || '';
+    document.getElementById('news-title-ta').value = t.ta || '';
+    document.getElementById('news-title-en').value = t.en || '';
+
+    const content = art.content || [];
+    const p0 = content[0] || {};
+    document.getElementById('news-excerpt-si').value = p0.si || '';
+    document.getElementById('news-excerpt-ta').value = p0.ta || '';
+    document.getElementById('news-excerpt-en').value = p0.en || '';
+
+    const pAll = content.map(p => p.en || p.si || '').join('\n\n');
+    document.getElementById('news-body-si').value = content.map(p => p.si || '').join('\n\n');
+    document.getElementById('news-body-ta').value = content.map(p => p.ta || '').join('\n\n');
+    document.getElementById('news-body-en').value = content.map(p => p.en || '').join('\n\n');
+
+    const pBtn = document.getElementById('news-preview-btn');
+    if (pBtn) {
+      pBtn.href = `../news-detail.html?id=${encodeURIComponent(id)}`;
+      pBtn.style.display = 'inline-flex';
+    }
+    document.getElementById('news-editor-form').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  window.saveNewsForm = async function (e) {
+    e.preventDefault();
+    const id = document.getElementById('news-field-id').value.trim();
+    const date = document.getElementById('news-field-date').value.trim();
+    const cat = document.getElementById('news-field-cat').value;
+    const thumb = (document.getElementById('news-field-thumb').value.trim() || 'images/campus-hero.jpg').replace(/^\/+/, '');
+
+    const title = {
+      si: document.getElementById('news-title-si').value.trim(),
+      ta: document.getElementById('news-title-ta').value.trim(),
+      en: document.getElementById('news-title-en').value.trim()
+    };
+    const excerpt = {
+      si: document.getElementById('news-excerpt-si').value.trim(),
+      ta: document.getElementById('news-excerpt-ta').value.trim(),
+      en: document.getElementById('news-excerpt-en').value.trim()
+    };
+    const bodySi = document.getElementById('news-body-si').value.trim();
+    const bodyTa = document.getElementById('news-body-ta').value.trim();
+    const bodyEn = document.getElementById('news-body-en').value.trim();
+
+    const paragraphs = [{ si: bodySi, ta: bodyTa, en: bodyEn }];
+
+    const articleObj = {
+      id,
+      date,
+      category: cat,
+      image: thumb,
+      title,
+      content: paragraphs
+    };
+
+    try {
+      showStatus(`Committing ${id}.json to GitHub...`, "info");
+      await putFile(`content/news/${id}.json`, JSON.stringify(articleObj, null, 2), `Update news article: ${id}`);
+      
+      // Update news index
+      let indexData = await fetchLocalJSON('content/news/index.json') || { articles: [] };
+      const existingIdx = indexData.articles.findIndex(a => a.id === id);
+      const summary = { id, date, category: cat, title, excerpt, thumbnail: thumb };
+      if (existingIdx >= 0) {
+        indexData.articles[existingIdx] = summary;
+      } else {
+        indexData.articles.unshift(summary);
+      }
+      await putFile('content/news/index.json', JSON.stringify(indexData, null, 2), `Update news index for ${id}`);
+
+      showStatus(`Article ${id} saved and committed successfully!`, "success");
+      loadNewsList();
+    } catch (err) {
+      showStatus(`Save failed: ${err.message}`, "error");
+    }
+  };
+
+  // Downloads List
+  async function loadDownloadsList() {
+    const data = await fetchLocalJSON('content/downloads/index.json');
+    if (!data || !data.documents) return;
+    const tbody = document.getElementById('downloads-list-tbody');
+    tbody.innerHTML = data.documents.map(d => `
+      <tr>
+        <td><code>${d.filename}</code></td>
+        <td><span style="text-transform:capitalize;">${d.category}</span></td>
+        <td>${(d.title && d.title.en) || ''}</td>
+        <td>${d.date || '2026'}</td>
+        <td><a href="../downloads/${d.filename}" target="_blank" class="btn btn-secondary" style="padding:2px 8px; font-size:0.75rem;">Download</a></td>
+      </tr>
+    `).join('');
+  }
+
+  // Init
+  const s = getCleanSettings();
+  document.getElementById('gh-owner').value = s.owner || '';
+  document.getElementById('gh-repo').value = s.repo || '';
+  document.getElementById('gh-branch').value = s.branch || 'main';
+  document.getElementById('gh-token').value = s.token || '';
+  updateTokenBadge();
+
+  loadNewsList();
+  loadDownloadsList();
+  window.resetNewsForm();
+})();
+</script>
+</body>
+</html>

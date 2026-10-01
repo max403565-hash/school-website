@@ -1,0 +1,15 @@
+{
+  "name": "mo-pelwatta-navodya-college",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static HTML/CSS/JS site: zero build steps required for GitHub Pages'",
+    "lint": "echo 'Zero lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

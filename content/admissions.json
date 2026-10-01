@@ -1,0 +1,26 @@
+{
+  "general": {
+    "title": { "si": "රජයේ පාසල් ඇතුළත් වීමේ ප්‍රතිපත්තිය", "ta": "அரச பாடசாலை சேர்க்கைக் கொள்கை", "en": "Government School Admission Policy" },
+    "body": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා අධ්‍යාපන අමාත්‍යාංශයේ රෙගුලාසි සහ චක්‍රලේඛයන්ට අනුව ක්‍රියාත්මක වන රජයේ නොමිලේ අධ්‍යාපනය ලබාදෙන ආයතනයකි. කිසිදු ඇතුළත් වීමේ ගාස්තුවක් හෝ අල්ලස් මුදලක් අය නොකෙරේ.",
+      "ta": "இலங்கை கல்வி அமைச்சின் விதிமுறைகள் மற்றும் சுற்றறிக்கைகளுக்கு அமைய செயற்படும் அரச இலவச கல்வி நிறுவனமாகும். எவ்வித சேர்க்கைக் கட்டணமும் அறவிடப்பட மாட்டாது.",
+      "en": "Mo/Pelwatta Navodya Secondary College is a Sri Lankan free government school governed strictly by Ministry of Education admission circulars. No admission fees are charged."
+    }
+  },
+  "grade6": {
+    "title": { "si": "6 ශ්‍රේණියට ඇතුළත් වීම (ශිෂ්‍යත්ව ප්‍රතිඵල මත)", "ta": "தரம் 6 சேர்க்கை (புலமைப்பரிசில் அடிப்படையில்)", "en": "Grade 6 Admission (Grade 5 Scholarship Basis)" },
+    "desc": {
+      "si": "5 ශ්‍රේණිය ශිෂ්‍යත්ව විභාගයේ ලකුණු සීමාවන් (Cut-off marks) මත පදනම්ව අධ්‍යාපන අමාත්‍යාංශය මගින් සිසුන් යොමු කරනු ලැබේ. අදාළ ඇතුළත් වීමේ ලිපිය සහ ලේඛන විදුහල්පති කාර්යාලය වෙත ඉදිරිපත් කළ යුතුය.",
+      "ta": "தரம் 5 புலமைப்பரிசில் பரீட்சையின் வெட்டுப்புள்ளிகளின் அடிப்படையில் கல்வி அமைச்சினால் மாணவர்கள் ஒதுக்கப்படுகின்றனர்.",
+      "en": "Students are assigned by the Ministry of Education based on annual Grade 5 Scholarship examination cut-off marks for Monaragala."
+    }
+  },
+  "alAdmission": {
+    "title": { "si": "උසස් පෙළ (12 ශ්‍රේණිය) ඇතුළත් වීම", "ta": "உயர்தர (தரம் 12) சேர்க்கை", "en": "Advanced Level (Grade 12) Admission" },
+    "desc": {
+      "si": "අ.පො.ස. සාමාන්‍ය පෙළ විභාගයේදී අදාළ විෂය ධාරාවට අදාළ සුදුසුකම් සපුරා ඇති පාසලේම සිසුන්ට මෙන්ම වෙනත් පාසල්වලින් පැමිණෙන සුදුසුකම්ලත් සිසුන්ටද අවස්ථාව හිමිවේ.",
+      "ta": "க.பொ.த. சாதாரண தரப் பரීක්ෂை பெறுபேறுகளுக்கு அமைய தெரிவுசெய்யப்பட்ட பாடப் பிரிவுகளுக்கான தகுதியைப் பெற்ற மாணவர்களுக்கு வாய்ப்பு வழங்கப்படுகிறது.",
+      "en": "Open to internal and external candidates satisfying G.C.E. Ordinary Level minimum qualification criteria specified in official circulars."
+    }
+  }
+}

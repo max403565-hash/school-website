@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="crestGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d77f"/>
+      <stop offset="50%" stop-color="#c99738"/>
+      <stop offset="100%" stop-color="#93681a"/>
+    </linearGradient>
+    <linearGradient id="crestMaroon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9a2b3b"/>
+      <stop offset="100%" stop-color="#58121b"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Shield Outline -->
+  <path d="M100 8 C155 8 185 24 185 70 C185 130 140 178 100 194 C60 178 15 130 15 70 C15 24 45 8 100 8 Z" 
+        fill="url(#crestGold)" filter="url(#dropShadow)"/>
+
+  <!-- Inner Maroon Shield -->
+  <path d="M100 16 C148 16 175 30 175 72 C175 124 135 168 100 182 C65 168 25 124 25 72 C25 30 52 16 100 16 Z" 
+        fill="url(#crestMaroon)" stroke="#f5d77f" stroke-width="2"/>
+
+  <!-- Traditional Traditional Oil Lamp (පහන) at Top -->
+  <g transform="translate(100, 48) scale(0.85)">
+    <!-- Flame -->
+    <path d="M0 -22 C-5 -14 -7 -8 0 0 C7 -8 5 -14 0 -22 Z" fill="#ffd13b"/>
+    <path d="M0 -18 C-3 -12 -4 -7 0 -2 C4 -7 3 -12 0 -18 Z" fill="#ff7a00"/>
+    <!-- Lamp Bowl -->
+    <ellipse cx="0" cy="4" rx="16" ry="6" fill="url(#crestGold)"/>
+    <path d="M-14 4 Q0 16 14 4 Z" fill="url(#crestGold)"/>
+    <!-- Stand -->
+    <path d="M-4 12 L-6 24 L6 24 L4 12 Z" fill="url(#crestGold)"/>
+    <ellipse cx="0" cy="25" rx="12" ry="4" fill="url(#crestGold)"/>
+  </g>
+
+  <!-- Open Book of Knowledge in Center -->
+  <g transform="translate(100, 108) scale(0.95)">
+    <!-- Book Pages -->
+    <path d="M0 8 C-16 -2 -38 0 -48 6 L-48 -18 C-38 -24 -16 -22 0 -14 C16 -22 38 -24 48 -18 L48 6 C38 0 16 -2 0 8 Z" 
+          fill="#ffffff" stroke="#c99738" stroke-width="2"/>
+    <!-- Spine line -->
+    <line x1="0" y1="-14" x2="0" y2="8" stroke="#7a1c28" stroke-width="2"/>
+    <!-- Page text lines hint -->
+    <line x1="-38" y1="-10" x2="-8" y2="-6" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="-38" y1="-4" x2="-10" y2="0" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="-38" y1="2" x2="-14" y2="6" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="8" y1="-6" x2="38" y2="-10" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="10" y1="0" x2="38" y2="-4" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="14" y1="6" x2="38" y2="2" stroke="#94a3b8" stroke-width="1.5"/>
+  </g>
+
+  <!-- Ears of Paddy (Sheaves of Rice / ගොයම් කරල්) -->
+  <g fill="url(#crestGold)" opacity="0.95">
+    <path d="M42 90 Q32 110 40 134 Q44 116 50 102 Z"/>
+    <path d="M36 102 Q24 118 30 140 Q38 126 44 112 Z"/>
+    <path d="M158 90 Q168 110 160 134 Q156 116 150 102 Z"/>
+    <path d="M164 102 Q176 118 170 140 Q162 126 156 112 Z"/>
+  </g>
+
+  <!-- Ribbon Scroll at Bottom with College Acronym / Motto -->
+  <g transform="translate(100, 160)">
+    <!-- Scroll Background -->
+    <path d="M-70 0 C-40 -6 40 -6 70 0 C55 12 40 18 0 18 C-40 18 -55 12 -70 0 Z" 
+          fill="url(#crestGold)" stroke="#58121b" stroke-width="1.5"/>
+    <!-- Fold ends -->
+    <path d="M-70 0 L-82 -6 L-78 8 L-70 0 Z" fill="#93681a"/>
+    <path d="M70 0 L82 -6 L78 8 L70 0 Z" fill="#93681a"/>
+    <!-- Scroll Text -->
+    <text x="0" y="11" font-family="'Noto Sans Sinhala', Arial, sans-serif" font-size="8.5" font-weight="800" 
+          fill="#58121b" text-anchor="middle" letter-spacing="0.5">විද්‍යා දදාති විනයං</text>
+  </g>
+</svg>

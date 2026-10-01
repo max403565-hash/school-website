@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Events | පුවත් සහ නිවේදන - Mo/Pelwatta Navodya Secondary College</title>
+  <meta name="description" content="Announcements, term exams, circulars, and student milestones." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="News & Events - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Announcements, term exams, circulars, and student milestones." />
+  <meta property="og:image" content="images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <h1 class="page-title" data-i18n="nav.news">පුවත් සහ නිවේදන</h1>
+      <p class="page-subtitle">පාසලේ වැදගත් තොරතුරු, වාර විභාග සහ විශේෂ සිදුවීම්</p>
+      <div class="breadcrumbs">
+        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.news">News & Events</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 3.5rem 1rem;">
+    <!-- Search & Filter Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem;">
+      <!-- Category Filter -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="category-filters"></div>
+
+      <!-- Search Input -->
+      <div style="min-width: 260px; max-width: 320px; width: 100%;">
+        <input type="text" id="news-search-input" class="form-input" placeholder="පුවත් සොයන්න (Search news...)" />
+      </div>
+    </div>
+
+    <!-- News Grid -->
+    <div class="news-grid" id="news-listing-grid"></div>
+
+    <div id="no-news-found" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+      <p style="font-size: 1.2rem;">කිසිදු පුවතක් හමු නොවීය (No articles match your criteria).</p>
+    </div>
+  </main>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      let newsIndexData = null;
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      async function loadData() {
+        if (window.i18n && window.i18n.fetchJSON) {
+          newsIndexData = await window.i18n.fetchJSON('content/news/index.json');
+        } else {
+          try {
+            const res = await fetch('content/news/index.json');
+            newsIndexData = await res.json();
+          } catch (e) {}
+        }
+        renderContent();
+      }
+
+      function renderContent() {
+        if (!newsIndexData) return;
+        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
+        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+
+        // Render Categories
+        const catContainer = document.getElementById('category-filters');
+        catContainer.innerHTML = (newsIndexData.categories || []).map(cat => `
+          <button type="button" class="lang-btn ${activeCategory === cat.id ? 'active' : ''}" 
+                  style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" 
+                  data-cat="${cat.id}">
+            ${pick(cat.title, lang)}
+          </button>
+        `).join('');
+
+        // Filter & Search
+        const articles = newsIndexData.articles || [];
+        const filtered = articles.filter(item => {
+          const matchCat = activeCategory === 'all' || item.category === activeCategory;
+          const title = pick(item.title, lang).toLowerCase();
+          const excerpt = pick(item.excerpt || item.description, lang).toLowerCase();
+          const matchQuery = !searchQuery || title.includes(searchQuery) || excerpt.includes(searchQuery);
+          return matchCat && matchQuery;
+        });
+
+        const grid = document.getElementById('news-listing-grid');
+        const emptyMsg = document.getElementById('no-news-found');
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '';
+          emptyMsg.style.display = 'block';
+          return;
+        }
+
+        emptyMsg.style.display = 'none';
+        grid.innerHTML = filtered.map(item => {
+          const cleanTitle = pick(item.title, lang);
+          const cleanExcerpt = pick(item.excerpt || item.description, lang);
+          const defaultHref = `news-detail.html?id=${item.id}`;
+          const thumbUrl = (item.thumbnail || '').replace(/^\/+/, '');
+
+          return `
+          <article class="news-card">
+            <a href="${defaultHref}" class="news-card-img-wrapper" aria-label="${cleanTitle}">
+              <img src="${thumbUrl}" alt="${cleanTitle}" class="news-card-img" loading="lazy" />
+            </a>
+            <div class="news-card-body">
+              <div class="news-card-meta">
+                <span>📅 ${item.date}</span>
+                <span aria-hidden="true">·</span>
+                <span style="text-transform: capitalize; color: var(--gold-dark); font-weight: 600;">${item.category}</span>
+              </div>
+              <h3 class="news-card-title">
+                <a href="${defaultHref}">${cleanTitle}</a>
+              </h3>
+              <p class="news-card-excerpt">${cleanExcerpt}</p>
+              <div class="news-card-footer">
+                <a href="${defaultHref}">
+                  ${lang === 'si' ? 'සම්පූර්ණ පුවත' : (lang === 'ta' ? 'முழு விபரம்' : 'Read Full Notice')} &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+        }).join('');
+
+        // Attach category events
+        catContainer.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeCategory = btn.getAttribute('data-cat');
+            renderContent();
+          });
+        });
+      }
+
+      const searchInput = document.getElementById('news-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim().toLowerCase();
+          renderContent();
+        });
+      }
+
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(renderContent);
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>

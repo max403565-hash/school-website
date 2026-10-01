@@ -1,0 +1,21 @@
+{
+  "address": {
+    "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, පැල්වත්ත, බුත්තල (මොනරාගල පාර), ඌව පළාත, ශ්‍රී ලංකා.",
+    "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி, பெல்வத்தை, புத்தள (மொணராகலை வீதி), ஊவா மாகாணம், இலங்கை.",
+    "en": "Mo/Pelwatta Navodya Secondary College, Pelwatta, Buttala (Monaragala Road), Uva Province, Sri Lanka."
+  },
+  "phone": "+94 55 227 6234",
+  "email": "info@pelwattacollege.sch.lk",
+  "principalEmail": "principal@pelwattacollege.sch.lk",
+  "hours": {
+    "si": "සඳුදා සිට සිකුරාදා දක්වා: පෙ.ව. 7:30 සිට ප.ව. 1:30 දක්වා (රජයේ පාසල් දින)",
+    "ta": "திங்கள் முதல் வெள்ளி வரை: காலை 7:30 முதல் பிற்பகல் 1:30 வரை (அரச பள்ளி நாட்கள்)",
+    "en": "Monday to Friday: 7:30 AM to 1:30 PM (Government School Days)"
+  },
+  "officeLocation": {
+    "lat": 6.74749,
+    "lng": 81.194567,
+    "zone": "Monaragala Education Zone",
+    "division": "Buttala Division"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": {
+    "si": "පාසල් සංවර්ධන සමිතිය සහ ආදි ශිෂ්‍ය සංගමය",
+    "ta": "பாடசாலை அபிவிருத்தி சங்கம் மற்றும் பழைய மாணவர் சங்கம்",
+    "en": "School Development Society & Past Pupils Association"
+  },
+  "intro": {
+    "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ භෞතික හා අධ්‍යාපනික සම්පත් දියුණු කිරීම උදෙසා දෙමාපියන්, ගුරුවරුන් සහ ආදි ශිෂ්‍යයින් එක්ව කටයුතු කරන ප්‍රධාන ව්‍යවස්ථාපිත ආයතනය පාසල් සංවර්ධන සමිතියයි (SDS).",
+    "ta": "கல்லூரியின் பௌதிக மற்றும் கல்வி வளங்களை மேம்படுத்துவதற்காக பெற்றோர்கள், ஆசிரியர்கள் மற்றும் பழைய மாணவர்கள் ஒன்றிணைந்து செயலாற்றும் அமைப்பாகும்.",
+    "en": "The School Development Society (SDS) functions under statutory education regulations to support infrastructural growth, student welfare, and scholastic enrichment."
+  },
+  "initiatives": [
+    {
+      "name": { "si": "විද්‍යාගාර හා තාක්ෂණික උපකරණ නවීකරණය", "ta": "ஆய்வுகூட தொழில்நுட்ப உபகரணங்கள் புனரமைப்பு", "en": "Laboratory Equipment Modernization" },
+      "desc": { "si": "ද්විතීයික විද්‍යා හා තාක්ෂණ පීඨ සඳහා අවශ්‍ය උසස් උපකරණ සහ ප්‍රායෝගික ද්‍රව්‍ය සැපයීම.", "ta": "விஞ்ஞான மற்றும் தொழினுட்ப ஆய்வுக்கூடங்களுக்கு தேவையான உபகரணங்களை வழங்குதல்.", "en": "Procuring precision scientific instruments, lab consumables, and ICT workstations." }
+    },
+    {
+      "name": { "si": "ක්‍රීඩා පිටිය හා ශාරීරික යෝග්‍යතා පහසුකම්", "ta": "விளையாட்டு மைதானம் மற்றும் உடற்பயிற்சி வசதிகள்", "en": "Grounds Maintenance & Athletic Kits" },
+      "desc": { "si": "විද්‍යාලීය ධාවන පථය, වොලිබෝල් හා නෙට්බෝල් පිටි සංවර්ධනය සහ ක්‍රීඩා උපකරණ ලබාදීම.", "ta": "மைதான பராமரிப்பு மற்றும் மாணவ விளையாட்டு வீரர்களுக்கான உடற்பயிற்சி உபகரணங்கள்.", "en": "Maintaining competition running tracks, volleyball courts, and team jerseys." }
+    },
+    {
+      "name": { "si": "ශිෂ්‍ය සුබසාධන හා පිරිසිදු පානීය ජල ව්‍යාපෘතිය", "ta": "மாணவர் நலன்புரி மற்றும் சுத்தமான குடிநீர் திட்டம்", "en": "Student Welfare & Clean Drinking Water" },
+      "desc": { "si": "පාසල් දරුවන්ට පිරිසිදු පෙරූ පානීය ජලය සහ සනීපාරක්ෂක පහසුකම් නිරන්තරව නඩත්තු කිරීම.", "ta": "மாணவர்களுக்கு பாதுகாக்கப்பட்ட குடிநீர் மற்றும் சுகாதார வசதிகளை உறுதி செய்தல்.", "en": "Continuous operation of RO water purification systems and sanitary hygiene maintenance." }
+    }
+  ]
+}

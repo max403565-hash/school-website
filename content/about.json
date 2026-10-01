@@ -1,0 +1,31 @@
+{
+  "vision": {
+    "si": "නැණ ගුණ සපිරි, විනයගරුක, ගෝලීය අභියෝග ජයගත හැකි විශිෂ්ට ශ්‍රී ලාංකේය පුරවැසියන් බිහිකිරීම.",
+    "ta": "அறிவும் நற்பண்பும் மிக்க, ஒழுக்கமுள்ள, உலகளாவிய சவால்களை வெல்லக்கூடிய சிறந்த இலங்கை பிரஜைகளை உருவாக்குதல்.",
+    "en": "To nurture knowledgeable, disciplined, and visionary Sri Lankan citizens capable of conquering global challenges."
+  },
+  "mission": {
+    "si": "ගුණාත්මක අධ්‍යාපනයක්, ක්‍රීඩා සහ විෂය සමගාමී කුසලතා මෙන්ම මානව සාරධර්ම සංවර්ධනය උදෙසා උසස් පරිසරයක් නිර්මාණය කිරීම.",
+    "ta": "தரமான கல்வி, விளையாட்டு, இணைப்பாடவிதான திறன்கள் மற்றும் மனித விழுமியங்களை மேம்படுத்துவதற்கான சிறந்த சூழலை உருவாக்குதல்.",
+    "en": "To provide high-quality free education, fostering academic inquiry, sporting prowess, aesthetic sensitivity, and ethical integrity."
+  },
+  "history": {
+    "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය මොනරාගල දිස්ත්‍රික්කයේ ග්‍රාමීය හා ද්විතීයික අධ්‍යාපනය නගාසිටුවීමේ අරමුණින් ආරම්භ විය. 1990 දශකයේදී නවෝද්‍යා සංකල්පය යටතේ විද්‍යාගාර, පරිගණක ඒකක සහ සෞන්දර්ය අංශවලින් පොහොසත් වූ පාසල, අද වන විට දහස් ගණනක් සිසු දරුවන්ට උසස් පෙළ දක්වා අධ්‍යාපනය සපයන ප්‍රමුඛ රජයේ ජාතික පාසලක් බවට පත්ව ඇත.",
+    "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி மொணராகலை மாவட்டத்தின் கிராமப்புற இரண்டாம் நிலைக் கல்வியை மேம்படுத்தும் நோக்கில் நிறுவப்பட்டது. 1990களில் நவோத்யா திட்டத்தின் கீழ் நவீன ஆய்வுகூடங்கள், கணினி வசதிகளுடன் அபிவிருத்தி செய்யப்பட்டு, இன்று ஆயிரக்கணக்கான மாணவர்களுக்கு உயர்தரம் வரை கற்பிக்கும் முன்னணி அரச பாடசாலையாக திகழ்கிறது.",
+    "en": "Established to uplift secondary education in the Monaragala District, Mo/Pelwatta Navodya Secondary College was enhanced under the Navodya development framework with science labs, multimedia facilities, and vocational training, growing into a renowned National School."
+  },
+  "stats": [
+    { "value": "1,450+", "label": { "si": "ශිෂ්‍ය සංඛ්‍යාව", "ta": "மாணவர் எண்ணிக்கை", "en": "Current Students" } },
+    { "value": "68", "label": { "si": "ආචාර්ය මණ්ඩලය", "ta": "ஆசிரியர் குழாம்", "en": "Qualified Teachers" } },
+    { "value": "5", "label": { "si": "උසස් පෙළ විෂය ධාරා", "ta": "உயர்தர கல்விப் பிரிவுகள்", "en": "A/L Academic Streams" } },
+    { "value": "100%", "label": { "si": "රජයේ නිදහස් අධ්‍යාපනය", "ta": "அரச இலவச கல்வி", "en": "Free Education" } }
+  ],
+  "principalMessage": {
+    "title": { "si": "විදුහල්පතිතුමාගේ පණිවිඩය", "ta": "அதிபர் செய்தி", "en": "Message from the Principal" },
+    "body": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයීය නිල වෙබ් අඩවිය වෙත ඔබ සාදරයෙන් පිළිගනිමි. අපගේ අරමුණ වන්නේ විභාග ජයග්‍රහණ පමණක් නොව, ජීවිතය ජයගත හැකි, ගුණගරුක හා දයාබර හදවතක් ඇති දරුවන් පිරිසක් රටට දායාද කිරීමයි. ආචාර්ය මණ්ඩලයේ කැපවීම සහ දෙමාපියන්ගේ සහයෝගය අපේ ගමනේ ශක්තියයි.",
+      "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரியின் உத்தியோகபூர்வ இணையத்தளத்திற்கு உங்களை அன்புடன் வரவேற்கிறேன். வெறும் பரீட்சை வெற்றிகளை மாத்திரமன்றி, வாழ்க்கையை வெற்றிகொள்ளக்கூடிய நற்பண்புமிக்க பிள்ளைகளை உருவாக்குவதே எமது இலக்காகும்.",
+      "en": "Welcome to the official website of Mo/Pelwatta Navodya Secondary College. Our collective commitment is to equip our youth with both rigorous intellectual capabilities and compassionate civic values. Together with our dedicated faculty, parents, and alumni, we advance the noble cause of free education."
+    }
+  }
+}
