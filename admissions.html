@@ -178,29 +178,32 @@ function renderBody(page, common){
     btn.textContent = (getLang() === 'si') ? 'යවමින් පවතී...' : (getLang() === 'ta' ? 'அனுப்பப்படுகிறது...' : 'Submitting...');
 
     const ref = refNumber();
-    const studentName = document.getElementById('adm-student-name').value.trim();
-    const dob = document.getElementById('adm-dob').value.trim();
-    const gender = document.getElementById('adm-gender').value.trim();
-    const grade = document.getElementById('adm-grade').value.trim();
-    const parentName = document.getElementById('adm-parent-name').value.trim();
-    const phone = document.getElementById('adm-phone').value.trim();
-    const email = document.getElementById('adm-email').value.trim();
-    const address = document.getElementById('adm-address').value.trim();
+    const studentName = (document.getElementById('adm-student-name').value || '').trim();
+    const dob = (document.getElementById('adm-dob').value || '').trim();
+    const gender = (document.getElementById('adm-gender').value || '').trim();
+    const grade = (document.getElementById('adm-grade').value || '').trim();
+    const parentName = (document.getElementById('adm-parent-name').value || '').trim();
+    const phone = (document.getElementById('adm-phone').value || '').trim();
+    const email = (document.getElementById('adm-email').value || '').trim();
+    const address = (document.getElementById('adm-address').value || '').trim();
 
+    // Prepare exact URLSearchParams for Google Form:
     const params = new URLSearchParams();
-    if (GOOGLE_FORM_ENTRIES.studentName) params.append(GOOGLE_FORM_ENTRIES.studentName, studentName);
-    if (GOOGLE_FORM_ENTRIES.dob) params.append(GOOGLE_FORM_ENTRIES.dob, dob);
-    if (GOOGLE_FORM_ENTRIES.gender) params.append(GOOGLE_FORM_ENTRIES.gender, gender);
-    if (GOOGLE_FORM_ENTRIES.grade) params.append(GOOGLE_FORM_ENTRIES.grade, grade);
-    if (GOOGLE_FORM_ENTRIES.parentName) params.append(GOOGLE_FORM_ENTRIES.parentName, parentName);
-    if (GOOGLE_FORM_ENTRIES.phone) params.append(GOOGLE_FORM_ENTRIES.phone, phone);
-    if (GOOGLE_FORM_ENTRIES.email) params.append(GOOGLE_FORM_ENTRIES.email, email);
-    if (GOOGLE_FORM_ENTRIES.address) params.append(GOOGLE_FORM_ENTRIES.address, address);
+    params.append('entry.1432907719', studentName);
+    params.append('entry.1108585059', dob);
+    params.append('entry.1713704593', gender);
+    params.append('entry.1870348017', grade);
+    params.append('entry.476165141', parentName);
+    params.append('entry.791239928', phone);
+    params.append('entry.1210606851', email);
+    params.append('entry.368470239', address);
 
-    const formUrl = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+    const primaryUrl = 'https://docs.google.com/forms/d/e/1BId4vlsEJcQZPdlsyhqgsupmJXQYuzDWYoIyP6FV3cE/formResponse';
+    const directUrl  = 'https://docs.google.com/forms/d/1BId4vlsEJcQZPdlsyhqgsupmJXQYuzDWYoIyP6FV3cE/formResponse';
 
     try {
-      await fetch(formUrl, {
+      // Background fetch POST request (mode: "no-cors")
+      const req1 = fetch(primaryUrl, {
         method: "POST",
         mode: "no-cors",
         headers: {
@@ -208,6 +211,18 @@ function renderBody(page, common){
         },
         body: params
       });
+
+      // Also post to directUrl in parallel to guarantee delivery regardless of /e/ route
+      const req2 = fetch(directUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params
+      }).catch(() => {});
+
+      await Promise.all([req1, req2]);
 
       // Small delay for UI smoothness
       await new Promise(r => setTimeout(r, 600));
