@@ -1,26 +1,34 @@
 [
   {
-    "id": "n1",
-    "date": "2026-03-20",
-    "category": "academic",
-    "image": "images/placeholder-academic.svg",
-    "title": {"si": "2026 පළමු වාර විභාග කාලසටහන නිකුත් කෙරේ", "ta": "2026 முதல் தவணை பரீட்சை அட்டவணை வெளியிடப்பட்டது", "en": "2026 First Term Exam Timetable Released"},
-    "excerpt": {"si": "සියලුම ශ්‍රේණි සඳහා පළමු වාර විභාග කාලසටහන පාසල් වෙබ් අඩවියේ පළ කර ඇත.", "ta": "அனைத்து தரங்களுக்குமான முதல் தவணை பரீட்சை அட்டவணை வெளியிடப்பட்டுள்ளது.", "en": "The Term 1 exam timetable for all grades has been published on the school website."}
-  },
-  {
     "id": "n2",
     "date": "2026-03-10",
     "category": "sports",
     "image": "images/placeholder-sports.svg",
-    "title": {"si": "වාර්ෂික ක්‍රීඩා උත්සවය සාර්ථකව අවසන් විය", "ta": "வருடாந்த விளையாட்டு விழா வெற்றிகரமாக நிறைவடைந்தது", "en": "Annual Sports Meet Concludes Successfully"},
-    "excerpt": {"si": "නිල් කණ්ඩායම ශූරතාවය දිනා ගත් අතර, විදුහල්පතිතුමිය ජයග්‍රාහකයන් ඇගයීමට ලක් කළාය.", "ta": "நீல அணி வெற்றி பெற்றது, அதிபர் வெற்றியாளர்களைப் பாராட்டினார்.", "en": "The Blue House won the championship trophy, and the Principal congratulated all winners."}
+    "title": {
+      "si": "වාර්ෂික ක්‍රීඩා උත්සවය සාර්ථකව අවසන් විය",
+      "ta": "வருடாந்த விளையாட்டு விழா வெற்றிகரமாக நிறைவடைந்தது",
+      "en": "Annual Sports Meet Concludes Successfully"
+    },
+    "excerpt": {
+      "si": "නිල් කණ්ඩායම ශූරතාවය දිනා ගත් අතර, විදුහල්පතිතුමිය ජයග්‍රාහකයන් ඇගයීමට ලක් කළාය.",
+      "ta": "நீல அணி வெற்றி பெற்றது, அதிபர் வெற்றியாளர்களைப் பாராட்டினார்.",
+      "en": "The Blue House won the championship trophy, and the Principal congratulated all winners."
+    }
   },
   {
     "id": "n3",
     "date": "2026-02-14",
     "category": "circulars",
     "image": "images/placeholder-circular.svg",
-    "title": {"si": "අධ්‍යාපන අමාත්‍යාංශයේ නව චක්‍රලේඛය", "ta": "கல்வி அமைச்சின் புதிய சுற்றறிக்கை", "en": "New Ministry of Education Circular"},
-    "excerpt": {"si": "පාසල් නිවාඩු දින සංශෝධනය පිළිබඳ නිල චක්‍රලේඛය නිකුත් කර ඇත.", "ta": "பள்ளி விடுமுறை நாட்கள் திருத்தம் தொடர்பான சுற்றறிக்கை வெளியிடப்பட்டுள்ளது.", "en": "An official circular on revised school holiday dates has been issued."}
+    "title": {
+      "si": "අධ්‍යාපන අමාත්‍යාංශයේ නව චක්‍රලේඛය",
+      "ta": "கல்வி அமைச்சின் புதிய சுற்றறிக்கை",
+      "en": "New Ministry of Education Circular"
+    },
+    "excerpt": {
+      "si": "පාසල් නිවාඩු දින සංශෝධනය පිළිබඳ නිල චක්‍රලේඛය නිකුත් කර ඇත.",
+      "ta": "பள்ளி விடுமுறை நாட்கள் திருத்தம் தொடர்பான சுற்றறிக்கை வெளியிடப்பட்டுள்ளது.",
+      "en": "An official circular on revised school holiday dates has been issued."
+    }
   }
 ]
