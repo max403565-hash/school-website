@@ -1,0 +1,6 @@
+[
+  {"id":"g1","category":"sports","image":"images/placeholder-sports.svg","caption":{"si":"වාර්ෂික ක්‍රීඩා උත්සවය 2026","ta":"வருடாந்த விளையாட்டு விழா 2026","en":"Annual Sports Meet 2026"}},
+  {"id":"g2","category":"prizegiving","image":"images/placeholder-prizegiving.svg","caption":{"si":"ත්‍යාග ප්‍රදාන උත්සවය","ta":"பரிசளிப்பு விழா","en":"Prize Giving Ceremony"}},
+  {"id":"g3","category":"cultural","image":"images/placeholder-cultural.svg","caption":{"si":"සංස්කෘතික දිනය","ta":"கலாசார தினம்","en":"Cultural Day"}},
+  {"id":"g4","category":"daily","image":"images/placeholder-daily.svg","caption":{"si":"උදෑසන එකලස් වීම","ta":"காலை கூட்டம்","en":"Morning Assembly"}}
+]

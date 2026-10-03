@@ -1,0 +1,44 @@
+{
+  "schoolName": {
+    "si": "මෝ/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය",
+    "ta": "மோ/பெல்வத்த நவோதயா இடைநிலைப் பள்ளி",
+    "en": "Mo/Pelwatta Navodya Secondary Collage"
+  },
+  "location": {
+    "si": "පැල්වත්ත, මොනරාගල, ශ්‍රී ලංකාව",
+    "ta": "பெல்வத்த, மொனராகலை, இலங்கை",
+    "en": "Pelwatta, Monaragala, Sri Lanka"
+  },
+  "nationalSchoolNotice": {
+    "si": "ජාතික පාසලක් ලෙස නම් කර ඇත (නිල ගැසට් පත්‍රය නිකුත්වීමට යටත්ව පවතින තත්ත්වයකි)",
+    "ta": "தேசியப் பள்ளியாக பெயரிடப்பட்டுள்ளது (உத்தியோகபூர்வ வர்த்தமானி வெளியீட்டிற்கு உட்பட்டது)",
+    "en": "Designated as a National School (status pending formal gazette confirmation)"
+  },
+  "nav": {
+    "home": {"si": "මුල් පිටුව", "ta": "முகப்பு", "en": "Home"},
+    "about": {"si": "අප ගැන", "ta": "எங்களைப் பற்றி", "en": "About Us"},
+    "academic": {"si": "අධ්‍යයන අංශය", "ta": "கல்விப் பிரிவு", "en": "Academic"},
+    "studentlife": {"si": "ශිෂ්‍ය ජීවිතය", "ta": "மாணவர் வாழ்க்கை", "en": "Student Life"},
+    "gallery": {"si": "ඡායාරූප එකතුව", "ta": "படத்தொகுப்பு", "en": "Gallery"},
+    "news": {"si": "පුවත් සහ නිවේදන", "ta": "செய்திகள் மற்றும் அறிவிப்புகள்", "en": "News & Events"},
+    "admissions": {"si": "ඇතුළත් කිරීම", "ta": "சேர்க்கை", "en": "Admissions"},
+    "contact": {"si": "සම්බන්ධ වන්න", "ta": "தொடர்பு கொள்ள", "en": "Contact Us"}
+  },
+  "a11y": {
+    "label": {"si": "ප්‍රවේශතාව", "ta": "அணுகல்தன்மை", "en": "Accessibility"},
+    "contrast": {"si": "වර්ණ වෙනස", "ta": "நிற மாற்றம்", "en": "Contrast"}
+  },
+  "footer": {
+    "quickLinksTitle": {"si": "ඉක්මන් සබැඳි", "ta": "விரைவு இணைப்புகள்", "en": "Quick Links"},
+    "legalTitle": {"si": "නීතිමය", "ta": "சட்டபூர்வமான", "en": "Legal"},
+    "contactTitle": {"si": "සම්බන්ධතා", "ta": "தொடர்புகள்", "en": "Contact"},
+    "sdsLink": {"si": "පාසල් සංවර්ධන සමිතිය", "ta": "பள்ளி அபிவிருத்திச் சங்கம்", "en": "School Development Society"},
+    "downloadsLink": {"si": "බාගත කිරීම් / චක්‍රලේඛ", "ta": "பதிவிறக்கங்கள் / சுற்றறிக்கைகள்", "en": "Downloads / Circulars"},
+    "privacyLink": {"si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியுரிமைக் கொள்கை", "en": "Privacy Policy"},
+    "termsLink": {"si": "නියම සහ කොන්දේසි", "ta": "விதிமுறைகள்", "en": "Terms of Use"},
+    "rti": {"si": "තොරතුරු දැනගැනීමේ නිලධාරී (RTI)", "ta": "தகவல் அறியும் அதிகாரி (RTI)", "en": "Right to Information (RTI) Officer"},
+    "rtiName": {"si": "ලේකම් කාර්යාලය, දුරකථන: 055-XXXXXXX", "ta": "செயலக அலுவலகம், தொலைபேசி: 055-XXXXXXX", "en": "School Office, Tel: 055-XXXXXXX"},
+    "copyright": {"si": "සියලුම හිමිකම් ඇවිරිණි.", "ta": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.", "en": "All rights reserved."},
+    "freeSchoolNote": {"si": "ශ්‍රී ලංකා අධ්‍යාපන අමාත්‍යාංශය යටතේ ක්‍රියාත්මක වන නොමිලේ ජාතික පාසලකි.", "ta": "இலங்கை கல்வி அமைச்சின் கீழ் இயங்கும் இலவச தேசியப் பள்ளி.", "en": "A free national school operating under the Sri Lanka Ministry of Education."}
+  }
+}

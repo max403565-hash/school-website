@@ -1,0 +1,36 @@
+{
+  "intro": {
+    "si": "සමාජ, ක්‍රීඩා හා නායකත්ව ක්‍රියාකාරකම් පිළිබඳ තොරතුරු",
+    "ta": "சமூக, விளையாட்டு மற்றும் தலைமைத்துவ செயற்பாடுகள்",
+    "en": "Clubs, sports and student leadership activities"
+  },
+  "tabs": {
+    "clubs": {"si": "සමාජ හා සංගම්", "ta": "சங்கங்கள்", "en": "Clubs & Societies"},
+    "sports": {"si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports"},
+    "prefects": {"si": "ශිෂ්‍ය නායකත්වය", "ta": "மாணவர் தலைமைத்துவம்", "en": "Prefects' Guild"},
+    "guidance": {"si": "වෘත්තීය මාර්ගෝපදේශනය", "ta": "தொழில் வழிகாட்டல்", "en": "Career Guidance"}
+  },
+  "clubs": [
+    {"name": {"si": "විද්‍යා සංගමය", "ta": "விஞ்ஞானச் சங்கம்", "en": "Science Society"}},
+    {"name": {"si": "සාහිත්‍ය සංගමය", "ta": "இலக்கியச் சங்கம்", "en": "Literary Association"}},
+    {"name": {"si": "ස්කවුට් සංගමය", "ta": "ஸ்கவுட் சங்கம்", "en": "Scout Association"}},
+    {"name": {"si": "බටහිර සංගීත සමාජය", "ta": "மேற்கத்திய இசைக் குழு", "en": "Western Music Society"}},
+    {"name": {"si": "IT සමාජය", "ta": "தகவல் தொழில்நுட்பச் சங்கம்", "en": "IT Society"}},
+    {"name": {"si": "මාධ්‍ය ඒකකය", "ta": "ஊடகப் பிரிவு", "en": "Media Unit"}}
+  ],
+  "sportsBody": {
+    "si": "පාසල ක්‍රිකට්, වොලිබෝල්, ලේ ලෙනුම් ක්‍රීඩා, කරාතේ සහ ධාවන ක්‍රීඩා ඇතුළු ක්‍රීඩා කිහිපයකින් කලාපීය හා දිස්ත්‍රික් මට්ටමින් ජයග්‍රහණ ලබාගෙන ඇත.",
+    "ta": "பள்ளி கிரிக்கெட், வொலிபோல், கராத்தே மற்றும் தடகளம் உள்ளிட்ட பல விளையாட்டுகளில் மாவட்ட மட்டத்தில் சாதனைகளைப் பெற்றுள்ளது.",
+    "en": "The school has achieved zonal and district-level success in cricket, volleyball, karate, and athletics, among other sports."
+  },
+  "prefectsBody": {
+    "si": "ශිෂ්‍ය නායකත්ව ගුණාංග වර්ධනය කිරීම අරමුණු කරගෙන ශිෂ්‍ය නායක මණ්ඩලය ස්ථාපිත කර ඇත.",
+    "ta": "மாணவர் தலைமைத்துவ குணங்களை வளர்ப்பதை நோக்கமாகக் கொண்டு மாணவர் தலைமைக் குழு அமைக்கப்பட்டுள்ளது.",
+    "en": "A Prefects' Guild has been established to develop student leadership qualities across all sections of the school."
+  },
+  "guidanceBody": {
+    "si": "සිසුන්ට උසස් අධ්‍යාපනය හා වෘත්තීය මාර්ග පිළිබඳ මග පෙන්වීම සඳහා වෘත්තීය මාර්ගෝපදේශන ඒකකයක් ක්‍රියාත්මක වේ.",
+    "ta": "மாணவர்களுக்கு உயர்கல்வி மற்றும் தொழில் வாய்ப்புகள் குறித்து வழிகாட்ட தொழில் வழிகாட்டல் பிரிவு செயற்படுகிறது.",
+    "en": "A Career Guidance Unit operates to advise students on higher education and career pathways."
+  }
+}

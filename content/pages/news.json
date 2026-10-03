@@ -1,0 +1,17 @@
+{
+  "intro": {
+    "si": "විද්‍යාලයේ නවතම තොරතුරු, විභාග නිවේදන, ක්‍රීඩා ජයග්‍රහණ සහ අමාත්‍යාංශ චක්‍රලේඛ",
+    "ta": "பள்ளியின் புதிய தகவல்கள், பரீட்சை அறிவிப்புகள், விளையாட்டு சாதனைகள்",
+    "en": "Latest school updates, exam notices, sports achievements and ministry circulars"
+  },
+  "categories": {
+    "all": {"si": "සියල්ල", "ta": "அனைத்தும்", "en": "All"},
+    "academic": {"si": "අධ්‍යයන", "ta": "கல்வி", "en": "Academic"},
+    "sports": {"si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports"},
+    "events": {"si": "උත්සව සහ සමාරෝහ", "ta": "நிகழ்வுகள்", "en": "Events & Ceremonies"},
+    "circulars": {"si": "නිල චක්‍රලේඛ", "ta": "சுற்றறிக்கைகள்", "en": "Circulars"}
+  },
+  "searchPlaceholder": {"si": "සොයන්න...", "ta": "தேடுக...", "en": "Search news..."},
+  "noResults": {"si": "අදාළ පුවත් හමු නොවීය.", "ta": "பொருந்தும் செய்திகள் இல்லை.", "en": "No matching news found."},
+  "readMore": {"si": "වැඩිදුර කියවන්න →", "ta": "மேலும் படிக்க →", "en": "Read more →"}
+}

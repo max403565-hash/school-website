@@ -1,0 +1,16 @@
+{
+  "intro": {
+    "si": "පාසල් ක්‍රියාකාරකම් වල ඡායාරූප එකතුව",
+    "ta": "பள்ளி நிகழ்வுகளின் புகைப்படத் தொகுப்பு",
+    "en": "Photos from school activities and events"
+  },
+  "categories": {
+    "all": {"si": "සියල්ල", "ta": "அனைத்தும்", "en": "All"},
+    "sports": {"si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports"},
+    "prizegiving": {"si": "ත්‍යාග ප්‍රදානය", "ta": "பரிசளிப்பு", "en": "Prize Giving"},
+    "cultural": {"si": "සංස්කෘතික", "ta": "கலாசார", "en": "Cultural"},
+    "daily": {"si": "දෛනික ජීවිතය", "ta": "தினசரி வாழ்க்கை", "en": "Daily Life"}
+  },
+  "searchPlaceholder": {"si": "සොයන්න...", "ta": "தேடுக...", "en": "Search photos..."},
+  "noResults": {"si": "ගැලපෙන ඡායාරූප හමු නොවීය.", "ta": "பொருந்தும் படங்கள் இல்லை.", "en": "No matching photos found."}
+}

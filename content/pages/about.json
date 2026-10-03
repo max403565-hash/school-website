@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "si": "විද්‍යාලයේ ඉතිහාසය, දැක්ම, මෙහෙවර සහ නායකත්වය පිළිබඳ තොරතුරු",
+    "ta": "பள்ளியின் வரலாறு, தொலைநோக்கு, பணிக்கூற்று மற்றும் தலைமை பற்றிய தகவல்",
+    "en": "History, vision, mission and leadership of the school"
+  },
+  "historyTitle": {"si": "පාසල් ඉතිහාසය", "ta": "பள்ளி வரலாறு", "en": "School History"},
+  "historyBody": {
+    "si": "1975 වසරේ ආරම්භ කරන ලද මෝ/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, දශක ගණනාවක් පුරා පැල්වත්ත ප්‍රදේශයේ දරුවන්ට ගුණාත්මක අධ්‍යාපනයක් ලබාදෙමින් සිටී. කාලයත් සමඟ ශ්‍රේණි 1 සිට උසස් පෙළ දක්වා පුළුල් අධ්‍යාපනයක් සපයන ආයතනයක් බවට වර්ධනය විය.",
+    "ta": "1975 இல் நிறுவப்பட்ட மோ/பெல்வத்த நவோதயா இடைநிலைப் பள்ளி, பல தசாப்தங்களாக பெல்வத்த பகுதி மாணவர்களுக்கு தரமான கல்வியை வழங்கி வருகிறது.",
+    "en": "Founded in 1975, Mo/Pelwatta Navodya Secondary Collage has provided quality education to children of the Pelwatta area for decades, growing into an institution offering education from Grade 1 through Advanced Level."
+  },
+  "visionTitle": {"si": "දැක්ම", "ta": "தொலைநோக்கு", "en": "Vision"},
+  "visionBody": {
+    "si": "නිපුණ, යහපත් හා වගකිවයුතු පුරවැසියන් බිහිකරන ශ්‍රී ලංකාවේ ප්‍රමුඛතම ග්‍රාමීය ජාතික පාසල බවට පත්වීම.",
+    "ta": "திறமையான, நல்ல மற்றும் பொறுப்புள்ள குடிமக்களை உருவாக்கும் இலங்கையின் முன்னணி கிராமிய தேசியப் பள்ளியாக மாறுதல்.",
+    "en": "To become a leading rural national school in Sri Lanka that produces skilled, virtuous and responsible citizens."
+  },
+  "missionTitle": {"si": "මෙහෙවර", "ta": "பணிக்கூற்று", "en": "Mission"},
+  "missionBody": {
+    "si": "සෑම ශිෂ්‍යයෙකුටම ගුණාත්මක, පොදු අවස්ථා සහිත අධ්‍යාපනයක් නොමිලේ ලබාදීම, නවීන ඉගැන්වීම් ක්‍රම හා සාරධර්ම මුල් කරගත් ගුරු මණ්ඩලයක් හරහා.",
+    "ta": "நவீன கற்பித்தல் முறைகள் மற்றும் பண்புகளை மையமாகக் கொண்ட ஆசிரியர் குழு மூலம் ஒவ்வொரு மாணவருக்கும் இலவச, தரமான கல்வியை வழங்குதல்.",
+    "en": "To provide every student with free, quality education with equal opportunity, delivered through a value-driven teaching staff using modern methods."
+  },
+  "pastPrincipalsTitle": {"si": "හිටපු විදුහල්පතිවරු", "ta": "முன்னாள் அதிபர்கள்", "en": "Past Principals"},
+  "pastPrincipals": [
+    {"years": "1975–1989", "name": "Mr. K. Rathnayake"},
+    {"years": "1989–2001", "name": "Mrs. S. Ariyawansa"},
+    {"years": "2001–2014", "name": "Mr. P. Gunawardena"},
+    {"years": "2014–present", "name": "Mrs. N. Wickramasinghe"}
+  ],
+  "principalMsgTitle": {"si": "විදුහල්පතිතුමියගේ පණිවිඩය", "ta": "அதிபரின் செய்தி", "en": "Principal's Message"},
+  "principalMsgBody": {
+    "si": "අපගේ පාසලේ දරුවන් සදාචාරාත්මක වටිනාකම් සමඟින් අධ්‍යයන ක්ෂේත්‍රයේ ඉහළම ජයග්‍රහණ කරා යොමු කිරීම අපගේ අරමුණයි. දෙමාපියන් සහ ප්‍රජාවගේ අඛණ්ඩ සහයෝගය අගය කරමි.",
+    "ta": "எமது பள்ளி மாணவர்களை நெறிமுறை விழுமியங்களுடன் உயர்ந்த கல்வி சாதனைகளை நோக்கி வழிநடத்துவதே எமது நோக்கமாகும்.",
+    "en": "Our aim is to guide the children of this school toward the highest academic achievement, grounded in strong moral values. We deeply appreciate the continued support of parents and the community."
+  },
+  "mapEmbedUrl": "https://www.google.com/maps?q=6.7167,81.0833&z=14&output=embed",
+  "mapNote": {
+    "si": "⚠️ මෙය තාවකාලික ස්ථානයකි — පාසලේ නිවැරදි Google Maps ලින්ක් එක admin panel එකෙන් යාවත්කාලීන කරන්න.",
+    "ta": "⚠️ இது தற்காலிக இடமாகும் — பள்ளியின் சரியான Google Maps இணைப்பை நிர்வாக பலகத்தில் புதுப்பிக்கவும்.",
+    "en": "⚠️ This is a placeholder location — update it with the school's exact Google Maps link via the admin panel."
+  },
+  "getDirectionsUrl": "https://www.google.com/maps?q=6.7167,81.0833"
+}

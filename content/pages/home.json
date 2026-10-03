@@ -1,0 +1,23 @@
+{
+  "heroTitle": {
+    "si": "නැණ ගුණ සපිරි අනාගත පරපුරක් දැයට දායාද කරන",
+    "ta": "அறிவும் நற்பண்பும் நிறைந்த எதிர்கால சந்ததியை நாட்டிற்கு வழங்கும்",
+    "en": "Nurturing a knowledgeable, virtuous generation for the future of the nation"
+  },
+  "motto": {
+    "si": "විද්‍යා දදාති විනයම් (විද්‍යාවෙන් විනය උද කරයි)",
+    "ta": "கல்வி ஒழுக்கத்தை வழங்குகிறது",
+    "en": "Knowledge Begets Discipline"
+  },
+  "welcomeBody": {
+    "si": "මෝ/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා රජය මගින් ජාතික පාසලක් ලෙස නම් කර ඇති අතර, එය නිල ක්‍රියාපටිපාටින් අනුකූලව ඉදිරියට ගමන් කරමින් පවතී. පාසල පූර්ණ වශයෙන් නොමිලේ ක්‍රියාත්මක වන රජයේ අධ්‍යාපන ආයතනයකි.",
+    "ta": "மோ/பெல்வத்த நவோதயா இடைநிலைப் பள்ளி இலங்கை அரசால் தேசியப் பள்ளியாக பெயரிடப்பட்டுள்ளது. இது முழுமையாக இலவசமாக இயங்கும் அரசு கல்வி நிறுவனமாகும்.",
+    "en": "Mo/Pelwatta Navodya Secondary Collage has been designated a National School by the Government of Sri Lanka, and continues to operate in line with the official process. The school is a fully free government education institution."
+  },
+  "stats": [
+    {"value": "1975", "label": {"si": "ආරම්භ වූ වර්ෂය", "ta": "நிறுவப்பட்ட ஆண்டு", "en": "Established"}},
+    {"value": "1,250+", "label": {"si": "ශිෂ්‍ය ප්‍රමාණය", "ta": "மாணவர் எண்ணிக்கை", "en": "Students"}},
+    {"value": "70+", "label": {"si": "ගුරු මණ්ඩලය", "ta": "ஆசிரியர்கள்", "en": "Teachers"}},
+    {"value": "1-13", "label": {"si": "ශ්‍රේණි පරාසය", "ta": "தர வரம்பு", "en": "Grades"}}
+  ]
+}

@@ -1,167 +1,86 @@
 <!DOCTYPE html>
-<html lang="si" class="lang-si">
+<html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | ඡායාරූප ගැලරිය - Mo/Pelwatta Navodya Secondary College</title>
-  <meta name="description" content="Campus facilities, laboratory experiments, sports events, and cultural ceremonies." />
-  
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Photo Gallery - Mo/Pelwatta Navodya Secondary College" />
-  <meta property="og:description" content="Campus facilities, laboratory experiments, sports events, and cultural ceremonies." />
-  <meta property="og:image" content="images/campus-hero.jpg" />
-
-  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery — Mo/Pelwatta Navodya Secondary Collage</title>
+<link rel="icon" href="images/crest-placeholder.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <!-- Header Root -->
-  <div id="site-header-root"></div>
-
-  <!-- Page Banner -->
-  <section class="page-banner">
-    <div class="container">
-      <h1 class="page-title" data-i18n="nav.gallery">ඡායාරූප ගැලරිය</h1>
-      <p class="page-subtitle">පාසල් පරිශ්‍රය, ශාස්ත්‍රීය හා විෂය සමගාමී මතක සටහන්</p>
-      <div class="breadcrumbs">
-        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.gallery">Gallery</span>
-      </div>
-    </div>
-  </section>
-
-  <main class="container" style="padding: 3.5rem 1rem;">
-    <!-- Filter Buttons -->
-    <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;" id="gallery-filters"></div>
-
-    <!-- Gallery Grid -->
-    <div class="news-grid" id="gallery-grid"></div>
-  </main>
-
-  <!-- Lightbox Modal -->
-  <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog">
-    <div class="lightbox-content">
-      <button type="button" class="lightbox-close" id="lightbox-close-btn" aria-label="Close lightbox">&times;</button>
-      <img src="" alt="" class="lightbox-img" id="lightbox-img" />
-      <p class="lightbox-caption" id="lightbox-caption"></p>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container breadcrumb" id="breadcrumb"></div>
+  <div class="container page-hero">
+    <h1 id="page-title"></h1>
+    <p id="page-intro"></p>
   </div>
+  <section class="section container">
+    <input class="search-box" id="search-box" type="search">
+    <div class="filters" id="filters"></div>
+    <div class="gallery-grid" id="grid"></div>
+    <p id="no-results" style="display:none;color:var(--muted)"></p>
+  </section>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/app.js"></script>
+<script>
+let ALL_ITEMS = [];
+let currentCategory = 'all';
 
-  <!-- Footer Root -->
-  <div id="site-footer-root"></div>
+function applyFilters(page){
+  const q = document.getElementById('search-box').value.trim().toLowerCase();
+  const filtered = ALL_ITEMS.filter(item=>{
+    const inCategory = currentCategory === 'all' || item.category === currentCategory;
+    const caption = t(item.caption).toLowerCase();
+    const inSearch = q === '' || caption.includes(q);
+    return inCategory && inSearch;
+  });
+  const grid = document.getElementById('grid');
+  const noRes = document.getElementById('no-results');
+  if (filtered.length === 0){
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+    noRes.textContent = t(page.noResults);
+  } else {
+    noRes.style.display = 'none';
+    grid.innerHTML = filtered.map(item=>`
+      <figure onclick="openLightbox('${item.image}', '${t(item.caption).replace(/'/g,"\\'")}')">
+        <img src="${item.image}" alt="${t(item.caption)}">
+        <figcaption>${t(item.caption)}</figcaption>
+      </figure>`).join('');
+  }
+}
 
-  <!-- Scripts -->
-  <script src="js/i18n.js"></script>
-  <script src="js/common.js"></script>
-  <script>
-    (function () {
-      let galleryData = null;
-      let activeAlbum = 'all';
-      let currentLightboxIndex = 0;
-      let visibleItems = [];
+function renderBody(page, common){
+  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.gallery)}`;
+  document.getElementById('page-title').textContent = t(common.nav.gallery);
+  document.getElementById('page-intro').textContent = t(page.intro);
+  document.getElementById('search-box').placeholder = t(page.searchPlaceholder);
 
-      async function loadData() {
-        if (window.i18n && window.i18n.fetchJSON) {
-          galleryData = await window.i18n.fetchJSON('content/gallery/index.json');
-        } else {
-          try {
-            const res = await fetch('content/gallery/index.json');
-            galleryData = await res.json();
-          } catch (e) {}
-        }
-        renderContent();
-      }
+  const catKeys = Object.keys(page.categories);
+  document.getElementById('filters').innerHTML = catKeys.map(k=>
+    `<button data-cat="${k}" class="${k===currentCategory?'active':''}">${t(page.categories[k])}</button>`
+  ).join('');
+  document.querySelectorAll('#filters button').forEach(b=>{
+    b.onclick = () => {
+      currentCategory = b.dataset.cat;
+      document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('active', x===b));
+      applyFilters(page);
+    };
+  });
 
-      function renderContent() {
-        if (!galleryData) return;
-        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
-        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+  document.getElementById('search-box').oninput = () => applyFilters(page);
 
-        // Render Filter Buttons
-        const filterContainer = document.getElementById('gallery-filters');
-        filterContainer.innerHTML = (galleryData.albums || []).map(album => `
-          <button type="button" class="lang-btn ${activeAlbum === album.id ? 'active' : ''}" 
-                  style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" 
-                  data-album="${album.id}">
-            ${pick(album.title, lang)}
-          </button>
-        `).join('');
-
-        // Filter Items
-        visibleItems = activeAlbum === 'all'
-          ? galleryData.items
-          : galleryData.items.filter(item => item.albumId === activeAlbum);
-
-        const grid = document.getElementById('gallery-grid');
-        grid.innerHTML = visibleItems.map((item, index) => {
-          const imgSrc = (item.image || '').replace(/^\/+/, '');
-          return `
-          <div class="news-card" style="cursor: pointer;" data-index="${index}">
-            <div class="news-card-img-wrapper" style="aspect-ratio: 4/3;">
-              <img src="${imgSrc}" alt="${pick(item.caption, lang)}" class="news-card-img" loading="lazy" />
-            </div>
-            <div style="padding: 1rem;">
-              <p style="font-size: 0.875rem; color: var(--text-main); line-height: 1.5; font-weight: 500;">
-                ${pick(item.caption, lang)}
-              </p>
-              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
-                📅 ${item.date}
-              </div>
-            </div>
-          </div>
-        `;
-        }).join('');
-
-        // Attach Click to open Lightbox
-        grid.querySelectorAll('.news-card').forEach(card => {
-          card.addEventListener('click', () => {
-            const idx = parseInt(card.getAttribute('data-index'), 10);
-            openLightbox(idx);
-          });
-        });
-
-        // Filter button clicks
-        filterContainer.querySelectorAll('button').forEach(btn => {
-          btn.addEventListener('click', () => {
-            activeAlbum = btn.getAttribute('data-album');
-            renderContent();
-          });
-        });
-      }
-
-      function openLightbox(index) {
-        if (!visibleItems[index]) return;
-        currentLightboxIndex = index;
-        const item = visibleItems[index];
-        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
-        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
-
-        const modal = document.getElementById('lightbox-modal');
-        const img = document.getElementById('lightbox-img');
-        const cap = document.getElementById('lightbox-caption');
-
-        img.src = (item.image || '').replace(/^\/+/, '');
-        cap.textContent = pick(item.caption, lang);
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeLightbox() {
-        const modal = document.getElementById('lightbox-modal');
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-
-      document.getElementById('lightbox-close-btn').onclick = closeLightbox;
-      document.getElementById('lightbox-modal').onclick = (e) => {
-        if (e.target.id === 'lightbox-modal') closeLightbox();
-      };
-
-      if (window.i18n && window.i18n.onLanguageChange) {
-        window.i18n.onLanguageChange(renderContent);
-      }
-
-      loadData();
-    })();
-  </script>
+  fetchJSON('content/gallery-items.json').then(items=>{
+    ALL_ITEMS = items;
+    applyFilters(page);
+  });
+}
+initPage('gallery', 'content/pages/gallery.json', renderBody);
+</script>
 </body>
 </html>

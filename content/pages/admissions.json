@@ -1,0 +1,51 @@
+{
+  "intro": {
+    "si": "1 ශ්‍රේණිය සහ අතරමැදි ශ්‍රේණි සඳහා රජයේ චක්‍රලේඛ මාර්ගෝපදේශ, අවශ්‍ය ලිකිකවිලි සහ අයදුම්පත් ලියාපදිංචිය",
+    "ta": "தரம் 1 மற்றும் இடைநிலை தரங்களுக்கான அரசாங்க சுற்றறிக்கை வழிகாட்டல், தேவையான ஆவணங்கள்",
+    "en": "Grade 1 & transfer admission guidance, required documents, and application registration"
+  },
+  "freeNotice": {
+    "si": "නොමිලේ අධ්‍යාපනය ලබාදෙන රජයේ පාසලක් පිළිබඳ නිල ප්‍රකාශය: මෝ/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජයේ අධ්‍යාපන අමාත්‍යාංශය මගින් පාලනය වන නියහස් රජයේ පාසලකි. කිසිදු ශ්‍රේණියකට සිසුන් ඇතුළත් කිරීමේදී මුදලක් අය නොකෙරේ.",
+    "ta": "இலவச கல்வி வழங்கும் அரசுப் பள்ளி பற்றிய அறிவிப்பு: மோ/பெல்வத்த நவோதயா இடைநிலைப் பள்ளி இலங்கை கல்வி அமைச்சின் கீழ் இயங்கும் இலவச அரசுப் பள்ளியாகும். எந்த தரத்திற்கும் மாணவர் சேர்க்கைக்கு கட்டணம் அறவிடப்படுவதில்லை.",
+    "en": "Official notice: Mo/Pelwatta Navodya Secondary Collage is a free government school regulated by the Ministry of Education of Sri Lanka. No fee is charged for admission to any grade."
+  },
+  "adminToolNotice": {
+    "si": "⚠️ මෙම පෝරමය අයදුම්පත් පරිපාලනමය වශයෙන් ලුහුබැඳීම සඳහා පමණි. අවසාන ඇතුළත් කිරීමේ තීරණය අධ්‍යාපන අමාත්‍යාංශයේ නිල චක්‍රලේඛයට සහ පාසලේ ඇතුළත් කිරීමේ කමිටුවේ තීරණයට අනුව ගනු ලැබේ — මෙම පෝරමයේ ස්වයංක්‍රීය ගණනයකින් නොවේ.",
+    "ta": "⚠️ இந்த படிவம் நிர்வாக ரீதியான கண்காணிப்புக்காக மட்டுமே. இறுதி சேர்க்கை முடிவு அமைச்சின் உத்தியோகபூர்வ சுற்றறிக்கை மற்றும் பள்ளி சேர்க்கைக் குழுவின் முடிவின்படி எடுக்கப்படும்.",
+    "en": "⚠️ This form is for administrative tracking only. Final admission decisions follow the official Ministry of Education circular and the school's admission committee — not any automatic calculation on this site."
+  },
+  "consentLabel": {
+    "si": "2022 අංක 09 දරන ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනතට අනුකූලව ඇතුළත් කිරීමේ පරිපාලන කටයුතු උදෙසා මාගේ දරුවාගේ තොරතුරු ගැනීම හා සැකසීමට මම මෙයින් කැමැත්ත ප්‍රකාශ කරමි.",
+    "ta": "2022 ஆம் ஆண்டு இலக்கம் 09 இலங்கை தனிநபர் தரவுப் பாதுகாப்புச் சட்டத்திற்கு இணங்க, சேர்க்கை நிர்வாக நடவடிக்கைகளுக்காக எனது பிள்ளையின் தகவல்களைப் பெறவும் செயலாக்கவும் இதன்மூலம் சம்மதிக்கிறேன்.",
+    "en": "I consent to this school storing and processing my child's information for admission purposes, in line with Sri Lanka's Personal Data Protection Act No. 09 of 2022."
+  },
+  "formFields": {
+    "studentName": {"si": "ශිෂ්‍යයාගේ සම්පූර්ණ නම", "ta": "மாணவர் முழுப் பெயர்", "en": "Student's Full Name"},
+    "dob": {"si": "උපන් දිනය", "ta": "பிறந்த தேதி", "en": "Date of Birth"},
+    "gender": {"si": "ස්ත්‍රී / පුරුෂ භාවය", "ta": "பாலினம்", "en": "Gender"},
+    "grade": {"si": "අයදුම් කරන ශ්‍රේණිය", "ta": "விண்ணப்பிக்கும் தரம்", "en": "Grade Applying For"},
+    "parentName": {"si": "දෙමාපිය / භාරකරුගේ නම", "ta": "பெற்றோர்/பாதுகாவலர் பெயர்", "en": "Parent / Guardian Name"},
+    "phone": {"si": "දුරකථන අංකය", "ta": "தொலைபேசி இலக்கம்", "en": "Phone Number"},
+    "email": {"si": "විද්‍යුත් තැපෑල", "ta": "மின்னஞ்சல்", "en": "Email Address"},
+    "address": {"si": "ස්ථීර පදිංචි ලිපිනය", "ta": "நிரந்தர முகவரி", "en": "Permanent Address"}
+  },
+  "submitLabel": {"si": "අයදුම්පත ඉදිරිපත් කරන්න", "ta": "விண்ணப்பத்தை சமர்ப்பிக்க", "en": "Submit Application"},
+  "successPrefix": {"si": "ලියාපදිංචිය සාර්ථකයි! යොමු අංකය:", "ta": "பதிவு வெற்றிகரமாக முடிந்தது! குறிப்பு எண்:", "en": "Registration successful! Reference No:"},
+  "embedNotSetUpNotice": {
+    "si": "පාසලේ නිල Google Form එක admin panel එකෙන් සම්බන්ධ කරන තෙක්, පහත පෙන්වන්නේ demo පෝරමයකි (submissions save වන්නේ නෑ).",
+    "ta": "பள்ளியின் உத்தியோகபூர்வ Google Form இணைக்கப்படும் வரை, கீழே காட்டப்படுவது ஒரு டெமோ படிவம் (சமர்ப்பிப்புகள் சேமிக்கப்படாது).",
+    "en": "Until the school's official Google Form is connected via the admin panel, the form below is a demo only (submissions are not saved anywhere)."
+  },
+  "googleFormEmbedUrl": null,
+  "faqTitle": {"si": "දෙමාපියන් නිතර විමසන ගැටලු", "ta": "பெற்றோர் அடிக்கடி கேட்கும் கேள்விகள்", "en": "Parent FAQs"},
+  "faqs": [
+    {
+      "q": {"si": "පාසලට ඇතුළත් වීමට කිසියම් මුදලක් ගෙවිය යුතුද?", "ta": "பள்ளியில் சேர கட்டணம் செலுத்த வேண்டுமா?", "en": "Do I need to pay anything to enrol my child?"},
+      "a": {"si": "නැත. මෙය සම්පූර්ණයෙන්ම නොමිලේ රජයේ ජාතික පාසලකි.", "ta": "இல்லை. இது முழுமையாக இலவச அரசு தேசியப் பள்ளி.", "en": "No. This is a fully free government national school."}
+    },
+    {
+      "q": {"si": "අවශ්‍ය ලේඛන මොනවාද?", "ta": "தேவையான ஆவணங்கள் யாவை?", "en": "What documents are required?"},
+      "a": {"si": "උප්පැන්න සහතිකය, ග්‍රාම නිලධාරි ලිපිය සහ පදිංචි ලිපිනය තහවුරු කිරීම අවශ්‍ය වේ.", "ta": "பிறப்புச் சான்றிதழ், கிராம சேவகர் கடிதம் மற்றும் முகவரி உறுதிப்படுத்தல் தேவை.", "en": "Birth certificate, Grama Niladhari letter, and proof of residence are required."}
+    }
+  ]
+}

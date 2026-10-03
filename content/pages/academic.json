@@ -1,0 +1,31 @@
+{
+  "intro": {
+    "si": "ශ්‍රේණි 1 සිට උසස් පෙළ දක්වා පාසලේ අධ්‍යයන කටයුතු පිළිබඳ තොරතුරු",
+    "ta": "தரம் 1 முதல் உயர்தரம் வரையிலான கல்விச் செயற்பாடுகள்",
+    "en": "Academic offerings from Grade 1 through Advanced Level"
+  },
+  "sections": [
+    {
+      "title": {"si": "ප්‍රාථමික අංශය (1-5 ශ්‍රේණි)", "ta": "ஆரம்பப் பிரிவு (தரம் 1-5)", "en": "Primary Section (Grades 1-5)"},
+      "body": {"si": "මූලික සාක්ෂරතාව, ගණිතය සහ පරිසර අධ්‍යයනය කේන්ද්‍ර කරගත් ක්‍රියාකාරී ඉගැන්වීම්.", "ta": "அடிப்படை எழுத்தறிவு, கணிதம் மற்றும் சூழலியல் கல்வியை மையமாகக் கொண்ட செயற்பாட்டு கற்பித்தல்.", "en": "Activity-based teaching centred on foundational literacy, mathematics and environmental studies."}
+    },
+    {
+      "title": {"si": "ද්විතීයික අංශය (6-11 ශ්‍රේණි)", "ta": "இடைநிலைப் பிரிவு (தரம் 6-11)", "en": "Junior & Senior Secondary (Grades 6-11)"},
+      "body": {"si": "සාමාන්‍ය පෙළ විභාගය සඳහා සියලුම විෂය ධාරා ලබාදෙනු ලැබේ.", "ta": "சாதாரணத் தர பரீட்சைக்கான அனைத்து பாட ஸ்ரீமங்களும் வழங்கப்படுகின்றன.", "en": "All subject streams offered in preparation for the G.C.E. Ordinary Level examination."}
+    },
+    {
+      "title": {"si": "උසස් පෙළ (12-13 ශ්‍රේණි)", "ta": "உயர்தரம் (தரம் 12-13)", "en": "Advanced Level (Grades 12-13)"},
+      "body": {"si": "විද්‍යාව, වාණිජ්‍ය, කලා සහ තාක්ෂණවේදය යන ධාරා හතරම ලබාදෙනු ලැබේ.", "ta": "விஞ்ஞானம், வணிகவியல், கலை மற்றும் தொழில்நுட்பவியல் ஆகிய நான்கு பிரிவுகளும் வழங்கப்படுகின்றன.", "en": "Science, Commerce, Arts and Technology streams are all offered."}
+    }
+  ],
+  "resultsTitle": {"si": "විභාග ප්‍රතිඵල හා ජයග්‍රහණ", "ta": "தேர்வு முடிவுகள் மற்றும் சாதனைகள்", "en": "Examination Results & Achievements"},
+  "results": [
+    {"year": "2025", "text": {"si": "සාමාන්‍ය පෙළ සමත් ප්‍රතිශතය 94%ක් විය.", "ta": "சாதாரணத் தர சித்தி விகிதம் 94% ஆக இருந்தது.", "en": "O/L pass rate reached 94%."}},
+    {"year": "2024", "text": {"si": "විද්‍යා ධාරාවෙන් සිසුන් 12 දෙනෙකු විශ්ව විද්‍යාල ප්‍රවේශය ලබා ගත්හ.", "ta": "விஞ்ஞானப் பிரிவில் 12 மாணவர்கள் பல்கலைக்கழக நுழைவைப் பெற்றனர்.", "en": "12 students from the Science stream secured university entrance."}}
+  ],
+  "downloadsTitle": {"si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads"},
+  "downloads": [
+    {"label": {"si": "2026 අධ්‍යයන වර්ෂ දිනදසුන", "ta": "2026 கல்வியாண்டு காலண்டர்", "en": "2026 Academic Calendar"}, "file": "downloads/academic-calendar-2026.pdf"},
+    {"label": {"si": "3වන වාර විභාග කාලසටහන", "ta": "3ஆம் தவணை பரீட்சை அட்டவணை", "en": "Term 3 Exam Timetable"}, "file": "downloads/term3-timetable-2026.pdf"}
+  ]
+}

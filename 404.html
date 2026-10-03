@@ -1,37 +1,29 @@
 <!DOCTYPE html>
-<html lang="si" class="lang-si">
+<html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 - Page Not Found | පිටුව සොයාගත නොහැක - Mo/Pelwatta Navodya Secondary College</title>
-  <meta name="description" content="The page you requested could not be found on Mo/Pelwatta Navodya Secondary College website." />
-  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Page Not Found</title>
+<link rel="icon" href="images/crest-placeholder.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div id="site-header-root"></div>
-
-  <main class="container" style="padding: 6rem 1rem; text-align: center; max-width: 640px; margin: auto;">
-    <div style="font-size: 5rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 1rem; font-variant-numeric: tabular-nums;">
-      404
-    </div>
-    <h1 style="font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;">
-      පිටුව සොයාගත නොහැකි විය (Page Not Found)
-    </h1>
-    <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
-      ඔබ සොයන පිටුව ඉවත් කර හෝ වෙනත් ස්ථානයකට ගෙන ගොස් තිබිය හැක. කරුණාකර ප්‍රධාන මුල් පිටුව වෙත පිවිසෙන්න.<br>
-      <span style="font-size:0.875rem; display:block; margin-top:6px; color:#64748B;">
-        நீங்கள் தேடும் பக்கம் கிடைக்கவில்லை. தயவுசெய்து முகப்புப் பக்கத்திற்குச் செல்லவும்.
-      </span>
-    </p>
-    <a href="index.html" class="btn-primary" style="display: inline-flex;">
-      &larr; <span data-i18n="nav.home">මුල් පිටුවට (Back to Home)</span>
-    </a>
-  </main>
-
-  <div id="site-footer-root"></div>
-
-  <script src="js/i18n.js"></script>
-  <script src="js/common.js"></script>
+<div id="site-header"></div>
+<main class="container" style="padding:80px 0; text-align:center">
+  <h1 style="font-size:4rem; color:var(--navy); margin:0">404</h1>
+  <p id="msg" style="color:var(--muted); margin:14px 0 24px"></p>
+  <a class="btn" href="index.html" id="home-link"></a>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/app.js"></script>
+<script>
+function renderBody(){
+  document.getElementById('msg').textContent = getLang()==='en' ? "The page you're looking for doesn't exist." :
+    (getLang()==='ta' ? "நீங்கள் தேடும் பக்கம் இல்லை." : "ඔබ සොයන පිටුව හමු නොවීය.");
+  document.getElementById('home-link').textContent = t(SITE.common.nav.home);
+}
+initPage('404', null, renderBody);
+</script>
 </body>
 </html>

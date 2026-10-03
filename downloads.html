@@ -1,176 +1,37 @@
 <!DOCTYPE html>
-<html lang="si" class="lang-si">
+<html lang="si">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Downloads | බාගත කිරීම් - Mo/Pelwatta Navodya Secondary College</title>
-  <meta name="description" content="Official downloadable documents, exam schedules, and circulars." />
-  
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Downloads & Circulars - Mo/Pelwatta Navodya Secondary College" />
-  <meta property="og:description" content="Official downloadable documents and government circulars." />
-  <meta property="og:image" content="images/campus-hero.jpg" />
-
-  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloads — Mo/Pelwatta Navodya Secondary Collage</title>
+<link rel="icon" href="images/crest-placeholder.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <!-- Header Root -->
-  <div id="site-header-root"></div>
-
-  <!-- Page Banner -->
-  <section class="page-banner">
-    <div class="container">
-      <h1 class="page-title" data-i18n="nav.downloads">බාගත කිරීම්</h1>
-      <p class="page-subtitle">වාර විභාග කාලසටහන්, අධ්‍යයන දින දර්ශන සහ රජයේ නිල චක්‍රලේඛ</p>
-      <div class="breadcrumbs">
-        <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.downloads">Downloads</span>
-      </div>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container breadcrumb" id="breadcrumb"></div>
+  <div class="container page-hero"><h1 id="page-title"></h1></div>
+  <section class="section container">
+    <ul id="list" style="list-style:none;padding:0"></ul>
   </section>
-
-  <main class="container" style="padding: 3.5rem 1rem;">
-    <!-- Filter & Search -->
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="dl-category-filters">
-        <button type="button" class="lang-btn active" style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" data-cat="all">සියල්ල (All)</button>
-        <button type="button" class="lang-btn" style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" data-cat="academic">අධ්‍යයන (Academic)</button>
-        <button type="button" class="lang-btn" style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" data-cat="exam">විභාග (Exams)</button>
-        <button type="button" class="lang-btn" style="border: 1px solid var(--border); color: var(--navy); padding: 0.5rem 1rem; border-radius: 9999px; font-weight:600; cursor:pointer;" data-cat="circular">චක්‍රලේඛ (Circulars)</button>
-      </div>
-
-      <div style="min-width: 240px; max-width: 320px; width: 100%;">
-        <input type="text" id="dl-search-input" class="form-input" placeholder="ලේඛන සොයන්න (Search documents...)" />
-      </div>
-    </div>
-
-    <!-- Table of Documents -->
-    <div style="overflow-x: auto;">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>ලේඛන නාමය (Document Title)</th>
-            <th>කාණ්ඩය (Category)</th>
-            <th>දිනය (Date)</th>
-            <th>ප්‍රමාණය (Size)</th>
-            <th style="text-align:center;">බාගත කිරීම (Download)</th>
-          </tr>
-        </thead>
-        <tbody id="downloads-table-body"></tbody>
-      </table>
-    </div>
-
-    <div id="no-docs-found" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-      <p style="font-size: 1.1rem;">කිසිදු ලේඛනයක් හමු නොවීය (No documents matched).</p>
-    </div>
-  </main>
-
-  <!-- Footer Root -->
-  <div id="site-footer-root"></div>
-
-  <!-- Scripts -->
-  <script src="js/i18n.js"></script>
-  <script src="js/common.js"></script>
-  <script>
-    (function () {
-      let dlData = null;
-      let activeCat = 'all';
-      let searchQuery = '';
-
-      async function loadData() {
-        try {
-          if (window.i18n && window.i18n.fetchJSON) {
-            dlData = await window.i18n.fetchJSON('content/downloads/index.json');
-          } else {
-            const res = await fetch('content/downloads/index.json');
-            dlData = await res.json();
-          }
-          renderContent();
-        } catch (e) {
-          console.error("Failed to load downloads:", e);
-        }
-      }
-
-      function renderContent() {
-        if (!dlData || !dlData.documents) return;
-        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
-        const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
-
-        const catContainer = document.getElementById('dl-category-filters');
-        catContainer.querySelectorAll('button').forEach(btn => {
-          if (btn.getAttribute('data-cat') === activeCat) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-
-        const filtered = dlData.documents.filter(doc => {
-          const matchCat = activeCat === 'all' || doc.category === activeCat;
-          const title = pick(doc.title, lang).toLowerCase();
-          const matchQuery = !searchQuery || title.includes(searchQuery);
-          return matchCat && matchQuery;
-        });
-
-        const tbody = document.getElementById('downloads-table-body');
-        const emptyMsg = document.getElementById('no-docs-found');
-
-        if (filtered.length === 0) {
-          tbody.innerHTML = '';
-          emptyMsg.style.display = 'block';
-          return;
-        }
-
-        emptyMsg.style.display = 'none';
-        tbody.innerHTML = filtered.map(file => `
-          <tr>
-            <td>
-              <div style="font-weight: 600; color: var(--navy); display:flex; align-items:center; gap:0.5rem;">
-                <span>📄</span>
-                <span>${pick(file.title, lang)}</span>
-              </div>
-            </td>
-            <td>
-              <span style="display:inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; background: var(--bg-subtle); color: var(--navy); text-transform: uppercase;">
-                ${file.category}
-              </span>
-            </td>
-            <td style="color:var(--text-muted); font-variant-numeric:tabular-nums;">
-              ${file.date}
-            </td>
-            <td style="color:var(--text-muted); font-variant-numeric:tabular-nums;">
-              ${file.size}
-            </td>
-            <td style="text-align:center;">
-              <a href="downloads/${file.filename}" download class="btn-primary" style="padding:0.35rem 0.75rem; font-size:0.75rem;" title="Download PDF">
-                <span>⬇️</span>
-              </a>
-            </td>
-          </tr>
-        `).join('');
-
-        catContainer.querySelectorAll('button').forEach(btn => {
-          btn.addEventListener('click', () => {
-            activeCat = btn.getAttribute('data-cat');
-            renderContent();
-          });
-        });
-      }
-
-      const searchInput = document.getElementById('dl-search-input');
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          searchQuery = e.target.value.trim().toLowerCase();
-          renderContent();
-        });
-      }
-
-      if (window.i18n && window.i18n.onLanguageChange) {
-        window.i18n.onLanguageChange(renderContent);
-      }
-
-      loadData();
-    })();
-  </script>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/app.js"></script>
+<script>
+const TITLE = {si:"බාගත කිරීම් / චක්‍රලේඛ",ta:"பதிவிறக்கங்கள் / சுற்றறிக்கைகள்",en:"Downloads / Circulars"};
+function renderBody(){
+  document.getElementById('breadcrumb').innerHTML = `${t(SITE.common.nav.home)} / ${t(TITLE)}`;
+  document.getElementById('page-title').textContent = t(TITLE);
+  fetchJSON('content/pages/academic.json').then(a=>{
+    document.getElementById('list').innerHTML = a.downloads.map(d=>
+      `<li style="padding:10px 0;border-bottom:1px solid var(--border)"><a href="${d.file}" download>&#128190; ${t(d.label)}</a></li>`
+    ).join('');
+  });
+}
+initPage('downloads', null, renderBody);
+</script>
 </body>
 </html>

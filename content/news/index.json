@@ -1,63 +1,12 @@
 {
   "categories": [
-    {
-      "id": "all",
-      "title": {
-        "si": "සියල්ල",
-        "ta": "அனைத்தும்",
-        "en": "All News"
-      }
-    },
-    {
-      "id": "academic",
-      "title": {
-        "si": "ශාස්ත්‍රීය",
-        "ta": "கல்வி",
-        "en": "Academic"
-      }
-    },
-    {
-      "id": "sports",
-      "title": {
-        "si": "ක්‍රීඩා",
-        "ta": "விளையாட்டு",
-        "en": "Sports"
-      }
-    },
-    {
-      "id": "events",
-      "title": {
-        "si": "විශේෂ උත්සව",
-        "ta": "நிகழ்வுகள்",
-        "en": "Events"
-      }
-    },
-    {
-      "id": "circulars",
-      "title": {
-        "si": "නිල චක්‍රලේඛ",
-        "ta": "சுற்றறிக்கைகள்",
-        "en": "Official Circulars"
-      }
-    }
+    { "id": "all", "title": { "si": "සියල්ල", "ta": "அனைத்தும்", "en": "All News" } },
+    { "id": "academic", "title": { "si": "ශාස්ත්‍රීය", "ta": "கல்வி", "en": "Academic" } },
+    { "id": "sports", "title": { "si": "ක්‍රීඩා", "ta": "விளையாட்டு", "en": "Sports" } },
+    { "id": "events", "title": { "si": "විශේෂ උත්සව", "ta": "நிகழ்வுகள்", "en": "Events" } },
+    { "id": "circulars", "title": { "si": "නිල චක්‍රලේඛ", "ta": "சுற்றறிக்கைகள்", "en": "Official Circulars" } }
   ],
   "articles": [
-    {
-      "id": "news-1202",
-      "date": "2026-09-29",
-      "category": "academic",
-      "title": {
-        "si": "Test 1",
-        "ta": "மாணவர் எஸ். ஏ. சானுக்கின் கல்வி மதிப்பீடு",
-        "en": "Academic Commendation for Student S.A. Chanuk"
-      },
-      "excerpt": {
-        "si": "විද්‍යාලීය අධ්‍යයන අංශය මගින් සිසුන්ගේ කුසලතා ඇගයීම යටතේ එස්. ඒ. චනුක් දරුවාගේ විශිෂ්ට ප්‍රගතිය අගය කරනු ලැබේ.",
-        "ta": "கல்லூரியின் கல்விப் பிரிவின் ஊடாக மாணவர் எஸ். ஏ. சானுக்கின் சிறப்பான கல்வி முன்னேற்றம் பாராட்டப்படுகிறது.",
-        "en": "Under the College Academic Section commendation program, student S.A. Chanuk is recognized for exemplary academic progress."
-      },
-      "thumbnail": "images/campus-hero.jpg"
-    },
     {
       "id": "news-1",
       "date": "2026-03-20",
