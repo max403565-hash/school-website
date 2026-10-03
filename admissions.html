@@ -81,7 +81,7 @@
 // =============================================================================
 // GOOGLE FORM SUBMISSION CONFIGURATION
 // =============================================================================
-const GOOGLE_FORM_ID = '1BId4vlsEJcQZPdlsyhqgsupmJXQYuzDWYoIyP6FV3cE';
+const GOOGLE_FORM_ID = '1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA';
 
 const GOOGLE_FORM_ENTRIES = {
   studentName: 'entry.1432907719',
@@ -117,8 +117,8 @@ function renderAdmissionForm(page, common){
           <label for="adm-gender">${t(f.gender)} *</label>
           <select id="adm-gender" required>
             <option value=""></option>
-            <option value="M">M</option>
-            <option value="F">F</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
         </div>
       </div>
@@ -180,7 +180,8 @@ function renderBody(page, common){
     const ref = refNumber();
     const studentName = (document.getElementById('adm-student-name').value || '').trim();
     const dob = (document.getElementById('adm-dob').value || '').trim();
-    const gender = (document.getElementById('adm-gender').value || '').trim();
+    const rawGender = (document.getElementById('adm-gender').value || '').trim();
+    const gender = (rawGender === 'M' || rawGender === 'Male') ? 'Male' : (rawGender === 'F' || rawGender === 'Female' ? 'Female' : rawGender);
     const grade = (document.getElementById('adm-grade').value || '').trim();
     const parentName = (document.getElementById('adm-parent-name').value || '').trim();
     const phone = (document.getElementById('adm-phone').value || '').trim();
@@ -191,6 +192,13 @@ function renderBody(page, common){
     const params = new URLSearchParams();
     params.append('entry.1432907719', studentName);
     params.append('entry.1108585059', dob);
+    // Also include year/month/day in case the Google Form uses split date components
+    const dobParts = dob.split('-');
+    if (dobParts.length === 3) {
+      params.append('entry.1108585059_year', dobParts[0]);
+      params.append('entry.1108585059_month', dobParts[1]);
+      params.append('entry.1108585059_day', dobParts[2]);
+    }
     params.append('entry.1713704593', gender);
     params.append('entry.1870348017', grade);
     params.append('entry.476165141', parentName);
@@ -198,11 +206,29 @@ function renderBody(page, common){
     params.append('entry.1210606851', email);
     params.append('entry.368470239', address);
 
-    const primaryUrl = 'https://docs.google.com/forms/d/e/1BId4vlsEJcQZPdlsyhqgsupmJXQYuzDWYoIyP6FV3cE/formResponse';
-    const directUrl  = 'https://docs.google.com/forms/d/1BId4vlsEJcQZPdlsyhqgsupmJXQYuzDWYoIyP6FV3cE/formResponse';
+    const primaryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA/formResponse';
+    const directUrl  = 'https://docs.google.com/forms/d/e/1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA/formResponse';
+
+    // Temporary console debugging as requested
+    console.log("=== [ADMISSIONS FORM SUBMISSION DEBUG] ===");
+    console.log("Timestamp:", new Date().toISOString());
+    console.log("Target primaryUrl:", primaryUrl);
+    console.log("Target directUrl:", directUrl);
+    console.log("Extracted Field Values:");
+    console.log("  - Student Name (entry.1432907719):", studentName);
+    console.log("  - Date of Birth (entry.1108585059):", dob);
+    console.log("  - Gender (entry.1713704593):", gender);
+    console.log("  - Grade (entry.1870348017):", grade);
+    console.log("  - Parent Name (entry.476165141):", parentName);
+    console.log("  - Phone (entry.791239928):", phone);
+    console.log("  - Email (entry.1210606851):", email);
+    console.log("  - Address (entry.368470239):", address);
+    console.log("Full URLSearchParams payload string:");
+    console.log(params.toString());
+    console.log("==========================================");
 
     try {
-      // Background fetch POST request (mode: "no-cors")
+      // 1. Background fetch POST request (mode: "no-cors")
       const req1 = fetch(primaryUrl, {
         method: "POST",
         mode: "no-cors",
@@ -212,7 +238,7 @@ function renderBody(page, common){
         body: params
       });
 
-      // Also post to directUrl in parallel to guarantee delivery regardless of /e/ route
+      // 2. Also post to directUrl in parallel to guarantee delivery regardless of /e/ route
       const req2 = fetch(directUrl, {
         method: "POST",
         mode: "no-cors",
@@ -221,6 +247,35 @@ function renderBody(page, common){
         },
         body: params
       }).catch(() => {});
+
+      // 3. Fallback submission via hidden iframe in case browser tracking prevention blocks cross-origin fetch
+      try {
+        let iframe = document.getElementById('hidden_gform_iframe');
+        if (!iframe) {
+          iframe = document.createElement('iframe');
+          iframe.id = 'hidden_gform_iframe';
+          iframe.name = 'hidden_gform_iframe';
+          iframe.style.display = 'none';
+          document.body.appendChild(iframe);
+        }
+        const hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = primaryUrl;
+        hiddenForm.target = 'hidden_gform_iframe';
+        hiddenForm.style.display = 'none';
+        for (const [k, v] of params.entries()) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = k;
+          input.value = v;
+          hiddenForm.appendChild(input);
+        }
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+        setTimeout(() => { hiddenForm.remove(); }, 1500);
+      } catch (frameErr) {
+        console.warn("Iframe fallback notice:", frameErr);
+      }
 
       await Promise.all([req1, req2]);
 
@@ -240,7 +295,7 @@ function renderBody(page, common){
       box.innerHTML = (getLang() === 'si')
         ? 'සම්බන්ධතා දෝෂයකි. කරුණාකර ඔබගේ අන්තර්ජාල සබඳතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න.'
         : (getLang() === 'ta')
-        ? 'இணைப்புப் பிழை. உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.'
+        ? 'இணைப்புப் பிழை. உங்கள் இணைய இணைப்பைச் சரிபார்த்தු மீண்டும் முயற்சிக்கவும்.'
         : 'Network connection error. Please check your internet connection and try again.';
     }
   };
