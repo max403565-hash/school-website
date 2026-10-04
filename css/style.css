@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --primary: #7a1c28;          /* Deep Maroon */
-  --primary-dark: #58121b;
+  --primary: #1b2b79;          /* Deep Maroon */
+  --primary-dark: #0f0c41;
   --primary-light: #9a2b3b;
   --primary-subtle: #fbf2f3;
   --gold: #c99738;             /* Rich Sri Lankan Gold */
@@ -15,7 +15,7 @@
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
   --bg-subtle: #f1f5f9;
-  --text-main: #0f172a;
+  --text-main: #290f24;
   --text-muted: #475569;
   --text-inverse: #ffffff;
   --border: #e2e8f0;
