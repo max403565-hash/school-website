@@ -75,6 +75,8 @@
       <button data-tab="downloads">Downloads (PDFs)</button>
       <button data-tab="pages">Page Text</button>
       <button data-tab="applications">Applications</button>
+      <button data-tab="code">Code Editor</button>
+      <button data-tab="theme">Theme</button>
       <button data-tab="history">Version History</button>
     </div>
 
@@ -176,12 +178,176 @@
       </div>
     </div>
 
+    <!-- CODE EDITOR TAB -->
+    <div class="tabpanel" data-panel="code">
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">💻 Code & File Editor</h2>
+          <button id="code-reload" class="secondary">🔄 Reload Current File</button>
+        </div>
+        <p class="muted" style="margin-top:6px;">
+          View and edit any HTML, CSS, JavaScript, or JSON file in this repository. All updates commit directly to GitHub via the Contents API.
+        </p>
+
+        <div style="background:#fff8e6; border-left:4px solid #f59e0b; padding:10px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#854d0e;">
+          ⚠️ <strong>Caution:</strong> Editing core site files directly can break the website if mistakes or invalid syntax are introduced. Always verify changes carefully. Previous versions can be restored at any time from the <strong>Version History</strong> tab.
+        </div>
+
+        <div class="row" style="align-items:flex-end; margin-bottom:12px;">
+          <div style="flex:2; min-width:260px;">
+            <label for="code-file-select">Choose a file to edit:</label>
+            <select id="code-file-select">
+              <optgroup label="Core Pages (HTML)">
+                <option value="index.html">Home (index.html)</option>
+                <option value="about.html">About Us (about.html)</option>
+                <option value="academic.html">Academics (academic.html)</option>
+                <option value="student-life.html">Student Life (student-life.html)</option>
+                <option value="gallery.html">Gallery (gallery.html)</option>
+                <option value="news.html">News & Events (news.html)</option>
+                <option value="news-detail.html">News Article Detail (news-detail.html)</option>
+                <option value="admissions.html">Admissions (admissions.html)</option>
+                <option value="contact.html">Contact Us (contact.html)</option>
+                <option value="downloads.html">Downloads (downloads.html)</option>
+                <option value="sds-parents.html">SDS & Parents (sds-parents.html)</option>
+                <option value="privacy.html">Privacy Policy (privacy.html)</option>
+                <option value="terms.html">Terms of Use (terms.html)</option>
+                <option value="404.html">404 Error Page (404.html)</option>
+              </optgroup>
+              <optgroup label="Stylesheets & Scripts">
+                <option value="css/style.css">Main Stylesheet (css/style.css)</option>
+                <option value="js/common.js">Common JS Utilities (js/common.js)</option>
+                <option value="js/i18n.js">Trilingual i18n Engine (js/i18n.js)</option>
+                <option value="assets/style.css">Assets Stylesheet (assets/style.css)</option>
+                <option value="assets/app.js">Assets App Script (assets/app.js)</option>
+              </optgroup>
+              <optgroup label="Content Data (JSON)">
+                <option value="content/translations.json">All UI Translations (content/translations.json)</option>
+                <option value="content/home.json">Home Content (content/home.json)</option>
+                <option value="content/about.json">About Us Content (content/about.json)</option>
+                <option value="content/academic.json">Academic Content (content/academic.json)</option>
+                <option value="content/student-life.json">Student Life Content (content/student-life.json)</option>
+                <option value="content/admissions.json">Admissions Content (content/admissions.json)</option>
+                <option value="content/contact.json">Contact Content (content/contact.json)</option>
+                <option value="content/sds.json">SDS & Alumni Content (content/sds.json)</option>
+                <option value="content/legal.json">Privacy & Terms Content (content/legal.json)</option>
+                <option value="content/news-items.json">News Items (content/news-items.json)</option>
+                <option value="content/gallery-items.json">Gallery Items (content/gallery-items.json)</option>
+                <option value="content/news/index.json">News Index (content/news/index.json)</option>
+                <option value="content/gallery/index.json">Gallery Index (content/gallery/index.json)</option>
+                <option value="content/downloads/index.json">Downloads Index (content/downloads/index.json)</option>
+                <option value="content/common.json">Shared Common Data (content/common.json)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div style="flex:1; min-width:180px;">
+            <label for="code-custom-path">Or custom path:</label>
+            <input type="text" id="code-custom-path" placeholder="e.g. content/news/news-1.json">
+          </div>
+          <div style="flex:0; min-width:90px;">
+            <button id="code-load-btn" class="secondary" style="width:100%; margin-bottom:2px;">Open</button>
+          </div>
+        </div>
+
+        <div id="code-file-meta" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.8rem; color:#475569;">
+          <span id="code-path-display" style="font-family:monospace; font-weight:bold;">No file loaded</span>
+          <span id="code-sha-display" style="font-family:monospace;"></span>
+        </div>
+
+        <label for="code-textarea">Raw File Contents (Monospace plain text):</label>
+        <textarea id="code-textarea" spellcheck="false" style="font-family:Consolas, Monaco, 'Courier New', monospace; font-size:13px; line-height:1.45; min-height:460px; width:100%; white-space:pre; tab-size:2; background:#1e293b; color:#f8fafc; border:1px solid #334155; border-radius:6px; padding:12px; box-sizing:border-box; resize:vertical;"></textarea>
+
+        <div style="margin-top:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <button id="code-save-btn">💾 Commit & Save File</button>
+          <span id="code-char-stats" class="muted" style="font-size:0.8rem;"></span>
+        </div>
+        <div id="code-status"></div>
+      </div>
+    </div>
+
+    <!-- THEME TAB -->
+    <div class="tabpanel" data-panel="theme">
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">🎨 Theme Colors & Styling</h2>
+          <button id="theme-reload" class="secondary">🔄 Reset / Reload from CSS</button>
+        </div>
+        <p class="muted" style="margin-top:6px;">
+          Customize the school's brand colors (Deep Maroon, Sri Lankan Gold, Navy) and UI shades. These variables are defined in <code>css/style.css</code> under the <code>:root</code> selector.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-top:16px;">
+          <!-- Controls Column -->
+          <div>
+            <h3 style="font-size:0.95rem; color:#0b2545; margin-bottom:12px; border-bottom:2px solid #e2e8f0; padding-bottom:6px;">Color Palette Variables</h3>
+            <div id="theme-controls" style="display:flex; flex-direction:column; gap:10px;">
+              Loading colors from css/style.css…
+            </div>
+          </div>
+
+          <!-- Live Preview Column -->
+          <div>
+            <h3 style="font-size:0.95rem; color:#0b2545; margin-bottom:12px; border-bottom:2px solid #e2e8f0; padding-bottom:6px;">Live Component Preview</h3>
+            <p class="muted" style="margin-bottom:10px; font-size:0.8rem;">Changes to colors reflect here in real-time before saving.</p>
+
+            <div id="theme-preview-box" style="border:1px solid var(--border, #e2e8f0); border-radius:10px; padding:18px; background:var(--bg-page, #f8fafc); box-shadow:0 2px 6px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+              
+              <!-- Sample Header Bar -->
+              <div style="background:var(--navy, #112340); color:var(--text-inverse, #ffffff); padding:12px 16px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div style="width:24px; height:24px; border-radius:50%; background:var(--gold, #c99738); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:bold; color:var(--navy, #112340);">🏛</div>
+                  <strong style="font-size:0.9rem;">Mo/Pelwatta Navodya College</strong>
+                </div>
+                <span style="font-size:0.75rem; background:var(--navy-light, #1f365d); color:var(--gold, #c99738); padding:3px 8px; border-radius:4px; font-weight:600;">Government School</span>
+              </div>
+
+              <!-- Sample Headings -->
+              <div style="margin-bottom:14px;">
+                <span style="display:inline-block; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; background:var(--primary-subtle, #fbf2f3); color:var(--primary, #7a1c28); padding:3px 8px; border-radius:4px; margin-bottom:6px;">Academic Excellence</span>
+                <h4 style="font-size:1.1rem; color:var(--text-main, #0f172a); margin:0 0 4px 0;">Empowering Pelwatta Students</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted, #475569); margin:0; line-height:1.4;">Cultivating disciplined, forward-thinking learners rooted in heritage.</p>
+              </div>
+
+              <!-- Sample Interactive Buttons -->
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+                <button type="button" style="background:var(--primary, #7a1c28); color:var(--text-inverse, #ffffff); border:none; padding:8px 14px; border-radius:6px; font-weight:700; font-size:0.82rem; cursor:default;">Primary Action</button>
+                <button type="button" style="background:var(--gold, #c99738); color:var(--navy, #112340); border:none; padding:8px 14px; border-radius:6px; font-weight:700; font-size:0.82rem; cursor:default;">Accent Action</button>
+                <button type="button" style="background:var(--bg-subtle, #f1f5f9); color:var(--text-main, #0f172a); border:1px solid var(--border, #e2e8f0); padding:8px 14px; border-radius:6px; font-weight:600; font-size:0.82rem; cursor:default;">Secondary</button>
+              </div>
+
+              <!-- Sample Content Card -->
+              <div style="background:var(--bg-card, #ffffff); border:1px solid var(--border, #e2e8f0); border-radius:8px; padding:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <span style="font-size:0.8rem; font-weight:bold; color:var(--primary, #7a1c28);">Notice & Circular</span>
+                  <span style="font-size:0.75rem; color:var(--text-muted, #475569);">2026-03-20</span>
+                </div>
+                <div style="font-size:0.85rem; color:var(--text-main, #0f172a); font-weight:600; margin-bottom:4px;">Annual Sports Meet & Academic Assessment</div>
+                <p style="font-size:0.78rem; color:var(--text-muted, #475569); margin:0;">Sample text showcasing how content cards, borders, and typography render with these theme settings.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; border-top:1px solid #dfe3e8; padding-top:16px;">
+          <button id="theme-save-btn">💾 Save & Publish Theme Colors</button>
+          <div id="theme-status" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- HISTORY TAB -->
     <div class="tabpanel" data-panel="history">
       <div class="card">
         <h2 style="margin-top:0">Version History</h2>
         <label>Choose a file</label>
         <select id="history-select">
+          <option value="css/style.css">Main Stylesheet & Theme (css/style.css)</option>
+          <option value="index.html">Home Page (index.html)</option>
+          <option value="about.html">About Page (about.html)</option>
+          <option value="academic.html">Academic Page (academic.html)</option>
+          <option value="student-life.html">Student Life Page (student-life.html)</option>
+          <option value="admissions.html">Admissions Page (admissions.html)</option>
+          <option value="contact.html">Contact Page (contact.html)</option>
           <option value="content/news-items.json">News items</option>
           <option value="content/gallery-items.json">Gallery items</option>
           <option value="content/common.json">Shared content</option>
@@ -424,7 +590,7 @@ document.getElementById('news-save').onclick = async () => {
         const base64 = await compressImageFile(box._pendingFile, 1200);
         const path = `images/news-${Date.now()}-${i}.jpg`;
         await ghPutBinaryFile(path, base64, `Add photo for news item`, null);
-        newsData[i].image = '/' + path;
+        newsData[i].image = path;
       }
     }
     const result = await saveJSONFile('content/news-items.json', newsData, 'Update news items via content editor');
@@ -499,7 +665,7 @@ document.getElementById('gallery-save').onclick = async () => {
         const base64 = await compressImageFile(box._pendingFile, 1200);
         const path = `images/gallery-${Date.now()}-${i}.jpg`;
         await ghPutBinaryFile(path, base64, 'Add gallery photo', null);
-        galleryData[i].image = '/' + path;
+        galleryData[i].image = path;
       }
     }
     await saveJSONFile('content/gallery-items.json', galleryData, 'Update gallery via content editor');
@@ -535,7 +701,7 @@ document.getElementById('pdf-upload').onclick = async () => {
         ta: document.getElementById('pdf-label-ta').value || file.name,
         en: document.getElementById('pdf-label-en').value || file.name
       },
-      file: '/' + path
+      file: path
     });
     await ghPutFile('content/pages/academic.json', JSON.stringify(data,null,2), 'Add new download link', academic.sha);
     statusEl.innerHTML = '<div class="status ok">Uploaded and added to the Academic page.</div>';
@@ -811,6 +977,350 @@ window.sortAppsByColumn = function(colIndex) {
 document.querySelector('[data-tab="applications"]').addEventListener('click', () => {
   if (!applicationsData) {
     loadSavedAppsConfig();
+  }
+});
+
+/* ===================== CODE EDITOR TAB ===================== */
+let codeCurrentPath = null;
+let codeCurrentSha = null;
+
+async function loadCodeFile(path) {
+  if (!path) return;
+  codeCurrentPath = path.trim().replace(/^\/+/, '');
+  const statusEl = document.getElementById('code-status');
+  const pathDisplay = document.getElementById('code-path-display');
+  const shaDisplay = document.getElementById('code-sha-display');
+  const ta = document.getElementById('code-textarea');
+
+  pathDisplay.textContent = 'Loading ' + codeCurrentPath + '…';
+  shaDisplay.textContent = '';
+  statusEl.innerHTML = '<div class="status info">Fetching file from GitHub API…</div>';
+
+  try {
+    const file = await ghGetFile(codeCurrentPath);
+    if (!file) {
+      // Fallback: try relative fetch if testing preview/offline or file is local
+      const localRes = await fetch('../' + codeCurrentPath);
+      if (localRes.ok) {
+        const text = await localRes.text();
+        ta.value = text;
+        codeCurrentSha = null;
+        pathDisplay.textContent = codeCurrentPath + ' (local file; new on GitHub branch)';
+        shaDisplay.textContent = '[new in repo]';
+        statusEl.innerHTML = '<div class="status info">Loaded local copy. Committing will create/update this file on your GitHub branch.</div>';
+        updateCodeStats();
+        return;
+      }
+      throw new Error("File '" + codeCurrentPath + "' not found in GitHub repository or local server.");
+    }
+
+    ta.value = file.content;
+    codeCurrentSha = file.sha;
+    pathDisplay.textContent = codeCurrentPath;
+    shaDisplay.textContent = 'SHA: ' + file.sha.slice(0, 10);
+    statusEl.innerHTML = '<div class="status ok">File loaded successfully.</div>';
+    updateCodeStats();
+  } catch (err) {
+    statusEl.innerHTML = '<div class="status err">Failed to load file: ' + escapeHtml(err.message) + '</div>';
+    pathDisplay.textContent = codeCurrentPath + ' (load error)';
+  }
+}
+
+function updateCodeStats() {
+  const ta = document.getElementById('code-textarea');
+  const stats = document.getElementById('code-char-stats');
+  if (!stats || !ta) return;
+  const lines = ta.value.split('\n').length;
+  const chars = ta.value.length;
+  stats.textContent = `${lines} lines, ${chars.toLocaleString()} characters`;
+}
+
+document.getElementById('code-textarea').addEventListener('input', updateCodeStats);
+
+document.getElementById('code-file-select').addEventListener('change', (e) => {
+  document.getElementById('code-custom-path').value = '';
+  loadCodeFile(e.target.value);
+});
+
+document.getElementById('code-load-btn').addEventListener('click', () => {
+  const custom = document.getElementById('code-custom-path').value.trim();
+  const selected = document.getElementById('code-file-select').value;
+  loadCodeFile(custom || selected);
+});
+
+document.getElementById('code-reload').addEventListener('click', () => {
+  if (codeCurrentPath) {
+    if (confirm("Discard unsaved changes and reload '" + codeCurrentPath + "' from GitHub?")) {
+      loadCodeFile(codeCurrentPath);
+    }
+  } else {
+    loadCodeFile(document.getElementById('code-file-select').value);
+  }
+});
+
+document.getElementById('code-save-btn').addEventListener('click', async () => {
+  const statusEl = document.getElementById('code-status');
+  if (!codeCurrentPath) {
+    statusEl.innerHTML = '<div class="status err">No file selected. Please choose a file first.</div>';
+    return;
+  }
+
+  const warningMsg = 
+    "⚠️ WARNING: Editing core site files (" + codeCurrentPath + ") directly can break the website if mistakes or invalid code are introduced.\n\n" +
+    "Are you sure you want to save and commit these changes?\n\n" +
+    "Note: If anything breaks, you can restore a previous working version from the 'Version History' tab.";
+
+  if (!confirm(warningMsg)) return;
+
+  statusEl.innerHTML = '<div class="status info">Committing changes to GitHub…</div>';
+
+  try {
+    const textContent = document.getElementById('code-textarea').value;
+    
+    // Check latest sha to avoid sha mismatches
+    let sha = codeCurrentSha;
+    try {
+      const check = await ghGetFile(codeCurrentPath);
+      if (check && check.sha) sha = check.sha;
+    } catch (_) {}
+
+    const commitMsg = 'Update ' + codeCurrentPath + ' via Code Editor';
+    const result = await ghPutFile(codeCurrentPath, textContent, commitMsg, sha);
+    if (result && result.content && result.content.sha) {
+      codeCurrentSha = result.content.sha;
+      document.getElementById('code-sha-display').textContent = 'SHA: ' + codeCurrentSha.slice(0, 10);
+    }
+    statusEl.innerHTML = '<div class="status ok">✅ Saved and committed <strong>' + escapeHtml(codeCurrentPath) + '</strong> successfully! The website will reflect this update immediately.</div>';
+  } catch (err) {
+    statusEl.innerHTML = '<div class="status err">❌ Commit failed: ' + escapeHtml(err.message) + '</div>';
+  }
+});
+
+document.querySelector('[data-tab="code"]').addEventListener('click', () => {
+  if (!codeCurrentPath) {
+    loadCodeFile(document.getElementById('code-file-select').value);
+  }
+});
+
+/* ===================== THEME TAB ===================== */
+const THEME_VAR_META = {
+  'primary': { label: 'Primary Brand Color', desc: 'Main school color (buttons, headings, highlights)' },
+  'primary-dark': { label: 'Primary Dark', desc: 'Hover & active state for primary elements' },
+  'primary-light': { label: 'Primary Light', desc: 'Lighter tint of primary color' },
+  'primary-subtle': { label: 'Primary Subtle Tint', desc: 'Light background for badges and alert tags' },
+  'gold': { label: 'Gold / Accent Color', desc: 'Sri Lankan gold for crest details and CTAs' },
+  'gold-dark': { label: 'Gold Dark', desc: 'Border and hover tone for gold elements' },
+  'gold-light': { label: 'Gold Light', desc: 'Lighter gold tint' },
+  'gold-subtle': { label: 'Gold Subtle Tint', desc: 'Light gold/cream background tint' },
+  'navy': { label: 'Navy Blue (Header/Hero)', desc: 'Header bar, hero sections, and footer' },
+  'navy-light': { label: 'Navy Light', desc: 'Subheaders, badges, and card accents' },
+  'bg-page': { label: 'Page Background', desc: 'Overall body background color' },
+  'bg-card': { label: 'Card Background', desc: 'Background color for cards, panels, and modals' },
+  'bg-subtle': { label: 'Subtle Background', desc: 'Alternating table rows and secondary sections' },
+  'text-main': { label: 'Main Text', desc: 'Body and primary heading typography color' },
+  'text-muted': { label: 'Muted Text', desc: 'Secondary typography, subtitles, and dates' },
+  'text-inverse': { label: 'Inverse Text', desc: 'Text color on dark backgrounds (e.g. #ffffff)' },
+  'border': { label: 'Border Color', desc: 'Divider lines, card borders, and input outlines' },
+  'border-focus': { label: 'Focus Border Color', desc: 'Highlight border for focused input fields' }
+};
+
+let themeRawCss = '';
+let themeCssSha = null;
+let themeCurrentColors = {};
+let themeCssLoaded = false;
+
+function normalizeHexColor(val) {
+  if (!val) return '#000000';
+  let s = val.trim();
+  if (s.startsWith('#')) {
+    if (s.length === 4) {
+      return '#' + s[1] + s[1] + s[2] + s[2] + s[3] + s[3];
+    }
+    if (s.length === 7) return s;
+  }
+  return s;
+}
+
+async function loadThemeTab() {
+  const controlsEl = document.getElementById('theme-controls');
+  const statusEl = document.getElementById('theme-status');
+  controlsEl.innerHTML = '<div class="muted">Loading css/style.css…</div>';
+  statusEl.innerHTML = '';
+
+  try {
+    const file = await ghGetFile('css/style.css');
+    if (file) {
+      themeRawCss = file.content;
+      themeCssSha = file.sha;
+    } else {
+      const localRes = await fetch('../css/style.css');
+      if (!localRes.ok) throw new Error('Could not load css/style.css');
+      themeRawCss = await localRes.text();
+      themeCssSha = null;
+    }
+
+    // Extract :root block
+    const rootMatch = themeRawCss.match(/:root\s*\{([\s\S]*?)\}/);
+    if (!rootMatch) throw new Error(':root selector not found in css/style.css');
+
+    const rootBlock = rootMatch[1];
+    themeCurrentColors = {};
+
+    // Match all --var: value;
+    const varRegex = /--([a-zA-Z0-9-]+)\s*:\s*([^;]+);/g;
+    let match;
+    while ((match = varRegex.exec(rootBlock)) !== null) {
+      const key = match[1];
+      const rawVal = match[2].trim().split('/*')[0].trim();
+      if (THEME_VAR_META[key] || rawVal.startsWith('#')) {
+        themeCurrentColors[key] = rawVal;
+      }
+    }
+
+    renderThemeControls();
+    updateThemePreview();
+    themeCssLoaded = true;
+  } catch (err) {
+    controlsEl.innerHTML = '<div class="status err">Error loading stylesheet: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function renderThemeControls() {
+  const controlsEl = document.getElementById('theme-controls');
+  const keys = Object.keys(themeCurrentColors);
+  if (!keys.length) {
+    controlsEl.innerHTML = '<div class="muted">No color variables detected in :root.</div>';
+    return;
+  }
+
+  let html = '';
+  keys.forEach(key => {
+    const val = themeCurrentColors[key];
+    const meta = THEME_VAR_META[key] || { label: '--' + key, desc: '' };
+    const hexNorm = normalizeHexColor(val);
+    const isHex = /^#[0-9a-fA-F]{6}$/i.test(hexNorm);
+
+    html += `
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:6px; padding:10px 12px; display:flex; align-items:center; gap:12px; justify-content:space-between;">
+        <div style="flex:1; min-width:140px;">
+          <div style="font-weight:700; font-size:0.85rem; color:#0f172a;">${escapeHtml(meta.label)}</div>
+          <div style="font-family:monospace; font-size:0.75rem; color:#64748b;">--${escapeHtml(key)}</div>
+          ${meta.desc ? `<div class="muted" style="font-size:0.72rem; margin-top:2px;">${escapeHtml(meta.desc)}</div>` : ''}
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          ${isHex ? `<input type="color" data-var="${escapeHtml(key)}" value="${hexNorm}" style="width:36px; height:36px; padding:1px; border:1px solid #cbd5e1; border-radius:4px; cursor:pointer;">` : ''}
+          <input type="text" data-text-var="${escapeHtml(key)}" value="${escapeHtml(val)}" maxlength="16" style="width:84px; font-family:monospace; font-size:0.85rem; padding:6px 8px; text-align:center; border:1px solid #cbd5e1; border-radius:4px;">
+        </div>
+      </div>
+    `;
+  });
+
+  controlsEl.innerHTML = html;
+
+  // Wire up color picker changes
+  controlsEl.querySelectorAll('input[type="color"]').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const k = e.target.dataset.var;
+      const v = e.target.value;
+      themeCurrentColors[k] = v;
+      const textInp = controlsEl.querySelector(`input[data-text-var="${k}"]`);
+      if (textInp) textInp.value = v;
+      updateThemePreview();
+    });
+  });
+
+  // Wire up text input changes
+  controlsEl.querySelectorAll('input[type="text"]').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const k = e.target.dataset.textVar;
+      const v = e.target.value.trim();
+      themeCurrentColors[k] = v;
+      const colorInp = controlsEl.querySelector(`input[type="color"][data-var="${k}"]`);
+      if (colorInp && /^#[0-9a-fA-F]{6}$/i.test(v)) {
+        colorInp.value = v;
+      }
+      updateThemePreview();
+    });
+  });
+}
+
+function updateThemePreview() {
+  const box = document.getElementById('theme-preview-box');
+  if (!box) return;
+  Object.keys(themeCurrentColors).forEach(k => {
+    box.style.setProperty('--' + k, themeCurrentColors[k]);
+  });
+}
+
+document.getElementById('theme-reload').addEventListener('click', () => {
+  if (confirm('Discard unsaved theme changes and reload colors from css/style.css?')) {
+    loadThemeTab();
+  }
+});
+
+document.getElementById('theme-save-btn').addEventListener('click', async () => {
+  const statusEl = document.getElementById('theme-status');
+  if (!Object.keys(themeCurrentColors).length) {
+    statusEl.innerHTML = '<div class="status err">No theme colors loaded.</div>';
+    return;
+  }
+
+  const confirmed = confirm(
+    "Publish these theme colors to the live website?\n\n" +
+    "This will update only the :root CSS variable values in 'css/style.css', leaving the rest of the stylesheet unchanged.\n\n" +
+    "Previous versions can be restored at any time from the 'Version History' tab."
+  );
+  if (!confirmed) return;
+
+  statusEl.innerHTML = '<div class="status info">Saving theme colors to GitHub…</div>';
+
+  try {
+    // 1. Fetch latest css/style.css and SHA from GitHub
+    let latestContent = themeRawCss;
+    let sha = themeCssSha;
+    try {
+      const check = await ghGetFile('css/style.css');
+      if (check && check.content) {
+        latestContent = check.content;
+        sha = check.sha;
+      }
+    } catch (_) {}
+
+    // 2. Locate :root block and update each variable value inside it
+    const rootRegex = /(:root\s*\{)([\s\S]*?)(\})/;
+    const match = latestContent.match(rootRegex);
+    if (!match) throw new Error('Could not find :root block in css/style.css');
+
+    let updatedRoot = match[2];
+    Object.keys(themeCurrentColors).forEach(key => {
+      const newVal = themeCurrentColors[key];
+      const varLineRegex = new RegExp('(--' + key + '\\s*:\\s*)([^;]+)(;)', 'g');
+      if (varLineRegex.test(updatedRoot)) {
+        updatedRoot = updatedRoot.replace(varLineRegex, `$1${newVal}$3`);
+      } else {
+        updatedRoot += `\n  --${key}: ${newVal};`;
+      }
+    });
+
+    const newCss = latestContent.replace(rootRegex, `${match[1]}${updatedRoot}${match[3]}`);
+
+    // 3. Commit only css/style.css via GitHub Contents API
+    const commitMsg = 'Update theme colors via Theme Editor';
+    const result = await ghPutFile('css/style.css', newCss, commitMsg, sha);
+    if (result && result.content && result.content.sha) {
+      themeCssSha = result.content.sha;
+    }
+    themeRawCss = newCss;
+
+    statusEl.innerHTML = '<div class="status ok">✅ Theme colors saved and published successfully to <strong>css/style.css</strong>! Website visitors will see the updated colors immediately.</div>';
+  } catch (err) {
+    statusEl.innerHTML = '<div class="status err">❌ Failed to save theme colors: ' + escapeHtml(err.message) + '</div>';
+  }
+});
+
+document.querySelector('[data-tab="theme"]').addEventListener('click', () => {
+  if (!themeCssLoaded) {
+    loadThemeTab();
   }
 });
 
