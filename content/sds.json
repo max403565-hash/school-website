@@ -1,4 +1,14 @@
 {
+  "subtitle": {
+    "si": "දෙමාපිය, ගුරු සහ ආදි ශිෂ්‍ය සහයෝගීතාවය",
+    "ta": "பெற்றோர், ஆசிரியர் மற்றும் பழைய மாணவர் ஒத்துழைப்பு",
+    "en": "Parent, teacher, and alumni partnership in school development"
+  },
+  "communityBadge": {
+    "si": "ප්‍රජා සහභාගීත්වය",
+    "ta": "சமூக பங்களிப்பு",
+    "en": "Community Engagement"
+  },
   "title": {
     "si": "පාසල් සංවර්ධන සමිතිය සහ ආදි ශිෂ්‍ය සංගමය",
     "ta": "பாடசாலை அபிவிருத்தி சங்கம் மற்றும் பழைய மாணவர் சங்கம்",
@@ -8,6 +18,28 @@
     "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ භෞතික හා අධ්‍යාපනික සම්පත් දියුණු කිරීම උදෙසා දෙමාපියන්, ගුරුවරුන් සහ ආදි ශිෂ්‍යයින් එක්ව කටයුතු කරන ප්‍රධාන ව්‍යවස්ථාපිත ආයතනය පාසල් සංවර්ධන සමිතියයි (SDS).",
     "ta": "கல்லூரியின் பௌதிக மற்றும் கல்வி வளங்களை மேம்படுத்துவதற்காக பெற்றோர்கள், ஆசிரியர்கள் மற்றும் பழைய மாணவர்கள் ஒன்றிணைந்து செயலாற்றும் அமைப்பாகும்.",
     "en": "The School Development Society (SDS) functions under statutory education regulations to support infrastructural growth, student welfare, and scholastic enrichment."
+  },
+  "projectsBadge": {
+    "si": "සංවර්ධන ව්‍යාපෘති",
+    "ta": "அபிவிருத்தி திட்டங்கள்",
+    "en": "Key Initiatives"
+  },
+  "projectsTitle": {
+    "si": "ප්‍රමුඛ සංවර්ධන වැඩසටහන්",
+    "ta": "முன்னணி அபிவிருத்தி திட்டங்கள்",
+    "en": "Major Development Programs"
+  },
+  "meetings": {
+    "title": {
+      "si": "වාර්ෂික මහා සභා රැස්වීම සහ දෙමාපිය හමු",
+      "ta": "வருடாந்த பொதுக் கூட்டம் மற்றும் பெற்றோர் சந்திப்புகள்",
+      "en": "Annual General Meeting & Parent Conferences"
+    },
+    "desc": {
+      "si": "සෑම පාසල් වාරයක් අවසානයේම ශිෂ්‍ය ප්‍රගති වාර්තා සාකච්ඡා කිරීම සඳහා පන්තිභාර ගුරු භවතුන්ගේ ප්‍රධානත්වයෙන් දෙමාපිය හමු පැවැත්වේ. නිල දැන්වීම් පත්‍රිකා ශිෂ්‍යයින් මගින් දෙමාපියන් වෙත යොමු කරනු ලැබේ.",
+      "ta": "ஒவ்வொரு தவணையின் இறுதியிலும் மாணவர்களின் கல்வி முன்னேற்றத்தை கலந்துரையாட பெற்றோர் சந்திப்புகள் நடத்தப்படுகின்றன.",
+      "en": "At the conclusion of each academic term, parent-teacher conferences review student progress records. Official circulars are sent directly to parents."
+    }
   },
   "initiatives": [
     {

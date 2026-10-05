@@ -78,6 +78,17 @@
         const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
 
+        const sub = document.querySelector('.page-subtitle');
+        if (sub) {
+          sub.textContent = lang === 'en' 
+            ? 'Official school notices, term examinations, and special milestones' 
+            : (lang === 'ta' ? 'பாடசாலையின் முக்கிய தகவல்கள், தவணைப் பரீட்சைகள் மற்றும் நிகழ்வுகள்' : 'පාසලේ වැදගත් තොරතුරු, වාර විභාග සහ විශේෂ සිදුවීම්');
+        }
+        const sInput = document.getElementById('news-search-input');
+        if (sInput) {
+          sInput.placeholder = lang === 'en' ? 'Search notices...' : (lang === 'ta' ? 'செய்திகளைத் தேடுக...' : 'පුවත් සොයන්න...');
+        }
+
         // Render Categories
         const catContainer = document.getElementById('category-filters');
         catContainer.innerHTML = (newsIndexData.categories || []).map(cat => `
@@ -103,6 +114,9 @@
 
         if (filtered.length === 0) {
           grid.innerHTML = '';
+          emptyMsg.querySelector('p').textContent = lang === 'en' 
+            ? 'No notices match your search criteria.' 
+            : (lang === 'ta' ? 'எந்த செய்திகளும் பொருந்தவில்லை.' : 'කිසිදු පුවතක් හමු නොවීය.');
           emptyMsg.style.display = 'block';
           return;
         }

@@ -1,18 +1,60 @@
 {
   "privacyPolicy": {
-    "title": { "si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியුரிமைக் கொள்கை", "en": "Privacy Policy" },
+    "title": { "si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியுரிமைக் கொள்கை", "en": "Privacy Policy" },
+    "subtitle": {
+      "si": "ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනතට (PDPA) අනුකූලතාවය",
+      "ta": "இலங்கை தனிநபர் தரவுப் பாதுகாப்பு சட்டத்திற்கு (PDPA) அமைவானது",
+      "en": "Compliance with Sri Lanka Personal Data Protection Act (PDPA No. 9 of 2022)"
+    },
     "body": {
       "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයීය නිල වෙබ් අඩවිය ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනත (PDPA No. 9 of 2022) ට පූර්ණ වශයෙන් අනුකූල වේ. මෙම වෙබ් අඩවිය මගින් පරිශීලකයින්ගේ කිසිදු පෞද්ගලික තොරතුරක් අනවශ්‍ය ලෙස එක්රැස් නොකරන අතර, සන්නිවේදන අවශ්‍යතා සඳහා පමණක් නිල සබඳතා භාවිත කෙරේ.",
       "ta": "இலங்கை தனிநபர் தரவுப் பாதுகாப்பு சட்டத்திற்கு (PDPA No. 9 of 2022) அமைவாக எமது இணையத்தளம் இயங்குகிறது. எவ்வித தனிப்பட்ட தகவல்களும் முறையற்ற வகையில் சேகரிக்கப்பட மாட்டாது.",
-      "en": "Mo/Pelwatta Navodya Secondary College respects visitor privacy in full compliance with the Sri Lanka Personal Data Protection Act (PDPA No. 9 of 2022). This website does not deploy invasive tracking or unauthorized user telemetry."
-    }
+      "en": "Mo/Pelwatta Navodya Secondary College respects visitor privacy in full compliance with the Sri Lanka Personal Data Protection Act (PDPA No. 9 of 2022). This website does not deploy invasive tracking, commercial telemetry, or third-party ad profiling."
+    },
+    "principlesTitle": {
+      "si": "දත්ත භාවිතය පිළිබඳ මූලධර්ම",
+      "ta": "தரவுப் பயன்பாட்டுக் கொள்கைகள்",
+      "en": "Key Data Protection Principles"
+    },
+    "principles": [
+      {
+        "si": "මෙම වෙබ් අඩවිය පරිශීලකයින්ගේ කිසිදු පෞද්ගලික තොරතුරක් අනවශ්‍ය ලෙස තෙවන පාර්ශව වෙත ලබා නොදේ.",
+        "ta": "பயனாளர்களின் எந்தவொரு தனிப்பட்ட தகவலும் மூன்றாம் தரப்பினருக்கு வழங்கப்பட மாட்டாது.",
+        "en": "No user personal data is disclosed to outside commercial entities or third parties."
+      },
+      {
+        "si": "සියලුම අධ්‍යාපන තොරතුරු සහ ලේඛන රජයේ නීතිමය රාමුව තුළ පමණක් භාවිත කෙරේ.",
+        "ta": "அனைத்து கல்வித் தகவல்களும் அரசாங்க சட்டக் கட்டமைப்பிற்குள் மாத்திரமே பயன்படுத்தப்படுகின்றன.",
+        "en": "All official school records and admissions are governed strictly under state educational laws."
+      },
+      {
+        "si": "අනිෂ්ට හෝ වාණිජමය වෙළඳ දැන්වීම් පද්ධති කිසිවක් මෙම නිල වෙබ් අඩවියේ අඩංගු නොවේ.",
+        "ta": "வணிக விளம்பரங்கள் அல்லது கண்காணிப்பு அமைப்புகள் எவையும் இந்த உத்தியோகபூர்வ இணையத்தளத்தில் இடம்பெறவில்லை.",
+        "en": "Zero commercial advertisements, marketing cookies, or tracking scripts operate on this domain."
+      }
+    ]
   },
   "termsOfUse": {
     "title": { "si": "භාවිත නියමයන්", "ta": "பயன்பாட்டு விதிமுறைகள்", "en": "Terms of Use" },
+    "subtitle": {
+      "si": "වෙබ් අඩවිය පරිශීලනය කිරීමේ නීතිමය කොන්දේසි",
+      "ta": "இணையத்தள பயன்பாட்டு சட்ட நிபந்தனைகள்",
+      "en": "Terms, conditions, and copyright policy for visitors"
+    },
     "body": {
       "si": "මෙම වෙබ් අඩවියේ පළවන සියලුම තොරතුරු, නිල චක්‍රලේඛ, පාසල් ලාංඡනය සහ ඡායාරූප මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය සතු වේ. අධ්‍යාපනික හා තොරතුරු ලබාගැනීමේ අරමුණින් පමණක් මේවා පරිශීලනය කළ හැකි අතර අවසරයකින් තොරව වාණිජ අරමුණු සඳහා භාවිත කිරීම තහනම්ය.",
       "ta": "இந்த இணையத்தளத்தில் உள்ள அனைத்து தகவல்கள், உத்தியோகபூர்வ ஆவணங்கள், இலச்சினை மற்றும் புகைப்படங்கள் கல்லூரிக்கே சொந்தமானவை. கல்வி நோக்கங்களுக்காக மாத்திரமே பயன்படுத்த முடியும்.",
       "en": "All official school notices, crest emblems, examination schedules, and media published here belong to Mo/Pelwatta Navodya Secondary College under state educational jurisdiction. Content may be downloaded for personal academic reference only."
+    },
+    "ipTitle": {
+      "si": "බුද්ධිමය දේපළ අයිතිය",
+      "ta": "அறிவுசார் சொத்துரிமை",
+      "en": "Intellectual Property & Emblems"
+    },
+    "ipDesc": {
+      "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ ලාංඡනය, නිල ලේඛන සහ ප්‍රකාශන අධ්‍යාපන අමාත්‍යාංශයේ සහ විද්‍යාලයේ පූර්ණ අනුමැතියකින් තොරව අනවසරයෙන් වාණිජමය කටයුතු සඳහා භාවිත කිරීමෙන් වළකින්න.",
+      "ta": "பாடசாலையின் உத்தியோகபூர்வ இலச்சினை மற்றும் ஆவணங்களை அனுமதியின்றி வணிக நோக்கங்களுக்காக பயன்படுத்துவது தடைசெய்யப்பட்டுள்ளது.",
+      "en": "The official college crest, heraldic identity, and published circulars are protected state assets and may not be reproduced for commercial or non-educational endorsements without prior written authorization."
     }
   }
 }

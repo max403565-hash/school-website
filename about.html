@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Us — Mo/Pelwatta Navodya Secondary Collage</title>
-<link rel="icon" href="images/crest-placeholder.svg">
+<title>About Us — Mo/Pelwatta Navodya Secondary College</title>
+<link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -20,32 +20,50 @@
   </div>
 
   <section class="section container">
-    <h2 id="history-title"></h2>
-    <p id="history-body"></p>
-  </section>
-
-  <section class="section container">
-    <div class="card-grid">
-      <div class="card"><div class="body"><h3 id="vision-title"></h3><p id="vision-body"></p></div></div>
-      <div class="card"><div class="body"><h3 id="mission-title"></h3><p id="mission-body"></p></div></div>
+    <div class="card" style="padding:28px;">
+      <h2 id="history-title" style="margin-top:0;"></h2>
+      <p id="history-body" style="font-size:1.05rem; line-height:1.7; color:var(--text); margin:0;"></p>
     </div>
   </section>
 
   <section class="section container">
-    <h2 id="principal-title"></h2>
-    <blockquote id="principal-body" style="border-left:4px solid var(--orange); padding-left:16px; color:var(--muted)"></blockquote>
+    <div class="card-grid">
+      <div class="card" style="padding:24px; border-top:4px solid var(--gold);">
+        <div style="font-size:2rem; margin-bottom:10px;">👁️</div>
+        <h3 id="vision-title" style="color:var(--maroon); margin-top:0;"></h3>
+        <p id="vision-body" style="line-height:1.6; color:var(--text); margin:0;"></p>
+      </div>
+      <div class="card" style="padding:24px; border-top:4px solid var(--maroon);">
+        <div style="font-size:2rem; margin-bottom:10px;">🎯</div>
+        <h3 id="mission-title" style="color:var(--maroon); margin-top:0;"></h3>
+        <p id="mission-body" style="line-height:1.6; color:var(--text); margin:0;"></p>
+      </div>
+    </div>
   </section>
 
   <section class="section container">
-    <h2 id="past-principals-title"></h2>
-    <table style="width:100%; border-collapse:collapse" id="past-principals-table"></table>
+    <div class="card" style="padding:28px;">
+      <h2 id="principal-title" style="margin-top:0;"></h2>
+      <blockquote id="principal-body" style="border-left:4px solid var(--gold); padding-left:20px; color:var(--text); font-size:1.05rem; line-height:1.7; font-style:italic; margin:16px 0 0 0;"></blockquote>
+    </div>
   </section>
 
   <section class="section container">
-    <h2 id="location-title"></h2>
-    <div class="notice-box warn" id="map-note"></div>
-    <div class="map-embed"><iframe id="map-iframe" loading="lazy" allowfullscreen></iframe></div>
-    <div class="map-actions"><a class="btn" id="directions-btn" target="_blank" rel="noopener"></a></div>
+    <div class="card" style="padding:28px;">
+      <h2 id="past-principals-title" style="margin-top:0;"></h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; margin-top:16px;" id="past-principals-table"></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="card" style="padding:28px;">
+      <h2 id="location-title" style="margin-top:0;"></h2>
+      <div class="notice-box warn" id="map-note" style="margin-bottom:18px;"></div>
+      <div class="map-embed"><iframe id="map-iframe" loading="lazy" allowfullscreen title="School Map"></iframe></div>
+      <div class="map-actions" style="margin-top:18px;"><a class="btn" id="directions-btn" target="_blank" rel="noopener"></a></div>
+    </div>
   </section>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
@@ -65,14 +83,14 @@ function renderBody(page, common){
   document.getElementById('principal-body').textContent = t(page.principalMsgBody);
   document.getElementById('past-principals-title').textContent = t(page.pastPrincipalsTitle);
   document.getElementById('past-principals-table').innerHTML = page.pastPrincipals.map(p=>
-    `<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 0;font-weight:700;width:140px">${p.years}</td><td style="padding:8px 0">${p.name}</td></tr>`
+    `<tr style="border-bottom:1px solid var(--border)"><td style="padding:12px 10px;font-weight:700;width:160px;color:var(--maroon);">${p.years}</td><td style="padding:12px 10px;color:var(--text);">${p.name}</td></tr>`
   ).join('');
-  document.getElementById('location-title').textContent = getLang()==='en'?'Location':(getLang()==='ta'?'இருப்பிடம்':'ස්ථානය');
+  document.getElementById('location-title').textContent = getLang()==='en'?'Campus Location':(getLang()==='ta'?'பாடசாலை அமைவிடம்':'පාසල් පිහිටීම');
   document.getElementById('map-note').textContent = t(page.mapNote);
   document.getElementById('map-iframe').src = page.mapEmbedUrl;
   const dirBtn = document.getElementById('directions-btn');
   dirBtn.href = page.getDirectionsUrl;
-  dirBtn.textContent = getLang()==='en'?'Get Directions':(getLang()==='ta'?'வழிகளைப் பெறுக':'ගමන් මාර්ගය බලන්න');
+  dirBtn.textContent = getLang()==='en'?'🗺️ Get Directions on Google Maps':(getLang()==='ta'?'🗺️ வழிகளைப் பெறுக':'🗺️ ගූගල් සිතියමෙන් මාර්ගය බලන්න');
 }
 initPage('about', 'content/pages/about.json', renderBody);
 </script>

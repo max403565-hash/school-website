@@ -77,6 +77,7 @@
       <button data-tab="applications">Applications</button>
       <button data-tab="code">Code Editor</button>
       <button data-tab="theme">Theme</button>
+      <button data-tab="import">Import Site</button>
       <button data-tab="history">Version History</button>
     </div>
 
@@ -183,84 +184,80 @@
       <div class="card">
         <div class="top-actions">
           <h2 style="margin:0">💻 Code & File Editor</h2>
-          <button id="code-reload" class="secondary">🔄 Reload Current File</button>
+          <div style="display:flex; gap:8px;">
+            <button id="code-new-btn" style="background:#16a34a; color:#fff;">+ New File</button>
+            <button id="code-refresh-tree" class="secondary">🔄 Refresh File List</button>
+          </div>
         </div>
         <p class="muted" style="margin-top:6px;">
-          View and edit any HTML, CSS, JavaScript, or JSON file in this repository. All updates commit directly to GitHub via the Contents API.
+          Directly view, create, and edit HTML, CSS, JavaScript, and JSON files in this repository. All changes are committed directly via the GitHub Contents API.
         </p>
 
         <div style="background:#fff8e6; border-left:4px solid #f59e0b; padding:10px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#854d0e;">
-          ⚠️ <strong>Caution:</strong> Editing core site files directly can break the website if mistakes or invalid syntax are introduced. Always verify changes carefully. Previous versions can be restored at any time from the <strong>Version History</strong> tab.
+          ⚠️ <strong>Caution:</strong> Editing core site files directly can break layout or page scripts if syntax is invalid. Always verify changes carefully. Previous versions can be restored at any time from the <strong>Version History</strong> tab.
         </div>
 
-        <div class="row" style="align-items:flex-end; margin-bottom:12px;">
-          <div style="flex:2; min-width:260px;">
-            <label for="code-file-select">Choose a file to edit:</label>
-            <select id="code-file-select">
-              <optgroup label="Core Pages (HTML)">
-                <option value="index.html">Home (index.html)</option>
-                <option value="about.html">About Us (about.html)</option>
-                <option value="academic.html">Academics (academic.html)</option>
-                <option value="student-life.html">Student Life (student-life.html)</option>
-                <option value="gallery.html">Gallery (gallery.html)</option>
-                <option value="news.html">News & Events (news.html)</option>
-                <option value="news-detail.html">News Article Detail (news-detail.html)</option>
-                <option value="admissions.html">Admissions (admissions.html)</option>
-                <option value="contact.html">Contact Us (contact.html)</option>
-                <option value="downloads.html">Downloads (downloads.html)</option>
-                <option value="sds-parents.html">SDS & Parents (sds-parents.html)</option>
-                <option value="privacy.html">Privacy Policy (privacy.html)</option>
-                <option value="terms.html">Terms of Use (terms.html)</option>
-                <option value="404.html">404 Error Page (404.html)</option>
-              </optgroup>
-              <optgroup label="Stylesheets & Scripts">
-                <option value="css/style.css">Main Stylesheet (css/style.css)</option>
-                <option value="js/common.js">Common JS Utilities (js/common.js)</option>
-                <option value="js/i18n.js">Trilingual i18n Engine (js/i18n.js)</option>
-                <option value="assets/style.css">Assets Stylesheet (assets/style.css)</option>
-                <option value="assets/app.js">Assets App Script (assets/app.js)</option>
-              </optgroup>
-              <optgroup label="Content Data (JSON)">
-                <option value="content/translations.json">All UI Translations (content/translations.json)</option>
-                <option value="content/home.json">Home Content (content/home.json)</option>
-                <option value="content/about.json">About Us Content (content/about.json)</option>
-                <option value="content/academic.json">Academic Content (content/academic.json)</option>
-                <option value="content/student-life.json">Student Life Content (content/student-life.json)</option>
-                <option value="content/admissions.json">Admissions Content (content/admissions.json)</option>
-                <option value="content/contact.json">Contact Content (content/contact.json)</option>
-                <option value="content/sds.json">SDS & Alumni Content (content/sds.json)</option>
-                <option value="content/legal.json">Privacy & Terms Content (content/legal.json)</option>
-                <option value="content/news-items.json">News Items (content/news-items.json)</option>
-                <option value="content/gallery-items.json">Gallery Items (content/gallery-items.json)</option>
-                <option value="content/news/index.json">News Index (content/news/index.json)</option>
-                <option value="content/gallery/index.json">Gallery Index (content/gallery/index.json)</option>
-                <option value="content/downloads/index.json">Downloads Index (content/downloads/index.json)</option>
-                <option value="content/common.json">Shared Common Data (content/common.json)</option>
-              </optgroup>
-            </select>
+        <!-- Inline New File Creation Form (Hidden by default) -->
+        <div id="code-new-file-box" style="display:none; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:14px; margin-bottom:14px;">
+          <h3 style="margin:0 0 10px; font-size:0.95rem; color:#166534;">📄 Create New File or Page</h3>
+          <div class="row">
+            <div style="flex:2; min-width:240px;">
+              <label style="margin-top:0;">File Path & Name:</label>
+              <input type="text" id="code-new-name" placeholder="e.g. clubs.html or content/pages/clubs.json">
+            </div>
+            <div style="flex:1; min-width:180px;">
+              <label style="margin-top:0;">Starter Template:</label>
+              <select id="code-new-template">
+                <option value="html">Standard HTML Page</option>
+                <option value="json">JSON Data Object</option>
+                <option value="css">CSS Stylesheet</option>
+                <option value="js">JavaScript Module</option>
+                <option value="blank">Blank File</option>
+              </select>
+            </div>
           </div>
-          <div style="flex:1; min-width:180px;">
-            <label for="code-custom-path">Or custom path:</label>
-            <input type="text" id="code-custom-path" placeholder="e.g. content/news/news-1.json">
-          </div>
-          <div style="flex:0; min-width:90px;">
-            <button id="code-load-btn" class="secondary" style="width:100%; margin-bottom:2px;">Open</button>
+          <div style="margin-top:10px; display:flex; gap:8px;">
+            <button id="code-new-confirm" style="background:#16a34a; color:#fff;">Create & Open in Editor</button>
+            <button id="code-new-cancel" class="secondary">Cancel</button>
           </div>
         </div>
 
-        <div id="code-file-meta" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.8rem; color:#475569;">
-          <span id="code-path-display" style="font-family:monospace; font-weight:bold;">No file loaded</span>
-          <span id="code-sha-display" style="font-family:monospace;"></span>
-        </div>
+        <!-- 2-Column Layout: File List Sidebar + Editor Area -->
+        <div style="display:grid; grid-template-columns:280px 1fr; gap:16px; margin-top:14px;">
+          <!-- Left Column: Search & File List -->
+          <div>
+            <label for="code-search-input" style="margin-top:0;">Search Files:</label>
+            <input type="text" id="code-search-input" placeholder="🔍 Filter files (e.g. index, about, .json)..." style="margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.75rem; color:#64748b;">
+              <span id="code-file-count">0 text files</span>
+              <span class="muted">(binaries hidden)</span>
+            </div>
+            <div id="code-file-list" style="max-height:520px; overflow-y:auto; border:1px solid #dfe3e8; border-radius:6px; background:#fff;">
+              <div class="muted" style="padding:12px; font-size:0.85rem;">Loading files…</div>
+            </div>
+          </div>
 
-        <label for="code-textarea">Raw File Contents (Monospace plain text):</label>
-        <textarea id="code-textarea" spellcheck="false" style="font-family:Consolas, Monaco, 'Courier New', monospace; font-size:13px; line-height:1.45; min-height:460px; width:100%; white-space:pre; tab-size:2; background:#1e293b; color:#f8fafc; border:1px solid #334155; border-radius:6px; padding:12px; box-sizing:border-box; resize:vertical;"></textarea>
+          <!-- Right Column: Code Editor Area -->
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+              <div>
+                <strong id="code-path-display" style="font-family:monospace; font-size:0.95rem; color:#0f172a;">No file selected</strong>
+                <span id="code-sha-display" class="muted" style="margin-left:8px; font-family:monospace; font-size:0.75rem;"></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span id="code-char-stats" class="muted" style="font-size:0.8rem;"></span>
+                <button id="code-reload" class="secondary" style="padding:4px 10px; font-size:0.8rem;">🔄 Reload</button>
+              </div>
+            </div>
 
-        <div style="margin-top:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          <button id="code-save-btn">💾 Commit & Save File</button>
-          <span id="code-char-stats" class="muted" style="font-size:0.8rem;"></span>
+            <textarea id="code-textarea" spellcheck="false" placeholder="Select a file from the list or create a new file..." style="font-family:Consolas, Monaco, 'Courier New', monospace; font-size:13px; line-height:1.45; min-height:480px; width:100%; white-space:pre; tab-size:2; background:#1e293b; color:#f8fafc; border:1px solid #334155; border-radius:6px; padding:12px; box-sizing:border-box; resize:vertical;"></textarea>
+
+            <div style="margin-top:12px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <button id="code-save-btn">💾 Commit & Save File</button>
+            </div>
+            <div id="code-status"></div>
+          </div>
         </div>
-        <div id="code-status"></div>
       </div>
     </div>
 
@@ -331,6 +328,97 @@
         <div style="margin-top:20px; border-top:1px solid #dfe3e8; padding-top:16px;">
           <button id="theme-save-btn">💾 Save & Publish Theme Colors</button>
           <div id="theme-status" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORT SITE TAB -->
+    <div class="tabpanel" data-panel="import">
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">📦 Import Site (Folder or Multiple Files)</h2>
+        </div>
+        <p class="muted" style="margin-top:6px;">
+          Upload an entire website folder or select multiple files (HTML, CSS, JS, images, PDFs) from your computer. Files are analyzed against your live GitHub repository and committed directly.
+        </p>
+
+        <!-- Protected paths security notice -->
+        <div style="background:#eef3fb; border-left:4px solid #1c3d6b; padding:10px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#1c3d6b;">
+          🛡️ <strong>Protected System Paths:</strong> Files inside <code>xk92m-manage/</code> (admin panel) and <code>.github/</code> are strictly protected. They can never be overwritten, renamed, or deleted through Site Import.
+        </div>
+
+        <div id="import-warning-banner" style="display:none; background:#fdecea; border-left:4px solid #c0392b; padding:12px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#8e1c12;">
+        </div>
+
+        <!-- File selection options -->
+        <div class="row" style="margin-top:16px;">
+          <div style="border:2px dashed #cbd5e1; border-radius:8px; padding:16px; text-align:center; background:#f8fafc;">
+            <label style="margin:0 0 8px; font-size:0.95rem; display:block; font-weight:700;">📁 Option A: Choose Entire Website Folder</label>
+            <p class="muted" style="font-size:0.8rem; margin:0 0 10px;">Select your site's root directory containing HTML, CSS, images, etc.</p>
+            <input type="file" id="import-folder-input" webkitdirectory directory multiple style="max-width:320px;">
+          </div>
+          <div style="border:2px dashed #cbd5e1; border-radius:8px; padding:16px; text-align:center; background:#f8fafc;">
+            <label style="margin:0 0 8px; font-size:0.95rem; display:block; font-weight:700;">📄 Option B: Choose Multiple Files</label>
+            <p class="muted" style="font-size:0.8rem; margin:0 0 10px;">Select one or more individual site files to update or add.</p>
+            <input type="file" id="import-files-input" multiple style="max-width:320px;">
+          </div>
+        </div>
+
+        <!-- Preview and Diff Container -->
+        <div id="import-preview-area" style="display:none; margin-top:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid #dfe3e8; padding-bottom:10px;">
+            <div>
+              <h3 style="margin:0; font-size:1.05rem; color:#0b2545;">Import Analysis & Preview</h3>
+              <div id="import-stats" class="muted" style="font-size:0.82rem; margin-top:4px;"></div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button id="import-clear-btn" class="secondary">Clear Selection</button>
+            </div>
+          </div>
+
+          <!-- Mirror deletion option checkbox (OFF by default) -->
+          <div style="background:#fff8e6; border:1px solid #fef08a; padding:12px 14px; border-radius:6px; margin-bottom:14px;">
+            <label style="display:flex; align-items:center; gap:8px; font-weight:700; cursor:pointer; margin:0; color:#854d0e;">
+              <input type="checkbox" id="import-delete-missing">
+              <span>Delete repository files that are NOT in the import (Mirror mode)</span>
+            </label>
+            <p class="muted" style="margin:6px 0 0 24px; font-size:0.8rem; color:#713f12;">
+              ⚠️ <em>OFF by default.</em> When enabled, any file in the GitHub repository that is missing from this import will be deleted. Protected paths (<code>xk92m-manage/</code> and <code>.github/</code>) are always excluded from deletion.
+            </p>
+          </div>
+
+          <!-- Preview Table -->
+          <div style="max-height:360px; overflow-y:auto; border:1px solid #dfe3e8; border-radius:6px; background:#fff; margin-bottom:16px;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+              <thead style="background:#f1f5f9; position:sticky; top:0; z-index:2;">
+                <tr>
+                  <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">Status</th>
+                  <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">File Path</th>
+                  <th style="padding:8px 12px; text-align:right; border-bottom:1px solid #dfe3e8;">Size</th>
+                  <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">Type</th>
+                </tr>
+              </thead>
+              <tbody id="import-preview-body">
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Progress Bar & Actions -->
+          <div id="import-progress-container" style="display:none; margin:16px 0;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem; font-weight:bold;">
+              <span id="import-progress-label">Preparing import…</span>
+              <span id="import-progress-percent">0%</span>
+            </div>
+            <div style="background:#e2e8f0; border-radius:8px; height:18px; overflow:hidden;">
+              <div id="import-progress-bar" style="background:#16a34a; width:0%; height:100%; transition:width 0.2s ease;"></div>
+            </div>
+            <div id="import-progress-detail" class="muted" style="margin-top:6px; font-size:0.8rem; font-family:monospace;"></div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <button id="import-commit-btn" style="background:#16a34a; color:#fff; font-size:0.95rem; padding:10px 20px;">🚀 Commit Import to GitHub</button>
+          </div>
+          <div id="import-status" style="margin-top:10px;"></div>
         </div>
       </div>
     </div>
@@ -436,6 +524,68 @@ async function saveJSONFile(path, obj, message){
   const existing = await ghGetFile(path);
   const str = JSON.stringify(obj, null, 2);
   return ghPutFile(path, str, message, existing ? existing.sha : null);
+}
+async function ghGetTree(){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/trees/${c.branch}?recursive=1`;
+  const res = await fetch(url, { headers: ghHeaders() });
+  if (!res.ok) throw new Error('GitHub repository tree read failed: ' + res.status);
+  const data = await res.json();
+  return data.tree || [];
+}
+async function ghDeleteFile(path, sha, message){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path}`;
+  const body = {
+    message: message || `Delete ${path} via Content Manager`,
+    sha: sha,
+    branch: c.branch
+  };
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok){
+    const err = await res.text();
+    throw new Error(`GitHub delete failed for ${path}: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+function isProtectedPath(path){
+  if (!path) return true;
+  const p = path.trim().replace(/^\/+/, '').toLowerCase();
+  return p === 'xk92m-manage' ||
+         p.startsWith('xk92m-manage/') ||
+         p === '.github' ||
+         p.startsWith('.github/') ||
+         p === '.git' ||
+         p.startsWith('.git/');
+}
+function isBinaryFile(filename){
+  const ext = '.' + filename.split('.').pop().toLowerCase();
+  const binaryExts = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.ico', '.pdf', '.woff', '.woff2', '.ttf', '.eot', '.zip', '.mp3', '.mp4', '.svgz'];
+  return binaryExts.includes(ext);
+}
+async function computeGitBlobSha(arrayBuffer){
+  const uint8 = new Uint8Array(arrayBuffer);
+  const header = new TextEncoder().encode(`blob ${uint8.length}\0`);
+  const full = new Uint8Array(header.length + uint8.length);
+  full.set(header, 0);
+  full.set(uint8, header.length);
+  const hashBuffer = await crypto.subtle.digest('SHA-1', full);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function arrayBufferToBase64(buffer){
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  const chunkSize = 8192;
+  for (let i = 0; i < len; i += chunkSize) {
+    const chunk = bytes.subarray(i, Math.min(i + chunkSize, len));
+    binary += String.fromCharCode.apply(null, chunk);
+  }
+  return btoa(binary);
 }
 
 /* ===================== Setup / connect ===================== */
@@ -983,6 +1133,106 @@ document.querySelector('[data-tab="applications"]').addEventListener('click', ()
 /* ===================== CODE EDITOR TAB ===================== */
 let codeCurrentPath = null;
 let codeCurrentSha = null;
+let codeRepositoryFiles = [];
+let codeTreeLoaded = false;
+
+const DEFAULT_KNOWN_CODE_FILES = [
+  'index.html', 'about.html', 'academic.html', 'student-life.html', 'gallery.html',
+  'news.html', 'news-detail.html', 'admissions.html', 'contact.html', 'downloads.html',
+  'sds-parents.html', 'privacy.html', 'terms.html', '404.html',
+  'css/style.css', 'js/common.js', 'js/i18n.js', 'assets/app.js', 'assets/style.css',
+  'content/translations.json', 'content/home.json', 'content/about.json',
+  'content/academic.json', 'content/student-life.json', 'content/admissions.json',
+  'content/contact.json', 'content/sds.json', 'content/legal.json',
+  'content/news-items.json', 'content/gallery-items.json', 'content/news/index.json',
+  'content/gallery/index.json', 'content/downloads/index.json', 'content/common.json'
+];
+
+async function fetchCodeRepoFiles() {
+  const listEl = document.getElementById('code-file-list');
+  const countEl = document.getElementById('code-file-count');
+  listEl.innerHTML = '<div class="muted" style="padding:12px; font-size:0.85rem;">Fetching repository files from GitHub…</div>';
+
+  try {
+    const tree = await ghGetTree();
+    const textBlobs = tree.filter(item => item.type === 'blob' && !isBinaryFile(item.path));
+    codeRepositoryFiles = textBlobs.map(b => ({
+      path: b.path,
+      size: b.size,
+      sha: b.sha
+    }));
+    codeTreeLoaded = true;
+  } catch (err) {
+    codeRepositoryFiles = DEFAULT_KNOWN_CODE_FILES.map(p => ({
+      path: p,
+      size: null,
+      sha: null
+    }));
+  }
+
+  codeRepositoryFiles.sort((a, b) => a.path.localeCompare(b.path));
+  renderCodeFileList(document.getElementById('code-search-input').value);
+}
+
+function getFileBadge(path) {
+  const ext = path.split('.').pop().toLowerCase();
+  const colors = {
+    'html': '#2563eb',
+    'css':  '#7c3aed',
+    'js':   '#d97706',
+    'json': '#059669',
+    'svg':  '#dc2626',
+    'md':   '#4b5563',
+    'txt':  '#4b5563'
+  };
+  const color = colors[ext] || '#64748b';
+  return `<span style="background:${color}; color:#fff; font-size:0.65rem; font-weight:700; padding:1px 5px; border-radius:3px; text-transform:uppercase;">${ext}</span>`;
+}
+
+function renderCodeFileList(filterText) {
+  const listEl = document.getElementById('code-file-list');
+  const countEl = document.getElementById('code-file-count');
+  const query = (filterText || '').trim().toLowerCase();
+
+  const filtered = codeRepositoryFiles.filter(f => f.path.toLowerCase().includes(query));
+  countEl.textContent = `${filtered.length} of ${codeRepositoryFiles.length} files`;
+
+  if (!filtered.length) {
+    listEl.innerHTML = '<div class="muted" style="padding:12px; font-size:0.85rem;">No matching text files found.</div>';
+    return;
+  }
+
+  listEl.innerHTML = filtered.map(f => {
+    const isActive = f.path === codeCurrentPath;
+    const bg = isActive ? '#eff6ff' : '#fff';
+    const borderLeft = isActive ? '4px solid #2563eb' : '4px solid transparent';
+    const sizeStr = f.size ? formatBytes(f.size) : '';
+
+    return `
+      <div class="code-file-item" data-path="${escapeHtml(f.path)}" style="display:flex; justify-content:space-between; align-items:center; padding:7px 10px; border-bottom:1px solid #f1f5f9; cursor:pointer; background:${bg}; border-left:${borderLeft}; font-size:0.82rem; transition:background 0.15s ease;">
+        <div style="display:flex; align-items:center; gap:6px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+          ${getFileBadge(f.path)}
+          <span style="font-family:monospace; color:#1e293b;" title="${escapeHtml(f.path)}">${escapeHtml(f.path)}</span>
+        </div>
+        ${sizeStr ? `<span class="muted" style="font-size:0.7rem; font-family:monospace; flex-shrink:0;">${sizeStr}</span>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  listEl.querySelectorAll('.code-file-item').forEach(item => {
+    item.addEventListener('click', () => {
+      loadCodeFile(item.dataset.path);
+    });
+  });
+}
+
+function formatBytes(bytes) {
+  if (!bytes || bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+}
 
 async function loadCodeFile(path) {
   if (!path) return;
@@ -996,22 +1246,23 @@ async function loadCodeFile(path) {
   shaDisplay.textContent = '';
   statusEl.innerHTML = '<div class="status info">Fetching file from GitHub API…</div>';
 
+  renderCodeFileList(document.getElementById('code-search-input').value);
+
   try {
     const file = await ghGetFile(codeCurrentPath);
     if (!file) {
-      // Fallback: try relative fetch if testing preview/offline or file is local
       const localRes = await fetch('../' + codeCurrentPath);
       if (localRes.ok) {
         const text = await localRes.text();
         ta.value = text;
         codeCurrentSha = null;
-        pathDisplay.textContent = codeCurrentPath + ' (local file; new on GitHub branch)';
-        shaDisplay.textContent = '[new in repo]';
+        pathDisplay.textContent = codeCurrentPath;
+        shaDisplay.textContent = '[local copy; new on branch]';
         statusEl.innerHTML = '<div class="status info">Loaded local copy. Committing will create/update this file on your GitHub branch.</div>';
         updateCodeStats();
         return;
       }
-      throw new Error("File '" + codeCurrentPath + "' not found in GitHub repository or local server.");
+      throw new Error("File '" + codeCurrentPath + "' not found in repository or local server.");
     }
 
     ta.value = file.content;
@@ -1032,20 +1283,17 @@ function updateCodeStats() {
   if (!stats || !ta) return;
   const lines = ta.value.split('\n').length;
   const chars = ta.value.length;
-  stats.textContent = `${lines} lines, ${chars.toLocaleString()} characters`;
+  stats.textContent = `${lines} lines, ${chars.toLocaleString()} chars`;
 }
 
 document.getElementById('code-textarea').addEventListener('input', updateCodeStats);
 
-document.getElementById('code-file-select').addEventListener('change', (e) => {
-  document.getElementById('code-custom-path').value = '';
-  loadCodeFile(e.target.value);
+document.getElementById('code-search-input').addEventListener('input', (e) => {
+  renderCodeFileList(e.target.value);
 });
 
-document.getElementById('code-load-btn').addEventListener('click', () => {
-  const custom = document.getElementById('code-custom-path').value.trim();
-  const selected = document.getElementById('code-file-select').value;
-  loadCodeFile(custom || selected);
+document.getElementById('code-refresh-tree').addEventListener('click', () => {
+  fetchCodeRepoFiles();
 });
 
 document.getElementById('code-reload').addEventListener('click', () => {
@@ -1053,15 +1301,88 @@ document.getElementById('code-reload').addEventListener('click', () => {
     if (confirm("Discard unsaved changes and reload '" + codeCurrentPath + "' from GitHub?")) {
       loadCodeFile(codeCurrentPath);
     }
-  } else {
-    loadCodeFile(document.getElementById('code-file-select').value);
+  } else if (codeRepositoryFiles.length) {
+    loadCodeFile(codeRepositoryFiles[0].path);
   }
 });
 
+// New File Button & Creation
+document.getElementById('code-new-btn').addEventListener('click', () => {
+  const box = document.getElementById('code-new-file-box');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  if (box.style.display === 'block') {
+    document.getElementById('code-new-name').focus();
+  }
+});
+
+document.getElementById('code-new-cancel').addEventListener('click', () => {
+  document.getElementById('code-new-file-box').style.display = 'none';
+});
+
+document.getElementById('code-new-confirm').addEventListener('click', () => {
+  const nameInput = document.getElementById('code-new-name');
+  const path = nameInput.value.trim().replace(/^\/+/, '');
+  if (!path) {
+    alert('Please enter a file path/name (e.g. clubs.html or content/data.json).');
+    return;
+  }
+
+  const templateType = document.getElementById('code-new-template').value;
+  let starterContent = '';
+
+  if (templateType === 'html') {
+    starterContent = `<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Page | Mo/Pelwatta Navodya Secondary College</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <main class="page-container" style="max-width:1100px; margin:0 auto; padding:24px 16px;">
+    <section class="section">
+      <h1 class="page-title">Page Title</h1>
+      <p>Content goes here...</p>
+    </section>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="js/i18n.js"><\/script>
+  <script src="js/common.js"><\/script>
+</body>
+</html>
+`;
+  } else if (templateType === 'json') {
+    starterContent = `{\n  "title": {\n    "si": "",\n    "ta": "",\n    "en": ""\n  },\n  "items": []\n}\n`;
+  } else if (templateType === 'css') {
+    starterContent = `/* Custom Stylesheet */\n`;
+  } else if (templateType === 'js') {
+    starterContent = `// Custom JavaScript Module\n`;
+  }
+
+  codeCurrentPath = path;
+  codeCurrentSha = null;
+  document.getElementById('code-textarea').value = starterContent;
+  document.getElementById('code-path-display').textContent = codeCurrentPath + ' [new file]';
+  document.getElementById('code-sha-display').textContent = '[not yet committed]';
+  document.getElementById('code-status').innerHTML = '<div class="status info">New file created in editor. Click "Commit & Save File" to commit it to your GitHub repository.</div>';
+  updateCodeStats();
+
+  if (!codeRepositoryFiles.find(f => f.path === path)) {
+    codeRepositoryFiles.unshift({ path: path, size: starterContent.length, sha: null });
+    renderCodeFileList(document.getElementById('code-search-input').value);
+  }
+
+  document.getElementById('code-new-file-box').style.display = 'none';
+  nameInput.value = '';
+});
+
+// Commit & Save
 document.getElementById('code-save-btn').addEventListener('click', async () => {
   const statusEl = document.getElementById('code-status');
   if (!codeCurrentPath) {
-    statusEl.innerHTML = '<div class="status err">No file selected. Please choose a file first.</div>';
+    statusEl.innerHTML = '<div class="status err">No file selected. Please choose or create a file first.</div>';
     return;
   }
 
@@ -1077,7 +1398,6 @@ document.getElementById('code-save-btn').addEventListener('click', async () => {
   try {
     const textContent = document.getElementById('code-textarea').value;
     
-    // Check latest sha to avoid sha mismatches
     let sha = codeCurrentSha;
     try {
       const check = await ghGetFile(codeCurrentPath);
@@ -1091,14 +1411,22 @@ document.getElementById('code-save-btn').addEventListener('click', async () => {
       document.getElementById('code-sha-display').textContent = 'SHA: ' + codeCurrentSha.slice(0, 10);
     }
     statusEl.innerHTML = '<div class="status ok">✅ Saved and committed <strong>' + escapeHtml(codeCurrentPath) + '</strong> successfully! The website will reflect this update immediately.</div>';
+    
+    const fileItem = codeRepositoryFiles.find(f => f.path === codeCurrentPath);
+    if (fileItem) fileItem.size = textContent.length;
+    renderCodeFileList(document.getElementById('code-search-input').value);
   } catch (err) {
     statusEl.innerHTML = '<div class="status err">❌ Commit failed: ' + escapeHtml(err.message) + '</div>';
   }
 });
 
 document.querySelector('[data-tab="code"]').addEventListener('click', () => {
-  if (!codeCurrentPath) {
-    loadCodeFile(document.getElementById('code-file-select').value);
+  if (!codeTreeLoaded) {
+    fetchCodeRepoFiles().then(() => {
+      if (!codeCurrentPath && codeRepositoryFiles.length) {
+        loadCodeFile(codeRepositoryFiles[0].path);
+      }
+    });
   }
 });
 
@@ -1322,6 +1650,329 @@ document.querySelector('[data-tab="theme"]').addEventListener('click', () => {
   if (!themeCssLoaded) {
     loadThemeTab();
   }
+});
+
+/* ===================== IMPORT SITE TAB ===================== */
+let importQueue = [];
+let importProtectedSkipped = [];
+let importRepoMap = new Map();
+
+function readFileAsArrayBuffer(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+async function handleImportFiles(fileList, isFolder) {
+  const previewArea = document.getElementById('import-preview-area');
+  const warningBanner = document.getElementById('import-warning-banner');
+  const statsEl = document.getElementById('import-stats');
+  const tbody = document.getElementById('import-preview-body');
+  const statusEl = document.getElementById('import-status');
+
+  statusEl.innerHTML = '';
+  warningBanner.style.display = 'none';
+  warningBanner.innerHTML = '';
+  tbody.innerHTML = '<tr><td colspan="4" style="padding:16px; text-align:center;" class="muted">Analyzing files and computing SHA hashes against repository…</td></tr>';
+  previewArea.style.display = 'block';
+
+  importQueue = [];
+  importProtectedSkipped = [];
+
+  const filesArray = Array.from(fileList);
+  if (!filesArray.length) {
+    previewArea.style.display = 'none';
+    return;
+  }
+
+  // 1. Fetch current repository tree
+  try {
+    const tree = await ghGetTree();
+    importRepoMap = new Map(tree.filter(b => b.type === 'blob').map(b => [b.path, b]));
+  } catch (e) {
+    importRepoMap = new Map();
+  }
+
+  // 2. If folder import, detect if all files share a common root folder prefix
+  let prefixToStrip = '';
+  if (isFolder && filesArray.length > 0 && filesArray[0].webkitRelativePath) {
+    const firstParts = filesArray[0].webkitRelativePath.split('/');
+    if (firstParts.length > 1) {
+      const candidatePrefix = firstParts[0] + '/';
+      const allShare = filesArray.every(f => f.webkitRelativePath.startsWith(candidatePrefix));
+      if (allShare) {
+        prefixToStrip = candidatePrefix;
+      }
+    }
+  }
+
+  // 3. Process each file
+  for (const file of filesArray) {
+    let relPath = isFolder && file.webkitRelativePath ? file.webkitRelativePath : (file.name || '');
+    if (prefixToStrip && relPath.startsWith(prefixToStrip)) {
+      relPath = relPath.slice(prefixToStrip.length);
+    }
+    relPath = relPath.replace(/^\/+/, '');
+
+    // Ignore system files like .DS_Store or Thumbs.db
+    if (relPath.endsWith('.DS_Store') || relPath.endsWith('Thumbs.db')) continue;
+
+    // Check protected paths
+    if (isProtectedPath(relPath)) {
+      importProtectedSkipped.push(relPath);
+      continue;
+    }
+
+    try {
+      const arrayBuffer = await readFileAsArrayBuffer(file);
+      const computedSha = await computeGitBlobSha(arrayBuffer);
+      const isBinary = isBinaryFile(relPath);
+
+      let status = 'new';
+      let existingSha = null;
+
+      if (importRepoMap.has(relPath)) {
+        const repoBlob = importRepoMap.get(relPath);
+        existingSha = repoBlob.sha;
+        if (repoBlob.sha === computedSha) {
+          status = 'unchanged';
+        } else {
+          status = 'changed';
+        }
+      }
+
+      importQueue.push({
+        file,
+        path: relPath,
+        size: file.size,
+        isBinary,
+        status,
+        sha: existingSha,
+        arrayBuffer
+      });
+    } catch (readErr) {
+      console.error('Error reading file:', relPath, readErr);
+    }
+  }
+
+  // 4. Show warning if protected paths were detected and skipped
+  if (importProtectedSkipped.length > 0) {
+    warningBanner.style.display = 'block';
+    warningBanner.innerHTML = `
+      🛡️ <strong>Notice:</strong> ${importProtectedSkipped.length} protected file(s) in your import were automatically skipped:
+      <code>${escapeHtml(importProtectedSkipped.slice(0, 5).join(', '))}${importProtectedSkipped.length > 5 ? '…' : ''}</code>.
+      Files in <code>xk92m-manage/</code> and <code>.github/</code> can never be modified or deleted via Site Import.
+    `;
+  }
+
+  renderImportPreview();
+}
+
+function renderImportPreview() {
+  const tbody = document.getElementById('import-preview-body');
+  const statsEl = document.getElementById('import-stats');
+  const deleteMissingCheckbox = document.getElementById('import-delete-missing');
+
+  const newCount = importQueue.filter(f => f.status === 'new').length;
+  const changedCount = importQueue.filter(f => f.status === 'changed').length;
+  const unchangedCount = importQueue.filter(f => f.status === 'unchanged').length;
+
+  // Calculate missing files for mirror mode
+  const importedPathSet = new Set(importQueue.map(f => f.path));
+  const missingInImport = [];
+  importRepoMap.forEach((blob, path) => {
+    if (!importedPathSet.has(path) && !isProtectedPath(path)) {
+      missingInImport.push({ path, sha: blob.sha, size: blob.size });
+    }
+  });
+
+  let statsHtml = `<strong>${newCount}</strong> New, <strong>${changedCount}</strong> Changed, <strong>${unchangedCount}</strong> Unchanged`;
+  if (importProtectedSkipped.length) {
+    statsHtml += `, <span style="color:#b91c1c;">${importProtectedSkipped.length} Skipped (protected)</span>`;
+  }
+  if (deleteMissingCheckbox.checked) {
+    statsHtml += ` | <span style="color:#b91c1c; font-weight:bold;">${missingInImport.length} files queued for DELETION</span>`;
+  }
+  statsEl.innerHTML = statsHtml;
+
+  // Build rows
+  let rowsHtml = '';
+
+  importQueue.forEach(item => {
+    let badgeHtml = '';
+    if (item.status === 'new') {
+      badgeHtml = `<span style="background:#dcfce7; color:#15803d; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">NEW</span>`;
+    } else if (item.status === 'changed') {
+      badgeHtml = `<span style="background:#fef9c3; color:#a16207; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">CHANGED</span>`;
+    } else {
+      badgeHtml = `<span style="background:#f1f5f9; color:#64748b; font-size:0.75rem; padding:2px 8px; border-radius:4px;">UNCHANGED</span>`;
+    }
+
+    rowsHtml += `
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:6px 12px;">${badgeHtml}</td>
+        <td style="padding:6px 12px; font-family:monospace; color:#0f172a;">${escapeHtml(item.path)}</td>
+        <td style="padding:6px 12px; text-align:right; font-family:monospace; color:#64748b;">${formatBytes(item.size)}</td>
+        <td style="padding:6px 12px; color:#64748b; font-size:0.8rem;">${item.isBinary ? 'Binary/Asset' : 'Text/Code'}</td>
+      </tr>
+    `;
+  });
+
+  if (deleteMissingCheckbox.checked) {
+    missingInImport.forEach(item => {
+      rowsHtml += `
+        <tr style="border-bottom:1px solid #fee2e2; background:#fff5f5;">
+          <td style="padding:6px 12px;"><span style="background:#fee2e2; color:#b91c1c; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">DELETE</span></td>
+          <td style="padding:6px 12px; font-family:monospace; color:#b91c1c;">${escapeHtml(item.path)}</td>
+          <td style="padding:6px 12px; text-align:right; font-family:monospace; color:#991b1b;">${formatBytes(item.size || 0)}</td>
+          <td style="padding:6px 12px; color:#b91c1c; font-size:0.8rem;">Will be removed</td>
+        </tr>
+      `;
+    });
+  }
+
+  tbody.innerHTML = rowsHtml || '<tr><td colspan="4" style="padding:16px; text-align:center;">No files to display.</td></tr>';
+}
+
+document.getElementById('import-folder-input').addEventListener('change', (e) => {
+  handleImportFiles(e.target.files, true);
+});
+
+document.getElementById('import-files-input').addEventListener('change', (e) => {
+  handleImportFiles(e.target.files, false);
+});
+
+document.getElementById('import-delete-missing').addEventListener('change', () => {
+  renderImportPreview();
+});
+
+document.getElementById('import-clear-btn').addEventListener('click', () => {
+  importQueue = [];
+  importProtectedSkipped = [];
+  document.getElementById('import-folder-input').value = '';
+  document.getElementById('import-files-input').value = '';
+  document.getElementById('import-preview-area').style.display = 'none';
+  document.getElementById('import-warning-banner').style.display = 'none';
+  document.getElementById('import-progress-container').style.display = 'none';
+  document.getElementById('import-status').innerHTML = '';
+});
+
+document.getElementById('import-commit-btn').addEventListener('click', async () => {
+  const statusEl = document.getElementById('import-status');
+  const progressBox = document.getElementById('import-progress-container');
+  const progressBar = document.getElementById('import-progress-bar');
+  const progressLabel = document.getElementById('import-progress-label');
+  const progressPercent = document.getElementById('import-progress-percent');
+  const progressDetail = document.getElementById('import-progress-detail');
+  const deleteMissingCheckbox = document.getElementById('import-delete-missing');
+
+  if (!ghConfig().token) {
+    statusEl.innerHTML = '<div class="status err">Please connect with your GitHub token first.</div>';
+    return;
+  }
+
+  const toCommit = importQueue.filter(f => f.status === 'new' || f.status === 'changed');
+
+  // Deletions for mirror mode
+  const importedPathSet = new Set(importQueue.map(f => f.path));
+  let toDelete = [];
+  if (deleteMissingCheckbox.checked) {
+    importRepoMap.forEach((blob, path) => {
+      if (!importedPathSet.has(path) && !isProtectedPath(path)) {
+        toDelete.push({ path, sha: blob.sha });
+      }
+    });
+  }
+
+  if (toCommit.length === 0 && toDelete.length === 0) {
+    statusEl.innerHTML = '<div class="status info">All files are identical to the live repository. No updates or deletions are needed.</div>';
+    return;
+  }
+
+  // Confirmation dialog
+  let confirmMsg = `Are you ready to commit this site import to GitHub?\n\n` +
+    `• ${toCommit.filter(f=>f.status==='new').length} new files will be created\n` +
+    `• ${toCommit.filter(f=>f.status==='changed').length} modified files will be updated\n` +
+    `• ${importQueue.filter(f=>f.status==='unchanged').length} unchanged files will be skipped\n`;
+
+  if (toDelete.length > 0) {
+    confirmMsg += `\n⚠️ DANGER: ${toDelete.length} files missing from this import will be PERMANENTLY DELETED from your repository!\n`;
+  }
+  confirmMsg += `\nProceed with committing to branch '${ghConfig().branch}'?`;
+
+  if (!confirm(confirmMsg)) return;
+
+  // Start progress
+  progressBox.style.display = 'block';
+  progressBar.style.width = '0%';
+  progressBar.style.background = '#16a34a';
+  progressPercent.textContent = '0%';
+  progressLabel.textContent = 'Committing files to GitHub…';
+  statusEl.innerHTML = '<div class="status info">Import in progress. Please do not close this window…</div>';
+  document.getElementById('import-commit-btn').disabled = true;
+
+  const totalOps = toCommit.length + toDelete.length;
+  let completedOps = 0;
+  let errors = [];
+
+  function updateProgress(itemLabel) {
+    completedOps++;
+    const pct = Math.round((completedOps / totalOps) * 100);
+    progressBar.style.width = `${pct}%`;
+    progressPercent.textContent = `${pct}%`;
+    progressLabel.textContent = `Processing ${completedOps} of ${totalOps} (${pct}%)`;
+    progressDetail.textContent = itemLabel;
+  }
+
+  // 1. Commit new & changed files
+  for (const item of toCommit) {
+    try {
+      updateProgress(`Uploading: ${item.path}`);
+      if (item.isBinary) {
+        const b64 = arrayBufferToBase64(item.arrayBuffer);
+        await ghPutBinaryFile(item.path, b64, `Import ${item.path}`, item.sha);
+      } else {
+        const text = new TextDecoder('utf-8').decode(item.arrayBuffer);
+        await ghPutFile(item.path, text, `Import ${item.path}`, item.sha);
+      }
+      item.status = 'unchanged';
+      await new Promise(r => setTimeout(r, 120));
+    } catch (opErr) {
+      errors.push(`${item.path}: ${opErr.message}`);
+    }
+  }
+
+  // 2. Delete missing files if mirror mode enabled
+  for (const delItem of toDelete) {
+    try {
+      if (isProtectedPath(delItem.path)) continue;
+      updateProgress(`Deleting: ${delItem.path}`);
+      await ghDeleteFile(delItem.path, delItem.sha, `Delete ${delItem.path} via Site Import mirror`);
+      await new Promise(r => setTimeout(r, 120));
+    } catch (delErr) {
+      errors.push(`Delete ${delItem.path}: ${delErr.message}`);
+    }
+  }
+
+  document.getElementById('import-commit-btn').disabled = false;
+  progressBar.style.width = '100%';
+  progressPercent.textContent = '100%';
+
+  if (errors.length > 0) {
+    progressBar.style.background = '#dc2626';
+    progressLabel.textContent = `Completed with ${errors.length} error(s)`;
+    statusEl.innerHTML = `<div class="status err">Import finished with errors:<br>${errors.map(e=>escapeHtml(e)).join('<br>')}</div>`;
+  } else {
+    progressLabel.textContent = 'Import Completed Successfully!';
+    progressDetail.textContent = `Committed ${toCommit.length} file(s)` + (toDelete.length ? `, deleted ${toDelete.length} file(s)` : '');
+    statusEl.innerHTML = '<div class="status ok">✅ Site import committed successfully to GitHub! The live website will reflect all updates immediately.</div>';
+  }
+
+  renderImportPreview();
+  codeTreeLoaded = false;
 });
 
 loadSavedConfig();

@@ -1,3 +1,4 @@
+<!-- Website developed by [S.A.Chanuk Mithuja ] -->
 <!DOCTYPE html>
 <html lang="si" class="lang-si">
 <head>
@@ -37,7 +38,7 @@
         
         <div class="hero-motto-strip">
           <span style="font-size:1.2rem;">🏛️</span>
-          <span class="hero-motto-text" id="hero-motto">විද්‍යා දදාති විනයං</span>
+          <span class="hero-motto-text" id="hero-motto" data-i18n="school.motto">විද්‍යා දදාති විනයං</span>
         </div>
 
         <p class="hero-desc" id="hero-desc">
@@ -70,8 +71,8 @@
   <section class="container" style="padding-top: 3.5rem; padding-bottom: 2rem;">
     <div class="section-header">
       <span class="section-badge" data-i18n="school.type">රජයේ ජාතික පාසලකි</span>
-      <h2 class="section-title">ද්විතීයික අධ්‍යාපන අංශ සහ සේවාවන්</h2>
-      <p class="section-subtitle">අධ්‍යයන, ක්‍රීඩා, විභාග සහ පාසල් ප්‍රජා සේවාවන් වෙත පහසුවෙන් පිවිසෙන්න.</p>
+      <h2 class="section-title" data-i18n="home.sectionsTitle">ද්විතීයික අධ්‍යාපන අංශ සහ සේවාවන්</h2>
+      <p class="section-subtitle" data-i18n="home.sectionsSubtitle">අධ්‍යයන, ක්‍රීඩා, විභාග සහ පාසල් ප්‍රජා සේවාවන් වෙත පහසුවෙන් පිවිසෙන්න.</p>
     </div>
 
     <div class="tiles-grid" id="quick-tiles-container"></div>
@@ -87,12 +88,12 @@
           <p class="principal-role" id="principal-role">විදුහල්පති (SLEAS)</p>
         </div>
         <div>
-          <span class="section-badge">නායකත්වය සහ දැක්ම</span>
+          <span class="section-badge" data-i18n="home.leadershipBadge">නායකත්වය සහ දැක්ම</span>
           <blockquote class="principal-quote" id="principal-quote">
             "දැනුම පමණක් නොව විනය, සාරධර්ම සහ මානව ගුණාංගවලින් සන්නද්ධ පිරිපුන් පුරවැසියන් බිහිකිරීම අප පාසලේ ඒකායන අරමුණයි."
           </blockquote>
           <a href="about.html" class="btn-primary" style="display:inline-flex;">
-            <span data-i18n="nav.about">විදුහල්පතිතුමාගේ පණිවිඩය කියවන්න</span> &rarr;
+            <span data-i18n="home.readPrincipalMsg">විදුහල්පතිතුමාගේ පණිවිඩය කියවන්න</span> &rarr;
           </a>
         </div>
       </div>
@@ -104,11 +105,11 @@
     <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; text-align: left;">
       <div>
         <span class="section-badge" data-i18n="nav.news">පුවත් සහ නිවේදන</span>
-        <h2 class="section-title">නවතම නිවේදන සහ සිදුවීම්</h2>
+        <h2 class="section-title" data-i18n="home.newsTitle">නවතම නිවේදන සහ සිදුවීම්</h2>
       </div>
       <div>
         <a href="news.html" class="btn-secondary" style="color:var(--navy); border-color:var(--navy-light);">
-          <span data-i18n="nav.news">සියලුම පුවත් බලන්න</span> &rarr;
+          <span data-i18n="home.viewAllNews">සියලුම පුවත් බලන්න</span> &rarr;
         </a>
       </div>
     </div>
@@ -170,7 +171,7 @@
             <span class="tile-icon">${tile.icon}</span>
             <h3 class="tile-title">${pick(tile.title, lang)}</h3>
             <p class="tile-desc">${pick(tile.desc, lang)}</p>
-            <span class="tile-link">පිවිසෙන්න &rarr;</span>
+            <span class="tile-link">${lang === 'si' ? 'පිවිසෙන්න' : (lang === 'ta' ? 'பார்க்க' : 'Explore')} &rarr;</span>
           </a>
         `).join('');
 

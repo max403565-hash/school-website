@@ -4,7 +4,7 @@
    language change, so nothing gets "stuck" in one language. */
 
 const SITE = {
-  lang: localStorage.getItem('site_lang') || 'si',
+  lang: localStorage.getItem('pelwatta_lang') || localStorage.getItem('site_lang') || 'si',
   common: null,
   cache: {}
 };
@@ -14,6 +14,7 @@ function getLang(){ return SITE.lang; }
 function setLang(lang){
   SITE.lang = lang;
   localStorage.setItem('site_lang', lang);
+  localStorage.setItem('pelwatta_lang', lang);
   document.documentElement.lang = lang;
   window.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
   if (typeof window.__renderCurrentPage === 'function') window.__renderCurrentPage();
@@ -68,7 +69,7 @@ function renderHeader(common, currentKey){
     <header class="site-header">
       <div class="container header-row">
         <a class="brand" href="index.html">
-          <img src="images/crest-placeholder.svg" alt="School crest">
+          <img src="images/crest.svg" alt="College Crest">
           <span>
             <span class="name-si">${t(common.schoolName)}</span><br>
             <span class="loc">${t(common.location)}</span>
@@ -120,7 +121,10 @@ function renderFooter(common){
           </div>
         </div>
       </div>
-      <div class="footer-bottom">&copy; <span id="ftr-year"></span> ${t(common.schoolName)} — ${t(f.copyright)}</div>
+      <div class="footer-bottom">
+        &copy; <span id="ftr-year"></span> ${t(common.schoolName)} — ${t(f.copyright)}
+        <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">Website developed by [S.A.Chanuk Mithuja ]</div>
+      </div>
     </div>
   `;
   document.getElementById('ftr-year').textContent = new Date().getFullYear();

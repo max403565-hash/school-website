@@ -23,9 +23,12 @@
     {"year": "2025", "text": {"si": "සාමාන්‍ය පෙළ සමත් ප්‍රතිශතය 94%ක් විය.", "ta": "சாதாரணத் தர சித்தி விகிதம் 94% ஆக இருந்தது.", "en": "O/L pass rate reached 94%."}},
     {"year": "2024", "text": {"si": "විද්‍යා ධාරාවෙන් සිසුන් 12 දෙනෙකු විශ්ව විද්‍යාල ප්‍රවේශය ලබා ගත්හ.", "ta": "விஞ்ஞானப் பிரிவில் 12 மாணவர்கள் பல்கலைக்கழக நுழைவைப் பெற்றனர்.", "en": "12 students from the Science stream secured university entrance."}}
   ],
-  "downloadsTitle": {"si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads"},
+  "downloadsTitle": {"si": "බාගත කිරීම් සහ විභාග කාලසටහන්", "ta": "பதிவிறக்கங்கள் மற்றும் பரீட்சை அட்டவணைகள்", "en": "Downloads & Exam Timetables"},
   "downloads": [
-    {"label": {"si": "2026 අධ්‍යයන වර්ෂ දිනදසුන", "ta": "2026 கல்வியாண்டு காலண்டர்", "en": "2026 Academic Calendar"}, "file": "downloads/academic-calendar-2026.pdf"},
-    {"label": {"si": "3වන වාර විභාග කාලසටහන", "ta": "3ஆம் தவணை பரீட்சை அட்டவணை", "en": "Term 3 Exam Timetable"}, "file": "downloads/term3-timetable-2026.pdf"}
+    {"label": {"si": "2026 වාර්ෂික පාසල් අධ්‍යයන දින දර්ශනය", "ta": "2026 வருடாந்த பாடசாலை கல்வி நாட்காட்டி", "en": "Annual School Academic Calendar 2026"}, "file": "downloads/academic-calendar-2026.pdf"},
+    {"label": {"si": "උසස් පෙළ පළමු වාර විභාග කාලසටහන 2026", "ta": "உயர்தர முதலாம் தவணை பரீட்சை கால அட்டவணை 2026", "en": "A/L First Term Examination Timetable 2026"}, "file": "downloads/al-exam-timetable-2026.pdf"},
+    {"label": {"si": "සාමාන්‍ය පෙළ පළමු වාර විභාග කාලසටහන 2026", "ta": "சாதாரண தர முதலாம் தவணை பரீட்சை கால அட்டவணை 2026", "en": "O/L First Term Examination Timetable 2026"}, "file": "downloads/ol-exam-timetable-2026.pdf"},
+    {"label": {"si": "අධ්‍යාපන අමාත්‍යාංශ චක්‍රලේඛ අංක 01/2026", "ta": "கல்வி அமைச்சு சுற்றறிக்கை இல 01/2026", "en": "Ministry of Education Circular No. 01/2026"}, "file": "downloads/school-circular-01-2026.pdf"},
+    {"label": {"si": "පාසල් ඇතුළත් වීමේ සහ අතරමැදි ශ්‍රේණි මාර්ගෝපදේශය", "ta": "பாடசாலை சேர்க்கை மற்றும் இடைநிலை வழிகாட்டல்", "en": "School Admissions & Intermediate Grade Guidelines"}, "file": "downloads/grade-1-application-guide-2026.pdf"}
   ]
 }

@@ -22,7 +22,7 @@
   <section class="page-banner">
     <div class="container">
       <h1 class="page-title" data-i18n="footer.privacy">පෞද්ගලිකත්ව ප්‍රතිපත්තිය</h1>
-      <p class="page-subtitle">ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනතට (PDPA) අනුකූලතාවය</p>
+      <p class="page-subtitle" id="priv-subtitle"></p>
       <div class="breadcrumbs">
         <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="footer.privacy">Privacy Policy</span>
       </div>
@@ -30,20 +30,12 @@
   </section>
 
   <main class="container" style="padding: 3.5rem 1rem; max-width: 860px;">
-    <div class="form-card" style="padding: 2.5rem 2rem; font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
-      <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy);" id="priv-title">
-        පෞද්ගලිකත්ව ප්‍රතිපත්තිය
-      </h2>
-      <p id="priv-body" style="margin-bottom: 2rem;"></p>
+    <div class="card" style="padding: 2.5rem 2rem; font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
+      <h2 style="font-size: 1.4rem; font-weight: 700; margin-top:0; margin-bottom: 1rem; color: var(--navy);" id="priv-title"></h2>
+      <p id="priv-body" style="margin-bottom: 2rem; color:var(--text); line-height:1.7;"></p>
 
-      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy);">
-        දත්ත භාවිතය පිළිබඳ මූලධර්ම
-      </h3>
-      <ul style="list-style: disc; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
-        <li>මෙම වෙබ් අඩවිය පරිශීලකයින්ගේ කිසිදු පෞද්ගලික තොරතුරක් අනවශ්‍ය ලෙස තෙවන පාර්ශව වෙත ලබා නොදේ.</li>
-        <li>සියලුම අධ්‍යාපන තොරතුරු සහ ලේඛන රජයේ නීතිමය රාමුව තුළ පමණක් භාවිත කෙරේ.</li>
-        <li>අනිෂ්ට හෝ වාණිජමය වෙළඳ දැන්වීම් පද්ධති කිසිවක් මෙම නිල වෙබ් අඩවියේ අඩංගු නොවේ.</li>
-      </ul>
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--navy);" id="principles-title"></h3>
+      <ul style="list-style: disc; padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin:0;" id="principles-list"></ul>
     </div>
   </main>
 
@@ -66,16 +58,30 @@
             legalData = await res.json();
           }
           renderContent();
-        } catch (e) {}
+        } catch (e) {
+          console.error("Failed to load legal content:", e);
+        }
       }
 
       function renderContent() {
         if (!legalData || !legalData.privacyPolicy) return;
         const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+        const p = legalData.privacyPolicy;
 
-        document.getElementById('priv-title').textContent = pick(legalData.privacyPolicy.title, lang);
-        document.getElementById('priv-body').textContent = pick(legalData.privacyPolicy.body, lang);
+        if (p.subtitle) {
+          document.getElementById('priv-subtitle').textContent = pick(p.subtitle, lang);
+        }
+        document.getElementById('priv-title').textContent = pick(p.title, lang);
+        document.getElementById('priv-body').textContent = pick(p.body, lang);
+        if (p.principlesTitle) {
+          document.getElementById('principles-title').textContent = pick(p.principlesTitle, lang);
+        }
+        if (p.principles) {
+          document.getElementById('principles-list').innerHTML = p.principles.map(item => `
+            <li style="margin-bottom:0.5rem;">${pick(item, lang)}</li>
+          `).join('');
+        }
       }
 
       if (window.i18n && window.i18n.onLanguageChange) {

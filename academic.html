@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Academic — Mo/Pelwatta Navodya Secondary Collage</title>
-<link rel="icon" href="images/crest-placeholder.svg">
+<title>Academic Streams — Mo/Pelwatta Navodya Secondary College</title>
+<link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -25,31 +25,50 @@
 
   <section class="section container">
     <h2 id="results-title"></h2>
-    <div id="results-list"></div>
+    <div id="results-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;"></div>
   </section>
 
   <section class="section container">
     <h2 id="downloads-title"></h2>
-    <ul id="downloads-list" style="list-style:none;padding:0"></ul>
+    <div id="downloads-list" style="display:flex; flex-direction:column; gap:12px;"></div>
   </section>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/app.js"></script>
 <script>
 function renderBody(page, common){
+  const lang = getLang();
   document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.academic)}`;
   document.getElementById('page-title').textContent = t(common.nav.academic);
   document.getElementById('page-intro').textContent = t(page.intro);
-  document.getElementById('sections-grid').innerHTML = page.sections.map(s=>
-    `<div class="card"><div class="body"><h3>${t(s.title)}</h3><p>${t(s.body)}</p></div></div>`
+
+  document.getElementById('sections-grid').innerHTML = page.sections.map(s =>
+    `<div class="card">
+      <div class="body">
+        <h3 style="color:var(--maroon); font-size:1.2rem; margin-top:0;">${t(s.title)}</h3>
+        <p style="color:var(--text); line-height:1.6; margin:0;">${t(s.body)}</p>
+      </div>
+    </div>`
   ).join('');
+
   document.getElementById('results-title').textContent = t(page.resultsTitle);
-  document.getElementById('results-list').innerHTML = page.results.map(r=>
-    `<div class="notice-box info"><strong>${r.year}</strong> — ${t(r.text)}</div>`
+  document.getElementById('results-list').innerHTML = page.results.map(r =>
+    `<div class="card" style="padding:20px; border-left:4px solid var(--gold);">
+      <div style="font-weight:800; font-size:1.3rem; color:var(--maroon); margin-bottom:6px;">${r.year}</div>
+      <p style="margin:0; color:var(--text);">${t(r.text)}</p>
+    </div>`
   ).join('');
+
+  const dlLabel = lang === 'en' ? 'Download' : (lang === 'ta' ? 'பதிவிறக்கு' : 'බාගත කරන්න');
   document.getElementById('downloads-title').textContent = t(page.downloadsTitle);
-  document.getElementById('downloads-list').innerHTML = page.downloads.map(d=>
-    `<li style="padding:10px 0;border-bottom:1px solid var(--border)"><a href="${d.file}" download>&#128190; ${t(d.label)}</a></li>`
+  document.getElementById('downloads-list').innerHTML = page.downloads.map(d =>
+    `<div class="card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:16px 20px; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:1.5rem;">📄</span>
+        <strong style="color:var(--maroon);">${t(d.label)}</strong>
+      </div>
+      <a href="${d.file}" download class="btn" style="padding:8px 16px; font-size:0.85rem;">⬇️ ${dlLabel}</a>
+    </div>`
   ).join('');
 }
 initPage('academic', 'content/pages/academic.json', renderBody);

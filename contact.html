@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact Us — Mo/Pelwatta Navodya Secondary Collage</title>
-<link rel="icon" href="images/crest-placeholder.svg">
+<title>Contact Us — Mo/Pelwatta Navodya Secondary College</title>
+<link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -19,66 +19,101 @@
     <p id="page-intro"></p>
   </div>
 
-  <section class="section container" style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
-    <div>
-      <h2 id="details-title"></h2>
-      <p>📍 <span id="detail-address"></span></p>
-      <p>📞 <span id="detail-phone"></span></p>
-      <p>✉️ <span id="detail-email"></span></p>
-      <p><strong id="office-hours-title"></strong>: <span id="office-hours"></span></p>
-      <p><strong id="rti-label"></strong>: <span id="rti-name"></span></p>
-      <div class="map-embed" style="margin-top:16px"><iframe id="map-iframe" loading="lazy"></iframe></div>
+  <section class="section container">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; margin-bottom:32px;">
+      <!-- Direct Email Card -->
+      <div class="card" style="padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:2rem; margin-bottom:8px;">✉️</div>
+          <h2 id="email-card-title" style="margin-top:0; font-size:1.3rem; border:none; padding:0; color:var(--maroon);"></h2>
+          <p id="email-card-desc" style="color:var(--muted); font-size:0.95rem; margin-bottom:16px;"></p>
+          <div style="background:var(--maroon-subtle); padding:12px 16px; border-radius:8px; margin-bottom:18px;">
+            <div style="font-size:0.8rem; color:var(--muted); font-weight:700;">OFFICIAL INBOX</div>
+            <a id="email-link" href="mailto:info@pelwattanavodya.lk" style="font-weight:700; font-size:1.05rem; color:var(--maroon); word-break:break-all;">info@pelwattanavodya.lk</a>
+          </div>
+        </div>
+        <a id="email-btn" href="mailto:info@pelwattanavodya.lk?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College" class="btn" style="text-align:center;"></a>
+      </div>
+
+      <!-- Telephone Inquiries Card -->
+      <div class="card" style="padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:2rem; margin-bottom:8px;">📞</div>
+          <h2 id="phone-card-title" style="margin-top:0; font-size:1.3rem; border:none; padding:0; color:var(--maroon);"></h2>
+          <p id="phone-card-desc" style="color:var(--muted); font-size:0.95rem; margin-bottom:16px;"></p>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+            <div style="background:var(--gold-subtle); padding:12px 16px; border-radius:8px;">
+              <div style="font-size:0.8rem; color:var(--gold-dark); font-weight:700;">PRINCIPAL & OFFICE DIRECT</div>
+              <a id="phone-link-1" href="tel:+94552276234" style="font-weight:800; font-size:1.2rem; color:var(--text);">+94 55 227 6234</a>
+            </div>
+            <div style="background:var(--bg); padding:10px 16px; border-radius:8px; border:1px solid var(--border);">
+              <div style="font-size:0.8rem; color:var(--muted); font-weight:700;">ADMINISTRATION DESK</div>
+              <a id="phone-link-2" href="tel:+94552276235" style="font-weight:700; font-size:1.05rem; color:var(--text);">+94 55 227 6235</a>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:0.85rem; color:var(--muted);" id="office-hours-banner"></div>
+      </div>
     </div>
-    <div>
-      <h2 id="form-title"></h2>
-      <div id="form-embed-area"></div>
+
+    <!-- Details & Location Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+      <div class="card" style="padding:24px;">
+        <h2 id="details-title" style="font-size:1.3rem; margin-top:0;"></h2>
+        <div style="display:flex; flex-direction:column; gap:14px; font-size:0.95rem;">
+          <p style="margin:0;"><strong>📍 <span id="label-address"></span>:</strong><br><span id="detail-address"></span></p>
+          <p style="margin:0;"><strong>🕒 <span id="office-hours-title"></span>:</strong><br><span id="office-hours"></span></p>
+          <p style="margin:0;"><strong>⚖️ <span id="rti-label"></span>:</strong><br><span id="rti-name"></span></p>
+          <p style="margin:0;"><strong>🏛️ Census ID:</strong> 18452 · Ministry of Education Sri Lanka</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:24px;">
+        <h2 id="location-title" style="font-size:1.3rem; margin-top:0;"></h2>
+        <div class="map-embed"><iframe id="map-iframe" loading="lazy" title="School Location Map"></iframe></div>
+      </div>
     </div>
   </section>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/app.js"></script>
 <script>
-function renderDemoForm(page){
-  const f = page.formFields;
-  return `
-    <div class="notice-box info">${t(page.embedNotSetUpNotice)}</div>
-    <form class="form-card" id="contact-form">
-      <div class="form-row"><label>${t(f.name)} *</label><input required></div>
-      <div class="form-row"><label>${t(f.email)} *</label><input type="email" required></div>
-      <div class="form-row"><label>${t(f.subject)} *</label><input required></div>
-      <div class="form-row"><label>${t(f.message)} *</label><textarea rows="5" required></textarea></div>
-      <button class="btn" type="submit">${t(page.submitLabel)}</button>
-      <div class="form-success" id="contact-success" style="display:none;margin-top:16px"></div>
-    </form>`;
-}
 function renderBody(page, common){
+  const lang = getLang();
   document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.contact)}`;
   document.getElementById('page-title').textContent = t(common.nav.contact);
   document.getElementById('page-intro').textContent = t(page.intro);
-  document.getElementById('details-title').textContent = getLang()==='en'?'School Details':(getLang()==='ta'?'பள்ளி விவரங்கள்':'පාසල් විස්තර');
+
+  // Email Card
+  document.getElementById('email-card-title').textContent = t(page.emailUsTitle);
+  document.getElementById('email-card-desc').textContent = t(page.emailUsDesc);
+  document.getElementById('email-btn').textContent = t(page.emailButton);
+  document.getElementById('email-link').textContent = page.email;
+  document.getElementById('email-link').href = `mailto:${page.email}`;
+  document.getElementById('email-btn').href = `mailto:${page.email}?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College`;
+
+  // Phone Card
+  document.getElementById('phone-card-title').textContent = t(page.callUsTitle);
+  document.getElementById('phone-card-desc').textContent = t(page.callUsDesc);
+  document.getElementById('phone-link-1').textContent = page.phone;
+  document.getElementById('phone-link-1').href = `tel:${page.phone.replace(/[^0-9+]/g, '')}`;
+  document.getElementById('phone-link-2').textContent = page.phoneSecondary;
+  document.getElementById('phone-link-2').href = `tel:${page.phoneSecondary.replace(/[^0-9+]/g, '')}`;
+  document.getElementById('office-hours-banner').innerHTML = `🕒 <strong>${t(page.officeHoursTitle)}:</strong> ${t(page.officeHours)}`;
+
+  // Details
+  const detailsHead = lang === 'en' ? 'School Administrative Details' : (lang === 'ta' ? 'பாடசாலை நிர்வாக விபரங்கள்' : 'පාසල් පරිපාලන විස්තර');
+  const locHead = lang === 'en' ? 'Campus Location' : (lang === 'ta' ? 'பாடசாலை அமைவிடம்' : 'පාසල් පිහිටීම');
+  const addrLabel = lang === 'en' ? 'Address' : (lang === 'ta' ? 'முகவரி' : 'ලිපිනය');
+  document.getElementById('details-title').textContent = detailsHead;
+  document.getElementById('location-title').textContent = locHead;
+  document.getElementById('label-address').textContent = addrLabel;
   document.getElementById('detail-address').textContent = t(common.location);
-  document.getElementById('detail-phone').textContent = page.phone;
-  document.getElementById('detail-email').textContent = page.email;
   document.getElementById('office-hours-title').textContent = t(page.officeHoursTitle);
   document.getElementById('office-hours').textContent = t(page.officeHours);
-  document.getElementById('rti-label').textContent = t(common.footer.rti);
+  document.getElementById('rti-label').textContent = t(page.rtiTitle);
   document.getElementById('rti-name').textContent = page.rtiOfficerName;
   document.getElementById('map-iframe').src = page.mapEmbedUrl;
-  document.getElementById('form-title').textContent = t(page.formTitle);
-
-  const area = document.getElementById('form-embed-area');
-  if (page.googleFormEmbedUrl){
-    area.innerHTML = `<iframe src="${page.googleFormEmbedUrl}" width="100%" height="700" style="border:0">Loading…</iframe>`;
-  } else {
-    area.innerHTML = renderDemoForm(page);
-    document.getElementById('contact-form').onsubmit = (e)=>{
-      e.preventDefault();
-      const box = document.getElementById('contact-success');
-      box.style.display = 'block';
-      box.textContent = t(page.successMsg);
-      e.target.querySelectorAll('input,textarea').forEach(el=>el.disabled=true);
-    };
-  }
 }
 initPage('contact', 'content/pages/contact.json', renderBody);
 </script>

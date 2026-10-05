@@ -51,5 +51,54 @@
       "ta": "இலங்கை அரச இலவச கல்வி சேவை",
       "en": "Sri Lankan Free Government Education System"
     }
+  },
+  "home": {
+    "sectionsTitle": {
+      "si": "ද්විතීයික අධ්‍යාපන අංශ සහ සේවාවන්",
+      "ta": "இரண்டாம் நிலைக் கல்விப் பிரிவுகளும் சேவைகளும்",
+      "en": "Secondary Education Streams & Services"
+    },
+    "sectionsSubtitle": {
+      "si": "අධ්‍යයන, ක්‍රීඩා, විභාග සහ පාසල් ප්‍රජා සේවාවන් වෙත පහසුවෙන් පිවිසෙන්න.",
+      "ta": "கல்வி, விளையாட்டு, பரீட்சைகள் மற்றும் சமூக சேவைகளை எளிதாக அணுகவும்.",
+      "en": "Easily access academic streams, athletic activities, examinations, and community services."
+    },
+    "leadershipBadge": {
+      "si": "නායකත්වය සහ දැක්ම",
+      "ta": "தலைமைத்துவமும் தொலைநோக்கும்",
+      "en": "Leadership & Vision"
+    },
+    "readPrincipalMsg": {
+      "si": "විදුහල්පතිතුමාගේ පණිවිඩය කියවන්න",
+      "ta": "அதிபரின் செய்தியை வாசிக்க",
+      "en": "Read Principal's Full Message"
+    },
+    "newsTitle": {
+      "si": "නවතම නිවේදන සහ සිදුවීම්",
+      "ta": "சமீபத்திய அறிவிப்புகளும் நிகழ்வுகளும்",
+      "en": "Latest Notices & Events"
+    },
+    "viewAllNews": {
+      "si": "සියලුම පුවත් බලන්න",
+      "ta": "அனைத்து செய்திகளையும் காண்க",
+      "en": "View All Notices"
+    },
+    "exploreBtn": {
+      "si": "පිවිසෙන්න",
+      "ta": "பார்க்க",
+      "en": "Explore"
+    }
+  },
+  "a11y": {
+    "label": {
+      "si": "ප්‍රවේශ්‍යතා මෙවලම්",
+      "ta": "அணுகல்தன்மை கருவிகள்",
+      "en": "Accessibility Tools"
+    },
+    "contrast": {
+      "si": "වර්ණ වෙනස",
+      "ta": "மாறுபாடு",
+      "en": "Contrast"
+    }
   }
 }

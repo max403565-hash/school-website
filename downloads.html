@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Downloads — Mo/Pelwatta Navodya Secondary Collage</title>
-<link rel="icon" href="images/crest-placeholder.svg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
+<title>Downloads & Circulars — Mo/Pelwatta Navodya Secondary College</title>
+<link rel="icon" href="images/crest.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -13,24 +14,122 @@
 <div id="site-header"></div>
 <main id="main">
   <div class="container breadcrumb" id="breadcrumb"></div>
-  <div class="container page-hero"><h1 id="page-title"></h1></div>
+  <div class="container page-hero">
+    <h1 id="page-title"></h1>
+    <p id="page-intro"></p>
+  </div>
+
   <section class="section container">
-    <ul id="list" style="list-style:none;padding:0"></ul>
+    <!-- Filter Tabs -->
+    <div class="filters" id="category-filters"></div>
+
+    <!-- Downloads Container -->
+    <div id="downloads-grid" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;"></div>
   </section>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/app.js"></script>
 <script>
-const TITLE = {si:"බාගත කිරීම් / චක්‍රලේඛ",ta:"பதிவிறக்கங்கள் / சுற்றறிக்கைகள்",en:"Downloads / Circulars"};
+const TITLE = {
+  si: "නිල බාගත කිරීම්, චක්‍රලේඛ සහ විභාග කාලසටහන්",
+  ta: "உத்தியோகபூர்வ பதிவிறக்கங்கள், சுற்றறிக்கைகள் மற்றும் பரீட்சை அட்டவணைகள்",
+  en: "Official Downloads, Circulars & Exam Timetables"
+};
+const INTRO = {
+  si: "පාසලේ විභාග කාලසටහන්, වාර්ෂික අධ්‍යයන දින දර්ශන සහ අධ්‍යාපන අමාත්‍යාංශයේ නිල චක්‍රලේඛ මෙතැනින් නොමිලේ බාගත කරගත හැක.",
+  ta: "பாடசாலையின் பரீட்சை அட்டவணைகள், வருடாந்த கல்வி நாட்காட்டி மற்றும் அமைச்சு சுற்றறிக்கைகளை இங்கிருந்து பதிவிறக்கம் செய்யலாம்.",
+  en: "Download official school examination timetables, annual academic calendars, and Ministry circulars directly in PDF format."
+};
+
+let currentCategory = 'all';
+let allDocs = [];
+
 function renderBody(){
+  const lang = getLang();
   document.getElementById('breadcrumb').innerHTML = `${t(SITE.common.nav.home)} / ${t(TITLE)}`;
   document.getElementById('page-title').textContent = t(TITLE);
-  fetchJSON('content/pages/academic.json').then(a=>{
-    document.getElementById('list').innerHTML = a.downloads.map(d=>
-      `<li style="padding:10px 0;border-bottom:1px solid var(--border)"><a href="${d.file}" download>&#128190; ${t(d.label)}</a></li>`
-    ).join('');
-  });
+  document.getElementById('page-intro').textContent = t(INTRO);
+
+  const categories = [
+    { id: 'all', label: { si: 'සියල්ල', ta: 'அனைத்தும்', en: 'All Files' } },
+    { id: 'academic', label: { si: 'අධ්‍යයන දින දර්ශන', ta: 'கல்வி நாட்காட்டி', en: 'Academic' } },
+    { id: 'exam', label: { si: 'විභාග කාලසටහන්', ta: 'பரீட்சை அட்டவணை', en: 'Examinations' } },
+    { id: 'circular', label: { si: 'චක්‍රලේඛ සහ මාර්ගෝපදේශ', ta: 'சுற்றறிக்கைகள்', en: 'Circulars & Guides' } }
+  ];
+
+  document.getElementById('category-filters').innerHTML = categories.map(c => `
+    <button class="${currentCategory === c.id ? 'active' : ''}" onclick="setDocFilter('${c.id}')">
+      ${t(c.label)}
+    </button>
+  `).join('');
+
+  if (allDocs.length > 0) {
+    displayDocs();
+  } else {
+    fetchJSON('content/downloads/index.json').then(data => {
+      allDocs = data.documents || [];
+      displayDocs();
+    }).catch(() => {
+      // Fallback to academic.json if needed
+      fetchJSON('content/pages/academic.json').then(data => {
+        allDocs = (data.downloads || []).map((d, i) => ({
+          id: 'dl-' + i,
+          filename: d.file.replace('downloads/', ''),
+          size: 'PDF Document',
+          category: 'academic',
+          date: '2026',
+          title: d.label
+        }));
+        displayDocs();
+      });
+    });
+  }
 }
+
+window.setDocFilter = function(cat) {
+  currentCategory = cat;
+  renderBody();
+};
+
+function displayDocs() {
+  const filtered = currentCategory === 'all' 
+    ? allDocs 
+    : allDocs.filter(d => d.category === currentCategory);
+
+  const container = document.getElementById('downloads-grid');
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="notice-box info" style="text-align:center;">No documents available in this category.</div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(doc => {
+    const fileUrl = 'downloads/' + doc.filename;
+    const downloadLabel = getLang() === 'en' ? 'Download PDF' : (getLang() === 'ta' ? 'பதிவிறக்கு' : 'බාගත කරගන්න');
+
+    return `
+      <div class="card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:20px 24px; gap:16px;">
+        <div style="display:flex; align-items:flex-start; gap:16px; max-width:750px;">
+          <div style="font-size:2.2rem; line-height:1; flex-shrink:0;">📄</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap;">
+              <span class="tag">${(doc.category || 'General').toUpperCase()}</span>
+              <span style="font-size:0.75rem; color:var(--muted); font-weight:600;">${doc.size || 'PDF'}</span>
+              ${doc.date ? `<span style="font-size:0.75rem; color:var(--muted);">· 📅 ${doc.date}</span>` : ''}
+            </div>
+            <h3 style="margin:0 0 6px 0; font-size:1.15rem; color:var(--maroon);">${t(doc.title)}</h3>
+            <span style="font-size:0.8rem; color:var(--muted); font-family:monospace;">${doc.filename}</span>
+          </div>
+        </div>
+        <div>
+          <a href="${fileUrl}" download class="btn" style="padding:10px 20px; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px;">
+            <span>⬇️</span> ${downloadLabel}
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
 initPage('downloads', null, renderBody);
 </script>
 </body>

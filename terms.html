@@ -22,7 +22,7 @@
   <section class="page-banner">
     <div class="container">
       <h1 class="page-title" data-i18n="footer.terms">භාවිත නියමයන්</h1>
-      <p class="page-subtitle">වෙබ් අඩවිය පරිශීලනය කිරීමේ නීතිමය කොන්දේසි</p>
+      <p class="page-subtitle" id="terms-subtitle"></p>
       <div class="breadcrumbs">
         <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="footer.terms">Terms of Use</span>
       </div>
@@ -30,18 +30,12 @@
   </section>
 
   <main class="container" style="padding: 3.5rem 1rem; max-width: 860px;">
-    <div class="form-card" style="padding: 2.5rem 2rem; font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
-      <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy);" id="terms-title">
-        භාවිත නියමයන්
-      </h2>
-      <p id="terms-body" style="margin-bottom: 2rem;"></p>
+    <div class="card" style="padding: 2.5rem 2rem; font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
+      <h2 style="font-size: 1.4rem; font-weight: 700; margin-top:0; margin-bottom: 1rem; color: var(--navy);" id="terms-title"></h2>
+      <p id="terms-body" style="margin-bottom: 2rem; color:var(--text); line-height:1.7;"></p>
 
-      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy);">
-        බුද්ධිමය දේපළ අයිතිය
-      </h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">
-        මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ ලාංඡනය, නිල ලේඛන සහ ප්‍රකාශන අධ්‍යාපන අමාත්‍යාංශයේ සහ විද්‍යාලයේ පූර්ණ අනුමැතියකින් තොරව අනවසරයෙන් වාණිජමය කටයුතු සඳහා භාවිත කිරීමෙන් වළකින්න.
-      </p>
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy);" id="ip-title"></h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin:0;" id="ip-desc"></p>
     </div>
   </main>
 
@@ -64,16 +58,28 @@
             legalData = await res.json();
           }
           renderContent();
-        } catch (e) {}
+        } catch (e) {
+          console.error("Failed to load legal content:", e);
+        }
       }
 
       function renderContent() {
         if (!legalData || !legalData.termsOfUse) return;
         const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+        const tObj = legalData.termsOfUse;
 
-        document.getElementById('terms-title').textContent = pick(legalData.termsOfUse.title, lang);
-        document.getElementById('terms-body').textContent = pick(legalData.termsOfUse.body, lang);
+        if (tObj.subtitle) {
+          document.getElementById('terms-subtitle').textContent = pick(tObj.subtitle, lang);
+        }
+        document.getElementById('terms-title').textContent = pick(tObj.title, lang);
+        document.getElementById('terms-body').textContent = pick(tObj.body, lang);
+        if (tObj.ipTitle) {
+          document.getElementById('ip-title').textContent = pick(tObj.ipTitle, lang);
+        }
+        if (tObj.ipDesc) {
+          document.getElementById('ip-desc').textContent = pick(tObj.ipDesc, lang);
+        }
       }
 
       if (window.i18n && window.i18n.onLanguageChange) {

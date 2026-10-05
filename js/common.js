@@ -70,10 +70,19 @@
               </li>
             </ul>
 
-            <div class="lang-switcher" aria-label="Language Selector">
-              <button type="button" class="lang-btn" data-lang="si" aria-label="Sinhala">සිංහල</button>
-              <button type="button" class="lang-btn" data-lang="ta" aria-label="Tamil">தமிழ்</button>
-              <button type="button" class="lang-btn" data-lang="en" aria-label="English">English</button>
+            <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+              <div class="a11y-toolbar" aria-label="Accessibility Tools">
+                <button type="button" class="a11y-btn" data-fsize="-1" aria-label="Decrease Font Size">A-</button>
+                <button type="button" class="a11y-btn active" data-fsize="0" aria-label="Reset Font Size">A</button>
+                <button type="button" class="a11y-btn" data-fsize="1" aria-label="Increase Font Size">A+</button>
+                <button type="button" class="a11y-btn" data-contrast-toggle aria-label="Toggle High Contrast" data-i18n="a11y.contrast">වර්ණ වෙනස</button>
+              </div>
+
+              <div class="lang-switcher" aria-label="Language Selector">
+                <button type="button" class="lang-btn" data-lang="si" aria-label="Sinhala">සිංහල</button>
+                <button type="button" class="lang-btn" data-lang="ta" aria-label="Tamil">தமிழ்</button>
+                <button type="button" class="lang-btn" data-lang="en" aria-label="English">English</button>
+              </div>
             </div>
           </div>
         </div>
@@ -112,6 +121,48 @@
         }
       });
     });
+
+    // Attach Accessibility Toolbar Events
+    let currentScale = 0;
+    const scales = [-1, 0, 1];
+    const scaleValues = ['0.9', '1', '1.12'];
+
+    root.querySelectorAll('.a11y-btn[data-fsize]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const delta = parseInt(btn.getAttribute('data-fsize'), 10);
+        currentScale = delta;
+        root.querySelectorAll('.a11y-btn[data-fsize]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const idx = delta === -1 ? 0 : delta === 1 ? 2 : 1;
+        document.documentElement.style.setProperty('--font-scale', scaleValues[idx]);
+        document.body.style.fontSize = `calc(16px * ${scaleValues[idx]})`;
+      });
+    });
+
+    const contrastBtn = root.querySelector('.a11y-btn[data-contrast-toggle]');
+    if (contrastBtn) {
+      if (document.documentElement.getAttribute('data-contrast') === 'high') {
+        contrastBtn.classList.add('active');
+      }
+      contrastBtn.addEventListener('click', () => {
+        const isHigh = document.documentElement.getAttribute('data-contrast') === 'high';
+        if (isHigh) {
+          document.documentElement.removeAttribute('data-contrast');
+          contrastBtn.classList.remove('active');
+          localStorage.setItem('site_contrast', 'normal');
+        } else {
+          document.documentElement.setAttribute('data-contrast', 'high');
+          contrastBtn.classList.add('active');
+          localStorage.setItem('site_contrast', 'high');
+        }
+      });
+    }
+
+    // Restore saved contrast
+    if (localStorage.getItem('site_contrast') === 'high') {
+      document.documentElement.setAttribute('data-contrast', 'high');
+      if (contrastBtn) contrastBtn.classList.add('active');
+    }
 
     // Mobile Navigation Toggle
     const toggle = document.getElementById('mobile-nav-toggle');
@@ -192,6 +243,7 @@
           <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
             <div>
               &copy; 2026 Mo/Pelwatta Navodya Secondary College. All Rights Reserved.
+              <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">Website developed by [S.A.Chanuk Mithuja ]</div>
             </div>
             <div>
               <span data-i18n="footer.freeEdu">ශ්‍රී ලංකා රජයේ නිදහස් අධ්‍යාපන සේවාවකි</span>

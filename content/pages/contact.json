@@ -1,28 +1,41 @@
 {
   "intro": {
-    "si": "විදුහල්පති කාර්යාලය, පරිපාලන අංශය, තොරතුරු දැනගැනීමේ නිලධාරී (RTI) සහ මහජන විමසීම්",
-    "ta": "அதிபர் அலுவலகம், நிர்வாகப் பிரிவு, தகவல் அறியும் அதிகாரி (RTI)",
-    "en": "Principal's office, administration, RTI Officer and general inquiries"
+    "si": "විදුහල්පති කාර්යාලය, පරිපාලන අංශය, තොරතුරු දැනගැනීමේ නිලධාරී (RTI) සහ මහජන විමසීම් සඳහා සෘජුව සම්බන්ධ වන්න.",
+    "ta": "அதிபர் அலுவலகம், நிர்வாகப் பிரிவு, தகவல் அறியும் அதிகாரி (RTI) மற்றும் பொது விசாரணைகளுக்கு நேரடியாக தொடர்பு கொள்ளவும்.",
+    "en": "Direct communication channels for the Principal's office, administration, RTI Officer, and public inquiries."
+  },
+  "emailUsTitle": {
+    "si": "විද්‍යුත් තැපෑලෙන් විමසන්න",
+    "ta": "மின்னஞ்சல் மூலம் விசாரிக்கவும்",
+    "en": "Email Us Directly"
+  },
+  "emailUsDesc": {
+    "si": "ඔබගේ විමසීම්, අයදුම්පත් සහ ලේඛන විද්‍යුත් තැපෑල මගින් පාසල් පරිපාලනය වෙත යොමු කරන්න.",
+    "ta": "உங்கள் விசாரணைகள், விண்ணப்பங்கள் மற்றும் ஆவணங்களை மின்னஞ்சல் மூலம் பாடசாலை நிர்வாகத்திற்கு அனுப்பவும்.",
+    "en": "Send your general inquiries, applications, or official correspondence directly to the school administration."
+  },
+  "emailButton": {
+    "si": "✉️ ඊමේල් පණිවිඩයක් යවන්න",
+    "ta": "✉️ மின்னஞ்சல் அனுப்பவும்",
+    "en": "✉️ Send an Email"
+  },
+  "callUsTitle": {
+    "si": "දුරකථන ඇමතුම්",
+    "ta": "தொலைபேசி அழைப்புகள்",
+    "en": "Telephone Inquiries"
+  },
+  "callUsDesc": {
+    "si": "පාසල් කාර්යාල වේලාවන් තුළ පරිපාලන අංශය හා සම්බන්ධ වීමට පහත අංක අමතන්න.",
+    "ta": "பாடசாலை அலுவலக நேரங்களில் நிர்வாகப் பிரிவைத் தொடர்பு கொள்ள பின்வரும் இலக்கங்களை அழைக்கவும்.",
+    "en": "Contact our administrative office directly during school operating hours."
   },
   "officeHoursTitle": {"si": "කාර්යාල වේලාවන්", "ta": "அலுவலக நேரம்", "en": "Office Hours"},
-  "officeHours": {"si": "සඳුදා - සිකුරාදා, පෙ.ව 7.30 - ප.ව 2.30", "ta": "திங்கள்-வெள்ளி, காலை 7.30 - பிற்பகல் 2.30", "en": "Monday–Friday, 7:30 AM – 2:30 PM"},
-  "formTitle": {"si": "විමසීම් පෝරමය", "ta": "விசாரணைப் படிவம்", "en": "General Inquiry Form"},
-  "formFields": {
-    "name": {"si": "නම", "ta": "பெயர்", "en": "Name"},
-    "email": {"si": "විද්‍යුත් තැපෑල", "ta": "மின்னஞ்சல்", "en": "Email"},
-    "subject": {"si": "විෂය", "ta": "பொருள்", "en": "Subject"},
-    "message": {"si": "පණිවිඩය", "ta": "செய்தி", "en": "Message"}
-  },
-  "submitLabel": {"si": "යවන්න", "ta": "அனுப்பு", "en": "Send Message"},
-  "successMsg": {"si": "ස්තූතියි! ඔබේ පණිවිඩය ලැබුණි.", "ta": "நன்றி! உங்கள் செய்தி பெறப்பட்டது.", "en": "Thank you! Your message has been received."},
-  "embedNotSetUpNotice": {
-    "si": "පාසලේ නිල Google Form එක admin panel එකෙන් සම්බන්ධ කරන තෙක්, පහත පෙන්වන්නේ demo පෝරමයකි.",
-    "ta": "பள்ளியின் உத்தியோகபூர்வ Google Form இணைக்கப்படும் வரை, கீழே காட்டப்படுவது ஒரு டெமோ படிவம்.",
-    "en": "Until the school's official Google Form is connected via the admin panel, the form below is a demo only."
-  },
-  "googleFormEmbedUrl": null,
-  "phone": "+94 55 XXX XXXX",
+  "officeHours": {"si": "සඳුදා - සිකුරාදා: පෙ.ව. 7.30 - ප.ව. 2.30 (රජයේ පාසල් වැඩ කරන දින)", "ta": "திங்கள் - வெள்ளி: காலை 7.30 - பிற்பகல் 2.30 (அரசு பாடசாலை வேலை நாட்கள்)", "en": "Monday – Friday: 7:30 AM – 2:30 PM (School Working Days)"},
+  "phone": "+94 55 227 6234",
+  "phoneSecondary": "+94 55 227 6235",
   "email": "info@pelwattanavodya.lk",
-  "rtiOfficerName": "Mrs. W. Karunaratne — Chief Incumbent Clerk",
+  "principalEmail": "principal@pelwattacollege.sch.lk",
+  "rtiTitle": {"si": "තොරතුරු දැනගැනීමේ අයිතිය (RTI)", "ta": "தகவல் அறியும் உரிமை (RTI)", "en": "Right to Information (RTI)"},
+  "rtiOfficerName": "Mrs. W. Karunaratne — Chief Incumbent Administrative Officer",
   "mapEmbedUrl": "https://www.google.com/maps?q=6.7167,81.0833&z=15&output=embed"
 }

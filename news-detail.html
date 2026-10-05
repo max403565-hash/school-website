@@ -38,8 +38,8 @@
   <main class="container" style="padding: 3.5rem 1rem; max-width: 860px;">
     <!-- Article Back Link -->
     <div style="margin-bottom: 2rem;">
-      <a href="news.html" class="tile-link" style="font-size: 0.9375rem;">
-        &larr; <span data-i18n="nav.news">නැවත පුවත් ලැයිස්තුවට (Back to all news)</span>
+      <a href="news.html" class="tile-link" style="font-size: 0.9375rem;" id="back-link">
+        &larr; <span id="back-text">සියලුම පුවත් වෙත</span>
       </a>
     </div>
 
@@ -54,8 +54,8 @@
 
     <!-- Social Share Strip -->
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-      <div style="font-weight: 700; color: var(--navy); font-size: 0.875rem;">
-        මෙම නිවේදනය බෙදාහරින්න (Share this notice):
+      <div style="font-weight: 700; color: var(--navy); font-size: 0.875rem;" id="share-label">
+        මෙම නිවේදනය බෙදාහරින්න:
       </div>
       <div style="display: flex; gap: 0.5rem;">
         <button type="button" class="btn-secondary" style="color:var(--navy); border-color:var(--border); padding:0.4rem 0.8rem; font-size:0.8125rem;" id="btn-copy-link">
@@ -126,6 +126,15 @@
           const rawP = pick(p, lang);
           return `<p style="margin-bottom: 1.5rem;">${rawP}</p>`;
         }).join('');
+
+        const backTxt = document.getElementById('back-text');
+        if (backTxt) {
+          backTxt.textContent = lang === 'en' ? 'Back to All Notices' : (lang === 'ta' ? 'அனைத்து செய்திகளுக்கும் திரும்புக' : 'නැවත සියලුම පුවත් වෙත');
+        }
+        const sLabel = document.getElementById('share-label');
+        if (sLabel) {
+          sLabel.textContent = lang === 'en' ? 'Share this notice:' : (lang === 'ta' ? 'இந்த அறிவிப்பைப் பகிரவும்:' : 'මෙම නිවේදනය බෙදාහරින්න:');
+        }
 
         setupShareButtons(cleanTitle);
       }

@@ -1,4 +1,24 @@
 {
+  "subtitle": {
+    "si": "ක්‍රීඩා, සමාජ හා සමිති, විෂය සමගාමී ක්‍රියාකාරකම්",
+    "ta": "விளையாட்டு, சங்கங்கள், இணைப்பாடவிதான செயற்பாடுகள்",
+    "en": "Sports, clubs, societies, and co-curricular leadership"
+  },
+  "sportsHeader": {
+    "badge": { "si": "ක්‍රීඩා ක්ෂේත්‍රය", "ta": "விளையாட்டுத் துறை", "en": "Athletics & Sports" },
+    "title": { "si": "පාසල් ක්‍රීඩා සහ ශාරීරික අධ්‍යාපනය", "ta": "பாடசாலை விளையாட்டுகளும் உடற்கல்வியும்", "en": "College Sports & Physical Education" },
+    "desc": { "si": "ශිෂ්‍යයින්ගේ කායික හා මානසික සුවතාවය මෙන්ම නායකත්වය සහ සහයෝගීතාවය වර්ධනය කිරීම උදෙසා ක්‍රීඩා රැසක් ක්‍රියාත්මක වේ.", "ta": "மாணவர்களின் உடல் மற்றும் உள ஆரோக்கியம், தலைமைத்துவம் மற்றும் ஒத்துழைப்பை வளர்க்க பல விளையாட்டுகள் முன்னெடுக்கப்படுகின்றன.", "en": "Comprehensive sporting programs cultivating physical fitness, sportsmanship, and teamwork." }
+  },
+  "clubsHeader": {
+    "badge": { "si": "සමිති හා සංගම්", "ta": "சங்கங்களும் கழகங்களும்", "en": "Clubs & Societies" },
+    "title": { "si": "ශිෂ්‍ය සමිති සහ පරිසර නියමු බලකාය", "ta": "மாணவர் சங்கங்களும் சுற்றாடல் முன்னோடிப் படையும்", "en": "Student Societies & Environmental Pioneer Corps" },
+    "desc": { "si": "විද්‍යා, සාහිත්‍ය, සෞන්දර්ය සහ පරිසර සංරක්ෂණ ක්ෂේත්‍රවල ප්‍රායෝගික කුසලතා වර්ධනය කෙරේ.", "ta": "விஞ்ஞானம், இலக்கியம் மற்றும் சுற்றாடல் பாதுகாப்பு துறைகளில் நடைமுறை திறன்கள் வளர்க்கப்படுகின்றன.", "en": "Enriching academic horizons through science fairs, literary debates, and eco-initiatives." }
+  },
+  "prefectsHeader": {
+    "badge": { "si": "ශිෂ්‍ය නායකත්වය", "ta": "மாணவர் தலைமைத்துவம்", "en": "Student Leadership" },
+    "title": { "si": "ශිෂ්‍ය නායක මණ්ඩලය (Prefects' Guild)", "ta": "மாணவர் தலைவர்கள் மன்றம் (Prefects' Guild)", "en": "Prefects' Guild & Student Council" },
+    "body": { "si": "පාසලේ විනය, සාමය සහ දෛනික ක්‍රියාකාරකම් මනාව පවත්වාගෙන යාම සඳහා ජ්‍යෙෂ්ඨ හා කනිෂ්ඨ ශිෂ්‍ය නායක මණ්ඩලය කැපවී ක්‍රියා කරයි. ආදර්ශමත් නායකත්ව ගුණාංගවලින් හෙබි ශිෂ්‍ය නායකයින් පාසල් ප්‍රජාවගේ ගෞරවයට පාත්‍ර වේ.", "ta": "பாடசாலையின் ஒழுக்கம், அமைதி மற்றும் அன்றாட செயற்பாடுகளை சீராக பேண சிரேஷ்ட மற்றும் கனிஷ்ட தலைவர்கள் மன்றம் அர்ப்பணிப்புடன் செயலாற்றுகிறது.", "en": "The Senior and Junior Prefects' Guild upholds campus discipline, punctuality, and civic values, mentoring peers with exemplary character." }
+  },
   "sports": [
     {
       "name": { "si": "මලල ක්‍රීඩා (Athletics)", "ta": "தடகள விளையாட்டு", "en": "Athletics & Track and Field" },

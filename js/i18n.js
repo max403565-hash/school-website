@@ -15,7 +15,7 @@
 
   function getSavedLanguage() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('site_lang');
       if (saved && SUPPORTED_LANGS.includes(saved)) {
         return saved;
       }
@@ -28,6 +28,7 @@
     currentLang = lang;
     try {
       localStorage.setItem(STORAGE_KEY, lang);
+      localStorage.setItem('site_lang', lang);
     } catch (e) {}
 
     // Update html lang and class

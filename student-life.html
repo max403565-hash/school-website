@@ -22,7 +22,7 @@
   <section class="page-banner">
     <div class="container">
       <h1 class="page-title" data-i18n="nav.studentLife">ශිෂ්‍ය ජීවිතය</h1>
-      <p class="page-subtitle">ක්‍රීඩා, සමාජ හා සමිති, විෂය සමගාමී ක්‍රියාකාරකම්</p>
+      <p class="page-subtitle" id="page-subtitle"></p>
       <div class="breadcrumbs">
         <a href="index.html" data-i18n="nav.home">Home</a> &gt; <span data-i18n="nav.studentLife">Student Life</span>
       </div>
@@ -33,9 +33,9 @@
     <!-- Sports Section -->
     <div style="margin-bottom: 4rem;">
       <div class="section-header" style="text-align: left;">
-        <span class="section-badge">ක්‍රීඩා ක්ෂේත්‍රය</span>
-        <h2 class="section-title">පාසල් ක්‍රීඩා සහ ශාරීරික අධ්‍යාපනය</h2>
-        <p class="section-subtitle" style="margin-left: 0;">ශිෂ්‍යයින්ගේ කායික හා මානසික සුවතාවය මෙන්ම නායකත්වය සහ සහයෝගීතාවය වර්ධනය කිරීම උදෙසා ක්‍රීඩා රැසක් ක්‍රියාත්මක වේ.</p>
+        <span class="section-badge" id="sports-badge"></span>
+        <h2 class="section-title" id="sports-title"></h2>
+        <p class="section-subtitle" style="margin-left: 0;" id="sports-desc"></p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;" id="sports-grid"></div>
@@ -44,9 +44,9 @@
     <!-- Clubs and Societies Section -->
     <div style="margin-bottom: 4rem;">
       <div class="section-header" style="text-align: left;">
-        <span class="section-badge">සමිති හා සංගම්</span>
-        <h2 class="section-title">ශිෂ්‍ය සමිති සහ පරිසර නියමු බලකාය</h2>
-        <p class="section-subtitle" style="margin-left: 0;">විද්‍යා, සාහිත්‍ය, සෞන්දර්ය සහ පරිසර සංරක්ෂණ ක්ෂේත්‍රවල ප්‍රායෝගික කුසලතා වර්ධනය කෙරේ.</p>
+        <span class="section-badge" id="clubs-badge"></span>
+        <h2 class="section-title" id="clubs-title"></h2>
+        <p class="section-subtitle" style="margin-left: 0;" id="clubs-desc"></p>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;" id="clubs-grid"></div>
@@ -55,14 +55,12 @@
     <!-- Prefects Guild -->
     <div>
       <div class="section-header" style="text-align: left;">
-        <span class="section-badge">ශිෂ්‍ය නායකත්වය</span>
-        <h2 class="section-title">ශිෂ්‍ය නායක මණ්ඩලය (Prefects' Guild)</h2>
+        <span class="section-badge" id="prefects-badge"></span>
+        <h2 class="section-title" id="prefects-title"></h2>
       </div>
 
-      <div class="form-card" style="border-left: 4px solid var(--gold);">
-        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--navy);">
-          පාසලේ විනය, සාමය සහ දෛනික ක්‍රියාකාරකම් මනාව පවත්වාගෙන යාම සඳහා ජ්‍යෙෂ්ඨ හා කනිෂ්ඨ ශිෂ්‍ය නායක මණ්ඩලය කැපවී ක්‍රියා කරයි. ආදර්ශමත් නායකත්ව ගුණාංගවලින් හෙබි ශිෂ්‍ය නායකයින් පාසල් ප්‍රජාවගේ ගෞරවයට පාත්‍ර වේ.
-        </p>
+      <div class="card" style="border-left: 4px solid var(--gold); padding:24px;">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--navy); margin:0;" id="prefects-body"></p>
       </div>
     </div>
   </main>
@@ -94,13 +92,32 @@
         const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
 
+        if (slData.subtitle) {
+          document.getElementById('page-subtitle').textContent = pick(slData.subtitle, lang);
+        }
+        if (slData.sportsHeader) {
+          document.getElementById('sports-badge').textContent = pick(slData.sportsHeader.badge, lang);
+          document.getElementById('sports-title').textContent = pick(slData.sportsHeader.title, lang);
+          document.getElementById('sports-desc').textContent = pick(slData.sportsHeader.desc, lang);
+        }
+        if (slData.clubsHeader) {
+          document.getElementById('clubs-badge').textContent = pick(slData.clubsHeader.badge, lang);
+          document.getElementById('clubs-title').textContent = pick(slData.clubsHeader.title, lang);
+          document.getElementById('clubs-desc').textContent = pick(slData.clubsHeader.desc, lang);
+        }
+        if (slData.prefectsHeader) {
+          document.getElementById('prefects-badge').textContent = pick(slData.prefectsHeader.badge, lang);
+          document.getElementById('prefects-title').textContent = pick(slData.prefectsHeader.title, lang);
+          document.getElementById('prefects-body').textContent = pick(slData.prefectsHeader.body, lang);
+        }
+
         const sportsGrid = document.getElementById('sports-grid');
         sportsGrid.innerHTML = (slData.sports || []).map(sp => `
-          <div class="form-card" style="border-top: 3px solid var(--primary);">
-            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">
+          <div class="card" style="border-top: 3px solid var(--primary); padding:20px;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0;">
               ${pick(sp.name, lang)}
             </h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin:0;">
               ${pick(sp.desc, lang)}
             </p>
           </div>
@@ -108,11 +125,11 @@
 
         const clubsGrid = document.getElementById('clubs-grid');
         clubsGrid.innerHTML = (slData.clubs || []).map(cl => `
-          <div class="form-card" style="border-top: 3px solid var(--gold);">
-            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">
+          <div class="card" style="border-top: 3px solid var(--gold); padding:20px;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0;">
               ${pick(cl.name, lang)}
             </h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin:0;">
               ${pick(cl.desc, lang)}
             </p>
           </div>
