@@ -339,12 +339,34 @@
           <h2 style="margin:0">📦 Import Site (Folder or Multiple Files)</h2>
         </div>
         <p class="muted" style="margin-top:6px;">
-          Upload an entire website folder or select multiple files (HTML, CSS, JS, images, PDFs) from your computer. Files are analyzed against your live GitHub repository and committed directly.
+          Upload an entire website folder or select multiple files (HTML, CSS, JS, images, PDFs) from your computer. Files are analyzed against your live GitHub repository and committed directly as one atomic commit.
         </p>
+
+        <!-- Export / Offline Copy Section -->
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:14px 16px; margin:14px 0 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h3 style="margin:0; font-size:1.02rem; color:#0b2545;">📥 Export / Offline Copy</h3>
+              <p class="muted" style="margin:4px 0 0; font-size:0.83rem;">Download the entire current website as a ZIP file to inspect or edit offline.</p>
+            </div>
+            <button type="button" id="btn-export-zip" style="background:#0b2545; color:#fff; display:flex; align-items:center; gap:8px; padding:8px 16px;">
+              <span>⬇️</span> Export / Offline copy (Download ZIP)
+            </button>
+          </div>
+          <div id="export-offline-note" style="margin-top:10px; background:#fff; border:1px solid #e2e8f0; border-radius:6px; padding:12px 14px; font-size:0.83rem; color:#334155; line-height:1.55;">
+            💡 <strong>Editing offline with VS Code &amp; Live Server:</strong>
+            <ol style="margin:6px 0 0 18px; padding:0;">
+              <li>Extract the downloaded ZIP archive into a folder on your computer.</li>
+              <li>Open Visual Studio Code and choose <em>File &rarr; Open Folder...</em> to open the extracted folder.</li>
+              <li>Install the <strong>Live Server</strong> extension in VS Code. Right-click <code>index.html</code> and choose <em>"Open with Live Server"</em> to test your edits locally with live reload.</li>
+              <li>When you are finished editing, return here to the <strong>Import Site</strong> tab and choose <em>Option A: Choose Entire Website Folder</em> to import your changes back to GitHub in a single commit!</li>
+            </ol>
+          </div>
+        </div>
 
         <!-- Protected paths security notice -->
         <div style="background:#eef3fb; border-left:4px solid #1c3d6b; padding:10px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#1c3d6b;">
-          🛡️ <strong>Protected System Paths:</strong> Files inside <code>xk92m-manage/</code> (admin panel) and <code>.github/</code> are strictly protected. They can never be overwritten, renamed, or deleted through Site Import.
+          🛡️ <strong>Protected System Paths:</strong> Files inside <code>xk92m-manage/</code> (admin panel) and <code>.github/</code> are strictly protected. They can never be written, overwritten, renamed, or deleted through Site Import.
         </div>
 
         <div id="import-warning-banner" style="display:none; background:#fdecea; border-left:4px solid #c0392b; padding:12px 14px; border-radius:4px; margin:12px 0; font-size:0.85rem; color:#8e1c12;">
@@ -368,7 +390,7 @@
         <div id="import-preview-area" style="display:none; margin-top:20px;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; border-bottom:1px solid #dfe3e8; padding-bottom:10px;">
             <div>
-              <h3 style="margin:0; font-size:1.05rem; color:#0b2545;">Import Analysis & Preview</h3>
+              <h3 style="margin:0; font-size:1.05rem; color:#0b2545;">Import Analysis &amp; Preview</h3>
               <div id="import-stats" class="muted" style="font-size:0.82rem; margin-top:4px;"></div>
             </div>
             <div style="display:flex; gap:8px;">
@@ -380,10 +402,10 @@
           <div style="background:#fff8e6; border:1px solid #fef08a; padding:12px 14px; border-radius:6px; margin-bottom:14px;">
             <label style="display:flex; align-items:center; gap:8px; font-weight:700; cursor:pointer; margin:0; color:#854d0e;">
               <input type="checkbox" id="import-delete-missing">
-              <span>Delete repository files that are NOT in the import (Mirror mode)</span>
+              <span>Also delete repository files that are not in the import (Mirror mode)</span>
             </label>
             <p class="muted" style="margin:6px 0 0 24px; font-size:0.8rem; color:#713f12;">
-              ⚠️ <em>OFF by default.</em> When enabled, any file in the GitHub repository that is missing from this import will be deleted. Protected paths (<code>xk92m-manage/</code> and <code>.github/</code>) are always excluded from deletion.
+              ⚠️ <em>OFF by default.</em> When enabled, any file in the GitHub repository that is missing from this import will be deleted. Protected paths (<code>xk92m-manage/</code> and <code>.github/</code>) are NEVER deleted.
             </p>
           </div>
 
@@ -416,10 +438,25 @@
           </div>
 
           <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-            <button id="import-commit-btn" style="background:#16a34a; color:#fff; font-size:0.95rem; padding:10px 20px;">🚀 Commit Import to GitHub</button>
+            <button id="import-commit-btn" style="background:#16a34a; color:#fff; font-size:0.95rem; padding:10px 20px;">🚀 Review &amp; Commit Import to GitHub</button>
           </div>
           <div id="import-status" style="margin-top:10px;"></div>
         </div>
+      </div>
+
+      <!-- BACKUPS & RESTORE CARD IN IMPORT SITE TAB -->
+      <div class="card" style="margin-top:18px;">
+        <div class="top-actions">
+          <h2 style="margin:0">📦 Restore Site Backups (backup-* branches)</h2>
+          <button id="backup-refresh-btn" class="secondary" style="font-size:0.85rem; padding:6px 12px;">🔄 Refresh Backups</button>
+        </div>
+        <p class="muted" style="margin:6px 0 12px;">
+          Every time you import site files, an automatic backup branch (<code>backup-YYYY-MM-DD-HHMM</code>) is created. You can restore any backup below. Restoring creates a brand-new commit on the main branch whose tree equals the backup's tree — completely non-destructive, with zero force-push.
+        </p>
+        <div id="backup-list-container">
+          <div class="muted" style="padding:10px 0;">Loading backup branches…</div>
+        </div>
+        <div id="backup-status" style="margin-top:10px;"></div>
       </div>
     </div>
 
@@ -450,6 +487,63 @@
         <div id="history-list"></div>
         <div id="history-status"></div>
       </div>
+
+      <!-- RESTORE / BACKUPS SECTION IN VERSION HISTORY -->
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">📦 Restore Site-Wide Backups (backup-* branches)</h2>
+          <button id="history-backup-refresh" class="secondary" style="font-size:0.85rem; padding:6px 12px;">🔄 Refresh Backups</button>
+        </div>
+        <p class="muted" style="margin:6px 0 12px;">
+          Restore the entire site to any automatic backup branch. Restoring creates a brand-new commit on the main branch whose tree equals the backup's tree — preserving full commit history without force-pushing.
+        </p>
+        <div id="history-backups-container">
+          <div class="muted" style="padding:10px 0;">Loading backup branches…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPORT CONFIRMATION MODAL -->
+<div id="import-confirm-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:500px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box;">
+    <h3 style="margin:0 0 12px; color:#0b2545; font-size:1.15rem;">⚠️ Confirm Site Import</h3>
+    <p style="margin:0 0 12px; font-size:0.9rem; line-height:1.45; color:#334155;">
+      You are about to commit your site import to branch <code id="import-modal-branch" style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:bold;">main</code> as <strong>ONE single atomic commit</strong> via the GitHub Git Data API.
+    </p>
+    <div id="import-modal-summary" style="background:#f1f5f9; border-radius:6px; padding:12px; font-size:0.85rem; margin-bottom:14px; line-height:1.5;"></div>
+    <div style="background:#ecfdf5; border-left:4px solid #10b981; padding:10px 12px; border-radius:4px; margin-bottom:14px; font-size:0.85rem; color:#065f46;">
+      🛡️ A safety backup branch named <strong id="import-modal-backup-name" style="font-family:monospace;"></strong> will be created automatically before committing.
+    </div>
+    <label style="display:block; font-weight:700; font-size:0.85rem; margin-bottom:6px; color:#0f172a;">
+      Type <span style="background:#fee2e2; color:#991b1b; padding:2px 6px; border-radius:4px; font-family:monospace;">IMPORT</span> below to confirm:
+    </label>
+    <input type="text" id="import-confirm-input" placeholder="Type IMPORT" style="margin-bottom:16px;" autocomplete="off">
+    <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <button type="button" id="import-modal-cancel" class="secondary">Cancel</button>
+      <button type="button" id="import-modal-submit" style="background:#16a34a; color:#fff;" disabled>🚀 Confirm &amp; Commit</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESTORE CONFIRMATION MODAL -->
+<div id="restore-confirm-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:500px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box;">
+    <h3 style="margin:0 0 12px; color:#b91c1c; font-size:1.15rem;">🔄 Confirm Site Restore</h3>
+    <p style="margin:0 0 12px; font-size:0.9rem; line-height:1.45; color:#334155;">
+      You are about to restore the site to backup branch: <strong id="restore-modal-branch-name" style="font-family:monospace; color:#0b2545;"></strong>.
+    </p>
+    <div style="background:#eef3fb; border-left:4px solid #1c3d6b; padding:10px 12px; border-radius:4px; margin-bottom:14px; font-size:0.85rem; color:#1c3d6b; line-height:1.45;">
+      ℹ️ This creates a <strong>NEW commit</strong> on your main branch whose tree equals the backup's tree. Your complete commit history is preserved and no force-push is performed.
+    </div>
+    <label style="display:block; font-weight:700; font-size:0.85rem; margin-bottom:6px; color:#0f172a;">
+      Type <span style="background:#fee2e2; color:#991b1b; padding:2px 6px; border-radius:4px; font-family:monospace;">RESTORE</span> below to confirm:
+    </label>
+    <input type="text" id="restore-confirm-input" placeholder="Type RESTORE" style="margin-bottom:16px;" autocomplete="off">
+    <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <button type="button" id="restore-modal-cancel" class="secondary">Cancel</button>
+      <button type="button" id="restore-modal-submit" style="background:#b91c1c; color:#fff;" disabled>🔄 Confirm &amp; Restore</button>
     </div>
   </div>
 </div>
@@ -552,6 +646,122 @@ async function ghDeleteFile(path, sha, message){
   }
   return res.json();
 }
+/* ===================== Git Data API helpers ===================== */
+async function ghGetRef(refPath){
+  const c = ghConfig();
+  const cleanRef = refPath.replace(/^refs\//, '');
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/ref/${cleanRef}`;
+  const res = await fetch(url, { headers: ghHeaders() });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to get ref ${cleanRef}: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghGetCommit(commitSha){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/commits/${commitSha}`;
+  const res = await fetch(url, { headers: ghHeaders() });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to get commit ${commitSha}: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghCreateBlob(content, encoding){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/blobs`;
+  const body = { content, encoding }; // 'utf-8' or 'base64'
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to create blob: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghCreateTree(baseTreeSha, treeItems){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/trees`;
+  const body = { tree: treeItems };
+  if (baseTreeSha) body.base_tree = baseTreeSha;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to create Git tree: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghCreateCommit(message, treeSha, parentShas){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/commits`;
+  const body = {
+    message,
+    tree: treeSha,
+    parents: parentShas || []
+  };
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to create Git commit: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghUpdateRef(refPath, commitSha, force = false){
+  const c = ghConfig();
+  const cleanRef = refPath.replace(/^refs\//, '');
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/refs/${cleanRef}`;
+  const body = { sha: commitSha, force: Boolean(force) };
+  const res = await fetch(url, {
+    method: 'PATCH',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to update ref ${cleanRef}: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghCreateBranch(branchName, commitSha){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/git/refs`;
+  const body = {
+    ref: `refs/heads/${branchName}`,
+    sha: commitSha
+  };
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to create branch ${branchName}: ${res.status} ${err}`);
+  }
+  return res.json();
+}
+async function ghListBranches(){
+  const c = ghConfig();
+  const url = `https://api.github.com/repos/${c.owner}/${c.repo}/branches?per_page=100`;
+  const res = await fetch(url, { headers: ghHeaders() });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to list branches: ${res.status} ${err}`);
+  }
+  return res.json();
+}
 function isProtectedPath(path){
   if (!path) return true;
   const p = path.trim().replace(/^\/+/, '').toLowerCase();
@@ -602,6 +812,7 @@ function showEditor(){
   document.getElementById('editor').style.display = 'block';
   document.getElementById('btn-logout').style.display = 'inline-block';
   loadNewsTab();
+  loadBackupsList();
 }
 document.getElementById('btn-connect').onclick = async () => {
   const owner = document.getElementById('in-owner').value.trim();
@@ -1652,10 +1863,12 @@ document.querySelector('[data-tab="theme"]').addEventListener('click', () => {
   }
 });
 
-/* ===================== IMPORT SITE TAB ===================== */
+/* ===================== IMPORT SITE & BACKUPS / RESTORE ===================== */
 let importQueue = [];
 let importProtectedSkipped = [];
 let importRepoMap = new Map();
+let pendingImportData = null;
+let pendingRestoreData = null;
 
 function readFileAsArrayBuffer(file) {
   return new Promise((resolve, reject) => {
@@ -1666,17 +1879,42 @@ function readFileAsArrayBuffer(file) {
   });
 }
 
+function generateBackupBranchName() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const yyyy = d.getFullYear();
+  const mm = pad(d.getMonth() + 1);
+  const dd = pad(d.getDate());
+  const hh = pad(d.getHours());
+  const min = pad(d.getMinutes());
+  return `backup-${yyyy}-${mm}-${dd}-${hh}${min}`;
+}
+
+async function createAutoBackupBranch(headCommitSha) {
+  const baseName = generateBackupBranchName();
+  try {
+    await ghCreateBranch(baseName, headCommitSha);
+    return baseName;
+  } catch (err) {
+    // If branch name already exists in same minute, append seconds
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const fallbackName = `${baseName}-${pad(d.getSeconds())}`;
+    await ghCreateBranch(fallbackName, headCommitSha);
+    return fallbackName;
+  }
+}
+
 async function handleImportFiles(fileList, isFolder) {
   const previewArea = document.getElementById('import-preview-area');
   const warningBanner = document.getElementById('import-warning-banner');
-  const statsEl = document.getElementById('import-stats');
   const tbody = document.getElementById('import-preview-body');
   const statusEl = document.getElementById('import-status');
 
   statusEl.innerHTML = '';
   warningBanner.style.display = 'none';
   warningBanner.innerHTML = '';
-  tbody.innerHTML = '<tr><td colspan="4" style="padding:16px; text-align:center;" class="muted">Analyzing files and computing SHA hashes against repository…</td></tr>';
+  tbody.innerHTML = '<tr><td colspan="4" style="padding:16px; text-align:center;" class="muted">Analyzing files and computing Git SHA hashes against repository…</td></tr>';
   previewArea.style.display = 'block';
 
   importQueue = [];
@@ -1688,7 +1926,7 @@ async function handleImportFiles(fileList, isFolder) {
     return;
   }
 
-  // 1. Fetch current repository tree
+  // 1. Fetch current repository tree via GitHub Git Data API
   try {
     const tree = await ghGetTree();
     importRepoMap = new Map(tree.filter(b => b.type === 'blob').map(b => [b.path, b]));
@@ -1720,16 +1958,33 @@ async function handleImportFiles(fileList, isFolder) {
     // Ignore system files like .DS_Store or Thumbs.db
     if (relPath.endsWith('.DS_Store') || relPath.endsWith('Thumbs.db')) continue;
 
-    // Check protected paths
+    const isBinary = isBinaryFile(relPath);
+
+    // Check protected paths (xk92m-manage/, .github/)
     if (isProtectedPath(relPath)) {
       importProtectedSkipped.push(relPath);
+      importQueue.push({
+        file,
+        path: relPath,
+        size: file.size,
+        isBinary,
+        status: 'skipped',
+        isProtected: true
+      });
       continue;
     }
 
     try {
       const arrayBuffer = await readFileAsArrayBuffer(file);
       const computedSha = await computeGitBlobSha(arrayBuffer);
-      const isBinary = isBinaryFile(relPath);
+
+      let textContent = null;
+      let base64Content = null;
+      if (isBinary) {
+        base64Content = arrayBufferToBase64(arrayBuffer);
+      } else {
+        textContent = new TextDecoder('utf-8').decode(arrayBuffer);
+      }
 
       let status = 'new';
       let existingSha = null;
@@ -1751,20 +2006,23 @@ async function handleImportFiles(fileList, isFolder) {
         isBinary,
         status,
         sha: existingSha,
-        arrayBuffer
+        arrayBuffer,
+        textContent,
+        base64Content,
+        isProtected: false
       });
     } catch (readErr) {
       console.error('Error reading file:', relPath, readErr);
     }
   }
 
-  // 4. Show warning if protected paths were detected and skipped
+  // 4. Show security banner if protected paths were detected and skipped
   if (importProtectedSkipped.length > 0) {
     warningBanner.style.display = 'block';
     warningBanner.innerHTML = `
-      🛡️ <strong>Notice:</strong> ${importProtectedSkipped.length} protected file(s) in your import were automatically skipped:
+      🛡️ <strong>Security Notice:</strong> ${importProtectedSkipped.length} protected file(s) in your import were automatically skipped:
       <code>${escapeHtml(importProtectedSkipped.slice(0, 5).join(', '))}${importProtectedSkipped.length > 5 ? '…' : ''}</code>.
-      Files in <code>xk92m-manage/</code> and <code>.github/</code> can never be modified or deleted via Site Import.
+      Files in <code>xk92m-manage/</code> and <code>.github/</code> are strictly protected and can never be modified or deleted.
     `;
   }
 
@@ -1779,6 +2037,7 @@ function renderImportPreview() {
   const newCount = importQueue.filter(f => f.status === 'new').length;
   const changedCount = importQueue.filter(f => f.status === 'changed').length;
   const unchangedCount = importQueue.filter(f => f.status === 'unchanged').length;
+  const skippedCount = importQueue.filter(f => f.status === 'skipped').length;
 
   // Calculate missing files for mirror mode
   const importedPathSet = new Set(importQueue.map(f => f.path));
@@ -1790,8 +2049,8 @@ function renderImportPreview() {
   });
 
   let statsHtml = `<strong>${newCount}</strong> New, <strong>${changedCount}</strong> Changed, <strong>${unchangedCount}</strong> Unchanged`;
-  if (importProtectedSkipped.length) {
-    statsHtml += `, <span style="color:#b91c1c;">${importProtectedSkipped.length} Skipped (protected)</span>`;
+  if (skippedCount > 0) {
+    statsHtml += `, <span style="color:#b91c1c; font-weight:700;">${skippedCount} Skipped (protected)</span>`;
   }
   if (deleteMissingCheckbox.checked) {
     statsHtml += ` | <span style="color:#b91c1c; font-weight:bold;">${missingInImport.length} files queued for DELETION</span>`;
@@ -1803,20 +2062,24 @@ function renderImportPreview() {
 
   importQueue.forEach(item => {
     let badgeHtml = '';
+    let typeLabel = item.isBinary ? 'Binary (Base64)' : 'Text (UTF-8)';
     if (item.status === 'new') {
       badgeHtml = `<span style="background:#dcfce7; color:#15803d; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">NEW</span>`;
     } else if (item.status === 'changed') {
       badgeHtml = `<span style="background:#fef9c3; color:#a16207; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">CHANGED</span>`;
+    } else if (item.status === 'skipped') {
+      badgeHtml = `<span style="background:#fee2e2; color:#991b1b; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">SKIPPED (PROTECTED)</span>`;
+      typeLabel = '<span style="color:#991b1b;">Protected path (ignored)</span>';
     } else {
       badgeHtml = `<span style="background:#f1f5f9; color:#64748b; font-size:0.75rem; padding:2px 8px; border-radius:4px;">UNCHANGED</span>`;
     }
 
     rowsHtml += `
-      <tr style="border-bottom:1px solid #f1f5f9;">
+      <tr style="border-bottom:1px solid #f1f5f9; ${item.status==='skipped' ? 'background:#fff8f8;' : ''}">
         <td style="padding:6px 12px;">${badgeHtml}</td>
         <td style="padding:6px 12px; font-family:monospace; color:#0f172a;">${escapeHtml(item.path)}</td>
         <td style="padding:6px 12px; text-align:right; font-family:monospace; color:#64748b;">${formatBytes(item.size)}</td>
-        <td style="padding:6px 12px; color:#64748b; font-size:0.8rem;">${item.isBinary ? 'Binary/Asset' : 'Text/Code'}</td>
+        <td style="padding:6px 12px; color:#64748b; font-size:0.8rem;">${typeLabel}</td>
       </tr>
     `;
   });
@@ -1828,7 +2091,7 @@ function renderImportPreview() {
           <td style="padding:6px 12px;"><span style="background:#fee2e2; color:#b91c1c; font-weight:700; font-size:0.75rem; padding:2px 8px; border-radius:4px;">DELETE</span></td>
           <td style="padding:6px 12px; font-family:monospace; color:#b91c1c;">${escapeHtml(item.path)}</td>
           <td style="padding:6px 12px; text-align:right; font-family:monospace; color:#991b1b;">${formatBytes(item.size || 0)}</td>
-          <td style="padding:6px 12px; color:#b91c1c; font-size:0.8rem;">Will be removed</td>
+          <td style="padding:6px 12px; color:#b91c1c; font-size:0.8rem;">Will be deleted from repo</td>
         </tr>
       `;
     });
@@ -1860,13 +2123,9 @@ document.getElementById('import-clear-btn').addEventListener('click', () => {
   document.getElementById('import-status').innerHTML = '';
 });
 
-document.getElementById('import-commit-btn').addEventListener('click', async () => {
+// Trigger review & confirmation modal
+document.getElementById('import-commit-btn').addEventListener('click', () => {
   const statusEl = document.getElementById('import-status');
-  const progressBox = document.getElementById('import-progress-container');
-  const progressBar = document.getElementById('import-progress-bar');
-  const progressLabel = document.getElementById('import-progress-label');
-  const progressPercent = document.getElementById('import-progress-percent');
-  const progressDetail = document.getElementById('import-progress-detail');
   const deleteMissingCheckbox = document.getElementById('import-delete-missing');
 
   if (!ghConfig().token) {
@@ -1874,9 +2133,10 @@ document.getElementById('import-commit-btn').addEventListener('click', async () 
     return;
   }
 
-  const toCommit = importQueue.filter(f => f.status === 'new' || f.status === 'changed');
+  // Filter only eligible new/changed files that are NOT protected
+  const toCommit = importQueue.filter(f => (f.status === 'new' || f.status === 'changed') && !f.isProtected && !isProtectedPath(f.path));
 
-  // Deletions for mirror mode
+  // Deletions for mirror mode (never protected paths)
   const importedPathSet = new Set(importQueue.map(f => f.path));
   let toDelete = [];
   if (deleteMissingCheckbox.checked) {
@@ -1892,87 +2152,416 @@ document.getElementById('import-commit-btn').addEventListener('click', async () 
     return;
   }
 
-  // Confirmation dialog
-  let confirmMsg = `Are you ready to commit this site import to GitHub?\n\n` +
-    `• ${toCommit.filter(f=>f.status==='new').length} new files will be created\n` +
-    `• ${toCommit.filter(f=>f.status==='changed').length} modified files will be updated\n` +
-    `• ${importQueue.filter(f=>f.status==='unchanged').length} unchanged files will be skipped\n`;
+  const backupName = generateBackupBranchName();
+  openImportModal(toCommit, toDelete, backupName);
+});
 
+function openImportModal(toCommit, toDelete, backupName) {
+  pendingImportData = { toCommit, toDelete, backupName };
+  const modal = document.getElementById('import-confirm-modal');
+  const input = document.getElementById('import-confirm-input');
+  const submitBtn = document.getElementById('import-modal-submit');
+  const summaryEl = document.getElementById('import-modal-summary');
+  const backupNameEl = document.getElementById('import-modal-backup-name');
+  const branchEl = document.getElementById('import-modal-branch');
+
+  branchEl.textContent = ghConfig().branch || 'main';
+  backupNameEl.textContent = backupName;
+
+  const newCount = toCommit.filter(f => f.status === 'new').length;
+  const changedCount = toCommit.filter(f => f.status === 'changed').length;
+  const unchangedCount = importQueue.filter(f => f.status === 'unchanged').length;
+  const skippedCount = importQueue.filter(f => f.status === 'skipped').length;
+
+  let summaryHtml = `
+    <div>• <strong>${newCount}</strong> new file(s) will be created</div>
+    <div>• <strong>${changedCount}</strong> modified file(s) will be updated</div>
+    <div>• <strong>${unchangedCount}</strong> unchanged file(s) will remain as-is</div>
+    <div>• <strong style="color:#b91c1c;">${skippedCount}</strong> protected file(s) are strictly preserved</div>
+  `;
   if (toDelete.length > 0) {
-    confirmMsg += `\n⚠️ DANGER: ${toDelete.length} files missing from this import will be PERMANENTLY DELETED from your repository!\n`;
+    summaryHtml += `<div style="color:#dc2626; font-weight:bold; margin-top:6px;">⚠️ ${toDelete.length} repository file(s) will be deleted (mirror mode)</div>`;
   }
-  confirmMsg += `\nProceed with committing to branch '${ghConfig().branch}'?`;
+  summaryEl.innerHTML = summaryHtml;
 
-  if (!confirm(confirmMsg)) return;
+  input.value = '';
+  submitBtn.disabled = true;
+  modal.style.display = 'flex';
+  setTimeout(() => input.focus(), 60);
+}
 
-  // Start progress
+document.getElementById('import-confirm-input').addEventListener('input', (e) => {
+  const isValid = e.target.value.trim() === 'IMPORT';
+  document.getElementById('import-modal-submit').disabled = !isValid;
+});
+document.getElementById('import-confirm-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.value.trim() === 'IMPORT') {
+    document.getElementById('import-modal-submit').click();
+  }
+});
+document.getElementById('import-modal-cancel').addEventListener('click', () => {
+  document.getElementById('import-confirm-modal').style.display = 'none';
+  pendingImportData = null;
+});
+document.getElementById('import-modal-submit').addEventListener('click', () => {
+  executeImportCommit();
+});
+
+// Single atomic Git Data API commit
+async function executeImportCommit() {
+  if (!pendingImportData) return;
+  const { toCommit, toDelete, backupName } = pendingImportData;
+  document.getElementById('import-confirm-modal').style.display = 'none';
+
+  const statusEl = document.getElementById('import-status');
+  const progressBox = document.getElementById('import-progress-container');
+  const progressBar = document.getElementById('import-progress-bar');
+  const progressLabel = document.getElementById('import-progress-label');
+  const progressPercent = document.getElementById('import-progress-percent');
+  const progressDetail = document.getElementById('import-progress-detail');
+  const commitBtn = document.getElementById('import-commit-btn');
+
+  commitBtn.disabled = true;
   progressBox.style.display = 'block';
-  progressBar.style.width = '0%';
+  progressBar.style.width = '5%';
   progressBar.style.background = '#16a34a';
-  progressPercent.textContent = '0%';
-  progressLabel.textContent = 'Committing files to GitHub…';
-  statusEl.innerHTML = '<div class="status info">Import in progress. Please do not close this window…</div>';
-  document.getElementById('import-commit-btn').disabled = true;
+  progressPercent.textContent = '5%';
+  progressLabel.textContent = 'Initializing atomic import…';
+  progressDetail.textContent = 'Connecting to GitHub Git Data API…';
+  statusEl.innerHTML = '<div class="status info">Atomic import in progress. Please do not close this window…</div>';
 
-  const totalOps = toCommit.length + toDelete.length;
-  let completedOps = 0;
-  let errors = [];
+  const c = ghConfig();
 
-  function updateProgress(itemLabel) {
-    completedOps++;
-    const pct = Math.round((completedOps / totalOps) * 100);
-    progressBar.style.width = `${pct}%`;
-    progressPercent.textContent = `${pct}%`;
-    progressLabel.textContent = `Processing ${completedOps} of ${totalOps} (${pct}%)`;
-    progressDetail.textContent = itemLabel;
-  }
+  try {
+    // 1. Get current branch ref & head commit
+    progressDetail.textContent = `Fetching current head commit on branch ${c.branch}…`;
+    const refData = await ghGetRef('heads/' + c.branch);
+    const headCommitSha = refData.object.sha;
 
-  // 1. Commit new & changed files
-  for (const item of toCommit) {
-    try {
-      updateProgress(`Uploading: ${item.path}`);
-      if (item.isBinary) {
-        const b64 = arrayBufferToBase64(item.arrayBuffer);
-        await ghPutBinaryFile(item.path, b64, `Import ${item.path}`, item.sha);
-      } else {
-        const text = new TextDecoder('utf-8').decode(item.arrayBuffer);
-        await ghPutFile(item.path, text, `Import ${item.path}`, item.sha);
-      }
+    // 2. Get head commit to find root base tree SHA
+    progressDetail.textContent = 'Fetching base Git tree…';
+    const headCommit = await ghGetCommit(headCommitSha);
+    const baseTreeSha = headCommit.tree.sha;
+
+    // 3. Create safety backup branch pointing to current head
+    progressBar.style.width = '12%';
+    progressPercent.textContent = '12%';
+    progressLabel.textContent = `Creating backup branch ${backupName}…`;
+    progressDetail.textContent = `Creating refs/heads/${backupName} pointing to ${headCommitSha.slice(0, 7)}…`;
+    const createdBackupBranch = await createAutoBackupBranch(headCommitSha);
+
+    // 4. Create blobs for new and changed files
+    const totalBlobs = toCommit.length;
+    let doneBlobs = 0;
+    for (const item of toCommit) {
+      doneBlobs++;
+      const pct = 15 + Math.round((doneBlobs / (totalBlobs || 1)) * 50); // 15% -> 65%
+      progressBar.style.width = `${pct}%`;
+      progressPercent.textContent = `${pct}%`;
+      progressLabel.textContent = `Creating Git blobs (${doneBlobs} of ${totalBlobs})…`;
+      progressDetail.textContent = `Blob: ${item.path} (${item.isBinary ? 'Base64' : 'UTF-8'})`;
+
+      const content = item.isBinary ? item.base64Content : item.textContent;
+      const encoding = item.isBinary ? 'base64' : 'utf-8';
+      const blobRes = await ghCreateBlob(content, encoding);
+      item.blobSha = blobRes.sha;
       item.status = 'unchanged';
-      await new Promise(r => setTimeout(r, 120));
-    } catch (opErr) {
-      errors.push(`${item.path}: ${opErr.message}`);
     }
-  }
 
-  // 2. Delete missing files if mirror mode enabled
-  for (const delItem of toDelete) {
-    try {
+    // 5. Build tree entries
+    progressBar.style.width = '70%';
+    progressPercent.textContent = '70%';
+    progressLabel.textContent = 'Constructing Git tree…';
+    progressDetail.textContent = 'Assembling file entries and deletions…';
+
+    const treeEntries = [];
+    for (const item of toCommit) {
+      if (isProtectedPath(item.path)) continue;
+      treeEntries.push({
+        path: item.path,
+        mode: '100644',
+        type: 'blob',
+        sha: item.blobSha
+      });
+    }
+
+    for (const delItem of toDelete) {
       if (isProtectedPath(delItem.path)) continue;
-      updateProgress(`Deleting: ${delItem.path}`);
-      await ghDeleteFile(delItem.path, delItem.sha, `Delete ${delItem.path} via Site Import mirror`);
-      await new Promise(r => setTimeout(r, 120));
-    } catch (delErr) {
-      errors.push(`Delete ${delItem.path}: ${delErr.message}`);
+      treeEntries.push({
+        path: delItem.path,
+        mode: '100644',
+        type: 'blob',
+        sha: null
+      });
     }
-  }
 
-  document.getElementById('import-commit-btn').disabled = false;
-  progressBar.style.width = '100%';
-  progressPercent.textContent = '100%';
+    // 6. Create new tree on top of base_tree
+    progressBar.style.width = '80%';
+    progressPercent.textContent = '80%';
+    progressLabel.textContent = 'Creating Git tree on GitHub…';
+    progressDetail.textContent = `Submitting tree with ${treeEntries.length} modifications…`;
+    const newTree = await ghCreateTree(baseTreeSha, treeEntries);
+    const newTreeSha = newTree.sha;
 
-  if (errors.length > 0) {
-    progressBar.style.background = '#dc2626';
-    progressLabel.textContent = `Completed with ${errors.length} error(s)`;
-    statusEl.innerHTML = `<div class="status err">Import finished with errors:<br>${errors.map(e=>escapeHtml(e)).join('<br>')}</div>`;
-  } else {
+    // 7. Create single atomic commit
+    progressBar.style.width = '90%';
+    progressPercent.textContent = '90%';
+    progressLabel.textContent = 'Creating single atomic commit…';
+    const commitMsg = `Import site: ${toCommit.length} file(s) updated` + (toDelete.length ? `, ${toDelete.length} file(s) deleted` : '') + ` [backup: ${createdBackupBranch}]`;
+    progressDetail.textContent = commitMsg;
+    const newCommit = await ghCreateCommit(commitMsg, newTreeSha, [ headCommitSha ]);
+    const newCommitSha = newCommit.sha;
+
+    // 8. Update branch ref to new commit
+    progressBar.style.width = '95%';
+    progressPercent.textContent = '95%';
+    progressLabel.textContent = `Updating branch ${c.branch}…`;
+    progressDetail.textContent = `Updating refs/heads/${c.branch} to ${newCommitSha.slice(0, 7)}…`;
+    await ghUpdateRef('heads/' + c.branch, newCommitSha, false);
+
+    // 9. All Done! Success message with link to live site
+    progressBar.style.width = '100%';
+    progressPercent.textContent = '100%';
+    progressBar.style.background = '#16a34a';
     progressLabel.textContent = 'Import Completed Successfully!';
-    progressDetail.textContent = `Committed ${toCommit.length} file(s)` + (toDelete.length ? `, deleted ${toDelete.length} file(s)` : '');
-    statusEl.innerHTML = '<div class="status ok">✅ Site import committed successfully to GitHub! The live website will reflect all updates immediately.</div>';
-  }
+    progressDetail.textContent = `Atomic commit: ${newCommitSha.slice(0, 7)} | Backup: ${createdBackupBranch}`;
 
-  renderImportPreview();
-  codeTreeLoaded = false;
+    const livePagesUrl = `https://${c.owner}.github.io/${c.repo}/`;
+    statusEl.innerHTML = `
+      <div class="status ok" style="padding:16px;">
+        <div style="font-size:1.1rem; font-weight:700; margin-bottom:6px;">🎉 Site Import Successfully Published!</div>
+        <p style="margin:4px 0 10px; font-size:0.9rem; line-height:1.5;">
+          All files were committed as <strong>ONE single atomic commit</strong> (<code>${newCommitSha.slice(0, 7)}</code>) via the GitHub Git Data API.<br>
+          A safety backup branch <code>${escapeHtml(createdBackupBranch)}</code> was created automatically before committing.
+        </p>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:12px;">
+          <a href="../index.html" target="_blank" style="display:inline-block; background:#0b2545; color:#fff; text-decoration:none; padding:8px 18px; border-radius:6px; font-weight:700; font-size:0.92rem;">🌐 View Live Website &rarr;</a>
+          <a href="${escapeHtml(livePagesUrl)}" target="_blank" style="color:#1c3d6b; font-size:0.88rem; font-weight:600;">GitHub Pages URL (${escapeHtml(c.owner)}.github.io/${escapeHtml(c.repo)}/)</a>
+        </div>
+      </div>
+    `;
+
+    renderImportPreview();
+    loadBackupsList();
+    codeTreeLoaded = false;
+  } catch (err) {
+    progressBar.style.width = '100%';
+    progressBar.style.background = '#dc2626';
+    progressLabel.textContent = 'Import Failed';
+    progressDetail.textContent = err.message;
+    statusEl.innerHTML = `
+      <div class="status err" style="padding:14px;">
+        <strong>❌ Import Failed:</strong> ${escapeHtml(err.message)}
+        <p style="margin:8px 0 0; font-size:0.85rem;">
+          Because this import uses the GitHub Git Data API, it is <strong>all-or-nothing</strong>. Your live branch <code>${escapeHtml(c.branch)}</code> was NOT modified.
+        </p>
+      </div>
+    `;
+  } finally {
+    commitBtn.disabled = false;
+    pendingImportData = null;
+  }
+}
+
+/* ===================== BACKUPS & RESTORE ===================== */
+async function loadBackupsList() {
+  const container = document.getElementById('backup-list-container');
+  const histContainer = document.getElementById('history-backups-container');
+  if (!ghConfig().token) return;
+
+  if (container) container.innerHTML = '<div class="muted" style="padding:8px 0;">Loading backup branches from GitHub…</div>';
+  if (histContainer) histContainer.innerHTML = '<div class="muted" style="padding:8px 0;">Loading backup branches from GitHub…</div>';
+
+  try {
+    const branches = await ghListBranches();
+    const backups = branches.filter(b => b.name.startsWith('backup-'));
+    backups.sort((a, b) => b.name.localeCompare(a.name));
+
+    let html = '';
+    if (backups.length === 0) {
+      html = '<div class="muted" style="padding:8px 0;">No backup branches found in this repository yet. Backups are automatically created whenever you run Site Import.</div>';
+    } else {
+      html = `
+        <div style="border:1px solid #dfe3e8; border-radius:6px; overflow:hidden; background:#fff;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead style="background:#f1f5f9;">
+              <tr>
+                <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">Backup Branch</th>
+                <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">Created Timestamp</th>
+                <th style="padding:8px 12px; text-align:left; border-bottom:1px solid #dfe3e8;">Commit SHA</th>
+                <th style="padding:8px 12px; text-align:right; border-bottom:1px solid #dfe3e8;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      backups.forEach(b => {
+        let timeStr = '—';
+        const m = b.name.match(/^backup-(\d{4})-(\d{2})-(\d{2})-(\d{2})(\d{2})/);
+        if (m) {
+          timeStr = `${m[1]}-${m[2]}-${m[3]} ${m[4]}:${m[5]}`;
+        }
+        html += `
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:8px 12px; font-family:monospace; font-weight:700; color:#0b2545;">${escapeHtml(b.name)}</td>
+            <td style="padding:8px 12px; color:#475569;">${escapeHtml(timeStr)}</td>
+            <td style="padding:8px 12px; font-family:monospace; color:#64748b;">${escapeHtml(b.commit.sha.slice(0, 7))}</td>
+            <td style="padding:8px 12px; text-align:right;">
+              <button class="secondary btn-restore-trigger" data-branch="${escapeHtml(b.name)}" data-sha="${escapeHtml(b.commit.sha)}" style="font-size:0.8rem; padding:4px 10px;">
+                🔄 Restore this backup
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+      html += `
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    if (container) container.innerHTML = html;
+    if (histContainer) histContainer.innerHTML = html;
+
+    // Attach restore trigger listeners
+    document.querySelectorAll('.btn-restore-trigger').forEach(btn => {
+      btn.onclick = () => {
+        const branchName = btn.getAttribute('data-branch');
+        const commitSha = btn.getAttribute('data-sha');
+        openRestoreModal(branchName, commitSha);
+      };
+    });
+  } catch (err) {
+    const errHtml = `<div class="status err" style="margin:4px 0;">Failed to load backup branches: ${escapeHtml(err.message)}</div>`;
+    if (container) container.innerHTML = errHtml;
+    if (histContainer) histContainer.innerHTML = errHtml;
+  }
+}
+
+function openRestoreModal(branchName, commitSha) {
+  pendingRestoreData = { branchName, commitSha };
+  const modal = document.getElementById('restore-confirm-modal');
+  const input = document.getElementById('restore-confirm-input');
+  const submitBtn = document.getElementById('restore-modal-submit');
+  const branchNameEl = document.getElementById('restore-modal-branch-name');
+
+  branchNameEl.textContent = branchName;
+  input.value = '';
+  submitBtn.disabled = true;
+  modal.style.display = 'flex';
+  setTimeout(() => input.focus(), 60);
+}
+
+document.getElementById('restore-confirm-input').addEventListener('input', (e) => {
+  const isValid = e.target.value.trim() === 'RESTORE';
+  document.getElementById('restore-modal-submit').disabled = !isValid;
+});
+document.getElementById('restore-confirm-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.value.trim() === 'RESTORE') {
+    document.getElementById('restore-modal-submit').click();
+  }
+});
+document.getElementById('restore-modal-cancel').addEventListener('click', () => {
+  document.getElementById('restore-confirm-modal').style.display = 'none';
+  pendingRestoreData = null;
+});
+document.getElementById('restore-modal-submit').addEventListener('click', () => {
+  if (!pendingRestoreData) return;
+  const { branchName, commitSha } = pendingRestoreData;
+  document.getElementById('restore-confirm-modal').style.display = 'none';
+  executeRestoreBackup(branchName, commitSha);
+});
+
+async function executeRestoreBackup(backupBranchName, backupCommitSha) {
+  const statusEl = document.getElementById('backup-status');
+  const c = ghConfig();
+  statusEl.innerHTML = `<div class="status info">🔄 Restoring backup <code>${escapeHtml(backupBranchName)}</code>… Please wait.</div>`;
+
+  try {
+    // 1. Get the backup commit to find its root tree SHA
+    const backupCommit = await ghGetCommit(backupCommitSha);
+    const backupTreeSha = backupCommit.tree.sha;
+
+    // 2. Get current head commit on the main branch
+    const headRef = await ghGetRef('heads/' + c.branch);
+    const currentHeadSha = headRef.object.sha;
+
+    // 3. Create a pre-restore backup branch of current state just in case
+    try {
+      const preRestoreName = generateBackupBranchName() + '-pre-restore';
+      await ghCreateBranch(preRestoreName, currentHeadSha);
+    } catch (preErr) {
+      console.warn('Could not create pre-restore backup branch:', preErr);
+    }
+
+    // 4. Create a NEW commit on the main branch whose tree equals the backup's tree
+    const commitMsg = `Restore site to backup: ${backupBranchName} (tree ${backupTreeSha.slice(0, 7)})`;
+    const newCommit = await ghCreateCommit(commitMsg, backupTreeSha, [ currentHeadSha ]);
+
+    // 5. Update branch ref (non-destructive, normal fast-forward commit, zero force-push)
+    await ghUpdateRef('heads/' + c.branch, newCommit.sha, false);
+
+    // 6. Display success message with link to live site
+    statusEl.innerHTML = `
+      <div class="status ok" style="padding:14px;">
+        <div style="font-weight:700; font-size:1rem; margin-bottom:6px;">✅ Site Successfully Restored!</div>
+        <p style="margin:4px 0 10px; font-size:0.88rem;">
+          Restored live site to <strong>${escapeHtml(backupBranchName)}</strong>. A new commit <code>${newCommit.sha.slice(0, 7)}</code> was created on branch <code>${escapeHtml(c.branch)}</code>.
+        </p>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+          <a href="../index.html" target="_blank" style="display:inline-block; background:#0b2545; color:#fff; text-decoration:none; padding:6px 14px; border-radius:6px; font-weight:700; font-size:0.85rem;">🌐 View Live Site &rarr;</a>
+          <a href="https://${c.owner}.github.io/${c.repo}/" target="_blank" style="color:#1c3d6b; font-size:0.85rem; font-weight:600;">GitHub Pages URL</a>
+        </div>
+      </div>
+    `;
+
+    loadBackupsList();
+    codeTreeLoaded = false;
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">❌ Restore failed: ${escapeHtml(err.message)}</div>`;
+  } finally {
+    pendingRestoreData = null;
+  }
+}
+
+// Backup refresh buttons
+const backupRefreshBtn = document.getElementById('backup-refresh-btn');
+if (backupRefreshBtn) {
+  backupRefreshBtn.addEventListener('click', () => loadBackupsList());
+}
+const historyBackupRefresh = document.getElementById('history-backup-refresh');
+if (historyBackupRefresh) {
+  historyBackupRefresh.addEventListener('click', () => loadBackupsList());
+}
+
+// Export ZIP button
+document.getElementById('btn-export-zip').addEventListener('click', () => {
+  const c = ghConfig();
+  if (!c.owner || !c.repo) {
+    alert('Please enter your GitHub repository details and connect first.');
+    return;
+  }
+  const branch = c.branch || 'main';
+  const zipUrl = `https://github.com/${c.owner}/${c.repo}/archive/refs/heads/${branch}.zip`;
+  window.open(zipUrl, '_blank');
+});
+
+// Tab listeners to auto-load backups
+document.querySelector('[data-tab="import"]').addEventListener('click', () => {
+  loadBackupsList();
+});
+document.querySelector('[data-tab="history"]').addEventListener('click', () => {
+  loadBackupsList();
+});
+
+// Close modals on Escape key
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.getElementById('import-confirm-modal').style.display = 'none';
+    document.getElementById('restore-confirm-modal').style.display = 'none';
+    pendingImportData = null;
+    pendingRestoreData = null;
+  }
 });
 
 loadSavedConfig();

@@ -76,8 +76,8 @@ The administrative panel (`xk92m-manage/index.html`) operates directly on the Gi
 | **Applications** | `data-tab="applications"` | Reads published Google Sheet CSV URL saved in browser `localStorage` (`pelwatta_apps_csv_url`) | • Read-only table view of student admissions.<br>• Client-side CSV parser with sortable columns and search.<br>• Does NOT modify files in repo (view-only to prevent accidental data loss). |
 | **Code Editor** | `data-tab="code"` | Any text file in repository (HTML, CSS, JS, JSON, TXT) | • Monospace code editor with file tree navigation.<br>• Quick selector of core files (`DEFAULT_KNOWN_CODE_FILES`).<br>• Supports creating new text files and committing with custom commit message. |
 | **Theme** | `data-tab="theme"` | Reads & writes `:root { ... }` in `css/style.css` | • Parses CSS custom properties from `:root` block.<br>• Offers color pickers for primary/maroon and gold palettes.<br>• Commits updated `:root` block back to `css/style.css`. |
-| **Import Site** | `data-tab="import"` | Uploads multi-file sets or folders | • Computes Git blob SHA-1 (`blob <length>\0<content>`).<br>• Identifies New, Changed, and Unchanged files.<br>• **Strictly skips** `xk92m-manage/` and `.github/`. |
-| **Version History** | `data-tab="history"` | Reads commit history for any core file | • Queries `GET /repos/{owner}/{repo}/commits?path={file}`.<br>• Displays commit author, date, message.<br>• Allows 1-click restore/rollback of older commits. |
+| **Import Site** | `data-tab="import"` | Full site import & replacement via Git Data API | • Reads folder (`webkitdirectory`) or multi-file set (UTF-8 for text, Base64 for images/PDFs).<br>• Previews New / Changed / Unchanged / Skipped files against repository tree.<br>• **Strictly skips** `xk92m-manage/` and `.github/` (never touched).<br>• Optional mirror deletion (never deletes protected paths).<br>• Creates safety branch `backup-YYYY-MM-DD-HHMM` pointing to head.<br>• Requires typed confirmation (`IMPORT`).<br>• Commits as ONE atomic commit via Git Data API (blobs, tree, commit, ref).<br>• Shows live site link.<br>• Features "Export / Offline copy" (main.zip) with VS Code guide.<br>• Features Backups & Restore manager. |
+| **Version History** | `data-tab="history"` | Reads commit history & lists backup branches | • Queries `GET /repos/{owner}/{repo}/commits?path={file}`.<br>• Displays commit author, date, message with 1-click rollback.<br>• Lists `backup-*` branches with non-destructive Restore (creates new commit on main with backup's tree; requires typed `RESTORE` confirmation). |
 
 ---
 
@@ -171,6 +171,27 @@ The administrative panel (`xk92m-manage/index.html`) operates directly on the Gi
   }
   ```
 - **Update Mechanism:** Admin regex extracts the `:root { ... }` block, swaps user-chosen hex colors, and commits `css/style.css`.
+
+### 4.7. Import Site & Export (`data-tab="import"`)
+- **Input Methods:** Folder upload (`webkitdirectory`) or multi-file selection.
+- **Data Encoding:** Text files parsed as UTF-8, binary assets (images, PDFs, fonts) as Base64.
+- **Diff Analysis:** Compares computed Git blob SHA (`blob <size>\0<bytes>`) against the live repository tree from the GitHub Git Data API. Categorizes items into `NEW`, `CHANGED`, `UNCHANGED`, and `SKIPPED (PROTECTED)`.
+- **Protected Paths Enforcement:** Paths matching `xk92m-manage/`, `.github/`, and `.git/` are strictly ignored during imports and cannot be written, overwritten, renamed, or deleted.
+- **Optional Mirror Deletion:** Optional checkbox (OFF by default) deletes repository files not present in the import. Never deletes protected paths.
+- **Automatic Safety Branch:** Creates `backup-YYYY-MM-DD-HHMM` pointing to the current head commit before any modifications.
+- **Typed Confirmation:** Requires typing the word `IMPORT` before executing the commit.
+- **Atomic Single Commit:** Executes via GitHub Git Data API:
+  1. Creates blobs for all new and modified files (`POST /git/blobs`).
+  2. Creates a new tree on top of the current base tree with new/updated blobs and deletion entries (`POST /git/trees`).
+  3. Creates a single atomic commit (`POST /git/commits`).
+  4. Updates the target branch ref (`PATCH /git/refs/heads/{branch}`).
+- **Export / Offline Copy:** Dedicated button downloads the main branch ZIP (`https://github.com/OWNER/REPO/archive/refs/heads/main.zip`) accompanied by a guide for offline editing with VS Code and Live Server.
+
+### 4.8. Backups & Restore Section (`data-tab="import"` & `data-tab="history"`)
+- **Backup Registry:** Automatically lists all branches matching the `backup-*` naming pattern using `GET /repos/{owner}/{repo}/branches`.
+- **Non-Destructive Restore:** Restoring a backup creates a **NEW commit** on the main branch pointing directly to the backup commit's root tree SHA, with the current head commit as parent.
+- **Zero Force-Push:** Standard forward commit that preserves 100% of the commit history and can be completely rolled back or undone.
+- **Typed Confirmation:** Requires typing the word `RESTORE` before performing the restore.
 
 ---
 
