@@ -40,47 +40,104 @@ async function loadCommon(){
   return SITE.common;
 }
 
-function langButtonsHTML(){
-  const langs = [['si','සිං'],['ta','த'],['en','EN']];
-  return langs.map(([code,label]) =>
-    `<button class="${SITE.lang===code?'active':''}" data-lang="${code}" aria-pressed="${SITE.lang===code}">${label}</button>`
-  ).join('');
+function getShortLang(lang){
+  if (lang === 'si') return 'සිං';
+  if (lang === 'ta') return 'த';
+  return 'EN';
 }
 
 function renderHeader(common, currentKey){
   const nav = common.nav;
   const navHTML = Object.keys(nav).map(key => {
-    const href = key === 'home' ? 'index.html' : `${key === 'studentlife' ? 'student-life' : key}.html`;
-    return `<li><a href="${href}" class="${key===currentKey?'current':''}">${t(nav[key])}</a></li>`;
+    let href = 'index.html';
+    if (key === 'about') href = 'about.html';
+    else if (key === 'academic') href = 'academic.html';
+    else if (key === 'studentlife') href = 'student-life.html';
+    else if (key === 'gallery') href = 'gallery.html';
+    else if (key === 'news') href = 'news.html';
+    else if (key === 'admissions') href = 'admissions.html';
+    else if (key === 'downloads') href = 'downloads.html';
+    else if (key === 'contact') href = 'contact.html';
+    else if (key === 'sds') href = 'sds-parents.html';
+    else href = `${key}.html`;
+
+    return `<li class="nav-item"><a href="${href}" class="nav-link ${key===currentKey?'active':''}">${t(nav[key])}</a></li>`;
   }).join('');
 
-  document.getElementById('site-header').innerHTML = `
-    <div class="notice-bar">
+  const shortLabel = getShortLang(SITE.lang);
+
+  const headerRoot = document.getElementById('site-header');
+  if (!headerRoot) return;
+
+  headerRoot.innerHTML = `
+    <!-- Slim National School Notice Bar -->
+    <div class="national-notice-bar">
       <div class="container">
-        <span>${t(common.nationalSchoolNotice)}</span>
-        <div class="a11y-toolbar" aria-label="${t(common.a11y.label)}">
-          <button data-fsize="-1">A-</button>
-          <button data-fsize="0" aria-pressed="true">A</button>
-          <button data-fsize="1">A+</button>
-          <button data-contrast-toggle>${t(common.a11y.contrast)}</button>
+        <span class="national-notice-text">${t(common.nationalSchoolNotice)}</span>
+      </div>
+    </div>
+
+    <!-- Desktop Top Contact Strip (Hidden on Mobile < 768px) -->
+    <div class="top-bar desktop-only-bar">
+      <div class="container top-bar-inner">
+        <ul class="top-contact-list">
+          <li class="top-contact-item">
+            <span>📍</span>
+            <span>${t(common.location)}</span>
+          </li>
+          <li class="top-contact-item">
+            <span>📞</span>
+            <span>+94 55 227 6234</span>
+          </li>
+          <li class="top-contact-item">
+            <span>✉️</span>
+            <span>principal@pelwattacollege.sch.lk</span>
+          </li>
+        </ul>
+
+        <div class="lang-desktop-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn ${SITE.lang==='si'?'active':''}" data-lang="si" aria-label="Sinhala">සිංහල</button>
+          <button type="button" class="lang-btn ${SITE.lang==='ta'?'active':''}" data-lang="ta" aria-label="Tamil">தமிழ்</button>
+          <button type="button" class="lang-btn ${SITE.lang==='en'?'active':''}" data-lang="en" aria-label="English">English</button>
         </div>
       </div>
     </div>
+
+    <!-- Main Header Bar (ONE slim row on Mobile < 768px) -->
     <header class="site-header">
-      <div class="container header-row">
-        <a class="brand" href="index.html">
-          <img src="images/crest.svg" alt="College Crest">
-          <span>
-            <span class="name-si">${t(common.schoolName)}</span><br>
-            <span class="loc">${t(common.location)}</span>
-          </span>
-        </a>
-        <div class="header-actions">
-          <div class="lang-switch" role="group" aria-label="Language">${langButtonsHTML()}</div>
-          <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <div class="container">
+        <div class="brand-nav-bar header-row">
+          <a class="brand brand-link" href="index.html" aria-label="Mo/Pelwatta Navodya Secondary College">
+            <img src="images/crest.svg" alt="College Crest" class="crest-img" width="42" height="42">
+            <div class="brand-text">
+              <span class="brand-title name-si">${t(common.schoolName)}</span>
+              <span class="brand-subtitle desktop-only-sub loc">${t(common.location)}</span>
+            </div>
+          </a>
+
+          <!-- Header Actions: Mobile Lang Dropdown + Hamburger Toggle -->
+          <div class="header-actions">
+            <div class="lang-mobile-dropdown" id="lang-mobile-dropdown">
+              <button type="button" class="lang-dropdown-btn" id="mobile-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language">
+                <span id="mobile-lang-label">${shortLabel} ▾</span>
+              </button>
+              <div class="lang-dropdown-menu" id="mobile-lang-menu" role="menu">
+                <button type="button" class="lang-menu-item ${SITE.lang==='si'?'active':''}" data-lang="si" role="menuitem">සිංහල (Sinhala)</button>
+                <button type="button" class="lang-menu-item ${SITE.lang==='ta'?'active':''}" data-lang="ta" role="menuitem">தமிழ் (Tamil)</button>
+                <button type="button" class="lang-menu-item ${SITE.lang==='en'?'active':''}" data-lang="en" role="menuitem">English (English)</button>
+              </div>
+            </div>
+
+            <button type="button" class="mobile-toggle menu-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+              ☰
+            </button>
+          </div>
+
+          <nav class="main-nav" id="main-nav">
+            <ul class="nav-menu" id="primary-nav-menu">${navHTML}</ul>
+          </nav>
         </div>
       </div>
-      <nav class="main-nav" id="main-nav"><div class="container"><ul>${navHTML}</ul></div></nav>
     </header>
   `;
   attachHeaderEvents();
@@ -88,26 +145,36 @@ function renderHeader(common, currentKey){
 
 function renderFooter(common){
   const f = common.footer;
-  document.getElementById('site-footer').innerHTML = `
+  const footerRoot = document.getElementById('site-footer');
+  if (!footerRoot) return;
+
+  footerRoot.innerHTML = `
     <div class="container">
       <div class="footer-grid">
         <div>
           <h4>${t(common.schoolName)}</h4>
           <p>${t(f.freeSchoolNote)}</p>
-          <div class="lang-switch" role="group" aria-label="Language">${langButtonsHTML()}</div>
+          <div style="font-size:0.8125rem; color:#94a3b8; margin-top:0.75rem;">
+            <p>Census No: 18452 · MoE Sri Lanka</p>
+          </div>
         </div>
         <div>
           <h4>${t(f.quickLinksTitle)}</h4>
           <ul>
-            <li><a href="admissions.html">${t(common.nav.admissions)}</a></li>
+            <li><a href="index.html">${t(common.nav.home)}</a></li>
+            <li><a href="about.html">${t(common.nav.about)}</a></li>
+            <li><a href="academic.html">${t(common.nav.academic)}</a></li>
+            <li><a href="student-life.html">${t(common.nav.studentlife)}</a></li>
+            <li><a href="gallery.html">${t(common.nav.gallery)}</a></li>
             <li><a href="news.html">${t(common.nav.news)}</a></li>
-            <li><a href="downloads.html">${t(f.downloadsLink)}</a></li>
-            <li><a href="sds.html">${t(f.sdsLink)}</a></li>
           </ul>
         </div>
         <div>
           <h4>${t(f.legalTitle)}</h4>
           <ul>
+            <li><a href="admissions.html">${t(common.nav.admissions)}</a></li>
+            <li><a href="downloads.html">${t(f.downloadsLink)}</a></li>
+            <li><a href="sds-parents.html">${t(f.sdsLink)}</a></li>
             <li><a href="privacy.html">${t(f.privacyLink)}</a></li>
             <li><a href="terms.html">${t(f.termsLink)}</a></li>
           </ul>
@@ -115,10 +182,9 @@ function renderFooter(common){
         <div>
           <h4>${t(f.contactTitle)}</h4>
           <p>${t(common.location)}</p>
-          <p><strong>${t(f.rti)}:</strong><br>${t(f.rtiName)}</p>
-          <div class="social-row">
-            <a href="#" aria-label="Facebook">f</a>
-          </div>
+          <p style="margin-top:0.5rem;">📞 +94 55 227 6234</p>
+          <p>✉️ info@pelwattacollege.sch.lk</p>
+          <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>${t(f.rti)}:</strong><br>${t(f.rtiName)}</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -127,48 +193,65 @@ function renderFooter(common){
       </div>
     </div>
   `;
-  document.getElementById('ftr-year').textContent = new Date().getFullYear();
-  attachHeaderEvents(); // footer also has language buttons
+  const yr = document.getElementById('ftr-year');
+  if (yr) yr.textContent = new Date().getFullYear();
 }
 
 function attachHeaderEvents(){
-  document.querySelectorAll('[data-lang]').forEach(btn=>{
-    btn.onclick = () => setLang(btn.getAttribute('data-lang'));
+  // Language button clicks
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const lang = btn.getAttribute('data-lang');
+      setLang(lang);
+    };
   });
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.getElementById('main-nav');
+
+  // Mobile Language Dropdown Toggle
+  const mobileLangBtn = document.getElementById('mobile-lang-btn');
+  const mobileLangMenu = document.getElementById('mobile-lang-menu');
+  if (mobileLangBtn && mobileLangMenu) {
+    mobileLangBtn.onclick = (e) => {
+      e.stopPropagation();
+      const isOpen = mobileLangMenu.classList.toggle('open');
+      mobileLangBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+  }
+
+  // Mobile Navigation Toggle
+  const toggle = document.getElementById('mobile-nav-toggle') || document.querySelector('.menu-toggle');
+  const nav = document.getElementById('main-nav') || document.getElementById('primary-nav-menu');
   if (toggle && nav){
-    toggle.onclick = () => {
+    toggle.onclick = (e) => {
+      e.stopPropagation();
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     };
-  }
-  document.querySelectorAll('[data-fsize]').forEach(btn=>{
-    btn.onclick = () => {
-      const step = parseInt(btn.getAttribute('data-fsize'),10);
-      let scale = parseFloat(localStorage.getItem('site_fontscale') || '1');
-      scale = step === 0 ? 1 : Math.min(1.3, Math.max(0.9, scale + step*0.1));
-      localStorage.setItem('site_fontscale', scale);
-      document.documentElement.style.setProperty('--font-scale', scale);
-      document.querySelectorAll('[data-fsize]').forEach(b=>b.setAttribute('aria-pressed','false'));
-      btn.setAttribute('aria-pressed','true');
-    };
-  });
-  const contrastBtn = document.querySelector('[data-contrast-toggle]');
-  if (contrastBtn){
-    contrastBtn.onclick = () => {
-      const on = document.documentElement.getAttribute('data-contrast') === 'high';
-      document.documentElement.setAttribute('data-contrast', on ? 'normal' : 'high');
-      localStorage.setItem('site_contrast', on ? 'normal' : 'high');
-    };
-  }
-}
 
-function applyStoredA11yPrefs(){
-  const scale = localStorage.getItem('site_fontscale');
-  if (scale) document.documentElement.style.setProperty('--font-scale', scale);
-  const contrast = localStorage.getItem('site_contrast');
-  if (contrast === 'high') document.documentElement.setAttribute('data-contrast','high');
+    // Close menu when tapping any link inside
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (mobileLangMenu && mobileLangMenu.classList.contains('open')) {
+      if (!mobileLangMenu.contains(e.target) && e.target !== mobileLangBtn && !mobileLangBtn.contains(e.target)) {
+        mobileLangMenu.classList.remove('open');
+        if (mobileLangBtn) mobileLangBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+    if (nav && nav.classList.contains('open')) {
+      if (!nav.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+        nav.classList.remove('open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
 }
 
 /**
@@ -179,7 +262,6 @@ function applyStoredA11yPrefs(){
  * text in sync with the header, fixing the "half-translated" bug.
  */
 async function initPage(pageKey, pageDataUrl, renderBody){
-  applyStoredA11yPrefs();
   document.documentElement.lang = SITE.lang;
   const common = await loadCommon();
   let pageData = null;

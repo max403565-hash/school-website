@@ -49,7 +49,7 @@ function applyFilters(page){
     noRes.style.display = 'none';
     grid.innerHTML = filtered.map(item=>`
       <figure onclick="openLightbox('${item.image}', '${t(item.caption).replace(/'/g,"\\'")}')">
-        <img src="${item.image}" alt="${t(item.caption)}">
+        <img src="${item.image}" alt="${t(item.caption)}" loading="lazy" width="240" height="160">
         <figcaption>${t(item.caption)}</figcaption>
       </figure>`).join('');
   }

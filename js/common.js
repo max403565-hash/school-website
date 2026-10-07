@@ -51,9 +51,26 @@
       `;
     }).join('');
 
+    function getShortLang(lang) {
+      if (lang === 'si') return 'සිං';
+      if (lang === 'ta') return 'த';
+      return 'EN';
+    }
+
+    const curLang = (window.i18n && window.i18n.getLanguage) ? window.i18n.getLanguage() : (localStorage.getItem('pelwatta_lang') || localStorage.getItem('site_lang') || 'si');
+    const shortLabel = getShortLang(curLang);
+
     root.innerHTML = `
       <header class="site-header">
-        <div class="top-bar">
+        <!-- Slim National School Notice Bar -->
+        <div class="national-notice-bar">
+          <div class="container">
+            <span class="national-notice-text" data-i18n="nationalSchoolNotice">ජාතික පාසලක් ලෙස නම් කර ඇත (නිල ගැසට් පත්‍රය නිකුත්වීමට යටත්ව පවතින තත්ත්වයකි)</span>
+          </div>
+        </div>
+
+        <!-- Desktop Top Bar (Hidden on Mobile < 768px) -->
+        <div class="top-bar desktop-only-bar">
           <div class="container top-bar-inner">
             <ul class="top-contact-list">
               <li class="top-contact-item">
@@ -70,108 +87,139 @@
               </li>
             </ul>
 
-            <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-              <div class="a11y-toolbar" aria-label="Accessibility Tools">
-                <button type="button" class="a11y-btn" data-fsize="-1" aria-label="Decrease Font Size">A-</button>
-                <button type="button" class="a11y-btn active" data-fsize="0" aria-label="Reset Font Size">A</button>
-                <button type="button" class="a11y-btn" data-fsize="1" aria-label="Increase Font Size">A+</button>
-                <button type="button" class="a11y-btn" data-contrast-toggle aria-label="Toggle High Contrast" data-i18n="a11y.contrast">වර්ණ වෙනස</button>
-              </div>
-
-              <div class="lang-switcher" aria-label="Language Selector">
-                <button type="button" class="lang-btn" data-lang="si" aria-label="Sinhala">සිංහල</button>
-                <button type="button" class="lang-btn" data-lang="ta" aria-label="Tamil">தமிழ்</button>
-                <button type="button" class="lang-btn" data-lang="en" aria-label="English">English</button>
-              </div>
+            <div class="lang-desktop-switch" role="group" aria-label="Language Selector">
+              <button type="button" class="lang-btn ${curLang === 'si' ? 'active' : ''}" data-lang="si" aria-label="Sinhala">සිංහල</button>
+              <button type="button" class="lang-btn ${curLang === 'ta' ? 'active' : ''}" data-lang="ta" aria-label="Tamil">தமிழ்</button>
+              <button type="button" class="lang-btn ${curLang === 'en' ? 'active' : ''}" data-lang="en" aria-label="English">English</button>
             </div>
           </div>
         </div>
 
-        <div class="container">
-          <div class="brand-nav-bar">
-            <a href="${prefix}index.html" class="brand-link">
-              <img src="${prefix}images/crest.svg" alt="College Crest" class="crest-img" />
-              <div class="brand-text">
-                <span class="brand-title" data-i18n="school.name">මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</span>
-                <span class="brand-subtitle" data-i18n="school.type">රජයේ ජාතික පාසලකි · මොනරාගල දිස්ත්‍රික්කය</span>
-                <span class="brand-motto" data-i18n="school.motto">විද්‍යා දදාති විනයං</span>
+        <!-- Main Header Bar (ONE slim row under 768px) -->
+        <div class="brand-bar-wrapper">
+          <div class="container">
+            <div class="brand-nav-bar">
+              <a href="${prefix}index.html" class="brand-link" aria-label="Mo/Pelwatta Navodya Secondary College">
+                <img src="${prefix}images/crest.svg" alt="College Crest" class="crest-img" width="42" height="42" />
+                <div class="brand-text">
+                  <span class="brand-title" data-i18n="school.name">මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</span>
+                  <span class="brand-subtitle desktop-only-sub" data-i18n="school.type">රජයේ ජාතික පාසලකි · මොනරාගල දිස්ත්‍රික්කය</span>
+                  <span class="brand-motto desktop-only-sub" data-i18n="school.motto">විද්‍යා දදාති විනයං</span>
+                </div>
+              </a>
+
+              <!-- Header Actions: Compact Lang Dropdown + Hamburger Toggle -->
+              <div class="header-actions">
+                <div class="lang-mobile-dropdown" id="lang-mobile-dropdown">
+                  <button type="button" class="lang-dropdown-btn" id="mobile-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language">
+                    <span id="mobile-lang-label">${shortLabel} ▾</span>
+                  </button>
+                  <div class="lang-dropdown-menu" id="mobile-lang-menu" role="menu">
+                    <button type="button" class="lang-menu-item ${curLang === 'si' ? 'active' : ''}" data-lang="si" role="menuitem">සිංහල (Sinhala)</button>
+                    <button type="button" class="lang-menu-item ${curLang === 'ta' ? 'active' : ''}" data-lang="ta" role="menuitem">தமிழ் (Tamil)</button>
+                    <button type="button" class="lang-menu-item ${curLang === 'en' ? 'active' : ''}" data-lang="en" role="menuitem">English (English)</button>
+                  </div>
+                </div>
+
+                <button type="button" class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                  ☰
+                </button>
               </div>
-            </a>
 
-            <button type="button" class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
-              ☰
-            </button>
-
-            <nav>
-              <ul class="nav-menu" id="primary-nav-menu">
-                ${navLinksHtml}
-              </ul>
-            </nav>
+              <nav class="nav-container" id="nav-container">
+                <ul class="nav-menu" id="primary-nav-menu">
+                  ${navLinksHtml}
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </header>
     `;
 
-    // Attach Language Switcher Events
-    root.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.getAttribute('data-lang');
-        if (window.i18n && window.i18n.setLanguage) {
-          window.i18n.setLanguage(lang);
-        }
-      });
-    });
-
-    // Attach Accessibility Toolbar Events
-    let currentScale = 0;
-    const scales = [-1, 0, 1];
-    const scaleValues = ['0.9', '1', '1.12'];
-
-    root.querySelectorAll('.a11y-btn[data-fsize]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const delta = parseInt(btn.getAttribute('data-fsize'), 10);
-        currentScale = delta;
-        root.querySelectorAll('.a11y-btn[data-fsize]').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const idx = delta === -1 ? 0 : delta === 1 ? 2 : 1;
-        document.documentElement.style.setProperty('--font-scale', scaleValues[idx]);
-        document.body.style.fontSize = `calc(16px * ${scaleValues[idx]})`;
-      });
-    });
-
-    const contrastBtn = root.querySelector('.a11y-btn[data-contrast-toggle]');
-    if (contrastBtn) {
-      if (document.documentElement.getAttribute('data-contrast') === 'high') {
-        contrastBtn.classList.add('active');
+    // Language change handler
+    function switchLanguage(lang) {
+      if (window.i18n && window.i18n.setLanguage) {
+        window.i18n.setLanguage(lang);
+      } else {
+        localStorage.setItem('pelwatta_lang', lang);
+        localStorage.setItem('site_lang', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.className = `lang-${lang}`;
       }
-      contrastBtn.addEventListener('click', () => {
-        const isHigh = document.documentElement.getAttribute('data-contrast') === 'high';
-        if (isHigh) {
-          document.documentElement.removeAttribute('data-contrast');
-          contrastBtn.classList.remove('active');
-          localStorage.setItem('site_contrast', 'normal');
+      const label = document.getElementById('mobile-lang-label');
+      if (label) label.textContent = `${getShortLang(lang)} ▾`;
+
+      // Update active states
+      root.querySelectorAll('[data-lang]').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
         } else {
-          document.documentElement.setAttribute('data-contrast', 'high');
-          contrastBtn.classList.add('active');
-          localStorage.setItem('site_contrast', 'high');
+          btn.classList.remove('active');
         }
       });
+
+      // Close mobile lang menu
+      const mobileMenu = document.getElementById('mobile-lang-menu');
+      const mobileBtn = document.getElementById('mobile-lang-btn');
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
     }
 
-    // Restore saved contrast
-    if (localStorage.getItem('site_contrast') === 'high') {
-      document.documentElement.setAttribute('data-contrast', 'high');
-      if (contrastBtn) contrastBtn.classList.add('active');
+    // Attach Language Switcher Events (both desktop segmented buttons and mobile dropdown items)
+    root.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lang = btn.getAttribute('data-lang');
+        switchLanguage(lang);
+      });
+    });
+
+    // Mobile Language Dropdown Toggle
+    const mobileLangBtn = document.getElementById('mobile-lang-btn');
+    const mobileLangMenu = document.getElementById('mobile-lang-menu');
+    if (mobileLangBtn && mobileLangMenu) {
+      mobileLangBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileLangMenu.classList.toggle('open');
+        mobileLangBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
     }
 
     // Mobile Navigation Toggle
     const toggle = document.getElementById('mobile-nav-toggle');
     const menu = document.getElementById('primary-nav-menu');
     if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        menu.classList.toggle('open');
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close menu when a link inside is clicked
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
       });
     }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileLangMenu && mobileLangMenu.classList.contains('open')) {
+        if (!mobileLangMenu.contains(e.target) && e.target !== mobileLangBtn && !mobileLangBtn.contains(e.target)) {
+          mobileLangMenu.classList.remove('open');
+          if (mobileLangBtn) mobileLangBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+      if (menu && menu.classList.contains('open')) {
+        if (!menu.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+          menu.classList.remove('open');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
 
     if (window.i18n && window.i18n.translatePage) {
       window.i18n.translatePage();

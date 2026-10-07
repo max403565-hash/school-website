@@ -83,7 +83,7 @@
     <div class="principal-section">
       <div class="principal-grid">
         <div class="principal-img-box">
-          <img src="images/principal.jpg" alt="Principal" class="principal-photo" id="principal-photo" />
+          <img src="images/principal.jpg" alt="Principal" class="principal-photo" id="principal-photo" loading="lazy" width="180" height="180" />
           <h3 class="principal-name" id="principal-name">කේ. එම්. සුනිල් ශාන්ත මහතා</h3>
           <p class="principal-role" id="principal-role">විදුහල්පති (SLEAS)</p>
         </div>
@@ -232,6 +232,57 @@
           </div>
         `).join('');
 
+        // Dots container
+        let dotsContainer = document.getElementById('carousel-dots');
+        const carouselEl = document.getElementById('hero-carousel');
+        if (!dotsContainer && carouselEl) {
+          dotsContainer = document.createElement('div');
+          dotsContainer.id = 'carousel-dots';
+          dotsContainer.className = 'carousel-dots';
+          carouselEl.appendChild(dotsContainer);
+        }
+        if (dotsContainer) {
+          dotsContainer.innerHTML = slides.map((_, i) => `
+            <button type="button" class="carousel-dot ${i === 0 ? 'active' : ''}" data-dot="${i}" aria-label="Slide ${i + 1}"></button>
+          `).join('');
+          dotsContainer.querySelectorAll('.carousel-dot').forEach(btn => {
+            btn.onclick = () => {
+              const idx = parseInt(btn.getAttribute('data-dot'), 10);
+              showSlide(idx, slides.length);
+              resetTimer(slides.length);
+            };
+          });
+        }
+
+        // Touch swipe support (touch-action: pan-y)
+        if (carouselEl && !carouselEl.__hasSwipe) {
+          carouselEl.__hasSwipe = true;
+          let touchStartX = 0;
+          let touchStartY = 0;
+          carouselEl.addEventListener('touchstart', (e) => {
+            if (e.changedTouches && e.changedTouches[0]) {
+              touchStartX = e.changedTouches[0].clientX;
+              touchStartY = e.changedTouches[0].clientY;
+            }
+          }, { passive: true });
+          carouselEl.addEventListener('touchend', (e) => {
+            if (e.changedTouches && e.changedTouches[0]) {
+              const touchEndX = e.changedTouches[0].clientX;
+              const touchEndY = e.changedTouches[0].clientY;
+              const diffX = touchEndX - touchStartX;
+              const diffY = touchEndY - touchStartY;
+              if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                if (diffX < 0) {
+                  showSlide(carouselIndex + 1, slides.length);
+                } else {
+                  showSlide(carouselIndex - 1, slides.length);
+                }
+                resetTimer(slides.length);
+              }
+            }
+          }, { passive: true });
+        }
+
         carouselIndex = 0;
         startCarousel(slides.length);
       }
@@ -241,7 +292,15 @@
         if (!slides.length) return;
         slides.forEach(s => s.classList.remove('active'));
         carouselIndex = (index + total) % total;
-        slides[carouselIndex].classList.add('active');
+        if (slides[carouselIndex]) {
+          slides[carouselIndex].classList.add('active');
+        }
+
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((d, i) => {
+          if (i === carouselIndex) d.classList.add('active');
+          else d.classList.remove('active');
+        });
       }
 
       function startCarousel(total) {

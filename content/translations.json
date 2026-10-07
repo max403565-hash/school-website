@@ -18,6 +18,11 @@
       "en": "Pelwatta, Monaragala, Sri Lanka"
     }
   },
+  "nationalSchoolNotice": {
+    "si": "ජාතික පාසලක් ලෙස නම් කර ඇත (නිල ගැසට් පත්‍රය නිකුත්වීමට යටත්ව පවතින තත්ත්වයකි)",
+    "ta": "தேசியப் பள்ளியாக பெயரிடப்பட்டுள்ளது (உத்தியோகபூர்வ வர்த்தமானி வெளியீட்டிற்கு உட்பட்டது)",
+    "en": "Designated as a National School (status pending formal gazette confirmation)"
+  },
   "school": {
     "name": {
       "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය",
