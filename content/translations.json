@@ -94,6 +94,33 @@
       "en": "Explore"
     }
   },
+  "facebook": {
+    "badge": {
+      "si": "නිල Facebook පිටුව",
+      "ta": "உத்தியோகபூர்வ Facebook பக்கம்",
+      "en": "Official Facebook Page"
+    },
+    "title": {
+      "si": "නවතම ෆේස්බුක් තොරතුරු සහ ඡායාරූප",
+      "ta": "சமீபத்திய Facebook பதிவுகள் மற்றும் புகைப்படங்கள்",
+      "en": "Latest Updates from Facebook"
+    },
+    "desc": {
+      "si": "පාසලේ දෛනික ක්‍රියාකාරකම්, විශේෂ උත්සව සහ ඡායාරූප නැරඹීමට අපගේ නිල Facebook පිටුව සමඟ සම්බන්ධ වන්න.",
+      "ta": "பாடசாலையின் அன்றாட நடவடிக்கைகள், விசேட நிகழ்வுகள் மற்றும் புகைப்படங்களைக் காண எமது உத்தியோகபூர்வ Facebook பக்கத்துடன் இணையுங்கள்.",
+      "en": "Stay connected with our campus life, recent achievements, event photos, and community updates on our official Facebook page."
+    },
+    "button": {
+      "si": "අපගේ Facebook පිටුවට පිවිසෙන්න",
+      "ta": "எமது Facebook பக்கத்தைப் பார்வையிடவும்",
+      "en": "Visit our Facebook page"
+    },
+    "fallbackText": {
+      "si": "Facebook පුවත් පූරණය නොවන්නේ නම් හෝ අවහිර කර ඇත්නම් පහත බොත්තම මගින් සෘජුව පිවිසෙන්න.",
+      "ta": "Facebook பதிவுகள் ஏற்றப்படாவிட்டால் அல்லது தடுக்கப்பட்டிருந்தால் கீழேயுள்ள பொத்தானை அழுத்தவும்.",
+      "en": "If the Facebook feed does not display or is blocked by your browser, visit our page directly."
+    }
+  },
   "a11y": {
     "label": {
       "si": "ප්‍රවේශ්‍යතා මෙවලම්",

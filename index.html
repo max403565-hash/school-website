@@ -117,6 +117,35 @@
     <div class="news-grid" id="latest-news-container"></div>
   </section>
 
+  <!-- School Facebook Updates Section -->
+  <section class="container" style="padding-top: 1rem; padding-bottom: 4rem;">
+    <div class="facebook-feed-section">
+      <div class="facebook-feed-layout">
+        <div class="facebook-feed-info">
+          <span class="facebook-feed-badge" id="fb-badge">
+            <span>📘</span> <span id="fb-badge-text" data-i18n="facebook.badge">නිල Facebook පිටුව</span>
+          </span>
+          <h2 class="facebook-feed-title" id="fb-title" data-i18n="facebook.title">නවතම ෆේස්බුක් තොරතුරු සහ ඡායාරූප</h2>
+          <p class="facebook-feed-desc" id="fb-desc" data-i18n="facebook.desc">පාසලේ දෛනික ක්‍රියාකාරකම්, විශේෂ උත්සව සහ ඡායාරූප නැරඹීමට අපගේ නිල Facebook පිටුව සමඟ සම්බන්ධ වන්න.</p>
+          <div>
+            <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener noreferrer" class="facebook-btn" id="fb-action-btn">
+              <span>🌐</span> <span id="fb-action-btn-text" data-i18n="facebook.button">අපගේ Facebook පිටුවට පිවිසෙන්න</span> &rarr;
+            </a>
+          </div>
+        </div>
+        <div class="facebook-container" id="fb-feed-container">
+          <div class="facebook-placeholder" id="fb-placeholder">
+            <div class="facebook-placeholder-icon">f</div>
+            <p class="facebook-placeholder-text" id="fb-placeholder-text" data-i18n="facebook.fallbackText">Facebook පුවත් පූරණය නොවන්නේ නම් හෝ අවහිර කර ඇත්නම් පහත බොත්තම මගින් සෘජුව පිවිසෙන්න.</p>
+            <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener noreferrer" class="facebook-btn" id="fb-fallback-btn">
+              <span id="fb-fallback-btn-text" data-i18n="facebook.button">අපගේ Facebook පිටුවට පිවිසෙන්න</span> &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer Root -->
   <div id="site-footer-root"></div>
 
@@ -125,6 +154,13 @@
   <script src="js/common.js"></script>
   <script>
     (function () {
+      // =============================================================================
+      // SCHOOL FACEBOOK PAGE CONFIGURATION
+      // Replace this placeholder URL with your school's official Facebook page URL.
+      // Example: "https://www.facebook.com/pelwattacollege"
+      // =============================================================================
+      const FACEBOOK_PAGE_URL = "https://www.facebook.com/YOUR_PAGE";
+
       let homeData = null;
       let newsIndexData = null;
       let carouselIndex = 0;
@@ -215,6 +251,72 @@
             </article>
           `;
           }).join('');
+        }
+
+        // Facebook section translations
+        const fbBadge = document.getElementById('fb-badge-text');
+        const fbTitle = document.getElementById('fb-title');
+        const fbDesc = document.getElementById('fb-desc');
+        const fbActionBtn = document.getElementById('fb-action-btn-text');
+        const fbPlaceholderText = document.getElementById('fb-placeholder-text');
+        const fbFallbackBtn = document.getElementById('fb-fallback-btn-text');
+
+        if (fbBadge) fbBadge.textContent = lang === 'en' ? 'Official Facebook Page' : (lang === 'ta' ? 'உத்தியோகபூர்வ Facebook பக்கம்' : 'නිල Facebook පිටුව');
+        if (fbTitle) fbTitle.textContent = lang === 'en' ? 'Latest Updates from Facebook' : (lang === 'ta' ? 'சமீபத்திய Facebook பதிவுகள் மற்றும் புகைப்படங்கள்' : 'නවතම ෆේස්බුක් තොරතුරු සහ ඡායාරූප');
+        if (fbDesc) fbDesc.textContent = lang === 'en' ? 'Stay connected with our campus life, recent achievements, event photos, and community updates on our official Facebook page.' : (lang === 'ta' ? 'பாடசாலையின் அன்றாட நடவடிக்கைகள், விசேட நிகழ்வுகள் மற்றும் புகைப்படங்களைக் காண எமது உத்தியோகபூர்வ Facebook பக்கத்துடன் இணையுங்கள்.' : 'පාසලේ දෛනික ක්‍රියාකාරකම්, විශේෂ උත්සව සහ ඡායාරූප නැරඹීමට අපගේ නිල Facebook පිටුව සමඟ සම්බන්ධ වන්න.');
+        if (fbActionBtn) fbActionBtn.textContent = lang === 'en' ? 'Visit our Facebook page' : (lang === 'ta' ? 'எமது Facebook பக்கத்தைப் பார்வையிடவும்' : 'අපගේ Facebook පිටුවට පිවිසෙන්න');
+        if (fbPlaceholderText) fbPlaceholderText.textContent = lang === 'en' ? 'If the Facebook feed does not display or is blocked by your browser, visit our page directly.' : (lang === 'ta' ? 'Facebook பதிவுகள் ஏற்றப்படாவிட்டால் அல்லது தடுக்கப்பட்டிருந்தால் கீழேயுள்ள பொத்தானை அழுத்தவும்.' : 'Facebook පුවත් පූරණය නොවන්නේ නම් හෝ අවහිර කර ඇත්නම් පහත බොත්තම මගින් සෘජුව පිවිසෙන්න.');
+        if (fbFallbackBtn) fbFallbackBtn.textContent = lang === 'en' ? 'Visit our Facebook page' : (lang === 'ta' ? 'எமது Facebook பக்கத்தைப் பார்வையிடவும்' : 'අපගේ Facebook පිටුවට පිවිසෙන්න');
+
+        initFacebookFeed();
+      }
+
+      let fbInitialized = false;
+      function initFacebookFeed() {
+        const container = document.getElementById('fb-feed-container');
+        if (!container) return;
+
+        const actionBtn = document.getElementById('fb-action-btn');
+        const fallbackBtn = document.getElementById('fb-fallback-btn');
+        if (actionBtn) actionBtn.href = FACEBOOK_PAGE_URL;
+        if (fallbackBtn) fallbackBtn.href = FACEBOOK_PAGE_URL;
+
+        if (fbInitialized) return;
+        fbInitialized = true;
+
+        function loadIframe() {
+          if (container.querySelector('iframe')) return;
+          const iframe = document.createElement('iframe');
+          iframe.className = 'facebook-iframe';
+          iframe.title = 'Official School Facebook Page Stream';
+          iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
+          iframe.setAttribute('loading', 'lazy');
+
+          const encodedUrl = encodeURIComponent(FACEBOOK_PAGE_URL);
+          iframe.src = `https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
+
+          iframe.onload = () => {
+            const placeholder = document.getElementById('fb-placeholder');
+            if (placeholder) {
+              placeholder.style.display = 'none';
+            }
+          };
+
+          container.appendChild(iframe);
+        }
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                loadIframe();
+                observer.disconnect();
+              }
+            });
+          }, { rootMargin: '200px 0px' });
+          observer.observe(container);
+        } else {
+          loadIframe();
         }
       }
 

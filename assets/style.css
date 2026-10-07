@@ -499,3 +499,157 @@ footer.site-footer{background:var(--maroon-dark); color:#f1f5f9; margin-top:36px
 .social-row a{background:rgba(255,255,255,.1); border-radius:50%; width:34px; height:34px; display:flex; align-items:center; justify-content:center}
 
 .lang-embed{border:1px dashed var(--border); border-radius:8px; padding:14px; background:#fbfbfb; font-size:.85rem; color:var(--muted)}
+
+/* Facebook Page Plugin Section */
+.facebook-feed-section {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  margin: 36px 0;
+}
+@media (max-width: 768px) {
+  .facebook-feed-section {
+    padding: 20px 14px;
+    margin: 24px 0;
+  }
+}
+.facebook-feed-layout {
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 28px;
+  align-items: center;
+}
+@media (max-width: 991px) {
+  .facebook-feed-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+.facebook-feed-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.facebook-feed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #1877f2;
+  background: #e7f3ff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid rgba(24, 119, 242, 0.2);
+}
+.facebook-feed-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--maroon);
+  line-height: 1.3;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .facebook-feed-title {
+    font-size: 1.35rem;
+  }
+}
+.facebook-feed-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.facebook-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1877f2;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.25);
+  transition: var(--transition);
+  text-decoration: none;
+}
+.facebook-btn:hover {
+  background: #1464cc;
+  transform: translateY(-2px);
+}
+@media (max-width: 640px) {
+  .facebook-btn {
+    width: 100%;
+  }
+}
+.facebook-container {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.facebook-iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 500px;
+  border: none;
+  overflow: hidden;
+  display: block;
+  z-index: 2;
+  position: relative;
+  background: transparent;
+}
+.facebook-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: var(--bg);
+  z-index: 1;
+  box-sizing: border-box;
+}
+.facebook-placeholder-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #1877f2;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3);
+}
+.facebook-placeholder-text {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.55;
+  max-width: 340px;
+}
