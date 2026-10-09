@@ -1,0 +1,134 @@
+[
+  {
+    "id": "home",
+    "href": "index.html",
+    "label": {
+      "si": "මුල් පිටුව",
+      "ta": "முகப்பு",
+      "en": "Home"
+    },
+    "visible": true
+  },
+  {
+    "id": "about",
+    "href": "about.html",
+    "label": {
+      "si": "පාසල පිළිබඳව",
+      "ta": "எங்களைப் பற்றி",
+      "en": "About Us"
+    },
+    "visible": true
+  },
+  {
+    "id": "academic",
+    "href": "academic.html",
+    "label": {
+      "si": "අධ්‍යයන",
+      "ta": "கல்வி",
+      "en": "Academics"
+    },
+    "visible": true
+  },
+  {
+    "id": "student-life",
+    "href": "student-life.html",
+    "label": {
+      "si": "ශිෂ්‍ය ජීවිතය",
+      "ta": "மாணவர் வாழ்க்கை",
+      "en": "Student Life"
+    },
+    "visible": true
+  },
+  {
+    "id": "media",
+    "label": {
+      "si": "මාධ්‍ය සහ පුවත්",
+      "ta": "ஊடகம்",
+      "en": "Media"
+    },
+    "visible": true,
+    "children": [
+      {
+        "id": "news",
+        "href": "news.html",
+        "label": {
+          "si": "පුවත් සහ සිදුවීම්",
+          "ta": "செய்திகள்",
+          "en": "News & Events"
+        },
+        "visible": true
+      },
+      {
+        "id": "notices",
+        "href": "notices.html",
+        "label": {
+          "si": "නිවේදන",
+          "ta": "அறிவிப்புகள்",
+          "en": "Notices"
+        },
+        "visible": true
+      },
+      {
+        "id": "gallery",
+        "href": "gallery.html",
+        "label": {
+          "si": "ඡායාරූප ගැලරිය",
+          "ta": "படத்தொகுப்பு",
+          "en": "Photo Gallery"
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "admissions",
+    "href": "admissions.html",
+    "label": {
+      "si": "ඇතුළත් වීම්",
+      "ta": "சேர்க்கை",
+      "en": "Admissions"
+    },
+    "visible": true
+  },
+  {
+    "id": "contact",
+    "href": "contact.html",
+    "label": {
+      "si": "සම්බන්ධ වන්න",
+      "ta": "தொடர்பு",
+      "en": "Contact Us"
+    },
+    "visible": true
+  },
+  {
+    "id": "more",
+    "label": {
+      "si": "තවත්",
+      "ta": "மேலும்",
+      "en": "More"
+    },
+    "visible": true,
+    "children": [
+      {
+        "id": "downloads",
+        "href": "downloads.html",
+        "label": {
+          "si": "බාගත කිරීම් (PDF)",
+          "ta": "பதிவிறக்கங்கள்",
+          "en": "Downloads"
+        },
+        "visible": true
+      },
+      {
+        "id": "sds",
+        "href": "sds-parents.html",
+        "label": {
+          "si": "සංවර්ධන සමිතිය",
+          "ta": "அபிவிருத்தி சங்கம்",
+          "en": "SDS & Parents"
+        },
+        "visible": true
+      }
+    ]
+  }
+]

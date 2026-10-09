@@ -27,6 +27,9 @@
   <!-- Header Root -->
   <div id="site-header-root"></div>
 
+  <!-- Urgent Notice Banner Root (Slim dismissible banner shown only while unexpired) -->
+  <div id="urgent-notice-banner-root"></div>
+
   <!-- Hero Section -->
   <section class="hero-section" aria-label="Hero Overview">
     <div class="container hero-grid">
@@ -117,6 +120,24 @@
     <div class="news-grid" id="latest-news-container"></div>
   </section>
 
+  <!-- Upcoming School Events Card Section (Next 3 events) -->
+  <section class="container" style="padding-top: 0.5rem; padding-bottom: 2.5rem;">
+    <div class="events-card" id="home-events-card">
+      <div class="events-card-header">
+        <h2 class="events-card-title">
+          <span>📅</span>
+          <span id="events-card-title-text">ඉදිරි සිදුවීම්</span>
+        </h2>
+        <a href="notices.html" class="btn-secondary" style="font-size:0.875rem; padding:6px 14px; text-decoration:none;">
+          <span id="events-card-view-all">සියලුම සිදුවීම් සහ නිවේදන</span> &rarr;
+        </a>
+      </div>
+      <div class="events-list" id="home-events-list">
+        <div class="muted">සිදුවීම් පූරණය වෙමින් පවතී...</div>
+      </div>
+    </div>
+  </section>
+
   <!-- School Facebook Updates Section -->
   <section class="container" style="padding-top: 1rem; padding-bottom: 4rem;">
     <div class="facebook-feed-section">
@@ -163,6 +184,8 @@
 
       let homeData = null;
       let newsIndexData = null;
+      let noticesData = null;
+      let eventsData = null;
       let carouselIndex = 0;
       let carouselTimer = null;
 
@@ -181,16 +204,119 @@
             homeData = await hRes.json();
             newsIndexData = await nRes.json();
           }
-          renderContent();
         } catch (e) {
           console.error("Failed to load home page content:", e);
         }
+
+        try {
+          const [nRes, eRes] = await Promise.all([
+            fetch('content/notices.json?_v=1.0'),
+            fetch('content/events.json?_v=1.0')
+          ]);
+          if (nRes.ok) noticesData = await nRes.json();
+          if (eRes.ok) eventsData = await eRes.json();
+        } catch (e) {
+          console.warn("Failed to load notices/events:", e);
+        }
+
+        renderContent();
       }
 
       function renderContent() {
         if (!homeData) return;
         const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const pick = window.i18n ? window.i18n.pickLang : (o => (o && o[lang]) || '');
+        const todayStr = new Date().toISOString().slice(0, 10);
+
+        // Render Urgent Notice Banner
+        const bannerRoot = document.getElementById('urgent-notice-banner-root');
+        if (bannerRoot) {
+          const urgentNotice = (noticesData || []).find(n => {
+            if (!n.urgent) return false;
+            if (n.expiry && n.expiry < todayStr) return false;
+            if (sessionStorage.getItem('dismissed_urgent_' + n.id)) return false;
+            return true;
+          });
+
+          if (urgentNotice) {
+            const uTitle = pick(urgentNotice.title, lang);
+            const uBadgeText = lang === 'en' ? 'URGENT' : (lang === 'ta' ? 'அவசர அறிவிப்பு' : 'හදිසි නිවේදනයකි');
+            const uLinkText = lang === 'en' ? 'View details' : (lang === 'ta' ? 'விபரங்கள்' : 'විස්තර බලන්න');
+            bannerRoot.innerHTML = `
+              <aside class="urgent-notice-banner" role="alert" id="urgent-notice-banner-elem">
+                <div class="urgent-notice-inner">
+                  <div class="urgent-notice-content">
+                    <span class="urgent-notice-badge">⚡ ${uBadgeText}</span>
+                    <span class="urgent-notice-text">
+                      ${uTitle}
+                      <a href="notices.html">${uLinkText} &rarr;</a>
+                    </span>
+                  </div>
+                  <button type="button" class="urgent-notice-dismiss" id="urgent-notice-dismiss-btn" aria-label="Dismiss urgent notice">&times;</button>
+                </div>
+              </aside>
+            `;
+            const dismissBtn = document.getElementById('urgent-notice-dismiss-btn');
+            if (dismissBtn) {
+              dismissBtn.onclick = () => {
+                sessionStorage.setItem('dismissed_urgent_' + urgentNotice.id, '1');
+                const bannerEl = document.getElementById('urgent-notice-banner-elem');
+                if (bannerEl) bannerEl.remove();
+              };
+            }
+          } else {
+            bannerRoot.innerHTML = '';
+          }
+        }
+
+        // Render Upcoming Events Card (next 3)
+        const eventsListEl = document.getElementById('home-events-list');
+        const eventsTitleText = document.getElementById('events-card-title-text');
+        const eventsViewAll = document.getElementById('events-card-view-all');
+
+        if (eventsTitleText) eventsTitleText.textContent = lang === 'en' ? 'Upcoming Events' : (lang === 'ta' ? 'வரவிருக்கும் நிகழ்வுகள்' : 'ඉදිරි සිදුවීම්');
+        if (eventsViewAll) eventsViewAll.textContent = lang === 'en' ? 'All Events & Notices' : (lang === 'ta' ? 'அனைத்து நிகழ்வுகள் & அறிவிப்புகள்' : 'සියලුම සිදුවීම් සහ නිවේදන');
+
+        if (eventsListEl) {
+          const upcoming = (eventsData || [])
+            .filter(ev => ev.date >= todayStr)
+            .sort((a, b) => a.date.localeCompare(b.date))
+            .slice(0, 3);
+
+          if (!upcoming.length) {
+            eventsListEl.innerHTML = `<div class="muted" style="padding:0.75rem 0;">${lang === 'en' ? 'No upcoming events scheduled at this moment.' : (lang === 'ta' ? 'வரவிருக்கும் நிகழ்வுகள் எதுவும் தற்போது திட்டமிடப்படவில்லை.' : 'ඉදිරියට සැලසුම් කළ සිදුවීම් කිසිවක් දැනට නොමැත.')}</div>`;
+          } else {
+            const MONTH_NAMES = {
+              si: ['ජන', 'පෙබ', 'මාර්තු', 'අප්‍රේල්', 'මැයි', 'ජූනි', 'ජූලි', 'අගෝ', 'සැප්', 'ඔක්', 'නොවැ', 'දෙසැ'],
+              ta: ['ஜன', 'பிப்', 'மார்ச்', 'ஏப்', 'மே', 'ஜூன்', 'ஜூலை', 'ஆக', 'செப்', 'அக்', 'நவ', 'டிச'],
+              en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+            };
+
+            eventsListEl.innerHTML = upcoming.map(ev => {
+              const parts = (ev.date || '').split('-');
+              const year = parts[0] || '';
+              const mIdx = Math.max(0, parseInt(parts[1], 10) - 1);
+              const day = parseInt(parts[2], 10) || '';
+              const mName = (MONTH_NAMES[lang] && MONTH_NAMES[lang][mIdx]) || MONTH_NAMES.si[mIdx] || '';
+              const eTitle = pick(ev.title, lang);
+              const ePlace = pick(ev.place, lang);
+
+              return `
+                <div class="event-item">
+                  <div class="event-date-badge">
+                    <span class="event-date-month">${mName}</span>
+                    <span class="event-date-day">${day}</span>
+                    <span class="event-date-year">${year}</span>
+                  </div>
+                  <div class="event-details">
+                    <h3 class="event-title">${eTitle}</h3>
+                    <p class="event-place"><span>📍</span> <span>${ePlace}</span></p>
+                  </div>
+                </div>
+              `;
+            }).join('');
+          }
+        }
 
         // Hero texts
         document.getElementById('hero-badge').textContent = pick(homeData.heroBadge, lang);
@@ -427,6 +553,7 @@
       if (window.i18n && window.i18n.onLanguageChange) {
         window.i18n.onLanguageChange(renderContent);
       }
+      window.addEventListener('langchange', renderContent);
 
       loadData();
     })();

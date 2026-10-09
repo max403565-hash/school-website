@@ -56,7 +56,7 @@ function applyFilters(page){
 }
 
 function renderBody(page, common){
-  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.gallery)}`;
+  document.getElementById('breadcrumb').innerHTML = `<a href="index.html">${t(common.nav.home)}</a> / <span>${t(common.nav.gallery)}</span>`;
   document.getElementById('page-title').textContent = t(common.nav.gallery);
   document.getElementById('page-intro').textContent = t(page.intro);
   document.getElementById('search-box').placeholder = t(page.searchPlaceholder);

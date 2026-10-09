@@ -38,7 +38,7 @@
 <script>
 function renderBody(page, common){
   const lang = getLang();
-  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.academic)}`;
+  document.getElementById('breadcrumb').innerHTML = `<a href="index.html">${t(common.nav.home)}</a> / <span>${t(common.nav.academic)}</span>`;
   document.getElementById('page-title').textContent = t(common.nav.academic);
   document.getElementById('page-intro').textContent = t(page.intro);
 

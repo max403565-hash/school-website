@@ -1,0 +1,562 @@
+<!-- Website developed by [S.A.Chanuk Mithuja ] -->
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notices & Events Calendar | මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</title>
+  <meta name="description" content="Official notice board and upcoming events calendar for Mo/Pelwatta Navodya Secondary College, Monaragala. Real-time circulars, examination notices, and term events." />
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Notice Board & Events Calendar - Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="Official notices, urgent announcements, and events calendar for Mo/Pelwatta Navodya Secondary College." />
+  <meta property="og:image" content="images/campus-hero.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Notice Board & Events Calendar - Mo/Pelwatta Navodya Secondary College" />
+  <meta name="twitter:description" content="Official notices, urgent announcements, and events calendar for Mo/Pelwatta Navodya Secondary College." />
+  <meta name="twitter:image" content="images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .notices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .notice-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .notice-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+    .notice-card.is-urgent {
+      border-top: 4px solid #b91c1c;
+      background: linear-gradient(180deg, #fffcfc 0%, #ffffff 100%);
+    }
+    .notice-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .notice-badge-urgent {
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .notice-badge-general {
+      background: #f1f5f9;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .notice-badge-expired {
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .notice-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 0.75rem;
+      line-height: 1.35;
+    }
+    .notice-body {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--text-main);
+      margin: 0;
+      flex: 1 1 auto;
+    }
+    .notice-expiry-info {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.8125rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .calendar-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .calendar-event-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      align-items: center;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .calendar-event-row:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+    }
+    .calendar-date-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #ffffff;
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .calendar-date-month {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+    .calendar-date-day {
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 1;
+      margin: 2px 0;
+    }
+    .calendar-date-year {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+    .calendar-event-content h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 0.5rem;
+    }
+    .calendar-event-venue {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+    }
+    .past-events-toggle-box {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .calendar-event-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .calendar-date-card {
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        justify-content: flex-start;
+      }
+      .calendar-date-day {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Page Breadcrumb & Hero -->
+  <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav.home">මුල් පිටුව</a> &rsaquo;
+      <span id="bc-title">නිවේදන සහ සිදුවීම්</span>
+    </div>
+
+    <div class="page-hero">
+      <span class="section-badge" id="hero-badge-text">නිල පාසල් නිවේදන පුවරුව</span>
+      <h1 id="page-main-heading">විද්‍යාලයීය නිවේදන සහ ඉදිරි සිදුවීම් දින දර්ශනය</h1>
+      <p id="page-main-subtext">
+        මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ සියලුම හදිසි දැනුම්දීම්, අමාත්‍යාංශ චක්‍රලේඛ, විභාග තොරතුරු සහ ඉදිරි පාසල් සිදුවීම් මෙහි දැක්වේ.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 1: Notice Board -->
+  <section class="container" style="padding-bottom: 3.5rem;">
+    <div class="section-header" style="text-align: left; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="section-badge" id="notices-section-badge">📢 නිල නිවේදන</span>
+        <h2 class="section-title" id="notices-section-title" style="margin-bottom: 0;">පාසල් නිවේදන පුවරුව</h2>
+      </div>
+    </div>
+
+    <div id="notices-list-container" class="notices-grid">
+      <div class="muted">නිවේදන පූරණය වෙමින් පවතී (Loading notices)...</div>
+    </div>
+  </section>
+
+  <!-- Section 2: Events Calendar -->
+  <section class="container" style="padding-bottom: 4rem;">
+    <div class="section-header" style="text-align: left;">
+      <span class="section-badge" id="events-section-badge">📅 ඉදිරි වැඩසටහන්</span>
+      <h2 class="section-title" id="events-section-title" style="margin-bottom: 0.25rem;">ඉදිරි සිදුවීම් දින දර්ශනය</h2>
+      <p class="section-subtitle" id="events-section-subtext" style="margin-top: 0.25rem;">
+        අධ්‍යයන, ක්‍රීඩා, සමිති සමාගම් හා සංස්කෘතික ඉදිරි වැඩසටහන් (පසුගිය සිදුවීම් ස්වයංක්‍රීයව සඟවා ඇත).
+      </p>
+    </div>
+
+    <div id="events-list-container" class="calendar-timeline">
+      <div class="muted">සිදුවීම් දින දර්ශනය පූරණය වෙමින් පවතී (Loading events)...</div>
+    </div>
+
+    <!-- Collapsible Past Events Archive -->
+    <div class="past-events-toggle-box" id="past-events-box" style="display: none;">
+      <button type="button" class="btn-secondary" id="past-events-toggle" style="font-size: 0.875rem;">
+        <span id="past-events-toggle-label">පසුගිය සිදුවීම් බලන්න (View Past Events)</span> ▼
+      </button>
+      <div id="past-events-container" class="calendar-timeline" style="display: none; margin-top: 1.5rem; text-align: left;"></div>
+    </div>
+  </section>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let allNotices = [];
+      let allEvents = [];
+
+      const STRINGS = {
+        si: {
+          bcTitle: "නිවේදන සහ සිදුවීම්",
+          heroBadge: "නිල පාසල් නිවේදන පුවරුව",
+          mainHeading: "විද්‍යාලයීය නිවේදන සහ ඉදිරි සිදුවීම් දින දර්ශනය",
+          mainSubtext: "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලයේ සියලුම හදිසි දැනුම්දීම්, අමාත්‍යාංශ චක්‍රලේඛ, විභාග තොරතුරු සහ ඉදිරි පාසල් සිදුවීම් මෙහි දැක්වේ.",
+          noticesBadge: "📢 නිල නිවේදන",
+          noticesTitle: "පාසල් නිවේදන පුවරුව",
+          eventsBadge: "📅 ඉදිරි වැඩසටහන්",
+          eventsTitle: "ඉදිරි සිදුවීම් දින දර්ශනය",
+          eventsSubtext: "අධ්‍යයන, ක්‍රීඩා, සමිති සමාගම් හා සංස්කෘතික ඉදිරි වැඩසටහන් (පසුගිය සිදුවීම් ස්වයංක්‍රීයව සඟවා ඇත).",
+          urgent: "හදිසි නිවේදනයකි",
+          general: "සාමාන්‍ය නිවේදනය",
+          postedOn: "පළ කළ දිනය:",
+          validUntil: "වලංගු කාලය:",
+          expired: "කල් ඉකුත් වී ඇත",
+          noNotices: "දැනට නිවේදන කිසිවක් නොමැත.",
+          noUpcomingEvents: "ඉදිරියට සැලසුම් කළ සිදුවීම් කිසිවක් දැනට නොමැත.",
+          venue: "ස්ථානය:",
+          showPastEvents: "පසුගිය සිදුවීම් බලන්න",
+          hidePastEvents: "පසුගිය සිදුවීම් සඟවන්න"
+        },
+        ta: {
+          bcTitle: "அறிவிப்புகள் & நிகழ்வுகள்",
+          heroBadge: "அதிகாரப்பூர்வ பள்ளி அறிவிப்புப் பலகை",
+          mainHeading: "கல்லூரி அறிவிப்புப் பலகை மற்றும் வரவிருக்கும் நிகழ்வுகள்",
+          mainSubtext: "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரியின் அவசர அறிவிப்புகள், சுற்றறிக்கைகள், பரீட்சை விபரங்கள் மற்றும் வரவிருக்கும் நிகழ்வுகள் இங்கு தரப்பட்டுள்ளன.",
+          noticesBadge: "📢 அதிகாரப்பூர்வ அறிவிப்புகள்",
+          noticesTitle: "பள்ளி அறிவிப்புப் பலகை",
+          eventsBadge: "📅 வரவிருக்கும் நிகழ்வுகள்",
+          eventsTitle: "நிகழ்வுகள் நாட்காட்டி",
+          eventsSubtext: "கல்வி, விளையாட்டு மற்றும் கலாச்சார வரவிருக்கும் நிகழ்வுகள் (கடந்த நிகழ்வுகள் தானாக மறைக்கப்பட்டுள்ளன).",
+          urgent: "அவசர அறிவிப்பு",
+          general: "பொது அறிவிப்பு",
+          postedOn: "வெளியிடப்பட்ட திகதி:",
+          validUntil: "செல்லுபடியாகும் காலம்:",
+          expired: "காலாவதியானது",
+          noNotices: "தற்போது அறிவிப்புகள் எதுவும் இல்லை.",
+          noUpcomingEvents: "வரவிருக்கும் நிகழ்வுகள் எதுவும் தற்போது திட்டமிடப்படவில்லை.",
+          venue: "இடம்:",
+          showPastEvents: "கடந்த நிகழ்வுகளைப் பார்க்கவும்",
+          hidePastEvents: "கடந்த நிகழ்வுகளை மறைக்கவும்"
+        },
+        en: {
+          bcTitle: "Notices & Events",
+          heroBadge: "Official School Notice Board",
+          mainHeading: "College Notice Board & Upcoming Events Calendar",
+          mainSubtext: "Official notices, circulars, examination information, and upcoming schedules for Mo/Pelwatta Navodya Secondary College.",
+          noticesBadge: "📢 Official Notices",
+          noticesTitle: "School Notice Board",
+          eventsBadge: "📅 Upcoming Schedules",
+          eventsTitle: "Upcoming Events Calendar",
+          eventsSubtext: "Academic, sports, and co-curricular upcoming events (past events hidden automatically).",
+          urgent: "Urgent Notice",
+          general: "General Notice",
+          postedOn: "Posted on:",
+          validUntil: "Valid until:",
+          expired: "Expired",
+          noNotices: "No notices posted at this moment.",
+          noUpcomingEvents: "No upcoming events scheduled at this moment.",
+          venue: "Venue:",
+          showPastEvents: "View past events",
+          hidePastEvents: "Hide past events"
+        }
+      };
+
+      const MONTH_NAMES = {
+        si: ['ජන', 'පෙබ', 'මාර්තු', 'අප්‍රේල්', 'මැයි', 'ජූනි', 'ජූලි', 'අගෝ', 'සැප්', 'ඔක්', 'නොවැ', 'දෙසැ'],
+        ta: ['ஜன', 'பிப்', 'மார்ச்', 'ஏப்', 'மே', 'ஜூன்', 'ஜூலை', 'ஆக', 'செப்', 'அக்', 'நவ', 'டிச'],
+        en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+      };
+
+      function getCurLang() {
+        return (window.i18n && window.i18n.getLanguage)
+          ? window.i18n.getLanguage()
+          : (localStorage.getItem('pelwatta_lang') || localStorage.getItem('site_lang') || 'si');
+      }
+
+      function pick(obj, lang) {
+        if (!obj) return '';
+        if (typeof obj === 'string') return obj;
+        return obj[lang] || obj.si || obj.en || '';
+      }
+
+      function formatDateParts(isoDate) {
+        if (!isoDate) return { day: '--', monthIdx: 0, year: '----' };
+        const parts = isoDate.split('-');
+        if (parts.length === 3) {
+          return {
+            year: parts[0],
+            monthIdx: Math.max(0, parseInt(parts[1], 10) - 1),
+            day: parseInt(parts[2], 10)
+          };
+        }
+        const d = new Date(isoDate);
+        return {
+          year: d.getFullYear(),
+          monthIdx: d.getMonth(),
+          day: d.getDate()
+        };
+      }
+
+      function renderPage() {
+        const lang = getCurLang();
+        const s = STRINGS[lang] || STRINGS.si;
+        const todayStr = new Date().toISOString().slice(0, 10);
+
+        // Update static headings
+        const bc = document.getElementById('bc-title');
+        if (bc) bc.textContent = s.bcTitle;
+        const hb = document.getElementById('hero-badge-text');
+        if (hb) hb.textContent = s.heroBadge;
+        const pmh = document.getElementById('page-main-heading');
+        if (pmh) pmh.textContent = s.mainHeading;
+        const pms = document.getElementById('page-main-subtext');
+        if (pms) pms.textContent = s.mainSubtext;
+
+        const nsb = document.getElementById('notices-section-badge');
+        if (nsb) nsb.textContent = s.noticesBadge;
+        const nst = document.getElementById('notices-section-title');
+        if (nst) nst.textContent = s.noticesTitle;
+
+        const esb = document.getElementById('events-section-badge');
+        if (esb) esb.textContent = s.eventsBadge;
+        const est = document.getElementById('events-section-title');
+        if (est) est.textContent = s.eventsTitle;
+        const ess = document.getElementById('events-section-subtext');
+        if (ess) ess.textContent = s.eventsSubtext;
+
+        // Render Notices
+        const noticesContainer = document.getElementById('notices-list-container');
+        if (noticesContainer) {
+          if (!allNotices || !allNotices.length) {
+            noticesContainer.innerHTML = `<div class="muted" style="padding:1.5rem 0;">${s.noNotices}</div>`;
+          } else {
+            noticesContainer.innerHTML = allNotices.map(n => {
+              const title = pick(n.title, lang);
+              const text = pick(n.text, lang);
+              const isUrgent = !!n.urgent;
+              const hasExpiry = !!n.expiry;
+              const isExpired = hasExpiry && (n.expiry < todayStr);
+
+              return `
+                <article class="notice-card ${isUrgent ? 'is-urgent' : ''}">
+                  <div class="notice-meta">
+                    <div>
+                      ${isUrgent ? `<span class="notice-badge-urgent">⚡ ${s.urgent}</span>` : `<span class="notice-badge-general">${s.general}</span>`}
+                      ${isExpired ? `<span class="notice-badge-expired">(${s.expired})</span>` : ''}
+                    </div>
+                    ${n.date ? `<div>${s.postedOn} <strong>${n.date}</strong></div>` : ''}
+                  </div>
+                  <h3 class="notice-title">${title}</h3>
+                  <p class="notice-body">${text}</p>
+                  ${hasExpiry ? `
+                    <div class="notice-expiry-info">
+                      <span>⏳</span>
+                      <span>${s.validUntil} <strong>${n.expiry}</strong></span>
+                    </div>
+                  ` : ''}
+                </article>
+              `;
+            }).join('');
+          }
+        }
+
+        // Filter and sort events: "sorted by date, with past events hidden automatically"
+        const upcomingEvents = (allEvents || [])
+          .filter(ev => ev.date >= todayStr)
+          .sort((a, b) => a.date.localeCompare(b.date));
+
+        const pastEvents = (allEvents || [])
+          .filter(ev => ev.date < todayStr)
+          .sort((a, b) => b.date.localeCompare(a.date));
+
+        const eventsContainer = document.getElementById('events-list-container');
+        if (eventsContainer) {
+          if (!upcomingEvents.length) {
+            eventsContainer.innerHTML = `<div class="muted" style="padding:1.5rem 0;">${s.noUpcomingEvents}</div>`;
+          } else {
+            eventsContainer.innerHTML = upcomingEvents.map(ev => {
+              const { day, monthIdx, year } = formatDateParts(ev.date);
+              const mName = (MONTH_NAMES[lang] && MONTH_NAMES[lang][monthIdx]) || MONTH_NAMES.si[monthIdx];
+              const title = pick(ev.title, lang);
+              const place = pick(ev.place, lang);
+
+              return `
+                <div class="calendar-event-row">
+                  <div class="calendar-date-card">
+                    <span class="calendar-date-month">${mName}</span>
+                    <span class="calendar-date-day">${day}</span>
+                    <span class="calendar-date-year">${year}</span>
+                  </div>
+                  <div class="calendar-event-content">
+                    <h3>${title}</h3>
+                    <p class="calendar-event-venue">
+                      <span>📍</span>
+                      <span><strong>${s.venue}</strong> ${place}</span>
+                    </p>
+                  </div>
+                </div>
+              `;
+            }).join('');
+          }
+        }
+
+        // Past events archive toggle
+        const pastBox = document.getElementById('past-events-box');
+        const pastContainer = document.getElementById('past-events-container');
+        const toggleBtn = document.getElementById('past-events-toggle');
+        const toggleLabel = document.getElementById('past-events-toggle-label');
+
+        if (pastEvents.length && pastBox) {
+          pastBox.style.display = 'block';
+          if (toggleLabel) {
+            toggleLabel.textContent = pastContainer && pastContainer.style.display === 'block' ? s.hidePastEvents : s.showPastEvents;
+          }
+          if (pastContainer) {
+            pastContainer.innerHTML = pastEvents.map(ev => {
+              const { day, monthIdx, year } = formatDateParts(ev.date);
+              const mName = (MONTH_NAMES[lang] && MONTH_NAMES[lang][monthIdx]) || MONTH_NAMES.si[monthIdx];
+              const title = pick(ev.title, lang);
+              const place = pick(ev.place, lang);
+              return `
+                <div class="calendar-event-row" style="opacity:0.85; background:#f8fafc;">
+                  <div class="calendar-date-card" style="background:#64748b;">
+                    <span class="calendar-date-month">${mName}</span>
+                    <span class="calendar-date-day">${day}</span>
+                    <span class="calendar-date-year">${year}</span>
+                  </div>
+                  <div class="calendar-event-content">
+                    <h3 style="color:#475569;">${title}</h3>
+                    <p class="calendar-event-venue">
+                      <span>📍</span>
+                      <span>${place}</span>
+                    </p>
+                  </div>
+                </div>
+              `;
+            }).join('');
+          }
+        } else if (pastBox) {
+          pastBox.style.display = 'none';
+        }
+      }
+
+      // Past events toggle event listener
+      const toggleBtn = document.getElementById('past-events-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          const pastContainer = document.getElementById('past-events-container');
+          const toggleLabel = document.getElementById('past-events-toggle-label');
+          const lang = getCurLang();
+          const s = STRINGS[lang] || STRINGS.si;
+          if (pastContainer) {
+            const isShown = pastContainer.style.display === 'block';
+            pastContainer.style.display = isShown ? 'none' : 'block';
+            if (toggleLabel) {
+              toggleLabel.textContent = isShown ? s.showPastEvents : s.hidePastEvents;
+            }
+          }
+        });
+      }
+
+      async function loadData() {
+        try {
+          const resN = await fetch('content/notices.json?_v=1.0');
+          if (resN.ok) allNotices = await resN.json();
+        } catch (e) {
+          console.warn('Failed to load notices:', e);
+        }
+
+        try {
+          const resE = await fetch('content/events.json?_v=1.0');
+          if (resE.ok) allEvents = await resE.json();
+        } catch (e) {
+          console.warn('Failed to load events:', e);
+        }
+
+        renderPage();
+      }
+
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(() => renderPage());
+      }
+      window.addEventListener('langchange', () => renderPage());
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadData);
+      } else {
+        loadData();
+      }
+    })();
+  </script>
+</body>
+</html>

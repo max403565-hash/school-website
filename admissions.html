@@ -1,307 +1,298 @@
-<!--
-  =============================================================================
-  MO/PELWATTA NAVODYA SECONDARY COLLEGE — ADMISSIONS APPLICATION SETUP GUIDE
-  =============================================================================
-  School staff must complete these one-time manual steps to connect this form:
-
-  (a) CREATE A GOOGLE FORM:
-      Go to forms.google.com and create a new Google Form titled "Student Admissions".
-      Add questions matching these exact fields:
-      1. Student's Full Name (Short answer)
-      2. Date of Birth (Date or Short answer)
-      3. Gender (Multiple choice or Short answer: M / F)
-      4. Grade Applying For (Short answer)
-      5. Parent / Guardian Name (Short answer)
-      6. Phone Number (Short answer)
-      7. Email Address (Short answer)
-      8. Permanent Address (Paragraph)
-      9. Reference Number (Short answer, optional)
-
-  (b) GET EACH FIELD'S ENTRY ID VIA "Get pre-filled link":
-      In your Google Form editor, click the three dots icon (top-right) -> "Get pre-filled link".
-      Type sample test data into each field, then click "Get link" at the bottom -> click "Copy link".
-
-  (c) PASTE THOSE IDs INTO THE PLACEHOLDERS IN THIS FILE:
-      Open the copied link in a text editor:
-      - The Form ID is the long string between "/d/e/" and "/viewform".
-      - Each field's parameter starts with "entry.XXXXXXXXXX=".
-      Update the placeholder constants in the <script> below:
-      - GOOGLE_FORM_ID = "YOUR_REAL_FORM_ID"
-      - GOOGLE_FORM_ENTRIES.studentName = "entry.XXXXXXXXXX"
-      - ... (match each field's entry ID).
-
-  (d) PUBLISH CONNECTED GOOGLE SHEET TO WEB & PASTE INTO ADMIN PANEL:
-      In your Google Form, open the "Responses" tab and click "Link to Sheets".
-      In the connected Google Sheet:
-      Click File -> Share -> "Publish to web".
-      Under "Link", select "Entire Document" (or "Form Responses 1") and choose "Comma-separated values (.csv)".
-      Click "Publish" and copy that CSV link.
-      Open the admin panel (/xk92m-manage/index.html) -> click the "Applications" tab,
-      paste the CSV link into the setting field, and click "Save Link".
-  =============================================================================
--->
+<!-- Website developed by [S.A.Chanuk Mithuja ] -->
 <!DOCTYPE html>
-<html lang="si">
+<html lang="si" class="lang-si">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admissions — Mo/Pelwatta Navodya Secondary College</title>
-<link rel="icon" href="images/crest.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ඇතුළත් වීම් — මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</title>
+  <meta name="description" content="Student admissions guidance and online application registration for Mo/Pelwatta Navodya Secondary College, Monaragala.">
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header"></div>
-<main id="main">
-  <div class="container breadcrumb" id="breadcrumb"></div>
-  <div class="container page-hero">
-    <h1 id="page-title"></h1>
-    <p id="page-intro"></p>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <section class="container">
-    <div class="notice-box" id="free-notice"></div>
-    <div class="notice-box warn" id="admin-tool-notice"></div>
-  </section>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
 
-  <section class="section container" id="form-section">
-    <div id="form-embed-area"></div>
-  </section>
+  <main id="main">
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb-nav">
+        <a href="index.html" id="bc-home-link" data-i18n="nav.home">මුල් පිටුව</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current" data-i18n="nav.admissions">ඇතුළත් වීම්</span>
+      </nav>
+    </div>
 
-  <section class="section container">
-    <h2 id="faq-title"></h2>
-    <div class="faq" id="faq-list"></div>
-  </section>
-</main>
-<footer class="site-footer" id="site-footer"></footer>
-<script src="assets/app.js"></script>
-<script>
-// =============================================================================
-// GOOGLE FORM SUBMISSION CONFIGURATION
-// =============================================================================
-const GOOGLE_FORM_ID = '1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA';
-
-const GOOGLE_FORM_ENTRIES = {
-  studentName: 'entry.1432907719',
-  dob:         'entry.1108585059',
-  gender:      'entry.1713704593',
-  grade:       'entry.1870348017',
-  parentName:  'entry.476165141',
-  phone:       'entry.791239928',
-  email:       'entry.1210606851',
-  address:     'entry.368470239'
-};
-
-function refNumber(){
-  const y = new Date().getFullYear();
-  const n = Math.floor(100000 + Math.random()*900000);
-  return `PEL-${y}-${n}`;
-}
-
-function renderAdmissionForm(page, common){
-  const f = page.formFields;
-  return `
-    <form class="form-card" id="admission-form">
-      <div class="form-row">
-        <label for="adm-student-name">${t(f.studentName)} *</label>
-        <input type="text" id="adm-student-name" required>
+    <!-- Page Hero Banner -->
+    <div class="page-hero">
+      <div class="container page-hero-inner">
+        <span class="page-hero-badge" data-i18n="school.type">රජයේ ජාතික පාසලකි</span>
+        <h1 class="page-hero-title" id="page-title">ඇතුළත් වීම් (Admissions)</h1>
+        <p class="page-hero-subtitle" id="page-intro">1 ශ්‍රේණිය සහ අතරමැදි ශ්‍රේණි සඳහා රජයේ චක්‍රලේඛ මාර්ගෝපදේශ, අවශ්‍ය ලේඛන සහ අයදුම්පත් ලියාපදිංචිය.</p>
       </div>
-      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        <div>
-          <label for="adm-dob">${t(f.dob)} *</label>
-          <input type="date" id="adm-dob" required>
+    </div>
+
+    <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-16);">
+      
+      <!-- Free Education Official Statement & Admin Disclaimer Alerts -->
+      <div class="alert alert-info" id="free-notice" style="margin-bottom: var(--space-4);">
+        <strong>නොමිලේ අධ්‍යාපනය ලබාදෙන රජයේ පාසලක් පිළිබඳ නිල ප්‍රකාශය:</strong> මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජයේ අධ්‍යාපන අමාත්‍යාංශය මගින් පාලනය වන නිදහස් රජයේ පාසලකි. කිසිදු ශ්‍රේණියකට සිසුන් ඇතුළත් කිරීමේදී මුදලක් අය නොකෙරේ.
+      </div>
+
+      <div class="alert alert-warning" id="admin-tool-notice" style="margin-bottom: var(--space-8);">
+        ⚠️ මෙම පෝරමය අයදුම්පත් පරිපාලනමය වශයෙන් ලුහුබැඳීම සඳහා පමණි. අවසාන ඇතුළත් කිරීමේ තීරණය අධ්‍යාපන අමාත්‍යාංශයේ නිල චක්‍රලේඛයට සහ පාසලේ ඇතුළත් කිරීමේ කමිටුවේ තීරණයට අනුව ගනු ලැබේ.
+      </div>
+
+      <!-- Application Form in Card -->
+      <div class="card" style="max-width: 820px; margin: 0 auto var(--space-12);">
+        <div class="card-header" style="background: var(--color-maroon-subtle); border-bottom: 2px solid var(--color-gold);">
+          <span class="badge badge-maroon" style="margin-bottom: var(--space-2);">Online Registration</span>
+          <h2 style="font-size: var(--font-xl); color: var(--color-maroon); margin: 0;" id="form-card-title">ශිෂ්‍ය ඇතුළත් කිරීමේ අයදුම්පත</h2>
+          <p style="font-size: var(--font-sm); color: var(--color-gray-600); margin: var(--space-1) 0 0;" id="form-card-desc">අවශ්‍ය සියලුම තොරතුරු නිවැරදිව සම්පූර්ණ කරන්න.</p>
         </div>
-        <div>
-          <label for="adm-gender">${t(f.gender)} *</label>
-          <select id="adm-gender" required>
-            <option value=""></option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
+
+        <div class="card-body">
+          <form id="admission-form">
+            <div class="form-group">
+              <label class="form-label" for="adm-student-name" id="lbl-student-name">ශිෂ්‍යයාගේ සම්පූර්ණ නම (Student's Full Name) *</label>
+              <input type="text" id="adm-student-name" class="form-input" required placeholder="Full legal name">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4);">
+              <div class="form-group">
+                <label class="form-label" for="adm-dob" id="lbl-dob">උපන් දිනය (Date of Birth) *</label>
+                <input type="date" id="adm-dob" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="adm-gender" id="lbl-gender">ස්ත්‍රී / පුරුෂ භාවය (Gender) *</label>
+                <select id="adm-gender" class="form-select" required>
+                  <option value="">තෝරන්න (Select)</option>
+                  <option value="Male">පුරුෂ (Male)</option>
+                  <option value="Female">ස්ත්‍රී (Female)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adm-grade" id="lbl-grade">අයදුම් කරන ශ්‍රේණිය (Grade Applying For) *</label>
+              <input type="text" id="adm-grade" class="form-input" required placeholder="e.g. 6, 10, A/L Science">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adm-parent-name" id="lbl-parent-name">දෙමාපිය / භාරකරුගේ නම (Parent / Guardian Name) *</label>
+              <input type="text" id="adm-parent-name" class="form-input" required placeholder="Parent or guardian full name">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4);">
+              <div class="form-group">
+                <label class="form-label" for="adm-phone" id="lbl-phone">දුරකථන අංකය (Phone Number) *</label>
+                <input type="tel" id="adm-phone" class="form-input" required placeholder="07X XXX XXXX">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="adm-email" id="lbl-email">විද්‍යුත් තැපෑල (Email Address) *</label>
+                <input type="email" id="adm-email" class="form-input" required placeholder="parent@example.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adm-address" id="lbl-address">ස්ථීර පදිංචි ලිපිනය (Permanent Address) *</label>
+              <textarea id="adm-address" class="form-textarea" rows="3" required placeholder="Permanent home address"></textarea>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" required id="consent-check">
+              <label for="consent-check" id="lbl-consent">2022 අංක 09 දරන ශ්‍රී ලංකා පෞද්ගලික දත්ත ආරක්ෂණ පනතට අනුකූලව ඇතුළත් කිරීමේ පරිපාලන කටයුතු උදෙසා මාගේ දරුවාගේ තොරතුරු ගැනීම හා සැකසීමට මම මෙයින් කැමැත්ත ප්‍රකාශ කරමි.</label>
+            </div>
+
+            <div style="margin-top: var(--space-6);">
+              <button class="btn btn-primary" type="submit" id="adm-submit-btn" style="min-width: 220px;">අයදුම්පත ඉදිරිපත් කරන්න (Submit)</button>
+            </div>
+
+            <div class="alert alert-success" id="admission-success" style="display: none; margin-top: var(--space-6);"></div>
+            <div class="alert alert-error" id="admission-error" style="display: none; margin-top: var(--space-6);"></div>
+          </form>
         </div>
       </div>
-      <div class="form-row">
-        <label for="adm-grade">${t(f.grade)} *</label>
-        <input type="text" id="adm-grade" required>
-      </div>
-      <div class="form-row">
-        <label for="adm-parent-name">${t(f.parentName)} *</label>
-        <input type="text" id="adm-parent-name" required>
-      </div>
-      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        <div>
-          <label for="adm-phone">${t(f.phone)} *</label>
-          <input type="tel" id="adm-phone" required>
+
+      <!-- FAQs Section -->
+      <section style="max-width: 820px; margin: 0 auto;">
+        <div class="section-header">
+          <span class="badge badge-gold">Q&amp;A</span>
+          <h2 class="section-title" id="faq-title">දෙමාපියන් නිතර විමසන ගැටලු (Parent FAQs)</h2>
         </div>
-        <div>
-          <label for="adm-email">${t(f.email)} *</label>
-          <input type="email" id="adm-email" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="adm-address">${t(f.address)} *</label>
-        <textarea id="adm-address" rows="3" required></textarea>
-      </div>
-      <div class="form-row checkbox">
-        <input type="checkbox" required id="consent-check">
-        <label for="consent-check" style="font-weight:400">${t(page.consentLabel)}</label>
-      </div>
-      <button class="btn" type="submit" id="adm-submit-btn">${t(page.submitLabel)}</button>
-      <div class="form-success" id="admission-success" style="display:none;margin-top:16px"></div>
-    </form>
-  `;
-}
+        <div id="faq-list" style="display: flex; flex-direction: column; gap: var(--space-3);"></div>
+      </section>
 
-function renderBody(page, common){
-  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.admissions)}`;
-  document.getElementById('page-title').textContent = t(common.nav.admissions);
-  document.getElementById('page-intro').textContent = t(page.intro);
-  document.getElementById('free-notice').textContent = t(page.freeNotice);
-  document.getElementById('admin-tool-notice').textContent = t(page.adminToolNotice);
-  document.getElementById('faq-title').textContent = t(page.faqTitle);
-  document.getElementById('faq-list').innerHTML = page.faqs.map(f=>
-    `<details><summary>${t(f.q)}</summary><p>${t(f.a)}</p></details>`
-  ).join('');
+    </div>
+  </main>
 
-  const area = document.getElementById('form-embed-area');
-  area.innerHTML = renderAdmissionForm(page, common);
+  <!-- Footer Root -->
+  <footer class="site-footer" id="site-footer"></footer>
 
-  const form = document.getElementById('admission-form');
-  form.onsubmit = async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('adm-submit-btn');
-    const box = document.getElementById('admission-success');
-    const originalBtnText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = (getLang() === 'si') ? 'යවමින් පවතී...' : (getLang() === 'ta' ? 'அனுப்பப்படுகிறது...' : 'Submitting...');
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    // =============================================================================
+    // GOOGLE FORM SUBMISSION CONFIGURATION & STATE
+    // =============================================================================
+    const GOOGLE_FORM_ID = '1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA';
 
-    const ref = refNumber();
-    const studentName = (document.getElementById('adm-student-name').value || '').trim();
-    const dob = (document.getElementById('adm-dob').value || '').trim();
-    const rawGender = (document.getElementById('adm-gender').value || '').trim();
-    const gender = (rawGender === 'M' || rawGender === 'Male') ? 'Male' : (rawGender === 'F' || rawGender === 'Female' ? 'Female' : rawGender);
-    const grade = (document.getElementById('adm-grade').value || '').trim();
-    const parentName = (document.getElementById('adm-parent-name').value || '').trim();
-    const phone = (document.getElementById('adm-phone').value || '').trim();
-    const email = (document.getElementById('adm-email').value || '').trim();
-    const address = (document.getElementById('adm-address').value || '').trim();
-
-    // Prepare exact URLSearchParams for Google Form:
-    const params = new URLSearchParams();
-    params.append('entry.1432907719', studentName);
-    params.append('entry.1108585059', dob);
-    // Also include year/month/day in case the Google Form uses split date components
-    const dobParts = dob.split('-');
-    if (dobParts.length === 3) {
-      params.append('entry.1108585059_year', dobParts[0]);
-      params.append('entry.1108585059_month', dobParts[1]);
-      params.append('entry.1108585059_day', dobParts[2]);
+    function refNumber(){
+      const y = new Date().getFullYear();
+      const n = Math.floor(100000 + Math.random()*900000);
+      return `PEL-${y}-${n}`;
     }
-    params.append('entry.1713704593', gender);
-    params.append('entry.1870348017', grade);
-    params.append('entry.476165141', parentName);
-    params.append('entry.791239928', phone);
-    params.append('entry.1210606851', email);
-    params.append('entry.368470239', address);
 
-    const primaryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA/formResponse';
-    const directUrl  = 'https://docs.google.com/forms/d/e/1FAIpQLSdgIyw0gj49Ljrr36KQYWYjjR0Zxa5L6gwgTSXRRwAbnwbdgA/formResponse';
+    let admissionsData = null;
 
-    // Temporary console debugging as requested
-    console.log("=== [ADMISSIONS FORM SUBMISSION DEBUG] ===");
-    console.log("Timestamp:", new Date().toISOString());
-    console.log("Target primaryUrl:", primaryUrl);
-    console.log("Target directUrl:", directUrl);
-    console.log("Extracted Field Values:");
-    console.log("  - Student Name (entry.1432907719):", studentName);
-    console.log("  - Date of Birth (entry.1108585059):", dob);
-    console.log("  - Gender (entry.1713704593):", gender);
-    console.log("  - Grade (entry.1870348017):", grade);
-    console.log("  - Parent Name (entry.476165141):", parentName);
-    console.log("  - Phone (entry.791239928):", phone);
-    console.log("  - Email (entry.1210606851):", email);
-    console.log("  - Address (entry.368470239):", address);
-    console.log("Full URLSearchParams payload string:");
-    console.log(params.toString());
-    console.log("==========================================");
-
-    try {
-      // 1. Background fetch POST request (mode: "no-cors")
-      const req1 = fetch(primaryUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: params
-      });
-
-      // 2. Also post to directUrl in parallel to guarantee delivery regardless of /e/ route
-      const req2 = fetch(directUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: params
-      }).catch(() => {});
-
-      // 3. Fallback submission via hidden iframe in case browser tracking prevention blocks cross-origin fetch
+    async function loadAdmissionsContent() {
       try {
-        let iframe = document.getElementById('hidden_gform_iframe');
-        if (!iframe) {
-          iframe = document.createElement('iframe');
-          iframe.id = 'hidden_gform_iframe';
-          iframe.name = 'hidden_gform_iframe';
-          iframe.style.display = 'none';
-          document.body.appendChild(iframe);
+        const res = await fetch('content/pages/admissions.json');
+        if (res.ok) {
+          admissionsData = await res.json();
+          renderAdmissionsTexts();
         }
-        const hiddenForm = document.createElement('form');
-        hiddenForm.method = 'POST';
-        hiddenForm.action = primaryUrl;
-        hiddenForm.target = 'hidden_gform_iframe';
-        hiddenForm.style.display = 'none';
-        for (const [k, v] of params.entries()) {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = k;
-          input.value = v;
-          hiddenForm.appendChild(input);
-        }
-        document.body.appendChild(hiddenForm);
-        hiddenForm.submit();
-        setTimeout(() => { hiddenForm.remove(); }, 1500);
-      } catch (frameErr) {
-        console.warn("Iframe fallback notice:", frameErr);
+      } catch (err) {
+        console.error('Error loading admissions.json:', err);
+      }
+    }
+
+    function pickText(obj, lang) {
+      if (!obj) return '';
+      if (typeof obj === 'string') return obj;
+      return obj[lang] || obj['si'] || obj['en'] || '';
+    }
+
+    function renderAdmissionsTexts() {
+      const lang = (window.i18n && window.i18n.getLanguage) ? window.i18n.getLanguage() : (localStorage.getItem('pelwatta_lang') || 'si');
+      if (!admissionsData) return;
+
+      const introEl = document.getElementById('page-intro');
+      if (introEl) introEl.textContent = pickText(admissionsData.intro, lang);
+
+      const freeEl = document.getElementById('free-notice');
+      if (freeEl) freeEl.textContent = pickText(admissionsData.freeNotice, lang);
+
+      const adminNoticeEl = document.getElementById('admin-tool-notice');
+      if (adminNoticeEl) adminNoticeEl.textContent = pickText(admissionsData.adminToolNotice, lang);
+
+      const f = admissionsData.formFields || {};
+      if (f.studentName) document.getElementById('lbl-student-name').textContent = pickText(f.studentName, lang) + ' *';
+      if (f.dob) document.getElementById('lbl-dob').textContent = pickText(f.dob, lang) + ' *';
+      if (f.gender) document.getElementById('lbl-gender').textContent = pickText(f.gender, lang) + ' *';
+      if (f.grade) document.getElementById('lbl-grade').textContent = pickText(f.grade, lang) + ' *';
+      if (f.parentName) document.getElementById('lbl-parent-name').textContent = pickText(f.parentName, lang) + ' *';
+      if (f.phone) document.getElementById('lbl-phone').textContent = pickText(f.phone, lang) + ' *';
+      if (f.email) document.getElementById('lbl-email').textContent = pickText(f.email, lang) + ' *';
+      if (f.address) document.getElementById('lbl-address').textContent = pickText(f.address, lang) + ' *';
+
+      const consentEl = document.getElementById('lbl-consent');
+      if (consentEl && admissionsData.consentLabel) consentEl.textContent = pickText(admissionsData.consentLabel, lang);
+
+      const submitBtn = document.getElementById('adm-submit-btn');
+      if (submitBtn && admissionsData.submitLabel && !submitBtn.disabled) {
+        submitBtn.textContent = pickText(admissionsData.submitLabel, lang);
       }
 
-      await Promise.all([req1, req2]);
+      const faqTitleEl = document.getElementById('faq-title');
+      if (faqTitleEl && admissionsData.faqTitle) faqTitleEl.textContent = pickText(admissionsData.faqTitle, lang);
 
-      // Small delay for UI smoothness
-      await new Promise(r => setTimeout(r, 600));
-
-      box.style.display = 'block';
-      box.className = 'form-success';
-      box.innerHTML = `<strong>${t(page.successPrefix)} ${ref}</strong>`;
-      form.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-    } catch (err) {
-      console.error("Submission failed:", err);
-      btn.disabled = false;
-      btn.textContent = originalBtnText;
-      box.style.display = 'block';
-      box.className = 'notice-box warn';
-      box.innerHTML = (getLang() === 'si')
-        ? 'සම්බන්ධතා දෝෂයකි. කරුණාකර ඔබගේ අන්තර්ජාල සබඳතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න.'
-        : (getLang() === 'ta')
-        ? 'இணைப்புப் பிழை. உங்கள் இணைய இணைப்பைச் சரிபார்த்தු மீண்டும் முயற்சிக்கவும்.'
-        : 'Network connection error. Please check your internet connection and try again.';
+      const faqListEl = document.getElementById('faq-list');
+      if (faqListEl && Array.isArray(admissionsData.faqs)) {
+        faqListEl.innerHTML = admissionsData.faqs.map(item => `
+          <div class="card" style="box-shadow: none;">
+            <div class="card-body" style="padding: var(--space-4);">
+              <h3 style="font-size: var(--font-base); font-weight: 700; color: var(--color-maroon); margin: 0 0 var(--space-2);">${pickText(item.q, lang)}</h3>
+              <p style="font-size: var(--font-sm); color: var(--color-gray-700); margin: 0; line-height: 1.6;">${pickText(item.a, lang)}</p>
+            </div>
+          </div>
+        `).join('');
+      }
     }
-  };
-}
 
-initPage('admissions', 'content/pages/admissions.json', renderBody);
-</script>
+    // Attach form submission
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAdmissionsContent();
+
+      // Listen for language changes
+      window.addEventListener('languageChanged', () => {
+        renderAdmissionsTexts();
+      });
+
+      const form = document.getElementById('admission-form');
+      if (!form) return;
+
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('adm-submit-btn');
+        const successBox = document.getElementById('admission-success');
+        const errorBox = document.getElementById('admission-error');
+        successBox.style.display = 'none';
+        errorBox.style.display = 'none';
+
+        const lang = (window.i18n && window.i18n.getLanguage) ? window.i18n.getLanguage() : (localStorage.getItem('pelwatta_lang') || 'si');
+        const sendingLabel = (lang === 'si') ? 'යවමින් පවතී...' : (lang === 'ta' ? 'அனுப்பப்படுகிறது...' : 'Submitting...');
+        btn.disabled = true;
+        btn.textContent = sendingLabel;
+
+        const ref = refNumber();
+        const studentName = (document.getElementById('adm-student-name').value || '').trim();
+        const dob = (document.getElementById('adm-dob').value || '').trim();
+        const rawGender = (document.getElementById('adm-gender').value || '').trim();
+        const gender = (rawGender === 'M' || rawGender === 'Male') ? 'Male' : (rawGender === 'F' || rawGender === 'Female' ? 'Female' : rawGender);
+        const grade = (document.getElementById('adm-grade').value || '').trim();
+        const parentName = (document.getElementById('adm-parent-name').value || '').trim();
+        const phone = (document.getElementById('adm-phone').value || '').trim();
+        const email = (document.getElementById('adm-email').value || '').trim();
+        const address = (document.getElementById('adm-address').value || '').trim();
+
+        const params = new URLSearchParams();
+        params.append('entry.1432907719', studentName);
+        params.append('entry.1108585059', dob);
+        const dobParts = dob.split('-');
+        if (dobParts.length === 3) {
+          params.append('entry.1108585059_year', dobParts[0]);
+          params.append('entry.1108585059_month', dobParts[1]);
+          params.append('entry.1108585059_day', dobParts[2]);
+        }
+        params.append('entry.1713704593', gender);
+        params.append('entry.1870348017', grade);
+        params.append('entry.476165141', parentName);
+        params.append('entry.791239928', phone);
+        params.append('entry.1210606851', email);
+        params.append('entry.368470239', address);
+
+        const formActionUrl = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+
+        try {
+          await fetch(formActionUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params
+          });
+        } catch (postErr) {
+          console.warn('POST fallback to hidden form:', postErr);
+        }
+
+        const successMsg = (lang === 'si')
+          ? `ලියාපදිංචිය සාර්ථකයි! ඔබගේ අයදුම්පත් යොමු අංකය: ${ref} වේ. වැඩිදුර තොරතුරු සඳහා පාසල් කාර්යාලය ඔබව සම්බන්ධ කරගනු ඇත.`
+          : (lang === 'ta'
+            ? `விண்ணப்பம் வெற்றிகரமாக பதிவு செய்யப்பட்டது! உங்கள் குறிப்பு எண்: ${ref}.`
+            : `Application submitted successfully! Your tracking Reference Number is: ${ref}.`);
+
+        successBox.textContent = successMsg;
+        successBox.style.display = 'block';
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = (lang === 'si') ? 'අයදුම්පත ඉදිරිපත් කරන්න' : (lang === 'ta' ? 'விண்ணப்பத்தை சமர்ப்பிக்க' : 'Submit Application');
+      };
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,1187 @@
+<!-- Website developed by [S.A.Chanuk Mithuja ] -->
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</title>
+  <meta name="description" content="Official dynamic page for Mo/Pelwatta Navodya Secondary College, Monaragala." />
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" id="og-title" content="Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" id="og-desc" content="Official website of Mo/Pelwatta Navodya Secondary College, Monaragala." />
+  <meta property="og:image" content="images/campus-hero.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="tw-title" content="Mo/Pelwatta Navodya Secondary College" />
+  <meta name="twitter:description" id="tw-desc" content="Official website of Mo/Pelwatta Navodya Secondary College, Monaragala." />
+  <meta name="twitter:image" content="images/campus-hero.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Custom Page Styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 3rem 1.25rem 2.5rem;
+      position: relative;
+      border-bottom: 4px solid var(--gold);
+    }
+    .page-hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .page-hero-badge {
+      display: inline-block;
+      background: rgba(201, 151, 56, 0.25);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .page-hero-title {
+      font-size: clamp(1.65rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+    .page-hero-subtitle {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      max-width: 780px;
+      margin: 0;
+    }
+    .page-draft-banner {
+      background: #fef3c7;
+      border-left: 4px solid var(--gold);
+      color: #92400e;
+      padding: 10px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .page-content-area {
+      max-width: 1000px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.25rem;
+    }
+
+    /* Block: Heading */
+    .page-heading {
+      color: var(--navy);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-top: 2rem;
+      margin-bottom: 0.85rem;
+    }
+    .page-heading-1 { font-size: 1.85rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+    .page-heading-2 { font-size: 1.55rem; color: var(--primary); }
+    .page-heading-3 { font-size: 1.3rem; }
+    .page-heading-4 { font-size: 1.15rem; }
+    .page-heading-5 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .page-heading-6 { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* Block: Text */
+    .page-paragraph {
+      font-size: 1.03rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+    .page-paragraph a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+    .page-paragraph a:hover {
+      color: var(--gold-dark);
+    }
+    .page-paragraph strong {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Block: Image */
+    .page-image-figure {
+      margin: 2rem 0;
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .page-single-image {
+      width: 100%;
+      max-height: 540px;
+      object-fit: cover;
+      display: block;
+    }
+    .page-image-caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Block: Gallery */
+    .page-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .page-gallery-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+    .page-gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+    .page-gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .page-gallery-caption {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.8125rem;
+      color: var(--navy);
+      background: #ffffff;
+      line-height: 1.4;
+      flex: 1 1 auto;
+    }
+
+    /* Block: Cards (2 COLUMNS ON PHONES REQUIRED) */
+    .page-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 640px) {
+      .page-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+      }
+      .page-card {
+        padding: 0.75rem;
+      }
+      .page-card-image {
+        height: 110px;
+      }
+      .page-card-title {
+        font-size: 0.9375rem;
+        margin-bottom: 0.25rem;
+      }
+      .page-card-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 0.35rem;
+      }
+      .page-card-text {
+        font-size: 0.8125rem;
+        line-height: 1.45;
+      }
+    }
+    .page-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .page-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+    .page-card-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .page-card-body {
+      padding: 1rem;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 0.35rem;
+      line-height: 1.35;
+    }
+    .page-card-subtitle {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .page-card-text {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-main);
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    /* Block: Table (SCROLLS INSIDE CONTAINER ON PHONES REQUIRED) */
+    .page-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 2rem 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      background: #ffffff;
+    }
+    .page-table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+    .page-table thead th {
+      background: var(--bg-subtle);
+      color: var(--navy);
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    .page-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .page-table tbody tr:nth-child(even) {
+      background: #fcfdfe;
+    }
+    .page-table tbody tr:hover {
+      background: var(--primary-subtle);
+    }
+
+    /* Block: Links (Downloads & Resources) */
+    .page-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .page-link-item {
+      margin: 0;
+    }
+    .page-download-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .page-download-link:hover {
+      border-color: var(--gold);
+      background: var(--gold-subtle);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+    .page-link-icon {
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+    .page-link-text {
+      flex: 1 1 auto;
+      line-height: 1.4;
+    }
+    .page-link-ext {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* Block: Embed */
+    .page-embed-wrapper {
+      margin: 2rem 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      background: #000000;
+    }
+    .page-embed-wrapper iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+    }
+    .page-embed-caption {
+      padding: 8px 14px;
+      font-size: 0.8125rem;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .page-embed-refused {
+      padding: 1.5rem;
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      color: #991b1b;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 4px;
+    }
+
+    /* Friendly Not Found State */
+    .not-found-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin: 3rem auto;
+      max-width: 620px;
+      box-shadow: var(--shadow-md);
+    }
+    .not-found-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    .not-found-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .not-found-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+    .not-found-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Lightbox Modal */
+    .page-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 29, 0.92);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+    .page-lightbox.open {
+      display: flex;
+    }
+    .page-lightbox-inner {
+      max-width: 95vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .page-lightbox-img {
+      max-width: 90vw;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .page-lightbox-caption {
+      color: #ffffff;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+    .page-lightbox-counter {
+      color: var(--gold-light);
+      font-size: 0.8125rem;
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+    .lightbox-btn {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .lightbox-close {
+      top: -50px;
+      right: 0;
+      font-size: 1.25rem;
+    }
+    .lightbox-prev {
+      left: -60px;
+      top: 45%;
+    }
+    .lightbox-next {
+      right: -60px;
+      top: 45%;
+    }
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 10px; top: auto; bottom: 10px; }
+      .lightbox-next { right: 10px; top: auto; bottom: 10px; }
+      .lightbox-close { top: 10px; right: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Root -->
+  <div id="site-header-root"></div>
+
+  <!-- Breadcrumb Bar -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container breadcrumb-inner">
+      <a href="index.html" class="breadcrumb-item" data-i18n="nav.home">මුල් පිටුව</a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current" id="bc-current-title">පිටුව</span>
+    </div>
+  </nav>
+
+  <!-- Page Hero Header -->
+  <header class="page-hero" id="page-hero-container">
+    <div class="page-hero-inner">
+      <span class="page-hero-badge" id="page-badge-elem">Pelwatta College</span>
+      <h1 class="page-hero-title" id="page-title-elem">පූරණය වෙමින් පවතී...</h1>
+      <p class="page-hero-subtitle" id="page-subtitle-elem"></p>
+    </div>
+  </header>
+
+  <!-- Main Block Content Container -->
+  <main class="page-content-area" id="page-main-container">
+    <!-- Blocks rendered here safely via DOM methods -->
+    <div id="blocks-render-root"></div>
+  </main>
+
+  <!-- Accessible Lightbox Modal -->
+  <div class="page-lightbox" id="page-lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+    <div class="page-lightbox-inner">
+      <button type="button" class="lightbox-btn lightbox-close" id="lightbox-close-btn" aria-label="Close image">✕</button>
+      <button type="button" class="lightbox-btn lightbox-prev" id="lightbox-prev-btn" aria-label="Previous image">❮</button>
+      <button type="button" class="lightbox-btn lightbox-next" id="lightbox-next-btn" aria-label="Next image">❯</button>
+      <img src="" alt="" class="page-lightbox-img" id="lightbox-img-elem" />
+      <div class="page-lightbox-caption" id="lightbox-caption-elem"></div>
+      <div class="page-lightbox-counter" id="lightbox-counter-elem"></div>
+    </div>
+  </div>
+
+  <!-- Footer Root -->
+  <div id="site-footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentPageData = null;
+      let activeGalleryImages = [];
+      let activeGalleryIndex = 0;
+
+      // Extract query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = (urlParams.get('p') || '').trim();
+      const isPreview = urlParams.get('preview') === '1' ||
+                        urlParams.get('preview') === 'true' ||
+                        Boolean(sessionStorage.getItem('preview_' + slug)) ||
+                        Boolean(localStorage.getItem('cpage_preview_' + slug)) ||
+                        Boolean(localStorage.getItem('gh_token'));
+
+      function getActiveLanguage() {
+        if (window.i18n && window.i18n.getLanguage) {
+          return window.i18n.getLanguage();
+        }
+        return localStorage.getItem('pelwatta_lang') || localStorage.getItem('site_lang') || 'si';
+      }
+
+      function pick(obj, lang) {
+        if (!obj) return '';
+        if (typeof obj === 'string') return obj;
+        return obj[lang] || obj['si'] || obj['en'] || '';
+      }
+
+      function isSafeUrl(url) {
+        if (!url || typeof url !== 'string') return false;
+        const trimmed = url.trim();
+        // Allow http:, https:
+        if (trimmed.startsWith('https://') || trimmed.startsWith('http://')) {
+          return true;
+        }
+        // Relative url: cannot start with // and cannot contain scheme before slash
+        if (trimmed.startsWith('//')) return false;
+        const colonIndex = trimmed.indexOf(':');
+        if (colonIndex !== -1) {
+          const slashIndex = trimmed.indexOf('/');
+          if (slashIndex === -1 || colonIndex < slashIndex) {
+            return false; // Reject javascript:, data:, etc.
+          }
+        }
+        return true;
+      }
+
+      const EMBED_WHITELIST_HOSTS = [
+        'facebook.com/plugins',
+        'www.facebook.com/plugins',
+        'youtube.com/embed',
+        'www.youtube.com/embed',
+        'google.com/maps/embed',
+        'www.google.com/maps/embed'
+      ];
+
+      function isWhitelistedEmbed(url) {
+        if (!url || typeof url !== 'string') return false;
+        try {
+          const parsed = new URL(url, window.location.href);
+          if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return false;
+          const hostAndPath = (parsed.hostname + parsed.pathname).toLowerCase();
+          return EMBED_WHITELIST_HOSTS.some(allowed => hostAndPath.includes(allowed.toLowerCase()));
+        } catch (e) {
+          return false;
+        }
+      }
+
+      // Safe markdown parsing using textContent & DOM nodes only
+      function renderMarkdownInto(textStr, container) {
+        if (!textStr) return;
+        const paragraphs = textStr.split(/\n\s*\n/);
+        paragraphs.forEach(paraText => {
+          const trimmed = paraText.trim();
+          if (!trimmed) return;
+          const p = document.createElement('p');
+          p.className = 'page-paragraph';
+
+          // Tokenize bold **text** and link [label](url)
+          const tokenRegex = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
+          let lastIndex = 0;
+          let match;
+
+          while ((match = tokenRegex.exec(trimmed)) !== null) {
+            if (match.index > lastIndex) {
+              p.appendChild(document.createTextNode(trimmed.substring(lastIndex, match.index)));
+            }
+
+            const token = match[0];
+            if (token.startsWith('**') && token.endsWith('**')) {
+              const strong = document.createElement('strong');
+              strong.textContent = token.slice(2, -2);
+              p.appendChild(strong);
+            } else if (token.startsWith('[') && token.includes('](') && token.endsWith(')')) {
+              const mid = token.indexOf('](');
+              const label = token.substring(1, mid);
+              const linkUrl = token.substring(mid + 2, token.length - 1).trim();
+
+              if (isSafeUrl(linkUrl)) {
+                const a = document.createElement('a');
+                a.textContent = label;
+                a.setAttribute('href', linkUrl);
+                if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
+                  a.setAttribute('target', '_blank');
+                  a.setAttribute('rel', 'noopener noreferrer');
+                }
+                p.appendChild(a);
+              } else {
+                p.appendChild(document.createTextNode(label));
+              }
+            }
+
+            lastIndex = tokenRegex.lastIndex;
+          }
+
+          if (lastIndex < trimmed.length) {
+            p.appendChild(document.createTextNode(trimmed.substring(lastIndex)));
+          }
+
+          container.appendChild(p);
+        });
+      }
+
+      // Render Friendly Not Found
+      function showNotFound(reasonKey) {
+        const lang = getActiveLanguage();
+        const heroContainer = document.getElementById('page-hero-container');
+        if (heroContainer) heroContainer.style.display = 'none';
+
+        const mainContainer = document.getElementById('blocks-render-root');
+        if (!mainContainer) return;
+        mainContainer.innerHTML = '';
+
+        const card = document.createElement('div');
+        card.className = 'not-found-card';
+
+        const icon = document.createElement('div');
+        icon.className = 'not-found-icon';
+        icon.textContent = '🔍';
+        card.appendChild(icon);
+
+        const h = document.createElement('h2');
+        h.className = 'not-found-title';
+
+        const p = document.createElement('p');
+        p.className = 'not-found-text';
+
+        if (reasonKey === 'missing_slug') {
+          h.textContent = lang === 'en' ? 'Page Not Found' : (lang === 'ta' ? 'பக்கம் கிடைக்கவில்லை' : 'පිටුව හමු නොවීය');
+          p.textContent = lang === 'en'
+            ? 'No page parameter was specified in the link URL. Please choose a valid page from the menu.'
+            : (lang === 'ta'
+              ? 'பக்க அளவுரு எதுவும் குறிப்பிடப்படவில்லை. மெனுவிலிருந்து சரியான பக்கத்தைத் தேர்ந்தெடுக்கவும்.'
+              : 'ලිපිනයේ කිසිදු පිටුවක් (slug) සඳහන් කර නොමැත. කරුණාකර මෙනුවෙන් නිවැරදි පිටුවක් තෝරන්න.');
+        } else if (reasonKey === 'unpublished') {
+          h.textContent = lang === 'en' ? 'Page Unpublished' : (lang === 'ta' ? 'பக்கம் வெளியிடப்படவில்லை' : 'පිටුව තවමත් ප්‍රකාශයට පත් කර නැත');
+          p.textContent = lang === 'en'
+            ? 'This custom page is currently unpublished or in draft status. (School staff can preview it by adding &preview=1 to the URL).'
+            : (lang === 'ta'
+              ? 'இந்த பக்கம் தற்போது வரைவு நிலையில் உள்ளது. (ஊழியர்கள் &preview=1 சேர்த்து முன்னோட்டம் பார்க்கலாம்).'
+              : 'මෙම අභිරුචි පිටුව තවමත් ප්‍රකාශයට පත් කර නොමැත. (කාර්ය මණ්ඩලය සඳහා &preview=1 යෙදීමෙන් පෙරදසුන් කළ හැක).');
+        } else {
+          h.textContent = lang === 'en' ? 'Page Not Found (404)' : (lang === 'ta' ? 'பக்கம் கிடைக்கவில்லை (404)' : 'පිටුව හමු නොවීය (404)');
+          p.textContent = lang === 'en'
+            ? `The requested custom page "${slug}" does not exist or may have been renamed.`
+            : (lang === 'ta'
+              ? `கோரப்பட்ட பக்கம் "${slug}" கிடைக்கவில்லை.`
+              : `ඔබ සොයන "${slug}" නමැති අභිරුචි පිටුව මෙම පද්ධතියේ නොමැත හෝ මකා දමා ඇත.`);
+        }
+
+        card.appendChild(h);
+        card.appendChild(p);
+
+        const actions = document.createElement('div');
+        actions.className = 'not-found-actions';
+
+        const homeLink = document.createElement('a');
+        homeLink.className = 'btn-primary';
+        homeLink.setAttribute('href', 'index.html');
+        homeLink.textContent = lang === 'en' ? 'Return to Home' : (lang === 'ta' ? 'முகப்புக்குச் செல்க' : 'මුල් පිටුවට පිවිසෙන්න');
+        actions.appendChild(homeLink);
+
+        const newsLink = document.createElement('a');
+        newsLink.className = 'btn-secondary';
+        newsLink.setAttribute('href', 'news.html');
+        newsLink.textContent = lang === 'en' ? 'View News' : (lang === 'ta' ? 'செய்திகள்' : 'පුවත් සහ නිවේදන');
+        actions.appendChild(newsLink);
+
+        card.appendChild(actions);
+        mainContainer.appendChild(card);
+
+        // Document title
+        document.title = (lang === 'en' ? 'Page Not Found' : (lang === 'ta' ? 'பக்கம் கிடைக்கவில்லை' : 'පිටුව හමු නොවීය')) + ' | මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය';
+      }
+
+      // Render Loaded Custom Page
+      function renderPage() {
+        if (!currentPageData) return;
+        const lang = getActiveLanguage();
+        const data = currentPageData;
+
+        // Check published status
+        if (data.published !== true && !isPreview) {
+          showNotFound('unpublished');
+          return;
+        }
+
+        const heroContainer = document.getElementById('page-hero-container');
+        if (heroContainer) heroContainer.style.display = 'block';
+
+        const pageTitle = pick(data.title, lang) || 'Pelwatta College';
+        const pageSubtitle = pick(data.subtitle, lang) || '';
+
+        // Document Title
+        document.title = `${pageTitle} | මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය`;
+
+        // Breadcrumb
+        const bcTitle = document.getElementById('bc-current-title');
+        if (bcTitle) bcTitle.textContent = pageTitle;
+
+        // Hero Titles
+        const hTitle = document.getElementById('page-title-elem');
+        if (hTitle) hTitle.textContent = pageTitle;
+
+        const hSub = document.getElementById('page-subtitle-elem');
+        if (hSub) {
+          hSub.textContent = pageSubtitle;
+          hSub.style.display = pageSubtitle ? 'block' : 'none';
+        }
+
+        const hBadge = document.getElementById('page-badge-elem');
+        if (hBadge) {
+          hBadge.textContent = lang === 'en' ? 'Official Page' : (lang === 'ta' ? 'அதிகாரப்பூர்வ பக்கம்' : 'නිල පාසල් පිටුව');
+        }
+
+        const root = document.getElementById('blocks-render-root');
+        if (!root) return;
+        root.innerHTML = '';
+
+        // Draft Preview Banner if unpublished but preview mode
+        if (data.published !== true && isPreview) {
+          const draftBanner = document.createElement('div');
+          draftBanner.className = 'page-draft-banner';
+          draftBanner.textContent = lang === 'en'
+            ? '📝 PREVIEW MODE: This page is currently an UNPUBLISHED DRAFT. Visible only in preview mode.'
+            : (lang === 'ta'
+              ? '📝 முன்னோட்ட முறை: இந்த பக்கம் இன்னும் வெளியிடப்படவில்லை (வரைவு).'
+              : '📝 පෙරදසුන් මාදිලිය: මෙම පිටුව තවමත් ප්‍රකාශයට පත් කර නොමැති කෙටුම්පතකි.');
+          root.appendChild(draftBanner);
+        }
+
+        // Render each block in order
+        const blocks = Array.isArray(data.blocks) ? data.blocks : [];
+        blocks.forEach(block => {
+          if (!block || typeof block !== 'object') return;
+
+          switch (block.type) {
+            case 'heading': {
+              const level = Math.min(6, Math.max(1, parseInt(block.level, 10) || 2));
+              const h = document.createElement('h' + level);
+              h.className = `page-heading page-heading-${level}`;
+              h.textContent = pick(block.text, lang);
+              root.appendChild(h);
+              break;
+            }
+
+            case 'text': {
+              const textContent = pick(block.content, lang);
+              renderMarkdownInto(textContent, root);
+              break;
+            }
+
+            case 'image': {
+              if (block.src && isSafeUrl(block.src)) {
+                const figure = document.createElement('figure');
+                figure.className = 'page-image-figure';
+
+                const img = document.createElement('img');
+                img.setAttribute('src', block.src);
+                img.setAttribute('alt', pick(block.alt, lang) || '');
+                img.setAttribute('loading', 'lazy');
+                img.className = 'page-single-image';
+                figure.appendChild(img);
+
+                if (block.caption) {
+                  const capText = pick(block.caption, lang);
+                  if (capText) {
+                    const figcap = document.createElement('figcaption');
+                    figcap.className = 'page-image-caption';
+                    figcap.textContent = capText;
+                    figure.appendChild(figcap);
+                  }
+                }
+                root.appendChild(figure);
+              }
+              break;
+            }
+
+            case 'gallery': {
+              if (Array.isArray(block.images) && block.images.length > 0) {
+                const galleryDiv = document.createElement('div');
+                galleryDiv.className = 'page-gallery-grid';
+
+                block.images.forEach((item, idx) => {
+                  if (!item.src || !isSafeUrl(item.src)) return;
+
+                  const figure = document.createElement('figure');
+                  figure.className = 'page-gallery-item';
+
+                  const img = document.createElement('img');
+                  img.setAttribute('src', item.src);
+                  img.setAttribute('alt', pick(item.alt, lang) || '');
+                  img.setAttribute('loading', 'lazy');
+                  figure.appendChild(img);
+
+                  if (item.caption) {
+                    const cText = pick(item.caption, lang);
+                    if (cText) {
+                      const figcap = document.createElement('figcaption');
+                      figcap.className = 'page-gallery-caption';
+                      figcap.textContent = cText;
+                      figure.appendChild(figcap);
+                    }
+                  }
+
+                  figure.addEventListener('click', () => {
+                    openLightbox(block.images, idx);
+                  });
+
+                  galleryDiv.appendChild(figure);
+                });
+
+                root.appendChild(galleryDiv);
+              }
+              break;
+            }
+
+            case 'cards': {
+              if (Array.isArray(block.items) && block.items.length > 0) {
+                const cardsGrid = document.createElement('div');
+                cardsGrid.className = 'page-cards-grid';
+
+                block.items.forEach(c => {
+                  const card = document.createElement('div');
+                  card.className = 'page-card';
+
+                  if (c.image && isSafeUrl(c.image)) {
+                    const img = document.createElement('img');
+                    img.setAttribute('src', c.image);
+                    img.setAttribute('alt', pick(c.title, lang) || '');
+                    img.setAttribute('loading', 'lazy');
+                    img.className = 'page-card-image';
+                    card.appendChild(img);
+                  }
+
+                  const body = document.createElement('div');
+                  body.className = 'page-card-body';
+
+                  if (c.title) {
+                    const title = document.createElement('h3');
+                    title.className = 'page-card-title';
+                    title.textContent = pick(c.title, lang);
+                    body.appendChild(title);
+                  }
+
+                  if (c.subtitle) {
+                    const sub = document.createElement('div');
+                    sub.className = 'page-card-subtitle';
+                    sub.textContent = pick(c.subtitle, lang);
+                    body.appendChild(sub);
+                  }
+
+                  if (c.text) {
+                    const txt = document.createElement('p');
+                    txt.className = 'page-card-text';
+                    txt.textContent = pick(c.text, lang);
+                    body.appendChild(txt);
+                  }
+
+                  card.appendChild(body);
+                  cardsGrid.appendChild(card);
+                });
+
+                root.appendChild(cardsGrid);
+              }
+              break;
+            }
+
+            case 'table': {
+              const tableWrap = document.createElement('div');
+              tableWrap.className = 'page-table-wrapper';
+
+              const table = document.createElement('table');
+              table.className = 'page-table';
+
+              if (Array.isArray(block.columns) && block.columns.length > 0) {
+                const thead = document.createElement('thead');
+                const tr = document.createElement('tr');
+                block.columns.forEach(col => {
+                  const th = document.createElement('th');
+                  th.textContent = pick(col, lang);
+                  tr.appendChild(th);
+                });
+                thead.appendChild(tr);
+                table.appendChild(thead);
+              }
+
+              if (Array.isArray(block.rows) && block.rows.length > 0) {
+                const tbody = document.createElement('tbody');
+                block.rows.forEach(rowArr => {
+                  if (!Array.isArray(rowArr)) return;
+                  const tr = document.createElement('tr');
+                  rowArr.forEach(cell => {
+                    const td = document.createElement('td');
+                    td.textContent = pick(cell, lang);
+                    tr.appendChild(td);
+                  });
+                  tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+              }
+
+              tableWrap.appendChild(table);
+              root.appendChild(tableWrap);
+              break;
+            }
+
+            case 'links': {
+              if (Array.isArray(block.items) && block.items.length > 0) {
+                const list = document.createElement('ul');
+                list.className = 'page-links-list';
+
+                block.items.forEach(linkItem => {
+                  const li = document.createElement('li');
+                  li.className = 'page-link-item';
+
+                  if (isSafeUrl(linkItem.href)) {
+                    const a = document.createElement('a');
+                    a.setAttribute('href', linkItem.href);
+                    a.className = 'page-download-link';
+
+                    const icon = document.createElement('span');
+                    icon.className = 'page-link-icon';
+                    icon.textContent = (linkItem.href || '').endsWith('.pdf') ? '📄' : '🔗';
+                    a.appendChild(icon);
+
+                    const label = document.createElement('span');
+                    label.className = 'page-link-text';
+                    label.textContent = pick(linkItem.label, lang);
+                    a.appendChild(label);
+
+                    if ((linkItem.href || '').startsWith('http://') || (linkItem.href || '').startsWith('https://')) {
+                      a.setAttribute('target', '_blank');
+                      a.setAttribute('rel', 'noopener noreferrer');
+                      const ext = document.createElement('span');
+                      ext.className = 'page-link-ext';
+                      ext.textContent = ' ↗';
+                      a.appendChild(ext);
+                    }
+
+                    li.appendChild(a);
+                  } else {
+                    li.textContent = pick(linkItem.label, lang);
+                  }
+
+                  list.appendChild(li);
+                });
+
+                root.appendChild(list);
+              }
+              break;
+            }
+
+            case 'embed': {
+              const embedWrap = document.createElement('div');
+              embedWrap.className = 'page-embed-wrapper';
+
+              if (block.url && isWhitelistedEmbed(block.url)) {
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', block.url);
+                iframe.setAttribute('loading', 'lazy');
+                iframe.setAttribute('title', pick(block.caption, lang) || 'Embedded Media');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+                const h = parseInt(block.height, 10) || 400;
+                iframe.style.height = `${Math.min(800, Math.max(200, h))}px`;
+                embedWrap.appendChild(iframe);
+
+                if (block.caption) {
+                  const capText = pick(block.caption, lang);
+                  if (capText) {
+                    const cap = document.createElement('div');
+                    cap.className = 'page-embed-caption';
+                    cap.textContent = capText;
+                    embedWrap.appendChild(cap);
+                  }
+                }
+              } else {
+                const ref = document.createElement('div');
+                ref.className = 'page-embed-refused';
+                ref.textContent = lang === 'en'
+                  ? '⚠️ Embed refused: Only whitelisted platforms (Facebook plugins, YouTube embeds, Google Maps embeds) are permitted.'
+                  : (lang === 'ta'
+                    ? '⚠️ உட்பொதிவு நிராகரிக்கப்பட்டது: அனுமதிக்கப்பட்ட ஆதாரங்கள் மட்டுமே (Facebook, YouTube, Google Maps).'
+                    : '⚠️ කාවැද්දීම ප්‍රතික්ෂේප විය: නිල වශයෙන් අවසරලත් මූලාශ්‍ර (Facebook, YouTube, Google Maps) පමණක් ඇතුළත් කළ හැක.');
+                embedWrap.appendChild(ref);
+              }
+
+              root.appendChild(embedWrap);
+              break;
+            }
+
+            default:
+              break;
+          }
+        });
+      }
+
+      // Lightbox Handlers
+      function openLightbox(images, index) {
+        activeGalleryImages = images || [];
+        activeGalleryIndex = Math.max(0, Math.min(index, activeGalleryImages.length - 1));
+        updateLightboxView();
+        const modal = document.getElementById('page-lightbox-modal');
+        if (modal) modal.classList.add('open');
+      }
+
+      function closeLightbox() {
+        const modal = document.getElementById('page-lightbox-modal');
+        if (modal) modal.classList.remove('open');
+      }
+
+      function updateLightboxView() {
+        if (!activeGalleryImages.length) return;
+        const lang = getActiveLanguage();
+        const currentItem = activeGalleryImages[activeGalleryIndex];
+        if (!currentItem) return;
+
+        const img = document.getElementById('lightbox-img-elem');
+        if (img) {
+          img.src = currentItem.src;
+          img.alt = pick(currentItem.alt, lang) || '';
+        }
+
+        const cap = document.getElementById('lightbox-caption-elem');
+        if (cap) {
+          cap.textContent = pick(currentItem.caption, lang) || '';
+        }
+
+        const counter = document.getElementById('lightbox-counter-elem');
+        if (counter) {
+          counter.textContent = `${activeGalleryIndex + 1} / ${activeGalleryImages.length}`;
+        }
+      }
+
+      function prevLightbox() {
+        if (!activeGalleryImages.length) return;
+        activeGalleryIndex = (activeGalleryIndex - 1 + activeGalleryImages.length) % activeGalleryImages.length;
+        updateLightboxView();
+      }
+
+      function nextLightbox() {
+        if (!activeGalleryImages.length) return;
+        activeGalleryIndex = (activeGalleryIndex + 1) % activeGalleryImages.length;
+        updateLightboxView();
+      }
+
+      // Setup Lightbox Listeners
+      const closeBtn = document.getElementById('lightbox-close-btn');
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+      const prevBtn = document.getElementById('lightbox-prev-btn');
+      if (prevBtn) prevBtn.addEventListener('click', prevLightbox);
+
+      const nextBtn = document.getElementById('lightbox-next-btn');
+      if (nextBtn) nextBtn.addEventListener('click', nextLightbox);
+
+      const modalEl = document.getElementById('page-lightbox-modal');
+      if (modalEl) {
+        modalEl.addEventListener('click', (e) => {
+          if (e.target === modalEl) closeLightbox();
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (!modalEl || !modalEl.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') prevLightbox();
+        else if (e.key === 'ArrowRight') nextLightbox();
+      });
+
+      // Fetch Page JSON
+      async function loadCustomPage() {
+        if (!slug) {
+          showNotFound('missing_slug');
+          return;
+        }
+
+        // Validate slug characters (alphanumeric, dash, underscore)
+        if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+          showNotFound('invalid_slug');
+          return;
+        }
+
+        try {
+          const res = await fetch(`content/custom-pages/${encodeURIComponent(slug)}.json?_v=1.0`);
+          if (!res.ok) {
+            showNotFound('not_found');
+            return;
+          }
+          currentPageData = await res.json();
+          renderPage();
+        } catch (err) {
+          console.error('Failed to load custom page:', err);
+          showNotFound('error');
+        }
+      }
+
+      // Re-render on language change
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(() => {
+          renderPage();
+          if (modalEl && modalEl.classList.contains('open')) updateLightboxView();
+        });
+      }
+      window.addEventListener('langchange', () => {
+        renderPage();
+        if (modalEl && modalEl.classList.contains('open')) updateLightboxView();
+      });
+
+      // Initial Load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadCustomPage);
+      } else {
+        loadCustomPage();
+      }
+    })();
+  </script>
+</body>
+</html>

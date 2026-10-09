@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "sample",
+    "title": {
+      "si": "ආදර්ශ අභිරුචි පිටුව (නියැදිය)",
+      "ta": "மாதிரி தனிப்பயன் பக்கம் (மாதிரி)",
+      "en": "Sample Custom Page (Demonstration)"
+    },
+    "description": {
+      "si": "කාර්ය මණ්ඩලය සඳහා නිර්මාණය කරන ලද ආදර්ශ අභිරුචි පිටුවක් වන අතර මෙය ප්‍රකාශයට පත් කර නොමැත.",
+      "ta": "ஊழியர்களுக்கான மாதிரி பக்கம், இது வெளியிடப்படவில்லை.",
+      "en": "A sample custom page for demonstration, unpublished by default."
+    },
+    "published": false,
+    "updated": "2026-10-08"
+  }
+]

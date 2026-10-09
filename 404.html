@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Page Not Found</title>
+<script>
+  // Ensure relative assets and links resolve correctly from any missing URL depth on GitHub Pages
+  (function() {
+    var path = window.location.pathname || '';
+    var origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
+    var marker = '/school-website';
+    var idx = path.indexOf(marker);
+    var baseHref = (idx !== -1)
+      ? (origin + path.substring(0, idx + marker.length) + '/')
+      : (origin + '/');
+    var baseEl = document.createElement('base');
+    baseEl.href = baseHref;
+    document.head.insertBefore(baseEl, document.head.firstChild);
+    window.__SITE_BASE__ = baseHref;
+  })();
+</script>
 <link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
@@ -13,16 +29,27 @@
 <div id="site-header"></div>
 <main class="container" style="padding:48px 16px; text-align:center">
   <h1 style="font-size:4rem; color:var(--navy); margin:0">404</h1>
-  <p id="msg" style="color:var(--muted); margin:14px 0 24px"></p>
-  <a class="btn" href="index.html" id="home-link"></a>
+  <p id="msg" style="color:var(--muted); margin:14px 0 24px">ඔබ සොයන පිටුව හමු නොවීය. / The page you're looking for doesn't exist.</p>
+  <a class="btn" href="index.html" id="home-link">මුල් පිටුව (Home)</a>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/app.js"></script>
 <script>
 function renderBody(){
-  document.getElementById('msg').textContent = getLang()==='en' ? "The page you're looking for doesn't exist." :
-    (getLang()==='ta' ? "நீங்கள் தேடும் பக்கம் இல்லை." : "ඔබ සොයන පිටුව හමු නොවීය.");
-  document.getElementById('home-link').textContent = t(SITE.common.nav.home);
+  const lang = (typeof getLang === 'function') ? getLang() : (localStorage.getItem('pelwatta_lang') || 'si');
+  const msgEl = document.getElementById('msg');
+  if (msgEl) {
+    msgEl.textContent = lang === 'en' ? "The page you're looking for doesn't exist." :
+      (lang === 'ta' ? "நீங்கள் தேடும் பக்கம் இல்லை." : "ඔබ සොයන පිටුව හමු නොවීය.");
+  }
+  const homeBtn = document.getElementById('home-link');
+  if (homeBtn) {
+    const homeLabel = (window.SITE && SITE.common && SITE.common.nav && SITE.common.nav.home)
+      ? t(SITE.common.nav.home)
+      : (lang === 'en' ? "Home" : (lang === 'ta' ? "முகப்பு" : "මුල් පිටුව"));
+    homeBtn.textContent = homeLabel;
+    homeBtn.href = (window.__SITE_BASE__ || '') + 'index.html';
+  }
 }
 initPage('404', null, renderBody);
 </script>

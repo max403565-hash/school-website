@@ -1,0 +1,401 @@
+<!-- Website developed by [S.A.Chanuk Mithuja ] -->
+<!DOCTYPE html>
+<html lang="si" class="lang-si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Design System — Mo/Pelwatta Navodya Secondary College</title>
+  <link rel="icon" type="image/svg+xml" href="images/crest.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ds-section {
+      margin-bottom: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+    .ds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .ds-color-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+    .ds-color-swatch {
+      height: 70px;
+      width: 100%;
+    }
+    .ds-color-info {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-xs);
+    }
+    .ds-color-name {
+      font-weight: 700;
+      color: var(--color-gray-900);
+      margin-bottom: 2px;
+    }
+    .ds-color-hex {
+      font-family: monospace;
+      color: var(--color-gray-500);
+    }
+    .ds-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+      margin-top: var(--space-4);
+    }
+    .ds-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+    .ds-type-label {
+      width: 130px;
+      flex-shrink: 0;
+      font-family: monospace;
+      font-size: var(--font-xs);
+      color: var(--color-gray-500);
+    }
+    .ds-spacing-box {
+      background: var(--color-maroon-subtle);
+      border: 1px dashed var(--color-maroon);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-xs);
+      font-weight: 700;
+      color: var(--color-maroon);
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header-root"></div>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="container page-hero-inner">
+        <span class="page-hero-badge">Style Guide &amp; UI Architecture</span>
+        <h1 class="page-hero-title">Mo/Pelwatta Navodya Design System</h1>
+        <p class="page-hero-subtitle">Official UI token catalog, shared components, typography scales, and responsive guidelines for the trilingual school website.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: var(--space-8); padding-bottom: var(--space-16);">
+      
+      <!-- 1. Brand & Neutral Colors -->
+      <section class="ds-section" style="border-top: none; padding-top: 0;">
+        <div class="section-header">
+          <span class="badge badge-gold">Token Group 01</span>
+          <h2 class="section-title">Color Palette (Maroon, Gold, Neutrals &amp; Feedback)</h2>
+          <p class="section-subtitle">Consistent brand identity anchored in national school maroon and gold with high-contrast accessibility.</p>
+        </div>
+
+        <h3 style="margin-top: var(--space-6); font-size: var(--font-lg); color: var(--color-maroon);">Brand Maroon &amp; Gold</h3>
+        <div class="ds-grid">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #7a1c28;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-maroon</div><div class="ds-color-hex">#7a1c28</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #58121b;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-maroon-dark</div><div class="ds-color-hex">#58121b</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #9a2b3b;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-maroon-light</div><div class="ds-color-hex">#9a2b3b</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #fbf2f3; border-bottom: 1px solid #e2e8f0;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-maroon-subtle</div><div class="ds-color-hex">#fbf2f3</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #c99738;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-gold</div><div class="ds-color-hex">#c99738</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #9e7323;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-gold-dark</div><div class="ds-color-hex">#9e7323</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #dfb55d;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-gold-light</div><div class="ds-color-hex">#dfb55d</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #fdf8ed; border-bottom: 1px solid #e2e8f0;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-gold-subtle</div><div class="ds-color-hex">#fdf8ed</div></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: var(--space-6); font-size: var(--font-lg); color: var(--color-gray-800);">Semantic Feedback States</h3>
+        <div class="ds-grid">
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #16a34a;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-success</div><div class="ds-color-hex">#16a34a</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #d97706;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-warning</div><div class="ds-color-hex">#d97706</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #dc2626;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-error</div><div class="ds-color-hex">#dc2626</div></div>
+          </div>
+          <div class="ds-color-card">
+            <div class="ds-color-swatch" style="background: #0284c7;"></div>
+            <div class="ds-color-info"><div class="ds-color-name">--color-info</div><div class="ds-color-hex">#0284c7</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Spacing Scale -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Token Group 02</span>
+          <h2 class="section-title">Spacing Scale (4, 8, 12, 16, 24, 32, 48, 64px)</h2>
+          <p class="section-subtitle">Consistent vertical rhythm and component padding scale.</p>
+        </div>
+        <div class="ds-row">
+          <div><div class="ds-spacing-box" style="width: 40px; height: 4px;"></div><span class="field-key">--space-1 (4px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 50px; height: 8px;"></div><span class="field-key">--space-2 (8px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 60px; height: 12px;"></div><span class="field-key">--space-3 (12px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 70px; height: 16px;"></div><span class="field-key">--space-4 (16px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 90px; height: 24px;"></div><span class="field-key">--space-6 (24px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 100px; height: 32px;"></div><span class="field-key">--space-8 (32px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 120px; height: 48px;"></div><span class="field-key">--space-12 (48px)</span></div>
+          <div><div class="ds-spacing-box" style="width: 140px; height: 64px;"></div><span class="field-key">--space-16 (64px)</span></div>
+        </div>
+      </section>
+
+      <!-- 3. Typography Scale -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Token Group 03</span>
+          <h2 class="section-title">Type Scale &amp; Trilingual Readability</h2>
+          <p class="section-subtitle">Tested with Sinhala, Tamil, and Latin glyphs. Base body size is at least 16px, line-height 1.7–1.75.</p>
+        </div>
+
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-4xl (36px)</div>
+          <div style="font-size: var(--font-4xl); font-weight: 800; color: var(--color-maroon); line-height: 1.25;">විද්‍යා දදාති විනයං · Pelwatta College · கல்லூரி</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-3xl (30px)</div>
+          <div style="font-size: var(--font-3xl); font-weight: 700; color: var(--color-maroon);">මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-2xl (24px)</div>
+          <div style="font-size: var(--font-2xl); font-weight: 700;">Section Title Heading (H2)</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-xl (20px)</div>
+          <div style="font-size: var(--font-xl); font-weight: 600;">Subheading &amp; Major Card Header (H3)</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-lg (18px)</div>
+          <div style="font-size: var(--font-lg); font-weight: 600;">Lead paragraph and feature callout text</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-base (16px)</div>
+          <div style="font-size: var(--font-base); line-height: 1.7;">Standard body text (අවම ප්‍රමාණය 16px). ශ්‍රී ලංකා රජයේ නිදහස් ජාතික පාසලකි. இலங்கை அரச இலவச தேசிய பாடசாலை.</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-sm (14px)</div>
+          <div style="font-size: var(--font-sm); color: var(--color-gray-600);">Secondary text, form hints, table rows, and footer navigation links.</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-label">--font-xs (12px)</div>
+          <div style="font-size: var(--font-xs); color: var(--color-gray-500); text-transform: uppercase; letter-spacing: 0.5px;">Metadata, badges, dates, and copyright notices.</div>
+        </div>
+      </section>
+
+      <!-- 4. Buttons Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 01</span>
+          <h2 class="section-title">Buttons (.btn-primary, .btn-secondary, .btn-ghost, .btn-gold)</h2>
+          <p class="section-subtitle">Consistent touch-friendly interactive buttons with accessible focus rings.</p>
+        </div>
+        <div class="ds-row">
+          <button type="button" class="btn btn-primary">Primary Button</button>
+          <button type="button" class="btn btn-secondary">Secondary Button</button>
+          <button type="button" class="btn btn-ghost">Ghost Button</button>
+          <button type="button" class="btn btn-gold">Gold Accent Button</button>
+          <button type="button" class="btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled Button</button>
+        </div>
+      </section>
+
+      <!-- 5. Badges Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 02</span>
+          <h2 class="section-title">Badges &amp; Status Chips</h2>
+        </div>
+        <div class="ds-row">
+          <span class="badge badge-maroon">National School</span>
+          <span class="badge badge-gold">Grade 6 - 13</span>
+          <span class="badge badge-success">✓ Published</span>
+          <span class="badge badge-warning">⚠ Draft Mode</span>
+          <span class="badge badge-error">✕ Closed</span>
+          <span class="badge badge-neutral">Notice</span>
+        </div>
+      </section>
+
+      <!-- 6. Alerts Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 03</span>
+          <h2 class="section-title">Alerts &amp; Callout Banners</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-4);">
+          <div class="alert alert-info">
+            <strong>තොරතුරක් (Info):</strong> 2026 අධ්‍යයන වර්ෂය සඳහා ශිෂ්‍ය ඇතුළත් කිරීම් දැන් විවෘතව පවතී.
+          </div>
+          <div class="alert alert-success">
+            <strong>සාර්ථකයි (Success):</strong> ඔබගේ අයදුම්පත සාර්ථකව ලැබිණි. අප විසින් ඉදිරියේදී ඔබව සම්බන්ධ කරගනු ඇත.
+          </div>
+          <div class="alert alert-warning">
+            <strong>අවධානයට (Warning):</strong> මෙම පිටුව ආදර්ශ පිටුවක් වන අතර පෙරනිමියෙන් ප්‍රකාශයට පත් කර නොමැත.
+          </div>
+          <div class="alert alert-error">
+            <strong>දෝෂයක් (Error):</strong> කරුණාකර සියලුම අනිවාර්ය තොරතුරු නිවැරදිව සම්පූර්ණ කර නැවත උත්සාහ කරන්න.
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Cards Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 04</span>
+          <h2 class="section-title">Cards &amp; Container Boxes</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-4);">
+          <div class="card">
+            <div class="card-header">
+              <h3 style="font-size: var(--font-lg); margin: 0; color: var(--color-maroon);">Card Header</h3>
+            </div>
+            <div class="card-body">
+              <p style="margin: 0; font-size: var(--font-base); color: var(--color-gray-700);">
+                This is a standard card component with clean borders, elevation shadow, and proportional padding.
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary" style="font-size: var(--font-sm); padding: 6px 14px;">Card Action &rarr;</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <span class="badge badge-gold" style="margin-bottom: var(--space-2);">Academics</span>
+              <h3 style="font-size: var(--font-xl); margin: var(--space-2) 0; color: var(--color-maroon);">Secondary Education</h3>
+              <p style="margin: 0; font-size: var(--font-base); color: var(--color-gray-700);">
+                Grade 6 to 11 Ordinary Level and Grade 12 to 13 Advanced Level streams in Science, Arts, and Commerce.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Form Fields Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 05</span>
+          <h2 class="section-title">Form Fields (.form-group, .form-input, .form-label)</h2>
+        </div>
+        <div class="card" style="max-width: 640px; margin-top: var(--space-4);">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label" for="ds-sample-name">Student Full Name / ශිෂ්‍යයාගේ සම්පූර්ණ නම *</label>
+              <input type="text" id="ds-sample-name" class="form-input" placeholder="e.g. S. A. Kusal Mendis">
+              <div class="form-help">Enter the full legal name as recorded on the birth certificate.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="ds-sample-grade">Grade Applying For / ඇතුළත් වීමට බලාපොරොත්තු වන ශ්‍රේණිය *</label>
+              <select id="ds-sample-grade" class="form-select">
+                <option value="">Select a grade...</option>
+                <option value="6">Grade 6 (ශ්‍රේණිය 6)</option>
+                <option value="10">Grade 10 (ශ්‍රේණිය 10)</option>
+                <option value="12-sci">Grade 12 — Science Stream (විද්‍යා අංශය)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="ds-sample-notes">Permanent Address / ස්ථිර ලිපිනය</label>
+              <textarea id="ds-sample-notes" class="form-textarea" rows="3" placeholder="Enter postal address..."></textarea>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="ds-sample-consent">
+              <label for="ds-sample-consent">I confirm that all details provided are accurate and complete.</label>
+            </div>
+
+            <div style="margin-top: var(--space-6);">
+              <button type="button" class="btn btn-primary">Submit Application</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Tables Component -->
+      <section class="ds-section">
+        <div class="section-header">
+          <span class="badge badge-gold">Component 06</span>
+          <h2 class="section-title">Responsive Tables (.table-container, .table)</h2>
+        </div>
+        <div class="table-container" style="margin-top: var(--space-4);">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Grade Stream</th>
+                <th>Medium of Instruction</th>
+                <th>Admission Basis</th>
+                <th>Annual Quota</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Grade 6 Junior Secondary</td>
+                <td>Sinhala</td>
+                <td>Grade 5 Scholarship Examination</td>
+                <td>120 Students</td>
+                <td><span class="badge badge-success">Open</span></td>
+              </tr>
+              <tr>
+                <td>G.C.E. Advanced Level Science</td>
+                <td>Sinhala / English</td>
+                <td>G.C.E. O/L Qualifying Criteria</td>
+                <td>80 Students</td>
+                <td><span class="badge badge-success">Open</span></td>
+              </tr>
+              <tr>
+                <td>G.C.E. Advanced Level Arts</td>
+                <td>Sinhala</td>
+                <td>G.C.E. O/L Qualifying Criteria</td>
+                <td>90 Students</td>
+                <td><span class="badge badge-gold">Rolling</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

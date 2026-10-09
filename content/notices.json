@@ -1,0 +1,50 @@
+[
+  {
+    "id": "notice-1",
+    "urgent": true,
+    "date": "2026-09-15",
+    "expiry": "2026-12-31",
+    "title": {
+      "si": "2026 වාර විභාග සහ පාසල් නිවාඩු කාලසටහන පිළිබඳ දැනුම්දීම",
+      "ta": "2026 தவணைப் பரீட்சைகள் மற்றும் விடுமுறை அட்டவணை பற்றிய அறிவிப்பு",
+      "en": "Notice Regarding 2026 Term Examinations and Vacation Schedule"
+    },
+    "text": {
+      "si": "අධ්‍යාපන අමාත්‍යාංශයේ උපදෙස් පරිදි වාර විභාග කාලසටහන සංශෝධනය කර ඇති අතර සියලුම සිසුන් විභාග ප්‍රවේශ පත්‍ර සහ කාලසටහන් පන්තිභාර ගුරුභවතුන්ගෙන් ලබාගත යුතුය.",
+      "ta": "கல்வி அமைச்சின் வழிகாட்டலின்படி தவணைப் பரீட்சை அட்டவணை திருத்தப்பட்டுள்ளது. மாணவர்கள் தமது அனுமதி அட்டைகளை வகுப்பு ஆசிரியர்களிடம் பெற்றுக்கொள்ளவும்.",
+      "en": "In accordance with Ministry of Education directives, the term examination schedule has been updated. Students must obtain admission cards and timetables from class teachers."
+    }
+  },
+  {
+    "id": "notice-2",
+    "urgent": false,
+    "date": "2026-09-01",
+    "expiry": "2026-11-30",
+    "title": {
+      "si": "6 ශ්‍රේණිය නව සිසුන් ඇතුළත් කරගැනීමේ අයදුම්පත් කැඳවීම",
+      "ta": "தரம் 6 புதிய மாணவர் சேர்க்கைக்கான விண்ணப்பங்கள் கோரல்",
+      "en": "Calling Applications for Grade 6 New Student Admissions"
+    },
+    "text": {
+      "si": "පස්වන ශ්‍රේණිය ශිෂ්‍යත්ව විභාග සමත් සිසුන් සඳහා 2027 අධ්‍යයන වර්ෂයේ 6 ශ්‍රේණියට ඇතුළත් වීමේ අයදුම්පත් පාසල් කාර්යාලයෙන් හෝ බාගත කිරීම් අංශයෙන් ලබාගත හැක.",
+      "ta": "5ஆம் ஆண்டு புலமைப்பரிசில் பரீட்சையில் சித்தியடைந்த மாணவர்களுக்கான 2027 தரம் 6 சேர்க்கை விண்ணப்பங்களை பாடசாலை அலுவலகத்திலோ அல்லது பதிவிறக்கப் பிரிவிலோ பெற்றுக்கொள்ளலாம்.",
+      "en": "Applications for Grade 6 admissions for the 2027 academic year (for Grade 5 scholarship qualifiers) are available at the school office or downloads section."
+    }
+  },
+  {
+    "id": "notice-3",
+    "urgent": false,
+    "date": "2026-04-10",
+    "expiry": "2026-04-30",
+    "title": {
+      "si": "පළමු වාර දෙමාපිය ගුරු හමුව",
+      "ta": "முதலாம் தவணை பெற்றோர் ஆசிரியர் சந்திப்பு",
+      "en": "First Term Parents-Teachers General Assembly"
+    },
+    "text": {
+      "si": "සියලුම ශ්‍රේණිවල සිසුන්ගේ ප්‍රගති වාර්තා සාකච්ඡා කිරීම සඳහා පැවැත්වූ දෙමාපිය සමුළුව සාර්ථකව අවසන් විය.",
+      "ta": "அனைத்து தர மாணவர்களின் முன்னேற்ற அறிக்கைகளை மீளாய்வு செய்வதற்கான பெற்றோர் சந்திப்பு நிறைவடைந்தது.",
+      "en": "The general assembly for parents to discuss student progress reports has concluded successfully."
+    }
+  }
+]

@@ -70,7 +70,7 @@
 <script src="assets/app.js"></script>
 <script>
 function renderBody(page, common){
-  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.about)}`;
+  document.getElementById('breadcrumb').innerHTML = `<a href="index.html">${t(common.nav.home)}</a> / <span>${t(common.nav.about)}</span>`;
   document.getElementById('page-title').textContent = t(common.nav.about);
   document.getElementById('page-intro').textContent = t(page.intro);
   document.getElementById('history-title').textContent = t(page.historyTitle);
@@ -87,9 +87,12 @@ function renderBody(page, common){
   ).join('');
   document.getElementById('location-title').textContent = getLang()==='en'?'Campus Location':(getLang()==='ta'?'பாடசாலை அமைவிடம்':'පාසල් පිහිටීම');
   document.getElementById('map-note').textContent = t(page.mapNote);
-  document.getElementById('map-iframe').src = page.mapEmbedUrl;
+  const s = SITE.settings || {};
+  const mapEmbed = (s.googleMaps && s.googleMaps.embedUrl) || page.mapEmbedUrl;
+  const dirUrl = (s.googleMaps && s.googleMaps.directionsUrl) || page.getDirectionsUrl;
+  document.getElementById('map-iframe').src = mapEmbed;
   const dirBtn = document.getElementById('directions-btn');
-  dirBtn.href = page.getDirectionsUrl;
+  dirBtn.href = dirUrl;
   dirBtn.textContent = getLang()==='en'?'🗺️ Get Directions on Google Maps':(getLang()==='ta'?'🗺️ வழிகளைப் பெறுக':'🗺️ ගූගල් සිතියමෙන් මාර්ගය බලන්න');
 }
 initPage('about', 'content/pages/about.json', renderBody);

@@ -46,7 +46,7 @@ let allDocs = [];
 
 function renderBody(){
   const lang = getLang();
-  document.getElementById('breadcrumb').innerHTML = `${t(SITE.common.nav.home)} / ${t(TITLE)}`;
+  document.getElementById('breadcrumb').innerHTML = `<a href="index.html">${t(SITE.common.nav.home)}</a> / <span>${t(TITLE)}</span>`;
   document.getElementById('page-title').textContent = t(TITLE);
   document.getElementById('page-intro').textContent = t(INTRO);
 

@@ -35,8 +35,49 @@ async function fetchJSON(url){
   return data;
 }
 
+const DEFAULT_SITE_MENU = [
+  { "id": "home", "href": "index.html", "label": { "si": "මුල් පිටුව", "ta": "முகப்பு", "en": "Home" }, "visible": true },
+  { "id": "about", "href": "about.html", "label": { "si": "පාසල පිළිබඳව", "ta": "எங்களைப் பற்றி", "en": "About Us" }, "visible": true },
+  { "id": "academic", "href": "academic.html", "label": { "si": "අධ්‍යයන අංශය", "ta": "கல்විப் பிரிவு", "en": "Academics" }, "visible": true },
+  { "id": "student-life", "href": "student-life.html", "label": { "si": "ශිෂ්‍ය ජීවිතය", "ta": "மாணவர் வாழ்க்கை", "en": "Student Life" }, "visible": true },
+  { "id": "gallery", "href": "gallery.html", "label": { "si": "ඡායාරූප", "ta": "படத்தொகுப்பு", "en": "Gallery" }, "visible": true },
+  { "id": "news", "href": "news.html", "label": { "si": "පුවත් සහ නිවේදන", "ta": "செய்திகள் & நிகழ்வுகள்", "en": "News & Events" }, "visible": true },
+  { "id": "admissions", "href": "admissions.html", "label": { "si": "ඇතුළත් වීම්", "ta": "சேர்க்கை", "en": "Admissions" }, "visible": true },
+  { "id": "contact", "href": "contact.html", "label": { "si": "සම්බන්ධ කර ගැනීමට", "ta": "தொடர்புகளுக்கு", "en": "Contact Us" }, "visible": true },
+  {
+    "id": "more",
+    "label": { "si": "තවත්", "ta": "மேலும்", "en": "More" },
+    "visible": true,
+    "children": [
+      { "id": "notices", "href": "notices.html", "label": { "si": "නිවේදන සහ සිදුවීම්", "ta": "அறிவிப்புகள் & நிகழ்வுகள்", "en": "Notices & Events" }, "visible": true },
+      { "id": "downloads", "href": "downloads.html", "label": { "si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads" }, "visible": true },
+      { "id": "sds", "href": "sds-parents.html", "label": { "si": "සංවර්ධන සමිතිය", "ta": "அபிவிருத்தி சங்கம்", "en": "SDS & Parents" }, "visible": true }
+    ]
+  }
+];
+
 async function loadCommon(){
-  if (!SITE.common) SITE.common = await fetchJSON('content/common.json');
+  if (!SITE.common) {
+    try {
+      SITE.common = await fetchJSON('content/common.json');
+    } catch (e) {
+      SITE.common = {};
+    }
+  }
+  if (!SITE.settings) {
+    try {
+      SITE.settings = await fetchJSON('content/settings.json');
+    } catch (e) {
+      SITE.settings = null;
+    }
+  }
+  if (!SITE.menu) {
+    try {
+      SITE.menu = await fetchJSON('content/menu.json');
+    } catch (e) {
+      SITE.menu = DEFAULT_SITE_MENU;
+    }
+  }
   return SITE.common;
 }
 
@@ -47,22 +88,35 @@ function getShortLang(lang){
 }
 
 function renderHeader(common, currentKey){
-  const nav = common.nav;
-  const navHTML = Object.keys(nav).map(key => {
-    let href = 'index.html';
-    if (key === 'about') href = 'about.html';
-    else if (key === 'academic') href = 'academic.html';
-    else if (key === 'studentlife') href = 'student-life.html';
-    else if (key === 'gallery') href = 'gallery.html';
-    else if (key === 'news') href = 'news.html';
-    else if (key === 'admissions') href = 'admissions.html';
-    else if (key === 'downloads') href = 'downloads.html';
-    else if (key === 'contact') href = 'contact.html';
-    else if (key === 'sds') href = 'sds-parents.html';
-    else href = `${key}.html`;
+  const menuData = (SITE.menu && Array.isArray(SITE.menu)) ? SITE.menu : DEFAULT_SITE_MENU;
 
-    return `<li class="nav-item"><a href="${href}" class="nav-link ${key===currentKey?'active':''}">${t(nav[key])}</a></li>`;
-  }).join('');
+  let navHTML = '';
+  menuData.forEach(item => {
+    if (item.visible === false) return;
+    if (item.children && Array.isArray(item.children) && item.children.length > 0) {
+      const visibleChildren = item.children.filter(c => c.visible !== false);
+      if (!visibleChildren.length) return;
+      const isGroupActive = visibleChildren.some(c => c.id === currentKey || c.href === `${currentKey}.html`);
+      const childrenHTML = visibleChildren.map(c => {
+        const isActive = c.id === currentKey || c.href === `${currentKey}.html`;
+        return `<li><a href="${c.href}" class="submenu-link ${isActive ? 'active' : ''}">${t(c.label)}</a></li>`;
+      }).join('');
+
+      navHTML += `
+        <li class="nav-item has-dropdown" id="nav-item-${item.id}">
+          <button type="button" class="dropdown-toggle ${isGroupActive ? 'active' : ''}" data-group="${item.id}" aria-haspopup="true" aria-expanded="false">
+            <span>${t(item.label)}</span> ▾
+          </button>
+          <ul class="nav-submenu" id="submenu-${item.id}">
+            ${childrenHTML}
+          </ul>
+        </li>
+      `;
+    } else if (item.href) {
+      const isActive = item.id === currentKey || item.href === `${currentKey}.html` || (currentKey === 'home' && item.href === 'index.html');
+      navHTML += `<li class="nav-item"><a href="${item.href}" class="nav-link ${isActive ? 'active' : ''}">${t(item.label)}</a></li>`;
+    }
+  });
 
   const shortLabel = getShortLang(SITE.lang);
 
@@ -83,22 +137,25 @@ function renderHeader(common, currentKey){
         <ul class="top-contact-list">
           <li class="top-contact-item">
             <span>📍</span>
-            <span>${t(common.location)}</span>
+            <span>${t((SITE.settings && SITE.settings.address) || common.location)}</span>
           </li>
           <li class="top-contact-item">
             <span>📞</span>
-            <span>+94 55 227 6234</span>
+            <span>${(SITE.settings && SITE.settings.phones && SITE.settings.phones[0]) || '+94 55 227 6234'}</span>
           </li>
           <li class="top-contact-item">
             <span>✉️</span>
-            <span>principal@pelwattacollege.sch.lk</span>
+            <span>${(SITE.settings && SITE.settings.email) || 'principal@pelwattacollege.sch.lk'}</span>
           </li>
         </ul>
 
-        <div class="lang-desktop-switch" role="group" aria-label="Language Selector">
-          <button type="button" class="lang-btn ${SITE.lang==='si'?'active':''}" data-lang="si" aria-label="Sinhala">සිංහල</button>
-          <button type="button" class="lang-btn ${SITE.lang==='ta'?'active':''}" data-lang="ta" aria-label="Tamil">தமிழ்</button>
-          <button type="button" class="lang-btn ${SITE.lang==='en'?'active':''}" data-lang="en" aria-label="English">English</button>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <button type="button" class="search-trigger-btn" aria-label="Search" title="Search" onclick="window.Pelwatta && window.Pelwatta.openSearch ? window.Pelwatta.openSearch() : openSearchOverlayApp()">🔍</button>
+          <div class="lang-desktop-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn ${SITE.lang==='si'?'active':''}" data-lang="si" aria-label="Sinhala">සිංහල</button>
+            <button type="button" class="lang-btn ${SITE.lang==='ta'?'active':''}" data-lang="ta" aria-label="Tamil">தமிழ்</button>
+            <button type="button" class="lang-btn ${SITE.lang==='en'?'active':''}" data-lang="en" aria-label="English">English</button>
+          </div>
         </div>
       </div>
     </div>
@@ -110,13 +167,15 @@ function renderHeader(common, currentKey){
           <a class="brand brand-link" href="index.html" aria-label="Mo/Pelwatta Navodya Secondary College">
             <img src="images/crest.svg" alt="College Crest" class="crest-img" width="42" height="42">
             <div class="brand-text">
-              <span class="brand-title name-si">${t(common.schoolName)}</span>
-              <span class="brand-subtitle desktop-only-sub loc">${t(common.location)}</span>
+              <span class="brand-title name-si">${t((SITE.settings && SITE.settings.schoolName) || common.schoolName)}</span>
+              <span class="brand-subtitle desktop-only-sub loc">${t((SITE.settings && SITE.settings.address) || common.location)}</span>
             </div>
           </a>
 
-          <!-- Header Actions: Mobile Lang Dropdown + Hamburger Toggle -->
+          <!-- Header Actions: Search + Mobile Lang Dropdown + Hamburger Toggle -->
           <div class="header-actions">
+            <button type="button" class="search-trigger-btn" aria-label="Search" title="Search" onclick="window.Pelwatta && window.Pelwatta.openSearch ? window.Pelwatta.openSearch() : openSearchOverlayApp()">🔍</button>
+
             <div class="lang-mobile-dropdown" id="lang-mobile-dropdown">
               <button type="button" class="lang-dropdown-btn" id="mobile-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select Language">
                 <span id="mobile-lang-label">${shortLabel} ▾</span>
@@ -148,15 +207,26 @@ function renderFooter(common){
   const footerRoot = document.getElementById('site-footer');
   if (!footerRoot) return;
 
+  const s = SITE.settings || {};
+  let socialHtml = '';
+  if (s.facebookUrl || s.youtubeUrl || s.whatsappUrl) {
+    socialHtml = '<div style="display:flex; gap:12px; margin-top:12px; align-items:center;">';
+    if (s.facebookUrl) socialHtml += `<a href="${s.facebookUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">📘 Facebook</a>`;
+    if (s.youtubeUrl) socialHtml += `<a href="${s.youtubeUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">▶️ YouTube</a>`;
+    if (s.whatsappUrl) socialHtml += `<a href="${s.whatsappUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">💬 WhatsApp</a>`;
+    socialHtml += '</div>';
+  }
+
   footerRoot.innerHTML = `
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>${t(common.schoolName)}</h4>
-          <p>${t(f.freeSchoolNote)}</p>
+          <h4>${t((s.schoolName) || common.schoolName)}</h4>
+          <p>${t((s.footerText) || f.freeSchoolNote)}</p>
           <div style="font-size:0.8125rem; color:#94a3b8; margin-top:0.75rem;">
             <p>Census No: 18452 · MoE Sri Lanka</p>
           </div>
+          ${socialHtml}
         </div>
         <div>
           <h4>${t(f.quickLinksTitle)}</h4>
@@ -167,6 +237,7 @@ function renderFooter(common){
             <li><a href="student-life.html">${t(common.nav.studentlife)}</a></li>
             <li><a href="gallery.html">${t(common.nav.gallery)}</a></li>
             <li><a href="news.html">${t(common.nav.news)}</a></li>
+            <li><a href="notices.html">${t(common.nav.notices || { si: 'නිවේදන සහ සිදුවීම්', ta: 'அறிவிப்புகள் & நிகழ்வுகள்', en: 'Notices & Events' })}</a></li>
           </ul>
         </div>
         <div>
@@ -237,6 +308,19 @@ function attachHeaderEvents(){
     });
   }
 
+  // Dropdown Group Toggles (expandable groups on desktop & mobile)
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const parent = btn.closest('.has-dropdown');
+      if (!parent) return;
+      const submenu = parent.querySelector('.nav-submenu');
+      const isOpen = parent.classList.toggle('open');
+      if (submenu) submenu.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+  });
+
   // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
     if (mobileLangMenu && mobileLangMenu.classList.contains('open')) {
@@ -251,6 +335,15 @@ function attachHeaderEvents(){
         if (toggle) toggle.setAttribute('aria-expanded', 'false');
       }
     }
+    document.querySelectorAll('.has-dropdown.open').forEach(parent => {
+      if (!parent.contains(e.target)) {
+        parent.classList.remove('open');
+        const sub = parent.querySelector('.nav-submenu');
+        if (sub) sub.classList.remove('open');
+        const b = parent.querySelector('.dropdown-toggle');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 }
 
@@ -290,4 +383,18 @@ function openLightbox(src, caption){
   lb.querySelector('#lightbox-img').src = src;
   lb.querySelector('#lightbox-cap').textContent = caption || '';
   lb.classList.add('open');
+}
+
+function openSearchOverlayApp(){
+  if (window.Pelwatta && window.Pelwatta.openSearch) {
+    window.Pelwatta.openSearch();
+    return;
+  }
+  // If common.js is not loaded, dynamically inject it or open overlay
+  let s = document.createElement('script');
+  s.src = 'js/common.js';
+  s.onload = () => {
+    if (window.Pelwatta && window.Pelwatta.openSearch) window.Pelwatta.openSearch();
+  };
+  document.body.appendChild(s);
 }

@@ -43,6 +43,29 @@
   .field-key{font-family:monospace;font-size:.78rem;color:#667;margin-top:8px}
   .thumb{max-width:120px;display:block;margin-top:6px;border-radius:4px}
   .top-actions{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  
+  /* Custom Pages & Block Editor styles */
+  .block-item{background:#fff;border:1px solid #cbd5e1;border-radius:8px;margin-bottom:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+  .block-header{background:#f8fafc;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;flex-wrap:wrap;gap:8px}
+  .block-type-badge{font-family:monospace;font-weight:700;font-size:0.75rem;background:#0b2545;color:#fff;padding:3px 8px;border-radius:4px;text-transform:uppercase}
+  .block-body{padding:14px}
+  .block-actions{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+  .block-actions button{padding:4px 8px;font-size:0.78rem;margin-right:0}
+  .lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:6px}
+  .lang-group label{margin-top:4px;font-size:0.78rem;color:#475569}
+  .block-add-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:14px;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:8px;align-items:center}
+  .block-add-bar span{font-weight:700;font-size:0.85rem;color:#0b2545;margin-right:6px}
+  .block-add-bar button{font-size:0.8rem;padding:6px 12px;margin-right:0}
+  .badge-pub{background:#e8f5e9;color:#1b5e20;font-size:0.75rem;font-weight:700;padding:3px 8px;border-radius:4px;display:inline-block}
+  .badge-draft{background:#fef3c7;color:#92400e;font-size:0.75rem;font-weight:700;padding:3px 8px;border-radius:4px;display:inline-block}
+  
+  /* Menu Editor styles */
+  .menu-item-box{background:#fff;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .menu-group-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:8px;padding:12px;margin-bottom:14px}
+  .menu-group-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0;flex-wrap:wrap;gap:8px}
+  .menu-children-list{padding-left:18px;border-left:3px solid #0b2545;margin-left:4px}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000;padding:16px}
+  .modal-card{background:#fff;border-radius:8px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,0.2)}
 </style>
 </head>
 <body>
@@ -71,6 +94,11 @@
   <div id="editor" style="display:none">
     <div class="tabs">
       <button data-tab="news" class="active">News & Events</button>
+      <button data-tab="notices">Notices</button>
+      <button data-tab="events">Events</button>
+      <button data-tab="custom-pages">Pages</button>
+      <button data-tab="menu">Menu</button>
+      <button data-tab="settings">Site Settings</button>
       <button data-tab="gallery">Gallery</button>
       <button data-tab="downloads">Downloads (PDFs)</button>
       <button data-tab="pages">Page Text</button>
@@ -115,6 +143,418 @@
         </div>
         <button id="pdf-upload" style="margin-top:12px">Upload & Add to Academic page</button>
         <div id="pdf-status"></div>
+      </div>
+    </div>
+
+    <!-- NOTICES TAB -->
+    <div class="tabpanel" data-panel="notices">
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">📢 Notice Board Items</h2>
+          <button id="notices-add">+ Add notice</button>
+        </div>
+        <p class="muted" style="margin-top:6px;">Urgent notices appear as a dismissible alert banner on the home page until their expiry date. All notices are displayed on the public Notices page (notices.html).</p>
+        <div id="notices-list"></div>
+        <button id="notices-save">Save all changes to website</button>
+        <div id="notices-status"></div>
+      </div>
+    </div>
+
+    <!-- EVENTS TAB -->
+    <div class="tabpanel" data-panel="events">
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0">📅 School Events Calendar</h2>
+          <button id="events-add">+ Add event</button>
+        </div>
+        <p class="muted" style="margin-top:6px;">Upcoming events are shown on the home page (next 3) and listed in full on the Notices & Events page (notices.html). Past events are automatically hidden on public pages.</p>
+        <div id="events-list"></div>
+        <button id="events-save">Save all changes to website</button>
+        <div id="events-status"></div>
+      </div>
+    </div>
+
+    <!-- CUSTOM PAGES TAB -->
+    <div class="tabpanel" data-panel="custom-pages">
+      <!-- 1. PAGES LIST VIEW -->
+      <div class="card" id="cpages-list-card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0">📄 Custom Pages (No-Code Builder)</h2>
+            <p class="muted" style="margin:4px 0 0;">Create and publish data-driven pages with blocks (stored in content/custom-pages/ and served at page.html?p=&lt;slug&gt;).</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button id="cpages-refresh" class="secondary">🔄 Refresh</button>
+            <button id="cpages-new-btn" style="background:#16a34a; color:#fff;">+ New Page</button>
+          </div>
+        </div>
+
+        <!-- NEW PAGE DRAWER/FORM -->
+        <div id="cpages-new-drawer" style="display:none; background:#f8fafc; border:2px dashed #0b2545; border-radius:8px; padding:16px; margin:16px 0;">
+          <h3 style="margin-top:0; color:#0b2545;">Create New Custom Page</h3>
+          <div class="row">
+            <div>
+              <label>Page Title (English) *</label>
+              <input type="text" id="cpages-new-title-en" placeholder="e.g. Science Exhibition 2026">
+            </div>
+            <div>
+              <label>Page Title (Sinhala) *</label>
+              <input type="text" id="cpages-new-title-si" placeholder="e.g. 2026 විද්‍යා ප්‍රදර්ශනය">
+            </div>
+            <div>
+              <label>Page Title (Tamil) *</label>
+              <input type="text" id="cpages-new-title-ta" placeholder="e.g. 2026 விஞ்ஞானக் கண்காட்சி">
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <label>Page Slug (URL Key) * <span class="muted">(lowercase letters, numbers, hyphens only)</span></label>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="muted" style="font-family:monospace;">page.html?p=</span>
+              <input type="text" id="cpages-new-slug" placeholder="e.g. science-exhibition-2026" style="font-family:monospace;">
+            </div>
+            <p id="cpages-slug-val-msg" class="muted" style="margin:4px 0; color:#64748b; font-size:0.8rem;">Auto-generated from English title. Must be unique.</p>
+          </div>
+          <div style="margin-top:10px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="cpages-new-published">
+              <span>Publish immediately to public website (leave unchecked to keep as draft)</span>
+            </label>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:8px;">
+            <button id="cpages-create-confirm" style="background:#16a34a; color:#fff;">Create Page & Open Editor</button>
+            <button id="cpages-create-cancel" class="secondary">Cancel</button>
+          </div>
+          <div id="cpages-create-status"></div>
+        </div>
+
+        <div id="cpages-list" style="margin-top:16px;">
+          <div class="muted">Loading custom pages…</div>
+        </div>
+        <div id="cpages-status"></div>
+      </div>
+
+      <!-- 2. BLOCK EDITOR VIEW (SHOWN WHEN EDITING A PAGE) -->
+      <div class="card" id="cpages-editor-card" style="display:none;">
+        <div class="top-actions" style="margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid #dfe3e8;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <button id="cpages-back-btn" class="secondary" style="font-size:0.85rem;">← Back to Pages</button>
+            <div>
+              <h2 id="cpages-active-title" style="margin:0; font-size:1.15rem; color:#0b2545;">Editing Page</h2>
+              <span id="cpages-active-slug-badge" style="font-family:monospace; font-size:0.8rem; color:#64748b;">slug: -</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button id="cpages-preview-btn" class="secondary" title="Save as draft and preview in new tab">👁️ Preview (Draft)</button>
+            <button id="cpages-pub-toggle-btn" class="secondary" style="font-weight:700;">Status: Draft</button>
+            <button id="cpages-save-btn" style="background:#16a34a; color:#fff;">💾 Save & Publish</button>
+          </div>
+        </div>
+
+        <div id="cpages-editor-status"></div>
+
+        <!-- PAGE DETAILS ACCORDION -->
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:12px; margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <strong style="color:#0b2545; font-size:0.9rem;">📌 Page Titles & Subtitles (Trilingual)</strong>
+            <span class="muted" style="font-size:0.8rem;">Click to edit header text</span>
+          </div>
+          <div style="margin-top:10px;">
+            <label style="margin-top:0;">Page Title (h1):</label>
+            <div class="lang-grid">
+              <div class="lang-group">
+                <label>English</label>
+                <input type="text" id="cpage-title-en">
+              </div>
+              <div class="lang-group">
+                <label>Sinhala</label>
+                <input type="text" id="cpage-title-si">
+              </div>
+              <div class="lang-group">
+                <label>Tamil</label>
+                <input type="text" id="cpage-title-ta">
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <label style="margin-top:0;">Page Subtitle / Lead:</label>
+            <div class="lang-grid">
+              <div class="lang-group">
+                <label>English</label>
+                <textarea id="cpage-subtitle-en" style="min-height:48px;"></textarea>
+              </div>
+              <div class="lang-group">
+                <label>Sinhala</label>
+                <textarea id="cpage-subtitle-si" style="min-height:48px;"></textarea>
+              </div>
+              <div class="lang-group">
+                <label>Tamil</label>
+                <textarea id="cpage-subtitle-ta" style="min-height:48px;"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCKS CONTAINER -->
+        <h3 style="margin:16px 0 8px; color:#0b2545; display:flex; justify-content:space-between; align-items:center;">
+          <span>Content Blocks</span>
+          <span id="cpage-block-count" class="muted" style="font-size:0.8rem; font-weight:normal;">0 blocks</span>
+        </h3>
+        <div id="cpage-blocks-container"></div>
+
+        <!-- ADD BLOCK BAR -->
+        <div class="block-add-bar">
+          <span>+ Add Block:</span>
+          <button type="button" class="secondary" data-addblock="heading">Heading</button>
+          <button type="button" class="secondary" data-addblock="text">Text (Paragraphs)</button>
+          <button type="button" class="secondary" data-addblock="image">Image</button>
+          <button type="button" class="secondary" data-addblock="gallery">Gallery (Photos)</button>
+          <button type="button" class="secondary" data-addblock="cards">Cards (Grid)</button>
+          <button type="button" class="secondary" data-addblock="table">Table</button>
+          <button type="button" class="secondary" data-addblock="links">Links / Downloads</button>
+          <button type="button" class="secondary" data-addblock="embed">Embed (Video/Map)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU TAB -->
+    <div class="tabpanel" data-panel="menu">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0">🧭 Site Navigation Menu (content/menu.json)</h2>
+            <p class="muted" style="margin:4px 0 0;">Manage top navigation links, dropdown groups (e.g. "More"), and order. (A Home item is mandatory).</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button id="menu-refresh-btn" class="secondary">🔄 Refresh</button>
+            <button id="menu-add-link-btn" class="secondary">+ Add Top Link</button>
+            <button id="menu-add-group-btn" class="secondary">+ Add Dropdown Group</button>
+            <button id="menu-save-btn" style="background:#16a34a; color:#fff;">💾 Save Menu</button>
+          </div>
+        </div>
+
+        <div id="menu-status" style="margin-top:10px;"></div>
+
+        <div id="menu-items-tree" style="margin-top:16px;">
+          <div class="muted">Loading menu items…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE SETTINGS TAB -->
+    <div class="tabpanel" data-panel="settings">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0">⚙️ Site Settings (content/settings.json)</h2>
+            <p class="muted" style="margin:4px 0 0;">Manage school name, motto, contact info, Google Maps embed, social media URLs, and developer credit.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button id="settings-refresh-btn" class="secondary">🔄 Refresh</button>
+            <button id="settings-save-btn" style="background:#16a34a; color:#fff;">💾 Save Settings</button>
+          </div>
+        </div>
+
+        <div id="settings-status" style="margin-top:10px;"></div>
+
+        <!-- Section 1: School Identity -->
+        <h3 style="margin-top:20px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">1. School Identity (Trilingual)</h3>
+        <div class="row">
+          <div>
+            <label>School Full Name (English) *</label>
+            <input type="text" id="set-name-en">
+          </div>
+          <div>
+            <label>School Full Name (Sinhala) *</label>
+            <input type="text" id="set-name-si">
+          </div>
+          <div>
+            <label>School Full Name (Tamil) *</label>
+            <input type="text" id="set-name-ta">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>Short Name (English)</label>
+            <input type="text" id="set-short-en">
+          </div>
+          <div>
+            <label>Short Name (Sinhala)</label>
+            <input type="text" id="set-short-si">
+          </div>
+          <div>
+            <label>Short Name (Tamil)</label>
+            <input type="text" id="set-short-ta">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>School Motto (English)</label>
+            <input type="text" id="set-motto-en">
+          </div>
+          <div>
+            <label>School Motto (Sinhala)</label>
+            <input type="text" id="set-motto-si">
+          </div>
+          <div>
+            <label>School Motto (Tamil)</label>
+            <input type="text" id="set-motto-ta">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>National School Status Note (English)</label>
+            <input type="text" id="set-status-en">
+          </div>
+          <div>
+            <label>National School Status Note (Sinhala)</label>
+            <input type="text" id="set-status-si">
+          </div>
+          <div>
+            <label>National School Status Note (Tamil)</label>
+            <input type="text" id="set-status-ta">
+          </div>
+        </div>
+
+        <!-- Section 2: Address & Working Hours -->
+        <h3 style="margin-top:24px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">2. Location & Working Hours</h3>
+        <div class="row">
+          <div>
+            <label>Postal Address (English) *</label>
+            <input type="text" id="set-addr-en">
+          </div>
+          <div>
+            <label>Postal Address (Sinhala) *</label>
+            <input type="text" id="set-addr-si">
+          </div>
+          <div>
+            <label>Postal Address (Tamil) *</label>
+            <input type="text" id="set-addr-ta">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>Office Working Hours (English)</label>
+            <input type="text" id="set-hours-en">
+          </div>
+          <div>
+            <label>Office Working Hours (Sinhala)</label>
+            <input type="text" id="set-hours-si">
+          </div>
+          <div>
+            <label>Office Working Hours (Tamil)</label>
+            <input type="text" id="set-hours-ta">
+          </div>
+        </div>
+
+        <!-- Section 3: Contact Channels & RTI -->
+        <h3 style="margin-top:24px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">3. Contact Numbers, Email & RTI Officer</h3>
+        <div class="row">
+          <div>
+            <label>Primary Phone *</label>
+            <input type="text" id="set-phone-1">
+          </div>
+          <div>
+            <label>Secondary Phone</label>
+            <input type="text" id="set-phone-2">
+          </div>
+          <div>
+            <label>Official Email Address *</label>
+            <input type="text" id="set-email">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>RTI Officer Name (English)</label>
+            <input type="text" id="set-rti-name-en">
+          </div>
+          <div>
+            <label>RTI Officer Name (Sinhala)</label>
+            <input type="text" id="set-rti-name-si">
+          </div>
+          <div>
+            <label>RTI Officer Name (Tamil)</label>
+            <input type="text" id="set-rti-name-ta">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div>
+            <label>RTI Officer Designation (English)</label>
+            <input type="text" id="set-rti-desig-en">
+          </div>
+          <div>
+            <label>RTI Officer Phone</label>
+            <input type="text" id="set-rti-phone">
+          </div>
+          <div>
+            <label>RTI Officer Email</label>
+            <input type="text" id="set-rti-email">
+          </div>
+        </div>
+
+        <!-- Section 4: Social Media Channels -->
+        <h3 style="margin-top:24px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">4. Social Media Links</h3>
+        <p class="muted" style="margin:4px 0 10px;">Social icons display only when a valid https URL is provided. Leave empty to hide.</p>
+        <div class="row">
+          <div>
+            <label>Facebook Page URL (https://...)</label>
+            <input type="text" id="set-facebook" placeholder="https://www.facebook.com/pelwattacollege">
+          </div>
+          <div>
+            <label>YouTube Channel URL (https://...)</label>
+            <input type="text" id="set-youtube" placeholder="https://www.youtube.com/@pelwattacollege">
+          </div>
+          <div>
+            <label>WhatsApp Chat Link (https://wa.me/...)</label>
+            <input type="text" id="set-whatsapp" placeholder="https://wa.me/94552276234">
+          </div>
+        </div>
+
+        <!-- Section 5: Google Maps -->
+        <h3 style="margin-top:24px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">5. Google Maps Location</h3>
+        <div style="margin-top:10px;">
+          <label>Embed Google Map (iframe HTML or embed src URL) *</label>
+          <textarea id="set-maps-embed" rows="3" placeholder='Paste "<iframe src=\"https://www.google.com/maps/embed...\" ...></iframe>" or raw embed URL'></textarea>
+          <div class="muted" style="margin-top:4px;">Accepts pasted iframe embed code or direct embed URL. Must begin with <code>https://www.google.com/maps/embed</code>.</div>
+          <div id="set-maps-val-msg" style="margin-top:4px; font-size:0.82rem;"></div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <label>Google Maps Directions Link (for "Get Directions" button) *</label>
+          <input type="text" id="set-maps-dir" placeholder="https://maps.google.com/?q=Pelwatta+Navodya+School+Monaragala">
+        </div>
+
+        <!-- Section 6: Footer Text & Credits -->
+        <h3 style="margin-top:24px; color:#0b2545; border-bottom:1px solid #dfe3e8; padding-bottom:6px;">6. Footer Legal Text & Developer Credit</h3>
+        <div class="row">
+          <div>
+            <label>Footer Text (English)</label>
+            <textarea id="set-footer-en" rows="2"></textarea>
+          </div>
+          <div>
+            <label>Footer Text (Sinhala)</label>
+            <textarea id="set-footer-si" rows="2"></textarea>
+          </div>
+          <div>
+            <label>Footer Text (Tamil)</label>
+            <textarea id="set-footer-ta" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <label>Mandatory Developer Credit *</label>
+          <input type="text" id="set-dev-credit" value="Website developed by [S.A.Chanuk Mithuja ]">
+          <div class="muted" style="margin-top:2px;">Preserved exactly per contract section 1.7.</div>
+        </div>
+
+        <div style="margin-top:24px; padding-top:16px; border-top:1px solid #dfe3e8;">
+          <button id="settings-save-bottom-btn" style="background:#16a34a; color:#fff; padding:10px 24px; font-size:1rem;">💾 Save Site Settings</button>
+        </div>
       </div>
     </div>
 
@@ -473,6 +913,13 @@
           <option value="student-life.html">Student Life Page (student-life.html)</option>
           <option value="admissions.html">Admissions Page (admissions.html)</option>
           <option value="contact.html">Contact Page (contact.html)</option>
+          <option value="content/settings.json">Site Settings (content/settings.json)</option>
+          <option value="content/menu.json">Navigation Menu (content/menu.json)</option>
+          <option value="content/custom-pages.json">Custom Pages Index (content/custom-pages.json)</option>
+          <option value="content/custom-pages/sample.json">Sample Custom Page (content/custom-pages/sample.json)</option>
+          <option value="content/notices.json">Notices (content/notices.json)</option>
+          <option value="content/events.json">Events (content/events.json)</option>
+          <option value="page.html">Custom Page Template (page.html)</option>
           <option value="content/news-items.json">News items</option>
           <option value="content/gallery-items.json">Gallery items</option>
           <option value="content/common.json">Shared content</option>
@@ -812,6 +1259,8 @@ function showEditor(){
   document.getElementById('editor').style.display = 'block';
   document.getElementById('btn-logout').style.display = 'inline-block';
   loadNewsTab();
+  loadCustomPagesTab();
+  loadMenuTab();
   loadBackupsList();
 }
 document.getElementById('btn-connect').onclick = async () => {
@@ -1070,6 +1519,218 @@ document.getElementById('pdf-upload').onclick = async () => {
     statusEl.innerHTML = '<div class="status err">'+e.message+'</div>';
   }
 };
+
+/* ===================== NOTICES TAB ===================== */
+let noticesData = null;
+async function loadNoticesTab(){
+  const el = document.getElementById('notices-list');
+  el.innerHTML = '<div class="muted">Loading notices…</div>';
+  try {
+    const file = await ghGetFile('content/notices.json');
+    noticesData = file ? JSON.parse(file.content) : [];
+    renderNoticesList();
+  } catch (err) {
+    el.innerHTML = '<div class="status err">Failed to load notices: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function renderNoticesList(){
+  const el = document.getElementById('notices-list');
+  if (!noticesData || !noticesData.length){
+    el.innerHTML = '<div class="muted" style="padding:16px 0;">No notices yet. Click "+ Add notice" above to create one.</div>';
+    return;
+  }
+  el.innerHTML = noticesData.map((n, i) => `
+    <div class="item-box" data-i="${i}">
+      <div class="row">
+        <div>
+          <label>Posted Date</label>
+          <input type="date" value="${n.date || ''}" data-f="date">
+        </div>
+        <div>
+          <label>Expiry Date (Optional - leave blank if no expiry)</label>
+          <input type="date" value="${n.expiry || ''}" data-f="expiry">
+        </div>
+        <div style="min-width:180px; display:flex; align-items:flex-end; padding-bottom:8px;">
+          <label style="margin:0; cursor:pointer; display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" ${n.urgent ? 'checked' : ''} data-f="urgent" style="width:auto; margin:0;">
+            <span style="font-weight:700; color:#b91c1c;">Urgent (Home Top Banner)</span>
+          </label>
+        </div>
+      </div>
+      <div class="field-key" style="margin-top:10px;">Notice Title (Trilingual)</div>
+      <div class="row">
+        <div><input type="text" value="${escapeHtml((n.title && n.title.si) || '')}" data-f="title.si" placeholder="Sinhala (සිංහල)"></div>
+        <div><input type="text" value="${escapeHtml((n.title && n.title.ta) || '')}" data-f="title.ta" placeholder="Tamil (தமிழ்)"></div>
+        <div><input type="text" value="${escapeHtml((n.title && n.title.en) || '')}" data-f="title.en" placeholder="English"></div>
+      </div>
+      <div class="field-key" style="margin-top:10px;">Notice Details / Text (Trilingual)</div>
+      <div class="row">
+        <div><textarea data-f="text.si" placeholder="Sinhala details">${escapeHtml((n.text && n.text.si) || '')}</textarea></div>
+        <div><textarea data-f="text.ta" placeholder="Tamil details">${escapeHtml((n.text && n.text.ta) || '')}</textarea></div>
+        <div><textarea data-f="text.en" placeholder="English details">${escapeHtml((n.text && n.text.en) || '')}</textarea></div>
+      </div>
+      <div style="margin-top:10px">
+        <button class="danger" data-del-notice="${i}">Delete this notice</button>
+      </div>
+    </div>
+  `).join('');
+
+  el.querySelectorAll('input,textarea').forEach(inp => {
+    inp.onchange = (e) => {
+      const box = e.target.closest('.item-box');
+      const i = parseInt(box.dataset.i, 10);
+      const f = e.target.dataset.f;
+      if (f === 'urgent') {
+        noticesData[i].urgent = e.target.checked;
+        return;
+      }
+      if (f.includes('.')) {
+        const [a, b] = f.split('.');
+        noticesData[i][a] = noticesData[i][a] || {};
+        noticesData[i][a][b] = e.target.value;
+      } else {
+        noticesData[i][f] = e.target.value;
+      }
+    };
+  });
+
+  el.querySelectorAll('[data-del-notice]').forEach(btn => {
+    btn.onclick = () => {
+      if (!confirm('Are you sure you want to delete this notice?')) return;
+      const idx = parseInt(btn.dataset.delNotice, 10);
+      noticesData.splice(idx, 1);
+      renderNoticesList();
+    };
+  });
+}
+
+document.getElementById('notices-add').onclick = () => {
+  if (!noticesData) noticesData = [];
+  noticesData.unshift({
+    id: 'notice-' + Date.now(),
+    urgent: true,
+    date: new Date().toISOString().slice(0, 10),
+    expiry: '',
+    title: { si: '', ta: '', en: '' },
+    text: { si: '', ta: '', en: '' }
+  });
+  renderNoticesList();
+};
+
+document.getElementById('notices-save').onclick = async () => {
+  const statusEl = document.getElementById('notices-status');
+  if (!confirm('Publish notice changes to the live website now?')) return;
+  statusEl.innerHTML = '<div class="status info">Saving notices…</div>';
+  try {
+    await saveJSONFile('content/notices.json', noticesData, 'Update notices via content editor');
+    statusEl.innerHTML = '<div class="status ok">Saved successfully! Notices have been updated.</div>';
+  } catch (err) {
+    statusEl.innerHTML = '<div class="status err">Error: ' + escapeHtml(err.message) + '</div>';
+  }
+};
+
+document.querySelector('[data-tab="notices"]').addEventListener('click', () => {
+  if (!noticesData) loadNoticesTab();
+});
+
+/* ===================== EVENTS TAB ===================== */
+let eventsData = null;
+async function loadEventsTab(){
+  const el = document.getElementById('events-list');
+  el.innerHTML = '<div class="muted">Loading events calendar…</div>';
+  try {
+    const file = await ghGetFile('content/events.json');
+    eventsData = file ? JSON.parse(file.content) : [];
+    renderEventsList();
+  } catch (err) {
+    el.innerHTML = '<div class="status err">Failed to load events: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function renderEventsList(){
+  const el = document.getElementById('events-list');
+  if (!eventsData || !eventsData.length){
+    el.innerHTML = '<div class="muted" style="padding:16px 0;">No events yet. Click "+ Add event" above to create an upcoming event.</div>';
+    return;
+  }
+  el.innerHTML = eventsData.map((ev, i) => `
+    <div class="item-box" data-i="${i}">
+      <div class="row">
+        <div>
+          <label>Event Date</label>
+          <input type="date" value="${ev.date || ''}" data-f="date">
+        </div>
+      </div>
+      <div class="field-key" style="margin-top:10px;">Event Title (Trilingual)</div>
+      <div class="row">
+        <div><input type="text" value="${escapeHtml((ev.title && ev.title.si) || '')}" data-f="title.si" placeholder="Sinhala (සිංහල)"></div>
+        <div><input type="text" value="${escapeHtml((ev.title && ev.title.ta) || '')}" data-f="title.ta" placeholder="Tamil (தமிழ்)"></div>
+        <div><input type="text" value="${escapeHtml((ev.title && ev.title.en) || '')}" data-f="title.en" placeholder="English"></div>
+      </div>
+      <div class="field-key" style="margin-top:10px;">Location / Venue (Trilingual)</div>
+      <div class="row">
+        <div><input type="text" value="${escapeHtml((ev.place && ev.place.si) || '')}" data-f="place.si" placeholder="Sinhala venue"></div>
+        <div><input type="text" value="${escapeHtml((ev.place && ev.place.ta) || '')}" data-f="place.ta" placeholder="Tamil venue"></div>
+        <div><input type="text" value="${escapeHtml((ev.place && ev.place.en) || '')}" data-f="place.en" placeholder="English venue"></div>
+      </div>
+      <div style="margin-top:10px">
+        <button class="danger" data-del-event="${i}">Delete this event</button>
+      </div>
+    </div>
+  `).join('');
+
+  el.querySelectorAll('input').forEach(inp => {
+    inp.onchange = (e) => {
+      const box = e.target.closest('.item-box');
+      const i = parseInt(box.dataset.i, 10);
+      const f = e.target.dataset.f;
+      if (f.includes('.')) {
+        const [a, b] = f.split('.');
+        eventsData[i][a] = eventsData[i][a] || {};
+        eventsData[i][a][b] = e.target.value;
+      } else {
+        eventsData[i][f] = e.target.value;
+      }
+    };
+  });
+
+  el.querySelectorAll('[data-del-event]').forEach(btn => {
+    btn.onclick = () => {
+      if (!confirm('Are you sure you want to delete this event?')) return;
+      const idx = parseInt(btn.dataset.delEvent, 10);
+      eventsData.splice(idx, 1);
+      renderEventsList();
+    };
+  });
+}
+
+document.getElementById('events-add').onclick = () => {
+  if (!eventsData) eventsData = [];
+  eventsData.unshift({
+    id: 'evt-' + Date.now(),
+    date: new Date().toISOString().slice(0, 10),
+    title: { si: '', ta: '', en: '' },
+    place: { si: '', ta: '', en: '' }
+  });
+  renderEventsList();
+};
+
+document.getElementById('events-save').onclick = async () => {
+  const statusEl = document.getElementById('events-status');
+  if (!confirm('Publish event changes to the live website now?')) return;
+  statusEl.innerHTML = '<div class="status info">Saving events…</div>';
+  try {
+    await saveJSONFile('content/events.json', eventsData, 'Update events via content editor');
+    statusEl.innerHTML = '<div class="status ok">Saved successfully! Events calendar has been updated.</div>';
+  } catch (err) {
+    statusEl.innerHTML = '<div class="status err">Error: ' + escapeHtml(err.message) + '</div>';
+  }
+};
+
+document.querySelector('[data-tab="events"]').addEventListener('click', () => {
+  if (!eventsData) loadEventsTab();
+});
 
 /* ===================== PAGES TAB (generic JSON field editor) ===================== */
 let pagesCurrentPath = null, pagesCurrentSha = null, pagesCurrentData = null;
@@ -1349,10 +2010,12 @@ let codeTreeLoaded = false;
 
 const DEFAULT_KNOWN_CODE_FILES = [
   'index.html', 'about.html', 'academic.html', 'student-life.html', 'gallery.html',
-  'news.html', 'news-detail.html', 'admissions.html', 'contact.html', 'downloads.html',
+  'news.html', 'news-detail.html', 'notices.html', 'page.html', 'admissions.html', 'contact.html', 'downloads.html',
   'sds-parents.html', 'privacy.html', 'terms.html', '404.html',
   'css/style.css', 'js/common.js', 'js/i18n.js', 'assets/app.js', 'assets/style.css',
-  'content/translations.json', 'content/home.json', 'content/about.json',
+  'content/translations.json', 'content/notices.json', 'content/events.json',
+  'content/settings.json', 'content/menu.json', 'content/custom-pages.json', 'content/custom-pages/sample.json',
+  'content/home.json', 'content/about.json',
   'content/academic.json', 'content/student-life.json', 'content/admissions.json',
   'content/contact.json', 'content/sds.json', 'content/legal.json',
   'content/news-items.json', 'content/gallery-items.json', 'content/news/index.json',
@@ -2563,6 +3226,1806 @@ window.addEventListener('keydown', (e) => {
     pendingRestoreData = null;
   }
 });
+
+/* ===================== CUSTOM PAGES BUILDER & BLOCK EDITOR ===================== */
+let customPagesIndex = [];
+let customPagesIndexSha = null;
+let activePageSlug = null;
+let activePageData = null;
+let activePageSha = null;
+
+function isEmbedWhitelisted(url) {
+  if (!url || typeof url !== 'string') return false;
+  const u = url.toLowerCase();
+  return u.includes('facebook.com/plugins') ||
+         u.includes('youtube.com/embed') ||
+         u.includes('google.com/maps/embed');
+}
+
+async function loadCustomPagesTab() {
+  const listEl = document.getElementById('cpages-list');
+  const statusEl = document.getElementById('cpages-status');
+  if (!listEl) return;
+  listEl.innerHTML = '<div class="muted">Loading custom pages index…</div>';
+
+  try {
+    const file = await ghGetFile('content/custom-pages.json');
+    if (file) {
+      customPagesIndex = JSON.parse(file.content);
+      customPagesIndexSha = file.sha;
+    } else {
+      customPagesIndex = [];
+      customPagesIndexSha = null;
+    }
+
+    // Update Version History select with custom page paths
+    updateHistorySelectWithCustomPages();
+
+    renderCustomPagesList();
+  } catch (err) {
+    listEl.innerHTML = `<div class="status err">Failed to load custom pages: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+function updateHistorySelectWithCustomPages() {
+  const sel = document.getElementById('history-select');
+  if (!sel) return;
+  // Remove previously added custom-pages options
+  Array.from(sel.querySelectorAll('option[data-cpage="1"]')).forEach(opt => opt.remove());
+
+  (customPagesIndex || []).forEach(p => {
+    const opt = document.createElement('option');
+    opt.dataset.cpage = '1';
+    opt.value = `content/custom-pages/${p.slug}.json`;
+    opt.textContent = `Custom Page: ${p.slug} (${(p.title && p.title.en) || p.slug})`;
+    sel.appendChild(opt);
+  });
+}
+
+function renderCustomPagesList() {
+  const listEl = document.getElementById('cpages-list');
+  if (!listEl) return;
+
+  if (!customPagesIndex || customPagesIndex.length === 0) {
+    listEl.innerHTML = `
+      <div class="item-box" style="text-align:center; padding:24px;">
+        <p class="muted" style="margin:0 0 10px;">No custom pages created yet.</p>
+        <button id="cpages-empty-new-btn" style="background:#16a34a; color:#fff;">+ Create First Custom Page</button>
+      </div>
+    `;
+    const btn = document.getElementById('cpages-empty-new-btn');
+    if (btn) btn.onclick = () => showNewPageDrawer(true);
+    return;
+  }
+
+  listEl.innerHTML = customPagesIndex.map(p => {
+    const titleEn = (p.title && p.title.en) || p.slug;
+    const titleSi = (p.title && p.title.si) || '';
+    const titleTa = (p.title && p.title.ta) || '';
+    const isPub = p.published === true;
+    const statusBadge = isPub ? '<span class="badge-pub">Published</span>' : '<span class="badge-draft">Draft / Unpublished</span>';
+
+    return `
+      <div class="item-box" style="background:#fff; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <strong style="font-size:1.05rem; color:#0b2545;">${escapeHtml(titleEn)}</strong>
+              ${statusBadge}
+            </div>
+            <div style="font-size:0.85rem; color:#475569; margin-top:2px;">
+              <span>සිංහල: ${escapeHtml(titleSi)}</span> · <span>தமிழ்: ${escapeHtml(titleTa)}</span>
+            </div>
+            <div style="margin-top:6px; font-family:monospace; font-size:0.8rem; color:#64748b;">
+              <code>page.html?p=${escapeHtml(p.slug)}</code>
+              ${p.updated ? `<span style="margin-left:10px; color:#94a3b8;">Updated: ${escapeHtml(p.updated)}</span>` : ''}
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="secondary" style="font-size:0.8rem; padding:6px 12px;" data-cpage-edit="${escapeHtml(p.slug)}">✏️ Edit Blocks</button>
+            <button class="secondary" style="font-size:0.8rem; padding:6px 10px;" data-cpage-preview="${escapeHtml(p.slug)}" title="Preview draft in new tab">👁️ Preview</button>
+            <button class="secondary" style="font-size:0.8rem; padding:6px 10px;" data-cpage-toggle="${escapeHtml(p.slug)}">${isPub ? 'Unpublish' : 'Publish'}</button>
+            <button class="danger" style="font-size:0.8rem; padding:6px 10px;" data-cpage-del="${escapeHtml(p.slug)}">🗑️ Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Attach button listeners
+  listEl.querySelectorAll('[data-cpage-edit]').forEach(btn => {
+    btn.onclick = () => openPageEditor(btn.dataset.cpageEdit);
+  });
+  listEl.querySelectorAll('[data-cpage-preview]').forEach(btn => {
+    btn.onclick = () => window.open(`../page.html?p=${encodeURIComponent(btn.dataset.cpagePreview)}&preview=1`, '_blank');
+  });
+  listEl.querySelectorAll('[data-cpage-toggle]').forEach(btn => {
+    btn.onclick = () => togglePagePublishStatus(btn.dataset.cpageToggle);
+  });
+  listEl.querySelectorAll('[data-cpage-del]').forEach(btn => {
+    btn.onclick = () => deleteCustomPage(btn.dataset.cpageDel);
+  });
+}
+
+function showNewPageDrawer(show) {
+  const drawer = document.getElementById('cpages-new-drawer');
+  if (!drawer) return;
+  drawer.style.display = show ? 'block' : 'none';
+  if (show) {
+    document.getElementById('cpages-new-title-en').value = '';
+    document.getElementById('cpages-new-title-si').value = '';
+    document.getElementById('cpages-new-title-ta').value = '';
+    const slugInp = document.getElementById('cpages-new-slug');
+    slugInp.value = '';
+    slugInp.dataset.manual = '';
+    document.getElementById('cpages-new-published').checked = false;
+    document.getElementById('cpages-create-status').innerHTML = '';
+    document.getElementById('cpages-new-title-en').focus();
+  }
+}
+
+// Slug generator & validation
+const newTitleEnInput = document.getElementById('cpages-new-title-en');
+if (newTitleEnInput) {
+  newTitleEnInput.addEventListener('input', (e) => {
+    const slugInp = document.getElementById('cpages-new-slug');
+    if (!slugInp.dataset.manual) {
+      slugInp.value = e.target.value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+  });
+}
+
+const newSlugInput = document.getElementById('cpages-new-slug');
+if (newSlugInput) {
+  newSlugInput.addEventListener('input', () => {
+    newSlugInput.dataset.manual = '1';
+    const val = newSlugInput.value;
+    const sanitized = val.toLowerCase().replace(/[^a-z0-9-]/g, '');
+    if (sanitized !== val) {
+      newSlugInput.value = sanitized;
+    }
+  });
+}
+
+document.getElementById('cpages-new-btn').onclick = () => showNewPageDrawer(true);
+document.getElementById('cpages-create-cancel').onclick = () => showNewPageDrawer(false);
+document.getElementById('cpages-refresh').onclick = () => loadCustomPagesTab();
+
+// Create new page confirm
+document.getElementById('cpages-create-confirm').onclick = async () => {
+  const titleEn = document.getElementById('cpages-new-title-en').value.trim();
+  const titleSi = document.getElementById('cpages-new-title-si').value.trim();
+  const titleTa = document.getElementById('cpages-new-title-ta').value.trim();
+  let slug = document.getElementById('cpages-new-slug').value.trim().toLowerCase();
+  const published = document.getElementById('cpages-new-published').checked;
+  const statusEl = document.getElementById('cpages-create-status');
+
+  if (!titleEn) {
+    statusEl.innerHTML = '<div class="status err">Please enter an English title.</div>';
+    return;
+  }
+  if (!slug) {
+    slug = titleEn.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  // Validate slug characters
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    statusEl.innerHTML = '<div class="status err">Slug may only contain lowercase letters (a-z), digits (0-9), and hyphens (-).</div>';
+    return;
+  }
+
+  // Check unique slug
+  if (customPagesIndex.some(p => p.slug === slug)) {
+    statusEl.innerHTML = `<div class="status err">A custom page with slug "${escapeHtml(slug)}" already exists. Choose another slug.</div>`;
+    return;
+  }
+
+  if (!confirm(`Create new custom page "${titleEn}" with slug "${slug}"?`)) return;
+
+  statusEl.innerHTML = '<div class="status info">Creating page on GitHub…</div>';
+
+  try {
+    const newPageObj = {
+      slug,
+      published: Boolean(published),
+      title: {
+        en: titleEn,
+        si: titleSi || titleEn,
+        ta: titleTa || titleEn
+      },
+      subtitle: {
+        en: '',
+        si: '',
+        ta: ''
+      },
+      blocks: [
+        {
+          type: 'heading',
+          level: 2,
+          text: {
+            en: titleEn,
+            si: titleSi || titleEn,
+            ta: titleTa || titleEn
+          }
+        },
+        {
+          type: 'text',
+          content: {
+            en: 'Welcome to this custom page. Edit paragraphs, bold text, and links using the block editor.',
+            si: 'මෙම අභිරුචි පිටුව වෙත සාදරයෙන් පිළිගනිමු.',
+            ta: 'இந்த தனிப்பயன் பக்கத்திற்கு வரவேற்கிறோம்.'
+          }
+        }
+      ]
+    };
+
+    // 1. Commit new page file content/custom-pages/<slug>.json
+    const pagePath = `content/custom-pages/${slug}.json`;
+    await ghPutFile(pagePath, JSON.stringify(newPageObj, null, 2), `Create custom page ${slug}`, null);
+
+    // 2. Append to content/custom-pages.json
+    customPagesIndex.push({
+      slug,
+      title: newPageObj.title,
+      description: { en: '', si: '', ta: '' },
+      published: Boolean(published),
+      updated: new Date().toISOString().slice(0, 10)
+    });
+
+    const indexRes = await ghPutFile(
+      'content/custom-pages.json',
+      JSON.stringify(customPagesIndex, null, 2),
+      `Add ${slug} to custom-pages index`,
+      customPagesIndexSha
+    );
+    if (indexRes && indexRes.content) customPagesIndexSha = indexRes.content.sha;
+
+    showNewPageDrawer(false);
+    await openPageEditor(slug);
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Failed to create page: ${escapeHtml(err.message)}</div>`;
+  }
+};
+
+// Toggle published
+async function togglePagePublishStatus(slug) {
+  const item = customPagesIndex.find(p => p.slug === slug);
+  if (!item) return;
+
+  const newStatus = !item.published;
+  if (!confirm(`Set page "${slug}" status to ${newStatus ? 'PUBLISHED' : 'DRAFT'}?`)) return;
+
+  const statusEl = document.getElementById('cpages-status');
+  statusEl.innerHTML = '<div class="status info">Updating status…</div>';
+
+  try {
+    // 1. Update individual page
+    const pageFile = await ghGetFile(`content/custom-pages/${slug}.json`);
+    if (pageFile) {
+      const pData = JSON.parse(pageFile.content);
+      pData.published = newStatus;
+      await ghPutFile(`content/custom-pages/${slug}.json`, JSON.stringify(pData, null, 2), `Toggle published for ${slug}`, pageFile.sha);
+    }
+
+    // 2. Update index
+    item.published = newStatus;
+    item.updated = new Date().toISOString().slice(0, 10);
+    const idxRes = await ghPutFile('content/custom-pages.json', JSON.stringify(customPagesIndex, null, 2), `Update published status for ${slug}`, customPagesIndexSha);
+    if (idxRes && idxRes.content) customPagesIndexSha = idxRes.content.sha;
+
+    statusEl.innerHTML = `<div class="status ok">Page "${slug}" is now ${newStatus ? 'Published' : 'Draft'}.</div>`;
+    renderCustomPagesList();
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Failed to update status: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+// Delete custom page
+async function deleteCustomPage(slug) {
+  if (!confirm(`Are you sure you want to permanently delete custom page "${slug}"? This will delete content/custom-pages/${slug}.json and remove it from the index.`)) return;
+
+  const statusEl = document.getElementById('cpages-status');
+  statusEl.innerHTML = '<div class="status info">Deleting page…</div>';
+
+  try {
+    const pagePath = `content/custom-pages/${slug}.json`;
+    const pageFile = await ghGetFile(pagePath);
+    if (pageFile && pageFile.sha) {
+      await ghDeleteFile(pagePath, pageFile.sha, `Delete custom page ${slug}`);
+    }
+
+    customPagesIndex = customPagesIndex.filter(p => p.slug !== slug);
+    const idxRes = await ghPutFile('content/custom-pages.json', JSON.stringify(customPagesIndex, null, 2), `Remove ${slug} from custom pages index`, customPagesIndexSha);
+    if (idxRes && idxRes.content) customPagesIndexSha = idxRes.content.sha;
+
+    statusEl.innerHTML = `<div class="status ok">Page "${slug}" deleted successfully.</div>`;
+    renderCustomPagesList();
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Failed to delete page: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+// Normalize page blocks schema helper
+function normalizePageBlocks(data) {
+  if (!data) return;
+  data.title = data.title || { en: '', si: '', ta: '' };
+  data.subtitle = data.subtitle || { en: '', si: '', ta: '' };
+  if (!Array.isArray(data.blocks)) data.blocks = [];
+  data.blocks.forEach(b => {
+    if (!b) return;
+    if (b.type === 'heading') {
+      if (typeof b.text !== 'object' || !b.text) b.text = { en: b.text || '', si: '', ta: '' };
+      b.text.en = b.text.en || ''; b.text.si = b.text.si || ''; b.text.ta = b.text.ta || '';
+      b.level = parseInt(b.level, 10) || 2;
+    } else if (b.type === 'text') {
+      if (typeof b.content !== 'object' || !b.content) b.content = { en: b.content || '', si: '', ta: '' };
+      b.content.en = b.content.en || ''; b.content.si = b.content.si || ''; b.content.ta = b.content.ta || '';
+    } else if (b.type === 'image') {
+      if (typeof b.alt !== 'object' || !b.alt) b.alt = { en: b.alt || '', si: '', ta: '' };
+      if (typeof b.caption !== 'object' || !b.caption) b.caption = { en: b.caption || '', si: '', ta: '' };
+      b.alt.en = b.alt.en || ''; b.alt.si = b.alt.si || ''; b.alt.ta = b.alt.ta || '';
+      b.caption.en = b.caption.en || ''; b.caption.si = b.caption.si || ''; b.caption.ta = b.caption.ta || '';
+      b.src = b.src || '';
+    } else if (b.type === 'gallery') {
+      if (!Array.isArray(b.images)) b.images = [];
+      b.images.forEach(img => {
+        img.src = img.src || '';
+        if (typeof img.caption !== 'object' || !img.caption) img.caption = { en: img.caption || '', si: '', ta: '' };
+        img.caption.en = img.caption.en || ''; img.caption.si = img.caption.si || ''; img.caption.ta = img.caption.ta || '';
+      });
+    } else if (b.type === 'cards') {
+      if (!Array.isArray(b.items)) b.items = [];
+      b.items.forEach(c => {
+        if (typeof c.title !== 'object' || !c.title) c.title = { en: c.title || '', si: '', ta: '' };
+        if (typeof c.subtitle !== 'object' || !c.subtitle) c.subtitle = { en: c.subtitle || '', si: '', ta: '' };
+        if (typeof c.text !== 'object' || !c.text) c.text = { en: c.text || '', si: '', ta: '' };
+        c.title.en = c.title.en || ''; c.title.si = c.title.si || ''; c.title.ta = c.title.ta || '';
+        c.subtitle.en = c.subtitle.en || ''; c.subtitle.si = c.subtitle.si || ''; c.subtitle.ta = c.subtitle.ta || '';
+        c.text.en = c.text.en || ''; c.text.si = c.text.si || ''; c.text.ta = c.text.ta || '';
+        c.image = c.image || '';
+      });
+    } else if (b.type === 'table') {
+      if (!Array.isArray(b.columns)) b.columns = [];
+      if (!Array.isArray(b.rows)) b.rows = [];
+      b.columns.forEach(col => {
+        col.en = col.en || ''; col.si = col.si || ''; col.ta = col.ta || '';
+      });
+      b.rows = b.rows.map(row => {
+        if (!Array.isArray(row)) row = [];
+        return b.columns.map((_, colIdx) => {
+          const cell = row[colIdx];
+          if (typeof cell === 'object' && cell) {
+            return { en: cell.en || '', si: cell.si || '', ta: cell.ta || '' };
+          }
+          return { en: cell || '', si: '', ta: '' };
+        });
+      });
+    } else if (b.type === 'links') {
+      if (!Array.isArray(b.items)) b.items = [];
+      b.items.forEach(l => {
+        if (typeof l.label !== 'object' || !l.label) l.label = { en: l.label || '', si: '', ta: '' };
+        l.label.en = l.label.en || ''; l.label.si = l.label.si || ''; l.label.ta = l.label.ta || '';
+        l.href = l.href || '';
+      });
+    } else if (b.type === 'embed') {
+      if (typeof b.caption !== 'object' || !b.caption) b.caption = { en: b.caption || '', si: '', ta: '' };
+      b.caption.en = b.caption.en || ''; b.caption.si = b.caption.si || ''; b.caption.ta = b.caption.ta || '';
+      b.url = b.url || '';
+      b.height = parseInt(b.height, 10) || 400;
+    }
+  });
+}
+
+// Open Block Editor
+async function openPageEditor(slug) {
+  activePageSlug = slug;
+  document.getElementById('cpages-list-card').style.display = 'none';
+  const editorCard = document.getElementById('cpages-editor-card');
+  editorCard.style.display = 'block';
+
+  document.getElementById('cpages-active-title').textContent = `Loading ${slug}…`;
+  document.getElementById('cpages-active-slug-badge').textContent = `slug: ${slug}`;
+  document.getElementById('cpages-editor-status').innerHTML = '';
+  document.getElementById('cpage-blocks-container').innerHTML = '<div class="muted">Loading block contents…</div>';
+
+  try {
+    const file = await ghGetFile(`content/custom-pages/${slug}.json`);
+    if (!file) throw new Error(`Could not find content/custom-pages/${slug}.json`);
+    activePageData = JSON.parse(file.content);
+    activePageSha = file.sha;
+    normalizePageBlocks(activePageData);
+
+    // Header values
+    document.getElementById('cpages-active-title').textContent = (activePageData.title && activePageData.title.en) || slug;
+    document.getElementById('cpage-title-en').value = (activePageData.title && activePageData.title.en) || '';
+    document.getElementById('cpage-title-si').value = (activePageData.title && activePageData.title.si) || '';
+    document.getElementById('cpage-title-ta').value = (activePageData.title && activePageData.title.ta) || '';
+
+    document.getElementById('cpage-subtitle-en').value = (activePageData.subtitle && activePageData.subtitle.en) || '';
+    document.getElementById('cpage-subtitle-si').value = (activePageData.subtitle && activePageData.subtitle.si) || '';
+    document.getElementById('cpage-subtitle-ta').value = (activePageData.subtitle && activePageData.subtitle.ta) || '';
+
+    updateEditorPubButton();
+    renderPageBlocks();
+  } catch (err) {
+    document.getElementById('cpages-editor-status').innerHTML = `<div class="status err">Error opening page: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+function updateEditorPubButton() {
+  const btn = document.getElementById('cpages-pub-toggle-btn');
+  if (!btn || !activePageData) return;
+  const isPub = activePageData.published === true;
+  btn.textContent = isPub ? 'Status: Published 🟢' : 'Status: Draft 🟡';
+  btn.style.color = isPub ? '#1b5e20' : '#92400e';
+  btn.style.background = isPub ? '#e8f5e9' : '#fef3c7';
+}
+
+document.getElementById('cpages-pub-toggle-btn').onclick = () => {
+  if (!activePageData) return;
+  activePageData.published = !activePageData.published;
+  updateEditorPubButton();
+};
+
+document.getElementById('cpages-back-btn').onclick = () => {
+  document.getElementById('cpages-editor-card').style.display = 'none';
+  document.getElementById('cpages-list-card').style.display = 'block';
+  loadCustomPagesTab();
+};
+
+// Render Blocks
+function renderPageBlocks() {
+  const container = document.getElementById('cpage-blocks-container');
+  const countEl = document.getElementById('cpage-block-count');
+  if (!container || !activePageData) return;
+
+  const blocks = activePageData.blocks || [];
+  if (countEl) countEl.textContent = `${blocks.length} block${blocks.length === 1 ? '' : 's'}`;
+
+  if (blocks.length === 0) {
+    container.innerHTML = '<div class="muted" style="padding:16px 0;">No blocks added yet. Use the buttons below to add content blocks.</div>';
+    return;
+  }
+
+  container.innerHTML = blocks.map((b, idx) => {
+    return `
+      <div class="block-item" data-bidx="${idx}">
+        <div class="block-header">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="block-type-badge">${escapeHtml(b.type || 'BLOCK')}</span>
+            <span style="font-size:0.85rem; font-weight:700; color:#0b2545;">#${idx + 1} ${escapeHtml(getBlockPreviewTitle(b))}</span>
+          </div>
+          <div class="block-actions">
+            <button class="secondary" data-baction="up" data-bidx="${idx}" ${idx === 0 ? 'disabled' : ''} title="Move block up">▲ Up</button>
+            <button class="secondary" data-baction="down" data-bidx="${idx}" ${idx === blocks.length - 1 ? 'disabled' : ''} title="Move block down">▼ Down</button>
+            <button class="secondary" data-baction="dup" data-bidx="${idx}" title="Duplicate block">📋 Duplicate</button>
+            <button class="danger" data-baction="del" data-bidx="${idx}" title="Delete block">🗑️</button>
+          </div>
+        </div>
+        <div class="block-body">
+          ${renderBlockEditorFields(b, idx)}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  attachBlockActionListeners();
+}
+
+function getBlockPreviewTitle(b) {
+  if (b.type === 'heading') return (b.text && b.text.en) ? `H${b.level || 2}: ${b.text.en}` : 'Heading';
+  if (b.type === 'text') return (b.content && b.content.en) ? (b.content.en.slice(0, 30) + '…') : 'Text';
+  if (b.type === 'image') return b.src ? b.src.split('/').pop() : 'Image';
+  if (b.type === 'gallery') return `${(b.images || []).length} photos`;
+  if (b.type === 'cards') return `${(b.items || []).length} cards`;
+  if (b.type === 'table') return `${(b.columns || []).length} cols × ${(b.rows || []).length} rows`;
+  if (b.type === 'links') return `${(b.items || []).length} links`;
+  if (b.type === 'embed') return b.url ? b.url.slice(0, 35) + '…' : 'Embed';
+  return b.type;
+}
+
+function renderBlockEditorFields(b, idx) {
+  switch (b.type) {
+    case 'heading': {
+      return `
+        <div style="display:flex; gap:12px; align-items:center; margin-bottom:10px;">
+          <label style="margin:0; white-space:nowrap;">Heading Level:</label>
+          <select style="width:auto; min-width:120px;" onchange="activePageData.blocks[${idx}].level = parseInt(this.value, 10);">
+            <option value="1" ${b.level === 1 ? 'selected' : ''}>H1 (Main Section)</option>
+            <option value="2" ${b.level === 2 || !b.level ? 'selected' : ''}>H2 (Sub Section)</option>
+            <option value="3" ${b.level === 3 ? 'selected' : ''}>H3 (Topic)</option>
+            <option value="4" ${b.level === 4 ? 'selected' : ''}>H4 (Sub Topic)</option>
+          </select>
+        </div>
+        <div class="lang-grid">
+          <div class="lang-group">
+            <label>Heading Text (English)</label>
+            <input type="text" value="${escapeHtml((b.text && b.text.en) || '')}" oninput="activePageData.blocks[${idx}].text.en = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Heading Text (Sinhala)</label>
+            <input type="text" value="${escapeHtml((b.text && b.text.si) || '')}" oninput="activePageData.blocks[${idx}].text.si = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Heading Text (Tamil)</label>
+            <input type="text" value="${escapeHtml((b.text && b.text.ta) || '')}" oninput="activePageData.blocks[${idx}].text.ta = this.value;">
+          </div>
+        </div>
+      `;
+    }
+
+    case 'text': {
+      return `
+        <p class="muted" style="margin:0 0 6px;">Blank lines create separate paragraphs. Supports **bold text** and [link label](url).</p>
+        <div class="lang-grid">
+          <div class="lang-group">
+            <label>Text Content (English)</label>
+            <textarea style="min-height:90px;" oninput="activePageData.blocks[${idx}].content.en = this.value;">${escapeHtml((b.content && b.content.en) || '')}</textarea>
+          </div>
+          <div class="lang-group">
+            <label>Text Content (Sinhala)</label>
+            <textarea style="min-height:90px;" oninput="activePageData.blocks[${idx}].content.si = this.value;">${escapeHtml((b.content && b.content.si) || '')}</textarea>
+          </div>
+          <div class="lang-group">
+            <label>Text Content (Tamil)</label>
+            <textarea style="min-height:90px;" oninput="activePageData.blocks[${idx}].content.ta = this.value;">${escapeHtml((b.content && b.content.ta) || '')}</textarea>
+          </div>
+        </div>
+      `;
+    }
+
+    case 'image': {
+      return `
+        <div style="margin-bottom:10px;">
+          <label style="margin-top:0;">Image Source Path (relative to root e.g. images/campus-hero.jpg or upload below):</label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="b-img-src-${idx}" value="${escapeHtml(b.src || '')}" oninput="activePageData.blocks[${idx}].src = this.value; document.getElementById('b-img-prev-${idx}').src = this.value;">
+            <label style="margin:0; background:#0b2545; color:#fff; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:700; white-space:nowrap;">
+              📷 Upload Photo
+              <input type="file" accept="image/*" style="display:none;" onchange="handleBlockImageUpload(this, ${idx})">
+            </label>
+          </div>
+          <div id="b-img-status-${idx}"></div>
+          <div style="margin-top:8px;">
+            <img id="b-img-prev-${idx}" src="${escapeHtml(b.src || '')}" class="thumb" onerror="this.style.display='none'" onload="this.style.display='block'">
+          </div>
+        </div>
+        <div class="lang-grid">
+          <div class="lang-group">
+            <label>Alt Text (English)</label>
+            <input type="text" value="${escapeHtml((b.alt && b.alt.en) || '')}" oninput="activePageData.blocks[${idx}].alt.en = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Alt Text (Sinhala)</label>
+            <input type="text" value="${escapeHtml((b.alt && b.alt.si) || '')}" oninput="activePageData.blocks[${idx}].alt.si = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Alt Text (Tamil)</label>
+            <input type="text" value="${escapeHtml((b.alt && b.alt.ta) || '')}" oninput="activePageData.blocks[${idx}].alt.ta = this.value;">
+          </div>
+        </div>
+        <div class="lang-grid" style="margin-top:8px;">
+          <div class="lang-group">
+            <label>Caption (English)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.en) || '')}" oninput="activePageData.blocks[${idx}].caption.en = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Caption (Sinhala)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.si) || '')}" oninput="activePageData.blocks[${idx}].caption.si = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Caption (Tamil)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.ta) || '')}" oninput="activePageData.blocks[${idx}].caption.ta = this.value;">
+          </div>
+        </div>
+      `;
+    }
+
+    case 'gallery': {
+      const imgs = b.images || [];
+      const itemsHtml = imgs.map((item, gIdx) => `
+        <div style="background:#fff; border:1px solid #dfe3e8; border-radius:6px; padding:10px; margin-bottom:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <strong style="font-size:0.85rem; color:#0b2545;">Photo #${gIdx + 1}</strong>
+            <button class="danger" style="padding:2px 8px; font-size:0.75rem;" onclick="removeGalleryItem(${idx}, ${gIdx})">Remove</button>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <input type="text" value="${escapeHtml(item.src || '')}" placeholder="images/hero-1.jpg" oninput="activePageData.blocks[${idx}].images[${gIdx}].src = this.value;">
+            <label style="margin:0; background:#0b2545; color:#fff; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.8rem; font-weight:700; white-space:nowrap;">
+              📷 Upload
+              <input type="file" accept="image/*" style="display:none;" onchange="handleGalleryUpload(this, ${idx}, ${gIdx})">
+            </label>
+          </div>
+          <div class="lang-grid" style="margin-top:6px;">
+            <div class="lang-group">
+              <label>Caption (English)</label>
+              <input type="text" value="${escapeHtml((item.caption && item.caption.en) || '')}" oninput="activePageData.blocks[${idx}].images[${gIdx}].caption.en = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Caption (Sinhala)</label>
+              <input type="text" value="${escapeHtml((item.caption && item.caption.si) || '')}" oninput="activePageData.blocks[${idx}].images[${gIdx}].caption.si = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Caption (Tamil)</label>
+              <input type="text" value="${escapeHtml((item.caption && item.caption.ta) || '')}" oninput="activePageData.blocks[${idx}].images[${gIdx}].caption.ta = this.value;">
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <div style="margin-bottom:8px;">
+          ${itemsHtml || '<div class="muted" style="padding:6px 0;">No photos in this gallery yet.</div>'}
+        </div>
+        <button class="secondary" style="font-size:0.8rem; padding:4px 10px;" onclick="addGalleryItem(${idx})">+ Add Photo to Gallery</button>
+      `;
+    }
+
+    case 'cards': {
+      const items = b.items || [];
+      const cardsHtml = items.map((c, cIdx) => `
+        <div style="background:#fff; border:1px solid #dfe3e8; border-radius:6px; padding:10px; margin-bottom:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <strong style="font-size:0.85rem; color:#0b2545;">Card #${cIdx + 1}</strong>
+            <button class="danger" style="padding:2px 8px; font-size:0.75rem;" onclick="removeCardItem(${idx}, ${cIdx})">Remove Card</button>
+          </div>
+          <div class="lang-grid">
+            <div class="lang-group">
+              <label>Title (English)</label>
+              <input type="text" value="${escapeHtml((c.title && c.title.en) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].title.en = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Title (Sinhala)</label>
+              <input type="text" value="${escapeHtml((c.title && c.title.si) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].title.si = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Title (Tamil)</label>
+              <input type="text" value="${escapeHtml((c.title && c.title.ta) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].title.ta = this.value;">
+            </div>
+          </div>
+          <div class="lang-grid" style="margin-top:6px;">
+            <div class="lang-group">
+              <label>Subtitle (English)</label>
+              <input type="text" value="${escapeHtml((c.subtitle && c.subtitle.en) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].subtitle.en = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Subtitle (Sinhala)</label>
+              <input type="text" value="${escapeHtml((c.subtitle && c.subtitle.si) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].subtitle.si = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Subtitle (Tamil)</label>
+              <input type="text" value="${escapeHtml((c.subtitle && c.subtitle.ta) || '')}" oninput="activePageData.blocks[${idx}].items[${cIdx}].subtitle.ta = this.value;">
+            </div>
+          </div>
+          <div class="lang-grid" style="margin-top:6px;">
+            <div class="lang-group">
+              <label>Description Text (English)</label>
+              <textarea style="min-height:50px;" oninput="activePageData.blocks[${idx}].items[${cIdx}].text.en = this.value;">${escapeHtml((c.text && c.text.en) || '')}</textarea>
+            </div>
+            <div class="lang-group">
+              <label>Description Text (Sinhala)</label>
+              <textarea style="min-height:50px;" oninput="activePageData.blocks[${idx}].items[${cIdx}].text.si = this.value;">${escapeHtml((c.text && c.text.si) || '')}</textarea>
+            </div>
+            <div class="lang-group">
+              <label>Description Text (Tamil)</label>
+              <textarea style="min-height:50px;" oninput="activePageData.blocks[${idx}].items[${cIdx}].text.ta = this.value;">${escapeHtml((c.text && c.text.ta) || '')}</textarea>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <label style="margin-top:0;">Card Image (optional):</label>
+            <div style="display:flex; gap:8px;">
+              <input type="text" value="${escapeHtml(c.image || '')}" placeholder="images/hero-1.jpg" oninput="activePageData.blocks[${idx}].items[${cIdx}].image = this.value;">
+              <label style="margin:0; background:#0b2545; color:#fff; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.8rem; font-weight:700; white-space:nowrap;">
+                📷 Upload
+                <input type="file" accept="image/*" style="display:none;" onchange="handleCardUpload(this, ${idx}, ${cIdx})">
+              </label>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <p class="muted" style="margin:0 0 6px;">Cards automatically format in 2 columns on mobile phones.</p>
+        <div>${cardsHtml || '<div class="muted">No cards in this grid yet.</div>'}</div>
+        <button class="secondary" style="font-size:0.8rem; padding:4px 10px;" onclick="addCardItem(${idx})">+ Add Card</button>
+      `;
+    }
+
+    case 'table': {
+      const cols = b.columns || [];
+      const rows = b.rows || [];
+
+      // Columns editor
+      const colsHtml = cols.map((col, colIdx) => `
+        <div style="background:#fff; border:1px solid #dfe3e8; border-radius:4px; padding:6px 10px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <div style="display:flex; gap:6px; flex:1;">
+            <input type="text" value="${escapeHtml(col.en || '')}" placeholder="Header (EN)" oninput="activePageData.blocks[${idx}].columns[${colIdx}].en = this.value;">
+            <input type="text" value="${escapeHtml(col.si || '')}" placeholder="Header (SI)" oninput="activePageData.blocks[${idx}].columns[${colIdx}].si = this.value;">
+            <input type="text" value="${escapeHtml(col.ta || '')}" placeholder="Header (TA)" oninput="activePageData.blocks[${idx}].columns[${colIdx}].ta = this.value;">
+          </div>
+          <button class="danger" style="padding:2px 8px; font-size:0.75rem;" onclick="removeTableColumn(${idx}, ${colIdx})">✕</button>
+        </div>
+      `).join('');
+
+      // Rows editor
+      const rowsHtml = rows.map((rowArr, rowIdx) => `
+        <div style="background:#fff; border:1px solid #dfe3e8; border-radius:4px; padding:8px 10px; margin-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <strong style="font-size:0.8rem; color:#0b2545;">Row #${rowIdx + 1}</strong>
+            <button class="danger" style="padding:2px 8px; font-size:0.75rem;" onclick="removeTableRow(${idx}, ${rowIdx})">Delete Row</button>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(${Math.max(1, cols.length)}, 1fr); gap:6px;">
+            ${cols.map((_, cIdx) => {
+              const cell = (rowArr && rowArr[cIdx]) || { en: '', si: '', ta: '' };
+              return `
+                <div style="border:1px dashed #cbd5e1; border-radius:4px; padding:4px;">
+                  <span style="font-size:0.7rem; color:#64748b; font-weight:700;">Col ${cIdx + 1} (${escapeHtml(cols[cIdx].en || '')})</span>
+                  <input type="text" value="${escapeHtml(cell.en || '')}" placeholder="EN" oninput="setTableCell(${idx}, ${rowIdx}, ${cIdx}, 'en', this.value);" style="margin-top:2px; font-size:0.8rem; padding:4px;">
+                  <input type="text" value="${escapeHtml(cell.si || '')}" placeholder="SI" oninput="setTableCell(${idx}, ${rowIdx}, ${cIdx}, 'si', this.value);" style="margin-top:2px; font-size:0.8rem; padding:4px;">
+                  <input type="text" value="${escapeHtml(cell.ta || '')}" placeholder="TA" oninput="setTableCell(${idx}, ${rowIdx}, ${cIdx}, 'ta', this.value);" style="margin-top:2px; font-size:0.8rem; padding:4px;">
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <p class="muted" style="margin:0 0 6px;">Tables scroll horizontally inside their container on phone screens.</p>
+        <div style="margin-bottom:8px;">
+          <strong style="font-size:0.85rem; color:#0b2545;">Table Columns:</strong>
+          <div style="margin-top:4px;">${colsHtml}</div>
+          <button class="secondary" style="font-size:0.8rem; padding:4px 10px;" onclick="addTableColumn(${idx})">+ Add Column</button>
+        </div>
+        <div style="margin-top:12px;">
+          <strong style="font-size:0.85rem; color:#0b2545;">Table Rows:</strong>
+          <div style="margin-top:4px;">${rowsHtml}</div>
+          <button class="secondary" style="font-size:0.8rem; padding:4px 10px;" onclick="addTableRow(${idx})">+ Add Row</button>
+        </div>
+      `;
+    }
+
+    case 'links': {
+      const links = b.items || [];
+      const linksHtml = links.map((link, lIdx) => `
+        <div style="background:#fff; border:1px solid #dfe3e8; border-radius:4px; padding:8px 10px; margin-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <strong style="font-size:0.8rem; color:#0b2545;">Link #${lIdx + 1}</strong>
+            <button class="danger" style="padding:2px 8px; font-size:0.75rem;" onclick="removeLinkItem(${idx}, ${lIdx})">Remove</button>
+          </div>
+          <div class="lang-grid">
+            <div class="lang-group">
+              <label>Link Label (English)</label>
+              <input type="text" value="${escapeHtml((link.label && link.label.en) || '')}" oninput="activePageData.blocks[${idx}].items[${lIdx}].label.en = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Link Label (Sinhala)</label>
+              <input type="text" value="${escapeHtml((link.label && link.label.si) || '')}" oninput="activePageData.blocks[${idx}].items[${lIdx}].label.si = this.value;">
+            </div>
+            <div class="lang-group">
+              <label>Link Label (Tamil)</label>
+              <input type="text" value="${escapeHtml((link.label && link.label.ta) || '')}" oninput="activePageData.blocks[${idx}].items[${lIdx}].label.ta = this.value;">
+            </div>
+          </div>
+          <div style="margin-top:6px;">
+            <label style="margin-top:0;">Destination URL or PDF Path:</label>
+            <input type="text" value="${escapeHtml(link.href || '')}" placeholder="downloads/form.pdf or https://..." oninput="activePageData.blocks[${idx}].items[${lIdx}].href = this.value;">
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <div>${linksHtml || '<div class="muted">No links in this list yet.</div>'}</div>
+        <button class="secondary" style="font-size:0.8rem; padding:4px 10px;" onclick="addLinkItem(${idx})">+ Add Link / Download</button>
+      `;
+    }
+
+    case 'embed': {
+      const isOk = !b.url || isEmbedWhitelisted(b.url);
+      return `
+        <div style="margin-bottom:8px;">
+          <label style="margin-top:0;">Embed URL * <span class="muted">(whitelist: facebook.com/plugins, youtube.com/embed, google.com/maps/embed)</span></label>
+          <input type="text" value="${escapeHtml(b.url || '')}" placeholder="https://www.youtube.com/embed/..." oninput="handleEmbedUrlChange(${idx}, this.value)">
+          <div id="embed-warn-${idx}" style="display:${isOk ? 'none' : 'block'}; background:#fdecea; border-left:4px solid #c0392b; color:#8e1c12; padding:8px 12px; margin-top:6px; font-size:0.85rem; font-weight:700; border-radius:4px;">
+            ⚠️ Non-whitelisted URL! Only Facebook plugins (facebook.com/plugins), YouTube embeds (youtube.com/embed), and Google Maps embeds (google.com/maps/embed) are permitted.
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="margin-top:0;">Height (px):</label>
+          <input type="number" style="width:120px;" value="${b.height || 400}" oninput="activePageData.blocks[${idx}].height = parseInt(this.value, 10) || 400;">
+        </div>
+        <div class="lang-grid">
+          <div class="lang-group">
+            <label>Caption / Title (English)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.en) || '')}" oninput="activePageData.blocks[${idx}].caption.en = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Caption / Title (Sinhala)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.si) || '')}" oninput="activePageData.blocks[${idx}].caption.si = this.value;">
+          </div>
+          <div class="lang-group">
+            <label>Caption / Title (Tamil)</label>
+            <input type="text" value="${escapeHtml((b.caption && b.caption.ta) || '')}" oninput="activePageData.blocks[${idx}].caption.ta = this.value;">
+          </div>
+        </div>
+      `;
+    }
+
+    default:
+      return `<pre>${escapeHtml(JSON.stringify(b, null, 2))}</pre>`;
+  }
+}
+
+function handleEmbedUrlChange(idx, val) {
+  if (!activePageData || !activePageData.blocks[idx]) return;
+  activePageData.blocks[idx].url = val;
+  const warn = document.getElementById(`embed-warn-${idx}`);
+  if (warn) {
+    warn.style.display = (!val || isEmbedWhitelisted(val)) ? 'none' : 'block';
+  }
+}
+
+// Block Actions
+function attachBlockActionListeners() {
+  document.querySelectorAll('[data-baction]').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.bidx, 10);
+      const action = btn.dataset.baction;
+      const blocks = activePageData.blocks;
+
+      if (action === 'up' && idx > 0) {
+        const temp = blocks[idx];
+        blocks[idx] = blocks[idx - 1];
+        blocks[idx - 1] = temp;
+        renderPageBlocks();
+      } else if (action === 'down' && idx < blocks.length - 1) {
+        const temp = blocks[idx];
+        blocks[idx] = blocks[idx + 1];
+        blocks[idx + 1] = temp;
+        renderPageBlocks();
+      } else if (action === 'dup') {
+        const clone = JSON.parse(JSON.stringify(blocks[idx]));
+        blocks.splice(idx + 1, 0, clone);
+        renderPageBlocks();
+      } else if (action === 'del') {
+        if (confirm(`Delete block #${idx + 1} (${blocks[idx].type})?`)) {
+          blocks.splice(idx, 1);
+          renderPageBlocks();
+        }
+      }
+    };
+  });
+}
+
+// Add Block
+document.querySelectorAll('[data-addblock]').forEach(btn => {
+  btn.onclick = () => {
+    if (!activePageData) return;
+    const type = btn.dataset.addblock;
+    let newBlock;
+
+    switch (type) {
+      case 'heading':
+        newBlock = { type: 'heading', level: 2, text: { en: 'New Heading', si: 'නව මාතෘකාව', ta: 'புதிய தலைப்பு' } };
+        break;
+      case 'text':
+        newBlock = { type: 'text', content: { en: 'Add your paragraph text here.', si: 'මෙහි ඡේදය ඇතුළත් කරන්න.', ta: 'இங்கே உங்கள் பத்தியை உள்ளிடவும்.' } };
+        break;
+      case 'image':
+        newBlock = { type: 'image', src: '', alt: { en: '', si: '', ta: '' }, caption: { en: '', si: '', ta: '' } };
+        break;
+      case 'gallery':
+        newBlock = { type: 'gallery', images: [] };
+        break;
+      case 'cards':
+        newBlock = { type: 'cards', items: [{ title: { en: 'Card 1', si: 'කාඩ්පත 1', ta: 'அட்டை 1' }, subtitle: { en: '', si: '', ta: '' }, text: { en: '', si: '', ta: '' }, image: '' }] };
+        break;
+      case 'table':
+        newBlock = {
+          type: 'table',
+          columns: [{ en: 'Column 1', si: 'තීරුව 1', ta: 'நெடுவரிசை 1' }, { en: 'Column 2', si: 'තීරුව 2', ta: 'நெடுவரிசை 2' }],
+          rows: [[{ en: 'Cell 1', si: 'කොටුව 1', ta: 'கட்டம் 1' }, { en: 'Cell 2', si: 'කොටුව 2', ta: 'கட்டம் 2' }]]
+        };
+        break;
+      case 'links':
+        newBlock = { type: 'links', items: [{ label: { en: 'Download File (PDF)', si: 'ලිපිය බාගත කරන්න', ta: 'பதிவிறக்கம்' }, href: 'downloads/' }] };
+        break;
+      case 'embed':
+        newBlock = { type: 'embed', url: 'https://www.youtube.com/embed/', height: 400, caption: { en: '', si: '', ta: '' } };
+        break;
+      default:
+        return;
+    }
+
+    if (!activePageData.blocks) activePageData.blocks = [];
+    activePageData.blocks.push(newBlock);
+    renderPageBlocks();
+
+    // Scroll to bottom
+    const blocksContainer = document.getElementById('cpage-blocks-container');
+    if (blocksContainer && blocksContainer.lastElementChild) {
+      blocksContainer.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+});
+
+// Photo upload handlers
+async function handleBlockImageUpload(input, blockIdx) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const statusEl = document.getElementById(`b-img-status-${blockIdx}`);
+  if (statusEl) statusEl.innerHTML = '<span class="status info">Compressing & uploading photo…</span>';
+
+  try {
+    const base64 = await compressImageFile(file, 1200);
+    const path = `images/page-${activePageSlug}-${Date.now()}.jpg`;
+    await ghPutBinaryFile(path, base64, `Upload image for ${activePageSlug}`, null);
+
+    activePageData.blocks[blockIdx].src = path;
+    const srcInput = document.getElementById(`b-img-src-${blockIdx}`);
+    if (srcInput) srcInput.value = path;
+    const prev = document.getElementById(`b-img-prev-${blockIdx}`);
+    if (prev) {
+      prev.src = path;
+      prev.style.display = 'block';
+    }
+
+    if (statusEl) statusEl.innerHTML = '<span class="status ok">Uploaded successfully.</span>';
+  } catch (err) {
+    if (statusEl) statusEl.innerHTML = `<span class="status err">Upload failed: ${escapeHtml(err.message)}</span>`;
+  }
+}
+
+async function handleGalleryUpload(input, blockIdx, imgIdx) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  try {
+    const base64 = await compressImageFile(file, 1200);
+    const path = `images/gallery-${activePageSlug}-${Date.now()}-${imgIdx}.jpg`;
+    await ghPutBinaryFile(path, base64, `Upload gallery photo for ${activePageSlug}`, null);
+    activePageData.blocks[blockIdx].images[imgIdx].src = path;
+    renderPageBlocks();
+  } catch (err) {
+    alert('Photo upload failed: ' + err.message);
+  }
+}
+
+async function handleCardUpload(input, blockIdx, cardIdx) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  try {
+    const base64 = await compressImageFile(file, 1200);
+    const path = `images/card-${activePageSlug}-${Date.now()}-${cardIdx}.jpg`;
+    await ghPutBinaryFile(path, base64, `Upload card photo for ${activePageSlug}`, null);
+    activePageData.blocks[blockIdx].items[cardIdx].image = path;
+    renderPageBlocks();
+  } catch (err) {
+    alert('Photo upload failed: ' + err.message);
+  }
+}
+
+// Gallery items helpers
+window.addGalleryItem = (bIdx) => {
+  if (!activePageData.blocks[bIdx].images) activePageData.blocks[bIdx].images = [];
+  activePageData.blocks[bIdx].images.push({ src: '', alt: { en: '', si: '', ta: '' }, caption: { en: '', si: '', ta: '' } });
+  renderPageBlocks();
+};
+window.removeGalleryItem = (bIdx, gIdx) => {
+  activePageData.blocks[bIdx].images.splice(gIdx, 1);
+  renderPageBlocks();
+};
+
+// Card items helpers
+window.addCardItem = (bIdx) => {
+  if (!activePageData.blocks[bIdx].items) activePageData.blocks[bIdx].items = [];
+  activePageData.blocks[bIdx].items.push({ title: { en: '', si: '', ta: '' }, subtitle: { en: '', si: '', ta: '' }, text: { en: '', si: '', ta: '' }, image: '' });
+  renderPageBlocks();
+};
+window.removeCardItem = (bIdx, cIdx) => {
+  activePageData.blocks[bIdx].items.splice(cIdx, 1);
+  renderPageBlocks();
+};
+
+// Table helpers
+window.addTableColumn = (bIdx) => {
+  const b = activePageData.blocks[bIdx];
+  if (!b.columns) b.columns = [];
+  if (!b.rows) b.rows = [];
+  const colNum = b.columns.length + 1;
+  b.columns.push({ en: `Column ${colNum}`, si: `තීරුව ${colNum}`, ta: `நெடுவரிசை ${colNum}` });
+  b.rows.forEach(r => r.push({ en: '', si: '', ta: '' }));
+  renderPageBlocks();
+};
+window.removeTableColumn = (bIdx, cIdx) => {
+  const b = activePageData.blocks[bIdx];
+  b.columns.splice(cIdx, 1);
+  b.rows.forEach(r => r.splice(cIdx, 1));
+  renderPageBlocks();
+};
+window.addTableRow = (bIdx) => {
+  const b = activePageData.blocks[bIdx];
+  if (!b.rows) b.rows = [];
+  const colsCount = (b.columns && b.columns.length) || 1;
+  const newRow = Array.from({ length: colsCount }, () => ({ en: '', si: '', ta: '' }));
+  b.rows.push(newRow);
+  renderPageBlocks();
+};
+window.removeTableRow = (bIdx, rIdx) => {
+  activePageData.blocks[bIdx].rows.splice(rIdx, 1);
+  renderPageBlocks();
+};
+window.setTableCell = (bIdx, rIdx, cIdx, lang, val) => {
+  const b = activePageData.blocks[bIdx];
+  if (!b.rows[rIdx]) b.rows[rIdx] = [];
+  if (!b.rows[rIdx][cIdx]) b.rows[rIdx][cIdx] = { en: '', si: '', ta: '' };
+  b.rows[rIdx][cIdx][lang] = val;
+};
+
+// Link items helpers
+window.addLinkItem = (bIdx) => {
+  if (!activePageData.blocks[bIdx].items) activePageData.blocks[bIdx].items = [];
+  activePageData.blocks[bIdx].items.push({ label: { en: 'New Link', si: 'නව සබැඳිය', ta: 'புதிய இணைப்பு' }, href: '' });
+  renderPageBlocks();
+};
+window.removeLinkItem = (bIdx, lIdx) => {
+  activePageData.blocks[bIdx].items.splice(lIdx, 1);
+  renderPageBlocks();
+};
+
+// Sync metadata inputs into activePageData
+function syncMetadataFromInputs() {
+  if (!activePageData) return;
+  if (!activePageData.title) activePageData.title = {};
+  activePageData.title.en = document.getElementById('cpage-title-en').value.trim();
+  activePageData.title.si = document.getElementById('cpage-title-si').value.trim();
+  activePageData.title.ta = document.getElementById('cpage-title-ta').value.trim();
+
+  if (!activePageData.subtitle) activePageData.subtitle = {};
+  activePageData.subtitle.en = document.getElementById('cpage-subtitle-en').value.trim();
+  activePageData.subtitle.si = document.getElementById('cpage-subtitle-si').value.trim();
+  activePageData.subtitle.ta = document.getElementById('cpage-subtitle-ta').value.trim();
+}
+
+// Validate active page before save
+function validateActivePage() {
+  syncMetadataFromInputs();
+  if (!activePageData.title.en && !activePageData.title.si) {
+    throw new Error('Page title cannot be empty.');
+  }
+
+  // Validate embeds
+  (activePageData.blocks || []).forEach((b, i) => {
+    if (b.type === 'embed' && b.url) {
+      if (!isEmbedWhitelisted(b.url)) {
+        throw new Error(`Block #${i + 1} has an embed URL that is not on the whitelist: ${b.url}`);
+      }
+    }
+  });
+
+  // Test JSON serialization
+  const serialized = JSON.stringify(activePageData, null, 2);
+  JSON.parse(serialized);
+  return serialized;
+}
+
+// Save & Publish Page
+document.getElementById('cpages-save-btn').onclick = async () => {
+  const statusEl = document.getElementById('cpages-editor-status');
+  statusEl.innerHTML = '';
+
+  try {
+    const jsonStr = validateActivePage();
+    if (!confirm(`Save all changes to page "${activePageSlug}" on the website?`)) return;
+
+    statusEl.innerHTML = '<div class="status info">Saving page to GitHub…</div>';
+
+    // 1. Commit content/custom-pages/<slug>.json
+    const pagePath = `content/custom-pages/${activePageSlug}.json`;
+    const res = await ghPutFile(pagePath, jsonStr, `Update custom page ${activePageSlug}`, activePageSha);
+    if (res && res.content) activePageSha = res.content.sha;
+
+    // 2. Update entry in customPagesIndex
+    const indexItem = customPagesIndex.find(p => p.slug === activePageSlug);
+    if (indexItem) {
+      indexItem.title = activePageData.title;
+      indexItem.description = activePageData.subtitle;
+      indexItem.published = activePageData.published;
+      indexItem.updated = new Date().toISOString().slice(0, 10);
+    } else {
+      customPagesIndex.push({
+        slug: activePageSlug,
+        title: activePageData.title,
+        description: activePageData.subtitle,
+        published: activePageData.published,
+        updated: new Date().toISOString().slice(0, 10)
+      });
+    }
+
+    const idxRes = await ghPutFile('content/custom-pages.json', JSON.stringify(customPagesIndex, null, 2), `Update index for ${activePageSlug}`, customPagesIndexSha);
+    if (idxRes && idxRes.content) customPagesIndexSha = idxRes.content.sha;
+
+    statusEl.innerHTML = '<div class="status ok">Page saved and committed to GitHub successfully!</div>';
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Save failed: ${escapeHtml(err.message)}</div>`;
+  }
+};
+
+// Preview: save as unpublished and open page.html?p=slug in a new tab
+document.getElementById('cpages-preview-btn').onclick = async () => {
+  const statusEl = document.getElementById('cpages-editor-status');
+
+  if (!confirm(`Save page "${activePageSlug}" as unpublished draft and open preview in a new tab?`)) return;
+
+  statusEl.innerHTML = '<div class="status info">Saving draft for preview…</div>';
+
+  try {
+    syncMetadataFromInputs();
+    activePageData.published = false;
+    updateEditorPubButton();
+    const jsonStr = validateActivePage();
+
+    // Commit unpublished state
+    const pagePath = `content/custom-pages/${activePageSlug}.json`;
+    const res = await ghPutFile(pagePath, jsonStr, `Save draft preview for ${activePageSlug}`, activePageSha);
+    if (res && res.content) activePageSha = res.content.sha;
+
+    const indexItem = customPagesIndex.find(p => p.slug === activePageSlug);
+    if (indexItem) {
+      indexItem.published = false;
+      indexItem.title = activePageData.title;
+      indexItem.updated = new Date().toISOString().slice(0, 10);
+      const idxRes = await ghPutFile('content/custom-pages.json', JSON.stringify(customPagesIndex, null, 2), `Update draft status for ${activePageSlug}`, customPagesIndexSha);
+      if (idxRes && idxRes.content) customPagesIndexSha = idxRes.content.sha;
+    }
+
+    try { sessionStorage.setItem('preview_' + activePageSlug, '1'); } catch (e) {}
+    try { localStorage.setItem('cpage_preview_' + activePageSlug, '1'); } catch (e) {}
+
+    statusEl.innerHTML = '<div class="status ok">Draft saved. Opening preview…</div>';
+    window.open(`../page.html?p=${encodeURIComponent(activePageSlug)}&preview=1`, '_blank');
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Preview save failed: ${escapeHtml(err.message)}</div>`;
+  }
+};
+
+/* ===================== NAVIGATION MENU EDITOR ===================== */
+let menuData = [];
+let menuSha = null;
+
+async function loadMenuTab() {
+  const treeEl = document.getElementById('menu-items-tree');
+  const statusEl = document.getElementById('menu-status');
+  if (!treeEl) return;
+  treeEl.innerHTML = '<div class="muted">Loading navigation menu…</div>';
+
+  try {
+    const file = await ghGetFile('content/menu.json');
+    if (file) {
+      menuData = JSON.parse(file.content);
+      menuSha = file.sha;
+    } else {
+      menuData = [];
+      menuSha = null;
+    }
+
+    // Also fetch custom pages index if not already loaded so link selector has custom pages
+    if (!customPagesIndex || customPagesIndex.length === 0) {
+      const cFile = await ghGetFile('content/custom-pages.json');
+      if (cFile) customPagesIndex = JSON.parse(cFile.content);
+    }
+
+    renderMenuItemsTree();
+  } catch (err) {
+    treeEl.innerHTML = `<div class="status err">Failed to load menu: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+function renderMenuItemsTree() {
+  const treeEl = document.getElementById('menu-items-tree');
+  if (!treeEl) return;
+
+  if (!menuData || menuData.length === 0) {
+    treeEl.innerHTML = '<div class="muted">Menu is empty. Add a Home link to start.</div>';
+    return;
+  }
+
+  treeEl.innerHTML = menuData.map((item, idx) => {
+    const isHome = item.id === 'home' || item.href === 'index.html';
+    const isVisible = item.visible !== false;
+    const isGroup = Array.isArray(item.children);
+
+    if (isGroup) {
+      const childrenHtml = (item.children || []).map((c, cIdx) => `
+        <div class="menu-item-box" style="margin-bottom:6px; background:#fff;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <strong style="color:#0b2545;">${escapeHtml((c.label && c.label.en) || c.id)}</strong>
+              <span class="muted" style="font-family:monospace; font-size:0.75rem;">${escapeHtml(c.href || '')}</span>
+              ${c.visible === false ? '<span style="color:#92400e; font-size:0.7rem; font-weight:700;">(HIDDEN)</span>' : ''}
+            </div>
+            <div style="font-size:0.8rem; color:#64748b; margin-top:2px;">
+              <span>සිං: ${escapeHtml((c.label && c.label.si) || '')}</span> · <span>த: ${escapeHtml((c.label && c.label.ta) || '')}</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:4px; align-items:center;">
+            <button class="secondary" style="padding:3px 8px; font-size:0.75rem;" onclick="moveMenuChild(${idx}, ${cIdx}, -1)" ${cIdx === 0 ? 'disabled' : ''}>▲</button>
+            <button class="secondary" style="padding:3px 8px; font-size:0.75rem;" onclick="moveMenuChild(${idx}, ${cIdx}, 1)" ${cIdx === (item.children.length - 1) ? 'disabled' : ''}>▼</button>
+            <button class="secondary" style="padding:3px 8px; font-size:0.75rem;" onclick="toggleMenuChildVisible(${idx}, ${cIdx})">${c.visible === false ? 'Show' : 'Hide'}</button>
+            <button class="secondary" style="padding:3px 8px; font-size:0.75rem;" onclick="editMenuItem(${idx}, ${cIdx})">✏️</button>
+            <button class="danger" style="padding:3px 8px; font-size:0.75rem;" onclick="deleteMenuChild(${idx}, ${cIdx})">🗑️</button>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <div class="menu-group-box">
+          <div class="menu-group-header">
+            <div>
+              <strong style="font-size:1rem; color:#0b2545;">📂 Group: ${escapeHtml((item.label && item.label.en) || item.id)}</strong>
+              ${!isVisible ? '<span style="color:#92400e; font-size:0.75rem; font-weight:700; margin-left:8px;">(GROUP HIDDEN)</span>' : ''}
+              <div style="font-size:0.8rem; color:#64748b; margin-top:2px;">
+                <span>සිං: ${escapeHtml((item.label && item.label.si) || '')}</span> · <span>த: ${escapeHtml((item.label && item.label.ta) || '')}</span>
+              </div>
+            </div>
+            <div style="display:flex; gap:4px; align-items:center;">
+              <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="moveTopMenuItem(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}>▲ Up</button>
+              <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="moveTopMenuItem(${idx}, 1)" ${idx === menuData.length - 1 ? 'disabled' : ''}>▼ Down</button>
+              <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="toggleTopMenuVisible(${idx})">${isVisible ? 'Hide Group' : 'Show Group'}</button>
+              <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="editMenuGroup(${idx})">✏️ Edit Group</button>
+              <button class="danger" style="padding:4px 8px; font-size:0.75rem;" onclick="deleteTopMenuItem(${idx})">🗑️ Delete Group</button>
+            </div>
+          </div>
+          <div class="menu-children-list">
+            ${childrenHtml || '<div class="muted" style="padding:6px 0;">No items inside this group yet.</div>'}
+            <button class="secondary" style="font-size:0.78rem; padding:4px 10px; margin-top:6px;" onclick="addMenuChildItem(${idx})">+ Add Link to this Group</button>
+          </div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="menu-item-box">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong style="color:#0b2545; font-size:0.95rem;">${escapeHtml((item.label && item.label.en) || item.id)}</strong>
+            <span class="muted" style="font-family:monospace; font-size:0.8rem;">${escapeHtml(item.href || '')}</span>
+            ${isHome ? '<span style="background:#e8f5e9; color:#1b5e20; font-size:0.75rem; font-weight:700; padding:2px 6px; border-radius:4px;">🏠 Home (Required)</span>' : ''}
+            ${!isVisible ? '<span style="color:#92400e; font-size:0.75rem; font-weight:700;">(HIDDEN)</span>' : ''}
+          </div>
+          <div style="font-size:0.8rem; color:#64748b; margin-top:2px;">
+            <span>සිං: ${escapeHtml((item.label && item.label.si) || '')}</span> · <span>த: ${escapeHtml((item.label && item.label.ta) || '')}</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:4px; align-items:center;">
+          <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="moveTopMenuItem(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}>▲ Up</button>
+          <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="moveTopMenuItem(${idx}, 1)" ${idx === menuData.length - 1 ? 'disabled' : ''}>▼ Down</button>
+          <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="toggleTopMenuVisible(${idx})">${isVisible ? 'Hide' : 'Show'}</button>
+          <button class="secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="editMenuItem(${idx}, null)">✏️ Edit</button>
+          <button class="danger" style="padding:4px 8px; font-size:0.75rem;" onclick="deleteTopMenuItem(${idx})" ${isHome ? 'disabled title="Home cannot be deleted"' : ''}>🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Menu Move / Toggle Operations
+window.moveTopMenuItem = (idx, dir) => {
+  const target = idx + dir;
+  if (target < 0 || target >= menuData.length) return;
+  const temp = menuData[idx];
+  menuData[idx] = menuData[target];
+  menuData[target] = temp;
+  renderMenuItemsTree();
+};
+
+window.moveMenuChild = (gIdx, cIdx, dir) => {
+  const group = menuData[gIdx];
+  if (!group || !group.children) return;
+  const target = cIdx + dir;
+  if (target < 0 || target >= group.children.length) return;
+  const temp = group.children[cIdx];
+  group.children[cIdx] = group.children[target];
+  group.children[target] = temp;
+  renderMenuItemsTree();
+};
+
+window.toggleTopMenuVisible = (idx) => {
+  menuData[idx].visible = menuData[idx].visible === false;
+  renderMenuItemsTree();
+};
+
+window.toggleMenuChildVisible = (gIdx, cIdx) => {
+  const group = menuData[gIdx];
+  if (group && group.children && group.children[cIdx]) {
+    group.children[cIdx].visible = group.children[cIdx].visible === false;
+    renderMenuItemsTree();
+  }
+};
+
+window.deleteTopMenuItem = (idx) => {
+  const item = menuData[idx];
+  if (item.id === 'home' || item.href === 'index.html') {
+    alert('The Home menu item is required and cannot be deleted.');
+    return;
+  }
+  if (confirm(`Remove "${(item.label && item.label.en) || item.id}" from the navigation menu?`)) {
+    menuData.splice(idx, 1);
+    renderMenuItemsTree();
+  }
+};
+
+window.deleteMenuChild = (gIdx, cIdx) => {
+  const group = menuData[gIdx];
+  if (confirm('Remove this link from the dropdown group?')) {
+    group.children.splice(cIdx, 1);
+    renderMenuItemsTree();
+  }
+};
+
+// Menu Item Dialog / Modal
+function showMenuItemModal(title, currentObj, onSave) {
+  // Remove any existing modal
+  const existing = document.getElementById('menu-edit-modal');
+  if (existing) existing.remove();
+
+  const standardPages = [
+    { label: 'Home Page', href: 'index.html' },
+    { label: 'About Us', href: 'about.html' },
+    { label: 'Academics', href: 'academic.html' },
+    { label: 'Student Life', href: 'student-life.html' },
+    { label: 'Gallery', href: 'gallery.html' },
+    { label: 'News & Events', href: 'news.html' },
+    { label: 'Notices & Calendar', href: 'notices.html' },
+    { label: 'Admissions', href: 'admissions.html' },
+    { label: 'Downloads', href: 'downloads.html' },
+    { label: 'SDS & Parents', href: 'sds-parents.html' },
+    { label: 'Contact Us', href: 'contact.html' }
+  ];
+
+  const customPagesOptions = (customPagesIndex || []).map(p => `
+    <option value="page.html?p=${escapeHtml(p.slug)}">Custom Page: ${(p.title && p.title.en) || p.slug} (page.html?p=${p.slug})</option>
+  `).join('');
+
+  const modal = document.createElement('div');
+  modal.id = 'menu-edit-modal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0; color:#0b2545;">${escapeHtml(title)}</h3>
+        <button type="button" id="m-modal-close" style="background:transparent; border:none; font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+
+      <div>
+        <label>Label in English *</label>
+        <input type="text" id="m-inp-en" value="${escapeHtml((currentObj.label && currentObj.label.en) || '')}" placeholder="e.g. Science Club">
+      </div>
+      <div>
+        <label>Label in Sinhala *</label>
+        <input type="text" id="m-inp-si" value="${escapeHtml((currentObj.label && currentObj.label.si) || '')}" placeholder="e.g. විද්‍යා සංගමය">
+      </div>
+      <div>
+        <label>Label in Tamil *</label>
+        <input type="text" id="m-inp-ta" value="${escapeHtml((currentObj.label && currentObj.label.ta) || '')}" placeholder="e.g. விஞ்ஞான சங்கம்">
+      </div>
+
+      ${currentObj.isGroup ? '' : `
+        <div style="margin-top:12px;">
+          <label>Choose Link Destination:</label>
+          <select id="m-quick-link" style="margin-bottom:8px;">
+            <option value="">-- Quick select page or pick custom --</option>
+            <optgroup label="Core School Pages">
+              ${standardPages.map(sp => `<option value="${sp.href}">${sp.label} (${sp.href})</option>`).join('')}
+            </optgroup>
+            ${customPagesOptions ? `<optgroup label="Custom Pages">${customPagesOptions}</optgroup>` : ''}
+          </select>
+          <label style="margin-top:4px;">Link URL / Relative Path *</label>
+          <input type="text" id="m-inp-href" value="${escapeHtml(currentObj.href || '')}" placeholder="e.g. index.html or page.html?p=science-club">
+        </div>
+      `}
+
+      <div style="margin-top:12px;">
+        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <input type="checkbox" id="m-inp-visible" ${currentObj.visible !== false ? 'checked' : ''}>
+          <span>Visible in public menu</span>
+        </label>
+      </div>
+
+      <div style="margin-top:16px; display:flex; gap:8px; justify-content:flex-end;">
+        <button type="button" class="secondary" id="m-modal-cancel">Cancel</button>
+        <button type="button" id="m-modal-save" style="background:#16a34a; color:#fff;">Save Item</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const quickSelect = modal.querySelector('#m-quick-link');
+  if (quickSelect) {
+    quickSelect.onchange = () => {
+      if (quickSelect.value) {
+        modal.querySelector('#m-inp-href').value = quickSelect.value;
+      }
+    };
+  }
+
+  modal.querySelector('#m-modal-close').onclick = () => modal.remove();
+  modal.querySelector('#m-modal-cancel').onclick = () => modal.remove();
+  modal.querySelector('#m-modal-save').onclick = () => {
+    const en = modal.querySelector('#m-inp-en').value.trim();
+    const si = modal.querySelector('#m-inp-si').value.trim();
+    const ta = modal.querySelector('#m-inp-ta').value.trim();
+    const visible = modal.querySelector('#m-inp-visible').checked;
+
+    if (!en && !si) {
+      alert('Please provide at least an English or Sinhala label.');
+      return;
+    }
+
+    const res = {
+      label: { en, si: si || en, ta: ta || en },
+      visible
+    };
+
+    if (!currentObj.isGroup) {
+      const href = modal.querySelector('#m-inp-href').value.trim();
+      if (!href) {
+        alert('Please specify a link destination.');
+        return;
+      }
+      res.href = href;
+    }
+
+    onSave(res);
+    modal.remove();
+  };
+}
+
+// Menu Add / Edit Triggers
+document.getElementById('menu-add-link-btn').onclick = () => {
+  showMenuItemModal('Add Top-Level Link', { visible: true }, (res) => {
+    const id = res.label.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `item-${Date.now()}`;
+    menuData.push({
+      id,
+      href: res.href,
+      label: res.label,
+      visible: res.visible
+    });
+    renderMenuItemsTree();
+  });
+};
+
+document.getElementById('menu-add-group-btn').onclick = () => {
+  showMenuItemModal('Add Dropdown Group (e.g. More)', { isGroup: true, visible: true }, (res) => {
+    const id = res.label.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `group-${Date.now()}`;
+    menuData.push({
+      id,
+      label: res.label,
+      visible: res.visible,
+      children: []
+    });
+    renderMenuItemsTree();
+  });
+};
+
+window.editMenuItem = (topIdx, childIdx) => {
+  let target;
+  let isChild = childIdx !== null && childIdx !== undefined;
+  if (isChild) {
+    target = menuData[topIdx].children[childIdx];
+  } else {
+    target = menuData[topIdx];
+  }
+
+  showMenuItemModal(`Edit Link: ${target.label.en || ''}`, {
+    label: target.label,
+    href: target.href,
+    visible: target.visible !== false
+  }, (res) => {
+    target.label = res.label;
+    target.href = res.href;
+    target.visible = res.visible;
+    renderMenuItemsTree();
+  });
+};
+
+window.editMenuGroup = (topIdx) => {
+  const target = menuData[topIdx];
+  showMenuItemModal(`Edit Dropdown Group: ${target.label.en || ''}`, {
+    label: target.label,
+    isGroup: true,
+    visible: target.visible !== false
+  }, (res) => {
+    target.label = res.label;
+    target.visible = res.visible;
+    renderMenuItemsTree();
+  });
+};
+
+window.addMenuChildItem = (groupIndex) => {
+  const group = menuData[groupIndex];
+  showMenuItemModal(`Add Link to "${group.label.en || 'Group'}"`, { visible: true }, (res) => {
+    if (!group.children) group.children = [];
+    const id = res.label.en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || `child-${Date.now()}`;
+    group.children.push({
+      id,
+      href: res.href,
+      label: res.label,
+      visible: res.visible
+    });
+    renderMenuItemsTree();
+  });
+};
+
+document.getElementById('menu-refresh-btn').onclick = () => loadMenuTab();
+
+// Save Menu with Mandatory Home Item Check
+document.getElementById('menu-save-btn').onclick = async () => {
+  const statusEl = document.getElementById('menu-status');
+  statusEl.innerHTML = '';
+
+  // Mandatory Home check: "Never allow saving a menu without a Home item."
+  const hasHome = (menuData || []).some(m => (
+    m.id === 'home' ||
+    m.href === 'index.html' ||
+    (m.label && m.label.en && m.label.en.toLowerCase() === 'home')
+  ));
+
+  if (!hasHome) {
+    alert('Cannot save: The menu must include a Home item pointing to index.html.');
+    statusEl.innerHTML = '<div class="status err">❌ Validation Error: A Home item pointing to index.html is required in the navigation menu.</div>';
+    return;
+  }
+
+  if (!confirm('Publish these navigation menu changes to the live website now?')) return;
+
+  statusEl.innerHTML = '<div class="status info">Saving navigation menu to GitHub…</div>';
+
+  try {
+    // Validate JSON serialization
+    const serialized = JSON.stringify(menuData, null, 2);
+    JSON.parse(serialized);
+
+    const res = await ghPutFile('content/menu.json', serialized, 'Update site navigation menu via content editor', menuSha);
+    if (res && res.content) menuSha = res.content.sha;
+
+    statusEl.innerHTML = '<div class="status ok">Navigation menu saved and published successfully!</div>';
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Failed to save menu: ${escapeHtml(err.message)}</div>`;
+  }
+};
+
+// =============================================================================
+// SITE SETTINGS TAB LOGIC
+// =============================================================================
+let settingsSha = null;
+let settingsData = null;
+
+async function loadSettingsTab() {
+  const statusEl = document.getElementById('settings-status');
+  statusEl.innerHTML = '<div class="status info">Loading site settings from GitHub repository…</div>';
+
+  try {
+    const file = await ghGetFile('content/settings.json');
+    settingsSha = file.sha;
+    settingsData = JSON.parse(decodeBase64Utf8(file.content));
+
+    const s = settingsData || {};
+
+    function setVal(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.value = val || '';
+    }
+
+    setVal('set-name-en', s.schoolName && s.schoolName.en);
+    setVal('set-name-si', s.schoolName && s.schoolName.si);
+    setVal('set-name-ta', s.schoolName && s.schoolName.ta);
+
+    setVal('set-short-en', s.shortName && s.shortName.en);
+    setVal('set-short-si', s.shortName && s.shortName.si);
+    setVal('set-short-ta', s.shortName && s.shortName.ta);
+
+    setVal('set-motto-en', s.motto && s.motto.en);
+    setVal('set-motto-si', s.motto && s.motto.si);
+    setVal('set-motto-ta', s.motto && s.motto.ta);
+
+    setVal('set-status-en', s.nationalStatus && s.nationalStatus.en);
+    setVal('set-status-si', s.nationalStatus && s.nationalStatus.si);
+    setVal('set-status-ta', s.nationalStatus && s.nationalStatus.ta);
+
+    setVal('set-addr-en', s.address && s.address.en);
+    setVal('set-addr-si', s.address && s.address.si);
+    setVal('set-addr-ta', s.address && s.address.ta);
+
+    setVal('set-hours-en', s.officeHours && s.officeHours.en);
+    setVal('set-hours-si', s.officeHours && s.officeHours.si);
+    setVal('set-hours-ta', s.officeHours && s.officeHours.ta);
+
+    setVal('set-phone-1', (s.phones && s.phones[0]) || '');
+    setVal('set-phone-2', (s.phones && s.phones[1]) || '');
+    setVal('set-email', s.email || '');
+
+    setVal('set-rti-name-en', s.rtiOfficer && s.rtiOfficer.name && s.rtiOfficer.name.en);
+    setVal('set-rti-name-si', s.rtiOfficer && s.rtiOfficer.name && s.rtiOfficer.name.si);
+    setVal('set-rti-name-ta', s.rtiOfficer && s.rtiOfficer.name && s.rtiOfficer.name.ta);
+    setVal('set-rti-desig-en', s.rtiOfficer && s.rtiOfficer.designation && s.rtiOfficer.designation.en);
+    setVal('set-rti-phone', s.rtiOfficer && s.rtiOfficer.phone);
+    setVal('set-rti-email', s.rtiOfficer && s.rtiOfficer.email);
+
+    setVal('set-facebook', s.facebookUrl || '');
+    setVal('set-youtube', s.youtubeUrl || '');
+    setVal('set-whatsapp', s.whatsappUrl || '');
+
+    setVal('set-maps-embed', (s.googleMaps && s.googleMaps.embedUrl) || '');
+    setVal('set-maps-dir', (s.googleMaps && s.googleMaps.directionsUrl) || '');
+
+    setVal('set-footer-en', s.footerText && s.footerText.en);
+    setVal('set-footer-si', s.footerText && s.footerText.si);
+    setVal('set-footer-ta', s.footerText && s.footerText.ta);
+
+    setVal('set-dev-credit', s.developerCredit || "Website developed by [S.A.Chanuk Mithuja ]");
+
+    statusEl.innerHTML = '<div class="status ok">Site settings loaded successfully.</div>';
+    setTimeout(() => { if (statusEl.innerHTML.includes('loaded successfully')) statusEl.innerHTML = ''; }, 3000);
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Error loading settings: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+async function saveSettingsTab() {
+  const statusEl = document.getElementById('settings-status');
+  statusEl.innerHTML = '';
+
+  function getVal(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  // Validate Google Maps embed
+  const rawEmbed = getVal('set-maps-embed');
+  let cleanEmbedUrl = rawEmbed;
+  if (rawEmbed) {
+    const match = rawEmbed.match(/src=["']([^"']+)["']/i);
+    if (match) cleanEmbedUrl = match[1].trim();
+    if (!cleanEmbedUrl.startsWith('https://www.google.com/maps/embed')) {
+      statusEl.innerHTML = '<div class="status err">Google Maps Embed URL is invalid. It must begin with <code>https://www.google.com/maps/embed</code> (or paste an official Google Maps &lt;iframe&gt; code).</div>';
+      return;
+    }
+  }
+
+  // Validate Directions link
+  const dirUrl = getVal('set-maps-dir');
+  if (dirUrl && !dirUrl.startsWith('https://')) {
+    statusEl.innerHTML = '<div class="status err">Directions Link must begin with <code>https://</code>.</div>';
+    return;
+  }
+
+  // Validate Social URLs
+  const fb = getVal('set-facebook');
+  if (fb && !fb.startsWith('https://')) {
+    statusEl.innerHTML = '<div class="status err">Facebook URL must begin with <code>https://</code>.</div>';
+    return;
+  }
+  const yt = getVal('set-youtube');
+  if (yt && !yt.startsWith('https://')) {
+    statusEl.innerHTML = '<div class="status err">YouTube Channel URL must begin with <code>https://</code>.</div>';
+    return;
+  }
+  const wa = getVal('set-whatsapp');
+  if (wa && !wa.startsWith('https://')) {
+    statusEl.innerHTML = '<div class="status err">WhatsApp Link must begin with <code>https://</code>.</div>';
+    return;
+  }
+
+  if (!getVal('set-name-en') && !getVal('set-name-si')) {
+    statusEl.innerHTML = '<div class="status err">School Full Name is required.</div>';
+    return;
+  }
+
+  if (!confirm('Are you sure you want to save and commit changes to Site Settings?')) {
+    return;
+  }
+
+  statusEl.innerHTML = '<div class="status info">Saving settings to GitHub repository…</div>';
+
+  const updatedSettings = {
+    schoolName: {
+      si: getVal('set-name-si') || getVal('set-name-en'),
+      ta: getVal('set-name-ta') || getVal('set-name-en'),
+      en: getVal('set-name-en') || getVal('set-name-si')
+    },
+    shortName: {
+      si: getVal('set-short-si') || getVal('set-short-en'),
+      ta: getVal('set-short-ta') || getVal('set-short-en'),
+      en: getVal('set-short-en') || getVal('set-short-si')
+    },
+    motto: {
+      si: getVal('set-motto-si'),
+      ta: getVal('set-motto-ta'),
+      en: getVal('set-motto-en')
+    },
+    nationalStatus: {
+      si: getVal('set-status-si'),
+      ta: getVal('set-status-ta'),
+      en: getVal('set-status-en')
+    },
+    address: {
+      si: getVal('set-addr-si'),
+      ta: getVal('set-addr-ta'),
+      en: getVal('set-addr-en')
+    },
+    phones: [getVal('set-phone-1'), getVal('set-phone-2')].filter(Boolean),
+    email: getVal('set-email'),
+    officeHours: {
+      si: getVal('set-hours-si'),
+      ta: getVal('set-hours-ta'),
+      en: getVal('set-hours-en')
+    },
+    rtiOfficer: {
+      name: {
+        si: getVal('set-rti-name-si'),
+        ta: getVal('set-rti-name-ta'),
+        en: getVal('set-rti-name-en')
+      },
+      designation: {
+        si: settingsData && settingsData.rtiOfficer && settingsData.rtiOfficer.designation ? settingsData.rtiOfficer.designation.si : "තොරතුරු නිලධාරී / විදුහල්පති",
+        ta: settingsData && settingsData.rtiOfficer && settingsData.rtiOfficer.designation ? settingsData.rtiOfficer.designation.ta : "தகவல் அதிகாரி / அதிபர்",
+        en: getVal('set-rti-desig-en') || "Information Officer / Principal"
+      },
+      phone: getVal('set-rti-phone'),
+      email: getVal('set-rti-email')
+    },
+    facebookUrl: fb,
+    youtubeUrl: yt,
+    whatsappUrl: wa,
+    googleMaps: {
+      embedUrl: cleanEmbedUrl,
+      directionsUrl: dirUrl
+    },
+    footerText: {
+      si: getVal('set-footer-si'),
+      ta: getVal('set-footer-ta'),
+      en: getVal('set-footer-en')
+    },
+    developerCredit: getVal('set-dev-credit') || "Website developed by [S.A.Chanuk Mithuja ]"
+  };
+
+  try {
+    const serialized = JSON.stringify(updatedSettings, null, 2);
+    const res = await ghPutFile('content/settings.json', serialized, 'Update site settings via content editor', settingsSha);
+    if (res && res.content) settingsSha = res.content.sha;
+    settingsData = updatedSettings;
+
+    const embedEl = document.getElementById('set-maps-embed');
+    if (embedEl) embedEl.value = cleanEmbedUrl;
+
+    statusEl.innerHTML = '<div class="status ok">Site Settings saved and published successfully!</div>';
+  } catch (err) {
+    statusEl.innerHTML = `<div class="status err">Failed to save settings: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+// Wire button clicks for Settings tab
+document.getElementById('settings-save-btn').onclick = saveSettingsTab;
+const bottomSaveBtn = document.getElementById('settings-save-bottom-btn');
+if (bottomSaveBtn) bottomSaveBtn.onclick = saveSettingsTab;
+document.getElementById('settings-refresh-btn').onclick = loadSettingsTab;
+
+// Wire tab click listeners
+document.querySelector('[data-tab="custom-pages"]').addEventListener('click', () => {
+  loadCustomPagesTab();
+});
+
+document.querySelector('[data-tab="menu"]').addEventListener('click', () => {
+  loadMenuTab();
+});
+
+const settingsTabBtn = document.querySelector('[data-tab="settings"]');
+if (settingsTabBtn) {
+  settingsTabBtn.addEventListener('click', () => {
+    loadSettingsTab();
+  });
+}
 
 loadSavedConfig();
 loadSavedAppsConfig();

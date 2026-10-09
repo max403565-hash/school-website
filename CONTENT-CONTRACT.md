@@ -70,6 +70,10 @@ The administrative panel (`xk92m-manage/index.html`) operates directly on the Gi
 | Tab Title | Tab Selector | Target Files & Directories | Admin Expectations & Formats |
 | :--- | :--- | :--- | :--- |
 | **News & Events** | `data-tab="news"` | Reads & writes `content/news-items.json`<br>Writes images to `images/news-[timestamp]-[idx].jpg` | • Expects a JSON array of news objects.<br>• Compresses uploaded photos to max 1200px JPEG (quality 0.82) via client-side canvas.<br>• Commits back to `content/news-items.json` via GitHub Contents API. |
+| **Notices** | `data-tab="notices"` | Reads & writes `content/notices.json` | • Expects a JSON array of urgent and general notice objects.<br>• Supports urgent flag (for home page dismissible banner), dates, optional expiry date.<br>• Trilingual `{si, ta, en}` for `title` and `text`.<br>• Add, edit, delete with confirmations.<br>• Commits back to `content/notices.json` via GitHub Contents API. |
+| **Events** | `data-tab="events"` | Reads & writes `content/events.json` | • Expects a JSON array of school event objects.<br>• Event date `YYYY-MM-DD`, trilingual `{si, ta, en}` for `title` and `place`.<br>• Add, edit, delete with confirmations.<br>• Automatically hides past events on public pages.<br>• Commits back to `content/events.json` via GitHub Contents API. |
+| **Pages** | `data-tab="custom-pages"` | Reads & writes `content/custom-pages.json`<br>Reads & writes `content/custom-pages/<slug>.json`<br>Writes images to `images/page-[slug]-[timestamp].jpg` | • No-code builder for dynamic custom pages rendered via `page.html?p=<slug>`.<br>• List, add new page (auto-slug generation, a-z0-9- validation), edit blocks, toggle published, delete.<br>• 8 block types: heading, text, image (canvas compression), gallery, cards (2-cols on mobile), table (container scroll on mobile), links, embed (strict whitelist).<br>• 1-click Draft Preview (`page.html?p=<slug>&preview=1`).<br>• Commits via GitHub Contents API with sha-based safety. |
+| **Menu** | `data-tab="menu"` | Reads & writes `content/menu.json` | • Navigation menu editor for site-wide header.<br>• Add items, link picker (standard pages, custom pages, or free URLs), reorder, hide/show.<br>• Create dropdown groups (e.g. "More") with child items.<br>• Enforces mandatory Home item check before saving.<br>• Commits back to `content/menu.json` via GitHub Contents API. |
 | **Gallery** | `data-tab="gallery"` | Reads & writes `content/gallery-items.json`<br>Writes images to `images/gallery-[timestamp]-[idx].jpg` | • Expects a JSON array of gallery objects.<br>• Compresses uploaded photos to max 1200px JPEG.<br>• Validates trilingual caption `{si, ta, en}`.<br>• Commits to `content/gallery-items.json`. |
 | **Downloads (PDFs)** | `data-tab="downloads"` | Writes binary PDF to `downloads/[timestamp]-[filename].pdf`<br>Appends to `downloads` in `content/pages/academic.json` | • Expects PDF file upload (`accept="application/pdf"`).<br>• Expects trilingual label inputs: `pdf-label-si`, `pdf-label-ta`, `pdf-label-en`.<br>• Reads `content/pages/academic.json`, appends `{ label: { si, ta, en }, file: "downloads/..." }`, and commits with SHA. |
 | **Page Text** | `data-tab="pages"` | Reads & writes 9 core JSON content files:<br>1. `content/common.json`<br>2. `content/pages/home.json`<br>3. `content/pages/about.json`<br>4. `content/pages/academic.json`<br>5. `content/pages/student-life.json`<br>6. `content/pages/gallery.json`<br>7. `content/pages/news.json`<br>8. `content/pages/admissions.json`<br>9. `content/pages/contact.json` | • Recursively parses the selected JSON file.<br>• Detects trilingual objects containing `si`, `ta`, and `en` properties, rendering side-by-side editable text boxes.<br>• Handles nested objects, arrays, and primitive strings.<br>• Serializes with 2-space indentation and commits back to GitHub. |
@@ -192,6 +196,45 @@ The administrative panel (`xk92m-manage/index.html`) operates directly on the Gi
 - **Non-Destructive Restore:** Restoring a backup creates a **NEW commit** on the main branch pointing directly to the backup commit's root tree SHA, with the current head commit as parent.
 - **Zero Force-Push:** Standard forward commit that preserves 100% of the commit history and can be completely rolled back or undone.
 - **Typed Confirmation:** Requires typing the word `RESTORE` before performing the restore.
+
+### 4.9. Site Settings Tab (`data-tab="settings"`)
+- **Target File:** `content/settings.json`
+- **Fields Managed:**
+  - `schoolName` ({si, ta, en}): Full legal school name.
+  - `shortName` ({si, ta, en}): Shorter colloquial name.
+  - `motto` ({si, ta, en}): Official school motto.
+  - `nationalStatus` ({si, ta, en}): Designated status notice string.
+  - `address` ({si, ta, en}): Physical postal address.
+  - `phones` (Array of strings): Official phone numbers.
+  - `email` (string): Official school email.
+  - `officeHours` ({si, ta, en}): Official working schedule.
+  - `rtiOfficer`: Information officer contact details (`name`, `designation`, `phone`, `email`).
+  - `facebookUrl`, `youtubeUrl`, `whatsappUrl` (strings): Social media links (https only).
+  - `googleMaps`: Object with `embedUrl` (strictly https://www.google.com/maps/embed) and `directionsUrl` (https).
+  - `footerText` ({si, ta, en}): Legal disclaimer text.
+  - `developerCredit` (string): Mandatory developer credit line.
+- **Public Rendering:** Consumed by `js/common.js`, `assets/app.js`, `contact.html`, and `about.html`.
+
+### 4.10. Custom Pages Tab (`data-tab="custom-pages"`)
+- **Target Files:**
+  - `content/custom-pages.json`: Index list of all custom pages (`slug`, `title`, `description`, `published`, `updated`).
+  - `content/custom-pages/<slug>.json`: Individual page block data.
+- **Block Types Supported:**
+  1. `heading` (level 1–6, trilingual text)
+  2. `text` (trilingual content supporting blank lines for paragraphs, `**bold**`, and `[link](url)`)
+  3. `image` (`src`, trilingual `alt`, trilingual `caption`)
+  4. `gallery` (array of images with lightbox support)
+  5. `cards` (grid of cards with title, subtitle, text, optional image; 2 columns on phones)
+  6. `table` (columns and rows rendered in responsive `.table-container`)
+  7. `links` (array of `{ label: {si,ta,en}, href }`)
+  8. `embed` (whitelisted iframe URL and height; strictly facebook.com/plugins, youtube.com/embed, google.com/maps/embed)
+- **Public Rendering:** Served by `page.html?p=<slug>` using purely safe DOM methods.
+
+### 4.11. Navigation Menu Tab (`data-tab="menu"`)
+- **Target File:** `content/menu.json`
+- **Schema:** Array of items `{ id, href, label: {si,ta,en}, visible, children? }`.
+- **Validation Rule:** The menu MUST contain at least one visible item pointing to `index.html` with id `"home"`.
+- **Public Rendering:** Top navbar on all pages, auto-switching to accordion hamburger under 1100px.
 
 ---
 
@@ -794,9 +837,220 @@ Provides structured albums and categorized photos for `gallery.html`.
 }
 ```
 
+### 5.18. Dynamic Navigation Menu: `content/menu.json`
+Provides dynamic, staff-configurable top navigation items and expandable submenus across the entire site without code edits.
+
+```json
+[
+  {
+    "id": "home",
+    "href": "index.html",
+    "label": { "si": "මුල් පිටුව", "ta": "முகப்பு", "en": "Home" },
+    "visible": true
+  },
+  {
+    "id": "more",
+    "label": { "si": "තවත්", "ta": "மேலும்", "en": "More" },
+    "visible": true,
+    "children": [
+      {
+        "id": "notices",
+        "href": "notices.html",
+        "label": { "si": "නිවේදන සහ සිදුවීම්", "ta": "அறிவிப்புகள் & நிகழ்வுகள்", "en": "Notices & Events" },
+        "visible": true
+      }
+    ]
+  }
+]
+```
+
+- **Keys per Item:**
+  - `id`: Unique identifier string.
+  - `href`: Relative path link (for top-level links).
+  - `label`: Trilingual object `{ "si": "...", "ta": "...", "en": "..." }`.
+  - `visible`: Boolean flag (`true` to display, `false` to hide).
+  - `children`: Optional array of submenu items for dropdown / expandable groups (e.g. "More").
+- **Fallback Rule:** If `content/menu.json` fails to load or is unreachable, the site automatically falls back to an internal hardcoded `DEFAULT_MENU`.
+- **Mobile Support:** Mobile hamburger menu displays expandable groups with accordion toggle buttons.
+
 ---
 
-## 6. Public Site Implementation Rules
+### 5.19. Custom Pages Registry: `content/custom-pages.json`
+Maintains an index of all custom, no-code pages created by school staff.
+
+```json
+[
+  {
+    "slug": "sample",
+    "title": {
+      "si": "ආදර්ශ අභිරුචි පිටුව (නියැදිය)",
+      "ta": "மாதிரி தனிப்பயன் பக்கம் (மாதிரி)",
+      "en": "Sample Custom Page (Demonstration)"
+    },
+    "description": {
+      "si": "කාර්ය මණ්ඩලය සඳහා නිර්මාණය කරන ලද ආදර්ශ අභිරුචි පිටුවක් වන අතර මෙය ප්‍රකාශයට පත් කර නොමැත.",
+      "ta": "ஊழியர்களுக்கான மாதிரி பக்கம், இது வெளியிடப்படவில்லை.",
+      "en": "A sample custom page for demonstration, unpublished by default."
+    },
+    "published": false,
+    "updated": "2026-10-08"
+  }
+]
+```
+
+- **Keys per Entry:**
+  - `slug`: Unique URL identifier string matching `content/custom-pages/<slug>.json` and accessed via `page.html?p=<slug>`.
+  - `title`: Trilingual `{si, ta, en}` object.
+  - `description`: Trilingual `{si, ta, en}` object.
+  - `published`: Boolean flag. If `false`, the page is hidden from public view (friendly not-found shown unless draft preview parameter `&preview=1` is provided).
+  - `updated`: ISO date string `YYYY-MM-DD`.
+
+---
+
+### 5.20. Custom Page Block Schema: `content/custom-pages/<slug>.json`
+Rendered by generic template `page.html?p=<slug>`.
+
+#### Top-Level Page Schema
+```json
+{
+  "slug": "sample",
+  "published": false,
+  "isSample": true,
+  "title": { "si": "...", "ta": "...", "en": "..." },
+  "subtitle": { "si": "...", "ta": "...", "en": "..." },
+  "blocks": [ ... ]
+}
+```
+
+#### Supported Block Types (8 Block Standard)
+
+1. **`heading` Block:**
+   ```json
+   {
+     "type": "heading",
+     "level": 2,
+     "text": { "si": "මාතෘකාව", "ta": "தலைப்பு", "en": "Heading" }
+   }
+   ```
+   - `level`: Number 1 through 6 (default 2).
+   - `text`: Trilingual `{si, ta, en}`.
+
+2. **`text` Block:**
+   ```json
+   {
+     "type": "text",
+     "content": {
+       "si": "පළමු ඡේදය **තද අකුරු**.\n\nදෙවන ඡේදය [සබැඳිය](news.html).",
+       "ta": "முதல் பத்தி.\n\nஇரண்டாவது பத்தி.",
+       "en": "First paragraph with **bold text**.\n\nSecond paragraph with [link](news.html)."
+     }
+   }
+   ```
+   - `content`: Trilingual text. Blank lines (`\n\n`) create distinct paragraphs.
+   - Supports inline `**bold**` formatting.
+   - Supports inline links `[label](url)`. Link URLs must be relative or `http`/`https`.
+
+3. **`image` Block:**
+   ```json
+   {
+     "type": "image",
+     "src": "images/campus-hero.jpg",
+     "alt": { "si": "පින්තූරය", "ta": "படம்", "en": "Campus Photo" },
+     "caption": { "si": "විස්තරය", "ta": "விபரம்", "en": "Detailed Caption" }
+   }
+   ```
+   - `src`: Relative path or secure HTTPS image URL.
+   - `alt`: Trilingual `{si, ta, en}` alt text.
+   - `caption`: Optional trilingual caption.
+
+4. **`gallery` Block:**
+   ```json
+   {
+     "type": "gallery",
+     "images": [
+       {
+         "src": "images/hero-1.jpg",
+         "alt": { "si": "...", "ta": "...", "en": "..." },
+         "caption": { "si": "...", "ta": "...", "en": "..." }
+       }
+     ]
+   }
+   ```
+   - Renders a responsive image grid with captions.
+   - Clicking any image opens an accessible modal lightbox with prev/next controls, keyboard navigation (Escape, Left, Right), and zoom view.
+
+5. **`cards` Block:**
+   ```json
+   {
+     "type": "cards",
+     "items": [
+       {
+         "title": { "si": "...", "ta": "...", "en": "..." },
+         "subtitle": { "si": "...", "ta": "...", "en": "..." },
+         "text": { "si": "...", "ta": "...", "en": "..." },
+         "image": "images/campus-hero.jpg"
+       }
+     ]
+   }
+   ```
+   - Displays information cards in a responsive grid.
+   - **Mobile requirement:** Renders in **2 columns** on mobile devices (<640px).
+
+6. **`table` Block:**
+   ```json
+   {
+     "type": "table",
+     "columns": [
+       { "si": "තීරුව 1", "ta": "நெடுவரிசை 1", "en": "Column 1" }
+     ],
+     "rows": [
+       [
+         { "si": "දත්ත 1", "ta": "தரவு 1", "en": "Data 1" }
+       ]
+     ]
+   }
+   ```
+   - `columns`: Array of trilingual header labels.
+   - `rows`: 2D array of trilingual cell values.
+   - **Mobile requirement:** Wrapped in a dedicated scroll container (`overflow-x: auto; -webkit-overflow-scrolling: touch;`) so table scrolls horizontally inside its own box without breaking phone viewport layout.
+
+7. **`links` Block:**
+   ```json
+   {
+     "type": "links",
+     "items": [
+       {
+         "label": { "si": "PDF බාගත කරන්න", "ta": "பதிவிறக்கம்", "en": "Download PDF" },
+         "href": "downloads/calendar.pdf"
+       }
+     ]
+   }
+   ```
+   - Styled list for official file downloads and resource links.
+   - Automatically detects PDF extensions and displays distinct icons and external indicator arrows.
+
+8. **`embed` Block:**
+   ```json
+   {
+     "type": "embed",
+     "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+     "height": "400",
+     "caption": { "si": "වීඩියෝව", "ta": "காணொளி", "en": "Video Embed" }
+   }
+   ```
+   - Embeds media in a fixed-height, lazy-loaded responsive container.
+   - **Strict Security Whitelist:** Embed URLs are restricted strictly to:
+     1. `facebook.com/plugins`
+     2. `youtube.com/embed`
+     3. `google.com/maps/embed`
+   - Any URL not matching this whitelist is **refused** and displays a warning message.
+
+#### Security & Rendering Constitution
+- **Strict DOM Construction:** All content strings are injected strictly using `document.createTextNode()`, `element.textContent`, or `setAttribute()`. Content values are **never inserted with `innerHTML`**.
+- **Link URL Validation:** Link URLs are strictly validated to allow only relative paths or `http://`/`https://`. Dangerous protocols (`javascript:`, `data:`, `vbscript:`) are rejected.
+- **Language Synchronization:** Re-renders document title and blocks dynamically upon language switch (`window.i18n.onLanguageChange` and `langchange` event).
+
+---
 
 ### 6.1. Language Engine & Synchronization
 - Active language is stored in browser `localStorage` under **both** keys:
@@ -862,6 +1116,31 @@ Before publishing any new version, redesign, or page overhaul of the site, verif
 ### Applications Verification:
 - [ ] Entering a valid Google Sheet "Publish to web" CSV URL in the Applications tab loads and renders admissions records in the read-only table.
 - [ ] Form submission on `admissions.html` sends a background `fetch()` POST to Google Forms and renders a real reference number `PEL-2026-XXXX`.
+
+### Custom Pages Verification:
+- [ ] Creating a new custom page generates a sanitized slug, creates `content/custom-pages/<slug>.json`, and appends an entry to `content/custom-pages.json`.
+- [ ] Block editor supports adding, editing, reordering, duplicating, and deleting all 8 block types (`heading`, `text`, `image`, `gallery`, `cards`, `table`, `links`, `embed`).
+- [ ] Image, gallery, and card photos upload compressed JPEG assets to `images/`.
+- [ ] Embed blocks strictly reject non-whitelisted URLs and display a clear warning.
+- [ ] Clicking "Preview" saves the page as unpublished and opens `page.html?p=<slug>` in a new tab with draft preview banner.
+- [ ] Toggling "Publish" publishes the page to the public website or reverts to draft.
+- [ ] Deleting a page removes `content/custom-pages/<slug>.json` and updates `content/custom-pages.json`.
+- [ ] Version History lists custom pages and allows one-click rollback.
+
+### Navigation Menu Verification:
+- [ ] Admin "Menu" tab loads `content/menu.json` and supports reordering, hiding/showing, and editing links.
+- [ ] Adding links supports quick-selection from core school pages, custom pages, or free URLs with trilingual labels.
+- [ ] Dropdown groups (e.g. "More") can be created, edited, and nested with child links.
+- [ ] Saving the menu without a Home item (`index.html`) is strictly refused with a validation error.
+- [ ] Saving prompts for confirmation and commits valid JSON to GitHub.
+
+### Header & Navigation Verification:
+- [ ] **Relative Home Navigation:** Logo link, primary menu "Home", breadcrumb "Home", and footer "Home" point to `index.html` across all pages (or `../index.html` from `xk92m-manage/`), functioning properly even with URL query parameters or hashes.
+- [ ] **404 Page Base Path:** `404.html` dynamically injects a `<base>` tag matching the site's repository base path, guaranteeing that stylesheets, scripts, images, and the "Home" return button resolve accurately at any missing URL depth.
+- [ ] **Header Overflow Prevention:** The header navigation bar never wraps onto two rows at any viewport width (1100-1400px, desktop, tablet, or mobile).
+- [ ] **Responsive Breakpoint (1100px):** Desktop navigation uses compact padding and font size on one line only; below 1100px, it cleanly transitions to the hamburger menu (`☰`).
+- [ ] **School Name Wrapping:** School name title in header wraps onto two lines instead of being cut or truncated.
+- [ ] **URL Path Stability:** Language switching in desktop or mobile headers updates translations without changing the URL pathname.
 
 ### Architectural & Trilingual Integrity:
 - [ ] **Zero Absolute Links:** Run `grep -rnE "(href|src|fetch)\s*[\(=]\s*[\"']/[^\"']+" .` — must return 0 results.

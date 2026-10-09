@@ -80,26 +80,35 @@
 <script>
 function renderBody(page, common){
   const lang = getLang();
-  document.getElementById('breadcrumb').innerHTML = `${t(common.nav.home)} / ${t(common.nav.contact)}`;
+  document.getElementById('breadcrumb').innerHTML = `<a href="index.html">${t(common.nav.home)}</a> / <span>${t(common.nav.contact)}</span>`;
   document.getElementById('page-title').textContent = t(common.nav.contact);
   document.getElementById('page-intro').textContent = t(page.intro);
 
   // Email Card
+  const s = SITE.settings || {};
+  const emailVal = s.email || page.email;
+  const phone1 = (s.phones && s.phones[0]) || page.phone;
+  const phone2 = (s.phones && s.phones[1]) || page.phoneSecondary || phone1;
+  const mapUrl = (s.googleMaps && s.googleMaps.embedUrl) || page.mapEmbedUrl;
+  const addressText = t((s.address) || common.location);
+  const hoursText = t((s.officeHours) || page.officeHours);
+  const rtiText = (s.rtiOfficer && s.rtiOfficer.name) ? t(s.rtiOfficer.name) : page.rtiOfficerName;
+
   document.getElementById('email-card-title').textContent = t(page.emailUsTitle);
   document.getElementById('email-card-desc').textContent = t(page.emailUsDesc);
   document.getElementById('email-btn').textContent = t(page.emailButton);
-  document.getElementById('email-link').textContent = page.email;
-  document.getElementById('email-link').href = `mailto:${page.email}`;
-  document.getElementById('email-btn').href = `mailto:${page.email}?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College`;
+  document.getElementById('email-link').textContent = emailVal;
+  document.getElementById('email-link').href = `mailto:${emailVal}`;
+  document.getElementById('email-btn').href = `mailto:${emailVal}?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College`;
 
   // Phone Card
   document.getElementById('phone-card-title').textContent = t(page.callUsTitle);
   document.getElementById('phone-card-desc').textContent = t(page.callUsDesc);
-  document.getElementById('phone-link-1').textContent = page.phone;
-  document.getElementById('phone-link-1').href = `tel:${page.phone.replace(/[^0-9+]/g, '')}`;
-  document.getElementById('phone-link-2').textContent = page.phoneSecondary;
-  document.getElementById('phone-link-2').href = `tel:${page.phoneSecondary.replace(/[^0-9+]/g, '')}`;
-  document.getElementById('office-hours-banner').innerHTML = `🕒 <strong>${t(page.officeHoursTitle)}:</strong> ${t(page.officeHours)}`;
+  document.getElementById('phone-link-1').textContent = phone1;
+  document.getElementById('phone-link-1').href = `tel:${phone1.replace(/[^0-9+]/g, '')}`;
+  document.getElementById('phone-link-2').textContent = phone2;
+  document.getElementById('phone-link-2').href = `tel:${phone2.replace(/[^0-9+]/g, '')}`;
+  document.getElementById('office-hours-banner').innerHTML = `🕒 <strong>${t(page.officeHoursTitle)}:</strong> ${hoursText}`;
 
   // Details
   const detailsHead = lang === 'en' ? 'School Administrative Details' : (lang === 'ta' ? 'பாடசாலை நிர்வாக விபரங்கள்' : 'පාසල් පරිපාලන විස්තර');
@@ -108,12 +117,12 @@ function renderBody(page, common){
   document.getElementById('details-title').textContent = detailsHead;
   document.getElementById('location-title').textContent = locHead;
   document.getElementById('label-address').textContent = addrLabel;
-  document.getElementById('detail-address').textContent = t(common.location);
+  document.getElementById('detail-address').textContent = addressText;
   document.getElementById('office-hours-title').textContent = t(page.officeHoursTitle);
-  document.getElementById('office-hours').textContent = t(page.officeHours);
+  document.getElementById('office-hours').textContent = hoursText;
   document.getElementById('rti-label').textContent = t(page.rtiTitle);
-  document.getElementById('rti-name').textContent = page.rtiOfficerName;
-  document.getElementById('map-iframe').src = page.mapEmbedUrl;
+  document.getElementById('rti-name').textContent = rtiText;
+  document.getElementById('map-iframe').src = mapUrl;
 }
 initPage('contact', 'content/pages/contact.json', renderBody);
 </script>

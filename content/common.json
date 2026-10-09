@@ -22,7 +22,9 @@
     "gallery": {"si": "ඡායාරූප එකතුව", "ta": "படத்தொகுப்பு", "en": "Gallery"},
     "news": {"si": "පුවත් සහ නිවේදන", "ta": "செய்திகள் மற்றும் அறிவிப்புகள்", "en": "News & Events"},
     "admissions": {"si": "ඇතුළත් කිරීම", "ta": "சேர்க்கை", "en": "Admissions"},
-    "contact": {"si": "සම්බන්ධ වන්න", "ta": "தொடர்பு கொள்ள", "en": "Contact Us"}
+    "contact": {"si": "සම්බන්ධ වන්න", "ta": "தொடர்பு கொள்ள", "en": "Contact Us"},
+    "notices": {"si": "නිවේදන සහ සිදුවීම්", "ta": "அறிவிப்புகள் & நிகழ்வுகள்", "en": "Notices & Events"},
+    "more": {"si": "තවත්", "ta": "மேலும்", "en": "More"}
   },
   "a11y": {
     "label": {"si": "ප්‍රවේශතාව", "ta": "அணுகல்தன்மை", "en": "Accessibility"},
@@ -33,6 +35,7 @@
     "legalTitle": {"si": "නීතිමය", "ta": "சட்டபூர்வமான", "en": "Legal"},
     "contactTitle": {"si": "සම්බන්ධතා", "ta": "தொடர்புகள்", "en": "Contact"},
     "sdsLink": {"si": "පාසල් සංවර්ධන සමිතිය", "ta": "பள்ளி அபிவிருத்திச் சங்கம்", "en": "School Development Society"},
+    "noticesLink": {"si": "නිවේදන සහ දින දර්ශනය", "ta": "அறிவிப்புகள் மற்றும் நாள்காட்டி", "en": "Notices & Calendar"},
     "downloadsLink": {"si": "බාගත කිරීම් / චක්‍රලේඛ", "ta": "பதிவிறக்கங்கள் / சுற்றறிக்கைகள்", "en": "Downloads / Circulars"},
     "privacyLink": {"si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியுரிமைக் கொள்கை", "en": "Privacy Policy"},
     "termsLink": {"si": "නියම සහ කොන්දේසි", "ta": "விதிமுறைகள்", "en": "Terms of Use"},

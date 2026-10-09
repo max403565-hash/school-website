@@ -1,0 +1,64 @@
+{
+  "schoolName": {
+    "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය",
+    "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி",
+    "en": "Mo/Pelwatta Navodya Secondary College"
+  },
+  "shortName": {
+    "si": "පැල්වත්ත නවෝද්‍යා විද්‍යාලය",
+    "ta": "பெல்வத்தை நவோத்யா கல்லூரி",
+    "en": "Pelwatta Navodya College"
+  },
+  "motto": {
+    "si": "විද්‍යා දදාති විනයං",
+    "ta": "அறிவே ஒழுக்கத்தைத் தரும்",
+    "en": "Knowledge Imparts Discipline"
+  },
+  "nationalStatus": {
+    "si": "ජාතික පාසලක් ලෙස නම් කර ඇත (නිල ගැසට් පත්‍රය නිකුත්වීමට යටත්ව පවතින තත්ත්වයකි)",
+    "ta": "தேசிய பாடசாலையாக அறிவிக்கப்பட்டுள்ளது (வர்த்தமானி அறிவித்தலுக்கு உட்பட்டது)",
+    "en": "Designated as a National School (Status subject to gazette notification)"
+  },
+  "address": {
+    "si": "පැල්වත්ත, බුත්තල, මොනරාගල දිස්ත්‍රික්කය, ඌව පළාත, ශ්‍රී ලංකාව",
+    "ta": "பெல்வத்தை, புத்தள, மொணராகலை மாவட்டம், ஊவா மாகாணம், இலங்கை",
+    "en": "Pelwatta, Buttala, Monaragala District, Uva Province, Sri Lanka"
+  },
+  "phones": [
+    "+94 55 227 6234",
+    "+94 55 227 6235"
+  ],
+  "email": "principal@pelwattacollege.sch.lk",
+  "officeHours": {
+    "si": "සඳුදා – සිකුරාදා: පෙ.ව. 7.30 – ප.ව. 1.30 (පාසල් වේලාවන්)",
+    "ta": "திங்கள் – வெள்ளி: மு.ப. 7.30 – பி.ப. 1.30 (பள்ளி நேரம்)",
+    "en": "Monday – Friday: 7:30 AM – 1:30 PM (School Hours)"
+  },
+  "rtiOfficer": {
+    "name": {
+      "si": "කේ. එම්. සුනිල් ශාන්ත මහතා (විදුහල්පති)",
+      "ta": "திரு. கே. எம். சுனில் சாந்த (அதிபர்)",
+      "en": "Mr. K. M. Sunil Shantha (Principal)"
+    },
+    "designation": {
+      "si": "තොරතුරු නිලධාරී / විදුහල්පති",
+      "ta": "தகவல் அதிகாரி / அதிபர்",
+      "en": "Information Officer / Principal"
+    },
+    "phone": "+94 55 227 6234",
+    "email": "rti@pelwattacollege.sch.lk"
+  },
+  "facebookUrl": "https://www.facebook.com/pelwattacollege",
+  "youtubeUrl": "https://www.youtube.com/@pelwattacollege",
+  "whatsappUrl": "https://wa.me/94552276234",
+  "googleMaps": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.884560768462!2d81.2580798!3d6.7839218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4402ea2aaab61%3A0xe54e612f0df702eb!2sPelwatta%20Navodya%20School!5e0!3m2!1sen!2slk!4v1710000000000!5m2!1sen!2slk",
+    "directionsUrl": "https://maps.google.com/?q=Pelwatta+Navodya+School+Monaragala"
+  },
+  "footerText": {
+    "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය. සියලුම හිමිකම් ඇවිරිණි. ශ්‍රී ලංකා රජයේ නිදහස් ජාතික පාසලකි.",
+    "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. இலங்கை அரச இலவச தேசிய பாடசாலை.",
+    "en": "Mo/Pelwatta Navodya Secondary College. All Rights Reserved. A Sri Lankan Government Free National School."
+  },
+  "developerCredit": "Website developed by [S.A.Chanuk Mithuja ]"
+}

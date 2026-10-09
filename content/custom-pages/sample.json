@@ -1,0 +1,201 @@
+{
+  "slug": "sample",
+  "published": false,
+  "isSample": true,
+  "title": {
+    "si": "ආදර්ශ අභිරුචි පිටුව (නියැදිය)",
+    "ta": "மாதிரி தனிப்பயன் பக்கம் (மாதிரி)",
+    "en": "Sample Custom Page (Demonstration)"
+  },
+  "subtitle": {
+    "si": "මෙම පිටුව කාර්ය මණ්ඩලය සඳහා නිර්මාණය කරන ලද ආදර්ශ පිටුවක් වන අතර පෙරනිමියෙන් ප්‍රකාශයට පත් කර නොමැත.",
+    "ta": "இந்த பக்கம் ஊழியர்களுக்கான மாதிரி பக்கமாகும், இது இயல்பாக வெளியிடப்படவில்லை.",
+    "en": "This is a demonstration page for school staff to test all 8 content block types. Unpublished by default."
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": {
+        "si": "1. ප්‍රධාන මාතෘකා කොටස (Heading Block)",
+        "ta": "1. பிரதான தலைப்பு பிரிவு (Heading Block)",
+        "en": "1. Major Section Heading (Heading Block)"
+      }
+    },
+    {
+      "type": "text",
+      "content": {
+        "si": "මෙය පැල්වත්ත නවෝද්‍යා විද්‍යාලයේ අභිරුචි පිටු පද්ධතියේ **පෙළ කොටසක් (Text Block)** වේ. මෙහි ඡේද කිහිපයක් ඇතුළත් කළ හැකි අතර හිස් පේළියක් මගින් නව ඡේදයක් ස්වයංක්‍රීයව නිර්මාණය වේ.\n\nමෙම ඡේදයේ [පාසලේ නිල මුල් පිටුව වෙත පිවිසෙන්න](index.html) හෝ [පුවත් සහ නිවේදන කියවන්න](news.html) ආදී ලෙස සබැඳි (Links) සහ **තද පැහැති අකුරු (Bold text)** ආරක්ෂිතව එක් කළ හැක.",
+        "ta": "இது பெல்வத்த நவோதயா கல்லூரியின் தனிப்பயன் பக்க அமைப்பின் **உரை தொகுதி (Text Block)** ஆகும். வெற்று வரி மூலம் புதிய பத்தியை உருவாக்கலாம்.\n\nஇங்கே [முகப்புப் பக்கத்திற்குச் செல்லவும்](index.html) போன்ற இணைப்புகளையும் **தடித்த எழுத்துக்களையும் (Bold text)** பாதுகாப்பாக சேர்க்கலாம்.",
+        "en": "This is a demonstration of the **Text Block** in the school custom page system. Paragraphs are automatically separated by blank lines.\n\nWithin any paragraph, you can format **bold text** and include relative links like [Visit School Home Page](index.html) or [View Latest News](news.html) safely."
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/campus-hero.jpg",
+      "alt": {
+        "si": "පැල්වත්ත විද්‍යාලයීය පරිශ්‍රය",
+        "ta": "பெல்வத்தை கல்லூரி வளாகம்",
+        "en": "Pelwatta College Campus"
+      },
+      "caption": {
+        "si": "මො/පැල්වත්ත නවෝද්‍යා විද්‍යාලයීය හරිත පරිශ්‍රය සහ ප්‍රධාන පරිපාලන ගොඩනැගිල්ල",
+        "ta": "மொ/பெல்வத்தை நவோத்யா கல்லூரி பிரதான கட்டடம் மற்றும் வளாகம்",
+        "en": "Mo/Pelwatta Navodya College lush green campus and main administration building"
+      }
+    },
+    {
+      "type": "gallery",
+      "images": [
+        {
+          "src": "images/hero-1.jpg",
+          "alt": {
+            "si": "ක්‍රීඩා උළෙල",
+            "ta": "விளையாட்டுப் போட்டி",
+            "en": "Annual Sports Meet"
+          },
+          "caption": {
+            "si": "වාර්ෂික නිවාසාන්තර මලල ක්‍රීඩා උළෙලේ විශේෂ අවස්ථාවක්",
+            "ta": "வருடாந்த மெய்வல்லுநர் போட்டியின் முக்கிய நிகழ்வு",
+            "en": "Highlights from the Annual Inter-House Athletic Meet"
+          }
+        },
+        {
+          "src": "images/hero-2.jpg",
+          "alt": {
+            "si": "ත්‍යාග ප්‍රදානෝත්සවය",
+            "ta": "பரிசளிப்பு விழா",
+            "en": "Annual Prize Giving"
+          },
+          "caption": {
+            "si": "විශිෂ්ට සාමාර්ථ ලැබූ සිසුන්ට ත්‍යාග හා සහතිකපත් පිරිනැමීම",
+            "ta": "சிறந்த மாணவர்களுக்கு பரிசுகள் வழங்குதல்",
+            "en": "Awarding certificates and trophies to high-achieving students"
+          }
+        },
+        {
+          "src": "images/hero-3.jpg",
+          "alt": {
+            "si": "විද්‍යාගාර අංශය",
+            "ta": "விஞ்ஞான ஆய்வகம்",
+            "en": "Science Laboratory"
+          },
+          "caption": {
+            "si": "උසස් පෙළ ජීව විද්‍යා හා භෞතික විද්‍යා ප්‍රායෝගික පරීක්ෂණ",
+            "ta": "உயர்தர விஞ்ஞான செய்முறை பரிசோதனைகள்",
+            "en": "Advanced Level Science practical laboratory sessions"
+          }
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "items": [
+        {
+          "title": {
+            "si": "ගණිත හා විද්‍යා අංශය",
+            "ta": "கணித & விஞ்ஞானப் பிரிவு",
+            "en": "Mathematics & Science Stream"
+          },
+          "subtitle": {
+            "si": "6 - 13 ශ්‍රේණි",
+            "ta": "தரம் 6 - 13",
+            "en": "Grades 6 - 13"
+          },
+          "text": {
+            "si": "නවීන විද්‍යාගාර හා ප්‍රායෝගික ක්‍රියාකාරකම් සහිත අධ්‍යාපනික වැඩසටහන්.",
+            "ta": "நவீன ஆய்வக வசதிகளுடன் கூடிய கல்வி வழிகாட்டல்.",
+            "en": "Comprehensive theoretical and practical laboratory-based education."
+          },
+          "image": "images/hero-3.jpg"
+        },
+        {
+          "title": {
+            "si": "තොරතුරු තාක්ෂණ මධ්‍යස්ථානය",
+            "ta": "தகவல் தொழில்நுட்ப மையம்",
+            "en": "Information Technology Unit"
+          },
+          "subtitle": {
+            "si": "පරිගණක සම්පත්",
+            "ta": "கணினி வளம்",
+            "en": "Computer Resources"
+          },
+          "text": {
+            "si": "අන්තර්ජාල පහසුකම් සහිත සුහුරු පරිගණක විද්‍යාගාර පහසුකම්.",
+            "ta": "இணைய வசதியுடன் கூடிய நவீன கணினி ஆய்வகம்.",
+            "en": "Fully-equipped IT laboratory with high-speed internet."
+          },
+          "image": "images/campus-hero.jpg"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        { "si": "විෂය ධාරාව / අංශය", "ta": "துறை / பிரிவு", "en": "Study Stream / Division" },
+        { "si": "ශ්‍රේණි පරාසය", "ta": "தர எல்லை", "en": "Grade Range" },
+        { "si": "ප්‍රධාන සම්පත්", "ta": "முக்கிய வசதிகள்", "en": "Key Facilities" },
+        { "si": "සම්බන්ධීකාරක", "ta": "ஒருங்கிணைப்பாளர்", "en": "Coordinator" }
+      ],
+      "rows": [
+        [
+          { "si": "කනිෂ්ඨ ද්විතීයික අංශය", "ta": "இளநிலை இடைநிலை பிரிவு", "en": "Junior Secondary Section" },
+          { "si": "6 - 9 ශ්‍රේණි", "ta": "தரம் 6 - 9", "en": "Grades 6 - 9" },
+          { "si": "පන්ති කාමර සංකීර්ණය", "ta": "வகுப்பறை வளாகம்", "en": "Main Classroom Block" },
+          { "si": "අංශ ප්‍රධානී ගුරුභවතුන්", "ta": "பிரிவுத் தலைவர்", "en": "Sectional Head" }
+        ],
+        [
+          { "si": "සාමාන්‍ය පෙළ අංශය", "ta": "சாதாரண தரப் பிரிவு", "en": "O/L Section" },
+          { "si": "10 - 11 ශ්‍රේණි", "ta": "தரம் 10 - 11", "en": "Grades 10 - 11" },
+          { "si": "විශේෂ සම්මන්ත්‍රණ ශාලාව", "ta": "கருத்தரங்கு மண்டபம்", "en": "Seminar & Activity Hall" },
+          { "si": "විභාග කමිටුව", "ta": "பரீட்சைக் குழு", "en": "Examination Board" }
+        ],
+        [
+          { "si": "උසස් පෙළ අංශය", "ta": "உயர்தரப் பிரிவு", "en": "A/L Section" },
+          { "si": "12 - 13 ශ්‍රේණි", "ta": "தரம் 12 - 13", "en": "Grades 12 - 13" },
+          { "si": "විද්‍යාගාර හා පුස්තකාලය", "ta": "ஆய்வகம் & நூலகம்", "en": "Laboratories & Library" },
+          { "si": "උසස් පෙළ අංශ ප්‍රධානී", "ta": "உயர்தர பிரிவுத் தலைவர்", "en": "A/L Sectional Head" }
+        ]
+      ]
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": {
+            "si": "විද්‍යාලයීය විෂය සමගාමී අත්පොත (PDF බාගත කරන්න)",
+            "ta": "பாடசாலை இணைப்பாடவிதான கையேடு (PDF)",
+            "en": "Co-curricular Handbook & Guidelines (PDF Download)"
+          },
+          "href": "downloads/sample-guide.pdf"
+        },
+        {
+          "label": {
+            "si": "නිල පාසල් සංවර්ධන සමිති තොරතුරු පිටුව",
+            "ta": "அதிகாரப்பூர்வ பள்ளி அபிவிருத்திச் சங்க பக்கம்",
+            "en": "Official School Development Society (SDS) Page"
+          },
+          "href": "sds-parents.html"
+        },
+        {
+          "label": {
+            "si": "පාසල් අයදුම්පත් හා චක්‍රලේඛ බාගත කිරීම් අංශය",
+            "ta": "விண்ணப்பங்கள் மற்றும் சுற்றறிக்கைகள் பிரிவு",
+            "en": "School Circulars and Application Forms Downloads"
+          },
+          "href": "downloads.html"
+        }
+      ]
+    },
+    {
+      "type": "embed",
+      "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.2982847660233!2d81.18730999999999!3d6.733418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4412ef1ce2313%3A0xb3a2e7c4f14188b4!2sPelwatta%20Navodya%20College!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk",
+      "height": "400",
+      "caption": {
+        "si": "විද්‍යාලයීය පිහිටීම (Google Maps නිල සිතියම)",
+        "ta": "கல்லூரி அமைவிடம் (Google Maps)",
+        "en": "School Campus Location (Google Maps)"
+      }
+    }
+  ]
+}

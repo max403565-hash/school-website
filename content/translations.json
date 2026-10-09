@@ -9,6 +9,8 @@
     "admissions": { "si": "ඇතුළත් වීම්", "ta": "சேர்க்கை", "en": "Admissions" },
     "downloads": { "si": "බාගත කිරීම්", "ta": "பதிவிறக்கங்கள்", "en": "Downloads" },
     "sds": { "si": "සංවර්ධන සමිතිය", "ta": "அபிவிருத்தி சங்கம்", "en": "SDS & Parents" },
+    "notices": { "si": "නිවේදන සහ සිදුවීම්", "ta": "அறிவிப்புகள் & நிகழ்வுகள்", "en": "Notices & Events" },
+    "more": { "si": "තවත්", "ta": "மேலும்", "en": "More" },
     "contact": { "si": "සම්බන්ධ කර ගැනීමට", "ta": "தொடர்புகளுக்கு", "en": "Contact Us" }
   },
   "topBar": {
@@ -49,6 +51,7 @@
     "linksTitle": { "si": "ක්ෂණික සබැඳි", "ta": "விரைவு இணைப்புகள்", "en": "Quick Links" },
     "servicesTitle": { "si": "සේවාවන්", "ta": "சேவைகள்", "en": "Services" },
     "contactTitle": { "si": "ලිපිනය හා සබඳතා", "ta": "தொடர்பு விபரம்", "en": "Contact & Location" },
+    "noticesLink": { "si": "නිවේදන සහ දින දර්ශනය", "ta": "அறிவிப்புகள் மற்றும் நாள்காட்டி", "en": "Notices & Calendar" },
     "privacy": { "si": "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "ta": "தனியுரிமைக் கொள்கை", "en": "Privacy Policy" },
     "terms": { "si": "භාවිත නියමයන්", "ta": "விதிமுறைகள்", "en": "Terms of Use" },
     "freeEdu": {
