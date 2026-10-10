@@ -1149,3 +1149,45 @@ Before publishing any new version, redesign, or page overhaul of the site, verif
 - [ ] **Protected Paths Untouched:** `xk92m-manage/` and `.github/` remain completely intact.
 - [ ] **Trilingual Switch:** Switching between Sinhala, Tamil, and English updates 100% of visible UI copy with zero untranslated leftovers.
 - [ ] **Mandatory Developer Credit:** HTML comment present on line 1 of `index.html` and visible credit line present in footer bottom across all pages: `Website developed by [S.A.Chanuk Mithuja ]`.
+
+---
+
+## 8. Teacher-Friendly Admin Panel Architecture (Phase 3)
+
+The administrative control panel (`xk92m-manage/index.html`) is structured to empower non-technical school teachers through native trilingual localization, safety guardrails, and contextual assistance.
+
+### 8.1 Trilingual Interface Schema (`content/admin-i18n.json`)
+Stores all administrative UI copy in Sinhala (`si`), Tamil (`ta`), and English (`en`). Technical terms (GitHub, Token, Commit, Branch, Passphrase, Publish, Backup) remain in English alongside explicit trilingual definitions for clarity.
+
+### 8.2 Contextual Help & User Guides (`content/admin-help.json`)
+- **Tab Help (`tabs`):** Contains contextual help for every tab panel (`dashboard`, `news`, `notices`, `events`, `custom-pages`, `menu`, `settings`, `knowledge`, `gallery`, `downloads`, `activity`, `guide`). Provides:
+  - *What this tab does*
+  - *Information needed with examples*
+  - *Common mistakes to avoid*
+  - *View on live website link*
+  - *How to undo safely*
+- **Glossary (`glossary`):** Explanations for core concepts (`commit`, `token`, `publish`, `backup`, `passphrase`).
+- **User Guides (`guides`):** 8 step-by-step guides for routine tasks (publishing news, photo upload, page creation, menu reordering, contact editing, admissions sheets, commit rollback, token expiry).
+- **Changelog (`changelog`):** User-facing system update log.
+
+### 8.3 School Knowledge Base (`content/ai-knowledge.json`)
+Houses verified school history, vision, academic streams, laboratories, co-curricular societies, and RTI governance details. Contains:
+- `completeness_score`: Numerical percentage of school data populated.
+- `sections`: 8 core institutional knowledge sections (`identity`, `history`, `vision_mission`, `academics`, `facilities`, `co_curricular`, `admissions_rules`, `governance`).
+- **Guided Questions Wizard:** Allows teachers to update school facts step-by-step with zero AI dependency.
+- **AI Assistant Interview:** Generates factual drafts when a Gemini API key is configured.
+- **Security Notice:** Explicit public repository warnings ensure no confidential student records or private credentials are ever stored.
+
+### 8.4 Assistant Configuration (`content/assistant-config.json`)
+Stores safe operational parameters for the school assistant:
+- `assistant_name`, `answer_language`, `tone`, `model`
+- `extra_scope_rules`: Scopes assistant strictly to Mo/Pelwatta Navodya Secondary College facts.
+- `refuse_topics`: Explicit list of prohibited topics (private student records, staff salaries, partisan politics).
+- `sample_prompts`: Clickable draft triggers with mandatory preview verification before any commit.
+- **Strictly No Secrets:** API keys and sensitive tokens are never committed to this file; user keys are stored only in client-side `localStorage`.
+
+### 8.5 Activity Log & Safety Confirmation
+- **Activity Tab:** Inspects repository commits via the GitHub API and renders human-readable trilingual summaries. Includes a safe `Undo` mechanism that performs a forward commit reverting the target change without destructive Git operations.
+- **Safety Dialog:** Before every permanent save, deletion, draft publication, or backup restoration, the admin panel presents a plain-language dialog detailing what will happen, pages affected, and how to undo.
+- **Live Preview Panel:** Multi-device viewport emulator (Mobile 375px, Tablet 768px, Desktop 100%) allowing teachers to test responsive appearance in real time.
+

@@ -1,0 +1,205 @@
+{
+  "last_updated": "2026-10-10",
+  "completeness_score": 85,
+  "sections": [
+    {
+      "id": "identity",
+      "title": {
+        "si": "මූලික තොරතුරු සහ අනන්‍යතාව",
+        "en": "Basic Profile & Institutional Identity",
+        "ta": "அடிப்படை விபரங்கள் மற்றும் அடையாளம்"
+      },
+      "why_needed": {
+        "si": "රාජ්‍ය අධ්‍යාපන අමාත්‍යාංශය සහ මහජනතාව සඳහා පාසලේ නිල නීත්‍යානුකූල අනන්‍යතාව තහවුරු කිරීමට.",
+        "en": "Establishes legal institutional status under Ministry of Education guidelines.",
+        "ta": "கல்வி அமைச்சின் கீழ் உத்தியோகபூர்ව நிலையை உறுதிப்படுத்துகிறது."
+      },
+      "example_answer": {
+        "si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, ඌව පළාත, මොනරාගල දිස්ත්‍රික්කය, වැල්ලවාය කලාපය.",
+        "en": "Mo/Pelwatta Navodya Secondary College, Uva Province, Monaragala District, Wellawaya Zone.",
+        "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி, ஊவா மாகாணம், மொணராகலை மாவட்டம்."
+      },
+      "status": "complete",
+      "data": {
+        "school_name": "Mo/Pelwatta Navodya Secondary College",
+        "school_type": "Government 1AB National School",
+        "grades": "Grade 6 to Grade 13",
+        "medium": "Sinhala (English medium for select subjects)",
+        "zone": "Wellawaya Educational Zone",
+        "province": "Uva Province"
+      }
+    },
+    {
+      "id": "history",
+      "title": {
+        "si": "පාසල් ඉතිහාසය සහ ආරම්භය",
+        "en": "College History & Founding Milestones",
+        "ta": "கல்லூரி வரலாறு மற்றும் ஆரம்பம்"
+      },
+      "why_needed": {
+        "si": "පාසලේ උරුමය සහ ප්‍රජා සේවය පිළිබඳ විශ්වාසනීය ඓතිහාසික පසුබිමක් සැපයීමට.",
+        "en": "Documents founding heritage, community roots, and elevation to Navodya status.",
+        "ta": "கல்லூரியின் பாரம்பரியம் மற்றும் வரலாற்று பின்னணியை ஆவணப்படுத்துகிறது."
+      },
+      "example_answer": {
+        "si": "1980 දශකයේ ආරම්භ වී පසුව නවෝද්‍යා සහ ජාතික පාසල් තත්වයට උසස් කරන ලදී.",
+        "en": "Established to serve the Pelwatta community, upgraded to Navodya Secondary School.",
+        "ta": "பெல்வத்தை சமூகத்திற்கு சேவை செய்ய நிறுவப்பட்டு, நவோத்யா கல்லூரியாக உயர்த்தப்பட்டது."
+      },
+      "status": "complete",
+      "data": {
+        "founding_period": "Established in Pelwatta, Monaragala",
+        "milestones": "Designated as Navodya Secondary College with expanded secondary and A/L laboratory facilities."
+      }
+    },
+    {
+      "id": "vision_mission",
+      "title": {
+        "si": "දැක්ම, මෙහෙවර සහ තේමා පාඨය",
+        "en": "Vision, Mission & College Motto",
+        "ta": "தொலைநோக்கு, நோக்கம் மற்றும் குறிக்கோள்"
+      },
+      "why_needed": {
+        "si": "පාසලේ මූලික අධ්‍යාපනික අරමුණු සහ සාරධර්ම ප්‍රකාශ කිරීමට.",
+        "en": "Defines core educational values, moral ethics, and academic ambitions.",
+        "ta": "அடிப்படைக் கல்வி இலக்குகள் மற்றும் விழுமியங்களை வரையறுக்கிறது."
+      },
+      "example_answer": {
+        "si": "දැක්ම: ගුණගරුක, විනයගරුක හා දැනුමෙන් සන්නද්ධ දරු පරපුරක් බිහි කිරීම. තේමා පාඨය: විද්‍යාවෙන් ලොව දකිමු.",
+        "en": "Vision: Nurturing disciplined, skilled, and virtuous citizens for the nation.",
+        "ta": "தொலைநோக்கு: ஒழுக்கமும் திறமையும் கொண்ட சிறந்த மாணவர்களை உருவாக்குதல்."
+      },
+      "status": "complete",
+      "data": {
+        "motto": "Knowledge Illuminates Life",
+        "vision": "Empowering students in Monaragala with 21st-century knowledge and noble values.",
+        "mission": "Delivering holistic secondary education with modern science, arts, and technology learning environments."
+      }
+    },
+    {
+      "id": "academics",
+      "title": {
+        "si": "අධ්‍යාපනික ධාරා සහ විෂය ක්ෂේත්‍ර",
+        "en": "Academic Curriculum & A/L Streams",
+        "ta": "கல்விப் பாடத்திட்டம் மற்றும் உயர்தர பிரிவுகள்"
+      },
+      "why_needed": {
+        "si": "උසස් පෙළට ඇතුළත් වන සිසුන් සහ දෙමාපියන් සඳහා විෂය තේරීම් පිළිබඳ මඟපෙන්වීමට.",
+        "en": "Guides parents and prospective students on subject choices and G.C.E. A/L pathways.",
+        "ta": "உயர்தரப் பிரிவுகள் மற்றும் பாடத் தெரிவுகள் பற்றிய வழிகாட்டல்."
+      },
+      "example_answer": {
+        "si": "සාමාන්‍ය පෙළ (Grades 6-11) සහ උසස් පෙළ (ජීව විද්‍යා, භෞතික විද්‍යා, වාණිජ, කලා, තාක්ෂණවේදය).",
+        "en": "Grades 6-11 (G.C.E. O/L) and G.C.E. A/L in Science, Commerce, Arts, and Technology.",
+        "ta": "தரம் 6-11 (O/L) மற்றும் A/L விஞ்ஞானம், வர்த்தகம், கலை, தொழில்நுட்ப பிரிவுகள்."
+      },
+      "status": "complete",
+      "data": {
+        "ol_subjects": "All National Curriculum O/L core and basket subjects",
+        "al_streams": [
+          "Physical Science (Maths)",
+          "Biological Science (Bio)",
+          "Commerce",
+          "Arts",
+          "Technology (Bio-systems & Engineering)"
+        ]
+      }
+    },
+    {
+      "id": "facilities",
+      "title": {
+        "si": "විද්‍යාගාර සහ ඉගෙනුම් පහසුකම්",
+        "en": "Campus Facilities & Laboratories",
+        "ta": "வளாக வசதிகள் மற்றும் ஆய்வகங்கள்"
+      },
+      "why_needed": {
+        "si": "පාසලේ පවතින සම්පත් හා තාක්ෂණික පහසුකම් මහජනතාවට දැක්වීමට.",
+        "en": "Highlights laboratory, computer, library, and sporting infrastructure.",
+        "ta": "ஆய்வகம், கணினி மையம் மற்றும் நூலக வசதிகளை விளக்குகிறது."
+      },
+      "example_answer": {
+        "si": "නවීන පරිගණක විද්‍යාගාරය, උසස් පෙළ විද්‍යාගාර, පුස්තකාලය, ක්‍රීඩාංගණය, සෞන්දර්ය ඒකකය.",
+        "en": "Advanced Computer Resource Center, A/L Science Laboratories, College Library, Playground.",
+        "ta": "கணினி ஆய்வகம், விஞ்ஞான ஆய்வகங்கள், நூலகம் மற்றும் விளையாட்டு மைதானம்."
+      },
+      "status": "complete",
+      "data": {
+        "computer_lab": "Equipped Computer Resource Lab with internet connectivity",
+        "science_lab": "Equipped Chemistry, Physics, and Biology labs for A/L practicals",
+        "library": "Comprehensive reference section and trilingual reading room",
+        "sports_ground": "Full-size athletics and cricket ground"
+      }
+    },
+    {
+      "id": "co_curricular",
+      "title": {
+        "si": "ක්‍රීඩා සහ ශිෂ්‍ය සංගම්",
+        "en": "Sports, Co-curricular & Societies",
+        "ta": "விளையாட்டு மற்றும் மாணவர் சங்கங்கள்"
+      },
+      "why_needed": {
+        "si": "සිසුන්ගේ කුසලතා වර්ධනය කරන බාහිර ක්‍රියාකාරකම් පිළිබඳ තොරතුරු සැපයීමට.",
+        "en": "Showcases student life, clubs, athletics, and community leadership opportunities.",
+        "ta": "மாணவர் வாழ்க்கை, கழகங்கள் மற்றும் விளையாட்டு வாய்ப்புகளை வெளிப்படுத்துகிறது."
+      },
+      "example_answer": {
+        "si": "ක්‍රිකට්, වොලිබෝල්, මලල ක්‍රීඩා, බාලදක්ෂ, ශිෂ්‍යභට, බෞද්ධ සංගමය, පරිසර සංගමය.",
+        "en": "Volleyball, Cricket, Track & Field, Scouting, Cadet Platoon, Buddhist Society, Science Club.",
+        "ta": "கரப்பந்தாட்டம், கிரிக்கெட், தடகளம், சாரணர் மற்றும் விஞ்ஞானக் கழகம்."
+      },
+      "status": "complete",
+      "data": {
+        "main_sports": ["Volleyball (Provincial Champions)", "Cricket", "Athletics", "Netball"],
+        "clubs": ["Science Society", "Commerce Society", "Scouting Troop", "Cadet Platoon", "Media Club"]
+      }
+    },
+    {
+      "id": "admissions_rules",
+      "title": {
+        "si": "ඇතුළත් වීමේ ක්‍රියාපටිපාටිය සහ ආචාරධර්ම",
+        "en": "Admissions Procedure & Student Code",
+        "ta": "சேர்க்கை நடைமுறை மற்றும் மாணவர் நடத்தை"
+      },
+      "why_needed": {
+        "si": "6 ශ්‍රේණිය සහ උසස් පෙළ සඳහා ඇතුළත් වීමේ නිල චක්‍රලේඛ හා කොන්දේසි දෙමාපියන්ට පැහැදිලි කිරීමට.",
+        "en": "Details Grade 6 Scholarship admission quotas, A/L entry requirements, and college rules.",
+        "ta": "தரம் 6 மற்றும் உயர்தர சேர்க்கை வழிகாட்டுதல்களை விளக்குகிறது."
+      },
+      "example_answer": {
+        "si": "5 ශ්‍රේණිය ශිෂ්‍යත්ව ලකුණු සහ සාමාන්‍ය පෙළ සමත්කම් මත පදනම්ව අමාත්‍යාංශ චක්‍රලේඛ අනුව බඳවා ගනු ලැබේ.",
+        "en": "Admissions handled under Ministry guidelines via Grade 5 scholarship cutoff and O/L results.",
+        "ta": "தரம் 5 புலமைப்பரிசில் மற்றும் O/L பெறுபேறுகளின் அடிப்படையில் சேர்க்கை."
+      },
+      "status": "complete",
+      "data": {
+        "grade6": "Grade 5 Scholarship pass cutoff points specified by Ministry circular",
+        "al_entry": "Minimum required passes in G.C.E. O/L including Mother Tongue and Mathematics",
+        "uniform": "Standard white national school uniform with official college badge"
+      }
+    },
+    {
+      "id": "governance",
+      "title": {
+        "si": "පාසල් සංවර්ධන සමිතිය සහ RTI නිලධාරී",
+        "en": "School Development Society (SDS) & RTI Contact",
+        "ta": "பாடசாலை அபிவிருத்தி சங்கம் மற்றும் RTI தகவல்"
+      },
+      "why_needed": {
+        "si": "තොරතුරු දැනගැනීමේ අයිතිය (RTI) යටතේ නීත්‍යානුකූල වගවීම සහ දෙමාපිය-ගුරු සහයෝගීතාව දැක්වීමට.",
+        "en": "Transparency under Sri Lanka Right to Information Act and SDS governance.",
+        "ta": "தகவல் அறியும் உரிமைச் சட்டம் மற்றும் SDS நிர்வாக வெளிப்படைத்தன்மை."
+      },
+      "example_answer": {
+        "si": "විදුහල්පතිතුමා ප්‍රධාන තොරතුරු නිලධාරී වේ. කාර්යාල වේලාවන් තුළ විමසීම් කළ හැක.",
+        "en": "Principal acts as Information Officer. SDS meets termly for development planning.",
+        "ta": "அதிபர் தகவல் அதிகாரியாக செயல்படுகிறார். அலுவலக நேரங்களில் அணுகலாம்."
+      },
+      "status": "complete",
+      "data": {
+        "rti_officer": "The Principal, Mo/Pelwatta Navodya Secondary College",
+        "sds_role": "Active School Development Society overseeing campus maintenance and student welfare",
+        "office_hours": "Monday to Friday: 7:30 AM – 2:00 PM (School Terms)"
+      }
+    }
+  ]
+}

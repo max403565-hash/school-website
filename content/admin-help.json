@@ -1,0 +1,569 @@
+{
+  "glossary": {
+    "commit": {
+      "si": "Commit (කොමිට්): වෙබ් අඩවියේ ඔබ සිදුකළ වෙනස්කම් ස්ථිර ලෙස GitHub හි සුරැකෙන ඉතිහාස සටහනයි.",
+      "en": "Commit: A saved permanent milestone in GitHub documenting who made changes, what changed, and when.",
+      "ta": "Commit: இணையதளத்தில் செய்யப்பட்ட மாற்றங்களை GitHub இல் நிரந்தரமாக பதிவு செய்யும் மைல்கல்."
+    },
+    "token": {
+      "si": "Token (ටෝකනය): ඔබගේ GitHub ගිණුමේ සාමාන්‍ය මුරපදය වෙනුවට වෙබ් අඩවිය වෙනස් කිරීමට පමණක් අවසර දෙන විශේෂ රහස් යතුරයි.",
+      "en": "Token: A secure Personal Access Token with specific permissions to modify website files, replacing your main password.",
+      "ta": "Token: இணையதள கோப்புகளை திருத்துவதற்கு மட்டும் அனுமதிக்கும் சிறப்பு ரகசிய அணுகல் சாவி."
+    },
+    "publish": {
+      "si": "Publish (ප්‍රකාශනය): කෙටුම්පත් (Draft) පිටුවක් හෝ තොරතුරක් සජීවීව අන්තර්ජාලයට සියලු දෙනාටම පෙනෙන සේ මුදා හැරීමයි.",
+      "en": "Publish: Making content live and publicly visible to all website visitors across the internet.",
+      "ta": "Publish: இணையதள பார்வையாளர்களுக்கு தெரியும் வகையில் உள்ளடக்கத்தை நேரலையாக வெளியிடுதல்."
+    },
+    "backup": {
+      "si": "Backup (ආරක්ෂිත පිටපත): අනතුරකදී හෝ වැරදීමකදී නැවත ප්‍රකෘතිමත් කරගත හැකි වෙබ් අඩවියේ සියලු ගොනුවල ආරක්ෂිත පිටපතයි.",
+      "en": "Backup: A complete snapshot of site files saved as a Git branch or zip archive for zero-data-loss recovery.",
+      "ta": "Backup: தவறு ஏற்பட்டால் பழைய நிலைக்கு மீட்கக்கூடிய இணையதள கோப்புகளின் பாதுகாப்பு நகல்."
+    },
+    "passphrase": {
+      "si": "Passphrase (රහස් වැකිය): පාසලේ අනවසර පරිශීලකයින් පරිපාලන පුවරුවෙන් දත්ත වෙනස් කිරීම වැළැක්වීමට යොදන අමතර මුරපදයයි.",
+      "en": "Passphrase: An optional extra local security password safeguarding the editor controls against unauthorized changes.",
+      "ta": "Passphrase: அங்கீகரிக்கப்படாத நபர்கள் மாற்றங்கள் செய்வதைத் தடுக்கும் கூடுதல் உள்ளூர் கடவுச்சொல்."
+    }
+  },
+  "tabs": {
+    "dashboard": {
+      "what": {
+        "si": "පාසල් වෙබ් අඩවියේ සියලු අංශවල සූදානම සහ සම්පූර්ණත්වය එකවර පෙන්වන ප්‍රධාන පාලක පුවරුවයි.",
+        "en": "Overview dashboard showing completion status, setup progress, and readiness of all school website modules.",
+        "ta": "பாடசாலை இணையதளத்தின் அனைத்து பகுதிகளின் தயார்நிலை மற்றும் நிறைவுநிலையைக் காட்டும் மேலோட்டம்."
+      },
+      "examples": {
+        "si": "මෙහි ඇති පිරික්සුම් ලැයිස්තුව අනුව අසම්පූර්ණ අයිතම හඳුනාගෙන අදාළ පටිත්තට පිවිසෙන්න.",
+        "en": "Review the readiness checklist and click the action buttons to complete missing items.",
+        "ta": "சரிபார்ப்பு பட்டியலை மதிப்பாய்வு செய்து, விடுபட்டவற்றை முடிக்க பொத்தான்களை கிளிக் செய்யவும்."
+      },
+      "mistakes": {
+        "si": "ටෝකනය ඇතුළත් නොකර වෙනස්කම් සුරැකීමට උත්සාහ කිරීම.",
+        "en": "Attempting to edit content before verifying GitHub connection.",
+        "ta": "GitHub இணைப்பை சரிபார்க்காமல் உள்ளடக்கத்தை திருத்த முயற்சிப்பது."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "මෙම පටිත්තෙන් කිසිදු ගොනුවක් සෘජුව වෙනස් නොවේ.",
+        "en": "No direct file edits occur here; dashboard is read-only.",
+        "ta": "இங்கே கோப்புகள் மாற்றப்படுவதில்லை; இது பார்வைக்கானது மட்டுமே."
+      }
+    },
+    "news": {
+      "what": {
+        "si": "පාසලේ විශේෂ උත්සව, ජයග්‍රහණ, වාර්ෂික නිවාඩු සහ ප්‍රවෘත්ති ප්‍රකාශනය සඳහා භාවිත වේ.",
+        "en": "Publishes school news articles, sports meet updates, prize giving, and major college achievements.",
+        "ta": "பாடசாலை நிகழ்வுகள், விளையாட்டு விழாக்கள் மற்றும் சாதனைகள் பற்றிய செய்திகளை வெளியிடுகிறது."
+      },
+      "examples": {
+        "si": "උදා: '2026 වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙල සාර්ථකව නිමාවිය' (දිනය, විස්තරය සහ ඡායාරූපය).",
+        "en": "e.g. 'Annual Inter-House Athletic Meet 2026 Concludes' with date, trilingual summary, and photo.",
+        "ta": "எ.கா. '2026 வருடாந்த இல்ல விளையாட்டு விழா' திகதி, உரை மற்றும் படத்துடன்."
+      },
+      "mistakes": {
+        "si": "දිනය වැරදි ආකෘතියකින් දැමීම, සිංහල/දෙමළ/ඉංග්‍රීසි භාෂා ත්‍රිත්වයෙන්ම සිරස්තල නොයෙදීම.",
+        "en": "Forgetting to provide titles in Sinhala and Tamil, or uploading uncompressed huge raw photos.",
+        "ta": "மூன்று மொழிகளிலும் தலைப்புகளை உள்ளிட மறப்பது அல்லது சுருக்கப்படாத பெரிய படங்களை பதிவேற்றுவது."
+      },
+      "view_url": "../news.html",
+      "undo": {
+        "si": "Activity පටිත්තෙන් පෙර Commit එක Restore කරන්න හෝ ප්‍රවෘත්තිය සංස්කරණය කර නැවත සුරකින්න.",
+        "en": "Use the Activity tab to Undo the commit, or edit/delete the news card and save.",
+        "ta": "Activity தாவலில் Undo செய்யலாம் அல்லது செய்தியை திருத்தி மீண்டும் சேமிக்கலாம்."
+      }
+    },
+    "notices": {
+      "what": {
+        "si": "දෙමාපියන්, ගුරුවරුන් සහ සිසුන් සඳහා වන හදිසි පාසල් නිවේදන සහ චක්‍රලේඛ දැනුම්දීම්.",
+        "en": "Official notices, term test announcements, holiday circulars, and parent advisories.",
+        "ta": "அதிகாரபூர்வ அறிவிப்புகள், பரீட்சை அறிவிப்புகள் மற்றும் விடுமுறை சுற்றறிக்கைகள்."
+      },
+      "examples": {
+        "si": "උදා: 'පළමු වාර විභාග කාලසටහන නිකුත් කෙරේ', ප්‍රමුඛතාවය: Normal / Urgent.",
+        "en": "e.g. 'First Term Examination Schedule Released' with priority and date.",
+        "ta": "எ.கா. 'முதலாம் தவணை பரீட்சை அட்டவணை வெளியிடப்பட்டது'."
+      },
+      "mistakes": {
+        "si": "කල් ඉකුත් වූ නිවේදන ඉවත් නොකර දිගු කලක් තබා ගැනීම.",
+        "en": "Leaving expired notices live for months without archiving or deleting.",
+        "ta": "காலாவதியான அறிவிப்புகளை அகற்றாமல் விட்டுவிடுவது."
+      },
+      "view_url": "../notices.html",
+      "undo": {
+        "si": "අදාළ නිවේදනය සංස්කරණය කිරීම හෝ Activity පටිත්තෙන් Undo කිරීම.",
+        "en": "Edit the notice to update or use Activity tab to restore previous version.",
+        "ta": "அறிவிப்பை திருத்தலாம் அல்லது Activity தாவலில் முந்தைய பதிப்பை மீட்டெடுக்கலாம்."
+      }
+    },
+    "events": {
+      "what": {
+        "si": "පාසල් වාර දින දර්ශනය, විභාග දින, දෙමාපිය රැස්වීම් සහ ඉදිරි උත්සව කාලසටහන.",
+        "en": "Academic calendar, term dates, sports fixtures, and upcoming school events.",
+        "ta": "கல்வி நாள்காட்டி, தவணை திகதிகள் மற்றும் வரவிருக்கும் பாடசாலை நிகழ்வுகள்."
+      },
+      "examples": {
+        "si": "උදා: '2026 වර්ෂාවසාන ත්‍යාග ප්‍රදානෝත්සවය' - 2026-11-20 පෙ.ව. 9:00.",
+        "en": "e.g. 'College Prize Giving Day' - 2026-11-20 at 9:00 AM in College Main Hall.",
+        "ta": "எ.கா. 'கல்லூரி பரிசளிப்பு விழா' - 2026-11-20 காலை 9:00 மணி."
+      },
+      "mistakes": {
+        "si": "පසුගිය දිනවල පැවති උත්සව කාලසටහනෙන් ඉවත් නොකිරීම.",
+        "en": "Not keeping event dates in chronological order.",
+        "ta": "நிகழ்வு திகதிகளை காலவரிசைப்படி வைக்காமல் இருப்பது."
+      },
+      "view_url": "../index.html#events",
+      "undo": {
+        "si": "සිදුවීම නැවත සංස්කරණය කර සුරකින්න.",
+        "en": "Edit the event entry or restore via Activity tab.",
+        "ta": "நிகழ்வை திருத்தி மீண்டும் சேமிக்கவும்."
+      }
+    },
+    "custom_pages": {
+      "what": {
+        "si": "නව වෙබ් පිටු (උදා: ගුරු මණ්ඩලය, විද්‍යාගාරය, ක්‍රීඩා සංගම්) නිර්මාණය කර කොටස් (Blocks) මඟින් සකස් කිරීම.",
+        "en": "Create rich standalone pages (e.g. Science Lab, Staff Directory, Library) using modular content blocks.",
+        "ta": "தனிப்பயன் புதிய பக்கங்களை உருவாக்கி உள்ளடக்க தொகுதிகள் மூலம் வடிவமைத்தல்."
+      },
+      "examples": {
+        "si": "පිටු මාතෘකාව: 'පාසල් පුස්තකාලය' (slug: 'library'), Text block, Image block, Table block.",
+        "en": "Title: 'School Library' (slug: 'library'), add Heading, Text, Gallery, and Table blocks.",
+        "ta": "தலைப்பு: 'பாடசாலை நூலகம்' (slug: 'library'), தலைப்பு, உரை, படத் தொகுதிகளைச் சேர்க்கவும்."
+      },
+      "mistakes": {
+        "si": "Slug නමට හිස්තැන් (spaces) හෝ විශේෂ අක්ෂර යෙදීම (ඉංග්‍රීසි අකුරු, ඉලක්කම් හා hyphens පමණක් යොදන්න).",
+        "en": "Using capital letters or spaces in the slug (use lowercase letters and hyphens only).",
+        "ta": "Slug இல் இடைவெளிகள் அல்லது சிறப்பு எழுத்துக்களைப் பயன்படுத்துவது."
+      },
+      "view_url": "../page.html?p=sample",
+      "undo": {
+        "si": "පිටුව Draft තත්වයට මාරු කරන්න, නැතහොත් Delete කරන්න.",
+        "en": "Toggle page status to Draft or revert using Activity tab.",
+        "ta": "பக்கத்தை வரைவு (Draft) நிலைக்கு மாற்றவும் அல்லது நீக்கவும்."
+      }
+    },
+    "menu": {
+      "what": {
+        "si": "වෙබ් අඩවියේ ඉහළ ඇති ප්‍රධාන මෙනු තීරුව සහ උප මෙනු (Dropdowns) කළමනාකරණය.",
+        "en": "Configures navigation links and dropdown menus at the top of every public web page.",
+        "ta": "இணையதளத்தின் உச்சி மெனு மற்றும் கீழ்விரிவு மெனுக்களை கட்டமைக்கிறது."
+      },
+      "examples": {
+        "si": "Home, About Us, Academics, Student Life, Media (News & Gallery), Admissions, Contact Us.",
+        "en": "Organize links into groups to ensure the desktop header stays strictly on one row.",
+        "ta": "டெஸ்க்டாப் தலைப்பு ஒரே வரியில் இருப்பதை உறுதிசெய்ய இணைப்புகளை ஒழுங்கமைக்கவும்."
+      },
+      "mistakes": {
+        "si": "Home (මුල් පිටුව) මෙනුවෙන් ඉවත් කිරීම (එය අනිවාර්යයෙන්ම තිබිය යුතුය).",
+        "en": "Deleting or hiding the Home item (Home link is mandatory).",
+        "ta": "Home (முகப்பு) இணைப்பை நீக்குவது அல்லது மறைப்பது (இது கட்டாயமானது)."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "මෙනු වෙනස්කම් අවලංගු කර මෙනු ගොනුව පෙර තත්වයට පත් කරන්න.",
+        "en": "Reorder/restore items or restore content/menu.json via Activity tab.",
+        "ta": "பொருட்களை மறுசீரமைக்கவும் அல்லது முந்தைய பதிப்பை மீட்டெடுக்கவும்."
+      }
+    },
+    "settings": {
+      "what": {
+        "si": "පාසලේ නිල නම, ලිපිනය, දුරකථන, විද්‍යුත් තැපෑල, කාර්යාල වේලාවන්, RTI නිලධාරී සහ Google සිතියම.",
+        "en": "Core school profile, contact information, trilingual office hours, RTI officer, and Google Maps embed.",
+        "ta": "பாடசாலை தகவல், தொடர்பு எண்கள், அலுவலக நேரம் மற்றும் Google வரைபடம்."
+      },
+      "examples": {
+        "si": "සිතියම් කේතය: https://www.google.com/maps/embed... පමණක් ඇතුළත් කරන්න.",
+        "en": "Paste valid Google Maps embed URL (must begin with https://www.google.com/maps/embed).",
+        "ta": "சரியான Google வரைபட URL ஐ உள்ளிடவும்."
+      },
+      "mistakes": {
+        "si": "සම්පූර්ණ iframe කේතයක් වෙනුවට වැරදි වෙබ් සබැඳියක් ඇතුළත් කිරීම.",
+        "en": "Pasting non-https links or invalid embed sources.",
+        "ta": "https அல்லாத இணைப்புகளை உள்ளிடுவது."
+      },
+      "view_url": "../contact.html",
+      "undo": {
+        "si": "Activity පටිත්තෙන් content/settings.json හි පෙර පිටපත Restore කරන්න.",
+        "en": "Restore content/settings.json from the Activity or Version History tab.",
+        "ta": "Activity தாவலில் content/settings.json ஐ மீட்டெடுக்கவும்."
+      }
+    },
+    "knowledge": {
+      "what": {
+        "si": "පාසලේ ඉතිහාසය, දැක්ම, මෙහෙවර, විද්‍යාගාර, ක්‍රීඩා සහ තොරතුරු මධ්‍යස්ථානය (Knowledge Base & AI).",
+        "en": "Structured school profile & fact base powering search, public inquiry, and safe AI drafting.",
+        "ta": "பாடசாலை வரலாறு, தொலைநோக்கு மற்றும் AI உதவியாளருக்கான அறிவுத்தளம்."
+      },
+      "examples": {
+        "si": "පාසලේ නිර්මාතෘ, ආරම්භ කළ වර්ෂය, පවතින විෂය ධාරා (විද්‍යා, වාණිජ, කලා, තාක්ෂණවේදය).",
+        "en": "Founding year, academic streams (Science, Commerce, Arts, Tech), sports teams, labs.",
+        "ta": "நிறுவப்பட்ட ஆண்டு, பாடப்பிரிவுகள் (விஞ்ஞானம், வணிகம், கலை, தொழில்நுட்பம்)."
+      },
+      "mistakes": {
+        "si": "සිසුන්ගේ හෝ ගුරුවරුන්ගේ පෞද්ගලික රහස්‍ය තොරතුරු මෙහි ලිවීම.",
+        "en": "Entering confidential student records or unverified rumors into public repository.",
+        "ta": "ரகசிய மாணவர் விவரங்களை பொது களஞ்சியத்தில் உள்ளிடுவது."
+      },
+      "view_url": "../about.html",
+      "undo": {
+        "si": "අදාළ පිළිතුර සංස්කරණය කිරීම හෝ පෙර පිටපත ප්‍රතිස්ථාපනය කිරීම.",
+        "en": "Edit individual answers or revert content/ai-knowledge.json via Activity tab.",
+        "ta": "பதில்களை திருத்தலாம் அல்லது முந்தைய பதிப்பை மீட்டெடுக்கலாம்."
+      }
+    },
+    "gallery": {
+      "what": {
+        "si": "පාසල් උත්සව සහ ක්‍රියාකාරකම් පිළිබඳ ඡායාරූප ගැලරිය.",
+        "en": "School photo gallery showcasing ceremonies, sports, societies, and prize awards.",
+        "ta": "பாடசாலை நிகழ்வுகளின் புகைப்பட தொகுப்பு."
+      },
+      "examples": {
+        "si": "ඡායාරූපයක් තෝරා Upload කරන්න (ස්වයංක්‍රීයව ප්‍රශස්ත ප්‍රමාණයට Canvas මඟින් සංකෝචනය වේ).",
+        "en": "Select JPG/PNG images; the browser compresses them automatically via Canvas before saving.",
+        "ta": "படத்தை தெரிவு செய்யவும்; உலாவி தானாகவே படத்தை சுருக்கி பதிவேற்றும்."
+      },
+      "mistakes": {
+        "si": "විස්තරය (Caption) නොමැතිව ඡායාරූප පමණක් දැමීම.",
+        "en": "Uploading without meaningful captions in Sinhala and Tamil.",
+        "ta": "விளக்கக் குறிப்புகள் இல்லாமல் படங்களை மட்டும் பதிவேற்றுவது."
+      },
+      "view_url": "../gallery.html",
+      "undo": {
+        "si": "ඡායාරූපය Gallery ලැයිස්තුවෙන් Delete කර Save කරන්න.",
+        "en": "Delete photo from list and click Save changes to website.",
+        "ta": "படத்தை நீக்கிவிட்டு மாற்றங்களை சேமிக்கவும்."
+      }
+    },
+    "downloads": {
+      "what": {
+        "si": "පාසල් චක්‍රලේඛ, විභාග කාලසටහන්, අයදුම්පත් සහ PDF ලේඛන බාගත කිරීම සඳහා උඩුගත කිරීම.",
+        "en": "Upload and manage public downloadable PDF circulars, timetables, and application forms.",
+        "ta": "PDF சுற்றறிக்கைகள், நேர அட்டவணைகள் மற்றும் படிவங்களை பதிவேற்றவும்."
+      },
+      "examples": {
+        "si": "උදා: '2026 පළමු වාර විභාග කාලසටහන.pdf'.",
+        "en": "e.g. 'Term 1 Exam Timetable 2026.pdf'.",
+        "ta": "எ.கா. 'முதலாம் தவணை பரீட்சை அட்டவணை 2026.pdf'."
+      },
+      "mistakes": {
+        "si": "PDF නොවන විශාල ගොනු උඩුගත කිරීම.",
+        "en": "Uploading files other than PDF format or huge scanned uncompressed files.",
+        "ta": "PDF அல்லாத பிற வடிவங்களை பதிவேற்ற முயற்சிப்பது."
+      },
+      "view_url": "../downloads.html",
+      "undo": {
+        "si": "ලේඛනය ලැයිස්තුවෙන් ඉවත් කිරීම.",
+        "en": "Remove entry and update content/downloads.json.",
+        "ta": "பட்டியலில் இருந்து நீக்கி புதுப்பிக்கவும்."
+      }
+    },
+    "activity": {
+      "what": {
+        "si": "මෑතකදී වෙබ් අඩවියේ සිදුවූ සියලු සුරැකීම් (Commits) සහ වැරදි ආපසු හැරවීමේ (Undo) මධ්‍යස්ථානය.",
+        "en": "Audit log of recent Git commits with plain language summaries and instant safe Undo.",
+        "ta": "சமீபத்திய மாற்றங்களின் பதிவு மற்றும் உடனடி Undo அம்சம்."
+      },
+      "examples": {
+        "si": "සෑම සුරැකීමකටම කවුරුන්, කවදා, කුමන ගොනුව වෙනස් කළේද යන්න දැකගත හැක.",
+        "en": "View author, relative timestamp, files changed, and click Undo to create a safe revert commit.",
+        "ta": "மாற்றியவர், நேரம், கோப்பு விபரங்களைக் கண்டு Undo பொத்தானை அழுத்தவும்."
+      },
+      "mistakes": {
+        "si": "අවශ්‍ය නොවන අවස්ථාවල පරණ වෙනස්කම් කලබලයෙන් Undo කිරීම.",
+        "en": "Reverting without checking which files were modified.",
+        "ta": "எந்த கோப்புகள் மாறின என்பதை கவனிக்காமல் Undo செய்வது."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "Undo කළ පසු නැවත නව Commit එකක් ලෙස සුරැකෙන බැවින් කිසිදු දත්තයක් නැති නොවේ.",
+        "en": "Undo creates a clean forward commit; no git history is destroyed.",
+        "ta": "Undo ஒரு புதிய பதிவை உருவாக்குகிறது; தரவு எதுவும் அழியாது."
+      }
+    },
+    "guide": {
+      "what": {
+        "si": "ගුරුවරුන් සඳහා පියවරෙන් පියවර උපදෙස් සහ මුද්‍රණය කළ හැකි අත්පොත.",
+        "en": "Step-by-step teacher user guides with printable view and system changelog.",
+        "ta": "ஆசிரியர்களுக்கான படிப்படியான வழிகாட்டல்கள் மற்றும் அச்சிடக்கூடிய கையேடு."
+      },
+      "examples": {
+        "si": "පුවතක් දැමීම, ඡායාරූපයක් එක් කිරීම, මෙනුව වෙනස් කිරීම වැනි මඟපෙන්වීම්.",
+        "en": "Guides for common workflows like publishing news, uploading photos, and editing settings.",
+        "ta": "செய்தி வெளியிடுதல், படம் பதிவேற்றுதல் போன்ற பொதுவான வழிகாட்டல்கள்."
+      },
+      "mistakes": {
+        "si": "නැත.",
+        "en": "None (reference guide).",
+        "ta": "இல்லை."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "කියවීම සඳහා පමණි.",
+        "en": "Read-only instructional reference.",
+        "ta": "பார்வைக்கு மட்டுமே."
+      }
+    }
+  },
+  "guides": [
+    {
+      "id": "add-news",
+      "title": {
+        "si": "1. පාසල් පුවතක් හෝ නිවේදනයක් පළ කරන්නේ කෙසේද?",
+        "en": "1. How to add a school news article or notice",
+        "ta": "1. பாடசாலை செய்தி அல்லது அறிவிப்பை எவ்வாறு சேர்ப்பது?"
+      },
+      "steps": {
+        "si": [
+          "පරිපාලන පුවරුවේ '📰 පුවත් සහ සිදුවීම්' පටිත්ත තෝරන්න.",
+          "'+ Add news item' බොත්තම ක්ලික් කරන්න.",
+          "දිනය, ඉංග්‍රීසි/සිංහල/දෙමළ සිරස්තල සහ විස්තරය පුරවන්න.",
+          "අවශ්‍ය නම් 'Upload Photo' ක්ලික් කර ඡායාරූපයක් එක් කරන්න.",
+          "පහළ ඇති 'Save all changes to website' ක්ලික් කර ස්ථිර කරන්න. තත්පර කිහිපයකින් එය වෙබ් අඩවියේ දිස්වේ."
+        ],
+        "en": [
+          "Click the '📰 News & Events' tab in the navigation bar.",
+          "Click the '+ Add news item' button at the top.",
+          "Fill in the date, along with the title and summary in English, Sinhala, and Tamil.",
+          "Optionally click 'Upload Photo' to select an image from your device.",
+          "Click 'Save all changes to website' and confirm the prompt to publish."
+        ],
+        "ta": [
+          "'📰 செய்திகள் மற்றும் நிகழ்வுகள்' தாவலை கிளிக் செய்யவும்.",
+          "'+ Add news item' பொத்தானை கிளிக் செய்யவும்.",
+          "திகதி, ஆங்கிலம், சிங்களம் மற்றும் தமிழ் தலைப்புகளை உள்ளிடவும்.",
+          "விரும்பினால் 'Upload Photo' மூலம் படத்தை சேர்க்கவும்.",
+          "'Save all changes to website' பொத்தானை கிளிக் செய்து உறுதிப்படுத்தவும்."
+        ]
+      }
+    },
+    {
+      "id": "upload-photos",
+      "title": {
+        "si": "2. ඡායාරූප ගැලරියට පින්තූර එකතු කරන්නේ කෙසේද?",
+        "en": "2. How to upload photos to the gallery",
+        "ta": "2. புகைப்பட தொகுப்பில் படங்களை எவ்வாறு பதிவேற்றுவது?"
+      },
+      "steps": {
+        "si": [
+          "'🖼️ ඡායාරූප (Gallery)' පටිත්තට පිවිසෙන්න.",
+          "'+ Add photo' බොත්තම ක්ලික් කරන්න.",
+          "'Choose File' මඟින් ඔබගේ දුරකථනයේ හෝ පරිගණකයේ ඇති ඡායාරූපය තෝරන්න (එය ස්වයංක්‍රීයව ප්‍රශස්ත ප්‍රමාණයට සංකෝචනය වේ).",
+          "ඡායාරූපය කුමක් පිළිබඳවද යන්න සිංහල, දෙමළ, ඉංග්‍රීසි භාෂාවලින් සටහන් කරන්න.",
+          "'Save all changes to website' ක්ලික් කර සුරකින්න."
+        ],
+        "en": [
+          "Navigate to the '🖼️ Photo Gallery' tab.",
+          "Click the '+ Add photo' button.",
+          "Choose an image file from your computer or phone (browser optimizes it automatically).",
+          "Add descriptive captions in Sinhala, Tamil, and English.",
+          "Click 'Save all changes to website' and confirm."
+        ],
+        "ta": [
+          "'🖼️ புகைப்பட தொகுப்பு' தாவலுக்கு செல்லவும்.",
+          "'+ Add photo' பொத்தானை கிளிக் செய்யவும்.",
+          "படத்தை தெரிவு செய்யவும் (உலாவி தானாகவே அளவை சீராக்கும்).",
+          "சிங்களம், தமிழ், ஆங்கிலத்தில் தலைப்பு குறிப்பை சேர்க்கவும்.",
+          "'Save all changes to website' பொத்தானை கிளிக் செய்யவும்."
+        ]
+      }
+    },
+    {
+      "id": "create-page",
+      "title": {
+        "si": "3. නව අභිරුචි පිටුවක් (Custom Page) සකස් කරන්නේ කෙසේද?",
+        "en": "3. How to create and publish a new custom page",
+        "ta": "3. புதிய தனிப்பயன் பக்கத்தை எவ்வாறு உருவாக்குவது?"
+      },
+      "steps": {
+        "si": [
+          "'📄 අභිරුචි පිටු (Pages)' පටිත්තට පිවිසෙන්න.",
+          "'+ New Page' ක්ලික් කර පිටුවේ නම සිංහල, දෙමළ, ඉංග්‍රීසි භාෂාවලින් ලබාදෙන්න (ඉංග්‍රීසි නමින් slug එකක් ස්වයංක්‍රීයව හැදේ).",
+          "'Create Page & Open Editor' ක්ලික් කරන්න.",
+          "Heading, Text, Image, Gallery, Cards, Table වැනි ඔබට අවශ්‍ය Blocks එකතු කරන්න.",
+          "'Status: Draft' යන්න 'Published' ලෙස මාරු කර 'Save & Publish' ක්ලික් කරන්න."
+        ],
+        "en": [
+          "Go to the '📄 Custom Pages' tab.",
+          "Click '+ New Page' and enter titles in Sinhala, Tamil, and English.",
+          "Click 'Create Page & Open Editor'.",
+          "Add modular blocks (Heading, Text, Image, Gallery, Cards, Table).",
+          "Toggle status to 'Published' and click '💾 Save & Publish'."
+        ],
+        "ta": [
+          "'📄 தனிப்பயன் பக்கங்கள்' தாவலுக்கு செல்லவும்.",
+          "'+ New Page' கிளிக் செய்து மூன்று மொழிகளிலும் தலைப்பை உள்ளிடவும்.",
+          "'Create Page & Open Editor' பொத்தானை கிளிக் செய்யவும்.",
+          "உங்களுக்கு தேவையான தொகுதிகளை (Blocks) சேர்க்கவும்.",
+          "நிலையை 'Published' என மாற்றி சேமிக்கவும்."
+        ]
+      }
+    },
+    {
+      "id": "change-menu",
+      "title": {
+        "si": "4. වෙබ් අඩවියේ ප්‍රධාන මෙනුව වෙනස් කරන්නේ කෙසේද?",
+        "en": "4. How to update the navigation menu",
+        "ta": "4. பிரதான மெனுவை எவ்வாறு மாற்றுவது?"
+      },
+      "steps": {
+        "si": [
+          "'🧭 ප්‍රධාන මෙනුව (Menu)' පටිත්තට යන්න.",
+          "නව සබැඳියක් එක් කිරීමට '+ Add Menu Item' හෝ '+ Add Dropdown Group' ක්ලික් කරන්න.",
+          "මෙනු අයිතම උඩට/පහළට ගෙන යාමට ⬆️ සහ ⬇️ බොත්තම් භාවිත කරන්න.",
+          "යම් පිටුවක් තාවකාලිකව සැඟවීමට 👁️ අයිකනය ක්ලික් කරන්න.",
+          "සෑම විටම 'Home (මුල් පිටුව)' මෙනුවේ තිබිය යුතුය. අවසානයේ 'Save Menu Changes' ක්ලික් කරන්න."
+        ],
+        "en": [
+          "Open the '🧭 Navigation Menu' tab.",
+          "Click '+ Add Menu Item' or '+ Add Dropdown Group'.",
+          "Use the ⬆️ and ⬇️ arrows to reorder items logically.",
+          "Toggle visibility using the eye icon if needed.",
+          "Ensure the Home link remains present, then click 'Save Menu Changes'."
+        ],
+        "ta": [
+          "'🧭 பிரதான மெனு' தாவலை திறக்கவும்.",
+          "புதிய இணைப்பை சேர்க்க '+ Add Menu Item' கிளிக் செய்யவும்.",
+          "வரிசையை மாற்ற ⬆️ மற்றும் ⬇️ அம்புக்குறிகளை பயன்படுத்தவும்.",
+          "Home இணைப்பு இருப்பதை உறுதிசெய்து 'Save Menu Changes' கிளிக் செய்யவும்."
+        ]
+      }
+    },
+    {
+      "id": "edit-contact",
+      "title": {
+        "si": "5. පාසල් දුරකථන අංක සහ ලිපිනය සංස්කරණය කරන්නේ කෙසේද?",
+        "en": "5. How to edit school contact details and office hours",
+        "ta": "5. பாடசாலை தொடர்பு விபரங்களை எவ்வாறு திருத்துவது?"
+      },
+      "steps": {
+        "si": [
+          "'⚙️ පාසල් තොරතුරු (Settings)' පටිත්තට පිවිසෙන්න.",
+          "පාසලේ දුරකථන අංක, විද්‍යුත් තැපෑල (Email), ලිපිනය හෝ කාර්යාල වේලාවන් වෙනස් කරන්න.",
+          "Google Maps embed එක මාරු කරන්නේ නම් https://www.google.com/maps/embed සබැඳිය පමණක් යොදන්න.",
+          "'Save Site Settings' ක්ලික් කර තහවුරු කරන්න."
+        ],
+        "en": [
+          "Go to the '⚙️ Site Settings' tab.",
+          "Update official phone numbers, email address, physical address, or office hours.",
+          "For Google Maps, ensure the URL starts with https://www.google.com/maps/embed.",
+          "Click 'Save Site Settings' and confirm."
+        ],
+        "ta": [
+          "'⚙️ பாடசாலை அமைப்புகள்' தாவலுக்கு செல்லவும்.",
+          "தொலைபேசி எண், மின்னஞ்சல், முகவரியை புதுப்பிக்கவும்.",
+          "'Save Site Settings' பொத்தானை கிளிக் செய்யவும்."
+        ]
+      }
+    },
+    {
+      "id": "admission-apps",
+      "title": {
+        "si": "6. ඇතුළත් වීමේ අයදුම්පත් සහ Google පෝරමය පරීක්ෂා කරන්නේ කෙසේද?",
+        "en": "6. How to manage admissions and Google Form applications",
+        "ta": "6. சேர்க்கை விண்ணப்பங்களை எவ்வாறு கையாள்வது?"
+      },
+      "steps": {
+        "si": [
+          "'📋 අයදුම්පත් (Applications)' පටිත්තට යන්න.",
+          "පාසලේ Google Form එකේ සබැඳිය සහ සම්බන්ධිත Google Sheet එකේ ලින්ක් එක පරීක්ෂා කරන්න.",
+          "දෙමාපියන් ඉදිරිපත් කළ අයදුම්පත් සෘජුවම පාසලේ Google Drive/Sheets හි සටහන් වන බැවින් එහි ඇති 'Open Google Sheet' බොත්තමෙන් බලන්න."
+        ],
+        "en": [
+          "Navigate to the '📋 Applications' tab.",
+          "Check the configured Google Form link and associated responses spreadsheet.",
+          "Click 'Open Google Sheet' to review submitted student applications securely in Google Drive."
+        ],
+        "ta": [
+          "'📋 விண்ணப்பங்கள்' தாவலுக்கு செல்லவும்.",
+          "Google Form இணைப்பை சரிபார்க்கவும்.",
+          "விண்ணப்பங்களை பார்வையிட 'Open Google Sheet' ஐ கிளிக் செய்யவும்."
+        ]
+      }
+    },
+    {
+      "id": "undo-mistake",
+      "title": {
+        "si": "7. වැරදීමක් සිදුවූ විට පෙර තත්වයට පත් කරන්නේ (Undo) කෙසේද?",
+        "en": "7. How to safely undo a mistake",
+        "ta": "7. தவறு ஏற்பட்டால் எவ்வாறு மீட்டமைப்பது (Undo)?"
+      },
+      "steps": {
+        "si": [
+          "'🕒 ක්‍රියාකාරකම් සහ Undo (Activity)' පටිත්තට පිවිසෙන්න.",
+          "මෑතකදී කළ සුරැකීම් ලැයිස්තුවෙන් ඔබට අහෝසි කිරීමට අවශ්‍ය Commit එක සොයාගන්න.",
+          "'↺ Undo this change' බොත්තම ක්ලික් කරන්න.",
+          "විස්තරය පරීක්ෂා කර තහවුරු කරන්න. පැරණි ගොනුව නැවත ස්වයංක්‍රීයව ප්‍රතිස්ථාපනය වේ."
+        ],
+        "en": [
+          "Go to the '🕒 Activity & Undo' tab.",
+          "Find the commit you want to roll back in the recent changes list.",
+          "Click the '↺ Undo this change' button beside it.",
+          "Review the safety dialog and confirm to revert without losing history."
+        ],
+        "ta": [
+          "'🕒 செயல்பாடுகள் மற்றும் Undo' தாவலுக்கு செல்லவும்.",
+          "பட்டியலில் நீங்கள் ரத்து செய்ய விரும்பும் மாற்றத்தை கண்டறியவும்.",
+          "'↺ Undo this change' பொத்தானை கிளிக் செய்து உறுதிப்படுத்தவும்."
+        ]
+      }
+    },
+    {
+      "id": "token-expired",
+      "title": {
+        "si": "8. GitHub Token එක කල් ඉකුත් වූ විට (Expired) කුමක් කළ යුතුද?",
+        "en": "8. What to do if your GitHub Personal Access Token expires",
+        "ta": "8. GitHub டோக்கன் காலாவதியானால் என்ன செய்வது?"
+      },
+      "steps": {
+        "si": [
+          "ඉහළ දකුණු කෙළවරේ ඇති 'Log out (clear token)' බොත්තම ක්ලික් කරන්න.",
+          "GitHub.com වෙත පිවිස Settings → Developer settings → Personal access tokens → Fine-grained tokens වෙත යන්න.",
+          "'Generate new token' ක්ලික් කර පාසල් repository එක තෝරා 'Contents: Read and write' අවසර ලබාදෙන්න.",
+          "නව token එක පිටපත් කරගෙන නැවත අපගේ පරිපාලන පිටුවේ ඇතුළත් කර 'Connect' ක්ලික් කරන්න."
+        ],
+        "en": [
+          "Click 'Log out (clear token)' at the top right of the editor.",
+          "Log into GitHub.com and navigate to Settings → Developer settings → Personal access tokens → Fine-grained tokens.",
+          "Generate a new token scoped to the school repository with 'Contents: Read and write' permission.",
+          "Paste the new token into the login form and click 'Connect'."
+        ],
+        "ta": [
+          "'Log out (clear token)' பொத்தானை கிளிக் செய்யவும்.",
+          "GitHub.com இல் Settings → Developer settings → Fine-grained tokens செல்லவும்.",
+          "'Contents: Read and write' அனுமதியுடன் புதிய டோக்கனை உருவாக்கவும்.",
+          "புதிய டோக்கனை உள்ளிட்டு 'Connect' கிளிக் செய்யவும்."
+        ]
+      }
+    }
+  ],
+  "changelog": [
+    {
+      "version": "v3.2",
+      "date": "2026-10",
+      "title": {
+        "si": "පරිපාලන පුවරුවේ ගුරු හිතකාමී නව අතුරුමුහුණත",
+        "en": "Teacher-Friendly Admin Interface Upgrade",
+        "ta": "ஆசிரியர் நட்பு நிர்வாக இடைமுக மேம்பாடு"
+      },
+      "details": {
+        "si": "සිංහල, දෙමළ, ඉංග්‍රීසි භාෂා ත්‍රිත්වයෙන්ම පරිපාලන පුවරුව භාවිත කිරීමේ හැකියාව, Getting Started මඟපෙන්වීම් උපකරණ පුවරුව, එක් එක් පටිත්ත සඳහා '?' උපකාර තොරතුරු, පාසල් දැනුම් පද්ධතිය (Knowledge Base), ආරක්ෂිත Undo පද්ධතිය සහ සජීවී පෙරදසුන් (Preview).",
+        "en": "Full Sinhala/Tamil/English admin interface localization, Getting Started checklist dashboard, contextual '?' help panels on all tabs, School Knowledge module, safe Activity Undo, and multi-device Live Preview.",
+        "ta": "முழுமையான சிங்களம்/தமிழ்/ஆங்கில இடைமுகம், ஆரம்ப வழிகாட்டி பலகை, அனைத்து தாவல்களுக்கும் உதவி பேனல்கள், பாடசாலை அறிவுத்தளம், பாதுகாப்பான Undo மற்றும் முன்னோட்டம்."
+      }
+    },
+    {
+      "version": "v3.1",
+      "date": "2026-10",
+      "title": {
+        "si": "සම්පූර්ණ නිර්මාණ පද්ධතිය (Design System) සහ අඩවි සෙවුම",
+        "en": "Unified Design System & Instant Multilingual Site Search",
+        "ta": "ஒருங்கிணைந்த வடிவமைப்பு அமைப்பு மற்றும் உடனடி தேடல்"
+      },
+      "details": {
+        "si": "මොනරාගල පැල්වත්ත විද්‍යාලයේ ලාංඡන වර්ණ (Maroon & Gold), 8-pt spacing, trilingual typography, කාඩ්පත් සහ ආකෘති පත්‍ර ප්‍රමිතිකරණය, තනි පේළියේ මෙනු සැකසුම සහ ක්ෂණික සෙවුම් පද්ධතිය.",
+        "en": "College identity tokens (Maroon & Gold), 8-pt spacing, trilingual font scale, single-row navigation with dropdowns, custom block page builder, and live search overlay.",
+        "ta": "கல்லூரி வண்ணங்கள் (Maroon & Gold), 8-pt இடைவெளி, மூன்று மொழி எழுத்துருக்கள், தனிப்பயன் பக்க தொகுதி திருத்தி மற்றும் நேரலை தேடல்."
+      }
+    }
+  ]
+}

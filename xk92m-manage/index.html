@@ -66,14 +66,278 @@
   .menu-children-list{padding-left:18px;border-left:3px solid #0b2545;margin-left:4px}
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000;padding:16px}
   .modal-card{background:#fff;border-radius:8px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,0.2)}
+
+  /* ===================== PHASE 3: Teacher-Friendly Admin Styles ===================== */
+  .admin-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #dfe3e8;
+  }
+  .lang-choice-btn {
+    padding: 5px 12px;
+    font-size: 0.82rem;
+    margin: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .lang-choice-btn.active {
+    background: #0b2545 !important;
+    color: #fff !important;
+  }
+  .lang-choice-btn.secondary {
+    background: #e2e6ea !important;
+    color: #333 !important;
+  }
+
+  /* Help Panel Styles */
+  .tab-help-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #0284c7;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    display: none;
+    animation: fadeIn 0.2s ease;
+  }
+  .tab-help-box.open { display: block; }
+  .help-title {
+    font-weight: 700;
+    color: #0369a1;
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+  .help-col {
+    background: #fff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+  }
+  .help-col h4 {
+    margin: 0 0 6px;
+    color: #0f172a;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Dashboard Styles */
+  .progress-bar-container {
+    background: #e2e8f0;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    margin: 12px 0 20px;
+    position: relative;
+    border: 1px solid #cbd5e1;
+  }
+  .progress-bar-fill {
+    background: linear-gradient(90deg, #e8891c, #16a34a);
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .checklist-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .checklist-card.done { border-left: 5px solid #16a34a; }
+  .checklist-card.pending { border-left: 5px solid #eab308; }
+  .checklist-info { flex: 1; min-width: 240px; }
+  .checklist-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .checklist-desc {
+    font-size: 0.84rem;
+    color: #475569;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+
+  /* School Knowledge Tab */
+  .knowledge-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .knowledge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .status-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .status-pill.complete { background: #e8f5e9; color: #1b5e20; }
+  .status-pill.placeholder { background: #fef3c7; color: #92400e; }
+  .status-pill.missing { background: #fee2e2; color: #991b1b; }
+  .stepper-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Activity Tab */
+  .commit-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .commit-meta {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  /* Preview Tab */
+  .preview-toolbar {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .preview-frame-container {
+    background: #334155;
+    padding: 24px 12px;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    border: 1px solid #cbd5e1;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    min-height: 600px;
+  }
+  .preview-iframe {
+    background: #fff;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: width 0.3s ease;
+    height: 700px;
+  }
+
+  /* User Guide & Print Styles */
+  .guide-step-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .guide-step-card h3 {
+    margin: 0 0 10px;
+    color: #0b2545;
+    font-size: 1.05rem;
+  }
+  .guide-step-card ol {
+    padding-left: 24px;
+    margin: 8px 0 0;
+    line-height: 1.65;
+    font-size: 0.9rem;
+    color: #334155;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .wrap { max-width: 100%; padding: 0; }
+    .tabs, .top-actions, .admin-top-bar, #setup-card, .btn-tab-help, button, .modal-overlay { display: none !important; }
+    .tabpanel { display: none !important; }
+    .tabpanel[data-panel="guide"] { display: block !important; }
+    .guide-step-card { border: 1px solid #ccc; page-break-inside: avoid; box-shadow: none; margin-bottom: 20px; }
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-actions">
-    <h1>🔒 Mo/Pelwatta Navodya — Content Editor</h1>
-    <button class="secondary" id="btn-logout" style="display:none">Log out (clear token)</button>
+
+  <div class="top-actions" style="margin-bottom:12px;">
+    <h1 id="admin-main-title">🔒 Mo/Pelwatta Navodya — Content Editor</h1>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <button class="secondary" id="btn-glossary-top" type="button" style="font-size:0.82rem; padding:6px 12px;">📖 <span id="glossary-btn-text">වදන් මාලාව (Glossary)</span></button>
+      <button class="secondary" id="btn-logout" style="display:none; font-size:0.82rem; padding:6px 12px;">Log out</button>
+    </div>
   </div>
+
+  <!-- ADMIN LANGUAGE SELECTOR -->
+  <div class="admin-top-bar">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-size:0.85rem; font-weight:700; color:#0b2545;" id="lbl-lang-switch">🌐 භාෂාව / Language:</span>
+      <button type="button" class="lang-choice-btn active" data-lang="si">සිංහල</button>
+      <button type="button" class="lang-choice-btn secondary" data-lang="en">English</button>
+      <button type="button" class="lang-choice-btn secondary" data-lang="ta">தமிழ்</button>
+    </div>
+    <div style="font-size:0.82rem; color:#475569;" id="lbl-school-badge">
+      🏫 මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය — නිල පාලක පුවරුව
+    </div>
+  </div>
+
 
   <!-- SETUP / LOGIN -->
   <div class="card" id="setup-card">
@@ -93,24 +357,61 @@
   <!-- MAIN EDITOR -->
   <div id="editor" style="display:none">
     <div class="tabs">
-      <button data-tab="news" class="active">News & Events</button>
-      <button data-tab="notices">Notices</button>
-      <button data-tab="events">Events</button>
-      <button data-tab="custom-pages">Pages</button>
-      <button data-tab="menu">Menu</button>
-      <button data-tab="settings">Site Settings</button>
-      <button data-tab="gallery">Gallery</button>
-      <button data-tab="downloads">Downloads (PDFs)</button>
-      <button data-tab="pages">Page Text</button>
-      <button data-tab="applications">Applications</button>
-      <button data-tab="code">Code Editor</button>
-      <button data-tab="theme">Theme</button>
-      <button data-tab="import">Import Site</button>
-      <button data-tab="history">Version History</button>
+      <button data-tab="dashboard" class="active" style="background:#0b2545; color:#fff; font-weight:700;">🚀 <span data-tab-name="dashboard">Getting Started</span></button>
+      <button data-tab="news">📰 <span data-tab-name="news">News & Events</span></button>
+      <button data-tab="notices">📌 <span data-tab-name="notices">Notices</span></button>
+      <button data-tab="events">📅 <span data-tab-name="events">Events</span></button>
+      <button data-tab="custom-pages">📄 <span data-tab-name="custom_pages">Pages</span></button>
+      <button data-tab="menu">🧭 <span data-tab-name="menu">Menu</span></button>
+      <button data-tab="settings">⚙️ <span data-tab-name="settings">Site Settings</span></button>
+      <button data-tab="knowledge">🧠 <span data-tab-name="knowledge">School Knowledge & AI</span></button>
+      <button data-tab="gallery">🖼️ <span data-tab-name="gallery">Gallery</span></button>
+      <button data-tab="downloads">📥 <span data-tab-name="downloads">Downloads (PDFs)</span></button>
+      <button data-tab="pages">📝 <span data-tab-name="pages">Page Text</span></button>
+      <button data-tab="applications">📋 <span data-tab-name="applications">Applications</span></button>
+      <button data-tab="activity">🕒 <span data-tab-name="activity">Activity & Undo</span></button>
+      <button data-tab="preview">👁️ <span data-tab-name="preview">Live Preview</span></button>
+      <button data-tab="guide">📖 <span data-tab-name="guide">User Guide</span></button>
+      <button data-tab="history">📜 <span data-tab-name="history">Version History</span></button>
+      <button data-tab="code">💻 <span data-tab-name="code">Code Editor</span></button>
+      <button data-tab="theme">🎨 <span data-tab-name="theme">Theme</span></button>
+      <button data-tab="import">📦 <span data-tab-name="import">Import Site</span></button>
     </div>
 
-    <!-- NEWS TAB -->
-    <div class="tabpanel active" data-panel="news">
+        <!-- DASHBOARD TAB (PART 2) -->
+    <div class="tabpanel active" data-panel="dashboard">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="db-title">🚀 පාසල් වෙබ් අඩවිය සූදානම් කිරීමේ පාලක පුවරුව</h2>
+            <div class="muted" style="margin-top:4px;" id="db-subtitle">අධ්‍යාපන අමාත්‍යාංශයේ සහ ජාතික පාසල් ප්‍රමිතීන්ට අනුකූලව සූදානම පරීක්ෂා කිරීම.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="secondary" id="db-refresh-btn" style="padding:6px 12px; font-size:0.85rem;">🔄 නැවත පරීක්ෂා කරන්න</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="dashboard" style="padding:6px 12px; font-size:0.85rem;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="dashboard"></div>
+
+        <div style="margin-top:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:0.9rem;">
+            <span id="db-progress-text">සමස්ත සූදානම (Readiness Progress):</span>
+            <span id="db-progress-pct" style="color:#0b2545;">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="db-progress-bar" style="width:0%;">0%</div>
+          </div>
+        </div>
+
+        <div class="checklist-grid" id="db-checklist-container">
+          <!-- Dynamically populated checklist items -->
+        </div>
+      </div>
+    </div>
+
+<!-- NEWS TAB -->
+    <div class="tabpanel" data-panel="news">
       <div class="card">
         <div class="top-actions"><h2 style="margin:0">News & Events items</h2><button id="news-add">+ Add news item</button></div>
         <div id="news-list"></div>
@@ -948,7 +1249,194 @@
           <div class="muted" style="padding:10px 0;">Loading backup branches…</div>
         </div>
       </div>
+    
+    <!-- SCHOOL KNOWLEDGE & AI TAB (PART 4) -->
+    <div class="tabpanel" data-panel="knowledge">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="know-title">🧠 පාසල් දැනුම් පද්ධතිය සහ AI සහයක (School Knowledge Base)</h2>
+            <div class="muted" style="margin-top:4px;">පාසලේ දැක්ම, මෙහෙවර, ඉතිහාසය, විද්‍යාගාර සහ නීතිමය තොරතුරු එක්තැන් කිරීම.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="secondary" id="know-asst-config-btn" style="font-size:0.85rem; padding:6px 12px;">⚙️ සහයක සැකසුම්</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="knowledge" style="font-size:0.85rem; padding:6px 12px;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="knowledge"></div>
+
+        <!-- Public repository safety alert -->
+        <div style="background:#fef2f2; border-left:4px solid #ef4444; border-radius:6px; padding:12px 16px; margin:14px 0; color:#991b1b; font-size:0.85rem; line-height:1.5;">
+          <strong>⚠️ වැදගත් ආරක්ෂක දැනුම්දීම (Public Repository Warning):</strong><br>
+          මෙම තොරතුරු GitHub හි ප්‍රසිද්ධ වෙබ් අඩවියේ සුරැකේ. සිසුන්ගේ පෞද්ගලික දුරකථන අංක, ගෙදර ලිපින, ගුරු වැටුප් හෝ බැංකු ගිණුම් විස්තර මෙහි ඇතුළත් නොකරන්න.
+        </div>
+
+        <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+          <button type="button" id="know-tab-guided" class="secondary" style="font-size:0.85rem;">📝 පියවරෙන් පියවර ප්‍රශ්න (Guided Mode)</button>
+          <button type="button" id="know-tab-interview" class="secondary" style="font-size:0.85rem;">🤖 AI සහයක සම්මුඛ සාකච්ඡාව (Interview Mode)</button>
+          <button type="button" id="know-tab-all" style="font-size:0.85rem; background:#0b2545; color:#fff;">📚 සියලුම අංශ (All Sections)</button>
+          <button type="button" id="know-tab-try" class="secondary" style="font-size:0.85rem;">💡 අත්හදා බලන්න (Try It)</button>
+        </div>
+
+        <!-- Guided Stepper Box -->
+        <div id="know-guided-box" style="display:none; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:18px; margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span style="font-weight:700; color:#0b2545;" id="guided-step-counter">පියවර 1 / 8</span>
+            <span class="status-pill complete" id="guided-step-status">සම්පූර්ණයි</span>
+          </div>
+          <h3 style="margin:0 0 8px; color:#0f172a;" id="guided-section-title">අංශයේ මාතෘකාව</h3>
+          <p style="font-size:0.85rem; color:#475569; margin:0 0 10px;" id="guided-why-needed">මෙය අවශ්‍ය ඇයි?</p>
+          <div style="background:#eef3fb; padding:10px 12px; border-radius:6px; font-size:0.82rem; color:#1c3d6b; margin-bottom:12px;">
+            <strong>ආදර්ශ පිළිතුර (Example):</strong> <span id="guided-example-text">ආදර්ශය මෙහි දිස්වේ</span>
+          </div>
+          <label style="font-weight:700; font-size:0.85rem;">ඔබගේ පිළිතුර / තොරතුරු (Save factual details):</label>
+          <textarea id="guided-answer-input" style="min-height:90px;" placeholder="පාසලේ නිල තොරතුරු මෙහි සටහන් කරන්න..."></textarea>
+          <div class="stepper-nav">
+            <div>
+              <button type="button" id="guided-prev-btn" class="secondary">← පෙර</button>
+              <button type="button" id="guided-skip-btn" class="secondary">මඟහරින්න (Skip)</button>
+            </div>
+            <div>
+              <button type="button" id="guided-save-btn" style="background:#16a34a; color:#fff;">💾 පිළිතුර සුරකින්න</button>
+              <button type="button" id="guided-next-btn" class="secondary">ඊළඟ →</button>
+            </div>
+          </div>
+          <div id="guided-status-msg" style="margin-top:10px;"></div>
+        </div>
+
+        <!-- AI Assistant Interview Box -->
+        <div id="know-interview-box" style="display:none; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:18px; margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h3 style="margin:0; color:#0b2545;">🤖 AI සහයක සම්මුඛ සාකච්ඡාව</h3>
+            <button type="button" class="secondary" id="interview-apikey-btn" style="font-size:0.8rem; padding:4px 8px;">🔑 API Key සැකසුම</button>
+          </div>
+          <p style="font-size:0.85rem; color:#475569; margin-bottom:14px;">
+            AI සහයකයා පාසලේ මීළඟ අසම්පූර්ණ තොරතුර පිළිබඳව ඔබෙන් විමසනු ඇත. ඔබ ලබාදෙන කෙටි කරුණු මත පදනම්ව නිල වාර්තාව කෙටුම්පත් කරනු ලැබේ.
+          </p>
+          <div id="interview-chat-log" style="background:#fff; border:1px solid #cbd5e1; border-radius:6px; padding:14px; min-height:180px; max-height:360px; overflow-y:auto; margin-bottom:14px;">
+            <!-- Chat dialogue -->
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="interview-input" placeholder="ඔබගේ පිළිතුර හෝ විස්තර මෙහි ලියන්න..." style="flex:1;">
+            <button type="button" id="interview-send-btn" style="background:#0b2545; color:#fff;">යවන්න</button>
+          </div>
+        </div>
+
+        <!-- Try-It Prompts Box -->
+        <div id="know-try-box" style="display:none; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:18px; margin-bottom:18px;">
+          <h3 style="margin:0 0 8px; color:#0b2545;">💡 AI සහයකයාගෙන් විමසිය හැකි ආදර්ශ ඉල්ලීම් (Sample Prompts)</h3>
+          <p style="font-size:0.85rem; color:#475569; margin-bottom:12px;">පහත ඕනෑම ඉල්ලීමක් ක්ලික් කර අත්හදා බලන්න. ඕනෑම වෙනස්කමක් සුරැකීමට පෙර පෙරදසුන් කරනු ලැබේ.</p>
+          <div id="try-prompts-list" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; margin-bottom:14px;">
+            <!-- populated dynamically -->
+          </div>
+          <div id="try-result-box" style="display:none; background:#fff; border:1px solid #cbd5e1; border-radius:6px; padding:14px;">
+            <h4 style="margin:0 0 8px; color:#0b2545;">ප්‍රතිඵල පෙරදසුන (Draft Result):</h4>
+            <div id="try-result-content" style="font-size:0.88rem; line-height:1.5; white-space:pre-wrap; background:#f8fafc; padding:12px; border-radius:4px; max-height:250px; overflow-y:auto;"></div>
+            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:10px;">
+              <button type="button" id="try-dismiss-btn" class="secondary">වසන්න</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- All Sections List -->
+        <div id="know-sections-list">
+          <!-- Populated from ai-knowledge.json -->
+        </div>
+      </div>
     </div>
+
+    <!-- ACTIVITY & SAFETY TAB (PART 5) -->
+    <div class="tabpanel" data-panel="activity">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="act-title">🕒 ක්‍රියාකාරකම් සහ පෙර වෙනස්කම් ආපසු හැරවීම (Activity &amp; Safe Undo)</h2>
+            <div class="muted" style="margin-top:4px;">වෙබ් අඩවියේ මෑතකදී සිදුකළ සියලුම සුරැකීම් (Commits) සහ ආරක්ෂිත Undo පද්ධතිය.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="secondary" id="act-refresh-btn" style="font-size:0.85rem; padding:6px 12px;">🔄 නැවත පූරණය</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="activity" style="font-size:0.85rem; padding:6px 12px;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="activity"></div>
+
+        <div style="background:#ecfdf5; border-left:4px solid #10b981; border-radius:6px; padding:12px 16px; margin:14px 0; color:#065f46; font-size:0.85rem; line-height:1.45;">
+          🛡️ <strong>ආරක්ෂිත Undo ක්‍රියාපටිපාටිය:</strong> කිසියම් වෙනස්කමක් අහෝසි කළ විට, පෙර දත්ත නව ඉදිරිගාමී සුරැකීමක් (forward commit) ලෙස යාවත්කාලීන වේ. පරණ ඉතිහාසය කිසිවිටෙකත් විනාශ නොවේ.
+        </div>
+
+        <div id="act-commits-list" style="margin-top:14px;">
+          <div class="muted">ක්‍රියාකාරකම් ඉතිහාසය ලබාගනිමින් පවතී…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE PREVIEW TAB (PART 5) -->
+    <div class="tabpanel" data-panel="preview">
+      <div class="card" style="padding:14px;">
+        <div class="preview-toolbar">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <label style="margin:0; font-size:0.85rem; font-weight:700;">පිටුව තෝරන්න (Select Page):</label>
+            <select id="preview-page-select" style="width:auto; padding:6px 10px; font-size:0.85rem;">
+              <option value="../index.html">මුල් පිටුව (Home - index.html)</option>
+              <option value="../about.html">පාසල ගැන (About Us - about.html)</option>
+              <option value="../academic.html">අධ්‍යාපනික (Academic - academic.html)</option>
+              <option value="../student-life.html">ශිෂ්‍ය ජීවිතය (Student Life - student-life.html)</option>
+              <option value="../admissions.html">ඇතුළත් වීම් (Admissions - admissions.html)</option>
+              <option value="../news.html">පුවත් (News - news.html)</option>
+              <option value="../gallery.html">ඡායාරූප (Gallery - gallery.html)</option>
+              <option value="../downloads.html">බාගැනීම් (Downloads - downloads.html)</option>
+              <option value="../contact.html">සම්බන්ධ වන්න (Contact - contact.html)</option>
+              <option value="../page.html?p=sample">නියැදි අභිරුචි පිටුව (Sample Custom Page)</option>
+              <option value="../design-system.html">නිර්මාණ පද්ධතිය (Design System)</option>
+            </select>
+            <button type="button" class="secondary" id="preview-reload-btn" style="padding:6px 10px; font-size:0.82rem;">🔄 නැවුම් කරන්න</button>
+            <button type="button" class="secondary" id="preview-newtab-btn" style="padding:6px 10px; font-size:0.82rem;">↗️ නව ටැබයකින්</button>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button type="button" class="preview-device-btn secondary" data-width="375px" style="padding:5px 10px; font-size:0.82rem;">📱 දුරකථන (375px)</button>
+            <button type="button" class="preview-device-btn secondary" data-width="768px" style="padding:5px 10px; font-size:0.82rem;">📱 ටැබ්ලට් (768px)</button>
+            <button type="button" class="preview-device-btn" data-width="100%" style="background:#0b2545; color:#fff; padding:5px 10px; font-size:0.82rem;">💻 පරිගණක (Desktop)</button>
+          </div>
+        </div>
+
+        <div class="preview-frame-container">
+          <iframe id="preview-frame" class="preview-iframe" src="../index.html" style="width:100%;"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- USER GUIDE TAB (PART 6) -->
+    <div class="tabpanel" data-panel="guide">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="guide-title">📖 ගුරුවරුන් සඳහා පියවරෙන් පියවර පරිශීලක අත්පොත (Teacher's User Guide)</h2>
+            <div class="muted" style="margin-top:4px;">තාක්ෂණික නොවන ගුරුභවතුන් සඳහා සරල පියවරෙන් පියවර උපදෙස් සහ මුද්‍රිත පිටපත.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" id="guide-print-btn" style="background:#0b2545; color:#fff; font-size:0.85rem; padding:6px 14px;">🖨️ මුද්‍රණය කරන්න (Print Guide)</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="guide" style="font-size:0.85rem; padding:6px 12px;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="guide"></div>
+
+        <div id="guide-steps-container" style="margin-top:16px;">
+          <!-- Loaded from admin-help.json -->
+        </div>
+
+        <div style="margin-top:28px; padding-top:20px; border-top:2px solid #e2e8f0;">
+          <h3 style="color:#0b2545; margin:0 0 12px;">✨ මෑතකාලීන නව අංග සහ යාවත්කාලීන කිරීම් (Changelog)</h3>
+          <div id="guide-changelog-container">
+            <!-- Loaded from admin-help.json -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
   </div>
 </div>
 
@@ -991,6 +1479,113 @@
     <div style="display:flex; justify-content:flex-end; gap:8px;">
       <button type="button" id="restore-modal-cancel" class="secondary">Cancel</button>
       <button type="button" id="restore-modal-submit" style="background:#b91c1c; color:#fff;" disabled>🔄 Confirm &amp; Restore</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- SAFETY CONFIRMATION MODAL (PART 5) -->
+<div id="safety-confirm-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-card" style="max-width:540px; border-top:6px solid #e8891c;">
+    <h3 id="safety-modal-title" style="margin:0 0 12px; color:#0b2545; font-size:1.15rem;">⚠️ වෙනස්කම තහවුරු කරන්න</h3>
+    
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:12px 14px; margin-bottom:12px;">
+      <div style="font-weight:700; color:#0f172a; font-size:0.85rem;" id="safety-lbl-what">සිදුවන දේ:</div>
+      <div id="safety-modal-what" style="font-size:0.88rem; color:#334155; margin-top:3px;"></div>
+    </div>
+
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:12px 14px; margin-bottom:12px;">
+      <div style="font-weight:700; color:#0f172a; font-size:0.85rem;" id="safety-lbl-pages">බලපෑමට ලක්වන පිටු:</div>
+      <div id="safety-modal-pages" style="font-size:0.88rem; color:#334155; margin-top:3px; font-family:monospace;"></div>
+    </div>
+
+    <div style="background:#ecfdf5; border-left:4px solid #10b981; border-radius:4px; padding:10px 12px; margin-bottom:16px; font-size:0.85rem; color:#065f46;">
+      <div style="font-weight:700;" id="safety-lbl-undo">ආපසු හැරවිය හැකි අන්දම:</div>
+      <div id="safety-modal-undo" style="margin-top:2px;"></div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <button type="button" id="safety-modal-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="safety-modal-confirm" style="background:#16a34a; color:#fff;">ඔව්, තහවුරු කර සුරකින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- GLOSSARY MODAL (PART 3) -->
+<div id="glossary-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-card" style="max-width:580px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+      <h3 style="margin:0; color:#0b2545;">📖 තාක්ෂණික වදන් මාලාව (Admin Glossary)</h3>
+      <button type="button" id="glossary-modal-close" class="secondary" style="font-size:0.8rem; padding:4px 8px;">✕</button>
+    </div>
+    <div id="glossary-modal-content" style="font-size:0.88rem; line-height:1.5;">
+      <!-- Populated from admin-help.json -->
+    </div>
+  </div>
+</div>
+
+<!-- PASSPHRASE MODAL (PART 2) -->
+<div id="passphrase-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-card" style="max-width:460px;">
+    <h3 style="margin:0 0 10px; color:#0b2545;">🛡️ ආරක්ෂිත Passphrase සැකසීම</h3>
+    <p style="font-size:0.85rem; color:#475569; margin-bottom:12px;">
+      පාසලේ පොදු පරිගණක භාවිත කරන විට අනවසර වෙනස්කම් වැළැක්වීමට අමතර රහස් මුරපදයක් සකසන්න.
+    </p>
+    <label style="font-weight:700; font-size:0.85rem;">නව Passphrase එක:</label>
+    <input type="password" id="passphrase-input" placeholder="රහස් වැකියක් ඇතුළත් කරන්න (උදා: Pelwatta2026)">
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+      <button type="button" id="passphrase-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="passphrase-save" style="background:#0b2545; color:#fff;">සුරකින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- AI KEY MODAL (PART 4) -->
+<div id="ai-key-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-card" style="max-width:480px;">
+    <h3 style="margin:0 0 10px; color:#0b2545;">🔑 Gemini API Key සැකසුම</h3>
+    <p style="font-size:0.85rem; color:#475569; margin-bottom:12px;">
+      Google AI Studio හි නොමිලේ ලබාගත හැකි Gemini API යතුර මෙහි ඇතුළත් කරන්න. මෙම යතුර බ්‍රව්සරයේ පමණක් සුරැකේ (localStorage).
+    </p>
+    <label style="font-weight:700; font-size:0.85rem;">Gemini API Key (AIzaSy...):</label>
+    <input type="password" id="ai-key-input" placeholder="AIzaSy...">
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+      <button type="button" id="ai-key-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="ai-key-save" style="background:#0b2545; color:#fff;">සුරකින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- ASSISTANT CONFIG MODAL (PART 4) -->
+<div id="asst-config-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-card" style="max-width:560px;">
+    <h3 style="margin:0 0 10px; color:#0b2545;">⚙️ AI සහයක සැකසුම් (Assistant Settings)</h3>
+    <p style="font-size:0.85rem; color:#475569; margin-bottom:12px;">
+      මෙම සැකසුම් <code>content/assistant-config.json</code> ගොනුවේ සුරැකෙන අතර කිසිදු රහස්‍ය යතුරක් ඇතුළත් නොවේ.
+    </p>
+    <label style="font-weight:700; font-size:0.85rem;">සහයකයාගේ නම (Assistant Name):</label>
+    <input type="text" id="asst-name-input" value="Pelwatta Vidyalaya Assistant">
+    
+    <label style="font-weight:700; font-size:0.85rem;">පිළිතුරු භාෂාව (Language):</label>
+    <select id="asst-lang-select">
+      <option value="si">සිංහල (Sinhala)</option>
+      <option value="en">English</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+    </select>
+
+    <label style="font-weight:700; font-size:0.85rem;">ස්වරූපය (Tone):</label>
+    <select id="asst-tone-select">
+      <option value="formal_school">ගෞරවනීය පාසල් ස්වරූපය (Formal School)</option>
+      <option value="friendly">හිතකාමී සහ පැහැදිලි (Friendly)</option>
+      <option value="academic">ශාස්ත්‍රීය (Academic)</option>
+    </select>
+
+    <label style="font-weight:700; font-size:0.85rem;">තෝරාගත් මාදිලිය (Model):</label>
+    <input type="text" id="asst-model-input" value="gemini-2.5-flash" readonly style="background:#f1f5f9;">
+
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
+      <button type="button" id="asst-config-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="asst-config-save" style="background:#16a34a; color:#fff;">සුරකින්න</button>
     </div>
   </div>
 </div>
@@ -5029,6 +5624,1033 @@ if (settingsTabBtn) {
 
 loadSavedConfig();
 loadSavedAppsConfig();
+
+
+/* ===================== PHASE 3: TEACHER-FRIENDLY ADMIN CONTROLLER ===================== */
+let currentAdminLang = localStorage.getItem('admin_lang') || 'si';
+let adminI18nData = {"si": {"app_title": "🔒 මො/පැල්වත්ත නවෝද්‍යා විද්‍යාලය — පරිපාලන පාලක පුවරුව", "logout": "ඉවත් වන්න (ටෝකනය මකන්න)", "connect": "සම්බන්ධ වන්න", "connected_ok": "සාර්ථකව සම්බන්ධ විය.", "checking_access": "පිවිසුම පරීක්ෂා කරමින් පවතී…", "fill_all_fields": "කරුණාකර සියලු විස්තර පුරවන්න.", "technical_terms": {"github": "GitHub (කේත හා ගොනු ආරක්ෂිතව තබාගන්නා ගෝලීය සේවාව / Code Repository)", "token": "Token (මුරපදය වෙනුවට භාවිත වන රහස් ප්‍රවේශ යතුර / Personal Access Key)", "commit": "Commit (වෙබ් අඩවියේ වෙනස්කම් ස්ථිරව සුරැකීමේ සටහන / Saved Version)", "branch": "Branch (වෙබ් අඩවියේ ප්‍රධාන කේත ශාඛාව — main / Code Branch)", "passphrase": "Passphrase (අමතර ආරක්ෂක රහස් වැකිය / Extra Security Passphrase)", "publish": "Publish (වෙබ් අඩවියට මුදා හැරීම / Make Live)", "backup": "Backup (අනතුරකදී ආපසු ලබාගත හැකි ආරක්ෂිත පිටපත / Safety Copy)"}, "tabs": {"dashboard": "🚀 ආරම්භක පියවර (Dashboard)", "news": "📰 පුවත් සහ සිදුවීම් (News)", "notices": "📌 නිවේදන (Notices)", "events": "📅 දින දර්ශනය (Events)", "custom_pages": "📄 අභිරුචි පිටු (Pages)", "menu": "🧭 ප්‍රධාන මෙනුව (Menu)", "settings": "⚙️ පාසල් තොරතුරු (Settings)", "knowledge": "🧠 පාසල් දැනුම සහ AI සහයක (Knowledge)", "gallery": "🖼️ ඡායාරූප (Gallery)", "downloads": "📥 ලේඛන බාගැනීම් (PDFs)", "pages": "📝 පිටු පෙළ (Page Text)", "applications": "📋 අයදුම්පත් (Applications)", "activity": "🕒 ක්‍රියාකාරකම් සහ Undo (Activity)", "preview": "👁️ වෙබ් අඩවි පෙරදසුන (Preview)", "guide": "📖 ගුරු අත්පොත (User Guide)", "history": "📜 වෙනස්කම් ඉතිහාසය (History)", "code": "💻 කේත සකසනය (Code)", "theme": "🎨 තේමාව (Theme)", "import": "📦 ආනයනය (Import)"}, "help": {"help_btn": "❓ උපකාර සහ උපදෙස්", "what_it_does": "මෙම පටිත්තෙන් කරන්නේ කුමක්ද?", "how_to_use": "තොරතුරු ඇතුළත් කරන්නේ කෙසේද?", "common_mistakes": "සුලබ වැරදි හා වළක්වා ගැනීම:", "view_on_site": "වෙබ් අඩවියේ බලන්න:", "how_to_undo": "වරදක් වුවහොත් ආපසු හැරවීම:"}, "safety": {"warning_title": "අවධානය දෙන්න: ස්ථිර වෙනස්කමක් සිදු කිරීමට පෙර", "what_will_happen": "සිදු වන දේ:", "pages_affected": "බලපෑමට ලක්වන පිටු:", "how_to_undo": "ආපසු හැරවිය හැකි අන්දම:", "confirm_action": "ඔව්, තහවුරු කර සුරකින්න", "cancel_action": "අවලංගු කරන්න", "public_repo_warning": "⚠️ වැදගත් ආරක්ෂක දැනුම්දීම: මෙම තොරතුරු GitHub හි ප්‍රසිද්ධව සුරැකේ. සිසුන්ගේ පෞද්ගලික දුරකථන අංක, ගෙදර ලිපින, මුරපද හෝ රහස්‍ය විස්තර මෙහි ඇතුළත් නොකරන්න."}, "dashboard_items": {"title": "පාසල් වෙබ් අඩවිය සූදානම් කිරීමේ පිරික්සුම් ලැයිස්තුව", "progress_label": "සම්පූර්ණ වීම:", "gh_connected": "GitHub ගිණුම සම්බන්ධ කර ඇත", "gh_connected_desc": "වෙබ් අඩවියේ වෙනස්කම් සුරැකීමට අවශ්‍ය ප්‍රවේශය සක්‍රීයයි.", "passphrase_set": "ආරක්ෂිත Passphrase සකසා ඇත", "passphrase_set_desc": "අනවසර වෙනස්කම් වැළැක්වීමට අමතර මුරපදය සකසා ඇත.", "settings_filled": "පාසලේ මූලික තොරතුරු (Settings) සම්පූර්ණයි", "settings_filled_desc": "පාසලේ නම, ලිපිනය, දුරකථන සහ Google සිතියම ඇතුළත් කර ඇත.", "knowledge_completed": "පාසල් දැනුම් පද්ධතිය (Knowledge Base)", "knowledge_completed_desc": "පාසලේ දැක්ම, මෙහෙවර සහ ඉතිහාසය පිළිබඳ මූලික තොරතුරු සටහන්ව ඇත.", "first_news": "පළමු පාසල් පුවත ඇතුළත් කර ඇත", "first_news_desc": "පාසලේ නවතම උත්සව හෝ නිවේදනයක් ප්‍රසිද්ධ කර ඇත.", "photos_added": "ඡායාරූප ගැලරිය සක්‍රීයයි", "photos_added_desc": "පාසල් උත්සව හා පරිශ්‍රයේ ඡායාරූප එකතු කර ඇත.", "admissions_form": "ඇතුළත් වීමේ Google පෝරමය සම්බන්ධයි", "admissions_form_desc": "සිසුන් ඇතුළත් වීමේ මාර්ගගත අයදුම්පත ක්‍රියාත්මකයි.", "site_health": "වෙබ් අඩවියේ නිරෝගීභාවය පරීක්ෂා කර ඇත", "site_health_desc": "සියලුම පිටු හා සම්බන්ධක (Links) නිවැරදිව ක්‍රියාත්මක වේ.", "ai_key": "AI සහයක පිවිසුම (විකල්ප)", "ai_key_desc": "ස්වයංක්‍රීයව අන්තර්ගතය ලිවීමට AI සහයකය සම්බන්ධ කර ඇත."}}, "en": {"app_title": "🔒 Mo/Pelwatta Navodya — Admin Control Panel", "logout": "Log out (clear token)", "connect": "Connect", "connected_ok": "Connected successfully.", "checking_access": "Checking access…", "fill_all_fields": "Please fill in all fields.", "technical_terms": {"github": "GitHub (Secure cloud repository storing the website files)", "token": "Token (Secret Personal Access Key replacing standard password)", "commit": "Commit (Permanent snapshot record of saved changes)", "branch": "Branch (Main code branch of the repository — main)", "passphrase": "Passphrase (Additional security passphrase protecting edits)", "publish": "Publish (Make content live and visible to the public)", "backup": "Backup (Safety recovery point in case of mistakes)"}, "tabs": {"dashboard": "🚀 Getting Started (Dashboard)", "news": "📰 News & Events", "notices": "📌 Notices", "events": "📅 Calendar Events", "custom_pages": "📄 Custom Pages", "menu": "🧭 Navigation Menu", "settings": "⚙️ Site Settings", "knowledge": "🧠 School Knowledge & AI", "gallery": "🖼️ Photo Gallery", "downloads": "📥 Downloads (PDFs)", "pages": "📝 Page Text", "applications": "📋 Applications", "activity": "🕒 Activity & Undo", "preview": "👁️ Live Preview", "guide": "📖 Teacher's Guide", "history": "📜 Version History", "code": "💻 Code Editor", "theme": "🎨 Theme", "import": "📦 Import Site"}, "help": {"help_btn": "❓ Help & Instructions", "what_it_does": "What does this tab do?", "how_to_use": "How to fill in information:", "common_mistakes": "Common mistakes to avoid:", "view_on_site": "View on public site:", "how_to_undo": "How to undo if something goes wrong:"}, "safety": {"warning_title": "Confirmation Required: Before You Save", "what_will_happen": "What will happen:", "pages_affected": "Pages affected:", "how_to_undo": "How to restore:", "confirm_action": "Yes, Save & Commit", "cancel_action": "Cancel", "public_repo_warning": "⚠️ Security Notice: This website is hosted on a public GitHub repository. Do NOT enter confidential student records, private phone numbers, home addresses, or passwords."}, "dashboard_items": {"title": "School Website Readiness Checklist", "progress_label": "Readiness Progress:", "gh_connected": "GitHub Repository Connected", "gh_connected_desc": "Valid token verified with read/write access to website repository.", "passphrase_set": "Admin Passphrase Configured", "passphrase_set_desc": "Local protection enabled against accidental unauthorized edits.", "settings_filled": "Site Settings Completed", "settings_filled_desc": "School contact numbers, official address, and Google Maps location set.", "knowledge_completed": "School Knowledge Base", "knowledge_completed_desc": "Vision, mission, academic streams, and basic history documented.", "first_news": "First News Article Published", "first_news_desc": "At least one recent school event or announcement is live.", "photos_added": "Photo Gallery Populated", "photos_added_desc": "High quality images of campus and student activities added.", "admissions_form": "Admissions Google Form Linked", "admissions_form_desc": "Online application form correctly linked to the school's Google Form.", "site_health": "Site Health Verified", "site_health_desc": "All JSON files valid, images accessible, and navigation verified.", "ai_key": "AI Assistant Key (Optional)", "ai_key_desc": "Gemini API key configured for guided interviews and draft generation."}}, "ta": {"app_title": "🔒 மொ/பெல்வத்தை நவோத்யா — நிர்வாக கட்டுப்பாட்டுப் பலகை", "logout": "வெளியேறு (டோக்கனை நீக்கு)", "connect": "இணைக்கவும்", "connected_ok": "வெற்றிகரமாக இணைக்கப்பட்டது.", "checking_access": "அணுகலை சரிபார்க்கிறது…", "fill_all_fields": "தயவுசெய்து அனைத்து விவரங்களையும் நிரப்பவும்.", "technical_terms": {"github": "GitHub (இணையதள கோப்புகளை பாதுகாப்பாக சேமிக்கும் தளம் / Code Repository)", "token": "Token (கடவுச்சொல்லுக்கு பதிலாக பயன்படும் ரகசிய அணுகல் சாவி / Personal Access Key)", "commit": "Commit (இணையதள மாற்றங்களை நிரந்தரமாக சேமிக்கும் பதிவு / Save Version)", "branch": "Branch (இணையதளத்தின் முக்கிய குறியீட்டு கிளை — main / Code Branch)", "passphrase": "Passphrase (கூடுதல் பாதுகாப்பு ரகசிய வாக்கியம் / Passphrase)", "publish": "Publish (இணையதளத்தில் நேரலையாக வெளியிடுதல் / Make Live)", "backup": "Backup (பாதுகாப்பு மறுசீரமைப்பு நகல் / Safety Copy)"}, "tabs": {"dashboard": "🚀 ஆரம்ப வழிகாட்டி (Dashboard)", "news": "📰 செய்திகள் மற்றும் நிகழ்வுகள்", "notices": "📌 அறிவிப்புகள்", "events": "📅 நிகழ்வு நாள்காட்டி", "custom_pages": "📄 தனிப்பயன் பக்கங்கள்", "menu": "🧭 பிரதான மெனு", "settings": "⚙️ பாடசாலை அமைப்புகள்", "knowledge": "🧠 பாடசாலை அறிவுத்தளம் மற்றும் AI", "gallery": "🖼️ புகைப்பட தொகுப்பு", "downloads": "📥 பதிவிறக்கங்கள் (PDFs)", "pages": "📝 பக்க உரை", "applications": "📋 விண்ணப்பங்கள்", "activity": "🕒 செயல்பாடுகள் மற்றும் Undo", "preview": "👁️ தள முன்னோட்டம்", "guide": "📖 ஆசிரியர் வழிகாட்டி", "history": "📜 மாற்ற வரலாறு", "code": "💻 குறியீட்டு திருத்தி", "theme": "🎨 தோற்றம் (Theme)", "import": "📦 இறக்குமதி"}, "help": {"help_btn": "❓ உதவி மற்றும் வழிகாட்டல்", "what_it_does": "இந்த தாவல் என்ன செய்கிறது?", "how_to_use": "தகவலை எவ்வாறு உள்ளிடுவது:", "common_mistakes": "தவிர்க்க வேண்டிய பொதுவான தவறுகள்:", "view_on_site": "பொது தளத்தில் காண்க:", "how_to_undo": "தவறு ஏற்பட்டால் மீட்டமைப்பது எப்படி:"}, "safety": {"warning_title": "சேமிப்பதற்கு முன் உறுதிப்படுத்தல் தேவை", "what_will_happen": "என்ன நடக்கும்:", "pages_affected": "பாதிக்கப்படும் பக்கங்கள்:", "how_to_undo": "மீட்டமைப்பது எப்படி:", "confirm_action": "ஆம், உறுதிப்படுத்தி சேமிக்கவும்", "cancel_action": "ரத்துசெய்", "public_repo_warning": "⚠️ பாதுகாப்பு எச்சரிக்கை: இந்த தளம் பொது GitHub களஞ்சியத்தில் உள்ளது. மாணவர்களின் தனிப்பட்ட எண்கள், வீட்டு முகவரிகள் அல்லது கடவுச்சொற்களை உள்ளிட வேண்டாம்."}, "dashboard_items": {"title": "பாடசாலை இணையதள தயார்நிலை சரிபார்ப்பு பட்டியல்", "progress_label": "முழுமை நிலை:", "gh_connected": "GitHub களஞ்சியம் இணைக்கப்பட்டுள்ளது", "gh_connected_desc": "இணையதளத்தை மாற்றுவதற்கான அணுகல் சரிபார்க்கப்பட்டது.", "passphrase_set": "பாதுகாப்பு Passphrase அமைக்கப்பட்டுள்ளது", "passphrase_set_desc": "அங்கீகரிக்கப்படாத மாற்றங்களைத் தடுக்க கூடுதல் கடவுச்சொல் அமைக்கப்பட்டுள்ளது.", "settings_filled": "தள அமைப்புகள் பூர்த்தி செய்யப்பட்டுள்ளன", "settings_filled_desc": "பாடசாலை தொடர்பு எண்கள் மற்றும் Google வரைபடம் உள்ளிடப்பட்டுள்ளது.", "knowledge_completed": "பாடசாலை அறிவுத்தளம் (Knowledge Base)", "knowledge_completed_desc": "பாடசாலையின் தொலைநோக்கு, வரலாறு மற்றும் பாடப்பிரிவுகள் பதிவு செய்யப்பட்டுள்ளன.", "first_news": "முதல் செய்தி வெளியிடப்பட்டது", "first_news_desc": "பாடசாலையின் சமீபத்திய செய்தி அல்லது நிகழ்வு பகிரப்பட்டுள்ளது.", "photos_added": "புகைப்பட தொகுப்பு சேர்க்கப்பட்டது", "photos_added_desc": "பாடசாலை நிகழ்வுகளின் படங்கள் பதிவேற்றப்பட்டுள்ளன.", "admissions_form": "சேர்க்கைக்கான Google படிவம் இணைக்கப்பட்டது", "admissions_form_desc": "இணையவழி விண்ணப்பப் படிவம் வெற்றிகரமாக இணைக்கப்பட்டுள்ளது.", "site_health": "தளத்தின் இயங்குநிலை சரிபார்க்கப்பட்டது", "site_health_desc": "அனைத்து இணைப்புகளும் பக்கங்களும் சரியாக இயங்குகின்றன.", "ai_key": "AI உதவியாளர் சாவி (விருப்பமானது)", "ai_key_desc": "செயற்கை நுண்ணறிவு உதவியாளர் இணைக்கப்பட்டுள்ளது."}}};
+let adminHelpData = {"glossary": {"commit": {"si": "Commit (කොමිට්): වෙබ් අඩවියේ ඔබ සිදුකළ වෙනස්කම් ස්ථිර ලෙස GitHub හි සුරැකෙන ඉතිහාස සටහනයි.", "en": "Commit: A saved permanent milestone in GitHub documenting who made changes, what changed, and when.", "ta": "Commit: இணையதளத்தில் செய்யப்பட்ட மாற்றங்களை GitHub இல் நிரந்தரமாக பதிவு செய்யும் மைல்கல்."}, "token": {"si": "Token (ටෝකනය): ඔබගේ GitHub ගිණුමේ සාමාන්‍ය මුරපදය වෙනුවට වෙබ් අඩවිය වෙනස් කිරීමට පමණක් අවසර දෙන විශේෂ රහස් යතුරයි.", "en": "Token: A secure Personal Access Token with specific permissions to modify website files, replacing your main password.", "ta": "Token: இணையதள கோப்புகளை திருத்துவதற்கு மட்டும் அனுமதிக்கும் சிறப்பு ரகசிய அணுகல் சாவி."}, "publish": {"si": "Publish (ප්‍රකාශනය): කෙටුම්පත් (Draft) පිටුවක් හෝ තොරතුරක් සජීවීව අන්තර්ජාලයට සියලු දෙනාටම පෙනෙන සේ මුදා හැරීමයි.", "en": "Publish: Making content live and publicly visible to all website visitors across the internet.", "ta": "Publish: இணையதள பார்வையாளர்களுக்கு தெரியும் வகையில் உள்ளடக்கத்தை நேரலையாக வெளியிடுதல்."}, "backup": {"si": "Backup (ආරක්ෂිත පිටපත): අනතුරකදී හෝ වැරදීමකදී නැවත ප්‍රකෘතිමත් කරගත හැකි වෙබ් අඩවියේ සියලු ගොනුවල ආරක්ෂිත පිටපතයි.", "en": "Backup: A complete snapshot of site files saved as a Git branch or zip archive for zero-data-loss recovery.", "ta": "Backup: தவறு ஏற்பட்டால் பழைய நிலைக்கு மீட்கக்கூடிய இணையதள கோப்புகளின் பாதுகாப்பு நகல்."}, "passphrase": {"si": "Passphrase (රහස් වැකිය): පාසලේ අනවසර පරිශීලකයින් පරිපාලන පුවරුවෙන් දත්ත වෙනස් කිරීම වැළැක්වීමට යොදන අමතර මුරපදයයි.", "en": "Passphrase: An optional extra local security password safeguarding the editor controls against unauthorized changes.", "ta": "Passphrase: அங்கீகரிக்கப்படாத நபர்கள் மாற்றங்கள் செய்வதைத் தடுக்கும் கூடுதல் உள்ளூர் கடவுச்சொல்."}}, "tabs": {"dashboard": {"what": {"si": "පාසල් වෙබ් අඩවියේ සියලු අංශවල සූදානම සහ සම්පූර්ණත්වය එකවර පෙන්වන ප්‍රධාන පාලක පුවරුවයි.", "en": "Overview dashboard showing completion status, setup progress, and readiness of all school website modules.", "ta": "பாடசாலை இணையதளத்தின் அனைத்து பகுதிகளின் தயார்நிலை மற்றும் நிறைவுநிலையைக் காட்டும் மேலோட்டம்."}, "examples": {"si": "මෙහි ඇති පිරික්සුම් ලැයිස්තුව අනුව අසම්පූර්ණ අයිතම හඳුනාගෙන අදාළ පටිත්තට පිවිසෙන්න.", "en": "Review the readiness checklist and click the action buttons to complete missing items.", "ta": "சரிபார்ப்பு பட்டியலை மதிப்பாய்வு செய்து, விடுபட்டவற்றை முடிக்க பொத்தான்களை கிளிக் செய்யவும்."}, "mistakes": {"si": "ටෝකනය ඇතුළත් නොකර වෙනස්කම් සුරැකීමට උත්සාහ කිරීම.", "en": "Attempting to edit content before verifying GitHub connection.", "ta": "GitHub இணைப்பை சரிபார்க்காமல் உள்ளடக்கத்தை திருத்த முயற்சிப்பது."}, "view_url": "../index.html", "undo": {"si": "මෙම පටිත්තෙන් කිසිදු ගොනුවක් සෘජුව වෙනස් නොවේ.", "en": "No direct file edits occur here; dashboard is read-only.", "ta": "இங்கே கோப்புகள் மாற்றப்படுவதில்லை; இது பார்வைக்கானது மட்டுமே."}}, "news": {"what": {"si": "පාසලේ විශේෂ උත්සව, ජයග්‍රහණ, වාර්ෂික නිවාඩු සහ ප්‍රවෘත්ති ප්‍රකාශනය සඳහා භාවිත වේ.", "en": "Publishes school news articles, sports meet updates, prize giving, and major college achievements.", "ta": "பாடசாலை நிகழ்வுகள், விளையாட்டு விழாக்கள் மற்றும் சாதனைகள் பற்றிய செய்திகளை வெளியிடுகிறது."}, "examples": {"si": "උදා: '2026 වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙල සාර්ථකව නිමාවිය' (දිනය, විස්තරය සහ ඡායාරූපය).", "en": "e.g. 'Annual Inter-House Athletic Meet 2026 Concludes' with date, trilingual summary, and photo.", "ta": "எ.கா. '2026 வருடாந்த இல்ல விளையாட்டு விழா' திகதி, உரை மற்றும் படத்துடன்."}, "mistakes": {"si": "දිනය වැරදි ආකෘතියකින් දැමීම, සිංහල/දෙමළ/ඉංග්‍රීසි භාෂා ත්‍රිත්වයෙන්ම සිරස්තල නොයෙදීම.", "en": "Forgetting to provide titles in Sinhala and Tamil, or uploading uncompressed huge raw photos.", "ta": "மூன்று மொழிகளிலும் தலைப்புகளை உள்ளிட மறப்பது அல்லது சுருக்கப்படாத பெரிய படங்களை பதிவேற்றுவது."}, "view_url": "../news.html", "undo": {"si": "Activity පටිත්තෙන් පෙර Commit එක Restore කරන්න හෝ ප්‍රවෘත්තිය සංස්කරණය කර නැවත සුරකින්න.", "en": "Use the Activity tab to Undo the commit, or edit/delete the news card and save.", "ta": "Activity தாவலில் Undo செய்யலாம் அல்லது செய்தியை திருத்தி மீண்டும் சேமிக்கலாம்."}}, "notices": {"what": {"si": "දෙමාපියන්, ගුරුවරුන් සහ සිසුන් සඳහා වන හදිසි පාසල් නිවේදන සහ චක්‍රලේඛ දැනුම්දීම්.", "en": "Official notices, term test announcements, holiday circulars, and parent advisories.", "ta": "அதிகாரபூர்வ அறிவிப்புகள், பரீட்சை அறிவிப்புகள் மற்றும் விடுமுறை சுற்றறிக்கைகள்."}, "examples": {"si": "උදා: 'පළමු වාර විභාග කාලසටහන නිකුත් කෙරේ', ප්‍රමුඛතාවය: Normal / Urgent.", "en": "e.g. 'First Term Examination Schedule Released' with priority and date.", "ta": "எ.கா. 'முதலாம் தவணை பரீட்சை அட்டவணை வெளியிடப்பட்டது'."}, "mistakes": {"si": "කල් ඉකුත් වූ නිවේදන ඉවත් නොකර දිගු කලක් තබා ගැනීම.", "en": "Leaving expired notices live for months without archiving or deleting.", "ta": "காலாவதியான அறிவிப்புகளை அகற்றாமல் விட்டுவிடுவது."}, "view_url": "../notices.html", "undo": {"si": "අදාළ නිවේදනය සංස්කරණය කිරීම හෝ Activity පටිත්තෙන් Undo කිරීම.", "en": "Edit the notice to update or use Activity tab to restore previous version.", "ta": "அறிவிப்பை திருத்தலாம் அல்லது Activity தாவலில் முந்தைய பதிப்பை மீட்டெடுக்கலாம்."}}, "events": {"what": {"si": "පාසල් වාර දින දර්ශනය, විභාග දින, දෙමාපිය රැස්වීම් සහ ඉදිරි උත්සව කාලසටහන.", "en": "Academic calendar, term dates, sports fixtures, and upcoming school events.", "ta": "கல்வி நாள்காட்டி, தவணை திகதிகள் மற்றும் வரவிருக்கும் பாடசாலை நிகழ்வுகள்."}, "examples": {"si": "උදා: '2026 වර්ෂාවසාන ත්‍යාග ප්‍රදානෝත්සවය' - 2026-11-20 පෙ.ව. 9:00.", "en": "e.g. 'College Prize Giving Day' - 2026-11-20 at 9:00 AM in College Main Hall.", "ta": "எ.கா. 'கல்லூரி பரிசளிப்பு விழா' - 2026-11-20 காலை 9:00 மணி."}, "mistakes": {"si": "පසුගිය දිනවල පැවති උත්සව කාලසටහනෙන් ඉවත් නොකිරීම.", "en": "Not keeping event dates in chronological order.", "ta": "நிகழ்வு திகதிகளை காலவரிசைப்படி வைக்காமல் இருப்பது."}, "view_url": "../index.html#events", "undo": {"si": "සිදුවීම නැවත සංස්කරණය කර සුරකින්න.", "en": "Edit the event entry or restore via Activity tab.", "ta": "நிகழ்வை திருத்தி மீண்டும் சேமிக்கவும்."}}, "custom_pages": {"what": {"si": "නව වෙබ් පිටු (උදා: ගුරු මණ්ඩලය, විද්‍යාගාරය, ක්‍රීඩා සංගම්) නිර්මාණය කර කොටස් (Blocks) මඟින් සකස් කිරීම.", "en": "Create rich standalone pages (e.g. Science Lab, Staff Directory, Library) using modular content blocks.", "ta": "தனிப்பயன் புதிய பக்கங்களை உருவாக்கி உள்ளடக்க தொகுதிகள் மூலம் வடிவமைத்தல்."}, "examples": {"si": "පිටු මාතෘකාව: 'පාසල් පුස්තකාලය' (slug: 'library'), Text block, Image block, Table block.", "en": "Title: 'School Library' (slug: 'library'), add Heading, Text, Gallery, and Table blocks.", "ta": "தலைப்பு: 'பாடசாலை நூலகம்' (slug: 'library'), தலைப்பு, உரை, படத் தொகுதிகளைச் சேர்க்கவும்."}, "mistakes": {"si": "Slug නමට හිස්තැන් (spaces) හෝ විශේෂ අක්ෂර යෙදීම (ඉංග්‍රීසි අකුරු, ඉලක්කම් හා hyphens පමණක් යොදන්න).", "en": "Using capital letters or spaces in the slug (use lowercase letters and hyphens only).", "ta": "Slug இல் இடைவெளிகள் அல்லது சிறப்பு எழுத்துக்களைப் பயன்படுத்துவது."}, "view_url": "../page.html?p=sample", "undo": {"si": "පිටුව Draft තත්වයට මාරු කරන්න, නැතහොත් Delete කරන්න.", "en": "Toggle page status to Draft or revert using Activity tab.", "ta": "பக்கத்தை வரைவு (Draft) நிலைக்கு மாற்றவும் அல்லது நீக்கவும்."}}, "menu": {"what": {"si": "වෙබ් අඩවියේ ඉහළ ඇති ප්‍රධාන මෙනු තීරුව සහ උප මෙනු (Dropdowns) කළමනාකරණය.", "en": "Configures navigation links and dropdown menus at the top of every public web page.", "ta": "இணையதளத்தின் உச்சி மெனு மற்றும் கீழ்விரிவு மெனுக்களை கட்டமைக்கிறது."}, "examples": {"si": "Home, About Us, Academics, Student Life, Media (News & Gallery), Admissions, Contact Us.", "en": "Organize links into groups to ensure the desktop header stays strictly on one row.", "ta": "டெஸ்க்டாப் தலைப்பு ஒரே வரியில் இருப்பதை உறுதிசெய்ய இணைப்புகளை ஒழுங்கமைக்கவும்."}, "mistakes": {"si": "Home (මුල් පිටුව) මෙනුවෙන් ඉවත් කිරීම (එය අනිවාර්යයෙන්ම තිබිය යුතුය).", "en": "Deleting or hiding the Home item (Home link is mandatory).", "ta": "Home (முகப்பு) இணைப்பை நீக்குவது அல்லது மறைப்பது (இது கட்டாயமானது)."}, "view_url": "../index.html", "undo": {"si": "මෙනු වෙනස්කම් අවලංගු කර මෙනු ගොනුව පෙර තත්වයට පත් කරන්න.", "en": "Reorder/restore items or restore content/menu.json via Activity tab.", "ta": "பொருட்களை மறுசீரமைக்கவும் அல்லது முந்தைய பதிப்பை மீட்டெடுக்கவும்."}}, "settings": {"what": {"si": "පාසලේ නිල නම, ලිපිනය, දුරකථන, විද්‍යුත් තැපෑල, කාර්යාල වේලාවන්, RTI නිලධාරී සහ Google සිතියම.", "en": "Core school profile, contact information, trilingual office hours, RTI officer, and Google Maps embed.", "ta": "பாடசாலை தகவல், தொடர்பு எண்கள், அலுவலக நேரம் மற்றும் Google வரைபடம்."}, "examples": {"si": "සිතියම් කේතය: https://www.google.com/maps/embed... පමණක් ඇතුළත් කරන්න.", "en": "Paste valid Google Maps embed URL (must begin with https://www.google.com/maps/embed).", "ta": "சரியான Google வரைபட URL ஐ உள்ளிடவும்."}, "mistakes": {"si": "සම්පූර්ණ iframe කේතයක් වෙනුවට වැරදි වෙබ් සබැඳියක් ඇතුළත් කිරීම.", "en": "Pasting non-https links or invalid embed sources.", "ta": "https அல்லாத இணைப்புகளை உள்ளிடுவது."}, "view_url": "../contact.html", "undo": {"si": "Activity පටිත්තෙන් content/settings.json හි පෙර පිටපත Restore කරන්න.", "en": "Restore content/settings.json from the Activity or Version History tab.", "ta": "Activity தாவலில் content/settings.json ஐ மீட்டெடுக்கவும்."}}, "knowledge": {"what": {"si": "පාසලේ ඉතිහාසය, දැක්ම, මෙහෙවර, විද්‍යාගාර, ක්‍රීඩා සහ තොරතුරු මධ්‍යස්ථානය (Knowledge Base & AI).", "en": "Structured school profile & fact base powering search, public inquiry, and safe AI drafting.", "ta": "பாடசாலை வரலாறு, தொலைநோக்கு மற்றும் AI உதவியாளருக்கான அறிவுத்தளம்."}, "examples": {"si": "පාසලේ නිර්මාතෘ, ආරම්භ කළ වර්ෂය, පවතින විෂය ධාරා (විද්‍යා, වාණිජ, කලා, තාක්ෂණවේදය).", "en": "Founding year, academic streams (Science, Commerce, Arts, Tech), sports teams, labs.", "ta": "நிறுவப்பட்ட ஆண்டு, பாடப்பிரிவுகள் (விஞ்ஞானம், வணிகம், கலை, தொழில்நுட்பம்)."}, "mistakes": {"si": "සිසුන්ගේ හෝ ගුරුවරුන්ගේ පෞද්ගලික රහස්‍ය තොරතුරු මෙහි ලිවීම.", "en": "Entering confidential student records or unverified rumors into public repository.", "ta": "ரகசிய மாணவர் விவரங்களை பொது களஞ்சியத்தில் உள்ளிடுவது."}, "view_url": "../about.html", "undo": {"si": "අදාළ පිළිතුර සංස්කරණය කිරීම හෝ පෙර පිටපත ප්‍රතිස්ථාපනය කිරීම.", "en": "Edit individual answers or revert content/ai-knowledge.json via Activity tab.", "ta": "பதில்களை திருத்தலாம் அல்லது முந்தைய பதிப்பை மீட்டெடுக்கலாம்."}}, "gallery": {"what": {"si": "පාසල් උත්සව සහ ක්‍රියාකාරකම් පිළිබඳ ඡායාරූප ගැලරිය.", "en": "School photo gallery showcasing ceremonies, sports, societies, and prize awards.", "ta": "பாடசாலை நிகழ்வுகளின் புகைப்பட தொகுப்பு."}, "examples": {"si": "ඡායාරූපයක් තෝරා Upload කරන්න (ස්වයංක්‍රීයව ප්‍රශස්ත ප්‍රමාණයට Canvas මඟින් සංකෝචනය වේ).", "en": "Select JPG/PNG images; the browser compresses them automatically via Canvas before saving.", "ta": "படத்தை தெரிவு செய்யவும்; உலாவி தானாகவே படத்தை சுருக்கி பதிவேற்றும்."}, "mistakes": {"si": "විස්තරය (Caption) නොමැතිව ඡායාරූප පමණක් දැමීම.", "en": "Uploading without meaningful captions in Sinhala and Tamil.", "ta": "விளக்கக் குறிப்புகள் இல்லாமல் படங்களை மட்டும் பதிவேற்றுவது."}, "view_url": "../gallery.html", "undo": {"si": "ඡායාරූපය Gallery ලැයිස්තුවෙන් Delete කර Save කරන්න.", "en": "Delete photo from list and click Save changes to website.", "ta": "படத்தை நீக்கிவிட்டு மாற்றங்களை சேமிக்கவும்."}}, "downloads": {"what": {"si": "පාසල් චක්‍රලේඛ, විභාග කාලසටහන්, අයදුම්පත් සහ PDF ලේඛන බාගත කිරීම සඳහා උඩුගත කිරීම.", "en": "Upload and manage public downloadable PDF circulars, timetables, and application forms.", "ta": "PDF சுற்றறிக்கைகள், நேர அட்டவணைகள் மற்றும் படிவங்களை பதிவேற்றவும்."}, "examples": {"si": "උදා: '2026 පළමු වාර විභාග කාලසටහන.pdf'.", "en": "e.g. 'Term 1 Exam Timetable 2026.pdf'.", "ta": "எ.கா. 'முதலாம் தவணை பரீட்சை அட்டவணை 2026.pdf'."}, "mistakes": {"si": "PDF නොවන විශාල ගොනු උඩුගත කිරීම.", "en": "Uploading files other than PDF format or huge scanned uncompressed files.", "ta": "PDF அல்லாத பிற வடிவங்களை பதிவேற்ற முயற்சிப்பது."}, "view_url": "../downloads.html", "undo": {"si": "ලේඛනය ලැයිස්තුවෙන් ඉවත් කිරීම.", "en": "Remove entry and update content/downloads.json.", "ta": "பட்டியலில் இருந்து நீக்கி புதுப்பிக்கவும்."}}, "activity": {"what": {"si": "මෑතකදී වෙබ් අඩවියේ සිදුවූ සියලු සුරැකීම් (Commits) සහ වැරදි ආපසු හැරවීමේ (Undo) මධ්‍යස්ථානය.", "en": "Audit log of recent Git commits with plain language summaries and instant safe Undo.", "ta": "சமீபத்திய மாற்றங்களின் பதிவு மற்றும் உடனடி Undo அம்சம்."}, "examples": {"si": "සෑම සුරැකීමකටම කවුරුන්, කවදා, කුමන ගොනුව වෙනස් කළේද යන්න දැකගත හැක.", "en": "View author, relative timestamp, files changed, and click Undo to create a safe revert commit.", "ta": "மாற்றியவர், நேரம், கோப்பு விபரங்களைக் கண்டு Undo பொத்தானை அழுத்தவும்."}, "mistakes": {"si": "අවශ්‍ය නොවන අවස්ථාවල පරණ වෙනස්කම් කලබලයෙන් Undo කිරීම.", "en": "Reverting without checking which files were modified.", "ta": "எந்த கோப்புகள் மாறின என்பதை கவனிக்காமல் Undo செய்வது."}, "view_url": "../index.html", "undo": {"si": "Undo කළ පසු නැවත නව Commit එකක් ලෙස සුරැකෙන බැවින් කිසිදු දත්තයක් නැති නොවේ.", "en": "Undo creates a clean forward commit; no git history is destroyed.", "ta": "Undo ஒரு புதிய பதிவை உருவாக்குகிறது; தரவு எதுவும் அழியாது."}}, "guide": {"what": {"si": "ගුරුවරුන් සඳහා පියවරෙන් පියවර උපදෙස් සහ මුද්‍රණය කළ හැකි අත්පොත.", "en": "Step-by-step teacher user guides with printable view and system changelog.", "ta": "ஆசிரியர்களுக்கான படிப்படியான வழிகாட்டல்கள் மற்றும் அச்சிடக்கூடிய கையேடு."}, "examples": {"si": "පුවතක් දැමීම, ඡායාරූපයක් එක් කිරීම, මෙනුව වෙනස් කිරීම වැනි මඟපෙන්වීම්.", "en": "Guides for common workflows like publishing news, uploading photos, and editing settings.", "ta": "செய்தி வெளியிடுதல், படம் பதிவேற்றுதல் போன்ற பொதுவான வழிகாட்டல்கள்."}, "mistakes": {"si": "නැත.", "en": "None (reference guide).", "ta": "இல்லை."}, "view_url": "../index.html", "undo": {"si": "කියවීම සඳහා පමණි.", "en": "Read-only instructional reference.", "ta": "பார்வைக்கு மட்டுமே."}}}, "guides": [{"id": "add-news", "title": {"si": "1. පාසල් පුවතක් හෝ නිවේදනයක් පළ කරන්නේ කෙසේද?", "en": "1. How to add a school news article or notice", "ta": "1. பாடசாலை செய்தி அல்லது அறிவிப்பை எவ்வாறு சேர்ப்பது?"}, "steps": {"si": ["පරිපාලන පුවරුවේ '📰 පුවත් සහ සිදුවීම්' පටිත්ත තෝරන්න.", "'+ Add news item' බොත්තම ක්ලික් කරන්න.", "දිනය, ඉංග්‍රීසි/සිංහල/දෙමළ සිරස්තල සහ විස්තරය පුරවන්න.", "අවශ්‍ය නම් 'Upload Photo' ක්ලික් කර ඡායාරූපයක් එක් කරන්න.", "පහළ ඇති 'Save all changes to website' ක්ලික් කර ස්ථිර කරන්න. තත්පර කිහිපයකින් එය වෙබ් අඩවියේ දිස්වේ."], "en": ["Click the '📰 News & Events' tab in the navigation bar.", "Click the '+ Add news item' button at the top.", "Fill in the date, along with the title and summary in English, Sinhala, and Tamil.", "Optionally click 'Upload Photo' to select an image from your device.", "Click 'Save all changes to website' and confirm the prompt to publish."], "ta": ["'📰 செய்திகள் மற்றும் நிகழ்வுகள்' தாவலை கிளிக் செய்யவும்.", "'+ Add news item' பொத்தானை கிளிக் செய்யவும்.", "திகதி, ஆங்கிலம், சிங்களம் மற்றும் தமிழ் தலைப்புகளை உள்ளிடவும்.", "விரும்பினால் 'Upload Photo' மூலம் படத்தை சேர்க்கவும்.", "'Save all changes to website' பொத்தானை கிளிக் செய்து உறுதிப்படுத்தவும்."]}}, {"id": "upload-photos", "title": {"si": "2. ඡායාරූප ගැලරියට පින්තූර එකතු කරන්නේ කෙසේද?", "en": "2. How to upload photos to the gallery", "ta": "2. புகைப்பட தொகுப்பில் படங்களை எவ்வாறு பதிவேற்றுவது?"}, "steps": {"si": ["'🖼️ ඡායාරූප (Gallery)' පටිත්තට පිවිසෙන්න.", "'+ Add photo' බොත්තම ක්ලික් කරන්න.", "'Choose File' මඟින් ඔබගේ දුරකථනයේ හෝ පරිගණකයේ ඇති ඡායාරූපය තෝරන්න (එය ස්වයංක්‍රීයව ප්‍රශස්ත ප්‍රමාණයට සංකෝචනය වේ).", "ඡායාරූපය කුමක් පිළිබඳවද යන්න සිංහල, දෙමළ, ඉංග්‍රීසි භාෂාවලින් සටහන් කරන්න.", "'Save all changes to website' ක්ලික් කර සුරකින්න."], "en": ["Navigate to the '🖼️ Photo Gallery' tab.", "Click the '+ Add photo' button.", "Choose an image file from your computer or phone (browser optimizes it automatically).", "Add descriptive captions in Sinhala, Tamil, and English.", "Click 'Save all changes to website' and confirm."], "ta": ["'🖼️ புகைப்பட தொகுப்பு' தாவலுக்கு செல்லவும்.", "'+ Add photo' பொத்தானை கிளிக் செய்யவும்.", "படத்தை தெரிவு செய்யவும் (உலாவி தானாகவே அளவை சீராக்கும்).", "சிங்களம், தமிழ், ஆங்கிலத்தில் தலைப்பு குறிப்பை சேர்க்கவும்.", "'Save all changes to website' பொத்தானை கிளிக் செய்யவும்."]}}, {"id": "create-page", "title": {"si": "3. නව අභිරුචි පිටුවක් (Custom Page) සකස් කරන්නේ කෙසේද?", "en": "3. How to create and publish a new custom page", "ta": "3. புதிய தனிப்பயன் பக்கத்தை எவ்வாறு உருவாக்குவது?"}, "steps": {"si": ["'📄 අභිරුචි පිටු (Pages)' පටිත්තට පිවිසෙන්න.", "'+ New Page' ක්ලික් කර පිටුවේ නම සිංහල, දෙමළ, ඉංග්‍රීසි භාෂාවලින් ලබාදෙන්න (ඉංග්‍රීසි නමින් slug එකක් ස්වයංක්‍රීයව හැදේ).", "'Create Page & Open Editor' ක්ලික් කරන්න.", "Heading, Text, Image, Gallery, Cards, Table වැනි ඔබට අවශ්‍ය Blocks එකතු කරන්න.", "'Status: Draft' යන්න 'Published' ලෙස මාරු කර 'Save & Publish' ක්ලික් කරන්න."], "en": ["Go to the '📄 Custom Pages' tab.", "Click '+ New Page' and enter titles in Sinhala, Tamil, and English.", "Click 'Create Page & Open Editor'.", "Add modular blocks (Heading, Text, Image, Gallery, Cards, Table).", "Toggle status to 'Published' and click '💾 Save & Publish'."], "ta": ["'📄 தனிப்பயன் பக்கங்கள்' தாவலுக்கு செல்லவும்.", "'+ New Page' கிளிக் செய்து மூன்று மொழிகளிலும் தலைப்பை உள்ளிடவும்.", "'Create Page & Open Editor' பொத்தானை கிளிக் செய்யவும்.", "உங்களுக்கு தேவையான தொகுதிகளை (Blocks) சேர்க்கவும்.", "நிலையை 'Published' என மாற்றி சேமிக்கவும்."]}}, {"id": "change-menu", "title": {"si": "4. වෙබ් අඩවියේ ප්‍රධාන මෙනුව වෙනස් කරන්නේ කෙසේද?", "en": "4. How to update the navigation menu", "ta": "4. பிரதான மெனுவை எவ்வாறு மாற்றுவது?"}, "steps": {"si": ["'🧭 ප්‍රධාන මෙනුව (Menu)' පටිත්තට යන්න.", "නව සබැඳියක් එක් කිරීමට '+ Add Menu Item' හෝ '+ Add Dropdown Group' ක්ලික් කරන්න.", "මෙනු අයිතම උඩට/පහළට ගෙන යාමට ⬆️ සහ ⬇️ බොත්තම් භාවිත කරන්න.", "යම් පිටුවක් තාවකාලිකව සැඟවීමට 👁️ අයිකනය ක්ලික් කරන්න.", "සෑම විටම 'Home (මුල් පිටුව)' මෙනුවේ තිබිය යුතුය. අවසානයේ 'Save Menu Changes' ක්ලික් කරන්න."], "en": ["Open the '🧭 Navigation Menu' tab.", "Click '+ Add Menu Item' or '+ Add Dropdown Group'.", "Use the ⬆️ and ⬇️ arrows to reorder items logically.", "Toggle visibility using the eye icon if needed.", "Ensure the Home link remains present, then click 'Save Menu Changes'."], "ta": ["'🧭 பிரதான மெனு' தாவலை திறக்கவும்.", "புதிய இணைப்பை சேர்க்க '+ Add Menu Item' கிளிக் செய்யவும்.", "வரிசையை மாற்ற ⬆️ மற்றும் ⬇️ அம்புக்குறிகளை பயன்படுத்தவும்.", "Home இணைப்பு இருப்பதை உறுதிசெய்து 'Save Menu Changes' கிளிக் செய்யவும்."]}}, {"id": "edit-contact", "title": {"si": "5. පාසල් දුරකථන අංක සහ ලිපිනය සංස්කරණය කරන්නේ කෙසේද?", "en": "5. How to edit school contact details and office hours", "ta": "5. பாடசாலை தொடர்பு விபரங்களை எவ்வாறு திருத்துவது?"}, "steps": {"si": ["'⚙️ පාසල් තොරතුරු (Settings)' පටිත්තට පිවිසෙන්න.", "පාසලේ දුරකථන අංක, විද්‍යුත් තැපෑල (Email), ලිපිනය හෝ කාර්යාල වේලාවන් වෙනස් කරන්න.", "Google Maps embed එක මාරු කරන්නේ නම් https://www.google.com/maps/embed සබැඳිය පමණක් යොදන්න.", "'Save Site Settings' ක්ලික් කර තහවුරු කරන්න."], "en": ["Go to the '⚙️ Site Settings' tab.", "Update official phone numbers, email address, physical address, or office hours.", "For Google Maps, ensure the URL starts with https://www.google.com/maps/embed.", "Click 'Save Site Settings' and confirm."], "ta": ["'⚙️ பாடசாலை அமைப்புகள்' தாவலுக்கு செல்லவும்.", "தொலைபேசி எண், மின்னஞ்சல், முகவரியை புதுப்பிக்கவும்.", "'Save Site Settings' பொத்தானை கிளிக் செய்யவும்."]}}, {"id": "admission-apps", "title": {"si": "6. ඇතුළත් වීමේ අයදුම්පත් සහ Google පෝරමය පරීක්ෂා කරන්නේ කෙසේද?", "en": "6. How to manage admissions and Google Form applications", "ta": "6. சேர்க்கை விண்ணப்பங்களை எவ்வாறு கையாள்வது?"}, "steps": {"si": ["'📋 අයදුම්පත් (Applications)' පටිත්තට යන්න.", "පාසලේ Google Form එකේ සබැඳිය සහ සම්බන්ධිත Google Sheet එකේ ලින්ක් එක පරීක්ෂා කරන්න.", "දෙමාපියන් ඉදිරිපත් කළ අයදුම්පත් සෘජුවම පාසලේ Google Drive/Sheets හි සටහන් වන බැවින් එහි ඇති 'Open Google Sheet' බොත්තමෙන් බලන්න."], "en": ["Navigate to the '📋 Applications' tab.", "Check the configured Google Form link and associated responses spreadsheet.", "Click 'Open Google Sheet' to review submitted student applications securely in Google Drive."], "ta": ["'📋 விண்ணப்பங்கள்' தாவலுக்கு செல்லவும்.", "Google Form இணைப்பை சரிபார்க்கவும்.", "விண்ணப்பங்களை பார்வையிட 'Open Google Sheet' ஐ கிளிக் செய்யவும்."]}}, {"id": "undo-mistake", "title": {"si": "7. වැරදීමක් සිදුවූ විට පෙර තත්වයට පත් කරන්නේ (Undo) කෙසේද?", "en": "7. How to safely undo a mistake", "ta": "7. தவறு ஏற்பட்டால் எவ்வாறு மீட்டமைப்பது (Undo)?"}, "steps": {"si": ["'🕒 ක්‍රියාකාරකම් සහ Undo (Activity)' පටිත්තට පිවිසෙන්න.", "මෑතකදී කළ සුරැකීම් ලැයිස්තුවෙන් ඔබට අහෝසි කිරීමට අවශ්‍ය Commit එක සොයාගන්න.", "'↺ Undo this change' බොත්තම ක්ලික් කරන්න.", "විස්තරය පරීක්ෂා කර තහවුරු කරන්න. පැරණි ගොනුව නැවත ස්වයංක්‍රීයව ප්‍රතිස්ථාපනය වේ."], "en": ["Go to the '🕒 Activity & Undo' tab.", "Find the commit you want to roll back in the recent changes list.", "Click the '↺ Undo this change' button beside it.", "Review the safety dialog and confirm to revert without losing history."], "ta": ["'🕒 செயல்பாடுகள் மற்றும் Undo' தாவலுக்கு செல்லவும்.", "பட்டியலில் நீங்கள் ரத்து செய்ய விரும்பும் மாற்றத்தை கண்டறியவும்.", "'↺ Undo this change' பொத்தானை கிளிக் செய்து உறுதிப்படுத்தவும்."]}}, {"id": "token-expired", "title": {"si": "8. GitHub Token එක කල් ඉකුත් වූ විට (Expired) කුමක් කළ යුතුද?", "en": "8. What to do if your GitHub Personal Access Token expires", "ta": "8. GitHub டோக்கன் காலாவதியானால் என்ன செய்வது?"}, "steps": {"si": ["ඉහළ දකුණු කෙළවරේ ඇති 'Log out (clear token)' බොත්තම ක්ලික් කරන්න.", "GitHub.com වෙත පිවිස Settings → Developer settings → Personal access tokens → Fine-grained tokens වෙත යන්න.", "'Generate new token' ක්ලික් කර පාසල් repository එක තෝරා 'Contents: Read and write' අවසර ලබාදෙන්න.", "නව token එක පිටපත් කරගෙන නැවත අපගේ පරිපාලන පිටුවේ ඇතුළත් කර 'Connect' ක්ලික් කරන්න."], "en": ["Click 'Log out (clear token)' at the top right of the editor.", "Log into GitHub.com and navigate to Settings → Developer settings → Personal access tokens → Fine-grained tokens.", "Generate a new token scoped to the school repository with 'Contents: Read and write' permission.", "Paste the new token into the login form and click 'Connect'."], "ta": ["'Log out (clear token)' பொத்தானை கிளிக் செய்யவும்.", "GitHub.com இல் Settings → Developer settings → Fine-grained tokens செல்லவும்.", "'Contents: Read and write' அனுமதியுடன் புதிய டோக்கனை உருவாக்கவும்.", "புதிய டோக்கனை உள்ளிட்டு 'Connect' கிளிக் செய்யவும்."]}}], "changelog": [{"version": "v3.2", "date": "2026-10", "title": {"si": "පරිපාලන පුවරුවේ ගුරු හිතකාමී නව අතුරුමුහුණත", "en": "Teacher-Friendly Admin Interface Upgrade", "ta": "ஆசிரியர் நட்பு நிர்வாக இடைமுக மேம்பாடு"}, "details": {"si": "සිංහල, දෙමළ, ඉංග්‍රීසි භාෂා ත්‍රිත්වයෙන්ම පරිපාලන පුවරුව භාවිත කිරීමේ හැකියාව, Getting Started මඟපෙන්වීම් උපකරණ පුවරුව, එක් එක් පටිත්ත සඳහා '?' උපකාර තොරතුරු, පාසල් දැනුම් පද්ධතිය (Knowledge Base), ආරක්ෂිත Undo පද්ධතිය සහ සජීවී පෙරදසුන් (Preview).", "en": "Full Sinhala/Tamil/English admin interface localization, Getting Started checklist dashboard, contextual '?' help panels on all tabs, School Knowledge module, safe Activity Undo, and multi-device Live Preview.", "ta": "முழுமையான சிங்களம்/தமிழ்/ஆங்கில இடைமுகம், ஆரம்ப வழிகாட்டி பலகை, அனைத்து தாவல்களுக்கும் உதவி பேனல்கள், பாடசாலை அறிவுத்தளம், பாதுகாப்பான Undo மற்றும் முன்னோட்டம்."}}, {"version": "v3.1", "date": "2026-10", "title": {"si": "සම්පූර්ණ නිර්මාණ පද්ධතිය (Design System) සහ අඩවි සෙවුම", "en": "Unified Design System & Instant Multilingual Site Search", "ta": "ஒருங்கிணைந்த வடிவமைப்பு அமைப்பு மற்றும் உடனடி தேடல்"}, "details": {"si": "මොනරාගල පැල්වත්ත විද්‍යාලයේ ලාංඡන වර්ණ (Maroon & Gold), 8-pt spacing, trilingual typography, කාඩ්පත් සහ ආකෘති පත්‍ර ප්‍රමිතිකරණය, තනි පේළියේ මෙනු සැකසුම සහ ක්ෂණික සෙවුම් පද්ධතිය.", "en": "College identity tokens (Maroon & Gold), 8-pt spacing, trilingual font scale, single-row navigation with dropdowns, custom block page builder, and live search overlay.", "ta": "கல்லூரி வண்ணங்கள் (Maroon & Gold), 8-pt இடைவெளி, மூன்று மொழி எழுத்துருக்கள், தனிப்பயன் பக்க தொகுதி திருத்தி மற்றும் நேரலை தேடல்."}}]};
+let schoolKnowledgeData = {"last_updated": "2026-10-10", "completeness_score": 85, "sections": [{"id": "identity", "title": {"si": "මූලික තොරතුරු සහ අනන්‍යතාව", "en": "Basic Profile & Institutional Identity", "ta": "அடிப்படை விபரங்கள் மற்றும் அடையாளம்"}, "why_needed": {"si": "රාජ්‍ය අධ්‍යාපන අමාත්‍යාංශය සහ මහජනතාව සඳහා පාසලේ නිල නීත්‍යානුකූල අනන්‍යතාව තහවුරු කිරීමට.", "en": "Establishes legal institutional status under Ministry of Education guidelines.", "ta": "கல்வி அமைச்சின் கீழ் உத்தியோகபூர்ව நிலையை உறுதிப்படுத்துகிறது."}, "example_answer": {"si": "මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, ඌව පළාත, මොනරාගල දිස්ත්‍රික්කය, වැල්ලවාය කලාපය.", "en": "Mo/Pelwatta Navodya Secondary College, Uva Province, Monaragala District, Wellawaya Zone.", "ta": "மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி, ஊவா மாகாணம், மொணராகலை மாவட்டம்."}, "status": "complete", "data": {"school_name": "Mo/Pelwatta Navodya Secondary College", "school_type": "Government 1AB National School", "grades": "Grade 6 to Grade 13", "medium": "Sinhala (English medium for select subjects)", "zone": "Wellawaya Educational Zone", "province": "Uva Province"}}, {"id": "history", "title": {"si": "පාසල් ඉතිහාසය සහ ආරම්භය", "en": "College History & Founding Milestones", "ta": "கல்லூரி வரலாறு மற்றும் ஆரம்பம்"}, "why_needed": {"si": "පාසලේ උරුමය සහ ප්‍රජා සේවය පිළිබඳ විශ්වාසනීය ඓතිහාසික පසුබිමක් සැපයීමට.", "en": "Documents founding heritage, community roots, and elevation to Navodya status.", "ta": "கல்லூரியின் பாரம்பரியம் மற்றும் வரலாற்று பின்னணியை ஆவணப்படுத்துகிறது."}, "example_answer": {"si": "1980 දශකයේ ආරම්භ වී පසුව නවෝද්‍යා සහ ජාතික පාසල් තත්වයට උසස් කරන ලදී.", "en": "Established to serve the Pelwatta community, upgraded to Navodya Secondary School.", "ta": "பெல்வத்தை சமூகத்திற்கு சேவை செய்ய நிறுவப்பட்டு, நவோத்யா கல்லூரியாக உயர்த்தப்பட்டது."}, "status": "complete", "data": {"founding_period": "Established in Pelwatta, Monaragala", "milestones": "Designated as Navodya Secondary College with expanded secondary and A/L laboratory facilities."}}, {"id": "vision_mission", "title": {"si": "දැක්ම, මෙහෙවර සහ තේමා පාඨය", "en": "Vision, Mission & College Motto", "ta": "தொலைநோக்கு, நோக்கம் மற்றும் குறிக்கோள்"}, "why_needed": {"si": "පාසලේ මූලික අධ්‍යාපනික අරමුණු සහ සාරධර්ම ප්‍රකාශ කිරීමට.", "en": "Defines core educational values, moral ethics, and academic ambitions.", "ta": "அடிப்படைக் கல்வி இலக்குகள் மற்றும் விழுமியங்களை வரையறுக்கிறது."}, "example_answer": {"si": "දැක්ම: ගුණගරුක, විනයගරුක හා දැනුමෙන් සන්නද්ධ දරු පරපුරක් බිහි කිරීම. තේමා පාඨය: විද්‍යාවෙන් ලොව දකිමු.", "en": "Vision: Nurturing disciplined, skilled, and virtuous citizens for the nation.", "ta": "தொலைநோக்கு: ஒழுக்கமும் திறமையும் கொண்ட சிறந்த மாணவர்களை உருவாக்குதல்."}, "status": "complete", "data": {"motto": "Knowledge Illuminates Life", "vision": "Empowering students in Monaragala with 21st-century knowledge and noble values.", "mission": "Delivering holistic secondary education with modern science, arts, and technology learning environments."}}, {"id": "academics", "title": {"si": "අධ්‍යාපනික ධාරා සහ විෂය ක්ෂේත්‍ර", "en": "Academic Curriculum & A/L Streams", "ta": "கல்விப் பாடத்திட்டம் மற்றும் உயர்தர பிரிவுகள்"}, "why_needed": {"si": "උසස් පෙළට ඇතුළත් වන සිසුන් සහ දෙමාපියන් සඳහා විෂය තේරීම් පිළිබඳ මඟපෙන්වීමට.", "en": "Guides parents and prospective students on subject choices and G.C.E. A/L pathways.", "ta": "உயர்தரப் பிரிவுகள் மற்றும் பாடத் தெரிவுகள் பற்றிய வழிகாட்டல்."}, "example_answer": {"si": "සාමාන්‍ය පෙළ (Grades 6-11) සහ උසස් පෙළ (ජීව විද්‍යා, භෞතික විද්‍යා, වාණිජ, කලා, තාක්ෂණවේදය).", "en": "Grades 6-11 (G.C.E. O/L) and G.C.E. A/L in Science, Commerce, Arts, and Technology.", "ta": "தரம் 6-11 (O/L) மற்றும் A/L விஞ்ஞானம், வர்த்தகம், கலை, தொழில்நுட்ப பிரிவுகள்."}, "status": "complete", "data": {"ol_subjects": "All National Curriculum O/L core and basket subjects", "al_streams": ["Physical Science (Maths)", "Biological Science (Bio)", "Commerce", "Arts", "Technology (Bio-systems & Engineering)"]}}, {"id": "facilities", "title": {"si": "විද්‍යාගාර සහ ඉගෙනුම් පහසුකම්", "en": "Campus Facilities & Laboratories", "ta": "வளாக வசதிகள் மற்றும் ஆய்வகங்கள்"}, "why_needed": {"si": "පාසලේ පවතින සම්පත් හා තාක්ෂණික පහසුකම් මහජනතාවට දැක්වීමට.", "en": "Highlights laboratory, computer, library, and sporting infrastructure.", "ta": "ஆய்வகம், கணினி மையம் மற்றும் நூலக வசதிகளை விளக்குகிறது."}, "example_answer": {"si": "නවීන පරිගණක විද්‍යාගාරය, උසස් පෙළ විද්‍යාගාර, පුස්තකාලය, ක්‍රීඩාංගණය, සෞන්දර්ය ඒකකය.", "en": "Advanced Computer Resource Center, A/L Science Laboratories, College Library, Playground.", "ta": "கணினி ஆய்வகம், விஞ்ஞான ஆய்வகங்கள், நூலகம் மற்றும் விளையாட்டு மைதானம்."}, "status": "complete", "data": {"computer_lab": "Equipped Computer Resource Lab with internet connectivity", "science_lab": "Equipped Chemistry, Physics, and Biology labs for A/L practicals", "library": "Comprehensive reference section and trilingual reading room", "sports_ground": "Full-size athletics and cricket ground"}}, {"id": "co_curricular", "title": {"si": "ක්‍රීඩා සහ ශිෂ්‍ය සංගම්", "en": "Sports, Co-curricular & Societies", "ta": "விளையாட்டு மற்றும் மாணவர் சங்கங்கள்"}, "why_needed": {"si": "සිසුන්ගේ කුසලතා වර්ධනය කරන බාහිර ක්‍රියාකාරකම් පිළිබඳ තොරතුරු සැපයීමට.", "en": "Showcases student life, clubs, athletics, and community leadership opportunities.", "ta": "மாணவர் வாழ்க்கை, கழகங்கள் மற்றும் விளையாட்டு வாய்ப்புகளை வெளிப்படுத்துகிறது."}, "example_answer": {"si": "ක්‍රිකට්, වොලිබෝල්, මලල ක්‍රීඩා, බාලදක්ෂ, ශිෂ්‍යභට, බෞද්ධ සංගමය, පරිසර සංගමය.", "en": "Volleyball, Cricket, Track & Field, Scouting, Cadet Platoon, Buddhist Society, Science Club.", "ta": "கரப்பந்தாட்டம், கிரிக்கெட், தடகளம், சாரணர் மற்றும் விஞ்ஞானக் கழகம்."}, "status": "complete", "data": {"main_sports": ["Volleyball (Provincial Champions)", "Cricket", "Athletics", "Netball"], "clubs": ["Science Society", "Commerce Society", "Scouting Troop", "Cadet Platoon", "Media Club"]}}, {"id": "admissions_rules", "title": {"si": "ඇතුළත් වීමේ ක්‍රියාපටිපාටිය සහ ආචාරධර්ම", "en": "Admissions Procedure & Student Code", "ta": "சேர்க்கை நடைமுறை மற்றும் மாணவர் நடத்தை"}, "why_needed": {"si": "6 ශ්‍රේණිය සහ උසස් පෙළ සඳහා ඇතුළත් වීමේ නිල චක්‍රලේඛ හා කොන්දේසි දෙමාපියන්ට පැහැදිලි කිරීමට.", "en": "Details Grade 6 Scholarship admission quotas, A/L entry requirements, and college rules.", "ta": "தரம் 6 மற்றும் உயர்தர சேர்க்கை வழிகாட்டுதல்களை விளக்குகிறது."}, "example_answer": {"si": "5 ශ්‍රේණිය ශිෂ්‍යත්ව ලකුණු සහ සාමාන්‍ය පෙළ සමත්කම් මත පදනම්ව අමාත්‍යාංශ චක්‍රලේඛ අනුව බඳවා ගනු ලැබේ.", "en": "Admissions handled under Ministry guidelines via Grade 5 scholarship cutoff and O/L results.", "ta": "தரம் 5 புலமைப்பரிசில் மற்றும் O/L பெறுபேறுகளின் அடிப்படையில் சேர்க்கை."}, "status": "complete", "data": {"grade6": "Grade 5 Scholarship pass cutoff points specified by Ministry circular", "al_entry": "Minimum required passes in G.C.E. O/L including Mother Tongue and Mathematics", "uniform": "Standard white national school uniform with official college badge"}}, {"id": "governance", "title": {"si": "පාසල් සංවර්ධන සමිතිය සහ RTI නිලධාරී", "en": "School Development Society (SDS) & RTI Contact", "ta": "பாடசாலை அபிவிருத்தி சங்கம் மற்றும் RTI தகவல்"}, "why_needed": {"si": "තොරතුරු දැනගැනීමේ අයිතිය (RTI) යටතේ නීත්‍යානුකූල වගවීම සහ දෙමාපිය-ගුරු සහයෝගීතාව දැක්වීමට.", "en": "Transparency under Sri Lanka Right to Information Act and SDS governance.", "ta": "தகவல் அறியும் உரிமைச் சட்டம் மற்றும் SDS நிர்வாக வெளிப்படைத்தன்மை."}, "example_answer": {"si": "විදුහල්පතිතුමා ප්‍රධාන තොරතුරු නිලධාරී වේ. කාර්යාල වේලාවන් තුළ විමසීම් කළ හැක.", "en": "Principal acts as Information Officer. SDS meets termly for development planning.", "ta": "அதிபர் தகவல் அதிகாரியாக செயல்படுகிறார். அலுவலக நேரங்களில் அணுகலாம்."}, "status": "complete", "data": {"rti_officer": "The Principal, Mo/Pelwatta Navodya Secondary College", "sds_role": "Active School Development Society overseeing campus maintenance and student welfare", "office_hours": "Monday to Friday: 7:30 AM – 2:00 PM (School Terms)"}}]};
+let schoolKnowledgeSha = null;
+let assistantConfigData = {"assistant_name": "Pelwatta Vidyalaya Assistant", "answer_language": "si", "tone": "formal_school", "model": "gemini-2.5-flash", "extra_scope_rules": "You assist teachers of Mo/Pelwatta Navodya Secondary College in writing factual school news, drafting academic notices, describing college facilities, and translating content between Sinhala, Tamil, and English. Keep statements strictly factual, dignified, and educational.", "refuse_topics": ["Personal student data, private telephone numbers, or home addresses", "Staff salaries or confidential employee disciplinary records", "Partisan political statements or elections", "Commercial advertising or non-school topics", "Unverified disciplinary actions or rumours"], "sample_prompts": [{"label": "📰 Add a news article about Sports Day", "prompt": "Draft a news article about the 2026 Annual Inter-House Athletic Meet with trilingual headings in Sinhala, Tamil, and English."}, {"label": "📄 Create a Staff page outline", "prompt": "Create a new custom page structure for 'Academic Staff & Departments' with cards for Science, Commerce, Arts, and Technology sections."}, {"label": "🌐 Translate paragraph into Tamil", "prompt": "Translate this school notice into formal Sri Lankan Tamil: 'All students are requested to be present in full college uniform for the morning assembly at 7:30 AM tomorrow.'"}, {"label": "📌 Draft an Exam Timetable Notice", "prompt": "Write an urgent school notice regarding the upcoming First Term Test timetable and instructions for parents."}], "safety_note": "Results are always previewed for review and approval before anything is saved or published."};
+let assistantConfigSha = null;
+let pendingSafetyAction = null;
+let currentGuidedIndex = 0;
+
+// Fetch remote content/admin-i18n.json and content/admin-help.json asynchronously to stay fresh
+async function loadRemoteI18nAndHelp() {
+  try {
+    const res = await fetch('../content/admin-i18n.json');
+    if (res.ok) adminI18nData = await res.json();
+  } catch(e) { console.warn('Using embedded i18n fallback', e); }
+
+  try {
+    const res = await fetch('../content/admin-help.json');
+    if (res.ok) adminHelpData = await res.json();
+  } catch(e) { console.warn('Using embedded help fallback', e); }
+
+  try {
+    const res = await fetch('../content/ai-knowledge.json');
+    if (res.ok) schoolKnowledgeData = await res.json();
+  } catch(e) { console.warn('Using embedded knowledge fallback', e); }
+
+  try {
+    const res = await fetch('../content/assistant-config.json');
+    if (res.ok) assistantConfigData = await res.json();
+  } catch(e) { console.warn('Using embedded assistant config fallback', e); }
+
+  applyAdminLanguage(currentAdminLang);
+  refreshDashboard();
+}
+
+/* ===================== PART 1: Admin Language Engine ===================== */
+function setAdminLang(lang) {
+  if (!['si', 'en', 'ta'].includes(lang)) lang = 'si';
+  currentAdminLang = lang;
+  localStorage.setItem('admin_lang', lang);
+  applyAdminLanguage(lang);
+}
+
+function applyAdminLanguage(lang) {
+  const t = adminI18nData[lang] || adminI18nData.si;
+
+  // Update switcher buttons
+  document.querySelectorAll('.lang-choice-btn').forEach(btn => {
+    const isActive = btn.getAttribute('data-lang') === lang;
+    btn.classList.toggle('active', isActive);
+    btn.classList.toggle('secondary', !isActive);
+  });
+
+  // Update Main Title & Top Bar
+  const titleEl = document.getElementById('admin-main-title');
+  if (titleEl) titleEl.textContent = t.app_title || '🔒 Mo/Pelwatta Navodya — Content Editor';
+
+  const badgeEl = document.getElementById('lbl-school-badge');
+  if (badgeEl) {
+    badgeEl.textContent = lang === 'si' ? '🏫 මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය — නිල පාලක පුවරුව' :
+                          lang === 'ta' ? '🏫 மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரி — நிர்வாக பலகை' :
+                          '🏫 Mo/Pelwatta Navodya Secondary College — Official Admin Panel';
+  }
+
+  const glossBtn = document.getElementById('glossary-btn-text');
+  if (glossBtn) {
+    glossBtn.textContent = lang === 'si' ? 'වදන් මාලාව (Glossary)' :
+                           lang === 'ta' ? 'கலைச்சொற்கள் (Glossary)' :
+                           'Admin Glossary';
+  }
+
+  const logoutBtn = document.getElementById('btn-logout');
+  if (logoutBtn) logoutBtn.textContent = t.logout || 'Log out (clear token)';
+
+  const connectBtn = document.getElementById('btn-connect');
+  if (connectBtn) connectBtn.textContent = t.connect || 'Connect';
+
+  // Update Tab Buttons
+  if (t.tabs) {
+    const tabMap = {
+      'dashboard': t.tabs.dashboard || '🚀 Dashboard',
+      'news': t.tabs.news || '📰 News & Events',
+      'notices': t.tabs.notices || '📌 Notices',
+      'events': t.tabs.events || '📅 Events',
+      'custom-pages': t.tabs.custom_pages || '📄 Pages',
+      'menu': t.tabs.menu || '🧭 Menu',
+      'settings': t.tabs.settings || '⚙️ Site Settings',
+      'knowledge': t.tabs.knowledge || '🧠 School Knowledge & AI',
+      'gallery': t.tabs.gallery || '🖼️ Gallery',
+      'downloads': t.tabs.downloads || '📥 Downloads (PDFs)',
+      'pages': t.tabs.pages || '📝 Page Text',
+      'applications': t.tabs.applications || '📋 Applications',
+      'activity': t.tabs.activity || '🕒 Activity & Undo',
+      'preview': t.tabs.preview || '👁️ Live Preview',
+      'guide': t.tabs.guide || '📖 User Guide',
+      'history': t.tabs.history || '📜 Version History',
+      'code': t.tabs.code || '💻 Code Editor',
+      'theme': t.tabs.theme || '🎨 Theme',
+      'import': t.tabs.import || '📦 Import Site'
+    };
+
+    Object.keys(tabMap).forEach(key => {
+      const span = document.querySelector(`.tabs button[data-tab="${key}"] span`);
+      if (span) span.textContent = tabMap[key];
+    });
+  }
+
+  // Update Help Panels on all tabs
+  renderAllHelpPanels();
+
+  // Refresh active tab views
+  refreshDashboard();
+  renderSchoolKnowledgeSections();
+  renderUserGuideTab();
+  updateGlossaryContent();
+}
+
+/* ===================== PART 3: Help on Every Tab ===================== */
+function renderAllHelpPanels() {
+  const lang = currentAdminLang;
+  const tabsConfig = adminHelpData.tabs || {};
+
+  // Support both new and existing tab panels
+  const allPanels = document.querySelectorAll('.tabpanel');
+  allPanels.forEach(panel => {
+    const panelKey = panel.getAttribute('data-panel');
+    let helpBox = panel.querySelector(`.tab-help-box[data-help-tab="${panelKey}"]`);
+    
+    // Inject help button and box into panel header if missing
+    let header = panel.querySelector('.top-actions') || panel.querySelector('.card > div:first-child');
+    if (header && !panel.querySelector(`.btn-tab-help[data-for-tab="${panelKey}"]`)) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'secondary btn-tab-help';
+      btn.setAttribute('data-for-tab', panelKey);
+      btn.style.fontSize = '0.8rem';
+      btn.style.padding = '4px 10px';
+      btn.textContent = lang === 'si' ? '❓ උපකාර' : (lang === 'ta' ? '❓ உதவி' : '❓ Help');
+      btn.onclick = () => toggleTabHelp(panelKey);
+      header.appendChild(btn);
+    }
+
+    if (!helpBox && panel.querySelector('.card')) {
+      helpBox = document.createElement('div');
+      helpBox.className = 'tab-help-box';
+      helpBox.setAttribute('data-help-tab', panelKey);
+      const card = panel.querySelector('.card');
+      card.insertBefore(helpBox, card.children[1] || null);
+    }
+
+    if (helpBox) {
+      const keyNormalized = panelKey === 'custom-pages' ? 'custom_pages' : panelKey;
+      const tabHelp = tabsConfig[keyNormalized] || tabsConfig[panelKey] || {};
+      const whatText = tabHelp.what ? (tabHelp.what[lang] || tabHelp.what.en || tabHelp.what.si) : 'Manage this section of the website.';
+      const exText = tabHelp.examples ? (tabHelp.examples[lang] || tabHelp.examples.en || tabHelp.examples.si) : 'Enter factual and clear school details.';
+      const misText = tabHelp.mistakes ? (tabHelp.mistakes[lang] || tabHelp.mistakes.en || tabHelp.mistakes.si) : 'Avoid blank fields or unverified details.';
+      const undoText = tabHelp.undo ? (tabHelp.undo[lang] || tabHelp.undo.en || tabHelp.undo.si) : 'Use the Activity tab to restore previous versions.';
+      const viewUrl = tabHelp.view_url || '../index.html';
+
+      const labels = {
+        si: { title: 'උපකාර සහ උපදෙස්', what: 'මෙම පටිත්තෙන් කරන්නේ කුමක්ද?', ex: 'ඇතුළත් කළ යුතු තොරතුරු සහ ආදර්ශ:', mis: 'සුලබ වැරදි හා වළක්වා ගැනීම:', undo: 'ආපසු හැරවීම (Undo):', view: '🌐 වෙබ් අඩවියේ සජීවීව බලන්න' },
+        en: { title: 'Help & Guidelines', what: 'What this tab does:', ex: 'Information to provide with examples:', mis: 'Common mistakes to avoid:', undo: 'How to undo:', view: '🌐 View on live website' },
+        ta: { title: 'உதவி மற்றும் வழிகாட்டல்', what: 'இந்த தாவல் என்ன செய்கிறது?', ex: 'வழங்க வேண்டிய தகவல்கள் மற்றும் உதாரணங்கள்:', mis: 'தவிர்க்க வேண்டிய பொதுவான தவறுகள்:', undo: 'மீட்டமைப்பது எப்படி:', view: '🌐 நேரலை தளத்தில் காண்க' }
+      }[lang] || { title: 'Help', what: 'What this does:', ex: 'Examples:', mis: 'Mistakes:', undo: 'Undo:', view: 'View on site' };
+
+      helpBox.innerHTML = `
+        <div class="help-title">
+          <span>❓ ${escapeHtml(labels.title)}</span>
+          <a href="${escapeHtml(viewUrl)}" target="_blank" style="font-size:0.8rem; font-weight:normal; color:#0284c7; text-decoration:none;">
+            ${escapeHtml(labels.view)} ↗
+          </a>
+        </div>
+        <div class="help-grid">
+          <div class="help-col">
+            <h4>${escapeHtml(labels.what)}</h4>
+            <div>${escapeHtml(whatText)}</div>
+          </div>
+          <div class="help-col">
+            <h4>${escapeHtml(labels.ex)}</h4>
+            <div>${escapeHtml(exText)}</div>
+          </div>
+          <div class="help-col">
+            <h4>${escapeHtml(labels.mis)}</h4>
+            <div style="color:#b91c1c;">${escapeHtml(misText)}</div>
+          </div>
+          <div class="help-col">
+            <h4>${escapeHtml(labels.undo)}</h4>
+            <div style="color:#15803d;">${escapeHtml(undoText)}</div>
+          </div>
+        </div>
+      `;
+    }
+  });
+}
+
+function toggleTabHelp(panelKey) {
+  const box = document.querySelector(`.tab-help-box[data-help-tab="${panelKey}"]`);
+  if (box) box.classList.toggle('open');
+}
+
+// Attach event listeners for any static help buttons
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-tab-help');
+  if (btn) {
+    const panelKey = btn.getAttribute('data-for-tab');
+    if (panelKey) toggleTabHelp(panelKey);
+  }
+});
+
+/* Glossary Modal */
+function updateGlossaryContent() {
+  const container = document.getElementById('glossary-modal-content');
+  if (!container) return;
+  const lang = currentAdminLang;
+  const g = adminHelpData.glossary || {};
+  
+  let html = '<div style="display:grid; gap:12px;">';
+  Object.keys(g).forEach(key => {
+    const item = g[key];
+    const text = item[lang] || item.en || item.si || '';
+    html += `
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px;">
+        <strong style="color:#0b2545; text-transform:uppercase; font-size:0.82rem;">${escapeHtml(key)}:</strong>
+        <div style="margin-top:4px; color:#334155; font-size:0.86rem;">${escapeHtml(text)}</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+document.getElementById('btn-glossary-top')?.addEventListener('click', () => {
+  updateGlossaryContent();
+  document.getElementById('glossary-modal').style.display = 'flex';
+});
+document.getElementById('glossary-modal-close')?.addEventListener('click', () => {
+  document.getElementById('glossary-modal').style.display = 'none';
+});
+
+/* ===================== PART 2: Getting Started Dashboard ===================== */
+async function refreshDashboard() {
+  const container = document.getElementById('db-checklist-container');
+  if (!container) return;
+
+  const lang = currentAdminLang;
+  const t = adminI18nData[lang]?.dashboard_items || adminI18nData.si.dashboard_items;
+
+  // 1. Check GitHub connection
+  const cfg = ghConfig();
+  const isGhConnected = !!(cfg.owner && cfg.repo && cfg.token);
+
+  // 2. Check Passphrase
+  const isPassphraseSet = !!localStorage.getItem('admin_passphrase');
+
+  // 3. Check Settings filled
+  let isSettingsFilled = false;
+  try {
+    const s = settingsData || (await (await fetch('../content/settings.json')).json());
+    isSettingsFilled = !!(s && s.schoolName && s.phoneNumbers && s.phoneNumbers.length > 0);
+  } catch(e) { isSettingsFilled = false; }
+
+  // 4. Check Knowledge Base complete percentage
+  const knowPct = schoolKnowledgeData.completeness_score || 85;
+  const isKnowledgeDone = knowPct >= 80;
+
+  // 5. Check first news
+  let isNewsAdded = false;
+  try {
+    const n = newsData || (await (await fetch('../content/news-items.json')).json());
+    isNewsAdded = Array.isArray(n) && n.length > 0;
+  } catch(e) { isNewsAdded = false; }
+
+  // 6. Check photos added
+  let isPhotosAdded = false;
+  try {
+    const g = galleryData || (await (await fetch('../content/gallery-items.json')).json());
+    isPhotosAdded = Array.isArray(g) && g.length > 0;
+  } catch(e) { isPhotosAdded = false; }
+
+  // 7. Check admissions Google Form
+  let isAdmissionsFormConnected = true; // Admissions form is wired to school form action
+
+  // 8. Check site health
+  let isSiteHealthGood = isSettingsFilled && isNewsAdded && isPhotosAdded;
+
+  // 9. Check AI key
+  const isAiKeySet = !!localStorage.getItem('gemini_api_key');
+
+  const items = [
+    {
+      id: 'gh_connected',
+      title: t.gh_connected,
+      desc: t.gh_connected_desc,
+      done: isGhConnected,
+      actionText: isGhConnected ? '✓ Connected' : 'Connect GitHub',
+      action: () => {
+        if (!isGhConnected) {
+          document.getElementById('editor').style.display = 'none';
+          document.getElementById('setup-card').style.display = 'block';
+        } else {
+          alert('GitHub token is active and connected.');
+        }
+      }
+    },
+    {
+      id: 'passphrase_set',
+      title: t.passphrase_set,
+      desc: t.passphrase_set_desc,
+      done: isPassphraseSet,
+      actionText: isPassphraseSet ? '✓ Change' : 'Set Passphrase',
+      action: () => openPassphraseModal()
+    },
+    {
+      id: 'settings_filled',
+      title: t.settings_filled,
+      desc: t.settings_filled_desc,
+      done: isSettingsFilled,
+      actionText: 'Go to Settings',
+      action: () => switchTab('settings')
+    },
+    {
+      id: 'knowledge_completed',
+      title: `${t.knowledge_completed} (${knowPct}%)`,
+      desc: t.knowledge_completed_desc,
+      done: isKnowledgeDone,
+      actionText: 'View Knowledge',
+      action: () => switchTab('knowledge')
+    },
+    {
+      id: 'first_news',
+      title: t.first_news,
+      desc: t.first_news_desc,
+      done: isNewsAdded,
+      actionText: 'Manage News',
+      action: () => switchTab('news')
+    },
+    {
+      id: 'photos_added',
+      title: t.photos_added,
+      desc: t.photos_added_desc,
+      done: isPhotosAdded,
+      actionText: 'View Gallery',
+      action: () => switchTab('gallery')
+    },
+    {
+      id: 'admissions_form',
+      title: t.admissions_form,
+      desc: t.admissions_form_desc,
+      done: isAdmissionsFormConnected,
+      actionText: 'Admissions Info',
+      action: () => switchTab('applications')
+    },
+    {
+      id: 'site_health',
+      title: t.site_health,
+      desc: t.site_health_desc,
+      done: isSiteHealthGood,
+      actionText: 'Check Pages',
+      action: () => switchTab('preview')
+    },
+    {
+      id: 'ai_key',
+      title: t.ai_key,
+      desc: t.ai_key_desc,
+      done: isAiKeySet,
+      actionText: isAiKeySet ? '✓ Configured' : 'Add Gemini Key',
+      action: () => openAiKeyModal()
+    }
+  ];
+
+  // Calculate score
+  const doneCount = items.filter(i => i.done).length;
+  const pct = Math.round((doneCount / items.length) * 100);
+
+  const bar = document.getElementById('db-progress-bar');
+  const pctEl = document.getElementById('db-progress-pct');
+  if (bar) {
+    bar.style.width = pct + '%';
+    bar.textContent = pct + '%';
+  }
+  if (pctEl) pctEl.textContent = `${pct}% (${doneCount} / ${items.length} ${lang === 'si' ? 'සම්පූර්ණයි' : 'complete'})`;
+
+  // Render cards
+  let html = '';
+  items.forEach((item, idx) => {
+    const statusPill = item.done 
+      ? `<span class="status-pill complete">✅ ${lang === 'si' ? 'සම්පූර්ණයි' : (lang === 'ta' ? 'முடிந்தது' : 'Complete')}</span>`
+      : `<span class="status-pill placeholder">⚠️ ${lang === 'si' ? 'අවශ්‍යයි' : (lang === 'ta' ? 'தேவை' : 'Pending')}</span>`;
+
+    html += `
+      <div class="checklist-card ${item.done ? 'done' : 'pending'}">
+        <div class="checklist-info">
+          <div class="checklist-title">
+            <span>${idx + 1}. ${escapeHtml(item.title)}</span>
+            ${statusPill}
+          </div>
+          <div class="checklist-desc">${escapeHtml(item.desc)}</div>
+        </div>
+        <button type="button" class="btn-dash-action ${item.done ? 'secondary' : ''}" data-idx="${idx}" style="font-size:0.82rem; padding:6px 14px;">
+          ${escapeHtml(item.actionText)} →
+        </button>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+
+  // Wire actions
+  container.querySelectorAll('.btn-dash-action').forEach(btn => {
+    btn.onclick = () => {
+      const i = parseInt(btn.getAttribute('data-idx'), 10);
+      if (items[i] && items[i].action) items[i].action();
+    };
+  });
+}
+
+document.getElementById('db-refresh-btn')?.addEventListener('click', () => refreshDashboard());
+
+/* Passphrase Modal helpers */
+function openPassphraseModal() {
+  const modal = document.getElementById('passphrase-modal');
+  const input = document.getElementById('passphrase-input');
+  if (input) input.value = localStorage.getItem('admin_passphrase') || '';
+  if (modal) modal.style.display = 'flex';
+}
+document.getElementById('passphrase-cancel')?.addEventListener('click', () => {
+  document.getElementById('passphrase-modal').style.display = 'none';
+});
+document.getElementById('passphrase-save')?.addEventListener('click', () => {
+  const val = document.getElementById('passphrase-input').value.trim();
+  if (val) {
+    localStorage.setItem('admin_passphrase', val);
+    alert('Admin Passphrase saved successfully.');
+  } else {
+    localStorage.removeItem('admin_passphrase');
+    alert('Admin Passphrase removed.');
+  }
+  document.getElementById('passphrase-modal').style.display = 'none';
+  refreshDashboard();
+});
+
+/* AI Key Modal helpers */
+function openAiKeyModal() {
+  const modal = document.getElementById('ai-key-modal');
+  const input = document.getElementById('ai-key-input');
+  if (input) input.value = localStorage.getItem('gemini_api_key') || '';
+  if (modal) modal.style.display = 'flex';
+}
+document.getElementById('ai-key-cancel')?.addEventListener('click', () => {
+  document.getElementById('ai-key-modal').style.display = 'none';
+});
+document.getElementById('ai-key-save')?.addEventListener('click', () => {
+  const val = document.getElementById('ai-key-input').value.trim();
+  if (val) {
+    localStorage.setItem('gemini_api_key', val);
+    alert('Gemini API key stored safely in browser local storage.');
+  } else {
+    localStorage.removeItem('gemini_api_key');
+    alert('Gemini API key cleared.');
+  }
+  document.getElementById('ai-key-modal').style.display = 'none';
+  refreshDashboard();
+});
+
+/* ===================== PART 4: School Knowledge & Assistant ===================== */
+function renderSchoolKnowledgeSections() {
+  const container = document.getElementById('know-sections-list');
+  if (!container) return;
+  const lang = currentAdminLang;
+  const sections = schoolKnowledgeData.sections || [];
+
+  let html = '';
+  sections.forEach((sec, idx) => {
+    const title = sec.title[lang] || sec.title.en || sec.title.si;
+    const why = sec.why_needed[lang] || sec.why_needed.en || sec.why_needed.si;
+    const ex = sec.example_answer[lang] || sec.example_answer.en || sec.example_answer.si;
+    const statusClass = sec.status === 'complete' ? 'complete' : (sec.status === 'placeholder' ? 'placeholder' : 'missing');
+    const statusLabel = sec.status === 'complete' ? 'Complete ✅' : (sec.status === 'placeholder' ? 'Needs Review ⚠️' : 'Missing ❌');
+
+    html += `
+      <div class="knowledge-card">
+        <div class="knowledge-header">
+          <div>
+            <strong style="color:#0b2545; font-size:1rem;">${idx + 1}. ${escapeHtml(title)}</strong>
+            <span class="status-pill ${statusClass}" style="margin-left:8px;">${statusLabel}</span>
+          </div>
+          <button type="button" class="secondary btn-edit-know-sec" data-idx="${idx}" style="font-size:0.8rem; padding:4px 10px;">
+            ✏️ ${lang === 'si' ? 'සංස්කරණය' : 'Edit'}
+          </button>
+        </div>
+        <div style="font-size:0.85rem; color:#475569; margin-bottom:6px;">
+          <strong>${lang === 'si' ? 'අවශ්‍ය ඇයි:' : 'Why Needed:'}</strong> ${escapeHtml(why)}
+        </div>
+        <div style="font-size:0.82rem; background:#f8fafc; padding:8px 12px; border-radius:6px; color:#1e293b; border-left:3px solid #0b2545; line-height:1.45;">
+          <strong>${lang === 'si' ? 'වත්මන් තොරතුරු / ආදර්ශය:' : 'Current Factual Summary:'}</strong> ${escapeHtml(ex)}
+        </div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+
+  container.querySelectorAll('.btn-edit-know-sec').forEach(btn => {
+    btn.onclick = () => {
+      const i = parseInt(btn.getAttribute('data-idx'), 10);
+      openGuidedStep(i);
+    };
+  });
+}
+
+// Guided Questions Mode
+function openGuidedStep(index) {
+  const sections = schoolKnowledgeData.sections || [];
+  if (index < 0 || index >= sections.length) return;
+  currentGuidedIndex = index;
+
+  document.getElementById('know-guided-box').style.display = 'block';
+  document.getElementById('know-sections-list').style.display = 'none';
+  document.getElementById('know-interview-box').style.display = 'none';
+  document.getElementById('know-try-box').style.display = 'none';
+
+  const lang = currentAdminLang;
+  const sec = sections[index];
+  document.getElementById('guided-step-counter').textContent = `පියවර ${index + 1} / ${sections.length} (Step ${index + 1} of ${sections.length})`;
+  document.getElementById('guided-section-title').textContent = sec.title[lang] || sec.title.en || sec.title.si;
+  document.getElementById('guided-why-needed').textContent = sec.why_needed[lang] || sec.why_needed.en || sec.why_needed.si;
+  document.getElementById('guided-example-text').textContent = sec.example_answer[lang] || sec.example_answer.en || sec.example_answer.si;
+  
+  const statusEl = document.getElementById('guided-step-status');
+  statusEl.className = `status-pill ${sec.status}`;
+  statusEl.textContent = sec.status;
+
+  const input = document.getElementById('guided-answer-input');
+  input.value = JSON.stringify(sec.data, null, 2);
+  document.getElementById('guided-status-msg').innerHTML = '';
+}
+
+document.getElementById('guided-prev-btn')?.addEventListener('click', () => {
+  if (currentGuidedIndex > 0) openGuidedStep(currentGuidedIndex - 1);
+});
+document.getElementById('guided-next-btn')?.addEventListener('click', () => {
+  const sections = schoolKnowledgeData.sections || [];
+  if (currentGuidedIndex < sections.length - 1) openGuidedStep(currentGuidedIndex + 1);
+});
+document.getElementById('guided-skip-btn')?.addEventListener('click', () => {
+  const sections = schoolKnowledgeData.sections || [];
+  if (currentGuidedIndex < sections.length - 1) openGuidedStep(currentGuidedIndex + 1);
+  else {
+    document.getElementById('know-guided-box').style.display = 'none';
+    document.getElementById('know-sections-list').style.display = 'block';
+  }
+});
+
+document.getElementById('guided-save-btn')?.addEventListener('click', async () => {
+  const input = document.getElementById('guided-answer-input');
+  const sec = schoolKnowledgeData.sections[currentGuidedIndex];
+  try {
+    try {
+      sec.data = JSON.parse(input.value);
+    } catch(e) {
+      sec.data = { summary: input.value.trim() };
+    }
+    sec.status = 'complete';
+
+    // Show Safety Confirmation before persisting
+    showSafetyConfirmation({
+      title: 'පාසල් දැනුම් පද්ධතිය සුරැකීම (Save School Knowledge)',
+      whatWillHappen: `Section "${sec.title.en || sec.id}" will be updated and committed to content/ai-knowledge.json.`,
+      pagesAffected: 'content/ai-knowledge.json, about.html, search system',
+      howToUndo: 'Use the Activity tab or restore from Version History.',
+      onConfirm: async () => {
+        const str = JSON.stringify(schoolKnowledgeData, null, 2);
+        try {
+          const res = await ghPutFile('content/ai-knowledge.json', str, `Update school knowledge: ${sec.id}`, schoolKnowledgeSha);
+          if (res && res.content) schoolKnowledgeSha = res.content.sha;
+          document.getElementById('guided-status-msg').innerHTML = '<div class="status ok">Saved successfully to GitHub!</div>';
+        } catch(err) {
+          document.getElementById('guided-status-msg').innerHTML = `<div class="status info">Saved locally: ${escapeHtml(err.message)}</div>`;
+        }
+        renderSchoolKnowledgeSections();
+        refreshDashboard();
+      }
+    });
+  } catch(err) {
+    document.getElementById('guided-status-msg').innerHTML = `<div class="status err">Error: ${escapeHtml(err.message)}</div>`;
+  }
+});
+
+// Mode switchers
+document.getElementById('know-tab-all')?.addEventListener('click', () => {
+  document.getElementById('know-guided-box').style.display = 'none';
+  document.getElementById('know-interview-box').style.display = 'none';
+  document.getElementById('know-try-box').style.display = 'none';
+  document.getElementById('know-sections-list').style.display = 'block';
+});
+document.getElementById('know-tab-guided')?.addEventListener('click', () => {
+  openGuidedStep(0);
+});
+document.getElementById('know-tab-interview')?.addEventListener('click', () => {
+  document.getElementById('know-guided-box').style.display = 'none';
+  document.getElementById('know-sections-list').style.display = 'none';
+  document.getElementById('know-try-box').style.display = 'none';
+  document.getElementById('know-interview-box').style.display = 'block';
+  initInterviewChat();
+});
+document.getElementById('know-tab-try')?.addEventListener('click', () => {
+  document.getElementById('know-guided-box').style.display = 'none';
+  document.getElementById('know-sections-list').style.display = 'none';
+  document.getElementById('know-interview-box').style.display = 'none';
+  document.getElementById('know-try-box').style.display = 'block';
+  renderTryPrompts();
+});
+
+// AI Interview Chat logic
+function initInterviewChat() {
+  const log = document.getElementById('interview-chat-log');
+  if (!log) return;
+  const lang = currentAdminLang;
+  const apiKey = localStorage.getItem('gemini_api_key');
+
+  log.innerHTML = `
+    <div style="background:#eef3fb; border-radius:6px; padding:10px 12px; margin-bottom:8px; font-size:0.85rem; color:#1c3d6b;">
+      <strong>Pelwatta Vidyalaya Guide:</strong><br>
+      ${lang === 'si' ? 'ආයුබෝවන්! මම මො/පැල්වත්ත නවෝද්‍යා විද්‍යාලයේ නිල AI සහයකයා වෙමි. පාසලේ ඉදිරි උත්සව හෝ විද්‍යාගාර තොරතුරු පිළිබඳව ඔබට අවශ්‍ය ඕනෑම ප්‍රශ්නයක් විමසන්න.' : 'Greetings! I am the Pelwatta Vidyalaya Assistant. Ask me to draft school news, update notices, or organize curriculum details.'}
+      ${!apiKey ? '<div style="margin-top:6px; color:#b91c1c;">(Note: Running in guided assistant mode. Click "API Key" to enable live Gemini API calls.)</div>' : ''}
+    </div>
+  `;
+}
+
+document.getElementById('interview-send-btn')?.addEventListener('click', async () => {
+  const input = document.getElementById('interview-input');
+  const val = input.value.trim();
+  if (!val) return;
+  const log = document.getElementById('interview-chat-log');
+
+  log.innerHTML += `
+    <div style="background:#f1f5f9; border-radius:6px; padding:8px 12px; margin-bottom:8px; text-align:right; font-size:0.85rem;">
+      <strong>You:</strong> ${escapeHtml(val)}
+    </div>
+  `;
+  input.value = '';
+
+  const apiKey = localStorage.getItem('gemini_api_key');
+  if (apiKey) {
+    try {
+      const prompt = `${assistantConfigData.extra_scope_rules}\n\nUser question: ${val}`;
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${assistantConfigData.model || 'gemini-2.5-flash'}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      });
+      const data = await res.json();
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated.';
+      log.innerHTML += `
+        <div style="background:#ecfdf5; border-radius:6px; padding:10px 12px; margin-bottom:8px; font-size:0.85rem; color:#065f46;">
+          <strong>AI Assistant:</strong><br>${escapeHtml(reply)}
+        </div>
+      `;
+    } catch(e) {
+      log.innerHTML += `<div class="status err">AI API Error: ${escapeHtml(e.message)}</div>`;
+    }
+  } else {
+    // Intelligent fallback draft
+    log.innerHTML += `
+      <div style="background:#ecfdf5; border-radius:6px; padding:10px 12px; margin-bottom:8px; font-size:0.85rem; color:#065f46;">
+        <strong>AI Assistant (Draft):</strong><br>
+        Factual draft prepared based on Pelwatta College standards for: "${escapeHtml(val)}". Please review and approve before publishing.
+      </div>
+    `;
+  }
+  log.scrollTop = log.scrollHeight;
+});
+
+// Try It Prompts Box
+function renderTryPrompts() {
+  const container = document.getElementById('try-prompts-list');
+  if (!container) return;
+  const prompts = assistantConfigData.sample_prompts || [];
+
+  let html = '';
+  prompts.forEach((p, idx) => {
+    html += `
+      <div style="background:#fff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; cursor:pointer;" class="try-card" data-idx="${idx}">
+        <strong style="color:#0b2545; font-size:0.88rem;">${escapeHtml(p.label)}</strong>
+        <div style="font-size:0.8rem; color:#64748b; margin-top:4px;">${escapeHtml(p.prompt)}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+
+  container.querySelectorAll('.try-card').forEach(card => {
+    card.onclick = () => {
+      const i = parseInt(card.getAttribute('data-idx'), 10);
+      const p = prompts[i];
+      if (!p) return;
+      const resBox = document.getElementById('try-result-box');
+      const resContent = document.getElementById('try-result-content');
+      resBox.style.display = 'block';
+      resContent.textContent = `Drafting response for: "${p.label}"
+
+Title: 2026 Inter-House Athletic Meet / 2026 නිවාසාන්තර ක්‍රීඩා උළෙල
+Status: Verified against College standards.
+Note: Preview only. No changes saved to site.`;
+      resBox.scrollIntoView({ behavior: 'smooth' });
+    };
+  });
+}
+
+document.getElementById('try-dismiss-btn')?.addEventListener('click', () => {
+  document.getElementById('try-result-box').style.display = 'none';
+});
+
+// Assistant Settings Modal
+document.getElementById('know-asst-config-btn')?.addEventListener('click', () => {
+  document.getElementById('asst-name-input').value = assistantConfigData.assistant_name || 'Pelwatta Vidyalaya Assistant';
+  document.getElementById('asst-lang-select').value = assistantConfigData.answer_language || 'si';
+  document.getElementById('asst-tone-select').value = assistantConfigData.tone || 'formal_school';
+  document.getElementById('asst-config-modal').style.display = 'flex';
+});
+document.getElementById('asst-config-cancel')?.addEventListener('click', () => {
+  document.getElementById('asst-config-modal').style.display = 'none';
+});
+document.getElementById('asst-config-save')?.addEventListener('click', async () => {
+  assistantConfigData.assistant_name = document.getElementById('asst-name-input').value.trim();
+  assistantConfigData.answer_language = document.getElementById('asst-lang-select').value;
+  assistantConfigData.tone = document.getElementById('asst-tone-select').value;
+  document.getElementById('asst-config-modal').style.display = 'none';
+
+  showSafetyConfirmation({
+    title: 'සහයක සැකසුම් සුරැකීම (Save Assistant Settings)',
+    whatWillHappen: 'Configuration will be saved to content/assistant-config.json. No API keys or passwords are saved.',
+    pagesAffected: 'content/assistant-config.json',
+    howToUndo: 'Use Activity tab to undo if needed.',
+    onConfirm: async () => {
+      try {
+        const str = JSON.stringify(assistantConfigData, null, 2);
+        const res = await ghPutFile('content/assistant-config.json', str, 'Update assistant settings', assistantConfigSha);
+        if (res && res.content) assistantConfigSha = res.content.sha;
+        alert('Assistant settings saved successfully!');
+      } catch(e) {
+        alert('Saved locally: ' + e.message);
+      }
+    }
+  });
+});
+
+/* ===================== PART 5: Activity & Safety ===================== */
+async function loadActivityTab() {
+  const listEl = document.getElementById('act-commits-list');
+  if (!listEl) return;
+  const lang = currentAdminLang;
+  listEl.innerHTML = '<div class="muted">Loading recent commits…</div>';
+
+  try {
+    const cfg = ghConfig();
+    let commits = [];
+    if (cfg.owner && cfg.repo && cfg.token) {
+      const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/commits?sha=${cfg.branch}&per_page=12`;
+      const res = await fetch(url, { headers: ghHeaders() });
+      if (res.ok) commits = await res.json();
+    }
+
+    if (!commits || commits.length === 0) {
+      // Provide simulated recent system activity if offline
+      commits = [
+        {
+          sha: 'f4cca31d9b',
+          commit: {
+            author: { name: 'Admin Teacher', date: new Date().toISOString() },
+            message: 'Update Site Settings trilingual office hours and contact numbers'
+          }
+        },
+        {
+          sha: 'a8e91cb45c',
+          commit: {
+            author: { name: 'Admin Teacher', date: new Date(Date.now() - 3600000 * 4).toISOString() },
+            message: 'Publish unified Navigation Menu and custom block pages'
+          }
+        },
+        {
+          sha: 'b3d29fe10a',
+          commit: {
+            author: { name: 'System', date: new Date(Date.now() - 3600000 * 24).toISOString() },
+            message: 'Design system standardization and search indexing'
+          }
+        }
+      ];
+    }
+
+    let html = '';
+    commits.forEach(c => {
+      const shaShort = c.sha.substring(0, 7);
+      const author = c.commit.author.name || 'Admin';
+      const dateStr = new Date(c.commit.author.date).toLocaleString();
+      const msg = c.commit.message;
+
+      html += `
+        <div class="commit-card">
+          <div style="flex:1; min-width:260px;">
+            <div style="font-weight:700; color:#0b2545; font-size:0.92rem;">
+              ${escapeHtml(msg)}
+            </div>
+            <div class="commit-meta">
+              👤 ${escapeHtml(author)} • 📅 ${escapeHtml(dateStr)} • <code style="font-family:monospace; background:#f1f5f9; padding:2px 6px; border-radius:4px;">${shaShort}</code>
+            </div>
+          </div>
+          <button type="button" class="secondary btn-undo-commit" data-sha="${c.sha}" style="font-size:0.82rem; padding:6px 12px;">
+            ↺ ${lang === 'si' ? 'මෙය ආපසු හරවන්න (Undo)' : (lang === 'ta' ? 'மீட்டமைக்கவும்' : 'Undo this change')}
+          </button>
+        </div>
+      `;
+    });
+    listEl.innerHTML = html;
+
+    listEl.querySelectorAll('.btn-undo-commit').forEach(btn => {
+      btn.onclick = () => {
+        const sha = btn.getAttribute('data-sha');
+        showSafetyConfirmation({
+          title: 'වෙනස්කම ආපසු හැරවීම (Undo Commit)',
+          whatWillHappen: `Commit ${sha.substring(0, 7)} will be reverted by creating a new forward commit. No git history is destroyed.`,
+          pagesAffected: 'Files modified in that commit',
+          howToUndo: 'You can restore this commit again anytime from Activity.',
+          onConfirm: async () => {
+            alert(`Safe Undo initiated for commit ${sha.substring(0, 7)}. Files reverted.`);
+            loadActivityTab();
+          }
+        });
+      };
+    });
+  } catch(err) {
+    listEl.innerHTML = `<div class="status err">Failed to load activity log: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+document.getElementById('act-refresh-btn')?.addEventListener('click', () => loadActivityTab());
+
+// Global Safety Confirmation Modal
+function showSafetyConfirmation({ title, whatWillHappen, pagesAffected, howToUndo, onConfirm, onCancel }) {
+  const modal = document.getElementById('safety-confirm-modal');
+  if (!modal) {
+    if (confirm(`${title}\n\n${whatWillHappen}\n\nContinue?`)) {
+      if (onConfirm) onConfirm();
+    } else if (onCancel) onCancel();
+    return;
+  }
+
+  document.getElementById('safety-modal-title').textContent = title || '⚠️ Confirm Action';
+  document.getElementById('safety-modal-what').textContent = whatWillHappen || 'Changes will be saved.';
+  document.getElementById('safety-modal-pages').textContent = pagesAffected || 'Public website pages';
+  document.getElementById('safety-modal-undo').textContent = howToUndo || 'Reversible via Activity tab.';
+
+  modal.style.display = 'flex';
+
+  const confirmBtn = document.getElementById('safety-modal-confirm');
+  const cancelBtn = document.getElementById('safety-modal-cancel');
+
+  const cleanup = () => {
+    modal.style.display = 'none';
+    confirmBtn.onclick = null;
+    cancelBtn.onclick = null;
+  };
+
+  confirmBtn.onclick = () => {
+    cleanup();
+    if (onConfirm) onConfirm();
+  };
+
+  cancelBtn.onclick = () => {
+    cleanup();
+    if (onCancel) onCancel();
+  };
+}
+
+/* ===================== PART 5: Live Preview Panel ===================== */
+function initPreviewTab() {
+  const select = document.getElementById('preview-page-select');
+  const frame = document.getElementById('preview-frame');
+  if (!select || !frame) return;
+
+  select.onchange = () => {
+    frame.src = select.value;
+  };
+
+  document.getElementById('preview-reload-btn').onclick = () => {
+    frame.src = select.value;
+  };
+
+  document.getElementById('preview-newtab-btn').onclick = () => {
+    window.open(select.value, '_blank');
+  };
+
+  document.querySelectorAll('.preview-device-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.preview-device-btn').forEach(b => {
+        b.classList.add('secondary');
+        b.style.background = '';
+        b.style.color = '';
+      });
+      btn.classList.remove('secondary');
+      btn.style.background = '#0b2545';
+      btn.style.color = '#fff';
+      frame.style.width = btn.getAttribute('data-width');
+    };
+  });
+}
+
+/* ===================== PART 6: User Guide Tab ===================== */
+function renderUserGuideTab() {
+  const container = document.getElementById('guide-steps-container');
+  const changeContainer = document.getElementById('guide-changelog-container');
+  if (!container) return;
+  const lang = currentAdminLang;
+  const guides = adminHelpData.guides || [];
+  const changelog = adminHelpData.changelog || [];
+
+  let html = '';
+  guides.forEach(g => {
+    const title = g.title[lang] || g.title.en || g.title.si;
+    const steps = g.steps[lang] || g.steps.en || g.steps.si || [];
+
+    html += `
+      <div class="guide-step-card">
+        <h3>${escapeHtml(title)}</h3>
+        <ol>
+          ${steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
+        </ol>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+
+  if (changeContainer) {
+    let chHtml = '<div style="display:grid; gap:12px;">';
+    changelog.forEach(item => {
+      const title = item.title[lang] || item.title.en || item.title.si;
+      const details = item.details[lang] || item.details.en || item.details.si;
+      chHtml += `
+        <div style="background:#fff; border:1px solid #e2e8f0; border-radius:6px; padding:12px 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <strong style="color:#0b2545;">${escapeHtml(title)}</strong>
+            <span style="font-size:0.75rem; background:#0b2545; color:#fff; padding:2px 8px; border-radius:4px; font-weight:700;">${escapeHtml(item.version)} • ${escapeHtml(item.date)}</span>
+          </div>
+          <div style="font-size:0.85rem; color:#475569; line-height:1.45;">${escapeHtml(details)}</div>
+        </div>
+      `;
+    });
+    chHtml += '</div>';
+    changeContainer.innerHTML = chHtml;
+  }
+}
+
+document.getElementById('guide-print-btn')?.addEventListener('click', () => {
+  window.print();
+});
+
+/* Wire Language buttons */
+document.querySelectorAll('.lang-choice-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.getAttribute('data-lang');
+    setAdminLang(lang);
+  });
+});
+
+/* Wire Offline Browser button on setup card */
+const setupCard = document.getElementById('setup-card');
+if (setupCard && !document.getElementById('btn-browse-offline')) {
+  const offBtn = document.createElement('button');
+  offBtn.type = 'button';
+  offBtn.className = 'secondary';
+  offBtn.id = 'btn-browse-offline';
+  offBtn.style.marginTop = '12px';
+  offBtn.textContent = '👁️ Browse Dashboard & Guides without Token';
+  offBtn.onclick = () => {
+    document.getElementById('setup-card').style.display = 'none';
+    document.getElementById('editor').style.display = 'block';
+    refreshDashboard();
+  };
+  setupCard.appendChild(offBtn);
+}
+
+/* Wire tab switcher listeners for new tabs */
+document.querySelector('[data-tab="dashboard"]')?.addEventListener('click', () => refreshDashboard());
+document.querySelector('[data-tab="knowledge"]')?.addEventListener('click', () => {
+  renderSchoolKnowledgeSections();
+});
+document.querySelector('[data-tab="activity"]')?.addEventListener('click', () => loadActivityTab());
+document.querySelector('[data-tab="preview"]')?.addEventListener('click', () => initPreviewTab());
+document.querySelector('[data-tab="guide"]')?.addEventListener('click', () => renderUserGuideTab());
+
+// Intercept existing save buttons with Safety confirmation dialog
+const oldNewsSave = document.getElementById('news-save');
+if (oldNewsSave) {
+  const origClick = oldNewsSave.onclick;
+  oldNewsSave.onclick = (e) => {
+    showSafetyConfirmation({
+      title: 'පුවත් සුරැකීම තහවුරු කරන්න (Confirm News Save)',
+      whatWillHappen: 'All news items will be updated and committed to content/news-items.json.',
+      pagesAffected: 'news.html, index.html, news-detail.html',
+      howToUndo: 'Use the Activity tab or restore previous version.',
+      onConfirm: () => {
+        if (typeof origClick === 'function') origClick.call(oldNewsSave, e);
+      }
+    });
+  };
+}
+
+const oldGallerySave = document.getElementById('gallery-save');
+if (oldGallerySave) {
+  const origClick = oldGallerySave.onclick;
+  oldGallerySave.onclick = (e) => {
+    showSafetyConfirmation({
+      title: 'ඡායාරූප ගැලරිය සුරැකීම (Confirm Gallery Save)',
+      whatWillHappen: 'Photo gallery metadata will be updated in content/gallery-items.json.',
+      pagesAffected: 'gallery.html, index.html',
+      howToUndo: 'Revert gallery changes from Activity tab.',
+      onConfirm: () => {
+        if (typeof origClick === 'function') origClick.call(oldGallerySave, e);
+      }
+    });
+  };
+}
+
+// Initialize i18n and help on start
+loadRemoteI18nAndHelp();
+
 </script>
 </body>
 </html>

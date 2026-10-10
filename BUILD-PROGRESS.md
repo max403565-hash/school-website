@@ -64,3 +64,20 @@ This document tracks implementation status across the six major upgrade phases p
 - [x] Language switching never alters URL path.
 - [x] 404 page base tag and home button functional from any URL depth.
 - [x] Admin panel backwards compatibility verified.
+
+---
+
+## PHASE 3 — TEACHER-FRIENDLY ADMIN PANEL UPGRADE
+
+This phase transforms `xk92m-manage/index.html` into an accessible, bilingual/trilingual interface tailored for non-technical teachers, without any third-party scripts, frameworks, or backend requirements.
+
+| Part | Component | Status | Verification & Deliverables |
+| :--- | :--- | :---: | :--- |
+| **PART 1** | Admin Interface Language Switch | **DONE** | Trilingual admin localization (`si`, `en`, `ta`) with Sinhala as default. Saved choice in `localStorage`. Technical words (GitHub, Token, Commit, Branch, Passphrase, Publish, Backup) retained in English alongside clear Sinhala/Tamil explanations. Stored in `content/admin-i18n.json` with client-side fallback dictionary. |
+| **PART 2** | Getting Started Dashboard | **DONE** | First tab (`dashboard`) featuring an automated 9-point readiness checklist and dynamic progress bar. Detects GitHub connection, passphrase protection, Site Settings completion, Knowledge Base score, first news, photos, admissions form, site health, and optional AI key. Each item explains purpose and provides direct jump buttons. |
+| **PART 3** | Contextual Help on Every Tab | **DONE** | Collapsible `❓` help panels on all tabs detailing purpose, required information with examples, common mistakes to avoid, public site verification links (`../index.html`, `../news.html`, etc.), and safe rollback steps. Powered by `content/admin-help.json` with trilingual glossary tooltips modal. |
+| **PART 4** | School Knowledge Base & AI Assistant | **DONE** | School Knowledge tab (`knowledge`) displaying 8 institutional sections with status badges (Complete, Needs Review, Missing) and completeness percentage. Supports non-AI "Guided Questions" wizard, AI Assistant interview mode with public-repository warnings, configurable assistant settings in `content/assistant-config.json`, and clickable sample prompt previews. |
+| **PART 5** | Activity Log & Safety Protections | **DONE** | "Activity" tab (`activity`) listing recent commits with friendly language, author, relative dates, and one-click forward-commit `Undo`. Global plain-language Safety Confirmation dialog (`safety-confirm-modal`) intercepting risky saves, publications, deletions, and restores. Live multi-viewport Preview panel (`preview`) supporting phone (375px), tablet (768px), and desktop (100%). |
+| **PART 6** | Teacher User Guide & Print View | **DONE** | "User Guide" tab (`guide`) providing 8 step-by-step guides in current admin language (news publishing, gallery photos, custom pages, menu reordering, contact details, admissions, mistake rollback, expired tokens). Print-ready layout via `@media print` and "What's New" system changelog. |
+| **PART 7** | Quality Assurance & Cross-Platform Testing | **DONE** | Verified on mobile (360px), tablet (768px), and desktop (1280px). Confirmed zero paths starting with `/` (100% relative `../` root paths). Backwards compatibility with all older tabs verified. Zero third-party dependencies or leaks. |
+
