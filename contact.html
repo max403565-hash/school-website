@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact Us — Mo/Pelwatta Navodya Secondary College</title>
+<meta property="og:title" content="Contact Us — Mo/Pelwatta Navodya Secondary College">
+<meta property="og:description" content="Official contact channels for Mo/Pelwatta Navodya Secondary College, Monaragala.">
+<meta property="og:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us — Mo/Pelwatta Navodya Secondary College">
+<meta name="twitter:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg">
 <link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
@@ -29,10 +35,10 @@
           <p id="email-card-desc" style="color:var(--muted); font-size:0.95rem; margin-bottom:16px;"></p>
           <div style="background:var(--maroon-subtle); padding:12px 16px; border-radius:8px; margin-bottom:18px;">
             <div style="font-size:0.8rem; color:var(--muted); font-weight:700;">OFFICIAL INBOX</div>
-            <a id="email-link" href="mailto:info@pelwattanavodya.lk" style="font-weight:700; font-size:1.05rem; color:var(--maroon); word-break:break-all;">info@pelwattanavodya.lk</a>
+            <a id="email-link" style="font-weight:700; font-size:1.05rem; color:var(--maroon); word-break:break-all;"></a>
           </div>
         </div>
-        <a id="email-btn" href="mailto:info@pelwattanavodya.lk?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College" class="btn" style="text-align:center;"></a>
+        <a id="email-btn" class="btn" style="text-align:center;"></a>
       </div>
 
       <!-- Telephone Inquiries Card -->
@@ -44,11 +50,11 @@
           <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
             <div style="background:var(--gold-subtle); padding:12px 16px; border-radius:8px;">
               <div style="font-size:0.8rem; color:var(--gold-dark); font-weight:700;">PRINCIPAL & OFFICE DIRECT</div>
-              <a id="phone-link-1" href="tel:+94552276234" style="font-weight:800; font-size:1.2rem; color:var(--text);">+94 55 227 6234</a>
+              <a id="phone-link-1" style="font-weight:800; font-size:1.2rem; color:var(--text);"></a>
             </div>
-            <div style="background:var(--bg); padding:10px 16px; border-radius:8px; border:1px solid var(--border);">
+            <div style="background:var(--bg); padding:10px 16px; border-radius:8px; border:1px solid var(--border); display:none;">
               <div style="font-size:0.8rem; color:var(--muted); font-weight:700;">ADMINISTRATION DESK</div>
-              <a id="phone-link-2" href="tel:+94552276235" style="font-weight:700; font-size:1.05rem; color:var(--text);">+94 55 227 6235</a>
+              <a id="phone-link-2" style="font-weight:700; font-size:1.05rem; color:var(--text);"></a>
             </div>
           </div>
         </div>
@@ -86,29 +92,58 @@ function renderBody(page, common){
 
   // Email Card
   const s = SITE.settings || {};
-  const emailVal = s.email || page.email;
-  const phone1 = (s.phones && s.phones[0]) || page.phone;
-  const phone2 = (s.phones && s.phones[1]) || page.phoneSecondary || phone1;
-  const mapUrl = (s.googleMaps && s.googleMaps.embedUrl) || page.mapEmbedUrl;
+  const emailVal = (s.email && s.email.trim()) || (page.email && page.email.trim()) || '';
+  const phonesList = (s.phones && Array.isArray(s.phones) && s.phones.filter(p => p && p.trim())) || (page.phone ? [page.phone] : []);
+  const phone1 = phonesList[0] || '';
+  const phone2 = phonesList[1] || '';
+  const mapUrl = (s.googleMaps && s.googleMaps.embedUrl && s.googleMaps.embedUrl.startsWith('https://www.google.com/maps/embed')) ? s.googleMaps.embedUrl : (page.mapEmbedUrl || '');
   const addressText = t((s.address) || common.location);
   const hoursText = t((s.officeHours) || page.officeHours);
-  const rtiText = (s.rtiOfficer && s.rtiOfficer.name) ? t(s.rtiOfficer.name) : page.rtiOfficerName;
+  const rtiText = (s.rtiOfficer && s.rtiOfficer.name && t(s.rtiOfficer.name)) || (page.rtiOfficerName || '');
 
   document.getElementById('email-card-title').textContent = t(page.emailUsTitle);
   document.getElementById('email-card-desc').textContent = t(page.emailUsDesc);
-  document.getElementById('email-btn').textContent = t(page.emailButton);
-  document.getElementById('email-link').textContent = emailVal;
-  document.getElementById('email-link').href = `mailto:${emailVal}`;
-  document.getElementById('email-btn').href = `mailto:${emailVal}?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College`;
+  const emailLinkEl = document.getElementById('email-link');
+  const emailBtnEl = document.getElementById('email-btn');
+  if (emailVal) {
+    emailLinkEl.textContent = emailVal;
+    emailLinkEl.href = `mailto:${emailVal}`;
+    emailBtnEl.style.display = '';
+    emailBtnEl.textContent = t(page.emailButton);
+    emailBtnEl.href = `mailto:${emailVal}?subject=School%20Inquiry%20-%20Mo/Pelwatta%20Navodya%20College`;
+  } else {
+    emailLinkEl.textContent = lang === 'en' ? 'Email address will be updated soon.' : (lang === 'ta' ? 'மின்னஞ்சல் முகவரி விரைவில் புதுப்பிக்கப்படும்.' : 'විද්‍යුත් තැපැල් ලිපිනය නුදුරේදීම යාවත්කාලීන කරනු ලැබේ.');
+    emailLinkEl.removeAttribute('href');
+    emailBtnEl.style.display = 'none';
+  }
 
   // Phone Card
   document.getElementById('phone-card-title').textContent = t(page.callUsTitle);
   document.getElementById('phone-card-desc').textContent = t(page.callUsDesc);
-  document.getElementById('phone-link-1').textContent = phone1;
-  document.getElementById('phone-link-1').href = `tel:${phone1.replace(/[^0-9+]/g, '')}`;
-  document.getElementById('phone-link-2').textContent = phone2;
-  document.getElementById('phone-link-2').href = `tel:${phone2.replace(/[^0-9+]/g, '')}`;
-  document.getElementById('office-hours-banner').innerHTML = `🕒 <strong>${t(page.officeHoursTitle)}:</strong> ${hoursText}`;
+  const p1El = document.getElementById('phone-link-1');
+  const p2El = document.getElementById('phone-link-2');
+  if (phone1) {
+    p1El.parentElement.style.display = '';
+    p1El.textContent = phone1;
+    p1El.href = `tel:${phone1.replace(/[^0-9+]/g, '')}`;
+  } else {
+    p1El.parentElement.style.display = '';
+    p1El.textContent = lang === 'en' ? 'Telephone numbers will be updated soon.' : (lang === 'ta' ? 'தொலைபேசி எண்கள் விரைவில் புதுப்பிக்கப்படும்.' : 'දුරකථන අංක නුදුරේදීම යාවත්කාලීන කරනු ලැබේ.');
+    p1El.removeAttribute('href');
+  }
+  if (phone2) {
+    p2El.parentElement.style.display = '';
+    p2El.textContent = phone2;
+    p2El.href = `tel:${phone2.replace(/[^0-9+]/g, '')}`;
+  } else {
+    p2El.parentElement.style.display = 'none';
+  }
+
+  if (hoursText) {
+    document.getElementById('office-hours-banner').innerHTML = `🕒 <strong>${t(page.officeHoursTitle)}:</strong> ${hoursText}`;
+  } else {
+    document.getElementById('office-hours-banner').textContent = '';
+  }
 
   // Details
   const detailsHead = lang === 'en' ? 'School Administrative Details' : (lang === 'ta' ? 'பாடசாலை நிர்வாக விபரங்கள்' : 'පාසල් පරිපාලන විස්තර');
@@ -117,12 +152,26 @@ function renderBody(page, common){
   document.getElementById('details-title').textContent = detailsHead;
   document.getElementById('location-title').textContent = locHead;
   document.getElementById('label-address').textContent = addrLabel;
-  document.getElementById('detail-address').textContent = addressText;
+  document.getElementById('detail-address').textContent = addressText || (lang === 'en' ? 'Pelwatta, Monaragala, Sri Lanka' : 'පැල්වත්ත, මොනරාගල, ශ්‍රී ලංකාව');
   document.getElementById('office-hours-title').textContent = t(page.officeHoursTitle);
-  document.getElementById('office-hours').textContent = hoursText;
-  document.getElementById('rti-label').textContent = t(page.rtiTitle);
-  document.getElementById('rti-name').textContent = rtiText;
-  document.getElementById('map-iframe').src = mapUrl;
+  document.getElementById('office-hours').textContent = hoursText || '—';
+  
+  const rtiP = document.getElementById('rti-label')?.parentElement;
+  if (rtiText && rtiText.trim()) {
+    if (rtiP) rtiP.style.display = '';
+    document.getElementById('rti-label').textContent = t(page.rtiTitle);
+    document.getElementById('rti-name').textContent = rtiText;
+  } else {
+    if (rtiP) rtiP.style.display = 'none';
+  }
+
+  const mapFrame = document.getElementById('map-iframe');
+  if (mapUrl && mapUrl.startsWith('https://www.google.com/maps/embed')) {
+    mapFrame.src = mapUrl;
+    mapFrame.parentElement.style.display = '';
+  } else {
+    mapFrame.parentElement.style.display = 'none';
+  }
 }
 initPage('contact', 'content/pages/contact.json', renderBody);
 </script>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Neutral Profile Silhouette">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+    <linearGradient id="personGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="78" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- Head -->
+  <circle cx="80" cy="62" r="26" fill="url(#personGrad)" />
+  <!-- Shoulders / Torso -->
+  <path d="M 38 132 C 40 102, 60 96, 80 96 C 100 96, 120 102, 122 132 C 110 144, 96 150, 80 150 C 64 150, 50 144, 38 132 Z" fill="url(#personGrad)" />
+</svg>

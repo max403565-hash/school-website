@@ -134,16 +134,16 @@
       ta: "பெல்வத்தை, புத்தள, மொணராகலை மாவட்டம், ஊவா மாகாணம், இலங்கை",
       en: "Pelwatta, Buttala, Monaragala District, Uva Province, Sri Lanka"
     },
-    phones: ["+94 55 227 6234", "+94 55 227 6235"],
-    email: "principal@pelwattacollege.sch.lk",
+    phones: [],
+    email: "",
     officeHours: {
       si: "සඳුදා – සිකුරාදා: පෙ.ව. 7.30 – ප.ව. 1.30 (පාසල් වේලාවන්)",
       ta: "திங்கள் – வெள்ளி: மு.ப. 7.30 – பி.ப. 1.30 (பள்ளி நேரம்)",
       en: "Monday – Friday: 7:30 AM – 1:30 PM (School Hours)"
     },
-    facebookUrl: "https://www.facebook.com/pelwattacollege",
-    youtubeUrl: "https://www.youtube.com/@pelwattacollege",
-    whatsappUrl: "https://wa.me/94552276234",
+    facebookUrl: "",
+    youtubeUrl: "",
+    whatsappUrl: "",
     googleMaps: {
       embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.884560768462!2d81.2580798!3d6.7839218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4402ea2aaab61%3A0xe54e612f0df702eb!2sPelwatta%20Navodya%20School!5e0!3m2!1sen!2slk!4v1710000000000!5m2!1sen!2slk",
       directionsUrl: "https://maps.google.com/?q=Pelwatta+Navodya+School+Monaragala"
@@ -200,9 +200,9 @@
     const schoolNameStr = pickText(s.schoolName, curLang);
     const mottoStr = pickText(s.motto, curLang);
     const nationalNoticeStr = pickText(s.nationalStatus, curLang);
-    const addressStr = pickText(s.address, curLang);
-    const phoneStr = (s.phones && s.phones.length > 0) ? s.phones[0] : '+94 55 227 6234';
-    const emailStr = s.email || 'principal@pelwattacollege.sch.lk';
+    const addressStr = pickText(s.address, curLang) || (curLang === 'en' ? 'Pelwatta, Monaragala, Sri Lanka' : 'පැල්වත්ත, මොනරාගල, ශ්‍රී ලංකාව');
+    const phoneStr = (s.phones && Array.isArray(s.phones) && s.phones.length > 0) ? s.phones[0] : '';
+    const emailStr = (s.email || '').trim();
 
     let navLinksHtml = '';
     (menuItems || DEFAULT_MENU).forEach(item => {
@@ -242,6 +242,29 @@
       }
     });
 
+    let topContactsHtml = `
+      <li class="top-contact-item">
+        <span>📍</span>
+        <span>${escapeHtml(addressStr)}</span>
+      </li>
+    `;
+    if (phoneStr) {
+      topContactsHtml += `
+        <li class="top-contact-item">
+          <span>📞</span>
+          <a href="tel:${escapeHtml(phoneStr.replace(/[^0-9+]/g, ''))}" style="color:inherit; text-decoration:none;">${escapeHtml(phoneStr)}</a>
+        </li>
+      `;
+    }
+    if (emailStr) {
+      topContactsHtml += `
+        <li class="top-contact-item">
+          <span>✉️</span>
+          <a href="mailto:${escapeHtml(emailStr)}" style="color:inherit; text-decoration:none;">${escapeHtml(emailStr)}</a>
+        </li>
+      `;
+    }
+
     root.innerHTML = `
       <header class="site-header">
         <!-- Slim National School Notice Bar -->
@@ -255,18 +278,7 @@
         <div class="top-bar desktop-only-bar">
           <div class="container top-bar-inner">
             <ul class="top-contact-list">
-              <li class="top-contact-item">
-                <span>📍</span>
-                <span>${escapeHtml(addressStr)}</span>
-              </li>
-              <li class="top-contact-item">
-                <span>📞</span>
-                <a href="tel:${escapeHtml(phoneStr.replace(/[^0-9+]/g, ''))}" style="color:inherit; text-decoration:none;">${escapeHtml(phoneStr)}</a>
-              </li>
-              <li class="top-contact-item">
-                <span>✉️</span>
-                <a href="mailto:${escapeHtml(emailStr)}" style="color:inherit; text-decoration:none;">${escapeHtml(emailStr)}</a>
-              </li>
+              ${topContactsHtml}
             </ul>
 
             <div style="display:flex; align-items:center; gap:12px;">
@@ -437,17 +449,21 @@
     const schoolNameStr = pickText(s.schoolName, curLang);
     const mottoStr = pickText(s.motto, curLang);
     const addressStr = pickText(s.address, curLang);
-    const hoursStr = pickText(s.officeHours, curLang);
-    const phoneStr = (s.phones && s.phones.length > 0) ? s.phones[0] : '+94 55 227 6234';
-    const emailStr = s.email || 'principal@pelwattacollege.sch.lk';
     const footerTextStr = pickText(s.footerText, curLang);
     const devCredit = s.developerCredit || "Website developed by [S.A.Chanuk Mithuja ]";
 
-    // Social Links: show ONLY when URL is set
+    const phoneStr = (s.phones && Array.isArray(s.phones) && s.phones.length > 0) ? s.phones[0] : '';
+    const emailStr = (s.email || '').trim();
+    const isRealFb = s.facebookUrl && typeof s.facebookUrl === 'string' &&
+                     s.facebookUrl.startsWith('https://') &&
+                     !s.facebookUrl.includes('YOUR_PAGE') &&
+                     s.facebookUrl.includes('facebook.com');
+
+    // Social Links: show ONLY when valid real URL is set
     let socialHtml = '';
-    if (s.facebookUrl || s.youtubeUrl || s.whatsappUrl) {
+    if (isRealFb || s.youtubeUrl || s.whatsappUrl) {
       socialHtml = '<div style="display:flex; gap:12px; margin-top:12px; align-items:center;">';
-      if (s.facebookUrl) {
+      if (isRealFb) {
         socialHtml += `<a href="${escapeHtml(s.facebookUrl)}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;" aria-label="Facebook">📘 Facebook</a>`;
       }
       if (s.youtubeUrl) {
@@ -517,9 +533,9 @@
             <h4 class="footer-col-title">${escapeHtml(contactTitle)}</h4>
             <div style="font-size:0.875rem; color:#cbd5e1; line-height:1.7;">
               <p style="margin:0;">📍 ${escapeHtml(addressStr)}</p>
-              <p style="margin:0.5rem 0 0;">📞 <a href="tel:${escapeHtml(phoneStr.replace(/[^0-9+]/g, ''))}" style="color:inherit; text-decoration:none;">${escapeHtml(phoneStr)}</a></p>
-              <p style="margin:2px 0;">✉️ <a href="mailto:${escapeHtml(emailStr)}" style="color:inherit; text-decoration:none;">${escapeHtml(emailStr)}</a></p>
-              <p style="margin-top:0.5rem; color:var(--gold-light);">🕒 ${escapeHtml(hoursStr)}</p>
+              ${phoneStr ? `<p style="margin:0.5rem 0 0;">📞 <a href="tel:${escapeHtml(phoneStr.replace(/[^0-9+]/g, ''))}" style="color:inherit; text-decoration:none;">${escapeHtml(phoneStr)}</a></p>` : ''}
+              ${emailStr ? `<p style="margin:2px 0;">✉️ <a href="mailto:${escapeHtml(emailStr)}" style="color:inherit; text-decoration:none;">${escapeHtml(emailStr)}</a></p>` : ''}
+              ${hoursStr ? `<p style="margin-top:0.5rem; color:var(--gold-light);">🕒 ${escapeHtml(hoursStr)}</p>` : ''}
             </div>
           </div>
         </div>

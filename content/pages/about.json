@@ -8,7 +8,7 @@
   "historyBody": {
     "si": "1975 වසරේ ආරම්භ කරන ලද මෝ/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය, දශක ගණනාවක් පුරා පැල්වත්ත ප්‍රදේශයේ දරුවන්ට ගුණාත්මක අධ්‍යාපනයක් ලබාදෙමින් සිටී. කාලයත් සමඟ ශ්‍රේණි 1 සිට උසස් පෙළ දක්වා පුළුල් අධ්‍යාපනයක් සපයන ආයතනයක් බවට වර්ධනය විය.",
     "ta": "1975 இல் நிறுவப்பட்ட மோ/பெல்வத்த நவோதயா இடைநிலைப் பள்ளி, பல தசாப்தங்களாக பெல்வத்த பகுதி மாணவர்களுக்கு தரமான கல்வியை வழங்கி வருகிறது.",
-    "en": "Founded in 1975, Mo/Pelwatta Navodya Secondary Collage has provided quality education to children of the Pelwatta area for decades, growing into an institution offering education from Grade 1 through Advanced Level."
+    "en": "Founded in 1975, Mo/Pelwatta Navodya Secondary College has provided quality education to children of the Pelwatta area for decades, growing into an institution offering education from Grade 1 through Advanced Level."
   },
   "visionTitle": {"si": "දැක්ම", "ta": "தொலைநோக்கு", "en": "Vision"},
   "visionBody": {
@@ -23,17 +23,12 @@
     "en": "To provide every student with free, quality education with equal opportunity, delivered through a value-driven teaching staff using modern methods."
   },
   "pastPrincipalsTitle": {"si": "හිටපු විදුහල්පතිවරු", "ta": "முன்னாள் அதிபர்கள்", "en": "Past Principals"},
-  "pastPrincipals": [
-    {"years": "1975–1989", "name": "Mr. K. Rathnayake"},
-    {"years": "1989–2001", "name": "Mrs. S. Ariyawansa"},
-    {"years": "2001–2014", "name": "Mr. P. Gunawardena"},
-    {"years": "2014–present", "name": "Mrs. N. Wickramasinghe"}
-  ],
-  "principalMsgTitle": {"si": "විදුහල්පතිතුමියගේ පණිවිඩය", "ta": "அதிபரின் செய்தி", "en": "Principal's Message"},
+  "pastPrincipals": [],
+  "principalMsgTitle": {"si": "", "ta": "", "en": ""},
   "principalMsgBody": {
-    "si": "අපගේ පාසලේ දරුවන් සදාචාරාත්මක වටිනාකම් සමඟින් අධ්‍යයන ක්ෂේත්‍රයේ ඉහළම ජයග්‍රහණ කරා යොමු කිරීම අපගේ අරමුණයි. දෙමාපියන් සහ ප්‍රජාවගේ අඛණ්ඩ සහයෝගය අගය කරමි.",
-    "ta": "எமது பள்ளி மாணவர்களை நெறிமுறை விழுமியங்களுடன் உயர்ந்த கல்வி சாதனைகளை நோக்கி வழிநடத்துவதே எமது நோக்கமாகும்.",
-    "en": "Our aim is to guide the children of this school toward the highest academic achievement, grounded in strong moral values. We deeply appreciate the continued support of parents and the community."
+    "si": "",
+    "ta": "",
+    "en": ""
   },
   "mapEmbedUrl": "https://www.google.com/maps?q=6.7167,81.0833&z=14&output=embed",
   "mapNote": {

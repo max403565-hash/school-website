@@ -31,11 +31,11 @@
   },
   "officeHoursTitle": {"si": "කාර්යාල වේලාවන්", "ta": "அலுவலக நேரம்", "en": "Office Hours"},
   "officeHours": {"si": "සඳුදා - සිකුරාදා: පෙ.ව. 7.30 - ප.ව. 2.30 (රජයේ පාසල් වැඩ කරන දින)", "ta": "திங்கள் - வெள்ளி: காலை 7.30 - பிற்பகல் 2.30 (அரசு பாடசாலை வேலை நாட்கள்)", "en": "Monday – Friday: 7:30 AM – 2:30 PM (School Working Days)"},
-  "phone": "+94 55 227 6234",
-  "phoneSecondary": "+94 55 227 6235",
-  "email": "info@pelwattanavodya.lk",
-  "principalEmail": "principal@pelwattacollege.sch.lk",
+  "phone": "",
+  "phoneSecondary": "",
+  "email": "",
+  "principalEmail": "",
   "rtiTitle": {"si": "තොරතුරු දැනගැනීමේ අයිතිය (RTI)", "ta": "தகவல் அறியும் உரிமை (RTI)", "en": "Right to Information (RTI)"},
-  "rtiOfficerName": "Mrs. W. Karunaratne — Chief Incumbent Administrative Officer",
+  "rtiOfficerName": "",
   "mapEmbedUrl": "https://www.google.com/maps?q=6.7167,81.0833&z=15&output=embed"
 }

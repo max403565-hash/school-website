@@ -11,13 +11,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Notice Board & Events Calendar - Mo/Pelwatta Navodya Secondary College" />
   <meta property="og:description" content="Official notices, urgent announcements, and events calendar for Mo/Pelwatta Navodya Secondary College." />
-  <meta property="og:image" content="images/campus-hero.jpg" />
+  <meta property="og:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Notice Board & Events Calendar - Mo/Pelwatta Navodya Secondary College" />
   <meta name="twitter:description" content="Official notices, urgent announcements, and events calendar for Mo/Pelwatta Navodya Secondary College." />
-  <meta name="twitter:image" content="images/campus-hero.jpg" />
+  <meta name="twitter:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
   <link rel="stylesheet" href="css/style.css" />
@@ -544,6 +544,20 @@
         }
 
         renderPage();
+
+        // 10-second timeout to guarantee loading placeholders are replaced
+        setTimeout(() => {
+          const lang = getCurLang();
+          const s = STRINGS[lang] || STRINGS.si;
+          const nCont = document.getElementById('notices-list-container');
+          if (nCont && nCont.innerHTML.includes('පූරණය වෙමින් පවතී')) {
+            nCont.innerHTML = `<div class="muted" style="padding:1.5rem 0;">${s.noNotices}</div>`;
+          }
+          const eCont = document.getElementById('events-list-container');
+          if (eCont && eCont.innerHTML.includes('පූරණය වෙමින් පවතී')) {
+            eCont.innerHTML = `<div class="muted" style="padding:1.5rem 0;">${s.noUpcomingEvents}</div>`;
+          }
+        }, 10000);
       }
 
       if (window.i18n && window.i18n.onLanguageChange) {

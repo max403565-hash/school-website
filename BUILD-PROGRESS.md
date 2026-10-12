@@ -81,3 +81,18 @@ This phase transforms `xk92m-manage/index.html` into an accessible, bilingual/tr
 | **PART 6** | Teacher User Guide & Print View | **DONE** | "User Guide" tab (`guide`) providing 8 step-by-step guides in current admin language (news publishing, gallery photos, custom pages, menu reordering, contact details, admissions, mistake rollback, expired tokens). Print-ready layout via `@media print` and "What's New" system changelog. |
 | **PART 7** | Quality Assurance & Cross-Platform Testing | **DONE** | Verified on mobile (360px), tablet (768px), and desktop (1280px). Confirmed zero paths starting with `/` (100% relative `../` root paths). Backwards compatibility with all older tabs verified. Zero third-party dependencies or leaks. |
 
+---
+
+## PHASE 4 — ADMIN STABILIZATION & PUBLIC SITE DEFECT REPAIR
+
+### Summary of Completed Stabilization & Defect Repairs
+- **All buttons responsive**: Fixed `switchTab` reference error in Getting Started checklist, unwired AI API key button, and guarded all dynamic element attachments.
+- **Defensive initialization**: Every admin tab is wrapped in independent `safeInitTab` try/catch boundaries so an issue in one tab cannot break others.
+- **Diagnostics & Self-Test system**: Floating diagnostics bug icon records unhandled errors, promise rejections, and sanitized API failures; automated Self-Test tests all tabs, panels, buttons, and GitHub connectivity.
+- **Facebook links sanitization**: Replaced placeholder URLs with conditional display — Facebook links/buttons/embeds are hidden unless a real URL is saved in Site Settings.
+- **No invented facts**: Principal and statistical facts are hidden unless populated in school content; neutral silhouette SVG used when photo is absent; admin shows "Needs Information" marker.
+- **Friendly loading states**: 10-second timeout fallbacks and empty-state messaging replace indefinite "Loading..." labels across the home page and notices page.
+- **Unified School Name & Metadata**: Enforced single canonical spelling from `settings.json` across all page titles, OpenGraph, and Twitter cards with absolute image URLs.
+- **Zero Leading Slash Paths & 100% Translation Coverage**: Verified zero `/` paths across all assets/links and complete trilingual coverage across all pages.
+
+

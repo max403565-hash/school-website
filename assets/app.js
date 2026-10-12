@@ -123,6 +123,32 @@ function renderHeader(common, currentKey){
   const headerRoot = document.getElementById('site-header');
   if (!headerRoot) return;
 
+  const sPhone = (SITE.settings && SITE.settings.phones && SITE.settings.phones[0]) || '';
+  const sEmail = (SITE.settings && SITE.settings.email) || '';
+
+  let topContactsHtml = `
+    <li class="top-contact-item">
+      <span>📍</span>
+      <span>${t((SITE.settings && SITE.settings.address) || common.location)}</span>
+    </li>
+  `;
+  if (sPhone) {
+    topContactsHtml += `
+      <li class="top-contact-item">
+        <span>📞</span>
+        <a href="tel:${sPhone.replace(/[^0-9+]/g, '')}" style="color:inherit; text-decoration:none;">${sPhone}</a>
+      </li>
+    `;
+  }
+  if (sEmail) {
+    topContactsHtml += `
+      <li class="top-contact-item">
+        <span>✉️</span>
+        <a href="mailto:${sEmail}" style="color:inherit; text-decoration:none;">${sEmail}</a>
+      </li>
+    `;
+  }
+
   headerRoot.innerHTML = `
     <!-- Slim National School Notice Bar -->
     <div class="national-notice-bar">
@@ -135,18 +161,7 @@ function renderHeader(common, currentKey){
     <div class="top-bar desktop-only-bar">
       <div class="container top-bar-inner">
         <ul class="top-contact-list">
-          <li class="top-contact-item">
-            <span>📍</span>
-            <span>${t((SITE.settings && SITE.settings.address) || common.location)}</span>
-          </li>
-          <li class="top-contact-item">
-            <span>📞</span>
-            <span>${(SITE.settings && SITE.settings.phones && SITE.settings.phones[0]) || '+94 55 227 6234'}</span>
-          </li>
-          <li class="top-contact-item">
-            <span>✉️</span>
-            <span>${(SITE.settings && SITE.settings.email) || 'principal@pelwattacollege.sch.lk'}</span>
-          </li>
+          ${topContactsHtml}
         </ul>
 
         <div style="display:flex; align-items:center; gap:12px;">
@@ -208,14 +223,26 @@ function renderFooter(common){
   if (!footerRoot) return;
 
   const s = SITE.settings || {};
+  const isRealFb = s.facebookUrl && typeof s.facebookUrl === 'string' &&
+                   s.facebookUrl.startsWith('https://') &&
+                   !s.facebookUrl.includes('YOUR_PAGE') &&
+                   s.facebookUrl.includes('facebook.com');
+
   let socialHtml = '';
-  if (s.facebookUrl || s.youtubeUrl || s.whatsappUrl) {
+  if (isRealFb || s.youtubeUrl || s.whatsappUrl) {
     socialHtml = '<div style="display:flex; gap:12px; margin-top:12px; align-items:center;">';
-    if (s.facebookUrl) socialHtml += `<a href="${s.facebookUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">📘 Facebook</a>`;
+    if (isRealFb) socialHtml += `<a href="${s.facebookUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">📘 Facebook</a>`;
     if (s.youtubeUrl) socialHtml += `<a href="${s.youtubeUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">▶️ YouTube</a>`;
     if (s.whatsappUrl) socialHtml += `<a href="${s.whatsappUrl}" target="_blank" rel="noopener" style="color:var(--color-gold); font-size:1.1rem; text-decoration:none;">💬 WhatsApp</a>`;
     socialHtml += '</div>';
   }
+
+  const fPhone = (s.phones && s.phones[0]) || '';
+  const fEmail = (s.email || '').trim();
+
+  let fContactHtml = `<p>${t(common.location)}</p>`;
+  if (fPhone) fContactHtml += `<p style="margin-top:0.5rem;">📞 <a href="tel:${fPhone.replace(/[^0-9+]/g, '')}" style="color:inherit; text-decoration:none;">${fPhone}</a></p>`;
+  if (fEmail) fContactHtml += `<p style="margin-top:0.25rem;">✉️ <a href="mailto:${fEmail}" style="color:inherit; text-decoration:none;">${fEmail}</a></p>`;
 
   footerRoot.innerHTML = `
     <div class="container">
@@ -252,9 +279,7 @@ function renderFooter(common){
         </div>
         <div>
           <h4>${t(f.contactTitle)}</h4>
-          <p>${t(common.location)}</p>
-          <p style="margin-top:0.5rem;">📞 +94 55 227 6234</p>
-          <p>✉️ info@pelwattacollege.sch.lk</p>
+          ${fContactHtml}
           <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>${t(f.rti)}:</strong><br>${t(f.rtiName)}</p>
         </div>
       </div>

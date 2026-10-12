@@ -11,14 +11,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Mo/Pelwatta Navodya Secondary College" />
   <meta property="og:description" content="Official multilingual website for Mo/Pelwatta Navodya Secondary College, Monaragala — a Sri Lankan free government school designated as a National School." />
-  <meta property="og:image" content="images/campus-hero.jpg" />
+  <meta property="og:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
   <meta property="og:site_name" content="Mo/Pelwatta Navodya Secondary College" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mo/Pelwatta Navodya Secondary College" />
   <meta name="twitter:description" content="Official multilingual website for Mo/Pelwatta Navodya Secondary College, Monaragala." />
-  <meta name="twitter:image" content="images/campus-hero.jpg" />
+  <meta name="twitter:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
   <link rel="stylesheet" href="css/style.css" />
@@ -81,20 +81,18 @@
     <div class="tiles-grid" id="quick-tiles-container"></div>
   </section>
 
-  <!-- Principal Message Snippet Section -->
-  <section class="container">
+  <!-- Principal Message Snippet Section (Shown only if real text exists in content) -->
+  <section class="container" id="home-principal-section" style="display:none;">
     <div class="principal-section">
       <div class="principal-grid">
         <div class="principal-img-box">
-          <img src="images/principal.jpg" alt="Principal" class="principal-photo" id="principal-photo" loading="lazy" width="180" height="180" />
-          <h3 class="principal-name" id="principal-name">කේ. එම්. සුනිල් ශාන්ත මහතා</h3>
-          <p class="principal-role" id="principal-role">විදුහල්පති (SLEAS)</p>
+          <img src="images/silhouette-principal.svg" alt="Principal" class="principal-photo" id="principal-photo" loading="lazy" width="180" height="180" />
+          <h3 class="principal-name" id="principal-name"></h3>
+          <p class="principal-role" id="principal-role"></p>
         </div>
         <div>
           <span class="section-badge" data-i18n="home.leadershipBadge">නායකත්වය සහ දැක්ම</span>
-          <blockquote class="principal-quote" id="principal-quote">
-            "දැනුම පමණක් නොව විනය, සාරධර්ම සහ මානව ගුණාංගවලින් සන්නද්ධ පිරිපුන් පුරවැසියන් බිහිකිරීම අප පාසලේ ඒකායන අරමුණයි."
-          </blockquote>
+          <blockquote class="principal-quote" id="principal-quote"></blockquote>
           <a href="about.html" class="btn-primary" style="display:inline-flex;">
             <span data-i18n="home.readPrincipalMsg">විදුහල්පතිතුමාගේ පණිවිඩය කියවන්න</span> &rarr;
           </a>
@@ -138,8 +136,8 @@
     </div>
   </section>
 
-  <!-- School Facebook Updates Section -->
-  <section class="container" style="padding-top: 1rem; padding-bottom: 4rem;">
+  <!-- School Facebook Updates Section (Shown ONLY when a real URL is saved in Site Settings) -->
+  <section class="container" id="facebook-section" style="display:none; padding-top: 1rem; padding-bottom: 4rem;">
     <div class="facebook-feed-section">
       <div class="facebook-feed-layout">
         <div class="facebook-feed-info">
@@ -337,11 +335,25 @@
           </a>
         `).join('');
 
-        // Principal snippet
-        document.getElementById('principal-photo').src = (homeData.principalSnippet.photo || '').replace(/^\/+/, '');
-        document.getElementById('principal-name').textContent = pick(homeData.principalSnippet.name, lang);
-        document.getElementById('principal-role').textContent = pick(homeData.principalSnippet.role, lang);
-        document.getElementById('principal-quote').textContent = pick(homeData.principalSnippet.quote, lang);
+        // Principal snippet (Show ONLY if school has entered real text)
+        const pSection = document.getElementById('home-principal-section');
+        const pSnippet = homeData.principalSnippet;
+        const pName = pSnippet && pick(pSnippet.name, lang);
+        const pQuote = pSnippet && pick(pSnippet.quote, lang);
+
+        if (pSection) {
+          if (pName && pName.trim() && pQuote && pQuote.trim()) {
+            pSection.style.display = '';
+            const photoEl = document.getElementById('principal-photo');
+            const photoSrc = (pSnippet.photo || '').trim().replace(/^\/+/, '');
+            photoEl.src = photoSrc || 'images/silhouette-principal.svg';
+            document.getElementById('principal-name').textContent = pName;
+            document.getElementById('principal-role').textContent = pick(pSnippet.role, lang) || '';
+            document.getElementById('principal-quote').textContent = pQuote;
+          } else {
+            pSection.style.display = 'none';
+          }
+        }
 
         // Latest News (first 3)
         if (newsIndexData && newsIndexData.articles) {
@@ -379,7 +391,33 @@
           }).join('');
         }
 
-        // Facebook section translations
+        // Facebook section translations & verification
+        initFacebookFeed();
+      }
+
+      let fbInitialized = false;
+      async function initFacebookFeed() {
+        const fbSection = document.getElementById('facebook-section');
+        let settingsUrl = '';
+        try {
+          const sRes = await fetch('content/settings.json');
+          if (sRes.ok) {
+            const sData = await sRes.json();
+            settingsUrl = (sData.facebookUrl || '').trim();
+          }
+        } catch (e) {}
+
+        const isReal = settingsUrl.startsWith('https://') &&
+                       !settingsUrl.includes('YOUR_PAGE') &&
+                       settingsUrl.includes('facebook.com');
+
+        if (!isReal) {
+          if (fbSection) fbSection.style.display = 'none';
+          return;
+        }
+
+        if (fbSection) fbSection.style.display = '';
+        const lang = window.i18n ? window.i18n.getLanguage() : 'si';
         const fbBadge = document.getElementById('fb-badge-text');
         const fbTitle = document.getElementById('fb-title');
         const fbDesc = document.getElementById('fb-desc');
@@ -394,18 +432,13 @@
         if (fbPlaceholderText) fbPlaceholderText.textContent = lang === 'en' ? 'If the Facebook feed does not display or is blocked by your browser, visit our page directly.' : (lang === 'ta' ? 'Facebook பதிவுகள் ஏற்றப்படாவிட்டால் அல்லது தடுக்கப்பட்டிருந்தால் கீழேயுள்ள பொத்தானை அழுத்தவும்.' : 'Facebook පුවත් පූරණය නොවන්නේ නම් හෝ අවහිර කර ඇත්නම් පහත බොත්තම මගින් සෘජුව පිවිසෙන්න.');
         if (fbFallbackBtn) fbFallbackBtn.textContent = lang === 'en' ? 'Visit our Facebook page' : (lang === 'ta' ? 'எமது Facebook பக்கத்தைப் பார்வையிடவும்' : 'අපගේ Facebook පිටුවට පිවිසෙන්න');
 
-        initFacebookFeed();
-      }
-
-      let fbInitialized = false;
-      function initFacebookFeed() {
         const container = document.getElementById('fb-feed-container');
         if (!container) return;
 
         const actionBtn = document.getElementById('fb-action-btn');
         const fallbackBtn = document.getElementById('fb-fallback-btn');
-        if (actionBtn) actionBtn.href = FACEBOOK_PAGE_URL;
-        if (fallbackBtn) fallbackBtn.href = FACEBOOK_PAGE_URL;
+        if (actionBtn) actionBtn.href = settingsUrl;
+        if (fallbackBtn) fallbackBtn.href = settingsUrl;
 
         if (fbInitialized) return;
         fbInitialized = true;
@@ -418,7 +451,7 @@
           iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
           iframe.setAttribute('loading', 'lazy');
 
-          const encodedUrl = encodeURIComponent(FACEBOOK_PAGE_URL);
+          const encodedUrl = encodeURIComponent(settingsUrl);
           iframe.src = `https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
 
           iframe.onload = () => {
@@ -445,6 +478,20 @@
           loadIframe();
         }
       }
+
+      // 10-second timeout fallback for events & news loading states
+      setTimeout(() => {
+        const evList = document.getElementById('home-events-list');
+        if (evList && evList.innerHTML.includes('පූරණය වෙමින් පවතී')) {
+          const curLang = window.i18n ? window.i18n.getLanguage() : 'si';
+          evList.innerHTML = `<div class="muted" style="padding:0.75rem 0;">${curLang === 'en' ? 'No upcoming events scheduled at this moment.' : (curLang === 'ta' ? 'வரவிருக்கும் நிகழ்வுகள் எதுவும் தற்போது திட்டமிடப்படவில்லை.' : 'ඉදිරියට සැලසුම් කළ සිදුවීම් කිසිවක් දැනට නොමැත.')}</div>`;
+        }
+        const newsEl = document.getElementById('latest-news-container');
+        if (newsEl && (!newsEl.innerHTML || newsEl.innerHTML.trim() === '')) {
+          const curLang = window.i18n ? window.i18n.getLanguage() : 'si';
+          newsEl.innerHTML = `<div class="muted" style="padding:1rem 0; grid-column:1/-1;">${curLang === 'en' ? 'No recent news articles published yet.' : (curLang === 'ta' ? 'செய்திகள் எதுவும் இன்னும் வெளியிடப்படவில்லை.' : 'මෑතකාලීන පුවත් කිසිවක් දැනට පළ කර නොමැත.')}</div>`;
+        }
+      }, 10000);
 
       function renderCarousel(slides, lang) {
         const container = document.getElementById('carousel-slides-container');

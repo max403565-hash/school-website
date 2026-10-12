@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Us — Mo/Pelwatta Navodya Secondary College</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About Us — Mo/Pelwatta Navodya Secondary College" />
+  <meta property="og:description" content="History, vision, mission and campus leadership of Mo/Pelwatta Navodya Secondary College." />
+  <meta property="og:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Us — Mo/Pelwatta Navodya Secondary College" />
+  <meta name="twitter:description" content="History, vision, mission and campus leadership of Mo/Pelwatta Navodya Secondary College." />
+  <meta name="twitter:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
+
 <link rel="icon" href="images/crest.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;700;800&display=swap" rel="stylesheet">
@@ -41,14 +50,14 @@
     </div>
   </section>
 
-  <section class="section container">
+  <section class="section container" id="principal-section">
     <div class="card" style="padding:28px;">
       <h2 id="principal-title" style="margin-top:0;"></h2>
       <blockquote id="principal-body" style="border-left:4px solid var(--gold); padding-left:20px; color:var(--text); font-size:1.05rem; line-height:1.7; font-style:italic; margin:16px 0 0 0;"></blockquote>
     </div>
   </section>
 
-  <section class="section container">
+  <section class="section container" id="past-principals-section">
     <div class="card" style="padding:28px;">
       <h2 id="past-principals-title" style="margin-top:0;"></h2>
       <div style="overflow-x:auto;">
@@ -57,11 +66,11 @@
     </div>
   </section>
 
-  <section class="section container">
+  <section class="section container" id="location-section">
     <div class="card" style="padding:28px;">
       <h2 id="location-title" style="margin-top:0;"></h2>
       <div class="notice-box warn" id="map-note" style="margin-bottom:18px;"></div>
-      <div class="map-embed"><iframe id="map-iframe" loading="lazy" allowfullscreen title="School Map"></iframe></div>
+      <div class="map-embed" id="map-embed-wrapper"><iframe id="map-iframe" loading="lazy" allowfullscreen title="School Map"></iframe></div>
       <div class="map-actions" style="margin-top:18px;"><a class="btn" id="directions-btn" target="_blank" rel="noopener"></a></div>
     </div>
   </section>
@@ -79,20 +88,59 @@ function renderBody(page, common){
   document.getElementById('vision-body').textContent = t(page.visionBody);
   document.getElementById('mission-title').textContent = t(page.missionTitle);
   document.getElementById('mission-body').textContent = t(page.missionBody);
-  document.getElementById('principal-title').textContent = t(page.principalMsgTitle);
-  document.getElementById('principal-body').textContent = t(page.principalMsgBody);
-  document.getElementById('past-principals-title').textContent = t(page.pastPrincipalsTitle);
-  document.getElementById('past-principals-table').innerHTML = page.pastPrincipals.map(p=>
-    `<tr style="border-bottom:1px solid var(--border)"><td style="padding:12px 10px;font-weight:700;width:160px;color:var(--maroon);">${p.years}</td><td style="padding:12px 10px;color:var(--text);">${p.name}</td></tr>`
-  ).join('');
+
+  const pMsg = t(page.principalMsgBody);
+  const pSec = document.getElementById('principal-section');
+  if (pSec) {
+    if (!pMsg || !pMsg.trim()) {
+      pSec.style.display = 'none';
+    } else {
+      pSec.style.display = '';
+      document.getElementById('principal-title').textContent = t(page.principalMsgTitle);
+      document.getElementById('principal-body').textContent = pMsg;
+    }
+  }
+
+  const pastSec = document.getElementById('past-principals-section');
+  if (pastSec) {
+    if (!page.pastPrincipals || !Array.isArray(page.pastPrincipals) || !page.pastPrincipals.length) {
+      pastSec.style.display = 'none';
+    } else {
+      pastSec.style.display = '';
+      document.getElementById('past-principals-title').textContent = t(page.pastPrincipalsTitle);
+      document.getElementById('past-principals-table').innerHTML = page.pastPrincipals.map(p=>
+        `<tr style="border-bottom:1px solid var(--border)"><td style="padding:12px 10px;font-weight:700;width:160px;color:var(--maroon);">${p.years}</td><td style="padding:12px 10px;color:var(--text);">${p.name}</td></tr>`
+      ).join('');
+    }
+  }
+
   document.getElementById('location-title').textContent = getLang()==='en'?'Campus Location':(getLang()==='ta'?'பாடசாலை அமைவிடம்':'පාසල් පිහිටීම');
-  document.getElementById('map-note').textContent = t(page.mapNote);
   const s = SITE.settings || {};
-  const mapEmbed = (s.googleMaps && s.googleMaps.embedUrl) || page.mapEmbedUrl;
-  const dirUrl = (s.googleMaps && s.googleMaps.directionsUrl) || page.getDirectionsUrl;
-  document.getElementById('map-iframe').src = mapEmbed;
+  const mapEmbed = (s.googleMaps && s.googleMaps.embedUrl && s.googleMaps.embedUrl.startsWith('https://www.google.com/maps/embed')) ? s.googleMaps.embedUrl : (page.mapEmbedUrl && page.mapEmbedUrl.startsWith('https://www.google.com/maps/embed') ? page.mapEmbedUrl : '');
+  const dirUrl = (s.googleMaps && s.googleMaps.directionsUrl) || page.getDirectionsUrl || '';
+  
+  const mapFrame = document.getElementById('map-iframe');
+  const mapWrap = document.getElementById('map-embed-wrapper');
+  const mapNote = document.getElementById('map-note');
+  if (mapEmbed) {
+    mapFrame.src = mapEmbed;
+    mapWrap.style.display = '';
+    if (mapNote) mapNote.style.display = 'none';
+  } else {
+    mapWrap.style.display = 'none';
+    if (mapNote) {
+      mapNote.style.display = 'block';
+      mapNote.textContent = t(page.mapNote) || (getLang()==='en'?'School map location will be updated soon.':(getLang()==='ta'?'பாடசாலை வரைபட அமைவிடம் விரைவில் புதுப்பிக்கப்படும்.':'පාසලේ Google Maps සිතියම නුදුරේදීම යාවත්කාලීන කරනු ලැබේ.'));
+    }
+  }
   const dirBtn = document.getElementById('directions-btn');
-  dirBtn.href = dirUrl;
+  if (dirUrl) {
+    dirBtn.href = dirUrl;
+    dirBtn.style.display = '';
+    dirBtn.textContent = getLang()==='en'?'Get Directions':(getLang()==='ta'?'திசைகளைப் பெறுக':'ගමන් මාර්ගය බලන්න');
+  } else {
+    dirBtn.style.display = 'none';
+  }
   dirBtn.textContent = getLang()==='en'?'🗺️ Get Directions on Google Maps':(getLang()==='ta'?'🗺️ வழிகளைப் பெறுக':'🗺️ ගූගල් සිතියමෙන් මාර්ගය බලන්න');
 }
 initPage('about', 'content/pages/about.json', renderBody);

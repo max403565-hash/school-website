@@ -9,7 +9,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="News & Events - Mo/Pelwatta Navodya Secondary College" />
   <meta property="og:description" content="Announcements, term exams, circulars, and student milestones." />
-  <meta property="og:image" content="images/campus-hero.jpg" />
+  <meta property="og:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="News & Events - Mo/Pelwatta Navodya Secondary College" />
+  <meta name="twitter:image" content="https://max403565-hash.github.io/school-website/images/campus-hero.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="images/crest.svg" />
   <link rel="stylesheet" href="css/style.css" />
@@ -48,8 +51,8 @@
       <p style="font-size: 1.2rem;">කිසිදු පුවතක් හමු නොවීය (No articles match your criteria).</p>
     </div>
 
-    <!-- School Facebook Updates Section -->
-    <section class="facebook-feed-section" id="news-facebook-section" style="margin-top: 3.5rem;">
+    <!-- School Facebook Updates Section (Shown ONLY when real URL configured) -->
+    <section class="facebook-feed-section" id="news-facebook-section" style="margin-top: 3.5rem; display: none;">
       <div class="facebook-feed-layout">
         <div class="facebook-feed-info">
           <span class="facebook-feed-badge" id="fb-badge">
@@ -214,14 +217,34 @@
       }
 
       let fbInitialized = false;
-      function initFacebookFeed() {
+      async function initFacebookFeed() {
+        const fbSection = document.getElementById('news-facebook-section');
+        let settingsUrl = '';
+        try {
+          const sRes = await fetch('content/settings.json');
+          if (sRes.ok) {
+            const sData = await sRes.json();
+            settingsUrl = (sData.facebookUrl || '').trim();
+          }
+        } catch (e) {}
+
+        const isReal = settingsUrl.startsWith('https://') &&
+                       !settingsUrl.includes('YOUR_PAGE') &&
+                       settingsUrl.includes('facebook.com');
+
+        if (!isReal) {
+          if (fbSection) fbSection.style.display = 'none';
+          return;
+        }
+
+        if (fbSection) fbSection.style.display = '';
         const container = document.getElementById('fb-feed-container');
         if (!container) return;
 
         const actionBtn = document.getElementById('fb-action-btn');
         const fallbackBtn = document.getElementById('fb-fallback-btn');
-        if (actionBtn) actionBtn.href = FACEBOOK_PAGE_URL;
-        if (fallbackBtn) fallbackBtn.href = FACEBOOK_PAGE_URL;
+        if (actionBtn) actionBtn.href = settingsUrl;
+        if (fallbackBtn) fallbackBtn.href = settingsUrl;
 
         if (fbInitialized) return;
         fbInitialized = true;
@@ -234,7 +257,7 @@
           iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
           iframe.setAttribute('loading', 'lazy');
 
-          const encodedUrl = encodeURIComponent(FACEBOOK_PAGE_URL);
+          const encodedUrl = encodeURIComponent(settingsUrl);
           iframe.src = `https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
 
           iframe.onload = () => {

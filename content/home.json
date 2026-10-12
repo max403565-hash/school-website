@@ -83,21 +83,21 @@
     }
   ],
   "principalSnippet": {
-    "photo": "images/principal.jpg",
+    "photo": "",
     "name": {
-      "si": "කේ. එම්. සුනිල් ශාන්ත මහතා",
-      "ta": "திரு. கே. எம். சுனில் சாந்த",
-      "en": "Mr. K. M. Sunil Shantha"
+      "si": "",
+      "ta": "",
+      "en": ""
     },
     "role": {
-      "si": "විදුහල්පති (ශ්‍රී ලංකා අධ්‍යාපන පරිපාලන සේවය - SLEAS)",
-      "ta": "அதிபர் (இலங்கை கல்வி நிர்வாக சேவை - SLEAS)",
-      "en": "Principal (Sri Lanka Education Administrative Service - SLEAS)"
+      "si": "",
+      "ta": "",
+      "en": ""
     },
     "quote": {
-      "si": "\"දැනුම පමණක් නොව විනය, සාරධර්ම සහ මානව ගුණාංගවලින් සන්නද්ධ පිරිපුන් පුරවැසියන් බිහිකිරීම අප පාසලේ ඒකායන අරමුණයි.\"",
-      "ta": "\"அறிவை மட்டுமல்லாது ஒழுக்கம், நற்பண்புகள் மற்றும் மனிதநேய விழுமியங்களைக் கொண்ட முன்மாதிரி பிரஜைகளை உருவாக்குவதே எமது நோக்கம்.\"",
-      "en": "\"Our mission is to empower rural and secondary youth with balanced knowledge, strong discipline, and civic values to serve the nation with honor.\""
+      "si": "",
+      "ta": "",
+      "en": ""
     }
   }
 }
