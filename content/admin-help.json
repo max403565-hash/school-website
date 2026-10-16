@@ -302,6 +302,52 @@
         "en": "Read-only instructional reference.",
         "ta": "பார்வைக்கு மட்டுமே."
       }
+    },
+    "info_needs": {
+      "what": {
+        "si": "පාසල් වෙබ් අඩවියේ අඩුපාඩු තොරතුරු හඳුනාගෙන අදාළ අංශ ප්‍රධානීන්ගෙන් හා ගුරුභවතුන්ගෙන් රැස්කර ගැනීමේ කළමනාකරණ පුවරුව.",
+        "en": "Information Needed dashboard tracking missing content items across sections, offering printable collection sheets and CSV exports.",
+        "ta": "பாடசாலைக்கு தேவைப்படும் விடுபட்ட தகவல்களை கண்காணிக்கும் மற்றும் அச்சிடக்கூடிய தாள்களை வழங்கும் பகுதி."
+      },
+      "examples": {
+        "si": "විදුහල්පති පණිවුඩය, උසස් පෙළ විෂය කාණ්ඩ, වාර්ෂික ක්‍රීඩා උත්සව වාර්තාව වැනි අයිතම.",
+        "en": "Principal message, A/L subject combinations, athletic meet results, and campus photos.",
+        "ta": "அதிபர் செய்தி, உயர்தர பாட சேர்க்கைகள், விளையாட்டு சாதனைகள்."
+      },
+      "mistakes": {
+        "si": "තහවුරු නොකළ තොරතුරු ඇතුළත් කිරීම.",
+        "en": "Entering unverified student or staff information.",
+        "ta": "உறுதிப்படுத்தப்படாத விபரங்களை உள்ளிடுவது."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "ඇතුළත් කළ තොරතුරු අදාළ පටිත්තෙන් ඕනෑම වේලාවක සංස්කරණය කළ හැක.",
+        "en": "Any provided answers can be edited anytime in their respective tabs.",
+        "ta": "உள்ளிடப்பட்ட தகவல்களை எந்த நேரத்திலும் திருத்தலாம்."
+      }
+    },
+    "asst-profile": {
+      "what": {
+        "si": "පාසලේ AI සහයකයාගේ නම, කාර්ය සීමා, භාෂා නීති සහ ආරක්ෂක රීති පාලනය කිරීමේ පුවරුව.",
+        "en": "Assistant Profile editor for configuring AI scope limits, task permissions, communication tone, and saved instructions.",
+        "ta": "AI உதவியாளரின் எல்லைகள், பணிகள் மற்றும் விதிகளை உள்ளமைக்கும் பகுதி."
+      },
+      "examples": {
+        "si": "වෙබ් අඩවි අන්තර්ගතය පමණක් සංස්කරණය කිරීමට සීමා කිරීම, අනවශ්‍ය මාතෘකා ප්‍රතික්ෂේප කිරීම.",
+        "en": "Restricting scope to public website content, toggling translation, and testing dry runs.",
+        "ta": "பொது உள்ளடக்கத்தை மட்டும் கையாள அனுமதிப்பது மற்றும் சோதனை முன்னோட்டம் பார்ப்பது."
+      },
+      "mistakes": {
+        "si": "පෞද්ගලික සිසු දත්ත ඇතුළත් කිරීම හෝ මූලික ආරක්ෂක සීමා වෙනස් කිරීමට උත්සාහ කිරීම.",
+        "en": "Attempting to include private student records or bypass locked safety rules.",
+        "ta": "தனிப்பட்ட மாணவர் விபரங்களை உள்ளிட முயற்சிப்பது."
+      },
+      "view_url": "../index.html",
+      "undo": {
+        "si": "'Reset to default' මඟින් ඕනෑම වේලාවක මුල් සැකසුම් වෙත ආපසු යා හැක.",
+        "en": "Use 'Reset to Default' at any time to restore factory school settings.",
+        "ta": "'Reset to default' மூலம் இயல்புநிலைக்கு மீட்டமைக்கலாம்."
+      }
     }
   },
   "guides": [

@@ -449,6 +449,7 @@
     const schoolNameStr = pickText(s.schoolName, curLang);
     const mottoStr = pickText(s.motto, curLang);
     const addressStr = pickText(s.address, curLang);
+    const hoursStr = pickText(s.officeHours, curLang);
     const footerTextStr = pickText(s.footerText, curLang);
     const devCredit = s.developerCredit || "Website developed by [S.A.Chanuk Mithuja ]";
 

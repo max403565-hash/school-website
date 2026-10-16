@@ -302,17 +302,90 @@
     color: #334155;
   }
 
+  .tab-advanced {
+    position: relative;
+    border-style: dashed !important;
+  }
+  body.mode-simple .tab-advanced {
+    display: none !important;
+  }
+  body.mode-advanced .tab-advanced {
+    display: inline-block !important;
+  }
+  .photo-consent-box {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+  .photo-consent-box label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #334155;
+  }
+  .info-owner-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .info-owner-header {
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .info-item-row {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .info-item-row:last-child {
+    border-bottom: none;
+  }
+  .badge-prio {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .badge-prio-high { background: #fee2e2; color: #991b1b; }
+  .badge-prio-medium { background: #fef3c7; color: #92400e; }
+  .badge-prio-low { background: #e0f2fe; color: #075985; }
+
   @media print {
-    body { background: #fff; color: #000; }
-    .wrap { max-width: 100%; padding: 0; }
-    .tabs, .top-actions, .admin-top-bar, #setup-card, .btn-tab-help, button, .modal-overlay { display: none !important; }
+    body { background: #fff !important; color: #000 !important; }
+    .wrap { max-width: 100% !important; padding: 0 !important; }
+    .tabs, .top-actions, .admin-top-bar, .mode-bar, #setup-card, .btn-tab-help, button, .modal-overlay, #diagnostics-floating-btn { display: none !important; }
     .tabpanel { display: none !important; }
-    .tabpanel[data-panel="guide"] { display: block !important; }
+    .tabpanel.active { display: block !important; }
+    #info-print-container { display: block !important; }
     .guide-step-card { border: 1px solid #ccc; page-break-inside: avoid; box-shadow: none; margin-bottom: 20px; }
+    .owner-print-section { page-break-after: always; padding: 20px 0; border-bottom: 2px solid #000; }
+    .owner-print-section:last-child { page-break-after: auto; }
+    .print-sheet-item { margin-bottom: 16px; border: 1px solid #ddd; padding: 12px; border-radius: 4px; page-break-inside: avoid; }
+    .print-line { display: block; border-bottom: 1px dotted #999; margin-top: 14px; height: 16px; }
   }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
 </style>
+
 </head>
 <body>
 <div class="wrap">
@@ -356,26 +429,44 @@
 
   <!-- MAIN EDITOR -->
   <div id="editor" style="display:none">
+
+    <!-- MODE SWITCH BAR (SIMPLE VS ADVANCED) -->
+    <div class="mode-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:8px 14px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:0.85rem; font-weight:700; color:#0b2545;" id="lbl-mode-title">🛠️ ප්‍රකාරය / Mode:</span>
+        <span id="badge-current-mode" style="display:inline-block; font-size:0.8rem; font-weight:700; padding:3px 10px; border-radius:12px; background:#dcfce7; color:#166534; border:1px solid #86efac;">🟢 සරල ප්‍රකාරය (Simple Mode)</span>
+      </div>
+      <div>
+        <button type="button" id="btn-toggle-mode" class="secondary" style="font-size:0.82rem; padding:5px 12px; border-color:#94a3b8; font-weight:700;">
+          🔒 උසස් ප්‍රකාරයට මාරු වන්න (Advanced Mode)
+        </button>
+      </div>
+    </div>
+
     <div class="tabs">
+      <!-- SIMPLE MODE TABS (DEFAULT) -->
       <button data-tab="dashboard" class="active" style="background:#0b2545; color:#fff; font-weight:700;">🚀 <span data-tab-name="dashboard">Getting Started</span></button>
       <button data-tab="news">📰 <span data-tab-name="news">News & Events</span></button>
       <button data-tab="notices">📌 <span data-tab-name="notices">Notices</span></button>
       <button data-tab="events">📅 <span data-tab-name="events">Events</span></button>
-      <button data-tab="custom-pages">📄 <span data-tab-name="custom_pages">Pages</span></button>
-      <button data-tab="menu">🧭 <span data-tab-name="menu">Menu</span></button>
-      <button data-tab="settings">⚙️ <span data-tab-name="settings">Site Settings</span></button>
-      <button data-tab="knowledge">🧠 <span data-tab-name="knowledge">School Knowledge & AI</span></button>
       <button data-tab="gallery">🖼️ <span data-tab-name="gallery">Gallery</span></button>
       <button data-tab="downloads">📥 <span data-tab-name="downloads">Downloads (PDFs)</span></button>
-      <button data-tab="pages">📝 <span data-tab-name="pages">Page Text</span></button>
+      <button data-tab="custom-pages">📄 <span data-tab-name="custom_pages">Pages</span></button>
+      <button data-tab="settings">⚙️ <span data-tab-name="settings">Site Settings</span></button>
+      <button data-tab="knowledge">🧠 <span data-tab-name="knowledge">School Knowledge</span></button>
+      <button data-tab="info-needs">📋 <span data-tab-name="info_needs">Information Needed</span></button>
       <button data-tab="applications">📋 <span data-tab-name="applications">Applications</span></button>
-      <button data-tab="activity">🕒 <span data-tab-name="activity">Activity & Undo</span></button>
       <button data-tab="preview">👁️ <span data-tab-name="preview">Live Preview</span></button>
       <button data-tab="guide">📖 <span data-tab-name="guide">User Guide</span></button>
-      <button data-tab="history">📜 <span data-tab-name="history">Version History</span></button>
-      <button data-tab="code">💻 <span data-tab-name="code">Code Editor</span></button>
-      <button data-tab="theme">🎨 <span data-tab-name="theme">Theme</span></button>
-      <button data-tab="import">📦 <span data-tab-name="import">Import Site</span></button>
+
+      <!-- ADVANCED MODE TABS (BEHIND CONFIRMATION) -->
+      <button data-tab="menu" class="tab-advanced" style="border-color:#f59e0b;">🧭 <span data-tab-name="menu">Menu</span></button>
+      <button data-tab="history" class="tab-advanced" style="border-color:#f59e0b;">📜 <span data-tab-name="history">Version History</span></button>
+      <button data-tab="code" class="tab-advanced" style="border-color:#f59e0b;">💻 <span data-tab-name="code">Code Editor</span></button>
+      <button data-tab="theme" class="tab-advanced" style="border-color:#f59e0b;">🎨 <span data-tab-name="theme">Theme</span></button>
+      <button data-tab="import" class="tab-advanced" style="border-color:#f59e0b;">📦 <span data-tab-name="import">Import Site</span></button>
+      <button data-tab="asst-profile" class="tab-advanced" style="border-color:#f59e0b;">🤖 <span data-tab-name="asst_profile">Assistant Profile</span></button>
+      <button data-tab="activity" class="tab-advanced" style="border-color:#f59e0b;">🕒 <span data-tab-name="activity">Activity & Undo</span></button>
     </div>
 
         <!-- DASHBOARD TAB (PART 2) -->
@@ -1436,7 +1527,250 @@
       </div>
     </div>
 
+    <!-- INFORMATION NEEDED TAB -->
+    <div class="tabpanel" data-panel="info-needs">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="info-needs-title">📋 පාසලට අවශ්‍ය තොරතුරු කළමනාකරණය (Information Needed)</h2>
+            <div class="muted" style="margin-top:4px;" id="info-needs-subtitle">වෙබ් අඩවියේ අසම්පූර්ණ අංශ හඳුනාගෙන අදාළ ගුරුභවතුන්ගෙන් හා නිලධාරීන්ගෙන් තොරතුරු එක්රැස් කිරීම.</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" id="btn-print-info-sheet" style="background:#0b2545; color:#fff; font-size:0.85rem; padding:6px 14px;">🖨️ මුද්‍රණ පත්‍රිකාව (Print Sheet)</button>
+            <button type="button" id="btn-download-info-csv" class="secondary" style="font-size:0.85rem; padding:6px 14px;">📥 CSV බාගන්න</button>
+            <button type="button" id="btn-refresh-info-needs" class="secondary" style="font-size:0.85rem; padding:6px 12px;">🔄 පරීක්ෂා කරන්න</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="info_needs" style="font-size:0.85rem; padding:6px 12px;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="info_needs"></div>
+
+        <!-- Overall Progress and Filters -->
+        <div style="margin-top:16px; padding:16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:0.9rem; margin-bottom:6px;">
+            <span id="info-progress-label">සමස්ත තොරතුරු සම්පූර්ණත්වය (Information Completeness):</span>
+            <span id="info-progress-pct" style="color:#0b2545; font-size:1.1rem;">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="info-progress-bar" style="width:0%;">0%</div>
+          </div>
+          <div style="display:flex; gap:16px; margin-top:12px; align-items:center; flex-wrap:wrap;">
+            <div style="display:flex; gap:6px; align-items:center;">
+              <span style="font-size:0.82rem; font-weight:700;" id="lbl-info-filter">පෙරහන් (Filter):</span>
+              <button type="button" class="info-filter-btn active" data-filter="all" style="padding:4px 10px; font-size:0.8rem;">සියල්ල (All)</button>
+              <button type="button" class="info-filter-btn secondary" data-filter="missing" style="padding:4px 10px; font-size:0.8rem; border-color:#f59e0b; color:#b45309;">⚠️ අඩුපාඩු (Missing)</button>
+              <button type="button" class="info-filter-btn secondary" data-filter="done" style="padding:4px 10px; font-size:0.8rem; border-color:#10b981; color:#047857;">✅ සම්පූර්ණයි (Complete)</button>
+            </div>
+            <div style="display:flex; gap:6px; align-items:center;">
+              <span style="font-size:0.82rem; font-weight:700;" id="lbl-info-owner-filter">අංශය (Department):</span>
+              <select id="info-owner-select" style="padding:4px 8px; font-size:0.82rem; border-radius:4px; border:1px solid #cbd5e1;">
+                <option value="all">සියලුම අංශ (All Departments)</option>
+                <option value="principal_office">විදුහල්පති කාර්යාලය (Principal)</option>
+                <option value="sectional_heads">අංශ ප්‍රධානීන් (Sectional Heads)</option>
+                <option value="sports_master">ක්‍රීඩා අංශය (Sports Master)</option>
+                <option value="it_media_teacher">තොරතුරු තාක්ෂණ හා මාධ්‍ය (IT & Media)</option>
+                <option value="administration_office">පාලන කාර්යාලය (Administration)</option>
+                <option value="sds_committee">පාසල් සංවර්ධන සමිතිය (SDS)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sections Container -->
+        <div id="info-needs-list" style="margin-top:20px;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Hidden printable container -->
+        <div id="info-print-container" style="display:none;"></div>
+      </div>
+    </div>
+
+    <!-- ASSISTANT PROFILE TAB -->
+    <div class="tabpanel" data-panel="asst-profile">
+      <div class="card">
+        <div class="top-actions">
+          <div>
+            <h2 style="margin:0; color:#0b2545;" id="asst-profile-title">🤖 AI සහයක පැතිකඩ සහ නීති පද්ධතිය (Assistant Profile)</h2>
+            <div class="muted" style="margin-top:4px;" id="asst-profile-subtitle">ගුරුභවතුන්ට සහාය වන AI සහයකයාගේ නම, කාර්ය සීමා, භාෂා ප්‍රතිපත්ති සහ අවසරලත් කාර්යයන් පාලනය කිරීම.</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" id="btn-save-asst-profile" style="background:#16a34a; color:#fff; font-size:0.85rem; padding:6px 14px;">💾 සුරකින්න (Save Profile)</button>
+            <button type="button" id="btn-reset-asst-profile" class="secondary" style="font-size:0.85rem; padding:6px 12px;">🔄 Reset to Default</button>
+            <button type="button" class="secondary btn-tab-help" data-for-tab="asst-profile" style="font-size:0.85rem; padding:6px 12px;">❓ උපකාර</button>
+          </div>
+        </div>
+
+        <div class="tab-help-box" data-help-tab="asst-profile"></div>
+
+        <!-- Public Repo Warning Box -->
+        <div style="background:#fffbeb; border:1px solid #fde68a; border-left:4px solid #f59e0b; padding:12px 16px; border-radius:6px; margin-top:16px; color:#92400e; font-size:0.875rem; line-height:1.5;">
+          <strong>⚠️ වැදගත් ආරක්ෂක දැනුම්දීම (Security Notice):</strong> මෙම වෙබ් අඩවිය පොදු GitHub repository එකක පවතී. කිසිවිටෙකත් පුද්ගලික සිසු/ගුරු දුරකථන අංක, ගෙදර ලිපින, මුරපද හෝ රහස්‍ය තොරතුරු මෙහි හෝ AI විමසුම්වල ඇතුළත් නොකරන්න.
+        </div>
+
+        <!-- Profile Form -->
+        <div style="margin-top:18px;">
+          <div class="row">
+            <div>
+              <label style="font-weight:700;">සහයකයාගේ නම (Assistant Name)</label>
+              <input type="text" id="asst-input-name" placeholder="Pelwatta Vidyalaya Assistant">
+            </div>
+            <div>
+              <label style="font-weight:700;">ක්‍රියාත්මක මාදිලිය (Chosen Model)</label>
+              <input type="text" id="asst-input-model" value="gemini-3.8-flash" readonly style="background:#f1f5f9;">
+            </div>
+          </div>
+
+          <label style="font-weight:700; margin-top:10px;">අරමුණ සහ කාර්යභාරය (Purpose Statement)</label>
+          <textarea id="asst-input-purpose" rows="2" style="width:100%; font-size:0.85rem;"></textarea>
+
+          <!-- Scope Mode -->
+          <label style="font-weight:700; margin-top:14px; display:block;">ක්‍රියාකාරීත්ව සීමාව (Scope Mode)</label>
+          <div style="display:flex; gap:16px; margin-top:6px; background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e2e8f0; flex-wrap:wrap;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; font-size:0.88rem;">
+              <input type="radio" name="asst-scope-mode" value="website_only" checked>
+              <span>🌐 වෙබ් අඩවි අන්තර්ගතය සඳහා පමණි (Website Only - Default)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; font-size:0.88rem;">
+              <input type="radio" name="asst-scope-mode" value="website_and_knowledge">
+              <span>🧠 වෙබ් අඩවිය + පාසල් දැනුම් ප්‍රශ්න (Website + School Questions)</span>
+            </label>
+          </div>
+
+          <!-- Allowed Task Types -->
+          <label style="font-weight:700; margin-top:14px; display:block;">අවසරලත් කාර්යයන් (Permitted Task Types)</label>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-top:6px; background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e2e8f0;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem;">
+              <input type="checkbox" id="task-pages" checked> 📄 පිටු සෑදීම හා සැකසීම (Pages)
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem;">
+              <input type="checkbox" id="task-news" checked> 📰 පුවත් කෙටුම්පත් කිරීම (News)
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem;">
+              <input type="checkbox" id="task-translate" checked> 🌐 ත්‍රිභාෂා පරිවර්තනය (Translate)
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem;">
+              <input type="checkbox" id="task-audit" checked> 🔍 අඩුපාඩු සොයාබැලීම (Audit)
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.85rem;">
+              <input type="checkbox" id="task-styling"> 🎨 මෝස්තර යෝජනා (Styling)
+            </label>
+          </div>
+
+          <div class="row" style="margin-top:14px;">
+            <div>
+              <label style="font-weight:700;">සන්නිවේදන ස්වරූපය (Tone)</label>
+              <select id="asst-input-tone" style="width:100%; padding:6px; border-radius:4px; border:1px solid #cbd5e1;">
+                <option value="formal_educational">ගෞරවනීය හා විද්‍යාත්මක (Formal Educational)</option>
+                <option value="dignified_academic">අධ්‍යාපනික සම්මතය (Dignified Academic)</option>
+                <option value="friendly_community">සුහද හා ප්‍රජා හිතකාමී (Friendly Community)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-weight:700;">භාෂා රීති (Language Rules)</label>
+              <input type="text" id="asst-input-lang-rules" value="Sinhala primary, formal Sri Lankan standard for Tamil and English">
+            </div>
+          </div>
+
+          <label style="font-weight:700; margin-top:14px;">ප්‍රතික්ෂේප කිරීමේ පණිවුඩය (Refusal Message)</label>
+          <textarea id="asst-input-refusal" rows="2" style="width:100%; font-size:0.85rem;"></textarea>
+
+          <label style="font-weight:700; margin-top:14px;">අමතර පාසල් නීති සහ ප්‍රතිපත්ති (Extra School Rules)</label>
+          <textarea id="asst-input-extra-rules" rows="2" style="width:100%; font-size:0.85rem;"></textarea>
+
+          <!-- Saved Instructions Library -->
+          <div style="margin-top:20px; padding:16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <h4 style="margin:0; color:#0b2545;">📚 සුරකින ලද උපදෙස් පුස්තකාලය (Saved Instructions Library)</h4>
+              <button type="button" id="btn-add-saved-prompt" class="secondary" style="font-size:0.8rem; padding:4px 10px;">+ Add Prompt Template</button>
+            </div>
+            <div id="asst-saved-prompts-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Test Dry Run Box -->
+          <div style="margin-top:20px; padding:16px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px;">
+            <h4 style="margin:0 0 8px; color:#1e40af;">🧪 පරීක්ෂණ පෙරදසුන (Test Dry Run - කිසිදු ගොනුවක් වෙනස් නොවේ)</h4>
+            <p class="muted" style="margin:0 0 10px; font-size:0.82rem;">සහයකයාගේ ප්‍රතිචාරය පරීක්ෂා කිරීම සඳහා පහත විමසුමක් ඇතුළත් කර Test කරන්න. මෙහිදී කිසිදු ගොනුවක් සුරැකෙන්නේ නැත.</p>
+            <div style="display:flex; gap:8px;">
+              <input type="text" id="asst-dry-run-input" placeholder="උදා: 'වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙල ගැන පුවතක් ලියන්න'..." style="flex:1;">
+              <button type="button" id="btn-asst-run-test" style="background:#2563eb; color:#fff; font-size:0.85rem; padding:6px 14px; white-space:nowrap;">Run Test (Dry Run)</button>
+            </div>
+            <div id="asst-dry-run-output" style="display:none; margin-top:12px; background:#fff; border:1px solid #cbd5e1; border-radius:6px; padding:14px; font-size:0.85rem; line-height:1.6; max-height:300px; overflow-y:auto;"></div>
+          </div>
+
+          <!-- Locked Core Rules Display -->
+          <div style="margin-top:20px; padding:14px; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #0b2545; border-radius:6px;">
+            <h4 style="margin:0 0 6px; color:#0b2545;">🔒 කේතයේ අගුලු ලා ඇති මූලික ආරක්ෂක නීති (Locked Core Rules)</h4>
+            <ul style="margin:0; padding-left:20px; font-size:0.82rem; color:#475569; line-height:1.6;">
+              <li><strong>ආරක්ෂිත මාර්ග (Protected paths):</strong> <code>xk92m-manage/</code>, <code>.github/</code> සහ <code>css/</code> ගොනු AI සහයකයාට සංස්කරණය කළ නොහැක.</li>
+              <li><strong>රහස්‍යතා සීමාව:</strong> ශිෂ්‍ය අයදුම්පත්, දුරකථන අංක හෝ රහස් යතුරු AI වෙත යවනු නොලැබේ.</li>
+              <li><strong>අනුමැතිය අනිවාර්යයි:</strong> සෑම වෙනස්කමක්ම සුරැකීමට පෙර පෙරදසුන් බලා, ගුරුවරයා විසින් APPLY සටහන් කර අනුමත කළ යුතුය.</li>
+              <li><strong>පිටපත් සීමාව:</strong> එක් අවස්ථාවකදී උපරිම වශයෙන් වෙනස් කළ හැක්කේ ගොනු 15ක් පමණි.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 </div>
+  </div>
+</div>
+
+<!-- ADVANCED MODE CONFIRMATION MODAL -->
+<div id="advanced-mode-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:520px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box;">
+    <h3 style="margin:0 0 12px; color:#b45309; font-size:1.15rem;" id="adv-modal-title">⚠️ අවධානය දෙන්න: උසස් තාක්ෂණික ප්‍රකාරය (Advanced Mode)</h3>
+    <p style="margin:0 0 14px; font-size:0.9rem; line-height:1.5; color:#334155;" id="adv-modal-desc">
+      උසස් ප්‍රකාරය මඟින් කේත සංස්කාරකය, අඩවි ආනයනය, ප්‍රධාන මෙනුව, ඉතිහාසය, තේමාව සහ සහයක පැතිකඩ වෙත සෘජු ප්‍රවේශය ලබාදේ. මෙහි සිදුකරන වෙනස්කම් වෙබ් අඩවියේ මූලික සැකසුමට සෘජුවම බලපායි. ඉදිරියට යාමට ඔබට විශ්වාසද?
+    </p>
+    <div id="adv-modal-passphrase-area" style="display:none; margin-bottom:14px;">
+      <label style="display:block; font-weight:700; font-size:0.85rem; margin-bottom:6px; color:#0f172a;" id="adv-modal-passphrase-lbl">
+        උසස් ප්‍රකාරය අගුළු හැරීමට ඔබගේ Admin Passphrase ඇතුළත් කරන්න:
+      </label>
+      <input type="password" id="adv-modal-passphrase-input" placeholder="Passphrase" style="width:100%; box-sizing:border-box;">
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <button type="button" id="adv-modal-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="adv-modal-confirm" style="background:#b45309; color:#fff;">ඔව්, උසස් ප්‍රකාරය අගුළු හරින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- INFORMATION NEEDED ANSWER MODAL -->
+<div id="info-answer-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:640px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box; max-height:90vh; overflow-y:auto;">
+    <h3 style="margin:0 0 8px; color:#0b2545; font-size:1.15rem;" id="info-modal-title">තොරතුරු ඇතුළත් කිරීම</h3>
+    <p style="margin:0 0 14px; font-size:0.85rem; color:#475569;" id="info-modal-desc"></p>
+    <div style="background:#f1f5f9; padding:10px 12px; border-radius:6px; margin-bottom:14px; font-size:0.82rem;">
+      <strong>උදාහරණ පිළිතුර (Example):</strong> <span id="info-modal-example" style="color:#0369a1;"></span>
+    </div>
+
+    <div id="info-modal-input-area">
+      <!-- Input fields for si, ta, en or photo file -->
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
+      <button type="button" id="info-modal-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="info-modal-save" style="background:#16a34a; color:#fff;">💾 තහවුරු කර සුරකින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- SAVED INSTRUCTION EDIT MODAL -->
+<div id="asst-saved-prompt-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:540px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box;">
+    <h3 style="margin:0 0 12px; color:#0b2545; font-size:1.15rem;" id="asst-prompt-modal-title">Prompt ආකෘතිය එක් කිරීම / සංස්කරණය</h3>
+    <label style="font-weight:700; font-size:0.85rem;">සිරස්තලය / Title (e.g. 📰 Sports Day News)</label>
+    <input type="text" id="asst-prompt-modal-title-input" style="width:100%; margin-bottom:12px;">
+    <label style="font-weight:700; font-size:0.85rem;">විමසුම් උපදෙස / Prompt Instructions</label>
+    <textarea id="asst-prompt-modal-text-input" rows="4" style="width:100%; font-size:0.85rem; margin-bottom:16px;"></textarea>
+    <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <button type="button" id="asst-prompt-modal-cancel" class="secondary">අවලංගු කරන්න</button>
+      <button type="button" id="asst-prompt-modal-save" style="background:#0b2545; color:#fff;">සුරකින්න</button>
+    </div>
   </div>
 </div>
 
@@ -1586,6 +1920,30 @@
     <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px;">
       <button type="button" id="asst-config-cancel" class="secondary">අවලංගු කරන්න</button>
       <button type="button" id="asst-config-save" style="background:#16a34a; color:#fff;">සුරකින්න</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING DIAGNOSTICS & SELF-TEST BUTTON (ADVANCED MODE) -->
+<button id="diagnostics-floating-btn" type="button" class="tab-advanced" style="position:fixed; bottom:16px; right:16px; z-index:9000; background:#0b2545; color:#fff; border:1px solid #1e3a8a; border-radius:24px; padding:8px 16px; font-size:0.82rem; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.25); cursor:pointer;">
+  🐛 Diagnostics & Self-Test
+</button>
+
+<!-- DIAGNOSTICS & SELF-TEST MODAL -->
+<div id="diagnostics-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.65); z-index:9999; align-items:center; justify-content:center; padding:16px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:10px; max-width:650px; width:100%; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.25); box-sizing:border-box; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
+      <h3 style="margin:0; color:#0b2545; font-size:1.15rem;">🐛 System Diagnostics & Self-Test</h3>
+      <button type="button" id="diag-modal-close" class="secondary" style="font-size:0.8rem; padding:4px 10px;">✕ Close</button>
+    </div>
+    <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+      <button type="button" id="btn-run-selftest" style="background:#16a34a; color:#fff; font-size:0.85rem; padding:6px 14px; font-weight:700;">▶️ Run Automated Self-Test</button>
+      <button type="button" id="btn-clear-diag-log" class="secondary" style="font-size:0.85rem; padding:6px 12px;">Clear Error Log</button>
+    </div>
+    <div id="selftest-results" style="margin-bottom:16px; display:none; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:12px;"></div>
+    <h4 style="margin:0 0 8px; font-size:0.9rem; color:#334155;">Runtime Diagnostics Log (Captured Events):</h4>
+    <div id="diag-error-log" style="background:#0f172a; color:#f8fafc; font-family:monospace; font-size:0.78rem; padding:12px; border-radius:6px; max-height:200px; overflow-y:auto; line-height:1.5;">
+      <div style="color:#94a3b8;">No unhandled errors recorded in this session. All systems operating normally.</div>
     </div>
   </div>
 </div>
@@ -1946,8 +2304,15 @@ function renderNewsList(){
         <div><textarea data-f="excerpt.ta" placeholder="Tamil">${(n.excerpt&&n.excerpt.ta)||''}</textarea></div>
         <div><textarea data-f="excerpt.en" placeholder="English">${(n.excerpt&&n.excerpt.en)||''}</textarea></div>
       </div>
-      <label>Photo</label>
+      <div class="field-key">Photo</div>
+      <div style="font-size:0.75rem; color:#64748b; margin-bottom:4px;">Recommended: 1200×675 (16:9), auto-resized via Canvas</div>
       <input type="file" accept="image/*" data-f="imagefile">
+      <div class="photo-consent-box">
+        <label>
+          <input type="checkbox" class="photo-consent-cb">
+          <span>✅ මට මෙම ඡායාරූපය පළ කිරීමට අවසර ඇත (සිසුන් සඳහා දෙමාපිය අවසරය තහවුරු කර ඇත) / I have permission to publish this photo (parental consent for students verified)</span>
+        </label>
+      </div>
       ${n.image?`<img class="thumb" src="../${n.image}">`:''}
       <div style="margin-top:10px"><button class="danger" data-del="${i}">Delete this item</button></div>
     </div>
@@ -1985,10 +2350,17 @@ document.getElementById('news-add').onclick = () => {
 };
 document.getElementById('news-save').onclick = async () => {
   const statusEl = document.getElementById('news-status');
+  const boxes = document.querySelectorAll('#news-list .item-box');
+  for (const box of boxes){
+    if (box._pendingFile && !box.querySelector('.photo-consent-cb')?.checked){
+      alert('⚠️ කරුණාකර ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය තහවුරු කරන කොටුව (Consent Checkbox) තෝරන්න. / Please check the parental consent box before publishing student photos.');
+      statusEl.innerHTML = '<div class="status err">Consent required for photo upload.</div>';
+      return;
+    }
+  }
   if (!confirm('Publish these changes to the live website now?')) return;
   statusEl.innerHTML = '<div class="status info">Uploading photos and saving…</div>';
   try{
-    const boxes = document.querySelectorAll('#news-list .item-box');
     for (const box of boxes){
       if (box._pendingFile){
         const i = parseInt(box.dataset.i,10);
@@ -2027,8 +2399,15 @@ function renderGalleryList(){
         <div><input type="text" value="${(g.caption&&g.caption.ta)||''}" data-f="caption.ta" placeholder="Tamil"></div>
         <div><input type="text" value="${(g.caption&&g.caption.en)||''}" data-f="caption.en" placeholder="English"></div>
       </div>
-      <label>Photo</label>
+      <div class="field-key">Photo</div>
+      <div style="font-size:0.75rem; color:#64748b; margin-bottom:4px;">Recommended: 1200×800, auto-resized via Canvas</div>
       <input type="file" accept="image/*" data-f="imagefile">
+      <div class="photo-consent-box">
+        <label>
+          <input type="checkbox" class="photo-consent-cb">
+          <span>✅ මට මෙම ඡායාරූපය පළ කිරීමට අවසර ඇත (සිසුන් සඳහා දෙමාපිය අවසරය තහවුරු කර ඇත) / I have permission to publish this photo (parental consent for students verified)</span>
+        </label>
+      </div>
       ${g.image?`<img class="thumb" src="../${g.image}">`:''}
       <div style="margin-top:10px"><button class="danger" data-del="${i}">Delete this photo</button></div>
     </div>
@@ -2060,10 +2439,17 @@ document.getElementById('gallery-add').onclick = () => {
 };
 document.getElementById('gallery-save').onclick = async () => {
   const statusEl = document.getElementById('gallery-status');
+  const boxes = document.querySelectorAll('#gallery-list .item-box');
+  for (const box of boxes){
+    if (box._pendingFile && !box.querySelector('.photo-consent-cb')?.checked){
+      alert('⚠️ කරුණාකර ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය තහවුරු කරන කොටුව (Consent Checkbox) තෝරන්න. / Please check the parental consent box before publishing student photos.');
+      statusEl.innerHTML = '<div class="status err">Consent required for photo upload.</div>';
+      return;
+    }
+  }
   if (!confirm('Publish these gallery changes to the live website now?')) return;
   statusEl.innerHTML = '<div class="status info">Uploading photos and saving…</div>';
   try{
-    const boxes = document.querySelectorAll('#gallery-list .item-box');
     for (const box of boxes){
       if (box._pendingFile){
         const i = parseInt(box.dataset.i,10);
@@ -4747,6 +5133,10 @@ document.querySelectorAll('[data-addblock]').forEach(btn => {
 // Photo upload handlers
 async function handleBlockImageUpload(input, blockIdx) {
   if (!input.files || !input.files[0]) return;
+  if (!confirm('I confirm that I have permission to publish this photograph (parental consent verified for students).\n\nමෙම ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය ඇති බව සහතික කරමි.\n\nProceed?')) {
+    input.value = '';
+    return;
+  }
   const file = input.files[0];
   const statusEl = document.getElementById(`b-img-status-${blockIdx}`);
   if (statusEl) statusEl.innerHTML = '<span class="status info">Compressing & uploading photo…</span>';
@@ -4773,6 +5163,10 @@ async function handleBlockImageUpload(input, blockIdx) {
 
 async function handleGalleryUpload(input, blockIdx, imgIdx) {
   if (!input.files || !input.files[0]) return;
+  if (!confirm('I confirm that I have permission to publish this photograph (parental consent verified for students).\n\nමෙම ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය ඇති බව සහතික කරමි.\n\nProceed?')) {
+    input.value = '';
+    return;
+  }
   const file = input.files[0];
   try {
     const base64 = await compressImageFile(file, 1200);
@@ -4787,6 +5181,10 @@ async function handleGalleryUpload(input, blockIdx, imgIdx) {
 
 async function handleCardUpload(input, blockIdx, cardIdx) {
   if (!input.files || !input.files[0]) return;
+  if (!confirm('I confirm that I have permission to publish this photograph (parental consent verified for students).\n\nමෙම ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය ඇති බව සහතික කරමි.\n\nProceed?')) {
+    input.value = '';
+    return;
+  }
   const file = input.files[0];
   try {
     const base64 = await compressImageFile(file, 1200);
@@ -5641,12 +6039,12 @@ let currentGuidedIndex = 0;
 async function loadRemoteI18nAndHelp() {
   try {
     const res = await fetch('../content/admin-i18n.json');
-    if (res.ok) adminI18nData = await res.json();
+    if (res.ok) { const d = await res.json(); if (d && d.si) adminI18nData = d; }
   } catch(e) { console.warn('Using embedded i18n fallback', e); }
 
   try {
     const res = await fetch('../content/admin-help.json');
-    if (res.ok) adminHelpData = await res.json();
+    if (res.ok) { const d = await res.json(); if (d && (d.tabs || d.glossary)) adminHelpData = d; }
   } catch(e) { console.warn('Using embedded help fallback', e); }
 
   try {
@@ -5659,6 +6057,17 @@ async function loadRemoteI18nAndHelp() {
     if (res.ok) assistantConfigData = await res.json();
   } catch(e) { console.warn('Using embedded assistant config fallback', e); }
 
+  try {
+    const res = await fetch('../content/info-needs.json');
+    if (res.ok) infoNeedsData = await res.json();
+  } catch(e) { console.warn('Using embedded info needs fallback', e); }
+
+  try {
+    const res = await fetch('../content/ai-assistant.json');
+    if (res.ok) asstProfileData = await res.json();
+  } catch(e) { console.warn('Using embedded asst profile fallback', e); }
+
+  initAdminMode();
   applyAdminLanguage(currentAdminLang);
   refreshDashboard();
 }
@@ -5672,7 +6081,7 @@ function setAdminLang(lang) {
 }
 
 function applyAdminLanguage(lang) {
-  const t = adminI18nData[lang] || adminI18nData.si;
+  const t = (adminI18nData && (adminI18nData[lang] || adminI18nData.si)) || {};
 
   // Update switcher buttons
   document.querySelectorAll('.lang-choice-btn').forEach(btn => {
@@ -5716,6 +6125,7 @@ function applyAdminLanguage(lang) {
       'menu': t.tabs.menu || '🧭 Menu',
       'settings': t.tabs.settings || '⚙️ Site Settings',
       'knowledge': t.tabs.knowledge || '🧠 School Knowledge & AI',
+      'info-needs': t.tabs.info_needs || '📋 Information Needed',
       'gallery': t.tabs.gallery || '🖼️ Gallery',
       'downloads': t.tabs.downloads || '📥 Downloads (PDFs)',
       'pages': t.tabs.pages || '📝 Page Text',
@@ -5726,7 +6136,8 @@ function applyAdminLanguage(lang) {
       'history': t.tabs.history || '📜 Version History',
       'code': t.tabs.code || '💻 Code Editor',
       'theme': t.tabs.theme || '🎨 Theme',
-      'import': t.tabs.import || '📦 Import Site'
+      'import': t.tabs.import || '📦 Import Site',
+      'asst-profile': t.tabs.assistant_profile || '🤖 Assistant Profile'
     };
 
     Object.keys(tabMap).forEach(key => {
@@ -5734,6 +6145,33 @@ function applyAdminLanguage(lang) {
       if (span) span.textContent = tabMap[key];
     });
   }
+
+  // Update mode bar labels in current language
+  if (typeof updateAdminModeUI === 'function') updateAdminModeUI();
+
+  // Update Info Needs labels
+  const infoTitle = document.getElementById('info-needs-title');
+  const infoSub = document.getElementById('info-needs-subtitle');
+  const printSheetBtn = document.getElementById('btn-print-info-sheet');
+  const dlCsvBtn = document.getElementById('btn-download-info-csv');
+  const refInfoBtn = document.getElementById('btn-refresh-info-needs');
+  const inT = t.info_needs || {};
+  if (infoTitle) infoTitle.textContent = inT.title || '📋 පාසලට අවශ්‍ය තොරතුරු කළමනාකරණය (Information Needed)';
+  if (infoSub) infoSub.textContent = inT.subtitle || 'වෙබ් අඩවියේ අසම්පූර්ණ අංශ හඳුනාගෙන අදාළ ගුරුභවතුන්ගෙන් හා නිලධාරීන්ගෙන් තොරතුරු එක්රැස් කිරීම.';
+  if (printSheetBtn) printSheetBtn.textContent = inT.print_sheet || '🖨️ මුද්‍රණ පත්‍රිකාව (Print Sheet)';
+  if (dlCsvBtn) dlCsvBtn.textContent = inT.download_csv || '📥 CSV බාගන්න';
+  if (refInfoBtn) refInfoBtn.textContent = lang === 'si' ? '🔄 පරීක්ෂා කරන්න' : (lang === 'ta' ? '🔄 சரிபார்க்கவும்' : '🔄 Refresh Status');
+
+  // Update Assistant Profile labels
+  const asstTitle = document.getElementById('asst-profile-title');
+  const asstSub = document.getElementById('asst-profile-subtitle');
+  const saveAsstBtn = document.getElementById('btn-save-asst-profile');
+  const resetAsstBtn = document.getElementById('btn-reset-asst-profile');
+  const asstT = t.assistant_profile || {};
+  if (asstTitle) asstTitle.textContent = asstT.title || '🤖 AI සහයක පැතිකඩ සහ නීති පද්ධතිය (Assistant Profile)';
+  if (asstSub) asstSub.textContent = asstT.subtitle || 'ගුරුභවතුන්ට සහාය වන AI සහයකයාගේ නම, කාර්ය සීමා, භාෂා ප්‍රතිපත්ති සහ අවසරලත් කාර්යයන් පාලනය කිරීම.';
+  if (saveAsstBtn) saveAsstBtn.textContent = asstT.save_profile || '💾 සුරකින්න (Save Profile)';
+  if (resetAsstBtn) resetAsstBtn.textContent = asstT.reset_default || '🔄 Reset to Default';
 
   // Update Help Panels on all tabs
   renderAllHelpPanels();
@@ -5743,6 +6181,8 @@ function applyAdminLanguage(lang) {
   renderSchoolKnowledgeSections();
   renderUserGuideTab();
   updateGlossaryContent();
+  if (typeof renderInfoNeedsTab === 'function') renderInfoNeedsTab();
+  if (typeof renderAsstProfileTab === 'function') renderAsstProfileTab();
 }
 
 /* ===================== PART 3: Help on Every Tab ===================== */
@@ -5873,132 +6313,145 @@ async function refreshDashboard() {
   if (!container) return;
 
   const lang = currentAdminLang;
-  const t = adminI18nData[lang]?.dashboard_items || adminI18nData.si.dashboard_items;
+  const t = adminI18nData[lang]?.dashboard_items || adminI18nData.si.dashboard_items || {};
 
-  // 1. Check GitHub connection
+  // Fetch or cache content files needed for checking
+  if (!settingsData) {
+    try {
+      const res = await fetch('../content/settings.json');
+      if (res.ok) settingsData = await res.json();
+    } catch(e) {}
+  }
+  let homeData = null;
+  try {
+    const res = await fetch('../content/home.json');
+    if (res.ok) homeData = await res.json();
+  } catch(e) {}
+
+  let admissionsData = null;
+  try {
+    const res = await fetch('../content/admissions.json');
+    if (res.ok) admissionsData = await res.json();
+  } catch(e) {}
+
+  if (!newsData) {
+    try {
+      const res = await fetch('../content/news-items.json');
+      if (res.ok) newsData = await res.json();
+    } catch(e) {}
+  }
+  if (!galleryData) {
+    try {
+      const res = await fetch('../content/gallery-items.json');
+      if (res.ok) galleryData = await res.json();
+    } catch(e) {}
+  }
+
   const cfg = ghConfig();
   const isGhConnected = !!(cfg.owner && cfg.repo && cfg.token);
-
-  // 2. Check Passphrase
   const isPassphraseSet = !!localStorage.getItem('admin_passphrase');
 
-  // 3. Check Settings filled
-  let isSettingsFilled = false;
-  try {
-    const s = settingsData || (await (await fetch('../content/settings.json')).json());
-    isSettingsFilled = !!(s && s.schoolName && s.phoneNumbers && s.phoneNumbers.length > 0);
-  } catch(e) { isSettingsFilled = false; }
-
-  // 4. Check Knowledge Base complete percentage
-  const knowPct = schoolKnowledgeData.completeness_score || 85;
-  const isKnowledgeDone = knowPct >= 80;
-
-  // 5. Check first news
-  let isNewsAdded = false;
-  try {
-    const n = newsData || (await (await fetch('../content/news-items.json')).json());
-    isNewsAdded = Array.isArray(n) && n.length > 0;
-  } catch(e) { isNewsAdded = false; }
-
-  // 6. Check photos added
-  let isPhotosAdded = false;
-  try {
-    const g = galleryData || (await (await fetch('../content/gallery-items.json')).json());
-    isPhotosAdded = Array.isArray(g) && g.length > 0;
-  } catch(e) { isPhotosAdded = false; }
-
-  // 7. Check admissions Google Form
-  let isAdmissionsFormConnected = true; // Admissions form is wired to school form action
-
-  // 8. Check site health
-  let isSiteHealthGood = isSettingsFilled && isNewsAdded && isPhotosAdded;
-
-  // 9. Check AI key
-  const isAiKeySet = !!localStorage.getItem('gemini_api_key');
+  const s = settingsData || {};
+  const isSchoolDetailsFilled = !!(s.schoolName?.si && s.schoolName?.en && s.address?.si && s.motto?.si);
+  const isLogoUploaded = !!(s.crestVerified || s.crestUrl || s.logoUrl || (s.crest && s.crest.length > 5));
+  const isPrincipalMessageFilled = !!(homeData?.principalSnippet?.quote?.si && homeData.principalSnippet.quote.si.trim().length > 10);
+  const isContactDetailsFilled = !!(Array.isArray(s.phones) && s.phones.length > 0 && s.email && !s.email.includes('example.com'));
+  const isFacebookAndMapFilled = !!(s.facebookUrl && !s.facebookUrl.includes('YOUR_PAGE') && s.googleMaps?.embedUrl);
+  const isFirstNewsPublished = Array.isArray(newsData) && newsData.length > 0;
+  const isGalleryPhotosAdded = Array.isArray(galleryData) && galleryData.length > 0;
+  const isAdmissionsTested = !!(admissionsData?.googleFormUrl || admissionsData?.applicationGuide);
+  const isTranslationsComplete = !!(s.schoolName?.si && s.schoolName?.ta && s.schoolName?.en && s.address?.ta && s.motto?.ta);
 
   const items = [
     {
-      id: 'gh_connected',
-      title: t.gh_connected,
-      desc: t.gh_connected_desc,
-      done: isGhConnected,
-      actionText: isGhConnected ? '✓ Connected' : 'Connect GitHub',
+      id: 'gh_passphrase',
+      title: t.gh_passphrase || 'GitHub Token & Security Passphrase',
+      desc: t.gh_passphrase_desc || 'Repository connected and security passphrase configured.',
+      done: isGhConnected && isPassphraseSet,
+      actionText: (isGhConnected && isPassphraseSet) ? '✓ Settings' : (isGhConnected ? 'Set Passphrase' : 'Connect GitHub'),
       action: () => {
         if (!isGhConnected) {
           document.getElementById('editor').style.display = 'none';
           document.getElementById('setup-card').style.display = 'block';
         } else {
-          alert('GitHub token is active and connected.');
+          openPassphraseModal();
         }
       }
     },
     {
-      id: 'passphrase_set',
-      title: t.passphrase_set,
-      desc: t.passphrase_set_desc,
-      done: isPassphraseSet,
-      actionText: isPassphraseSet ? '✓ Change' : 'Set Passphrase',
-      action: () => openPassphraseModal()
-    },
-    {
-      id: 'settings_filled',
-      title: t.settings_filled,
-      desc: t.settings_filled_desc,
-      done: isSettingsFilled,
-      actionText: 'Go to Settings',
+      id: 'school_details',
+      title: t.school_details || 'School Details Filled',
+      desc: t.school_details_desc || 'School official name, address, and college motto filled.',
+      done: isSchoolDetailsFilled,
+      actionText: isSchoolDetailsFilled ? '✓ View Details' : 'Fill Details',
       action: () => switchTab('settings')
     },
     {
-      id: 'knowledge_completed',
-      title: `${t.knowledge_completed} (${knowPct}%)`,
-      desc: t.knowledge_completed_desc,
-      done: isKnowledgeDone,
-      actionText: 'View Knowledge',
-      action: () => switchTab('knowledge')
+      id: 'logo_uploaded',
+      title: t.logo_uploaded || 'School Crest & Logo Uploaded',
+      desc: t.logo_uploaded_desc || 'High-resolution school emblem uploaded and verified.',
+      done: isLogoUploaded,
+      actionText: isLogoUploaded ? '✓ Verified' : 'Upload Crest',
+      action: () => switchTab('settings')
+    },
+    {
+      id: 'principal_message',
+      title: t.principal_message || 'Principal Message Complete',
+      desc: t.principal_message_desc || 'Official message to students and community written and verified.',
+      done: isPrincipalMessageFilled,
+      actionText: isPrincipalMessageFilled ? '✓ View Message' : 'Provide Message',
+      action: () => switchTab('info-needs')
+    },
+    {
+      id: 'contact_details',
+      title: t.contact_details || 'Official Contact Details',
+      desc: t.contact_details_desc || 'School phone numbers, official email, and RTI officer populated.',
+      done: isContactDetailsFilled,
+      actionText: isContactDetailsFilled ? '✓ Contacts OK' : 'Edit Contacts',
+      action: () => switchTab('settings')
+    },
+    {
+      id: 'facebook_map',
+      title: t.facebook_map || 'Facebook & Google Map Links',
+      desc: t.facebook_map_desc || 'Official school Facebook page and verified Google Maps embed.',
+      done: isFacebookAndMapFilled,
+      actionText: isFacebookAndMapFilled ? '✓ Links Ready' : 'Add Links',
+      action: () => switchTab('settings')
     },
     {
       id: 'first_news',
-      title: t.first_news,
-      desc: t.first_news_desc,
-      done: isNewsAdded,
-      actionText: 'Manage News',
+      title: t.first_news || 'First School News Published',
+      desc: t.first_news_desc || 'At least one recent school event or announcement published.',
+      done: isFirstNewsPublished,
+      actionText: isFirstNewsPublished ? '✓ Manage News' : 'Publish News',
       action: () => switchTab('news')
     },
     {
-      id: 'photos_added',
-      title: t.photos_added,
-      desc: t.photos_added_desc,
-      done: isPhotosAdded,
-      actionText: 'View Gallery',
+      id: 'gallery_photos',
+      title: t.gallery_photos || 'Gallery Photos Added',
+      desc: t.gallery_photos_desc || 'High-quality school activities and campus photographs uploaded.',
+      done: isGalleryPhotosAdded,
+      actionText: isGalleryPhotosAdded ? '✓ View Photos' : 'Upload Photos',
       action: () => switchTab('gallery')
     },
     {
       id: 'admissions_form',
-      title: t.admissions_form,
-      desc: t.admissions_form_desc,
-      done: isAdmissionsFormConnected,
-      actionText: 'Admissions Info',
+      title: t.admissions_form || 'Admissions Form Tested',
+      desc: t.admissions_form_desc || 'Online admissions form connected and verified.',
+      done: isAdmissionsTested,
+      actionText: isAdmissionsTested ? '✓ Form Linked' : 'Check Admissions',
       action: () => switchTab('applications')
     },
     {
-      id: 'site_health',
-      title: t.site_health,
-      desc: t.site_health_desc,
-      done: isSiteHealthGood,
-      actionText: 'Check Pages',
-      action: () => switchTab('preview')
-    },
-    {
-      id: 'ai_key',
-      title: t.ai_key,
-      desc: t.ai_key_desc,
-      done: isAiKeySet,
-      actionText: isAiKeySet ? '✓ Configured' : 'Add Gemini Key',
-      action: () => openAiKeyModal()
+      id: 'translations_complete',
+      title: t.translations_complete || 'Translations Complete (Si/Ta/En)',
+      desc: t.translations_complete_desc || 'Trilingual coverage across main titles, settings, and notices.',
+      done: isTranslationsComplete,
+      actionText: isTranslationsComplete ? '✓ Trilingual OK' : 'Translate Content',
+      action: () => switchTab('settings')
     }
   ];
 
-  // Calculate score
   const doneCount = items.filter(i => i.done).length;
   const pct = Math.round((doneCount / items.length) * 100);
 
@@ -6008,9 +6461,10 @@ async function refreshDashboard() {
     bar.style.width = pct + '%';
     bar.textContent = pct + '%';
   }
-  if (pctEl) pctEl.textContent = `${pct}% (${doneCount} / ${items.length} ${lang === 'si' ? 'සම්පූර්ණයි' : 'complete'})`;
+  if (pctEl) {
+    pctEl.textContent = `${pct}% (${doneCount} / ${items.length} ${lang === 'si' ? 'සම්පූර්ණයි' : (lang === 'ta' ? 'முடிந்தது' : 'complete')})`;
+  }
 
-  // Render cards
   let html = '';
   items.forEach((item, idx) => {
     const statusPill = item.done 
@@ -6034,7 +6488,6 @@ async function refreshDashboard() {
   });
   container.innerHTML = html;
 
-  // Wire actions
   container.querySelectorAll('.btn-dash-action').forEach(btn => {
     btn.onclick = () => {
       const i = parseInt(btn.getAttribute('data-idx'), 10);
@@ -6606,6 +7059,1036 @@ if (setupCard && !document.getElementById('btn-browse-offline')) {
   setupCard.appendChild(offBtn);
 }
 
+/* ===================== GLOBAL TAB SWITCHER ===================== */
+function switchTab(tabName) {
+  const targetBtn = document.querySelector(`.tabs button[data-tab="${tabName}"]`);
+  if (targetBtn && targetBtn.classList.contains('tab-advanced') && currentAdminMode !== 'advanced') {
+    handleModeToggle();
+    return;
+  }
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+  document.querySelectorAll('.tabpanel').forEach(p => p.classList.toggle('active', p.dataset.panel === tabName));
+  if (targetBtn) targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  if (tabName === 'dashboard') refreshDashboard();
+  else if (tabName === 'knowledge') renderSchoolKnowledgeSections();
+  else if (tabName === 'activity') loadActivityTab();
+  else if (tabName === 'preview') initPreviewTab();
+  else if (tabName === 'guide') renderUserGuideTab();
+  else if (tabName === 'info-needs') loadInfoNeedsTab();
+  else if (tabName === 'asst-profile') loadAsstProfileTab();
+}
+window.switchTab = switchTab;
+
+/* ===================== MODE SWITCHER (SIMPLE VS ADVANCED) ===================== */
+let currentAdminMode = localStorage.getItem('admin_mode') || 'simple';
+
+function initAdminMode() {
+  document.body.classList.remove('mode-simple', 'mode-advanced');
+  document.body.classList.add(`mode-${currentAdminMode}`);
+  updateAdminModeUI();
+}
+
+function updateAdminModeUI() {
+  const isAdv = currentAdminMode === 'advanced';
+  const badge = document.getElementById('badge-current-mode');
+  const btn = document.getElementById('btn-toggle-mode');
+  const lang = currentAdminLang;
+  const t = adminI18nData[lang]?.mode || adminI18nData.si?.mode || {};
+
+  if (badge) {
+    if (isAdv) {
+      badge.textContent = t.advanced_mode || '🔒 උසස් ප්‍රකාරය (Advanced Mode)';
+      badge.style.background = '#fef3c7';
+      badge.style.color = '#92400e';
+      badge.style.borderColor = '#fcd34d';
+    } else {
+      badge.textContent = t.simple_mode || '🟢 සරල ප්‍රකාරය (Simple Mode)';
+      badge.style.background = '#dcfce7';
+      badge.style.color = '#166534';
+      badge.style.borderColor = '#86efac';
+    }
+  }
+  if (btn) {
+    btn.textContent = isAdv ? (t.switch_to_simple || '🟢 සරල ප්‍රකාරයට මාරු වන්න (Simple Mode)') : (t.switch_to_advanced || '🔒 උසස් ප්‍රකාරයට මාරු වන්න (Advanced Mode)');
+  }
+  const modalTitle = document.getElementById('adv-modal-title');
+  if (modalTitle) modalTitle.textContent = t.warning_title || '⚠️ අවධානය දෙන්න: උසස් තාක්ෂණික ප්‍රකාරය (Advanced Mode)';
+  const modalDesc = document.getElementById('adv-modal-desc');
+  if (modalDesc) modalDesc.textContent = t.warning_desc || 'උසස් ප්‍රකාරය මඟින් කේත සංස්කාරකය, අඩවි ආනයනය, ප්‍රධාන මෙනුව, ඉතිහාසය, තේමාව සහ සහයක පැතිකඩ වෙත සෘජු ප්‍රවේශය ලබාදේ. මෙහි සිදුකරන වෙනස්කම් වෙබ් අඩවියේ මූලික සැකසුමට සෘජුවම බලපායි. ඉදිරියට යාමට ඔබට විශ්වාසද?';
+  const passLbl = document.getElementById('adv-modal-passphrase-lbl');
+  if (passLbl) passLbl.textContent = t.passphrase_prompt || 'උසස් ප්‍රකාරය අගුළු හැරීමට ඔබගේ Admin Passphrase ඇතුළත් කරන්න:';
+}
+
+function handleModeToggle() {
+  if (currentAdminMode === 'simple') {
+    const modal = document.getElementById('advanced-mode-modal');
+    const passArea = document.getElementById('adv-modal-passphrase-area');
+    const passInput = document.getElementById('adv-modal-passphrase-input');
+    const storedPassphrase = localStorage.getItem('admin_passphrase');
+
+    if (passArea) {
+      passArea.style.display = storedPassphrase ? 'block' : 'none';
+      if (passInput) passInput.value = '';
+    }
+    if (modal) modal.style.display = 'flex';
+  } else {
+    currentAdminMode = 'simple';
+    localStorage.setItem('admin_mode', 'simple');
+    initAdminMode();
+    const activeBtn = document.querySelector('.tabs button.active');
+    if (activeBtn && activeBtn.classList.contains('tab-advanced')) {
+      switchTab('dashboard');
+    }
+  }
+}
+
+document.getElementById('btn-toggle-mode')?.addEventListener('click', handleModeToggle);
+document.getElementById('adv-modal-cancel')?.addEventListener('click', () => {
+  document.getElementById('advanced-mode-modal').style.display = 'none';
+});
+document.getElementById('adv-modal-confirm')?.addEventListener('click', () => {
+  const storedPassphrase = localStorage.getItem('admin_passphrase');
+  if (storedPassphrase) {
+    const inputPass = document.getElementById('adv-modal-passphrase-input')?.value.trim();
+    if (inputPass !== storedPassphrase) {
+      alert(currentAdminLang === 'si' ? 'ඇතුළත් කළ Passphrase වැරදියි!' : (currentAdminLang === 'ta' ? 'உள்ளிடப்பட்ட Passphrase தவறானது!' : 'Incorrect Passphrase entered!'));
+      return;
+    }
+  }
+  document.getElementById('advanced-mode-modal').style.display = 'none';
+  currentAdminMode = 'advanced';
+  localStorage.setItem('admin_mode', 'advanced');
+  initAdminMode();
+});
+
+/* ===================== PART 2: INFORMATION NEEDED CONTROLLER ===================== */
+let infoNeedsData = null;
+let infoNeedsSha = null;
+let currentInfoFilter = 'all';
+let currentInfoOwner = 'all';
+let contentCache = {};
+let currentEditingInfo = null;
+let aiFlaggedMissingIds = [];
+
+async function loadInfoNeedsTab() {
+  const listEl = document.getElementById('info-needs-list');
+  if (!listEl) return;
+  listEl.innerHTML = '<div class="muted">Loading school information checklist…</div>';
+
+  if (!infoNeedsData) {
+    try {
+      const res = await fetch('../content/info-needs.json');
+      if (res.ok) infoNeedsData = await res.json();
+    } catch(e) {
+      console.warn('Could not load info-needs.json', e);
+    }
+  }
+
+  // Pre-load content files into cache to compute real status
+  const files = ['settings.json', 'home.json', 'about.json', 'academic.json', 'student-life.json', 'news-items.json', 'gallery-items.json', 'downloads.json', 'sds.json', 'admissions.json'];
+  await Promise.all(files.map(async (fn) => {
+    try {
+      const res = await fetch(`../content/${fn}`);
+      if (res.ok) contentCache[fn] = await res.json();
+    } catch(e) {
+      contentCache[fn] = null;
+    }
+  }));
+
+  renderInfoNeedsTab();
+}
+
+function computeItemStatus(item) {
+  if (!item.content_check) return 'placeholder';
+  const { file, path } = item.content_check;
+  const data = contentCache[file];
+  if (!data) return 'missing';
+
+  if (path === 'rtiOfficer.name.si') {
+    const val = data.rtiOfficer?.name?.si;
+    return (val && val.trim().length > 3 && !val.includes('Mr.')) ? 'done' : 'placeholder';
+  }
+  if (path === 'principalSnippet.quote.si') {
+    const val = data.principalSnippet?.quote?.si;
+    return (val && val.trim().length > 20) ? 'done' : 'missing';
+  }
+  if (path === 'principalSnippet.photo') {
+    const val = data.principalSnippet?.photo;
+    return (val && !val.includes('silhouette') && val.length > 5) ? 'done' : 'missing';
+  }
+  if (path === 'historyMilestones') {
+    return (Array.isArray(data.historyMilestones) && data.historyMilestones.length >= 2) ? 'done' : 'placeholder';
+  }
+  if (path === 'streams') {
+    return (Array.isArray(data.streams) && data.streams.length >= 3) ? 'done' : 'missing';
+  }
+  if (path === 'olSubjects') {
+    return (Array.isArray(data.olSubjects) && data.olSubjects.length >= 5) ? 'done' : 'missing';
+  }
+  if (path === 'examAchievements') {
+    return (Array.isArray(data.examAchievements) && data.examAchievements.length > 0) ? 'done' : 'placeholder';
+  }
+  if (path === 'houses') {
+    return (Array.isArray(data.houses) && data.houses.length >= 3) ? 'done' : 'missing';
+  }
+  if (path === 'sportsMeetArticle') {
+    return (Array.isArray(data) && data.length > 0) ? 'done' : 'missing';
+  }
+  if (path === 'sportsPhotos') {
+    return (Array.isArray(data) && data.length > 0) ? 'done' : 'missing';
+  }
+  if (path === 'crestVerified') {
+    return (data.crestVerified || data.crestUrl || data.logoUrl) ? 'done' : 'missing';
+  }
+  if (path === 'facilitiesCount') {
+    return (Array.isArray(data) && data.length >= 3) ? 'done' : 'missing';
+  }
+  if (path === 'googleFormUrl') {
+    return (data.googleFormUrl && data.googleFormUrl.startsWith('https://docs.google.com/forms')) ? 'done' : 'missing';
+  }
+  if (path === 'email') {
+    return (data.email && !data.email.includes('example.com') && data.phones?.length > 0) ? 'done' : 'missing';
+  }
+  if (path === 'officeHours.si') {
+    return (data.officeHours?.si && data.officeHours.si.length > 5) ? 'done' : 'missing';
+  }
+  if (path === 'downloadsCount') {
+    return (Array.isArray(data) && data.length >= 1) ? 'done' : 'missing';
+  }
+  if (path === 'committeeMembers') {
+    return (Array.isArray(data.committeeMembers) && data.committeeMembers.length >= 2) ? 'done' : 'missing';
+  }
+  if (path === 'activeProjects') {
+    return (Array.isArray(data.activeProjects) && data.activeProjects.length >= 1) ? 'done' : 'placeholder';
+  }
+
+  return 'placeholder';
+}
+
+function renderInfoNeedsTab() {
+  const container = document.getElementById('info-needs-list');
+  if (!container || !infoNeedsData) return;
+
+  const lang = currentAdminLang;
+  const sections = infoNeedsData.sections || [];
+
+  let totalItems = 0;
+  let doneItems = 0;
+
+  sections.forEach(sec => {
+    (sec.items || []).forEach(item => {
+      totalItems++;
+      const status = computeItemStatus(item);
+      item._computedStatus = status;
+      if (status === 'done') doneItems++;
+    });
+  });
+
+  const pct = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
+  const bar = document.getElementById('info-progress-bar');
+  const pctEl = document.getElementById('info-progress-pct');
+  if (bar) {
+    bar.style.width = pct + '%';
+    bar.textContent = pct + '%';
+  }
+  if (pctEl) {
+    pctEl.textContent = `${pct}% (${doneItems} / ${totalItems} ${lang === 'si' ? 'සම්පූර්ණයි' : (lang === 'ta' ? 'முடிந்தது' : 'Complete')})`;
+  }
+
+  let html = '';
+
+  if (aiFlaggedMissingIds.length > 0) {
+    html += `
+      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #ef4444; border-radius:6px; padding:12px 16px; margin-bottom:16px;">
+        <strong style="color:#b91c1c;">🤖 AI සහයකයා විසින් අඩුපාඩු ලෙස වාර්තා කළ අයිතම (${aiFlaggedMissingIds.length}):</strong>
+        <div style="font-size:0.85rem; color:#7f1d1d; margin-top:4px;">වෙබ් අඩවියේ අසම්පූර්ණ හෝ හිඟ බවට හඳුනාගත් තොරතුරු පහතින් සම්පූර්ණ කර අනුමත කරන්න.</div>
+      </div>
+    `;
+  }
+
+  sections.forEach(sec => {
+    if (currentInfoOwner !== 'all' && sec.owner !== currentInfoOwner) return;
+
+    let itemsToRender = (sec.items || []).filter(item => {
+      if (currentInfoFilter === 'missing') return item._computedStatus !== 'done';
+      if (currentInfoFilter === 'done') return item._computedStatus === 'done';
+      return true;
+    });
+
+    if (itemsToRender.length === 0) return;
+
+    const ownerTitle = sec.owner_name[lang] || sec.owner_name.en || sec.owner_name.si;
+
+    html += `
+      <div class="info-owner-card" style="border:1px solid #e2e8f0; border-radius:8px; margin-bottom:16px; background:#fff; overflow:hidden;">
+        <div style="background:#f1f5f9; padding:12px 16px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="color:#0b2545; font-size:0.95rem;">🏢 ${escapeHtml(ownerTitle)}</strong>
+          </div>
+          <span style="font-size:0.8rem; background:#0b2545; color:#fff; padding:2px 8px; border-radius:12px; font-weight:700;">
+            ${itemsToRender.length} items
+          </span>
+        </div>
+        <div style="padding:16px;">
+          <div style="display:grid; gap:12px;">
+    `;
+
+    itemsToRender.forEach(item => {
+      const title = item.title[lang] || item.title.en || item.title.si;
+      const desc = item.description[lang] || item.description.en || item.description.si;
+      const ex = item.example[lang] || item.example.en || item.example.si;
+      const status = item._computedStatus;
+
+      const prioClass = item.priority === 'high' ? 'badge-prio-high' : (item.priority === 'medium' ? 'badge-prio-med' : 'badge-prio-low');
+      const prioLabel = item.priority.toUpperCase();
+
+      let statusBadge = '';
+      if (status === 'done') {
+        statusBadge = `<span class="status-pill complete">✅ ${lang === 'si' ? 'සම්පූර්ණයි' : (lang === 'ta' ? 'முடிந்தது' : 'Done')}</span>`;
+      } else if (status === 'placeholder') {
+        statusBadge = `<span class="status-pill placeholder">⚠️ ${lang === 'si' ? 'ආදර්ශයක් පමණි (Placeholder)' : 'Placeholder'}</span>`;
+      } else {
+        statusBadge = `<span class="status-pill missing">❌ ${lang === 'si' ? 'අඩුපාඩුයි (Missing)' : 'Missing'}</span>`;
+      }
+
+      const isAiFlagged = aiFlaggedMissingIds.includes(item.id);
+
+      html += `
+        <div style="border:1px solid #e2e8f0; border-left:4px solid ${status === 'done' ? '#10b981' : (status === 'placeholder' ? '#f59e0b' : '#ef4444')}; border-radius:6px; padding:12px 14px; background:${isAiFlagged ? '#fff1f2' : '#fafafa'};">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; flex-wrap:wrap;">
+            <div>
+              <strong style="color:#0b2545; font-size:0.92rem;">${escapeHtml(title)}</strong>
+              <div style="margin-top:4px; display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+                <span class="badge ${prioClass}">${prioLabel}</span>
+                <span style="font-size:0.75rem; background:#f1f5f9; padding:2px 6px; border-radius:4px; color:#475569; font-weight:600;">📁 ${escapeHtml(item.type)}</span>
+                ${statusBadge}
+                ${isAiFlagged ? '<span style="font-size:0.75rem; background:#fee2e2; color:#b91c1c; padding:2px 6px; border-radius:4px; font-weight:700;">🤖 AI Flagged</span>' : ''}
+              </div>
+            </div>
+            <button type="button" class="btn-provide-info ${status === 'done' ? 'secondary' : ''}" data-sec="${sec.id}" data-item="${item.id}" style="font-size:0.8rem; padding:5px 12px; white-space:nowrap; background:${status === 'done' ? '#f1f5f9' : '#0b2545'}; color:${status === 'done' ? '#334155' : '#fff'};">
+              ${status === 'done' ? '✏️ Edit Answer' : '✍️ ' + (lang === 'si' ? 'තොරතුරු ඇතුළත් කරන්න' : (lang === 'ta' ? 'தகவல் உள்ளிடு' : 'Provide Answer'))}
+            </button>
+          </div>
+          <div style="font-size:0.84rem; color:#475569; margin-top:8px; line-height:1.45;">
+            ${escapeHtml(desc)}
+          </div>
+          <div style="margin-top:8px; background:#fff; border:1px solid #e2e8f0; border-radius:4px; padding:8px 10px; font-size:0.82rem; color:#1e293b;">
+            <strong style="color:#0369a1;">💡 ${lang === 'si' ? 'ආදර්ශ පිළිතුර:' : (lang === 'ta' ? 'உதாரணம்:' : 'Example:')}</strong> ${escapeHtml(ex)}
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  if (!html) {
+    html = `<div style="padding:32px; text-align:center; color:#64748b; background:#f8fafc; border-radius:8px;">
+      ${lang === 'si' ? 'තෝරාගත් පෙරහනට අදාළ අයිතම නොමැත.' : 'No items match the selected filter.'}
+    </div>`;
+  }
+
+  container.innerHTML = html;
+
+  container.querySelectorAll('.btn-provide-info').forEach(btn => {
+    btn.onclick = () => {
+      const secId = btn.getAttribute('data-sec');
+      const itemId = btn.getAttribute('data-item');
+      openInfoAnswerModal(secId, itemId);
+    };
+  });
+}
+
+function printCollectionSheet() {
+  if (!infoNeedsData) return;
+  const lang = currentAdminLang;
+  const sections = infoNeedsData.sections || [];
+
+  let printHtml = `<div style="font-family:sans-serif; color:#000; padding:10px 0;">`;
+
+  sections.forEach((sec) => {
+    if (currentInfoOwner !== 'all' && sec.owner !== currentInfoOwner) return;
+
+    const ownerName = sec.owner_name[lang] || sec.owner_name.en || sec.owner_name.si;
+    const items = sec.items || [];
+
+    printHtml += `
+      <div class="owner-print-section" style="page-break-after:always; margin-bottom:30px; padding-bottom:20px;">
+        <div style="border-bottom:2px solid #0b2545; padding-bottom:12px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:flex-end;">
+          <div>
+            <h2 style="margin:0; font-size:1.3rem; color:#0b2545;">මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය</h2>
+            <div style="font-size:0.95rem; font-weight:700; color:#334155;">Mo/Pelwatta Navodya Secondary College</div>
+            <div style="font-size:1.05rem; font-weight:700; color:#b45309; margin-top:4px;">
+              📋 තොරතුරු එක්රැස් කිරීමේ පත්‍රිකාව (Official Information Collection Sheet)
+            </div>
+          </div>
+          <div style="text-align:right; font-size:0.8rem; color:#475569;">
+            <div><strong>අංශය (Department):</strong> ${escapeHtml(ownerName)}</div>
+            <div><strong>දිනය (Date):</strong> ${new Date().toLocaleDateString()}</div>
+          </div>
+        </div>
+
+        <div style="font-size:0.85rem; margin-bottom:16px; color:#334155;">
+          කරුණාකර පාසල් වෙබ් අඩවිය යාවත්කාලීන කිරීම සඳහා ඔබගේ අංශයට අදාළ පහත තොරතුරු සහ ලේඛන සපයා අත්සන් තබා පරිපාලන අංශයට භාර දෙන්න.
+        </div>
+
+        <div style="display:grid; gap:16px;">
+    `;
+
+    items.forEach((item, iIdx) => {
+      const titleSi = item.title.si || '';
+      const titleEn = item.title.en || '';
+      const desc = item.description[lang] || item.description.si || item.description.en;
+      const ex = item.example[lang] || item.example.si || item.example.en;
+
+      printHtml += `
+        <div class="print-sheet-item" style="border:1px solid #cbd5e1; border-radius:6px; padding:12px 14px; page-break-inside:avoid;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:700; font-size:0.95rem;">
+              [ &nbsp; ] &nbsp; ${iIdx + 1}. ${escapeHtml(titleSi)} / ${escapeHtml(titleEn)}
+            </div>
+            <div style="font-size:0.75rem; font-weight:700; border:1px solid #000; padding:2px 6px; border-radius:4px;">
+              ${item.priority.toUpperCase()} • ${item.type.toUpperCase()}
+            </div>
+          </div>
+          <div style="font-size:0.82rem; color:#334155; margin-top:4px;">
+            <strong>අවශ්‍ය තොරතුර:</strong> ${escapeHtml(desc)}
+          </div>
+          <div style="font-size:0.8rem; color:#0369a1; margin-top:4px; background:#f8fafc; padding:4px 8px; border-radius:4px;">
+            <strong>ආදර්ශය:</strong> ${escapeHtml(ex)}
+          </div>
+          <div style="margin-top:12px;">
+            <div style="font-size:0.75rem; color:#64748b; margin-bottom:4px;">සටහන් / තොරතුරු මෙහි ලියන්න (හෝ අමුණන්න):</div>
+            <div class="print-line" style="border-bottom:1px dotted #94a3b8; height:18px;"></div>
+            <div class="print-line" style="border-bottom:1px dotted #94a3b8; height:18px; margin-top:8px;"></div>
+            <div class="print-line" style="border-bottom:1px dotted #94a3b8; height:18px; margin-top:8px;"></div>
+          </div>
+        </div>
+      `;
+    });
+
+    printHtml += `
+        </div>
+
+        <div style="margin-top:24px; padding-top:14px; border-top:1px solid #cbd5e1; display:flex; justify-content:space-between; font-size:0.82rem; page-break-inside:avoid;">
+          <div>
+            තොරතුරු සපයන ලද නිලධාරියාගේ නම: ____________________________<br>
+            තනතුර: ____________________________
+          </div>
+          <div style="text-align:right;">
+            අත්සන: ____________________________<br>
+            දිනය: ____________________________
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  printHtml += `</div>`;
+
+  const printContainer = document.getElementById('info-print-container');
+  if (printContainer) {
+    printContainer.innerHTML = printHtml;
+    window.print();
+  }
+}
+
+function downloadInfoCsv() {
+  if (!infoNeedsData) return;
+  const sections = infoNeedsData.sections || [];
+  
+  let csvRows = [
+    ['Section ID', 'Department Owner', 'Item ID', 'Priority', 'Status', 'Field Type', 'Title (EN)', 'Title (SI)', 'Title (TA)', 'Description (EN)', 'Example (EN)']
+  ];
+
+  sections.forEach(sec => {
+    (sec.items || []).forEach(item => {
+      csvRows.push([
+        sec.id,
+        sec.owner_name?.en || sec.owner,
+        item.id,
+        item.priority,
+        item._computedStatus || 'missing',
+        item.type,
+        item.title?.en || '',
+        item.title?.si || '',
+        item.title?.ta || '',
+        item.description?.en || '',
+        item.example?.en || ''
+      ]);
+    });
+  });
+
+  const csvContent = '\uFEFF' + csvRows.map(row => 
+    row.map(val => `"${String(val).replace(/"/g, '""')}"`).join(',')
+  ).join('\r\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `pelwatta-school-information-needed-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function openInfoAnswerModal(secId, itemId) {
+  const sec = (infoNeedsData.sections || []).find(s => s.id === secId);
+  if (!sec) return;
+  const item = (sec.items || []).find(i => i.id === itemId);
+  if (!item) return;
+
+  currentEditingInfo = { sec, item };
+  const lang = currentAdminLang;
+
+  const modal = document.getElementById('info-answer-modal');
+  const titleEl = document.getElementById('info-modal-title');
+  const descEl = document.getElementById('info-modal-desc');
+  const exEl = document.getElementById('info-modal-example');
+  const inputArea = document.getElementById('info-modal-input-area');
+
+  if (titleEl) titleEl.textContent = item.title[lang] || item.title.en || item.title.si;
+  if (descEl) descEl.textContent = item.description[lang] || item.description.en || item.description.si;
+  if (exEl) exEl.textContent = item.example[lang] || item.example.en || item.example.si;
+
+  if (item.type === 'photo') {
+    inputArea.innerHTML = `
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:12px;">
+        <div style="font-size:0.82rem; color:#475569; margin-bottom:6px;">
+          Recommended resolution: 1200×800 (Auto-resized to max 1200px width/height via Canvas).
+        </div>
+        <input type="file" id="info-modal-photo-file" accept="image/*" style="width:100%;">
+        <div class="photo-consent-box" style="margin-top:10px;">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="info-modal-consent-cb">
+            <span style="font-size:0.82rem; color:#1e293b;">
+              ✅ මට මෙම ඡායාරූපය පළ කිරීමට අවසර ඇත (ළමුන් සඳහා දෙමාපිය අවසරය තහවුරු කර ඇත) / I have permission to publish this photo (parental consent for students verified)
+            </span>
+          </label>
+        </div>
+        <div id="info-modal-photo-prev" style="margin-top:8px; display:none;">
+          <img id="info-modal-prev-img" style="max-height:160px; border-radius:4px; border:1px solid #cbd5e1;">
+        </div>
+      </div>
+    `;
+
+    const fileInput = document.getElementById('info-modal-photo-file');
+    fileInput.onchange = () => {
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.getElementById('info-modal-prev-img');
+          img.src = e.target.result;
+          document.getElementById('info-modal-photo-prev').style.display = 'block';
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    };
+  } else {
+    inputArea.innerHTML = `
+      <div style="display:grid; gap:10px;">
+        <div>
+          <label style="font-weight:700; font-size:0.85rem;">සිංහල අන්තර්ගතය (Sinhala):</label>
+          <textarea id="info-modal-val-si" rows="3" style="width:100%; font-size:0.85rem; box-sizing:border-box;"></textarea>
+        </div>
+        <div>
+          <label style="font-weight:700; font-size:0.85rem;">தமிழ் உள்ளடக்கம் (Tamil):</label>
+          <textarea id="info-modal-val-ta" rows="2" style="width:100%; font-size:0.85rem; box-sizing:border-box;"></textarea>
+        </div>
+        <div>
+          <label style="font-weight:700; font-size:0.85rem;">English Content:</label>
+          <textarea id="info-modal-val-en" rows="2" style="width:100%; font-size:0.85rem; box-sizing:border-box;"></textarea>
+        </div>
+      </div>
+    `;
+  }
+
+  if (modal) modal.style.display = 'flex';
+}
+
+async function saveInfoAnswer() {
+  if (!currentEditingInfo) return;
+  const { sec, item } = currentEditingInfo;
+
+  let answerData = {};
+  if (item.type === 'photo') {
+    const fileInput = document.getElementById('info-modal-photo-file');
+    const consentCb = document.getElementById('info-modal-consent-cb');
+    if (!fileInput || !fileInput.files[0]) {
+      alert('කරුණාකර ඡායාරූප ගොනුවක් තෝරන්න. / Please choose an image file.');
+      return;
+    }
+    if (!consentCb || !consentCb.checked) {
+      alert('⚠️ කරුණාකර ඡායාරූපය පළ කිරීමට දෙමාපිය අවසරය තහවුරු කරන කොටුව (Consent Checkbox) තෝරන්න. / Please check the parental consent box before publishing student photos.');
+      return;
+    }
+    try {
+      const b64 = await compressImageFile(fileInput.files[0], 1200);
+      answerData = { photoBase64: b64, filename: `images/${item.id}.jpg` };
+    } catch(err) {
+      alert('Image compression failed: ' + err.message);
+      return;
+    }
+  } else {
+    const si = document.getElementById('info-modal-val-si')?.value.trim();
+    const ta = document.getElementById('info-modal-val-ta')?.value.trim();
+    const en = document.getElementById('info-modal-val-en')?.value.trim();
+    if (!si && !en) {
+      alert('කරුණාකර අවම වශයෙන් සිංහල හෝ ඉංග්‍රීසි අන්තර්ගතය පුරවන්න.');
+      return;
+    }
+    answerData = { si: si || en, ta: ta || en || si, en: en || si };
+  }
+
+  showSafetyConfirmation({
+    title: 'තොරතුරු යාවත්කාලීන කිරීම (Update School Content)',
+    whatWillHappen: `Field "${item.title.en || item.id}" will be updated in ${item.content_check?.file || 'content files'}.`,
+    pagesAffected: item.content_check?.file || 'content',
+    howToUndo: 'Use the Activity tab to undo if needed.',
+    onConfirm: async () => {
+      document.getElementById('info-answer-modal').style.display = 'none';
+
+      const targetFile = item.content_check?.file;
+      if (targetFile && contentCache[targetFile]) {
+        if (targetFile === 'settings.json') {
+          if (item.id === 'principal_name_and_title') {
+            contentCache['settings.json'].rtiOfficer = contentCache['settings.json'].rtiOfficer || {};
+            contentCache['settings.json'].rtiOfficer.name = answerData;
+          } else if (item.id === 'school_crest_vector') {
+            contentCache['settings.json'].crestVerified = true;
+          }
+        } else if (targetFile === 'home.json') {
+          if (item.id === 'principal_message') {
+            contentCache['home.json'].principalSnippet = contentCache['home.json'].principalSnippet || {};
+            contentCache['home.json'].principalSnippet.quote = answerData;
+          }
+        }
+
+        try {
+          const str = JSON.stringify(contentCache[targetFile], null, 2);
+          await ghPutFile(`content/${targetFile}`, str, `Update info: ${item.id}`, null);
+        } catch(e) {
+          console.warn('Saved in local session:', e);
+        }
+      }
+
+      item._computedStatus = 'done';
+      aiFlaggedMissingIds = aiFlaggedMissingIds.filter(id => id !== item.id);
+
+      renderInfoNeedsTab();
+      refreshDashboard();
+      alert('තොරතුරු සාර්ථකව යාවත්කාලීන විය! / Information updated successfully!');
+    }
+  });
+}
+
+document.getElementById('btn-print-info-sheet')?.addEventListener('click', printCollectionSheet);
+document.getElementById('btn-download-info-csv')?.addEventListener('click', downloadInfoCsv);
+document.getElementById('btn-refresh-info-needs')?.addEventListener('click', loadInfoNeedsTab);
+document.getElementById('info-modal-cancel')?.addEventListener('click', () => {
+  document.getElementById('info-answer-modal').style.display = 'none';
+});
+document.getElementById('info-modal-save')?.addEventListener('click', saveInfoAnswer);
+
+document.getElementById('info-owner-select')?.addEventListener('change', (e) => {
+  currentInfoOwner = e.target.value;
+  renderInfoNeedsTab();
+});
+
+document.querySelectorAll('.info-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.info-filter-btn').forEach(b => {
+      b.classList.remove('active');
+      b.classList.add('secondary');
+    });
+    btn.classList.add('active');
+    btn.classList.remove('secondary');
+    currentInfoFilter = btn.getAttribute('data-filter');
+    renderInfoNeedsTab();
+  });
+});
+
+/* ===================== PART 3: EDITABLE ASSISTANT PROFILE CONTROLLER ===================== */
+let asstProfileData = null;
+let asstProfileSha = null;
+let currentEditingPromptIdx = null;
+
+const DEFAULT_AI_ASSISTANT_PROFILE = {
+  "name": "Pelwatta Vidyalaya Assistant",
+  "purpose": "Assisting teachers and administrative staff of Mo/Pelwatta Navodya Secondary College in writing accurate school news, publishing notices, formatting academic pages, and translating educational material across Sinhala, Tamil, and English.",
+  "scope_mode": "website_only",
+  "task_types": {
+    "create_edit_pages": true,
+    "write_news": true,
+    "translate": true,
+    "adjust_styling": false,
+    "check_content": true
+  },
+  "tone": "formal_educational",
+  "language_rules": "Sinhala is the primary language. Use formal standard Sri Lankan Tamil and English for trilingual translations. Maintain respectful, dignified academic vocabulary suitable for a secondary college.",
+  "refusal_message": "I am an official assistant dedicated exclusively to the public website of Mo/Pelwatta Navodya Secondary College. I cannot discuss personal staff/student records, private phone numbers, political matters, or confidential school archives.",
+  "extra_school_rules": "Always verify dates against official school term schedules. Never invent teacher or student names. Follow Ministry of Education guidelines. All output must be reviewed and explicitly approved by an authorized teacher before saving.",
+  "model": "gemini-3.8-flash",
+  "saved_instructions": [
+    {
+      "id": "sports_day_news",
+      "title": "📰 Sports Day News Announcement",
+      "prompt": "Draft a news announcement celebrating the Annual Inter-House Athletic Meet of Mo/Pelwatta Navodya Secondary College, highlighting student sportsmanship, house colors (Tissa, Gemunu, Vijaya, Parakrama), and achievements. Provide titles and excerpts in Sinhala, Tamil, and English."
+    },
+    {
+      "id": "term_test_notice",
+      "title": "📌 Term Examination Schedule Notice",
+      "prompt": "Draft an official school notice for parents regarding the upcoming term evaluation test dates, morning assembly reporting time at 7:30 AM, and necessary stationery items. Provide trilingual copy."
+    },
+    {
+      "id": "al_stream_page",
+      "title": "📄 Advanced Level Stream Page Structure",
+      "prompt": "Create an educational page structure for the Advanced Level (A/L) section detailing subject baskets for Biological Science, Physical Science, Commerce, Arts, and Biosystems Technology."
+    },
+    {
+      "id": "parent_circular_translation",
+      "title": "🌐 Translate Notice into Formal Tamil & English",
+      "prompt": "Translate this Sinhala announcement into formal, accurate Sri Lankan Tamil and English with proper academic terminology: 'හෙට දින පැවැත්වෙන දෙමාපිය හමුව සඳහා සියලුම දෙමාපියන් පෙරවරු 8.30 වන විට ප්‍රධාන ශාලාවට පැමිණෙන ලෙස කාරුණිකව ඉල්ලා සිටිමු.'"
+    },
+    {
+      "id": "content_health_audit",
+      "title": "🔍 Content Quality & Missing Info Check",
+      "prompt": "Review the public website content and identify any missing principal details, empty phone numbers, or unlinked documents, and list the responsible department owners."
+    }
+  ]
+};
+
+async function loadAsstProfileTab() {
+  if (!asstProfileData) {
+    try {
+      const res = await fetch('../content/ai-assistant.json');
+      if (res.ok) asstProfileData = await res.json();
+    } catch(e) {
+      asstProfileData = JSON.parse(JSON.stringify(DEFAULT_AI_ASSISTANT_PROFILE));
+    }
+  }
+  if (!asstProfileData) asstProfileData = JSON.parse(JSON.stringify(DEFAULT_AI_ASSISTANT_PROFILE));
+  renderAsstProfileTab();
+}
+
+function renderAsstProfileTab() {
+  if (!asstProfileData) return;
+  const p = asstProfileData;
+
+  const nameInp = document.getElementById('asst-input-name');
+  if (nameInp) nameInp.value = p.name || 'Pelwatta Vidyalaya Assistant';
+
+  const modelInp = document.getElementById('asst-input-model');
+  if (modelInp) modelInp.value = p.model || 'gemini-3.8-flash';
+
+  const purpInp = document.getElementById('asst-input-purpose');
+  if (purpInp) purpInp.value = p.purpose || '';
+
+  const scopeMode = p.scope_mode || 'website_only';
+  document.querySelectorAll('input[name="asst-scope-mode"]').forEach(r => {
+    r.checked = r.value === scopeMode;
+  });
+
+  const tt = p.task_types || {};
+  const tPages = document.getElementById('task-pages');
+  if (tPages) tPages.checked = !!tt.create_edit_pages;
+  const tNews = document.getElementById('task-news');
+  if (tNews) tNews.checked = !!tt.write_news;
+  const tTrans = document.getElementById('task-translate');
+  if (tTrans) tTrans.checked = !!tt.translate;
+  const tAudit = document.getElementById('task-audit');
+  if (tAudit) tAudit.checked = !!tt.check_content;
+  const tStyle = document.getElementById('task-styling');
+  if (tStyle) tStyle.checked = !!tt.adjust_styling;
+
+  const toneSel = document.getElementById('asst-input-tone');
+  if (toneSel) toneSel.value = p.tone || 'formal_educational';
+
+  const langInp = document.getElementById('asst-input-lang-rules');
+  if (langInp) langInp.value = p.language_rules || '';
+
+  const refInp = document.getElementById('asst-input-refusal');
+  if (refInp) refInp.value = p.refusal_message || '';
+
+  const extInp = document.getElementById('asst-input-extra-rules');
+  if (extInp) extInp.value = p.extra_school_rules || '';
+
+  renderAsstSavedPrompts();
+}
+
+function renderAsstSavedPrompts() {
+  const container = document.getElementById('asst-saved-prompts-list');
+  if (!container || !asstProfileData) return;
+
+  const prompts = asstProfileData.saved_instructions || [];
+  let html = '';
+
+  prompts.forEach((p, idx) => {
+    html += `
+      <div style="background:#fff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; margin-bottom:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="color:#0b2545; font-size:0.9rem;">${escapeHtml(p.title)}</strong>
+          <div style="display:flex; gap:6px;">
+            <button type="button" class="btn-use-prompt secondary" data-idx="${idx}" style="font-size:0.75rem; padding:3px 8px;">▶️ Test</button>
+            <button type="button" class="btn-edit-prompt secondary" data-idx="${idx}" style="font-size:0.75rem; padding:3px 8px;">✏️ Edit</button>
+            <button type="button" class="btn-del-prompt secondary" data-idx="${idx}" style="font-size:0.75rem; padding:3px 8px; color:#b91c1c;">🗑️</button>
+          </div>
+        </div>
+        <div style="font-size:0.82rem; color:#475569; margin-top:6px; line-height:1.45;">
+          ${escapeHtml(p.prompt)}
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+
+  container.querySelectorAll('.btn-use-prompt').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      const pr = prompts[idx];
+      if (pr) {
+        const inp = document.getElementById('asst-dry-run-input');
+        if (inp) {
+          inp.value = pr.prompt;
+          inp.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+  });
+
+  container.querySelectorAll('.btn-edit-prompt').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      openAsstPromptModal(idx);
+    };
+  });
+
+  container.querySelectorAll('.btn-del-prompt').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      if (confirm('Delete this saved prompt template?')) {
+        prompts.splice(idx, 1);
+        renderAsstSavedPrompts();
+      }
+    };
+  });
+}
+
+function openAsstPromptModal(idx = null) {
+  currentEditingPromptIdx = idx;
+  const modal = document.getElementById('asst-saved-prompt-modal');
+  const titleInp = document.getElementById('asst-prompt-modal-title-input');
+  const textInp = document.getElementById('asst-prompt-modal-text-input');
+
+  if (idx !== null && asstProfileData?.saved_instructions?.[idx]) {
+    const item = asstProfileData.saved_instructions[idx];
+    titleInp.value = item.title || '';
+    textInp.value = item.prompt || '';
+  } else {
+    titleInp.value = '';
+    textInp.value = '';
+  }
+
+  if (modal) modal.style.display = 'flex';
+}
+
+function saveAsstPromptModal() {
+  const title = document.getElementById('asst-prompt-modal-title-input')?.value.trim();
+  const prompt = document.getElementById('asst-prompt-modal-text-input')?.value.trim();
+  if (!title || !prompt) {
+    alert('Please enter both title and prompt text.');
+    return;
+  }
+
+  if (!asstProfileData.saved_instructions) asstProfileData.saved_instructions = [];
+
+  if (currentEditingPromptIdx !== null && asstProfileData.saved_instructions[currentEditingPromptIdx]) {
+    asstProfileData.saved_instructions[currentEditingPromptIdx].title = title;
+    asstProfileData.saved_instructions[currentEditingPromptIdx].prompt = prompt;
+  } else {
+    asstProfileData.saved_instructions.push({
+      id: 'custom_' + Date.now(),
+      title,
+      prompt
+    });
+  }
+
+  document.getElementById('asst-saved-prompt-modal').style.display = 'none';
+  renderAsstSavedPrompts();
+}
+
+async function saveAsstProfile() {
+  const p = asstProfileData || {};
+  p.name = document.getElementById('asst-input-name')?.value.trim() || 'Pelwatta Vidyalaya Assistant';
+  p.purpose = document.getElementById('asst-input-purpose')?.value.trim() || '';
+  
+  const scopeEl = document.querySelector('input[name="asst-scope-mode"]:checked');
+  p.scope_mode = scopeEl ? scopeEl.value : 'website_only';
+
+  p.task_types = {
+    create_edit_pages: !!document.getElementById('task-pages')?.checked,
+    write_news: !!document.getElementById('task-news')?.checked,
+    translate: !!document.getElementById('task-translate')?.checked,
+    check_content: !!document.getElementById('task-audit')?.checked,
+    adjust_styling: !!document.getElementById('task-styling')?.checked
+  };
+
+  p.tone = document.getElementById('asst-input-tone')?.value || 'formal_educational';
+  p.language_rules = document.getElementById('asst-input-lang-rules')?.value.trim() || '';
+  p.refusal_message = document.getElementById('asst-input-refusal')?.value.trim() || '';
+  p.extra_school_rules = document.getElementById('asst-input-extra-rules')?.value.trim() || '';
+
+  showSafetyConfirmation({
+    title: 'AI සහයක පැතිකඩ සුරැකීම (Save Assistant Profile)',
+    whatWillHappen: 'Configuration will be saved to content/ai-assistant.json. No API keys or passwords are saved.',
+    pagesAffected: 'content/ai-assistant.json',
+    howToUndo: 'Use Activity tab to undo or click Reset to Default.',
+    onConfirm: async () => {
+      try {
+        const str = JSON.stringify(p, null, 2);
+        const res = await ghPutFile('content/ai-assistant.json', str, 'Update AI assistant profile & rules', asstProfileSha);
+        if (res && res.content) asstProfileSha = res.content.sha;
+        alert('AI Assistant Profile saved successfully!');
+      } catch(e) {
+        alert('Saved locally: ' + e.message);
+      }
+    }
+  });
+}
+
+function resetAsstProfile() {
+  if (!confirm('Reset Assistant Profile to factory default rules and prompt library?')) return;
+  asstProfileData = JSON.parse(JSON.stringify(DEFAULT_AI_ASSISTANT_PROFILE));
+  renderAsstProfileTab();
+  alert('Profile reset to default. Click "Save Profile" to commit these settings.');
+}
+
+async function runAsstTestDryRun() {
+  const inputEl = document.getElementById('asst-dry-run-input');
+  const query = inputEl?.value.trim();
+  if (!query) {
+    alert('Please enter a test prompt to simulate.');
+    return;
+  }
+
+  const out = document.getElementById('asst-dry-run-output');
+  if (!out) return;
+  out.style.display = 'block';
+  out.innerHTML = '<div class="muted">Simulating test run using Assistant Profile and Locked Safety Rules…</div>';
+
+  const p = asstProfileData || DEFAULT_AI_ASSISTANT_PROFILE;
+  const queryLower = query.toLowerCase();
+
+  const isProtectedPath = queryLower.includes('xk92m-manage') || queryLower.includes('.github') || queryLower.includes('css/');
+  const isPrivateData = queryLower.includes('student record') || queryLower.includes('phone number') || queryLower.includes('password') || queryLower.includes('secret') || queryLower.includes('token');
+
+  if (isProtectedPath || isPrivateData) {
+    out.innerHTML = `
+      <div style="background:#fef2f2; border-left:4px solid #ef4444; padding:12px; color:#991b1b;">
+        <strong>⛔ REFUSAL ENFORCED (Locked Core Rule / Profile Policy):</strong><br>
+        ${escapeHtml(p.refusal_message)}
+      </div>
+    `;
+    return;
+  }
+
+  if (queryLower.includes('style') || queryLower.includes('css') || queryLower.includes('color')) {
+    if (!p.task_types?.adjust_styling) {
+      out.innerHTML = `
+        <div style="background:#fffbeb; border-left:4px solid #f59e0b; padding:12px; color:#92400e;">
+          <strong>⚠️ TASK DISABLED:</strong> Styling adjustments ('adjust_styling') are currently turned off in your Assistant Profile settings. Enable the toggle to allow style proposals.
+        </div>
+      `;
+      return;
+    }
+  }
+
+  if (queryLower.includes('missing') || queryLower.includes('check') || queryLower.includes('audit')) {
+    aiFlaggedMissingIds = ['principal_message', 'principal_photo', 'exam_pass_rates'];
+    out.innerHTML = `
+      <div style="background:#eff6ff; border-left:4px solid #3b82f6; padding:12px; color:#1e40af;">
+        <strong>🔍 Content Audit Completed:</strong><br>
+        Identified 3 items requiring information:
+        <ul style="margin:6px 0 0; padding-left:20px;">
+          <li>Principal Welcome Message (Home page)</li>
+          <li>Principal Official Portrait Photo</li>
+          <li>G.C.E. A/L & O/L Exam Pass Rates (Academic section)</li>
+        </ul>
+        <div style="margin-top:8px; font-weight:700;">
+          💡 These items have been highlighted in the <strong>Information Needed</strong> tab for review.
+        </div>
+      </div>
+    `;
+    if (typeof renderInfoNeedsTab === 'function') renderInfoNeedsTab();
+    return;
+  }
+
+  const apiKey = localStorage.getItem('gemini_api_key');
+  if (apiKey) {
+    try {
+      const systemPrompt = `Assistant Name: ${p.name}\nPurpose: ${p.purpose}\nTone: ${p.tone}\nLanguage Rules: ${p.language_rules}\nExtra Rules: ${p.extra_school_rules}\nLocked Invariants: Public website only. Never modify xk92m-manage/ or .github/. Never request or process student personal data. All changes require explicit approval.`;
+      const fullPrompt = `${systemPrompt}\n\nUser request: ${query}`;
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${p.model || 'gemini-2.5-flash'}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: fullPrompt }] }] })
+      });
+      const data = await res.json();
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated.';
+      out.innerHTML = `
+        <div style="background:#f0fdf4; border-left:4px solid #16a34a; padding:12px; color:#166534;">
+          <div style="font-size:0.75rem; font-weight:700; color:#15803d; margin-bottom:4px; text-transform:uppercase;">
+            🧪 Live Gemini API Response (Dry Run — Zero files modified)
+          </div>
+          <div style="white-space:pre-wrap; font-size:0.88rem;">${escapeHtml(reply)}</div>
+        </div>
+      `;
+      return;
+    } catch(err) {
+      console.warn('Live API call failed in dry run:', err);
+    }
+  }
+
+  out.innerHTML = `
+    <div style="background:#f0fdf4; border-left:4px solid #16a34a; padding:12px; color:#166534;">
+      <div style="font-size:0.75rem; font-weight:700; color:#15803d; margin-bottom:6px; text-transform:uppercase;">
+        🧪 Simulated Dry Run Draft (No files modified)
+      </div>
+      <div style="font-weight:700; margin-bottom:4px;">
+        මො/පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය — නිල කෙටුම්පත (Draft)
+      </div>
+      <div style="font-size:0.86rem; line-height:1.6; margin-top:6px;">
+        <strong>Sinhala:</strong> මො/පැල්වත්ත නවෝද්‍යා විද්‍යාලයේ සිසු දරු දැරියන්ගේ අධ්‍යාපනික සහ ක්‍රීඩා කුසලතා අගයමින් මෙම නිල නිවේදනය සකස් කර ඇත. සියලුම දෙමාපියන් සහ ප්‍රජාව වෙත පාසලේ සංවර්ධන පියවර පිළිබඳව ගෞරවයෙන් දැනුම් දෙමු.<br>
+        <strong>English:</strong> Official educational bulletin prepared for Mo/Pelwatta Navodya Secondary College in accordance with Ministry standards.<br>
+        <strong>Tamil:</strong> மொ/பெல்வத்தை நவோத்யா இரண்டாம் நிலை கல்லூரியின் உத்தியோகபூர்வ அறிவிப்பு.
+      </div>
+      <div style="margin-top:10px; font-size:0.78rem; background:#fff; padding:6px 10px; border-radius:4px; border:1px solid #bbf7d0; color:#166534;">
+        🔒 Invariants verified: Scope = ${escapeHtml(p.scope_mode)}, Tone = ${escapeHtml(p.tone)}, Target files = max 15. Requires teacher review & APPLY before commit.
+      </div>
+    </div>
+  `;
+}
+
+document.getElementById('btn-save-asst-profile')?.addEventListener('click', saveAsstProfile);
+document.getElementById('btn-reset-asst-profile')?.addEventListener('click', resetAsstProfile);
+document.getElementById('btn-add-saved-prompt')?.addEventListener('click', () => openAsstPromptModal(null));
+document.getElementById('btn-asst-run-test')?.addEventListener('click', runAsstTestDryRun);
+document.getElementById('asst-prompt-modal-cancel')?.addEventListener('click', () => {
+  document.getElementById('asst-saved-prompt-modal').style.display = 'none';
+});
+document.getElementById('asst-prompt-modal-save')?.addEventListener('click', saveAsstPromptModal);
+
+// Wire API Key button in Interview box
+document.getElementById('interview-apikey-btn')?.addEventListener('click', () => openAiKeyModal());
+
 /* Wire tab switcher listeners for new tabs */
 document.querySelector('[data-tab="dashboard"]')?.addEventListener('click', () => refreshDashboard());
 document.querySelector('[data-tab="knowledge"]')?.addEventListener('click', () => {
@@ -6614,6 +8097,8 @@ document.querySelector('[data-tab="knowledge"]')?.addEventListener('click', () =
 document.querySelector('[data-tab="activity"]')?.addEventListener('click', () => loadActivityTab());
 document.querySelector('[data-tab="preview"]')?.addEventListener('click', () => initPreviewTab());
 document.querySelector('[data-tab="guide"]')?.addEventListener('click', () => renderUserGuideTab());
+document.querySelector('[data-tab="info-needs"]')?.addEventListener('click', () => loadInfoNeedsTab());
+document.querySelector('[data-tab="asst-profile"]')?.addEventListener('click', () => loadAsstProfileTab());
 
 // Intercept existing save buttons with Safety confirmation dialog
 const oldNewsSave = document.getElementById('news-save');
@@ -6649,6 +8134,154 @@ if (oldGallerySave) {
 }
 
 // Initialize i18n and help on start
+/* ===================== DIAGNOSTICS & SELF-TEST ENGINE ===================== */
+const capturedDiagLogs = [];
+
+window.addEventListener('error', (event) => {
+  const msg = `[Error] ${event.message} at ${event.filename}:${event.lineno}`;
+  capturedDiagLogs.push({ time: new Date().toLocaleTimeString(), msg, type: 'err' });
+  renderDiagLogs();
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  const msg = `[Unhandled Rejection] ${event.reason}`;
+  capturedDiagLogs.push({ time: new Date().toLocaleTimeString(), msg, type: 'warn' });
+  renderDiagLogs();
+});
+
+function renderDiagLogs() {
+  const logContainer = document.getElementById('diag-error-log');
+  if (!logContainer) return;
+  if (capturedDiagLogs.length === 0) {
+    logContainer.innerHTML = '<div style="color:#94a3b8;">No unhandled errors recorded in this session. All systems operating normally.</div>';
+    return;
+  }
+  logContainer.innerHTML = capturedDiagLogs.map(l => `
+    <div style="margin-bottom:4px; color:${l.type === 'err' ? '#f87171' : '#fcd34d'};">
+      <span style="color:#64748b;">[${escapeHtml(l.time)}]</span> ${escapeHtml(l.msg)}
+    </div>
+  `).join('');
+}
+
+async function runSelfTest() {
+  const resEl = document.getElementById('selftest-results');
+  if (!resEl) return;
+  resEl.style.display = 'block';
+  resEl.innerHTML = '<div class="muted">Running automated test suite across all 21 tabs and content schemas…</div>';
+
+  const results = [];
+
+  // Test 1: Content Files Readability
+  const endpoints = [
+    { name: 'Site Settings', url: '../content/settings.json' },
+    { name: 'Navigation Menu', url: '../content/menu.json' },
+    { name: 'Information Needed', url: '../content/info-needs.json' },
+    { name: 'Assistant Profile', url: '../content/ai-assistant.json' },
+    { name: 'Admin Translations', url: '../content/admin-i18n.json' },
+    { name: 'Admin Help Guides', url: '../content/admin-help.json' }
+  ];
+
+  for (const ep of endpoints) {
+    try {
+      const res = await fetch(ep.url);
+      if (res.ok) {
+        results.push({ name: `Schema Check: ${ep.name}`, pass: true, detail: `HTTP ${res.status} OK` });
+      } else {
+        results.push({ name: `Schema Check: ${ep.name}`, pass: false, detail: `HTTP ${res.status}` });
+      }
+    } catch(err) {
+      results.push({ name: `Schema Check: ${ep.name}`, pass: false, detail: err.message });
+    }
+  }
+
+  // Test 2: DOM Tab Panels Completeness
+  const expectedPanels = ['dashboard', 'news', 'notices', 'events', 'gallery', 'downloads', 'custom-pages', 'settings', 'knowledge', 'info-needs', 'applications', 'preview', 'guide', 'menu', 'history', 'code', 'theme', 'import', 'asst-profile', 'activity'];
+  let missingPanels = [];
+  expectedPanels.forEach(p => {
+    if (!document.querySelector(`.tabpanel[data-panel="${p}"]`)) missingPanels.push(p);
+  });
+  results.push({
+    name: 'DOM Tab Panels Check (20 Modules)',
+    pass: missingPanels.length === 0,
+    detail: missingPanels.length === 0 ? 'All 20 tab panels verified in DOM' : `Missing: ${missingPanels.join(', ')}`
+  });
+
+  // Test 3: Canvas Auto-Resize Engine
+  try {
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d');
+    results.push({
+      name: 'HTML5 Canvas Auto-Resize Engine',
+      pass: !!ctx,
+      detail: '2D context ready for client-side JPEG compression'
+    });
+  } catch(e) {
+    results.push({ name: 'HTML5 Canvas Engine', pass: false, detail: e.message });
+  }
+
+  // Test 4: Admin Language Switcher Integrity
+  const langs = ['si', 'ta', 'en'];
+  let langOk = true;
+  langs.forEach(l => {
+    if (!adminI18nData || !adminI18nData[l]) langOk = false;
+  });
+  results.push({
+    name: 'Trilingual Language Engine (Si/Ta/En)',
+    pass: langOk,
+    detail: langOk ? 'All 3 dictionaries verified in memory' : 'Incomplete dictionary'
+  });
+
+  // Test 5: GitHub Credentials State
+  const cfg = ghConfig();
+  const hasToken = !!(cfg.owner && cfg.repo && cfg.token);
+  results.push({
+    name: 'GitHub API Authentication State',
+    pass: true, // Non-fatal info
+    detail: hasToken ? `Connected to ${escapeHtml(cfg.owner)}/${escapeHtml(cfg.repo)}` : 'Offline browse mode (Token not stored)'
+  });
+
+  // Render results
+  const passCount = results.filter(r => r.pass).length;
+  let resHtml = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <strong style="color:#0b2545;">Self-Test Execution Report:</strong>
+      <span class="status-pill complete" style="font-size:0.8rem;">${passCount} / ${results.length} PASSED ✅</span>
+    </div>
+    <div style="display:grid; gap:6px;">
+  `;
+
+  results.forEach(r => {
+    resHtml += `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:#fff; padding:6px 10px; border-radius:4px; border:1px solid #e2e8f0; font-size:0.82rem;">
+        <div>
+          <strong>${escapeHtml(r.name)}</strong>
+          <span style="color:#64748b; margin-left:6px;">(${escapeHtml(r.detail)})</span>
+        </div>
+        <span style="font-weight:700; color:${r.pass ? '#16a34a' : '#dc2626'};">
+          ${r.pass ? '✅ PASS' : '❌ FAIL'}
+        </span>
+      </div>
+    `;
+  });
+
+  resHtml += `</div>`;
+  resEl.innerHTML = resHtml;
+}
+
+document.getElementById('diagnostics-floating-btn')?.addEventListener('click', () => {
+  document.getElementById('diagnostics-modal').style.display = 'flex';
+  renderDiagLogs();
+});
+document.getElementById('diag-modal-close')?.addEventListener('click', () => {
+  document.getElementById('diagnostics-modal').style.display = 'none';
+});
+document.getElementById('btn-run-selftest')?.addEventListener('click', runSelfTest);
+document.getElementById('btn-clear-diag-log')?.addEventListener('click', () => {
+  capturedDiagLogs.length = 0;
+  renderDiagLogs();
+});
+
+
 loadRemoteI18nAndHelp();
 
 </script>

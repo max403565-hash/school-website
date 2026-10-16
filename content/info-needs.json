@@ -1,0 +1,502 @@
+{
+  "sections": [
+    {
+      "id": "principal_office",
+      "owner": "principal_office",
+      "owner_name": {
+        "si": "විදුහල්පති කාර්යාලය (Principal's Office)",
+        "en": "Principal's Office",
+        "ta": "அதிபர் அலுவலகம் (Principal's Office)"
+      },
+      "items": [
+        {
+          "id": "principal_name_and_title",
+          "title": {
+            "si": "විදුහල්පතිතුමාගේ/තුමියගේ නිල නාමය සහ උපාධි විස්තර",
+            "en": "Principal's Official Name & Qualifications",
+            "ta": "அதிபரின் உத்தியோகபூர்வ பெயர் மற்றும் தகைமைகள்"
+          },
+          "description": {
+            "si": "පාසලේ විදුහල්පතිතුමාගේ සම්පූර්ණ නම, ශ්‍රී ලංකා අධ්‍යාපන පරිපාලන සේවයේ ශ්‍රේණිය සහ උපාධි විස්තර.",
+            "en": "Full legal and professional name of the principal, SLEAS grade, and academic qualifications.",
+            "ta": "அதிபரின் முழுப் பெயர், இலங்கை கல்வி நிர்வாக சேவை தரம் மற்றும் கல்வித் தகைமைகள்."
+          },
+          "example": {
+            "si": "කේ. එම්. ජයවර්ධන මයා (ශ්‍රී ලං.අ.ප.සේ I, B.Sc., M.Ed.)",
+            "en": "Mr. K. M. Jayawardena (SLEAS I, B.Sc., M.Ed.)",
+            "ta": "திரு. கே. எம். ஜயவர்தன (இ.க.நி.சே I, B.Sc., M.Ed.)"
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "settings.json",
+            "path": "rtiOfficer.name.si"
+          }
+        },
+        {
+          "id": "principal_message",
+          "title": {
+            "si": "විදුහල්පතිතුමාගේ නිල පණිවුඩය (Welcome Message)",
+            "en": "Principal's Welcome Message to Parents & Public",
+            "ta": "அதிபரின் உத்தியோகபூர்வ வரவேற்புச் செய்தி"
+          },
+          "description": {
+            "si": "පාසල් වෙබ් අඩවියට පිවිසෙන සිසුන්, දෙමාපියන් සහ ප්‍රජාව වෙනුවෙන් විදුහල්පති පණිවුඩය (වචන 150-250).",
+            "en": "Official welcome statement addressing students, parents, and alumni regarding college goals (150-250 words).",
+            "ta": "பாடசாலை இணையதளத்திற்கு வரும் மாணவர்கள் மற்றும் பெற்றோர்களுக்கான அதிபரின் வரவேற்புச் செய்தி."
+          },
+          "example": {
+            "si": "පැල්වත්ත නවෝද්‍යා ද්විතීයික විද්‍යාලය දකුණු ඌව කලාපයේ දරුවන්ගේ නැණ නුවණ වඩමින්...",
+            "en": "Welcome to Mo/Pelwatta Navodya Secondary College. Our mission is to nurture academically proficient...",
+            "ta": "மொ/பெல்வத்தை நவோத்யா கல்லூரிக்கு உங்களை வரவேற்கிறோம். எமது நோக்கம் நற்பண்புள்ள மாணவர்களை உருவாக்குவதாகும்..."
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "home.json",
+            "path": "principalSnippet.quote.si"
+          }
+        },
+        {
+          "id": "principal_photo",
+          "title": {
+            "si": "විදුහල්පතිතුමාගේ නිල වර්ණ ඡායාරූපය",
+            "en": "Principal's Official Color Portrait Photo",
+            "ta": "அதிபரின் உத்தியோகபூர்வ வண்ண உருவப்படம்"
+          },
+          "description": {
+            "si": "විදුහල්පති කාර්යාලයේ හෝ නිල ඇඳුමින් ගත් පැහැදිලි ඡායාරූපයක් (අවම 600×600 px).",
+            "en": "Clear, professional portrait photo in formal college attire (minimum 600×600 px).",
+            "ta": "அதிபரின் உத்தியோகபூர்வ தெளிவான உருவப்படம் (குறைந்தது 600×600 px)."
+          },
+          "example": {
+            "si": "images/staff/principal.jpg",
+            "en": "images/staff/principal.jpg",
+            "ta": "images/staff/principal.jpg"
+          },
+          "type": "photo",
+          "priority": "high",
+          "content_check": {
+            "file": "home.json",
+            "path": "principalSnippet.photo"
+          }
+        },
+        {
+          "id": "school_founded_history",
+          "title": {
+            "si": "පාසල් ආරම්භක වර්ෂය සහ සංක්ෂිප්ත ඉතිහාසය",
+            "en": "Founding Year & Milestone History",
+            "ta": "பாடசாலை ஆரம்பிக்கப்பட்ட ஆண்டு மற்றும் வரலாறு"
+          },
+          "description": {
+            "si": "පාසල ආරම්භ කළ වර්ෂය, මුල්ම විදුහල්පතිතුමා සහ නවෝද්‍යා පාසලක් බවට පත්වූ වකවානුව.",
+            "en": "Year founded, pioneer principal, and upgrade milestones to Navodya status.",
+            "ta": "ஆரம்பிக்கப்பட்ட ஆண்டு, முதல் அதிபர் மற்றும் நவோத்யா தரமுயர்த்தல் வரலாறு."
+          },
+          "example": {
+            "si": "1968 වර්ෂයේ ආරම්භ කර, 2000 වසරේ නවෝද්‍යා ද්විතීයික පාසලක් ලෙස සංවර්ධනය කෙරිණි.",
+            "en": "Established in 1968 and upgraded to a Navodya Secondary College in 2000.",
+            "ta": "1968 இல் ஆரம்பிக்கப்பட்டு 2000 ஆம் ஆண்டில் நவோத்யா பாடசாலையாக தரமுயர்த்தப்பட்டது."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "about.json",
+            "path": "historyMilestones"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sectional_heads",
+      "owner": "sectional_heads",
+      "owner_name": {
+        "si": "අංශ ප්‍රධානීන් (Sectional Heads)",
+        "en": "Sectional Heads & Subject Coordinators",
+        "ta": "பிரிவுத் தலைவர்கள் (Sectional Heads)"
+      },
+      "items": [
+        {
+          "id": "al_streams_baskets",
+          "title": {
+            "si": "උසස් පෙළ විෂය ධාරා සහ විෂය කාණ්ඩ ලැයිස්තුව",
+            "en": "Advanced Level (A/L) Streams & Subject Combinations",
+            "ta": "உயர்தர (A/L) பாடத்துறைகள் மற்றும் சேர்க்கைகள்"
+          },
+          "description": {
+            "si": "ජීව විද්‍යාව, භෞතික විද්‍යාව, වාණිජ, කලා සහ තාක්ෂණවේදය යන විෂය ධාරාවල විෂය ලැයිස්තුව.",
+            "en": "Approved subject baskets across Biological Science, Physical Science, Commerce, Arts, and Technology.",
+            "ta": "விஞ்ஞானம், வர்த்தகம், கலை மற்றும் தொழில்நுட்பத் துறைகளின் பாட விபரங்கள்."
+          },
+          "example": {
+            "si": "ජීව විද්‍යා ධාරාව: ජීව විද්‍යාව, රසායන විද්‍යාව, භෞතික විද්‍යාව / කෘෂි විද්‍යාව.",
+            "en": "Biological Science: Biology, Chemistry, Physics / Agricultural Science.",
+            "ta": "உயிரியல் துறை: உயிரியல், இரசாயனவியல், பௌதிகவியல் / விவசாய விஞ்ஞானம்."
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "academic.json",
+            "path": "streams"
+          }
+        },
+        {
+          "id": "ol_aesthetic_subjects",
+          "title": {
+            "si": "සාමාන්‍ය පෙළ සෞන්දර්ය හා ප්‍රායෝගික විෂයන්",
+            "en": "Ordinary Level (O/L) Aesthetic & Vocational Subjects",
+            "ta": "சாதாரண தர (O/L) அழகியல் மற்றும் தொழினுட்பப் பாடங்கள்"
+          },
+          "description": {
+            "si": "6-11 ශ්‍රේණි සඳහා උගන්වන චිත්‍ර, සංගීත, නැටුම්, නාට්‍ය සහ තොරතුරු තාක්ෂණ විෂයයන්.",
+            "en": "Elective aesthetic subjects (Art, Music, Dancing, Drama) and Technical subjects taught for grades 6-11.",
+            "ta": "சித்திரம், இசை, நடனம், நாடகம் மற்றும் தகவல் தொழினுட்பப் பாடங்களின் விபரம்."
+          },
+          "example": {
+            "si": "දෙස්/විදෙස් සංගීතය, උඩරට/පහතරට නැටුම්, චිත්‍ර කලාව, ICT.",
+            "en": "Eastern/Western Music, Kandyan Dancing, Art, and ICT.",
+            "ta": "இசை, நடனம், சித்திரம் மற்றும் தகவல் தொடர்பாடல் தொழினுட்பம்."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "academic.json",
+            "path": "olSubjects"
+          }
+        },
+        {
+          "id": "exam_pass_rates",
+          "title": {
+            "si": "අධ්‍යයන පොදු සහතික පත්‍ර විභාග සමත් ප්‍රතිශත",
+            "en": "Latest National Exam Pass Rates & University Entrants",
+            "ta": "தேசிய பரீட்சை தேர்ச்சி வீதங்கள் & பல்கலைக்கழக அனுமதி"
+          },
+          "description": {
+            "si": "පසුගිය වසරේ සාමාන්‍ය පෙළ සහ උසස් පෙළ සමත් ප්‍රතිශත හා විශ්වවිද්‍යාල සුදුසුකම් ලැබූ සිසුන් සංඛ්‍යාව.",
+            "en": "Previous academic year O/L pass percentage and A/L university admission qualifiers count.",
+            "ta": "கடந்த ஆண்டின் சாதாரண தரம் மற்றும் உயர்தர பரீட்சை தேர்ச்சி வீதங்கள்."
+          },
+          "example": {
+            "si": "සාමාන්‍ය පෙළ සමත් ප්‍රතිශතය 82%, සරසවි වරම් ලැබූවන් 34 ක්.",
+            "en": "O/L Pass Rate: 82%, University Entrants: 34 students.",
+            "ta": "சாதாரண தர தேர்ச்சி வீதம் 82%, பல்கலைக்கழகம் தெரிவானோர் 34."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "academic.json",
+            "path": "examAchievements"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sports_master",
+      "owner": "sports_master",
+      "owner_name": {
+        "si": "ක්‍රීඩා අංශය සහ ක්‍රීඩා භාර ආචාර්ය (Sports Master)",
+        "en": "Sports Department & Master-in-Charge",
+        "ta": "விளையாட்டுத் துறை (Sports Department)"
+      },
+      "items": [
+        {
+          "id": "sports_houses_info",
+          "title": {
+            "si": "පාසල් නිවාස 4 සහ ඒවායේ වර්ණ හා ආදර්ශ පාඨ",
+            "en": "College Sports Houses, Colors & Mottos",
+            "ta": "பாடசாலை இல்லங்கள், நிறங்கள் & குறிக்கோளுரைகள்"
+          },
+          "description": {
+            "si": "වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙලේ නිවාසවල නම්, වර්ණ සහ නායක ගුරුභවතුන්.",
+            "en": "Official house names, colors, house masters, and mottos for athletic competitions.",
+            "ta": "இல்லங்களின் பெயர்கள், வர்ணங்கள் மற்றும் பொறுப்பாசிரியர்களின் விபரம்."
+          },
+          "example": {
+            "si": "තිස්ස (රතු), ගැමුණු (නිල්), විජය (කහ), පරාක්‍රම (කොළ).",
+            "en": "Tissa (Red), Gemunu (Blue), Vijaya (Yellow), Parakrama (Green).",
+            "ta": "திஸ்ஸ (சிவப்பு), கெமுனு (நீலம்), விஜய (மஞ்சள்), பராக்கிரம (பச்சை)."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "student-life.json",
+            "path": "houses"
+          }
+        },
+        {
+          "id": "annual_sports_meet_record",
+          "title": {
+            "si": "නවතම වාර්ෂික නිවාසාන්තර ක්‍රීඩා උළෙලේ වාර්තාව",
+            "en": "Latest Annual Inter-House Athletic Meet Highlights",
+            "ta": "சமீபத்திய விளையாட்டு விழா சாதனைகள் & விபரம்"
+          },
+          "description": {
+            "si": "නවතම ක්‍රීඩා උළෙල පැවති දිනය, ශූරතා දිනූ නිවාසය සහ දක්ෂතම ක්‍රීඩක ක්‍රීඩිකාවන්ගේ නම්.",
+            "en": "Date of athletic meet, overall championship house, and best athlete awards.",
+            "ta": "விளையாட்டு விழா நடைபெற்ற திகதி, சாம்பியன் இல்லம் மற்றும் சிறந்த விளையாட்டு வீரர்கள்."
+          },
+          "example": {
+            "si": "2026 වසරේ ශූරතාවය තිස්ස නිවාසය දිනාගත් අතර...",
+            "en": "Tissa House emerged champions at the 2026 Inter-House Meet...",
+            "ta": "2026 ஆம் ஆண்டு இல்ல போட்டியில் திஸ்ஸ இல்லம் சாம்பியன் பட்டம் பெற்றது..."
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "news-items.json",
+            "path": "sportsMeetArticle"
+          }
+        },
+        {
+          "id": "sports_action_photos",
+          "title": {
+            "si": "ක්‍රීඩා උළෙලේ සහ කණ්ඩායම්වල උසස් තත්ත්වයේ ඡායාරූප",
+            "en": "Sports Teams & Athletic Action Photographs",
+            "ta": "விளையாட்டு அணிகள் மற்றும் போட்டிகளின் புகைப்படங்கள்"
+          },
+          "description": {
+            "si": "වොලිබෝල්, ක්‍රිකට්, දැල්පන්දු කණ්ඩායම් සහ ක්‍රීඩා උත්සවයේ පැහැදිලි ඡායාරූප 3-5ක් (දෙමාපිය අවසරය සහිත).",
+            "en": "3-5 clear action photos of volleyball, cricket, netball, or track events (parental consent verified).",
+            "ta": "கரப்பந்தாட்டம், கிரிக்கெட், வலைப்பந்தாட்டம் போன்றவற்றின் 3-5 தெளிவான புகைப்படங்கள்."
+          },
+          "example": {
+            "si": "images/gallery/sports-2026-1.jpg",
+            "en": "images/gallery/sports-2026-1.jpg",
+            "ta": "images/gallery/sports-2026-1.jpg"
+          },
+          "type": "photo",
+          "priority": "medium",
+          "content_check": {
+            "file": "gallery-items.json",
+            "path": "sportsPhotos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "it_media_teacher",
+      "owner": "it_media_teacher",
+      "owner_name": {
+        "si": "තොරතුරු තාක්ෂණ හා මාධ්‍ය අංශය (IT & Media Unit)",
+        "en": "IT Coordinator & School Media Unit",
+        "ta": "தகவல் தொழினுட்பம் மற்றும் ஊடகப் பிரிவு (IT & Media Unit)"
+      },
+      "items": [
+        {
+          "id": "school_crest_vector",
+          "title": {
+            "si": "පාසල් ලාංඡනයේ පැහැදිලි SVG/PNG ගොනුව",
+            "en": "High-Resolution School Crest (SVG or PNG)",
+            "ta": "பாடசாலை இலச்சினையின் உயர் தெளிவுத்திறன் கொண்ட கோப்பு"
+          },
+          "description": {
+            "si": "වෙබ් අඩවියේ ශීර්ෂය සහ මුද්‍රණ සඳහා භාවිත වන විනිවිද පසුබිම් (Transparent) ලාංඡනය.",
+            "en": "Transparent background crest file for site header and official school documents.",
+            "ta": "தளத்தின் தலைப்பு மற்றும் ஆவணங்களுக்கான தெளிவான பாடசாலை இலச்சினை."
+          },
+          "example": {
+            "si": "images/crest.svg",
+            "en": "images/crest.svg",
+            "ta": "images/crest.svg"
+          },
+          "type": "photo",
+          "priority": "high",
+          "content_check": {
+            "file": "settings.json",
+            "path": "crestVerified"
+          }
+        },
+        {
+          "id": "campus_facilities_photos",
+          "title": {
+            "si": "පාසලේ විද්‍යාගාර, පරිගණක විද්‍යාගාර හා ප්‍රධාන ගොඩනැගිලි ඡායාරූප",
+            "en": "Photographs of School Laboratories, Library & Smart Classrooms",
+            "ta": "பாடசாலை விஞ்ஞான ஆய்வுகூடம், நூலகம் & கணினி ஆய்வுகூட புகைப்படங்கள்"
+          },
+          "description": {
+            "si": "පාසලේ ස්මාර්ට් පන්ති කාමර, පුස්තකාලය සහ පරිපාලන ගොඩනැගිල්ල නිරූපණය වන ඡායාරූප.",
+            "en": "Quality photos of college infrastructure: Science Lab, Library, IT Center, and Auditorium.",
+            "ta": "பாடசாலை வசதிகளின் புகைப்படங்கள்: விஞ்ஞான கூடம், நூலகம், கணினி மையம்."
+          },
+          "example": {
+            "si": "images/campus-hero.jpg, images/facilities/lab.jpg",
+            "en": "images/campus-hero.jpg, images/facilities/lab.jpg",
+            "ta": "images/campus-hero.jpg, images/facilities/lab.jpg"
+          },
+          "type": "photo",
+          "priority": "high",
+          "content_check": {
+            "file": "gallery-items.json",
+            "path": "facilitiesCount"
+          }
+        },
+        {
+          "id": "admissions_google_form",
+          "title": {
+            "si": "ඇතුළත් වීමේ විමසීම් සඳහා Google Form සබැඳිය",
+            "en": "Admissions Google Form URL for Parents",
+            "ta": "மாணவர் சேர்க்கைக்கான Google Form இணைப்பு"
+          },
+          "description": {
+            "si": "1 ශ්‍රේණිය සහ 6 ශ්‍රේණිය ඇතුළත් වීම් සඳහා පාසල විසින් සකසන ලද නිල Google Form සබැඳිය.",
+            "en": "Direct Google Form link configured for online admission inquiries and document verification.",
+            "ta": "மாணவர் சேர்க்கை விண்ணப்பங்களுக்கான உத்தியோகபூர்வ Google Form இணைப்பு."
+          },
+          "example": {
+            "si": "https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform",
+            "en": "https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform",
+            "ta": "https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform"
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "admissions.json",
+            "path": "googleFormUrl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "administration_office",
+      "owner": "administration_office",
+      "owner_name": {
+        "si": "පාලන සහ කාර්යාල අංශය (Administration Office)",
+        "en": "School Administration & General Office",
+        "ta": "நிர்வாக மற்றும் பொது அலுவலகம் (Administration Office)"
+      },
+      "items": [
+        {
+          "id": "official_telephones_email",
+          "title": {
+            "si": "පාසලේ නිල දුරකථන අංක සහ නිල ඊමේල් ලිපිනය",
+            "en": "Official General Inquiries Telephone & Email",
+            "ta": "பாடசாலை தொலைபேசி இலக்கங்கள் மற்றும் மின்னஞ்சல்"
+          },
+          "description": {
+            "si": "ප්‍රධාන කාර්යාලයේ ස්ථාවර දුරකථන අංකය සහ ලිපි හුවමාරු සඳහා භාවිත කරන නිල ඊමේල් ලිපිනය.",
+            "en": "Landline telephone number for general inquiries and official institutional email address.",
+            "ta": "பொது விசாரணைகளுக்கான தொலைபேசி மற்றும் உத்தியோகபூர்வ மின்னஞ்சல் முகவரி."
+          },
+          "example": {
+            "si": "දුරකථන: +94 55 227 6234 / ඊමේල්: info@pelwattacollege.sch.lk",
+            "en": "Phone: +94 55 227 6234 / Email: info@pelwattacollege.sch.lk",
+            "ta": "தொலைபேசி: +94 55 227 6234 / மின்னஞ்சல்: info@pelwattacollege.sch.lk"
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "settings.json",
+            "path": "email"
+          }
+        },
+        {
+          "id": "office_public_hours",
+          "title": {
+            "si": "මහජන සේවා හා සහතික පත්‍ර නිකුත් කරන වේලාවන්",
+            "en": "Public Service & Certificate Issuance Working Hours",
+            "ta": "பொது சேவை மற்றும் சான்றிதழ் வழங்கும் நேரங்கள்"
+          },
+          "description": {
+            "si": "පාසල් හැරයාමේ සහතික සහ චරිත සහතික ලබාගැනීමට මහජනතාව සඳහා කාර්යාලය විවෘත වේලාවන්.",
+            "en": "Hours when parents and past students can visit the office for certificates and inquiries.",
+            "ta": "சான்றிதழ்கள் மற்றும் பொது விசாரணைகளுக்காக அலுவலகம் திறந்திருக்கும் நேரங்கள்."
+          },
+          "example": {
+            "si": "සඳුදා - සිකුරාදා: පෙ.ව. 8:00 සිට ප.ව. 2:30 දක්වා",
+            "en": "Monday - Friday: 8:00 AM to 2:30 PM",
+            "ta": "திங்கள் - வெள்ளி: காலை 8:00 முதல் பிற்பகல் 2:30 வரை"
+          },
+          "type": "text",
+          "priority": "high",
+          "content_check": {
+            "file": "settings.json",
+            "path": "officeHours.si"
+          }
+        },
+        {
+          "id": "downloadable_circulars",
+          "title": {
+            "si": "දෙමාපියන් සහ සිසුන් සඳහා නිල චක්‍රලේඛ හා ආකෘති පත්‍ර (PDF)",
+            "en": "Official School Circulars & Downloadable Forms (PDF)",
+            "ta": "சுற்றறிக்கைகள் மற்றும் பதிவிறக்க படிவங்கள் (PDF)"
+          },
+          "description": {
+            "si": "ශිෂ්‍යත්ව ආකෘති, විභාග කාලසටහන් සහ දෙමාපිය දැනුවත් කිරීමේ නිල ලේඛන.",
+            "en": "Downloadable PDF circulars for scholarship assistance, term exam schedules, and parent forms.",
+            "ta": "புலமைப்பரிசில் படிவங்கள், பரீட்சை நேர அட்டவணைகள் மற்றும் பெற்றோர் சுற்றறிக்கைகள்."
+          },
+          "example": {
+            "si": "downloads/academic-calendar-2026.pdf",
+            "en": "downloads/academic-calendar-2026.pdf",
+            "ta": "downloads/academic-calendar-2026.pdf"
+          },
+          "type": "document",
+          "priority": "high",
+          "content_check": {
+            "file": "downloads.json",
+            "path": "downloadsCount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sds_committee",
+      "owner": "sds_committee",
+      "owner_name": {
+        "si": "පාසල් සංවර්ධන සමිතිය (School Development Society)",
+        "en": "School Development Society (SDS Committee)",
+        "ta": "பாடசாலை அபிவிருத்திச் சங்கம் (SDS)"
+      },
+      "items": [
+        {
+          "id": "sds_executive_committee",
+          "title": {
+            "si": "පාසල් සංවර්ධන සමිතියේ නිලධාරී මණ්ඩලය",
+            "en": "SDS Executive Committee Members & Officers",
+            "ta": "பாடசாலை அபிவிருத்திச் சங்கத்தின் நிறைவேற்றுக் குழு"
+          },
+          "description": {
+            "si": "ලේකම්, භාණ්ඩාගාරික සහ දෙමාපිය කමිටු සාමාජිකයින්ගේ නම් ලැයිස්තුව.",
+            "en": "List of SDS Secretary, Treasurer, teacher representatives, and elected parent committee members.",
+            "ta": "செயலாளர், பொருளாளர் மற்றும் பெற்றோர் பிரதிநிதிகளின் பெயர் விபரம்."
+          },
+          "example": {
+            "si": "සභාපති: විදුහල්පතිතුමා, ලේකම්: ආර්. ඩී. බණ්ඩාර මයා...",
+            "en": "President: The Principal, Secretary: Mr. R. D. Bandara...",
+            "ta": "தலைவர்: அதிபர், செயலாளர்: திரு. ஆர். டி. பண்டார..."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "sds.json",
+            "path": "committeeMembers"
+          }
+        },
+        {
+          "id": "sds_ongoing_projects",
+          "title": {
+            "si": "පාසලේ වත්මන් භෞතික සංවර්ධන ව්‍යාපෘති",
+            "en": "Current Infrastructure Development Projects",
+            "ta": "தற்போதைய பாடசாலை உட்கட்டமைப்பு அபிவிருத்தி திட்டங்கள்"
+          },
+          "description": {
+            "si": "දෙමාපියන් හා ප්‍රජාව එක්ව සිදුකරන ගොඩනැගිලි අලුත්වැඩියා, ක්‍රීඩා පිටි සංවර්ධන හෝ පරිසර ව්‍යාපෘති.",
+            "en": "Active facility upgrade projects (e.g. library expansion, playground turfing, water sanitation).",
+            "ta": "செயலில் உள்ள பாடசாலை அபிவிருத்தி திட்டங்கள் (நூலகம், விளையாட்டு மைதானம் போன்றவை)."
+          },
+          "example": {
+            "si": "ප්‍රාථමික අංශයේ නව සනීපාරක්ෂක පද්ධතිය ස්ථාපිත කිරීම.",
+            "en": "Construction of new sanitation and drinking water facilities for the primary section.",
+            "ta": "ஆரம்பப் பிரிவிற்கான புதிய சுகாதார மற்றும் குடிநீர் வசதிகள் அமைத்தல்."
+          },
+          "type": "text",
+          "priority": "medium",
+          "content_check": {
+            "file": "sds.json",
+            "path": "activeProjects"
+          }
+        }
+      ]
+    }
+  ]
+}
